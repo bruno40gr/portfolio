@@ -1,35 +1,38 @@
-/* Inter only (site default) */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* JetBrains (Cloudinary) — navigation signature */
-@font-face {
-  font-family: "JetBrains Mono";
-  src: url("https://res.cloudinary.com/diy08lj9x/raw/upload/v1768952568/JetBrainsMono-VariableFont_wght_ru8cpq.ttf") format("truetype");
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-/* JetBrains (Cloudinary) — navigation signature */
-@font-face {
-  font-family: "JetBrains Mono";
-  src: url("https://res.cloudinary.com/diy08lj9x/raw/upload/v1768952568/JetBrainsMono-VariableFont_wght_ru8cpq.ttf") format("truetype");
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "JetBrains Mono";
-  src: url("https://res.cloudinary.com/diy08lj9x/raw/upload/v1768952568/JetBrainsMono-Italic-VariableFont_wght_vfhh4g.ttf") format("truetype");
-  font-weight: 100 900;
-  font-style: italic;
-  font-display: swap;
-}
+@layer base {
+  p, h1, h2, h3, h4, h5, h6, figure { margin: 0; }
+  
+  body {
+    @apply font-sans;
+  }
 
-p, h1, h2, h3, h4, h5, h6, figure { margin: 0; }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans;
+  }
+
+  /* Force PT Serif wherever .font-serif is used on headings, 
+     but without !important if possible. 
+     Using a more specific selector to beat the base h1/h2 tags. */
+  h1.font-serif, 
+  h2.font-serif, 
+  h3.font-serif {
+    font-family: "PT Serif", serif;
+  }
+
+  .font-sans, 
+  body, 
+  p, 
+  span, 
+  div, 
+  button, 
+  a {
+    font-family: "Source Sans 3", sans-serif;
+  }
+
+}
 
 :root {
   --header-h: 56px;
@@ -55,14 +58,11 @@ p, h1, h2, h3, h4, h5, h6, figure { margin: 0; }
   --light-purple: #576092;
 }
 
-/* Defaults */
-.font-body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
-
-/* JetBrains signature — navigation only */
+/* Updated signature — navigation only */
 .type-nav {
-  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 15px;
-  font-weight: 400;
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
   letter-spacing: 0.01em;
 }
 
@@ -72,21 +72,27 @@ p, h1, h2, h3, h4, h5, h6, figure { margin: 0; }
 .hero-cta-row { display: flex; align-items: center; gap: var(--hero-cta-gap); }
 .case-anchor-target { scroll-margin-top: calc(var(--header-h) + 24px); }
 
-.p {
-  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+.designer-note {
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 1.6rem; /* text-lg */
+  font-weight: 300; /* lighter */
+  line-height: 1.5; /* airier */
+  color: #262626; /* neutral-800 */
 }
 
-
 .meta-label {
-  font-size: 16px;
+  font-size: 1.125rem;
   font-weight: 400;
   color: #737373;
 }
 
 .case-anchor-link {
+  font-size: 1.125rem;
+  font-weight: 400;
   display: flex;
   align-items: flex-start;
   gap: 10px;
+  color: #737373;
 }
 
 .case-anchor-bullet-wrap {

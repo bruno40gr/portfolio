@@ -11,7 +11,7 @@ const ProjectCard = ({
   showImpactSummarySentence = false,
   showPills = true
 }) => {
-  const isPlaceholder = project.summary?.includes("Coming soon");
+  const isPlaceholder = project.status === "coming-soon";
 
   const statusObj = project.details?.status || project.status;
   const typeLabel = project.details?.type || project.type;
@@ -24,7 +24,7 @@ const ProjectCard = ({
             ? "border-neutral-100 group-hover:border-[var(--neon-green)] group-hover:shadow-[0_0_20px_rgba(166,250,78,0.45)] group-hover:-translate-y-1"
             : "border-neutral-200 grayscale opacity-60"
         } aspect-[9/7] md:aspect-[16/10]`}
-        style={{ marginBottom: "var(--space-3)" }}
+        style={{ marginBottom: "var(--space-1)" }}
       >
         <img
           src={project.thumbnail}
@@ -54,21 +54,17 @@ const ProjectCard = ({
         )}
 
         <h2
-          className={`font-bold text-[color:var(--deep-purple)] transition-colors leading-tight tracking-tight text-[1.4rem] ${
+          className={`text-[color:var(--deep-purple)] text-2xl md:text-2xl text-slate-900 font-bold tracking-tight leading-snug ${
             !isPlaceholder ? "group-hover:text-[#1B1537]" : ""
           }`}
         >
           {project.title}
         </h2>
-        {(showImpactSummary || showImpactSummarySentence) && (
-          <p className="type-caption text-neutral-500 leading-[1.6] md:leading-[1.7] pt-1 mb-2">
-            {showImpactSummarySentence
-              ? project.ImpactSummarySentence || project.impactSummary || project.summary
-              : project.impactSummary || project.summary}
-          </p>
-        )}
+        <p className="type-caption text-neutral-500 leading-snug mb-1">
+          {project.impactSummary}
+        </p>
         {showPills && (
-          <div className="flex flex-wrap items-center gap-2 pt-1">
+          <div className="flex flex-wrap items-center gap-2">
             {statusObj && <Pill label={statusObj.label} theme={statusObj.theme} size="md" />}
             {typeLabel && <Pill label={typeLabel} size="md" />}
           </div>

@@ -20,7 +20,7 @@ const sampleTableRows = [
 ];
 
 const CaseStudyStyleGuide = ({ onBack }) => (
-  <article className="bg-white min-h-screen w-full relative text-left">
+  <article className="bg-white min-h-screen w-full relative text-left font-sans">
     <div className="w-full h-[45vh] md:h-[50vh] bg-neutral-100 border-b border-neutral-200 overflow-hidden relative shadow-sm text-center">
       <img
         src={ASSETS.testImage}
@@ -29,7 +29,7 @@ const CaseStudyStyleGuide = ({ onBack }) => (
       />
     </div>
 
-    <div className="w-full pt-12 md:pt-[calc(var(--header-h)+40px)]">
+      <div className="w-full pt-12 md:pt-[calc(var(--header-h)+40px)] font-sans">
       <div className="px-6 md:px-12 max-w-[1400px] mx-auto text-left">
         <div className="flex-1 w-full lg:pb-12 max-w-4xl text-left">
           <button
@@ -86,7 +86,7 @@ const CaseStudyStyleGuide = ({ onBack }) => (
             ]}
           />
 
-          <section className="mb-8 md:mb-12 text-left font-body">
+          <section className="mb-8 md:mb-12 text-left font-sans">
             <ul className="space-y-10 md:space-y-16">
               {[
                 {

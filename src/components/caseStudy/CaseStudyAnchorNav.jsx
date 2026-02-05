@@ -62,7 +62,7 @@ const CaseStudyAnchorNav = ({ sections, onBack }) => {
               className={`case-anchor-link block meta-label leading-snug whitespace-normal break-words transition-colors ${
                 activeId === section.id
                   ? "is-active !text-neutral-900 !font-[600]"
-                  : "!text-neutral-400 hover:!text-neutral-900"
+                  : "!text-neutral-400 !font-[400] hover:!text-neutral-900"
               }`}
               onClick={(e) => handleAnchorClick(e, section.id)}
             >

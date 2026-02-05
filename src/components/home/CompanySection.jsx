@@ -13,7 +13,7 @@ const CompanySection = ({ group, onProjectClick }) => {
         className="border-b border-neutral-200 flex flex-col md:flex-row md:items-baseline justify-between"
         style={{ marginBottom: "var(--space-4)", paddingBottom: "var(--space-2)" }}
       >
-        <h1 className="!text-[2rem] md:text-2xl text-[color:var(--deep-purple)] font-bold tracking-tight leading-snug">{group.company}</h1>
+        <h2 className="!text-[2rem] md:text-2xl text-[color:var(--deep-purple)] font-bold tracking-tight leading-snug">{group.company}</h2>
         <h3 className="text-base font-medium text-neutral-800">{group.roleLine}</h3>
       </header>
 

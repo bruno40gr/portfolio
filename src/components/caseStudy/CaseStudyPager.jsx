@@ -26,7 +26,7 @@ const CaseStudyPager = ({ prevProject, nextProject, onNavigate }) => {
           <span className="type-nav">{eyebrow}</span>
         </div>
 
-        <h2 className="font-bold text-neutral-900 text-base md:text-xl leading-tight transition-colors group-hover:text-black">
+        <h2 className="font--bold text-neutral-900 text-base md:text-xl leading-tight transition-colors group-hover:text-black">
           {target.title}
         </h2>
       </button>

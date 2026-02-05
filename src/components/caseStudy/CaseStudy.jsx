@@ -26,7 +26,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
   const rootProject = isPillar ? PORTFOLIO_DATA.projects.find((p) => p.id === project.parentId) : null;
   const subPillars = PORTFOLIO_DATA.projects.filter((p) => p.parentId === project.id);
 
-  const allCaseStudies = PORTFOLIO_DATA.projects.filter((p) => !p.summary?.includes("Coming soon"));
+  const allCaseStudies = PORTFOLIO_DATA.projects.filter((p) => p.status !== "coming-soon");
   const currentIdx = allCaseStudies.findIndex((p) => p.id === project.id);
   const prevProject = currentIdx > 0 ? allCaseStudies[currentIdx - 1] : null;
   const nextProject = currentIdx >= 0 && currentIdx < allCaseStudies.length - 1 ? allCaseStudies[currentIdx + 1] : null;
@@ -37,7 +37,8 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
 
   const renderBlock = (block, index) => {
     switch (block.type) {
-      case "text":
+      case "text": {
+        const textClass = block.subtype === "designer-note" ? "designer-note" : "text-lg text-neutral-700 leading-relaxed";
         return (
           <section key={index} className="mb-10 text-left">
             {block.title && (
@@ -47,15 +48,16 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
             )}
             {Array.isArray(block.content) ? (
               block.content.map((p, i) => (
-                <p key={i} className="text-base md:text-lg text-neutral-700 leading-relaxed mb-4 md:mb-6">
+                <p key={i} className={`${textClass} mb-4 md:mb-6`}>
                   {p}
                 </p>
               ))
             ) : (
-              <p className="text-base md:text-lg text-neutral-700 leading-relaxed">{block.content}</p>
+              <p className={textClass}>{block.content}</p>
             )}
           </section>
         );
+      }
 
       case "callout-box":
         return <CalloutBox key={index} content={block.content} />;
@@ -73,7 +75,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
             key={index}
             className={`mb-6 text-left case-anchor-target ${showBorder ? "mt-10 pt-10" : ""}`}
           >
-            <h2 className="text-xl md:text-2xl text-slate-900 font-bold tracking-tight leading-snug">{block.title}</h2>
+            <h2 className="text-2xl text-slate-900 font-bold tracking-tight leading-snug">{block.title}</h2>
           </section>
         );
       }
@@ -81,10 +83,10 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
       case "image-full":
         return (
           <div key={index} className="mb-24 px-6 md:px-0">
-            <div
-              className="w-full bg-neutral-100 overflow-hidden mb-4 rounded-sm shadow-sm p-4 md:p-8 cursor-zoom-in group"
-              onClick={() => setLightbox({ open: true, src: block.src, alt: block.caption, caption: block.caption })}
-            >
+      <div
+        ref={contentRef}
+        className="w-full pt-12 md:pt-[calc(var(--header-h)+40px)]"
+      >
               <img
                 src={block.src}
                 alt={block.caption}
@@ -164,8 +166,8 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         };
 
         return (
-          <section key={index} className="mb-8 md:mb-12 text-left font-body">
-            <ul className="space-y-10 md:space-y-16">
+          <section key={index} className="mb-8 md:mb-12 text-left font-sans">
+            <ul className="space-y-10 md:space-y-16 font-sans">
               {block.items.map((item, i) => {
                 const isObj = item && typeof item === "object" && !Array.isArray(item);
                 const itemContent = isObj ? item.content : item;
@@ -282,14 +284,14 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
   const heroSrc = project.details?.heroImage || project.thumbnail;
 
   return (
-    <article className="bg-white min-h-screen w-full relative text-left">
+    <article className="bg-white min-h-screen w-full relative text-left font-sans">
       <div className="w-full h-[60vh] md:h-[80vh] bg-neutral-100 border-b border-neutral-200 overflow-hidden relative shadow-sm text-center">
         <img src={heroSrc} alt={project.title} className="w-full h-full object-cover" />
       </div>
 
       <div
         ref={contentRef}
-        className="w-full pt-12 md:pt-[calc(var(--header-h)+40px)]"
+        className="w-full pt-12 md:pt-[calc(var(--header-h)+40px)] font-sans"
       >
         <div className="lg:grid lg:grid-cols-[20rem_1fr] lg:gap-12 pb-10 case-study-layout">
           <aside className="hidden lg:block pl-8 md:pl-14 case-study-anchor">
@@ -305,12 +307,19 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
             <div id="overview" className="case-anchor-target">
               <ProjectHeader company={project.company} title={project.title} services={project.details?.services} />
             </div>
-            <h1 className="text-3xl md:text-[2.5rem] text-slate-900 mb-5 md:mb-6 font-[600] tracking-tight !leading-snug md:!leading-[3.5rem] text-left">
-              {project.impactSummary || project.summary}
+            <h1 className="font-serif text-[2.5rem] md:text-[3.5rem] text-slate-900 mb-5 md:mb-6 font-[500] tracking-tight leading-[3rem] md:!leading-[4.5rem] text-left">
+              {project.impactSummary.split(" ").slice(0, 14).join(" ")}
             </h1>
-            <h3 className="text-[1.05rem] md:text-[1.2rem] text-neutral-700 font-light leading-relaxed md:leading-[1.9] mb-6">
-              {project.summary}
-            </h3>
+
+            {project.designerNote && (
+  <div className="designer-note mb-8 max-w-full">
+    {project.designerNote.split('\n').map((line, i) => (
+      <p key={i} className="mb-4 last:mb-0">
+        {line}
+      </p>
+    ))}
+  </div>
+)}
 
             <ProjectMetadata
               role={project.details?.role || "Role TBD"}

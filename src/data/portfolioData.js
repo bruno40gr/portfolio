@@ -13,7 +13,7 @@ function isRealUrl(url) {
 }
 
 // ------------------------------------------
-// Global data (moved from App.jsx)
+// Global data
 // ------------------------------------------
 
 const AMAZON_DEVICES_AI_IMAGE =
@@ -31,17 +31,16 @@ export const PORTFOLIO_DATA = {
       id: "amazon-devices-asset-system",
       company: "Amazon",
       title: "Amazon Devices Asset System",
-      impactSummary:
-        "Built a 0-to-1 platform enabling AI-powered global marketing image generation at scale.",
+      impactSummary: "Enabled AI-powered Amazon Devices marketing content generation at a global scale.",
+      designerNote: `I architected an enterprise-scale production ecosystem for Amazon Devices designed to automate complex creative workflows for a global team of 400 marketers. This initiative was strategically positioned to establish a foundational AI framework, satisfying the organizational mandate to integrate emerging technology into core business operations. 
+      I structured this transformation across four strategic pillars—each presented here as a distinct case study—delivering the initial phases that established the platform as a cornerstone of the company’s roadmap through 2026. This remains the most complex and strategically significant project of my career.`,
       thumbnail: AMAZON_DEVICES_AI_IMAGE,
-      summary:
-        "As Lead Designer, I led the 0-to-1 build of a four-phase AI platform designed to automate and scale global marketing image production for Amazon Devices. While the full rollout continues, the initial phases I delivered established the core architectural framework and have already driven significant operational impact.",
+      status: PROJECT_STATUS.IN_BUILD,
       details: {
         heroImage: AMAZON_DEVICES_AI_IMAGE,
         role: "Lead UX Designer",
         timeline: "2024–Today",
         team: "Automate & Scale",
-        status: PROJECT_STATUS.IN_BUILD,
         type: PRODUCT_TYPES.INTERNAL,
         services: [SERVICES.STRATEGY, SERVICES.SYSTEMS_DESIGN, SERVICES.AI_WORKFLOWS],
         blocks: [
@@ -53,7 +52,7 @@ export const PORTFOLIO_DATA = {
               { value: "48,000", label: "Prime Day Hours Saved" }
             ],
             description: [
-              'Amazon Devices Asset System launched in March 2025 and now saves an estimated <b>5,000 hours of manual production work per month</b> across design, 3D, and content creation teams. For Prime Day July 2025 alone, the system replaced more than <b>48,000 hours</b> of labor that would have been required to create 8,000 lifestyle images by hand.'
+              `Amazon Devices Asset System launched in March 2025 and now saves an estimated <b>5,000 hours of manual production work per month</b> across design, 3D, and content creation teams. For Prime Day July 2025 alone, the system replaced more than <b>48,000 hours</b> of labor that would have been required to create 8,000 lifestyle images by hand.`
             ]
           },
           {
@@ -97,18 +96,16 @@ export const PORTFOLIO_DATA = {
       id: "jas-image-builder",
       parentId: "amazon-devices-asset-system",
       company: "Amazon Devices",
-      impactSummary:
-        "Designed a WYSIWYG image system that lets merchandisers generate thousands of campaign assets in minutes across global marketplaces.",
-      ImpactSummarySentence: "Powerful component image editor that generates marketing assets at a global scale.",
       title: "1. Image Builder",
+      impactSummary: "Designed a WYSIWYG image system that generates thousands of campaign assets in minutes across global marketplaces.",
+      designerNote: "This project focused on empowering non-designers to create high-quality marketing assets at scale, a critical step towards automated content pipelines.",
       thumbnail: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=80",
-      summary: "A powerful image compositor that allows global teams to build thousands of device campaign assets in minutes.",
+      status: PROJECT_STATUS.LAUNCHED,
       details: {
         heroImage: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=80",
         role: "Lead UX Designer",
         timeline: "September 2024 – Feb 2025",
         team: "Automate & Scale",
-        status: PROJECT_STATUS.LAUNCHED,
         type: PRODUCT_TYPES.INTERNAL,
         services: [SERVICES.SYSTEMS_DESIGN, SERVICES.PROTOTYPING, SERVICES.UI_DESIGN],
         blocks: [
@@ -121,7 +118,7 @@ export const PORTFOLIO_DATA = {
           {
             type: "callout-box",
             content:
-              'Amazon Devices Asset System launched in March 2025 and now saves an estimated <b>5,000 hours of manual production work per month</b> across design, 3D, and content creation teams. For Prime Day July 2025 alone, the system replaced more than <b>48,000 hours</b> of labor that would have been required to create 8,000 lifestyle images by hand.'
+              `Amazon Devices Asset System launched in March 2025 and now saves an estimated <b>5,000 hours of manual production work per month</b> across design, 3D, and content creation teams. For Prime Day July 2025 alone, the system replaced more than <b>48,000 hours</b> of labor that would have been required to create 8,000 lifestyle images by hand.`
           },
           {
             type: "text",
@@ -198,17 +195,9 @@ export const PORTFOLIO_DATA = {
             metrics: [
               { value: "100,000", label: "Hours Saved" },
               { value: "~120,000", label: "Images Generated in 2025" }
-            ]
-          },
-          {
-            type: "table",
-            columns: ["Scope", "Images", "Manual time required"],
-            rows: [
-              ["Prime Day 2025", "~8,000", "~50,000 hours"],
-              ["Seasonal sales", "~4,500", "~30,000 hours"],
-              ["New product launch", "~6,500", "~36,000 hours"],
-              ["Average month", "~1,100", "~6,000 hours"],
-              ["Full year 2025", "~120,000 images across 23 marketplaces", "100k+ hours of manual work removed annually"]
+            ],
+            description: [
+              `Amazon Devices Asset System launched in March 2025 and now saves an estimated <b>5,000 hours of manual production work per month</b> across design, 3D, and content creation teams. For Prime Day July 2025 alone, the system replaced more than <b>48,000 hours</b> of labor that would have been required to create 8,000 lifestyle images by hand.`
             ]
           },
           {
@@ -226,17 +215,15 @@ export const PORTFOLIO_DATA = {
       parentId: "amazon-devices-asset-system",
       company: "Amazon Devices",
       title: "2. Devices Asset Browser",
-      impactSummary:
-        "Built a centralized asset library that standardizes Amazon Devices imagery and enables AI-ready metadata at scale.",
-      ImpactSummarySentence: "One centralized asset library platform to manage all Amazon Devices Catalog.",
+      impactSummary: "Built a centralized asset library that standardizes Amazon Devices imagery and enables AI-ready metadata at scale.",
+      designerNote: "This pillar established the foundational asset management necessary for an AI-powered ecosystem, ensuring data integrity and discoverability.",
       thumbnail: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1600&q=80",
-      summary: "A centralized visual library and metadata engine providing a single source of truth for Amazon Devices assets.",
+      status: PROJECT_STATUS.IN_BUILD,
       details: {
         heroImage: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1600&q=80",
         role: "Lead UX Designer",
         timeline: "August 2025 –Today",
         team: "Automate & Scale",
-        status: PROJECT_STATUS.IN_BUILD,
         type: PRODUCT_TYPES.INTERNAL,
         services: [SERVICES.PRODUCT_DESIGN, SERVICES.UX_RESEARCH, SERVICES.UI_DESIGN],
         blocks: [
@@ -277,8 +264,7 @@ export const PORTFOLIO_DATA = {
               {
                 content:
                   "<b>Managing confidentiality and device lifecycle.</b><br/>I added clear visual cues and access controls for prototype assets, unreleased devices, region-restricted content, and deprecated imagery to reduce risk.",
-                visuals: [{ src: ASSETS.testImage, caption: "Visual guardrails for unreleased and restricted assets." }]
-              },
+                visuals: [{ src: ASSETS.testImage, caption: "Visual guardrails for unreleased and restricted assets." }]              },
               {
                 content:
                   "<b>Integrating AI metadata.</b><br/>I designed the flows for uploading images, reviewing AI-generated metadata, and assigning standardized tags. This became the backbone for training JASAI and powering automation in the Builder.",
@@ -313,17 +299,15 @@ export const PORTFOLIO_DATA = {
       parentId: "amazon-devices-asset-system",
       company: "Amazon Devices",
       title: "3. Metadata Admin Tool",
-      impactSummary:
-        "Created a metadata engine that reduces manual input and powers AI-assisted automation across the asset ecosystem.",
-      ImpactSummarySentence: "Metadata engine reducing manual input through AI assistance.",
+      impactSummary: "Created a metadata engine that reduces manual input and powers AI-assisted automation across the asset ecosystem.",
+      designerNote: "This project involved deeply understanding metadata structures and designing a system that leveraged AI to minimize manual effort while maintaining data quality and consistency.",
       thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80",
-      summary: "A scalable metadata engine that reduced manual input and unlocked AI-assisted automation across the JAS ecosystem.",
+      status: PROJECT_STATUS.IN_BUILD,
       details: {
         heroImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80",
         role: "Lead UX Designer",
         timeline: "August 2025 –Today",
         team: "Automate & Scale",
-        status: PROJECT_STATUS.IN_BUILD,
         type: PRODUCT_TYPES.INTERNAL,
         services: [SERVICES.UX_RESEARCH, SERVICES.SYSTEMS_DESIGN, SERVICES.AI_WORKFLOWS],
         blocks: [
@@ -388,8 +372,7 @@ export const PORTFOLIO_DATA = {
                 content:
                   "<b>Prototyping to align direction.</b><br/>I built low fidelity prototypes to show how a streamlined metadata workflow could function. These were shared across product, design, engineering, and Devices Brand Studio to build confidence and align expectations around what automation could realistically support.",
                 visuals: [
-                  {
-                    src: ASSETS.testImage,
+                  {src: ASSETS.testImage,
                     caption: "Lo-fi prototypes used to align teams on a reduced-input workflow and AI validation checkpoints."
                   }
                 ]
@@ -409,10 +392,8 @@ export const PORTFOLIO_DATA = {
           { type: "heading", title: "Outcome" },
           {
             type: "text",
-            content: [
-              "The metadata system created a scalable foundation that changed how Amazon Devices prepares images for automation. 3D artists can now embed essential physical details directly into device renders, which removes guesswork later in the workflow. System Designers can continue using their Photoshop pipelines to bulk-generate device PNGs, but the major shift is that an AI agent can now infer most metadata fields with minimal human input.",
-              "This opened the door for automated image composition. For example, an Echo Show can be placed into a lifestyle scene with the correct angle, shadows, and screen content, then instantly regenerated for another locale without touching the Image Builder. The aha moment was seeing an Echo Show displaying a Netflix release on a kitchen counter, then generating the same image in Spanish, fully automated. This pillar established the metadata intelligence that makes future creative automation possible."
-            ]
+            content:
+              "The metadata system created a scalable foundation that changed how Amazon Devices prepares images for automation. 3D artists can now embed essential physical details directly into device renders, which removes guesswork later in the workflow. System Designers can continue using their Photoshop pipelines to bulk-generate device PNGs, but the major shift is that an AI agent can now infer most metadata fields with minimal human input."
           }
         ]
       }
@@ -422,25 +403,22 @@ export const PORTFOLIO_DATA = {
       parentId: "amazon-devices-asset-system",
       company: "Amazon Devices",
       title: "4. Journeys AI Agent",
-      impactSummary:
-        "Prototyped an AI lifestyle-image generator that trained automated placement rules for Amazon Devices campaigns.",
-      ImpactSummarySentence: "Teaching AI to generate lifestyle images using the proprietary Amazon Devices catalog.",
+      impactSummary: "Prototyped an AI lifestyle-image generator that trained automated placement rules for Amazon Devices campaigns.",
+      designerNote: "This work explored the bleeding edge of generative AI for visual content, focusing on how human feedback loops can refine AI models for brand-specific quality and consistency.",
       thumbnail: AMAZON_DEVICES_AI_IMAGE,
-      summary: "Integrating generative AI into the creative workflow for rapid lifestyle image variation.",
+      status: PROJECT_STATUS.LAUNCHED,
       details: {
         heroImage: AMAZON_DEVICES_AI_IMAGE,
         role: "Lead UX Designer",
         timeline: "December 2024 – March 2025",
         team: "Automate & Scale",
-        status: PROJECT_STATUS.LAUNCHED,
         type: PRODUCT_TYPES.INTERNAL,
         services: [SERVICES.PRODUCT_DESIGN, SERVICES.STRATEGY, SERVICES.AI_WORKFLOWS],
         blocks: [
           { type: "heading", title: "Overview", hasDivider: false },
           {
             type: "text",
-            content: [
-              "Lifestyle images were the most complex assets the Amazon Devices organization produced. They required correct device angles, shadows, lighting, screen behavior, and placement across a wide range of backgrounds and room types. This level of craft made them slow to produce and impossible to scale manually. To move toward automated content creation, we needed an AI model that could understand how Amazon hardware should appear in real environments.",
+            content: [              "Lifestyle images were the most complex assets the Amazon Devices organization produced. They required correct device angles, shadows, lighting, screen behavior, and placement across a wide range of backgrounds and room types. This level of craft made them slow to produce and impossible to scale manually. To move toward automated content creation, we needed an AI model that could understand how Amazon hardware should appear in real environments.",
               "JASAI was created as a sandbox to explore whether AI could generate these images at the quality bar we needed. It served two goals: to prove that AI could match our design expectations and to train an in-house Amazon Devices model using structured metadata and human feedback. Once the model matured, the plan was to embed JASAI directly into the Image Builder so users could generate lifestyle images and local variations through simple prompts."
             ]
           },
@@ -452,8 +430,7 @@ export const PORTFOLIO_DATA = {
               "I partnered with science and design to build the training and review loops that would shape the model. These loops were created for the AI, not for users. When outputs missed the bar, a designer corrected them so the system could learn from the feedback. Once trained, JASAI would integrate directly into the Image Builder, enabling on-demand lifestyle image generation and localized variations through simple prompts."
             ]
           },
-          {
-            type: "heading",
+          { type: "heading",
             title: "Process"
           },
           {
@@ -479,7 +456,8 @@ export const PORTFOLIO_DATA = {
           },
           {
             type: "image-full",
-            src: "https://prod-files-secure.s3.us-west-2.amazonaws.com/e3d5fd0b-e2f1-4690-a852-73c6368c13a2/ea6c51d6-f996-40c3-9036-839ac760e57e/image.png"
+            src: "https://files.slack.com/files-pri/T03K4F650-F067C19K81W/image.png?pub_secret=0963d3fb49",
+            caption: "Placeholder: This image is used for testing and should be replaced."
           },
           {
             type: "image-full",
@@ -508,16 +486,15 @@ export const PORTFOLIO_DATA = {
       id: "amazon-core-inspire-tab",
       company: "Amazon Core Shopping",
       title: "Inspire Tab",
-      impactSummary:
-        "Led Smart Home discovery strategy for Amazon’s feed experience, driving a measurable lift in device sales.",
+      impactSummary: "Led Smart Home discovery strategy for Amazon’s feed experience, driving a measurable lift in device sales.",
+      designerNote: "This project involved navigating a complex organizational structure and integrating new discovery patterns within a mature, high-stakes e-commerce environment.",
       thumbnail: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=1200&q=80",
-      summary: "Developing the foundational content-discovery tab for the global Amazon Shopping experience.",
+      status: PROJECT_STATUS.DEPRECATED,
       details: {
         heroImage: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=1200&q=80",
         role: "UX Lead for Smart Home Devices",
         timeline: "Late 2022-Late 2023",
         team: "Core Shopping",
-        status: PROJECT_STATUS.DEPRECATED,
         type: PRODUCT_TYPES.MOBILE,
         services: [SERVICES.STRATEGY, SERVICES.UI_DESIGN, SERVICES.PROTOTYPING],
         blocks: [
@@ -635,16 +612,15 @@ export const PORTFOLIO_DATA = {
       id: "amazon-core-ai-review-highlights",
       company: "Amazon Core Shopping",
       title: "AI-powered Customer Review Highlights",
-      impactSummary:
-        "Designed AI-driven review highlights that distilled thousands of reviews into clear, actionable product insights.",
+      impactSummary: "Designed AI-driven review highlights that distilled thousands of reviews into clear, actionable product insights.",
+      designerNote: "This project leveraged advanced NLP and design thinking to transform overwhelming customer feedback into digestible, actionable product intelligence for shoppers.",
       thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-      summary: "Leveraging GenAI to synthesize thousands of customer reviews into actionable highlights.",
+      status: PROJECT_STATUS.LAUNCHED,
       details: {
         heroImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-         role: "UX Lead for Smart Home Devices",
+        role: "UX Lead for Smart Home Devices",
         timeline: "Late 2023",
         team: "Core Shopping",
-        status: PROJECT_STATUS.LAUNCHED,
         type: PRODUCT_TYPES.CONSUMER,
         services: [SERVICES.STRATEGY, SERVICES.UI_DESIGN, SERVICES.PROTOTYPING],
         blocks: [{ type: "text", content: "Case study coming soon." }]
@@ -654,16 +630,15 @@ export const PORTFOLIO_DATA = {
       id: "alto-internal",
       company: "Alto Pharmacy",
       title: "Internal Platform for Intra Pharmacist Communication",
-      impactSummary:
-        "Improved pharmacist collaboration workflows by centralizing context and streamlining internal communication.",
+      impactSummary: "Improved pharmacist collaboration workflows by centralizing context and streamlining internal communication.",
+      designerNote: "This project was about empowering healthcare professionals with intuitive tools to manage complex patient interactions, directly impacting care quality and efficiency.",
       thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-      summary: "Improving context gathering for Care Ops message handling within Alto's internal toolkit.",
+      status: PROJECT_STATUS.LEGACY,
       details: {
         heroImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
         role: "Staff Product Designer",
         timeline: "2020–2021",
         team: "Internal Tools Team",
-        status: PROJECT_STATUS.LEGACY,
         type: PRODUCT_TYPES.INTERNAL,
         services: [
           SERVICES.PRODUCT_DESIGN,
@@ -679,16 +654,15 @@ export const PORTFOLIO_DATA = {
       id: "alto-assistant",
       company: "Alto Pharmacy",
       title: "Alto Assistant App",
-      impactSummary:
-        "Reduced inbound patient messaging by 38% with a smarter triage experience that improved care efficiency.",
+      impactSummary: "Reduced inbound patient messaging by 38% with a smarter triage experience that improved care efficiency.",
+      designerNote: "Designing for patient communication in healthcare required a delicate balance of clarity, empathy, and operational efficiency to truly enhance the patient experience.",
       thumbnail: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80",
-      summary: "Reducing incoming message volume by 38% and improving patient experience through a smart triage system.",
+      status: PROJECT_STATUS.LEGACY,
       details: {
         heroImage: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80",
         role: "Staff Product Designer",
         timeline: "2020–2021",
         team: "Internal Tools Team",
-        status: PROJECT_STATUS.LEGACY,
         type: PRODUCT_TYPES.MOBILE,
         services: [
           SERVICES.PRODUCT_DESIGN,
@@ -840,7 +814,7 @@ export const PORTFOLIO_DATA = {
               },
               {
                 content:
-                  "<b>Prototype library.</b><br/><a href='https://www.figma.com/proto/EuDrnvOQOZx8Wrc4beLGTB/AA-Direct-to-Pharmacist?page-id=10888%3A142839&node-id=10894%3A435574&viewport=614%2C-1252%2C0.19&scaling=scale-down&starting-point-node-id=10894%3A435574&show-proto-sidebar=1' target='_blank' rel='noopener noreferrer'>View prototypes in detail</a>."
+                  "<b>Prototype library.</b><br/><a href=\'https://www.figma.com/proto/EuDrnvOQOZx8Wrc4beLGTB/AA-Direct-to-Pharmacist?page-id=10888%3A142839&node-id=10894%3A435574&viewport=614%2C-1252%2C0.19&scaling=scale-down&starting-point-node-id=10894%3A435574&show-proto-sidebar=1\' target=\'_blank\' rel=\'noopener noreferrer\'>View prototypes in detail</a>."
               }
             ]
           },
@@ -867,7 +841,7 @@ export const PORTFOLIO_DATA = {
           {
             type: "callout-box",
             content:
-              "<b>30,000+ weekly visits</b> by <b>11,000+ users</b>, preventing tens of thousands of unstructured inbound messages that previously required manual handling."
+              "<b>30000+ weekly visits</b> by <b>11000+ users</b>, preventing tens of thousands of unstructured inbound messages that previously required manual handling."
           },
           {
             type: "image-full",
@@ -881,14 +855,15 @@ export const PORTFOLIO_DATA = {
       id: "amazon-core-ai-review-highlights",
       company: "Amazon Core Shopping",
       title: "AI-powered Customer Review Highlights",
+      impactSummary: "Designed AI-driven review highlights that distilled thousands of reviews into clear, actionable product insights.",
+      designerNote: "This project leveraged advanced NLP and design thinking to transform overwhelming customer feedback into digestible, actionable product intelligence for shoppers.",
       thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-      summary: "Leveraging GenAI to synthesize thousands of customer reviews into actionable highlights.",
+      status: PROJECT_STATUS.LAUNCHED,
       details: {
         heroImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
         role: "UX Lead for Smart Home Devices",
         timeline: "Late 2023",
         team: "Core Shopping",
-        status: PROJECT_STATUS.LAUNCHED,
         type: PRODUCT_TYPES.CONSUMER,
         services: [SERVICES.STRATEGY, SERVICES.UI_DESIGN, SERVICES.PROTOTYPING],
         blocks: [{ type: "text", content: "Case study coming soon." }]
@@ -898,16 +873,15 @@ export const PORTFOLIO_DATA = {
       id: "patreon-creator-tools",
       company: "Patreon",
       title: "Benefit Delivery Tools for Creators",
-      impactSummary:
-        "Empowered creators with better benefit delivery tools that improved scale, clarity, and consistency.",
+      impactSummary: "Empowered creators with better benefit delivery tools that improved scale, clarity, and consistency.",
+      designerNote: "This work focused on enhancing the creator experience by providing intuitive tools that streamline the delivery of member benefits, fostering a more robust creator economy.",
       thumbnail: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
-      summary: "Empowering creators with better tools for benefit delivery and establishing a unified design studio framework.",
+      status: PROJECT_STATUS.LAUNCHED,
       details: {
         heroImage: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
         role: "Sr. Product Designer",
         timeline: "October 2020",
         team: "Creator Team",
-        status: PROJECT_STATUS.LAUNCHED,
         type: PRODUCT_TYPES.INTERNAL,
         services: [SERVICES.STRATEGY, SERVICES.UI_DESIGN, SERVICES.PROTOTYPING],
         blocks: [{ type: "text", content: "Case study coming soon." }]
@@ -918,20 +892,13 @@ export const PORTFOLIO_DATA = {
       id: "patreon-studio2.0",
       company: "Patreon",
       title: "Studio 2.0 Design System",
-      impactSummary:
-        "Modernized Patreon’s design system to streamline creator workflows and improve product consistency.",
+      impactSummary: "Modernized Patreon’s design system to streamline creator workflows and improve product consistency.",
+      designerNote: "Leading the evolution of a design system involved not just visual and component work, but deeply understanding developer needs and advocating for design consistency across the platform.",
       thumbnail: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
-      summary: "Design System overhaul to streamline creator workflows and enhance platform consistency.",
-      details: {
-        heroImage: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
-        role: "Sr. Product Designer",
-        timeline: "October 2020",
-        team: "Creator Team",
-        status: PROJECT_STATUS.DEPRECATED,
-        type: PRODUCT_TYPES.MOBILE,
-        services: [SERVICES.SYSTEMS_DESIGN, SERVICES.UI_DESIGN, SERVICES.PROTOTYPING],
-        blocks: [{ type: "text", content: "Case study for Patreon creator hub." }]
-      }
+      status: PROJECT_STATUS.DEPRECATED,
+      type: PRODUCT_TYPES.MOBILE,
+      services: [SERVICES.SYSTEMS_DESIGN, SERVICES.UI_DESIGN, SERVICES.PROTOTYPING],
+      blocks: [{ type: "text", content: "Case study for Patreon creator hub." }]
     },
   ]
 };

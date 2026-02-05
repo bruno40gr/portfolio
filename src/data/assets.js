@@ -1,8 +1,8 @@
 export const ASSETS = {
   isoWhite: "https://res.cloudinary.com/diy08lj9x/image/upload/v1768952513/isotipo_white_h78alb.png",
   isoGreen: "https://res.cloudinary.com/diy08lj9x/image/upload/v1768952513/isotipo_green_gusyjv.png",
-  jetSansReg: "https://res.cloudinary.com/diy08lj9x/raw/upload/v1768952568/JetBrainsMono-VariableFont_wght_ru8cpq.ttf",
-  jetSansItalic: "https://res.cloudinary.com/diy08lj9x/raw/upload/v1768952568/JetBrainsMono-Italic-VariableFont_wght_vfhh4g.ttf",
+  jetSansReg: "",
+  jetSansItalic: "",
   mainLogo: "https://res.cloudinary.com/diy08lj9x/image/upload/v1768953149/bruno_mainlogo_unupxd.png",
   aboutPhoto: "https://res.cloudinary.com/diy08lj9x/image/upload/v1768960431/main_photo_ydhs8m.jpg",
   testImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1763877541/cld-sample-4.jpg"

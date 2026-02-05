@@ -97,7 +97,7 @@ export default function App() {
   const navTheme = view === "home" && !scrolled ? "dark" : "light";
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 font-body selection:bg-black selection:text-white relative text-left">
+    <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-black selection:text-white relative text-left">
       <nav
         ref={headerRef}
         className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
@@ -262,7 +262,7 @@ export default function App() {
           />
 
           <div
-            className="relative bg-white p-6 md:p-7 rounded-sm shadow-2xl max-w-md w-full text-left font-body animate-fade-in-up"
+            className="relative bg-white p-6 md:p-7 rounded-sm shadow-2xl max-w-md w-full text-left font-sans animate-fade-in-up"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -364,7 +364,7 @@ No. It’ll replace designers who mostly produce deliverables. If I truly believ
 
       <main className="min-h-screen relative bg-white text-left">
         {view === "home" && (
-          <div className="bg-white animate-fade-in font-body">
+          <div className="bg-white animate-fade-in font-sans">
             <section className="bg-[#231F45] hero-wrap flex flex-col justify-center items-center text-center px-6">
               <div className="max-w-4xl w-full reveal-on-scroll hero-stack">
                 <img src={ASSETS.mainLogo} alt="Bruno Wong Marchena" className="hero-logo" />
@@ -394,7 +394,7 @@ No. It’ll replace designers who mostly produce deliverables. If I truly believ
         )}
 
         {view === "about" && (
-          <div className="pt-40 px-6 md:px-12 lg:px-16 max-w-none mx-auto min-h-screen bg-white animate-fade-in text-left font-body">
+          <div className="pt-40 px-6 md:px-12 lg:px-16 max-w-none mx-auto min-h-screen bg-white animate-fade-in text-left font-sans">
             <div className="max-w-4xl mx-auto mb-20 text-left">
               <div className="w-full max-w-md mx-auto mb-12 text-center">
                 <div className="aspect-[3/4] bg-neutral-100 border border-neutral-200 overflow-hidden relative rounded-sm p-4 shadow-sm">
@@ -405,7 +405,7 @@ No. It’ll replace designers who mostly produce deliverables. If I truly believ
               </div>
 
               <div className="max-w-3xl text-left">
-                <h1 className="text-2xl md:text-5xl text-neutral-900 mb-6 md:mb-10 font-bold leading-tight tracking-tight text-left">Hi, I'm Bruno.</h1>
+                <h2 className="font-serif text-2xl md:text-5xl text-neutral-900 mb-6 md:mb-10 font-bold leading-tight tracking-tight text-left">Hi, I'm Bruno.</h2>
                 <div className="space-y-6 md:space-y-8 text-sm md:text-lg text-neutral-600 font-light leading-relaxed text-left">
                   <p>With 14+ years across big tech and early-stage teams, I’ve worked on internal tools, B2B platforms, and AI-enabled systems where clarity, speed, and craft all matter.</p>
                   <p>I operate like a founding designer: shaping direction early, reducing ambiguity, and executing with precision. I build with AI assistance, but design with humans.</p>
@@ -427,7 +427,7 @@ No. It’ll replace designers who mostly produce deliverables. If I truly believ
       </main>
 
       {view !== "project-view" && (
-        <footer className="bg-neutral-100 py-10 border-t border-neutral-200 font-body text-center">
+        <footer className="bg-neutral-100 py-10 border-t border-neutral-200 font-sans text-center">
           <div className="max-w-[1400px] mx-auto px-6 md:px-12 text-center">
             <button
               type="button"

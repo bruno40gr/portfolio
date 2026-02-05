@@ -26,7 +26,7 @@ const ProjectHeader = ({ company, title, services = [] }) => {
         />
       )}
       <div className="text-left">
-        <h2 className="text-xl md:text-2xl text-slate-900 font-semibold tracking-tight leading-snug">{title || company}</h2>
+        <h2 className="text-xl md:text-2xl text-slate-900 font-bold tracking-tight leading-snug">{title || company}</h2>
         {serviceLine && <div className="meta-label">{serviceLine}</div>}
       </div>
     </div>
