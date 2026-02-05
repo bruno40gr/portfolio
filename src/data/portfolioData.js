@@ -32,8 +32,10 @@ export const PORTFOLIO_DATA = {
       company: "Amazon",
       title: "Amazon Devices Asset System",
       impactSummary: "Enabled AI-powered Amazon Devices marketing content generation at a global scale.",
-      designerNote: `I architected an enterprise-scale production ecosystem for Amazon Devices designed to automate complex creative workflows for a global team of 400 marketers. This initiative was strategically positioned to establish a foundational AI framework, satisfying the organizational mandate to integrate emerging technology into core business operations. 
-      I structured this transformation across four strategic pillars—each presented here as a distinct case study—delivering the initial phases that established the platform as a cornerstone of the company’s roadmap through 2026. This remains the most complex and strategically significant project of my career.`,
+      designerNote: `I architected an enterprise-scale ecosystem for Amazon Devices to automate workflows for 400 marketers. This foundational AI framework satisfied a high-level mandate to lead in the emerging tech landscape.
+
+I structured the transformation across four strategic pillars presented here as distinct case studies, delivering the phases that established the platform as a 2026 roadmap cornerstone.
+This remains the most strategically significant project of my career.`,
       thumbnail: AMAZON_DEVICES_AI_IMAGE,
       status: PROJECT_STATUS.IN_BUILD,
       details: {

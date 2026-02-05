@@ -1,7 +1,7 @@
 import React from "react";
 const Button = ({ children, onClick, variant = "primary", icon: Icon, href, className = "" }) => {
   const baseStyle =
-    "inline-flex items-center justify-center gap-2 px-8 py-4 text-sm font-bold tracking-wide transition-all duration-200 ease-out rounded-md group";
+    "inline-flex items-center justify-center gap-2 px-8 py-4 text-xl font-bold tracking-wide transition-all duration-200 ease-out rounded-md group";
 
   const variants = {
     primary:

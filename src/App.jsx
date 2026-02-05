@@ -274,7 +274,7 @@ export default function App() {
               <X size={18} className="text-neutral-500" />
             </button>
 
-            <h3 className="text-lg md:text-2xl font-bold mb-3 md:mb-4 pr-10 text-center">Let's chat</h3>
+            <h3 className="text-xl md:text-3xl font-bold mb-3 md:mb-4 pr-10 text-center">Let's chat</h3>
 
             <form
               className="space-y-3"
@@ -369,20 +369,23 @@ No. It’ll replace designers who mostly produce deliverables. If I truly believ
               <div className="max-w-4xl w-full reveal-on-scroll hero-stack">
                 <img src={ASSETS.mainLogo} alt="Bruno Wong Marchena" className="hero-logo" />
                 <div className="max-w-3xl mx-auto">
-                  <p className="type-nav text-white leading-relaxed mb-3 md:mb-4 text-sm md:text-base">
-                    Staff-level product designer with 14+ years of experience designing products for complex systems, with a focus on clarity, usability, and scale.
-                  </p>
+                  <div className="space-y-6 md:space-y-8">
+  <p className="text-white leading-relaxed text-xl md:text-2xl font-light">
+    Staff-level product designer with 14+ years of experience designing products for complex systems, with a focus on clarity, usability, and scale.
+  </p>
+  <p className="text-white leading-relaxed text-xl md:text-2xl font-light">
+    I embrace AI for speed and iteration, while keeping the creative direction and quality bar fully owned.
+  </p>
+</div>
 
-                  <p className="type-nav text-white leading-relaxed text-sm md:text-base">
-                    I embrace AI for speed and iteration, while keeping the creative direction and quality bar fully owned.
-                  </p>
+                  
                 </div>
                 <div className="hero-cta-row">
                   <Button onClick={() => setIsContactOpen(true)}>Let’s chat</Button>
 
-                  <div className="text-white leading-relaxed text-sm md:text-base">
-                    <div className="font-medium">Available for work</div>
-                    <div className="font-medium">Q1 2026</div>
+                  <div className="text-white leading-relaxed text-lg md:text-lg">
+                    <div className="font-light">Available for work</div>
+                    <div className="font-light">Q1 2026</div>
                   </div>
                 </div>
               </div>
