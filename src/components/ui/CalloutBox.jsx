@@ -1,9 +1,9 @@
 import React from "react";
 const CalloutBox = ({ content }) => (
   <section className="mb-8 md:mb-10 w-full">
-    <div className="bg-neutral-100 border border-neutral-200 p-5 md:p-8 rounded-xl shadow-sm">
+    <div className="bg-slate-50 border border-slate-100 p-5 md:p-8 rounded-xl shadow-sm">
       <p
-        className="font-sans text-lg text-neutral-800 leading-relaxed"
+        className="font-sans text-lg text-slate-800 leading-relaxed"
         dangerouslySetInnerHTML={{ __html: content }}
       />
     </div>

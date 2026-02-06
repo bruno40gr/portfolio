@@ -65,7 +65,7 @@ const ProjectCard = ({
         </p>
         {showPills && (
           <div className="flex flex-wrap items-center gap-2">
-            {statusObj && <Pill label={statusObj.label} theme={statusObj.theme} size="md" />}
+            {statusObj && <Pill label={statusObj.label} theme={statusObj.theme} icon={statusObj.icon} size="md" />}
             {typeLabel && <Pill label={typeLabel} size="md" />}
           </div>
         )}

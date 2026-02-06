@@ -18,7 +18,7 @@ const CompanySection = ({ group, onProjectClick }) => {
       </header>
 
       <div
-        className="grid grid-cols-1 md:grid-cols-2"
+        className="grid grid-cols-1 md:grid-cols-2 md:items-start"
         style={{ gap: "var(--work-grid-gap-x)", rowGap: "var(--work-grid-gap-y)" }}
       >
         {projects.map((p) => (

@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .subheadings {
+    @apply text-3xl text-slate-900 font-semibold leading-snug font-sans;
+  }
+  .process-step b {
+    @apply text-xl font-bold;
+  }
+}
+
 @layer base {
   p, h1, h2, h3, h4, h5, h6, figure { margin: 0; }
   
@@ -74,7 +83,7 @@
 
 .designer-note {
   font-family: "Source Sans 3", sans-serif;
-  font-size: 1.6rem; /* text-lg */
+  font-size: 1.5rem; /* text-lg */
   font-weight: 300; /* lighter */
   line-height: 1.5; /* airier */
   color: #262626; /* neutral-800 */

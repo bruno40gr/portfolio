@@ -77,13 +77,10 @@ const CaseStudyStyleGuide = ({ onBack }) => (
 
           <ImpactBox
             metrics={[
-              { value: "5,000", label: "Hours Saved / Month" },
-              { value: "48,000", label: "Prime Day Hours Saved" }
+              { value: "12,000", label: "Impressions" },
+              { value: "5%", label: "CTR" }
             ]}
-            description={[
-              "Amazon Devices Asset System now saves an estimated <b>5,000 hours of manual production work per month</b> across design, 3D, and content teams.",
-              "For Prime Day July 2025 alone, the system replaced more than <b>48,000 hours</b> of labor." 
-            ]}
+            size="large"
           />
 
           <section className="mb-8 md:mb-12 text-left font-sans">

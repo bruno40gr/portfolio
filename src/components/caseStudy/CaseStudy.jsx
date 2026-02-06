@@ -63,7 +63,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         return <CalloutBox key={index} content={block.content} />;
 
       case "impact-box":
-        return <ImpactBox key={index} metrics={block.metrics} description={block.description} />;
+        return <ImpactBox key={index} metrics={block.metrics} size="large" />;
 
       case "heading": {
         if (block.title === "Overview") return null;
@@ -324,8 +324,8 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
             <ProjectMetadata
               role={project.details?.role || "Role TBD"}
               timeline={project.details?.timeline || "Timeline TBD"}
-              status={project.details?.status || PROJECT_STATUS.IN_BUILD}
-              type={project.details?.type || PRODUCT_TYPES.INTERNAL}
+              status={project.status}
+              type={project.type || project.details?.type}
               services={project.details?.services || []}
             />
 

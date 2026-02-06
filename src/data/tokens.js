@@ -1,8 +1,29 @@
+import { Clock, History, Skull, Rocket } from 'lucide-react';
+
 export const PROJECT_STATUS = {
-  LAUNCHED: { label: "Launched", theme: "bg-[var(--neon-green-80)] text-[var(--deep-emerald)] border-[var(--neon-green)]" },
-  IN_BUILD: { label: "In Build", theme: "bg-blue-50 text-blue-700 border-blue-100" },
-  LEGACY: { label: "Legacy version", theme: "bg-slate-50 text-slate-500 border-slate-200" },
-  DEPRECATED: { label: "Deprecated", theme: "bg-red-50 text-red-700 border-red-100" }
+  LAUNCHED: { 
+    label: "Launched", 
+    // Updated: Using Hex with Opacity Modifier (/20) for a tinted badge.
+    // This avoids the "heavy button" look while keeping the neon brand color.
+    theme: "bg-[#a6fa4e]/50 text-[var(--deep-purple)] border border-[var(--neon-green)] shadow-none",
+    icon: Rocket
+  },
+ 
+  IN_BUILD: { 
+    label: "In build", 
+    theme: "bg-blue-50 text-blue-700 border-blue-200 shadow-none",
+    icon: Clock
+    },
+  LEGACY: { 
+    label: "Legacy version", 
+    theme: "bg-slate-200 text-slate-800 border-transparent shadow-none",
+    icon: History
+  },
+  DEPRECATED: { 
+    label: "Deprecated", 
+    theme: "bg-[#f5f5f4] text-[#be123c] border border-[#e7e5e4] shadow-none",
+    icon: Skull
+  }
 };
 
 export const PRODUCT_TYPES = {
