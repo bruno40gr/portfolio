@@ -1,5 +1,5 @@
 import React from "react";
-import { PROJECT_STATUS } from "../../data/tokens";
+import { PROJECT_STATUS, PRODUCT_TYPES } from "../../data/tokens";
 import Pill from "./Pill";
 
 const MetaLabel = ({ children }) => (
@@ -7,7 +7,8 @@ const MetaLabel = ({ children }) => (
 );
 
 export default function ProjectMetadata({ role, timeline, status, type }) {
-  const safeStatus = status || PROJECT_STATUS.IN_BUILD;
+  const safeStatus = PROJECT_STATUS[status] || PROJECT_STATUS.IN_BUILD;
+  const typeLabel = PRODUCT_TYPES[type] || type;
 
   return (
     <div className="w-full mb-6 md:mb-8 py-3 md:py-4">
@@ -24,7 +25,7 @@ export default function ProjectMetadata({ role, timeline, status, type }) {
     <div className="min-w-0">
       <MetaLabel>Product Type</MetaLabel>
       <div className="text-neutral-900 text-xl font-semibold leading-tight truncate">
-        {Array.isArray(type) ? type.join(", ") : type}
+        {Array.isArray(typeLabel) ? typeLabel.join(", ") : typeLabel}
       </div>
     </div>
 

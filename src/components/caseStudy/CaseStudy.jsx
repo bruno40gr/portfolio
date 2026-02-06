@@ -60,7 +60,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
       }
 
       case "callout-box":
-        return <CalloutBox key={index} content={block.content} />;
+        return <CalloutBox key={index} content={block.content} size="large" />;
 
       case "impact-box":
         return <ImpactBox key={index} metrics={block.metrics} size="large" />;

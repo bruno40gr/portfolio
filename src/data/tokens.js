@@ -5,13 +5,13 @@ export const PROJECT_STATUS = {
     label: "Launched", 
     // Updated: Using Hex with Opacity Modifier (/20) for a tinted badge.
     // This avoids the "heavy button" look while keeping the neon brand color.
-    theme: "bg-[#a6fa4e]/50 text-[var(--deep-purple)] border border-[var(--neon-green)] shadow-none",
+    theme: "bg-[#dcfbaf] text-[var(--deep-purple)] border border-[var(--neon-green)] shadow-none",
     icon: Rocket
   },
  
   IN_BUILD: { 
     label: "In build", 
-    theme: "bg-blue-50 text-blue-700 border-blue-200 shadow-none",
+    theme: "bg-[#d7deff] text-blue-900 border-[#d7deff] shadow-none",
     icon: Clock
     },
   LEGACY: { 
@@ -21,7 +21,7 @@ export const PROJECT_STATUS = {
   },
   DEPRECATED: { 
     label: "Deprecated", 
-    theme: "bg-[#f5f5f4] text-[#be123c] border border-[#e7e5e4] shadow-none",
+    theme: "bg-[#f5f5f4] text-[#be123c] border-[#e7e5e4] shadow-none",
     icon: Skull
   }
 };

@@ -13,21 +13,26 @@ const CompanySection = ({ group, onProjectClick }) => {
         className="border-b border-neutral-200 flex flex-col md:flex-row md:items-baseline justify-between"
         style={{ marginBottom: "var(--space-4)", paddingBottom: "var(--space-2)" }}
       >
-        <h2 className="!text-[2rem] md:text-2xl text-[color:var(--deep-purple)] font-bold tracking-tight leading-snug">{group.company}</h2>
-        <h3 className="text-base font-medium text-neutral-800">{group.roleLine}</h3>
+        <h2 className="text-4xl text-[color:var(--deep-purple)] font-bold tracking-tight leading-snug font-sans">
+          {group.company}
+        </h2>
+        <h3 className="text-base font-medium text-slate-500 font-sans">
+          {group.roleLine}
+        </h3>
       </header>
 
       <div
         className="grid grid-cols-1 md:grid-cols-2 md:items-start"
-        style={{ gap: "var(--work-grid-gap-x)", rowGap: "var(--work-grid-gap-y)" }}
+        style={{ 
+  gap: "var(--work-grid-gap-x)", 
+  rowGap: "clamp(6rem, 8vw, 8rem)" 
+}}
       >
         {projects.map((p) => (
           <ProjectCard
             key={p.id}
             project={p}
             onClick={onProjectClick}
-            showCompany={false}
-            showImpactSummarySentence
           />
         ))}
       </div>
