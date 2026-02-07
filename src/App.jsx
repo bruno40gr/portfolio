@@ -365,28 +365,22 @@ No. It’ll replace designers who mostly produce deliverables. If I truly believ
       <main className="min-h-screen relative bg-white text-left">
         {view === "home" && (
           <div className="bg-white animate-fade-in font-sans">
-            <section className="bg-[#231F45] hero-wrap flex flex-col justify-center items-center text-center px-6">
+            <section className="bg-[#231F45] hero-wrap flex flex-col justify-center items-center text-center px-6 min-h-[calc(100vh-var(--header-h))] flex-grow">
               <div className="max-w-4xl w-full reveal-on-scroll hero-stack">
                 <img src={ASSETS.mainLogo} alt="Bruno Wong Marchena" className="hero-logo" />
                 <div className="max-w-3xl mx-auto">
-                  <div className="space-y-6 md:space-y-8">
-  <p className="text-white leading-relaxed text-xl md:text-2xl font-light">
-    Staff-level product designer with 14+ years of experience designing products for complex systems, with a focus on clarity, usability, and scale.
-  </p>
-  <p className="text-white leading-relaxed text-xl md:text-2xl font-light">
-    I embrace AI for speed and iteration, while keeping the creative direction and quality bar fully owned.
-  </p>
-</div>
-
-                  
+                  <h1 className="text-slate-200 text-3xl md:text-4xl font-light tracking-tight mb-8 leading-snug">
+                    <span className="font-semibold">Staff-level product designer</span> with <span className="font-semibold">14+ years</span> experience crafting complex systems.
+                  </h1>
+                  <p className="text-slate-400 text-2xl md:text-3xl mb-12 max-w-2xl mx-auto leading-snug font-light">
+                      I embrace AI for speed, while keeping the creative direction fully owned.
+                  </p>
                 </div>
-                <div className="hero-cta-row">
-                  <Button onClick={() => setIsContactOpen(true)}>Let’s chat</Button>
-
-                  <div className="text-white leading-relaxed text-lg md:text-lg">
-                    <div className="font-light">Available for work</div>
-                    <div className="font-light">Q1 2026</div>
-                  </div>
+                
+                <div className="flex flex-col md:flex-row items-center justify-center gap-10">
+                  <Button onClick={() => setIsContactOpen(true)} className="px-10 py-4 bg-[#88FF00] text-black font-bold rounded-full hover:scale-105 transition-transform">
+                    Let’s chat
+                  </Button>
                 </div>
               </div>
             </section>
