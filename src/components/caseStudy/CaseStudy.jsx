@@ -1,26 +1,30 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 
 import { PORTFOLIO_DATA } from "../../data/portfolioData";
-import { PROJECT_STATUS, PRODUCT_TYPES } from "../../data/tokens";
 
 import Caption from "../ui/Caption";
 import CalloutBox from "../ui/CalloutBox";
 import ImpactBox from "../ui/ImpactBox";
 import DataTable from "../ui/DataTable";
 import ProjectMetadata from "../ui/ProjectMetadata";
-
 import ProjectCard from "../home/ProjectCard";
 
 import ImageLightbox from "./ImageLightbox";
+import ImageThumbnail from "./ImageThumbnail";
+import FileThumbnail from "./FileThumbnail";
+import VideoThumbnail from "./VideoThumbnail";
+import FigmaThumbnail from "./FigmaThumbnail";
 import CaseStudyPager from "./CaseStudyPager";
 import CaseStudyAnchorNav from "./CaseStudyAnchorNav";
 import ProjectHeader from "./ProjectHeader";
 
+import "./GalleryStyles.css";
+
 const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
   const contentRef = useRef(null);
-  const [lightbox, setLightbox] = useState({ open: false, src: "", alt: "", caption: "" });
+  const [lightbox, setLightbox] = useState({ open: false, index: 0 });
 
   const isPillar = !!project.parentId;
   const rootProject = isPillar ? PORTFOLIO_DATA.projects.find((p) => p.id === project.parentId) : null;
@@ -34,6 +38,34 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [project.id]);
+
+  const allMediaItems = useMemo(() => {
+    const media = [];
+    project.details?.blocks?.forEach(block => {
+      if (block.type === 'list' && block.items) {
+        block.items.forEach(item => {
+          if (item.visuals) {
+            item.visuals.forEach(visual => {
+              let type = 'image';
+              if (visual.kind === 'embed') type = 'video';
+              else if (visual.src && visual.src.includes('.pdf')) type = 'pdf';
+              else if (visual.kind === 'figma') type = 'figma';
+
+              media.push({
+                type,
+                src: visual.src,
+                title: visual.caption || 'Visual',
+                captionShort: visual.caption || '',
+                captionParagraph: '',
+                fileSize: visual.fileSize || 'N/A',
+              });
+            });
+          }
+        });
+      }
+    });
+    return media;
+  }, [project]);
 
   const renderBlock = (block, index) => {
     switch (block.type) {
@@ -73,9 +105,9 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
           <section
             id={slug}
             key={index}
-            className={`mb-6 text-left case-anchor-target ${showBorder ? "mt-10 pt-10" : ""}`}
+            className={`mb-4 text-left case-anchor-target ${showBorder ? "mt-10 pt-10" : ""}`}
           >
-            <h2 className="text-2xl text-slate-900 font-bold tracking-tight leading-snug">{block.title}</h2>
+            <h2 className="text-[2.75rem] md:text-[3rem] text-slate-900 font-[600] tracking-tight leading-normal">{block.title}</h2>
           </section>
         );
       }
@@ -138,33 +170,6 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
       case "list": {
         if (!block.items || !Array.isArray(block.items)) return null;
 
-        const isSafeEmbedUrl = (url) => {
-          if (!url || typeof url !== "string") return false;
-          if (!url.startsWith("http")) return false;
-
-          const allowedHosts = [
-            "www.youtube.com",
-            "youtube.com",
-            "www.youtube-nocookie.com",
-            "player.cloudinary.com"
-          ];
-
-          try {
-            const u = new URL(url);
-            return allowedHosts.includes(u.hostname);
-          } catch {
-            return false;
-          }
-        };
-
-        const inferVisualKind = (v) => {
-          if (v?.kind === "embed" || v?.kind === "image") return v.kind;
-          const src = v?.src || "";
-          if (src.includes("player.cloudinary.com/embed")) return "embed";
-          if (src.includes("youtube.com/embed") || src.includes("youtube-nocookie.com/embed")) return "embed";
-          return "image";
-        };
-
         return (
           <section key={index} className="mb-8 md:mb-12 text-left font-sans">
             <ul className="space-y-10 md:space-y-16 font-sans">
@@ -172,11 +177,19 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                 const isObj = item && typeof item === "object" && !Array.isArray(item);
                 const itemContent = isObj ? item.content : item;
                 const visuals = isObj ? item.visuals : null;
+                const mediaItems = visuals ? visuals.map(visual => ({
+                  type: visual.kind === 'embed' ? 'video' : (visual.src && visual.src.includes('.pdf') ? 'pdf' : (visual.kind === 'figma' ? 'figma' : 'image')),
+                  src: visual.src,
+                  title: visual.caption || 'Visual',
+                  captionShort: visual.caption || '',
+                  captionParagraph: '',
+                  fileSize: visual.fileSize || 'N/A',
+                })) : [];
 
                 return (
                   <li
                     key={i}
-                    className="flex gap-3 md:gap-4 items-start text-sm md:text-lg leading-relaxed text-neutral-700"
+                    className="process-list-item flex gap-3 md:gap-4 items-start text-lg text-neutral-700 leading-relaxed"
                   >
                     <div className="mt-1 flex items-center justify-center w-6 h-6 rounded-full bg-[var(--green-process)] shrink-0">
                       <ArrowRight size={14} strokeWidth={3} className="text-[#231F45]" />
@@ -185,80 +198,39 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                     <div className="flex-1">
                       <div dangerouslySetInnerHTML={{ __html: itemContent }} />
 
-                      {Array.isArray(visuals) && visuals.filter((v) => v && v.src).length > 0 && (() => {
-                        const safeVisuals = visuals.filter((v) => v && v.src);
-                        const isSingle = safeVisuals.length === 1;
-
-                        return (
+                      {mediaItems.length > 0 && (
                           <div className="mt-6">
-                            <div className={isSingle ? "grid grid-cols-1" : "grid grid-cols-1 sm:grid-cols-2 gap-4"}>
-                              {safeVisuals.map((v, vi) => {
-                                const kind = inferVisualKind(v);
-
-                                if (kind === "embed") {
-                                  const ok = isSafeEmbedUrl(v.src);
-
-                                  return (
-                                    <div key={vi} className="text-left w-full">
-                                      <div className="bg-neutral-100 border border-neutral-200 rounded-sm overflow-hidden shadow-sm p-3 w-full">
-                                        {ok ? (
-                                          <div className="w-full aspect-video rounded-sm overflow-hidden bg-black">
-                                            <iframe
-                                              src={v.src}
-                                              title={v.caption || "Embedded video"}
-                                              className="w-full h-full"
-                                              frameBorder="0"
-                                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                              allowFullScreen
-                                            />
-                                          </div>
-                                        ) : (
-                                          <div className="w-full rounded-sm bg-white p-4 text-sm text-neutral-600 border border-neutral-200">
-                                            Embed blocked (untrusted URL). Use a YouTube or Cloudinary embed link.
-                                          </div>
-                                        )}
-                                      </div>
-                                      {v.caption && <Caption>{v.caption}</Caption>}
-                                    </div>
-                                  );
-                                }
-
+                            <div className={mediaItems.length === 1 ? "grid grid-cols-1" : "grid grid-cols-1 sm:grid-cols-2 gap-4"}>
+                              {mediaItems.map((mediaItem, vi) => {
+                                const globalIndex = allMediaItems.findIndex(item => item.src === mediaItem.src);
                                 return (
-                                  <button
-                                    key={vi}
-                                    type="button"
-                                    className="text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-black/10 w-full"
-                                    onClick={() =>
-                                      setLightbox({
-                                        open: true,
-                                        src: v.src,
-                                        alt: v.caption || "Process visual",
-                                        caption: v.caption || ""
-                                      })
-                                    }
-                                    aria-label={v.caption ? `Open image: ${v.caption}` : "Open image"}
-                                  >
-                                    <div className="bg-neutral-100 border border-neutral-200 rounded-sm overflow-hidden shadow-sm p-3 cursor-zoom-in w-full">
-                                      <img
-                                        src={v.src}
-                                        alt={v.caption || "Process visual"}
-                                        loading="lazy"
-                                        decoding="async"
-                                        className={
-                                          isSingle
-                                            ? "w-full h-auto object-contain rounded-sm"
-                                            : "w-full aspect-[16/10] object-cover rounded-sm"
-                                        }
+                                  <div key={vi}>
+                                    {mediaItem.type === 'video' ? (
+                                      <VideoThumbnail src={mediaItem.src} caption={mediaItem.captionShort} onClick={() => setLightbox({ open: true, index: globalIndex })} />
+                                    ) : mediaItem.type === 'pdf' ? (
+                                      <FileThumbnail 
+                                        title={mediaItem.title}
+                                        fileSize={mediaItem.fileSize}
+                                        onClick={() => setLightbox({ open: true, index: globalIndex })}
                                       />
-                                    </div>
-                                    {v.caption && <Caption>{v.caption}</Caption>}
-                                  </button>
+                                    ) : mediaItem.type === 'figma' ? (
+                                      <FigmaThumbnail src={mediaItem.src} caption={mediaItem.captionShort} />
+                                    ) : (
+                                      <ImageThumbnail 
+                                        src={mediaItem.src}
+                                        alt={mediaItem.title}
+                                        onClick={() => setLightbox({ open: true, index: globalIndex })}
+                                      />
+                                    )}
+                                    <p className="type-caption text-left text-neutral-500 text-[16px] font-normal leading-relaxed mt-2 md:mt-3 font-sans">
+                                      {mediaItem.captionShort}
+                                    </p>
+                                  </div>
                                 );
                               })}
                             </div>
                           </div>
-                        );
-                      })()}
+                        )}
                     </div>
                   </li>
                 );
@@ -312,14 +284,14 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
             </h1>
 
             {project.designerNote && (
-  <div className="designer-note mb-8 max-w-full">
-    {project.designerNote.split('\n').map((line, i) => (
-      <p key={i} className="mb-4 last:mb-0">
-        {line}
-      </p>
-    ))}
-  </div>
-)}
+              <div className="designer-note mb-8 max-w-full">
+                {project.designerNote.split('\n').map((line, i) => (
+                  <p key={i} className="mb-4 last:mb-0">
+                    {line}
+                  </p>
+                ))}
+              </div>
+            )}
 
             <ProjectMetadata
               role={project.details?.role || "Role TBD"}
@@ -338,13 +310,11 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
           </div>
         </div>
       </div>
-
-      <ImageLightbox
-        isOpen={lightbox.open}
-        src={lightbox.src}
-        alt={lightbox.alt}
-        caption={lightbox.caption}
-        onClose={() => setLightbox({ open: false, src: "", alt: "", caption: "" })}
+      <ImageLightbox 
+        open={lightbox.open} 
+        initialIndex={lightbox.index} 
+        mediaItems={allMediaItems.filter(item => item.type !== 'figma')} 
+        onClose={() => setLightbox({ ...lightbox, open: false })} 
       />
     </article>
   );

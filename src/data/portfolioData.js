@@ -146,7 +146,7 @@ This remains the most strategically significant project of my career.`,
             items: [
               {
                 content:
-                  "<b>Starting with users.</b><br/>I built relationships with merchandisers across regions and ran informal, scrappy testing sessions. This helped surface real pain points early and shaped the direction of the tool.",
+                  `<span class="process-step-title"><b>Starting with users.</b></span><br/>I built relationships with merchandisers across regions and ran informal, scrappy testing sessions. This helped surface real pain points early and shaped the direction of the tool.`,
                 visuals: [
                   {
                     kind: "embed",
@@ -157,7 +157,7 @@ This remains the most strategically significant project of my career.`,
               },
               {
                 content:
-                  "<b>Finding the right layout.</b><br/>Separating inputs from outputs while supporting up to 60 marketplace and language combinations took several iterations. I explored different models until the UI felt both simple and scalable.",
+                  `<span class="process-step-title"><b>Finding the right layout.</b></span><br/>Separating inputs from outputs while supporting up to 60 marketplace and language combinations took several iterations. I explored different models until the UI felt both simple and scalable.`,
                 visuals: [
                   {
                     kind: "image",
@@ -173,17 +173,17 @@ This remains the most strategically significant project of my career.`,
               },
               {
                 content:
-                  "<b>Handling complexity with clarity.</b><br/>Users needed to choose the right device, background, and seasonal elements without feeling lost. I designed guardrails and smart defaults that guided decisions without limiting flexibility.",
+                  `<span class="process-step-title"><b>Handling complexity with clarity.</b></span><br/>Users needed to choose the right device, background, and seasonal elements without feeling lost. I designed guardrails and smart defaults that guided decisions without limiting flexibility.`,
                 visuals: [{ src: ASSETS.testImage, caption: "UI guardrails and smart selection logic." }]
               },
               {
                 content:
-                  "<b>Using prototypes to align quickly.</b><br/>I created fast, functional prototypes to communicate ideas to leadership and engineering. These helped unblock decisions and kept the team moving even when details were still forming.",
+                  `<span class="process-step-title"><b>Using prototypes to align quickly.</b></span><br/>I created fast, functional prototypes to communicate ideas to leadership and engineering. These helped unblock decisions and kept the team moving even when details were still forming.`,
                 visuals: [{ src: ASSETS.testImage, caption: "Lo-fi prototype used for stakeholder alignment." }]
               },
               {
                 content:
-                  "<b>Handoff and evolving Meridian.</b><br/>After landing the interaction model, I documented edge cases and handed designs to engineering. Meridian covered most needs, but I extended components where required and contributed improvements back to the system.",
+                  `<span class="process-step-title"><b>Handoff and evolving Meridian.</b></span><br/>After landing the interaction model, I documented edge cases and handed designs to engineering. Meridian covered most needs, but I extended components where required and contributed improvements back to the system.`,
                 visuals: [{ src: ASSETS.testImage, caption: "Meridian component specifications and edge-case documentation." }]
               }
             ]
@@ -258,21 +258,21 @@ This remains the most strategically significant project of my career.`,
             items: [
               {
                 content:
-                  "<b>Learning how teams actually searched.</b><br/>I met with merchandisers across markets to understand their retrieval habits and frustrations. This revealed inconsistencies in naming, taxonomy, and access patterns that shaped the Browser’s IA.",
+                  `<span class="process-step-title"><b>Learning how teams actually searched.</b></span><br/>I met with merchandisers across markets to understand their retrieval habits and frustrations. This revealed inconsistencies in naming, taxonomy, and access patterns that shaped the Browser’s IA.`,
                 visuals: [{ src: ASSETS.testImage, caption: "Researching asset retrieval habits across global markets." }]
               },
               {
                 content:
-                  "<b>Designing search and filtering for scale.</b><br/>With hundreds of SKUs, device generations, and regional rules, the challenge was creating filters that felt powerful but not overwhelming. I tested different models until users could reliably find what they needed.",
+                  `<span class="process-step-title"><b>Designing search and filtering for scale.</b></span><br/>With hundreds of SKUs, device generations, and regional rules, the challenge was creating filters that felt powerful but not overwhelming. I tested different models until users could reliably find what they needed.`,
                 visuals: [{ src: ASSETS.testImage, caption: "Designing powerful filters for a growing SKU catalog." }]
               },
               {
                 content:
-                  "<b>Managing confidentiality and device lifecycle.</b><br/>I added clear visual cues and access controls for prototype assets, unreleased devices, region-restricted content, and deprecated imagery to reduce risk.",
+                  `<span class="process-step-title"><b>Managing confidentiality and device lifecycle.</b></span><br/>I added clear visual cues and access controls for prototype assets, unreleased devices, region-restricted content, and deprecated imagery to reduce risk.`,
                 visuals: [{ src: ASSETS.testImage, caption: "Visual guardrails for unreleased and restricted assets." }]              },
               {
                 content:
-                  "<b>Integrating AI metadata.</b><br/>I designed the flows for uploading images, reviewing AI-generated metadata, and assigning standardized tags. This became the backbone for training JASAI and powering automation in the Builder.",
+                  `<span class="process-step-title"><b>Integrating AI metadata.</b></span><br/>I designed the flows for uploading images, reviewing AI-generated metadata, and assigning standardized tags. This became the backbone for training JASAI and powering automation in the Builder.`,
                 visuals: [
                   { src: ASSETS.testImage, caption: "Reviewing AI-generated tags for accuracy." },
                   { src: ASSETS.testImage, caption: "Bulk tag management and governance dashboard." }
@@ -280,12 +280,12 @@ This remains the most strategically significant project of my career.`,
               },
               {
                 content:
-                  "<b>Rapid prototyping to align the team.</b><br/>I created quick prototypes for search flows, batch actions, and metadata panels to get early alignment with leadership and engineering.",
+                  `<span class="process-step-title"><b>Rapid prototyping to align the team.</b></span><br/>I created quick prototypes for search flows, batch actions, and metadata panels to get early alignment with leadership and engineering.`,
                 visuals: [{ src: ASSETS.testImage, caption: "Prototype explorations for search + batch actions." }]
               },
               {
                 content:
-                  "<b>Evolving Meridian.</b><br/>The Browser required patterns that Meridian did not yet support. I extended components and contributed improvements back to the system.",
+                  `<span class="process-step-title"><b>Evolving Meridian.</b></span><br/>The Browser required patterns that Meridian did not yet support. I extended components and contributed improvements back to the system.`,
                 visuals: [{ src: ASSETS.testImage, caption: "Component extensions and system improvements." }]
               }
             ]
@@ -345,7 +345,7 @@ This remains the most strategically significant project of my career.`,
             items: [
               {
                 content:
-                  "<b>Understanding real workflows.</b><br/>I partnered with System Designers to study how they used Photoshop automations, file naming conventions, and batch tools to produce component images. This gave me a grounded view of where metadata was created and which parts of the process could be simplified.",
+                  `<span class="process-step-title"><b>Understanding real workflows.</b></span><br/>I partnered with System Designers to study how they used Photoshop automations, file naming conventions, and batch tools to produce component images. This gave me a grounded view of where metadata was created and which parts of the process could be simplified.`,
                 visuals: [
                   {
                     src: ASSETS.testImage,
@@ -355,7 +355,7 @@ This remains the most strategically significant project of my career.`,
               },
               {
                 content:
-                  "<b>Classifying metadata inputs.</b><br/>Working with engineering, design, and brand partners, I defined which metadata fields should be inferred, which required human judgment, and which could be suggested or generated by AI.",
+                  `<span class="process-step-title"><b>Classifying metadata inputs.</b></span><br/>Working with engineering, design, and brand partners, I defined which metadata fields should be inferred, which required human judgment, and which could be suggested or generated by AI.`,
                 visuals: [
                   {
                     src: ASSETS.testImage,
@@ -365,7 +365,7 @@ This remains the most strategically significant project of my career.`,
               },
               {
                 content:
-                  "<b>Validating AI feasibility.</b><br/>I ran AI experiments that explored automated classification, visual variant detection, screen mapping, image warping, proportional scaling, and metadata extraction. These tests showed that many of the required metadata fields could be inferred rather than manually entered, which shaped the upload flow, UI, and underlying data model.",
+                  `<span class="process-step-title"><b>Validating AI feasibility.</b></span><br/>I ran AI experiments that explored automated classification, visual variant detection, screen mapping, image warping, proportional scaling, and metadata extraction. These tests showed that many of the required metadata fields could be inferred rather than manually entered, which shaped the upload flow, UI, and underlying data model.`,
                 visuals: [
                   {
                     src: ASSETS.testImage,
@@ -376,7 +376,7 @@ This remains the most strategically significant project of my career.`,
               },
               {
                 content:
-                  "<b>Prototyping to align direction.</b><br/>I built low fidelity prototypes to show how a streamlined metadata workflow could function. These were shared across product, design, engineering, and Devices Brand Studio to build confidence and align expectations around what automation could realistically support.",
+                  `<span class="process-step-title"><b>Prototyping to align direction.</b></span><br/>I built low fidelity prototypes to show how a streamlined metadata workflow could function. These were shared across product, design, engineering, and Devices Brand Studio to build confidence and align expectations around what automation could realistically support.`,
                 visuals: [
                   {src: ASSETS.testImage,
                     caption: "Lo-fi prototypes used to align teams on a reduced-input workflow and AI validation checkpoints."
@@ -385,7 +385,7 @@ This remains the most strategically significant project of my career.`,
               },
               {
                 content:
-                  "<b>Refining for clarity and scale.</b><br/>I iterated on layouts and validation flows and removed anything that introduced noise. The final workflow focused on speed, clarity, and preparing assets for future AI-driven automation.",
+                  `<span class="process-step-title"><b>Refining for clarity and scale.</b></span><br/>I iterated on layouts and validation flows and removed anything that introduced noise. The final workflow focused on speed, clarity, and preparing assets for future AI-driven automation.`,
                 visuals: [
                   {
                     src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1769461141/admintool_r23r8u.gif",
@@ -443,10 +443,10 @@ This remains the most strategically significant project of my career.`,
           {
             type: "list",
             items: [
-              "<b>Defining what correct placement meant.</b><br/>I worked with Brand Studio and 3D teams to establish the rules for angles, shadows, proportions, and screen behavior. This gave the model a clear standard to learn from.",
-              "<b>Designing and prototyping the AI training loop.</b><br/>I built the workflow where designers reviewed AI outputs and corrected mistakes. This included reshaping metadata into simple controls, writing clear labels, and creating small widgets and interactions that made feedback fast and consistent.",
-              "<b>Running placement and composition tests.</b><br/>I partnered with science to evaluate early results, check cutout quality, verify device placement in backgrounds, and understand how well the model handled lighting and perspective.",
-              "<b>Preparing integration with the Image Builder.</b><br/>I designed how approved AI outputs flow into the Builder so teams can generate lifestyle images and local variations without manual reconstruction."
+              `<span class="process-step-title"><b>Defining what correct placement meant.</b></span><br/>I worked with Brand Studio and 3D teams to establish the rules for angles, shadows, proportions, and screen behavior. This gave the model a clear standard to learn from.`,
+              `<span class="process-step-title"><b>Designing and prototyping the AI training loop.</b></span><br/>I built the workflow where designers reviewed AI outputs and corrected mistakes. This included reshaping metadata into simple controls, writing clear labels, and creating small widgets and interactions that made feedback fast and consistent.`,
+              `<span class="process-step-title"><b>Running placement and composition tests.</b></span><br/>I partnered with science to evaluate early results, check cutout quality, verify device placement in backgrounds, and understand how well the model handled lighting and perspective.`,
+              `<span class="process-step-title"><b>Preparing integration with the Image Builder.</b></span><br/>I designed how approved AI outputs flow into the Builder so teams can generate lifestyle images and local variations without manual reconstruction.`
             ]
           },
           { type: "heading", title: "JAS Metadata AI Automation" },
@@ -541,7 +541,7 @@ This remains the most strategically significant project of my career.`,
             items: [
               {
                 content:
-                  "<b>Defining what relevant discovery meant for Smart Home.</b><br/>I helped define what good looked like for Smart Home devices inside a creator-driven feed, aligning on constraints that were not needed for softer categories. Compatibility cues, correct device grouping, and avoiding accessory mis-matches became foundational expectations.",
+                  `<span class="process-step-title"><b>Defining what relevant discovery meant for Smart Home.</b></span><br/>I helped define what good looked like for Smart Home devices inside a creator-driven feed, aligning on constraints that were not needed for softer categories. Compatibility cues, correct device grouping, and avoiding accessory mis-matches became foundational expectations.`,
                 visuals: [
                   {
                     src: ASSETS.testImage,
@@ -551,7 +551,7 @@ This remains the most strategically significant project of my career.`,
               },
               {
                 content:
-                  "<b>Shaping metadata inputs that supported ML ranking.</b><br/>I partnered closely with data science to tune how device metadata informed ranking and content association, balancing engagement signals with catalog correctness. This included identifying what needed to be treated as a hard constraint versus what could remain flexible or learned.",
+                  `<span class="process-step-title"><b>Shaping metadata inputs that supported ML ranking.</b></span><br/>I partnered closely with data science to tune how device metadata informed ranking and content association, balancing engagement signals with catalog correctness. This included identifying what needed to be treated as a hard constraint versus what could remain flexible or learned.`,
                 visuals: [
                   {
                     src: ASSETS.testImage,
@@ -562,7 +562,7 @@ This remains the most strategically significant project of my career.`,
               },
               {
                 content:
-                  "<b>Making device content feel deliberate in the feed.</b><br/>I influenced feed-level experience decisions so Smart Home content did not feel incidental or randomly injected. The focus was product identification, clearer context, and guardrails that reduced misinterpretation and wrong-click behavior.",
+                  `<span class="process-step-title"><b>Making device content feel deliberate in the feed.</b></span><br/>I influenced feed-level experience decisions so Smart Home content did not feel incidental or randomly injected. The focus was product identification, clearer context, and guardrails that reduced misinterpretation and wrong-click behavior.`,
                 visuals: [
                   {
                     src: ASSETS.testImage,
@@ -572,7 +572,7 @@ This remains the most strategically significant project of my career.`,
               },
               {
                 content:
-                  "<b>Supporting creator tools for commerce attachment.</b><br/>I contributed to the creator workflow that enabled influencers and brands to attach ASINs to short-form videos and photos. The goal was to reduce cool video, wrong product outcomes and strengthen product-to-content association.",
+                  `<span class="process-step-title"><b>Supporting creator tools for commerce attachment.</b></span><br/>I contributed to the creator workflow that enabled influencers and brands to attach ASINs to short-form videos and photos. The goal was to reduce cool video, wrong product outcomes and strengthen product-to-content association.`,
                 visuals: [
                   {
                     src: ASSETS.testImage,
@@ -759,7 +759,7 @@ This remains the most strategically significant project of my career.`,
             items: [
               {
                 content:
-                  "<b>Exploration 1: Multi-select to capture intent.</b><br/>Patients frequently raised multiple concerns in a single message. Multi-select let patients express intent naturally while giving the system richer upstream context.",
+                  `<span class="process-step-title"><b>Exploration 1: Multi-select to capture intent.</b></span><br/>Patients frequently raised multiple concerns in a single message. Multi-select let patients express intent naturally while giving the system richer upstream context.`,
                 visuals: [
                   {
                     src: "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b0484998-57a5-4e24-82db-f93be547e3c6/Untitled.png",
@@ -773,7 +773,7 @@ This remains the most strategically significant project of my career.`,
               },
               {
                 content:
-                  "<b>Exploration 2: Setting expectations upfront.</b><br/>We explored clarifying pharmacist involvement earlier in the flow. This reduced ambiguity but risked feeling blunt and over-filtering valid medical questions.",
+                  `<span class="process-step-title"><b>Exploration 2: Setting expectations upfront.</b></span><br/>We explored clarifying pharmacist involvement earlier in the flow. This reduced ambiguity but risked feeling blunt and over-filtering valid medical questions.`,
                 visuals: [
                   {
                     src: "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cbb33b13-4fa7-4ffd-9441-39a3b78e78ea/Untitled.png",
@@ -783,7 +783,7 @@ This remains the most strategically significant project of my career.`,
               },
               {
                 content:
-                  "<b>Exploration 3: Minimal intervention.</b><br/>A low-friction approach allowed free-form questions with little guidance. It was fast for patients but pushed complexity downstream and increased operational cost.",
+                  `<span class="process-step-title"><b>Exploration 3: Minimal intervention.</b></span><br/>A low-friction approach allowed free-form questions with little guidance. It was fast for patients but pushed complexity downstream and increased operational cost.`,
                 visuals: [
                   {
                     src: "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8614fd55-bb94-4e9b-befa-ed196009928f/Untitled.png",
@@ -793,7 +793,7 @@ This remains the most strategically significant project of my career.`,
               },
               {
                 content:
-                  "<b>Pre-exploration validation: two variants.</b><br/>We pressure-tested how much structure we could introduce while preserving trust.",
+                  `<span class="process-step-title"><b>Pre-exploration validation: two variants.</b></span><br/>We pressure-tested how much structure we could introduce while preserving trust.`,
                 visuals: [
                   {
                     src: "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0088ec04-3183-4281-8646-9fdf5324247c/Untitled.png",
@@ -807,7 +807,7 @@ This remains the most strategically significant project of my career.`,
               },
               {
                 content:
-                  "<b>Prototypes explored three paths.</b><br/>These options explored different ways to balance clarity, flexibility, and operational cost.",
+                  `<span class="process-step-title"><b>Prototypes explored three paths.</b></span><br/>These options explored different ways to balance clarity, flexibility, and operational cost.`,
                 visuals: [
                   {
                     src: "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e15cbff2-13a1-4b76-abe9-e7024ff64b41/AA_option_1.gif",
@@ -825,7 +825,7 @@ This remains the most strategically significant project of my career.`,
               },
               {
                 content:
-                  "<b>Prototype library.</b><br/><a href=\'https://www.figma.com/proto/EuDrnvOQOZx8Wrc4beLGTB/AA-Direct-to-Pharmacist?page-id=10888%3A142839&node-id=10894%3A435574&viewport=614%2C-1252%2C0.19&scaling=scale-down&starting-point-node-id=10894%3A435574&show-proto-sidebar=1\' target=\'_blank\' rel=\'noopener noreferrer\'>View prototypes in detail</a>."
+                  `<span class="process-step-title"><b>Prototype library.</b></span><br/><a href='https://www.figma.com/proto/EuDrnvOQOZx8Wrc4beLGTB/AA-Direct-to-Pharmacist?page-id=10888%3A142839&node-id=10894%3A435574&viewport=614%2C-1252%2C0.19&scaling=scale-down&starting-point-node-id=10894%3A435574&show-proto-sidebar=1' target='_blank' rel='noopener noreferrer'>View prototypes in detail</a>.`
               }
             ]
           },
@@ -918,7 +918,7 @@ This remains the most strategically significant project of my career.`,
 export const WORK_GROUPS = [
   {
     company: "Amazon Devices",
-    roleLine: "Sr. UX Designer · Internal Tools · 2023–Today",
+    roleLine: "Sr. UX Designer · Internal Tools · Nov 2023 – Jan 2026",
     projectIds: [
       "amazon-devices-asset-system",
       "jas-image-builder",
@@ -928,8 +928,8 @@ export const WORK_GROUPS = [
     ]
   },
   {
-    company: "Amazon Core Shopping",
-    roleLine: "Sr. UX Designer · 2022–2023",
+    company: "Amazon Devices",
+    roleLine: "Sr. UX Designer · Core Shopping · Sep 2022 – Nov 2023",
     projectIds: ["amazon-core-inspire-tab", "amazon-core-ai-review-highlights"]
   },
   {

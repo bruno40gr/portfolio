@@ -16,8 +16,18 @@ const CompanySection = ({ group, onProjectClick }) => {
         <h2 className="text-4xl text-[color:var(--deep-purple)] font-bold tracking-tight leading-snug font-sans">
           {group.company}
         </h2>
-        <h3 className="text-base font-medium text-slate-500 font-sans">
-          {group.roleLine}
+        <h3 className="text-lg font-medium text-slate-500 font-sans flex flex-col md:flex-row">
+          <span>
+            {group.roleLine.split(" · ").slice(0, -1).join(" · ")}
+          </span>
+          {group.roleLine.split(" · ").length > 1 && (
+            <>
+              <span className="hidden md:inline">&nbsp;·&nbsp;</span>
+              <span>
+                {group.roleLine.split(" · ").pop()}
+              </span>
+            </>
+          )}
         </h3>
       </header>
 

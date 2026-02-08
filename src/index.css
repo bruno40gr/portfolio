@@ -6,8 +6,8 @@
   .subheadings {
     @apply text-3xl text-slate-900 font-semibold leading-snug font-sans;
   }
-  .process-step b {
-    @apply text-xl font-bold;
+  .process-list-item b {
+    @apply text-2xl font-bold;
   }
 }
 
@@ -171,4 +171,3 @@
     margin-top: 4px;
   }
 }
-

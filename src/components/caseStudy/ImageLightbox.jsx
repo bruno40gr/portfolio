@@ -1,129 +1,145 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import { X, ZoomIn, ZoomOut, RotateCcw } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { 
+  FileText, Maximize2, ChevronLeft, ChevronRight, X, Loader2, Download, ArrowUpRight
+} from "lucide-react";
 
-const ImageLightbox = ({ isOpen, onClose, src, alt, caption }) => {
-  const [scale, setScale] = useState(1);
-  const [offset, setOffset] = useState({ x: 0, y: 0 });
-  const [isDragging, setIsDragging] = useState(false);
-  const [startPos, setStartPos] = useState({ x: 0, y: 0 });
+const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
+  const [currentIndex, setCurrentIndex] = useState(initialIndex);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-      const handleEsc = (e) => {
-        if (e.key === "Escape") onClose();
-      };
-      window.addEventListener("keydown", handleEsc);
-      return () => {
-        window.removeEventListener("keydown", handleEsc);
-        document.body.style.overflow = "auto";
-      };
+    if (open) setCurrentIndex(initialIndex);
+  }, [open, initialIndex]);
+
+  useEffect(() => {
+    if (open) {
+      setIsLoading(true);
+      const timer = setTimeout(() => setIsLoading(false), 600);
+      return () => clearTimeout(timer);
     }
-    setScale(1);
-    setOffset({ x: 0, y: 0 });
-  }, [isOpen, onClose]);
+  }, [currentIndex, open]);
 
-  if (!isOpen) return null;
+  useEffect(() => {
+    if (!open) return;
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') onClose();
+      if (e.key === 'ArrowRight') nextItem();
+      if (e.key === 'ArrowLeft') prevItem();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [open, currentIndex]);
 
-  const handleZoomIn = () => setScale((prev) => Math.min(prev + 0.5, 4));
-  const handleZoomOut = () => {
-    const newScale = Math.max(scale - 0.5, 1);
-    setScale(newScale);
-    if (newScale === 1) setOffset({ x: 0, y: 0 });
-  };
-  const handleReset = () => {
-    setScale(1);
-    setOffset({ x: 0, y: 0 });
-  };
+  const activeItem = mediaItems[currentIndex];
+  const nextItem = () => setCurrentIndex((prev) => (prev + 1) % mediaItems.length);
+  const prevItem = () => setCurrentIndex((prev) => (prev - 1 + mediaItems.length) % mediaItems.length);
 
-  const handleDoubleClick = () => {
-    if (scale > 1) {
-      setScale(1);
-      setOffset({ x: 0, y: 0 });
-    } else {
-      setScale(2);
-    }
-  };
-
-  const handleWheel = (e) => {
-    if (e.deltaY < 0) setScale((prev) => Math.min(prev + 0.1, 4));
-    else
-      setScale((prev) => {
-        const next = Math.max(prev - 0.1, 1);
-        if (next === 1) setOffset({ x: 0, y: 0 });
-        return next;
-      });
-  };
-
-  const handleMouseDown = (e) => {
-    if (scale <= 1) return;
-    setIsDragging(true);
-    setStartPos({ x: e.clientX - offset.x, y: e.clientY - offset.y });
-  };
-
-  const handleMouseMove = (e) => {
-    if (!isDragging) return;
-    setOffset({
-      x: e.clientX - startPos.x,
-      y: e.clientY - startPos.y
-    });
-  };
-
-  const handleMouseUp = () => setIsDragging(false);
+  if (!open || !activeItem) return null;
 
   return (
-    <div
-      className="fixed inset-0 z-[500] bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center transition-all duration-300"
+    <div 
+      className="fixed inset-0 z-[100] flex flex-col bg-[#050505]/95 backdrop-blur-xl animate-in fade-in duration-200 font-sans"
       onClick={onClose}
     >
-      <div className="absolute top-6 right-6 flex items-center gap-4 z-[510]">
-        <div
-          className="flex bg-white/10 rounded-full border border-white/20 p-1 backdrop-blur-md"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <button onClick={handleZoomOut} className="p-2 text-white hover:bg-white/10 rounded-full transition-colors">
-            <ZoomOut size={20} />
-          </button>
-          <button onClick={handleZoomIn} className="p-2 text-white hover:bg-white/10 rounded-full transition-colors">
-            <ZoomIn size={20} />
-          </button>
-          <button onClick={handleReset} className="p-2 text-white hover:bg-white/10 rounded-full transition-colors">
-            <RotateCcw size={18} />
+      {/* Top Bar */}
+      <div className="flex justify-between items-center px-6 py-4 z-10 border-b border-[#333] shrink-0">
+        <div className="flex items-center gap-3">
+          <span className="text-xs font-bold tracking-widest text-neutral-400">
+            {currentIndex + 1} / {mediaItems.length}
+          </span>
+          <span className="text-neutral-700">|</span>
+          <span className="text-xs font-bold tracking-widest uppercase text-neutral-500">
+             Assets in this case study
+          </span>
+        </div>
+        
+        <div className="flex gap-3">
+          <button 
+            className="p-2 text-neutral-400 hover:text-white hover:bg-white/10 rounded-full transition-colors"
+            onClick={(e) => { e.stopPropagation(); onClose(); }}
+          >
+            <X size={24} />
           </button>
         </div>
-        <button onClick={onClose} className="p-3 bg-white text-black rounded-full hover:bg-neutral-200 transition-colors shadow-2xl">
-          <X size={24} />
+      </div>
+
+      {/* Main Content Stage */}
+      <div className="flex-1 flex items-center justify-between px-2 md:px-6 relative min-h-0 overflow-hidden group/nav">
+        
+        <button 
+          className="p-4 text-neutral-500 hover:text-white hover:bg-white/5 rounded-full transition-all focus:outline-none -ml-2 md:ml-0 z-20"
+          onClick={(e) => { e.stopPropagation(); prevItem(); }}
+        >
+          <ChevronLeft size={40} strokeWidth={1.5} />
+        </button>
+
+        <div 
+          className="relative flex-1 h-full mx-2 md:mx-8 flex items-center justify-center overflow-hidden py-4" 
+          onClick={(e) => e.stopPropagation()}
+        >
+          {isLoading ? (
+            <div className="flex flex-col items-center justify-center gap-4">
+               <Loader2 size={48} className="animate-spin text-[var(--neon-green)]" />
+            </div>
+          ) : (
+            activeItem.type === 'pdf' ? (
+              <div className="w-full h-full max-w-5xl bg-[#1E1E1E] border border-[#333] rounded-lg shadow-2xl overflow-hidden p-1">
+                <iframe 
+                  src={activeItem.src} 
+                  className="w-full h-full bg-white rounded" 
+                  title="PDF Preview"
+                />
+              </div>
+            ) : activeItem.type === 'video' ? (
+              <div className="w-full h-full max-w-5xl bg-[#1E1E1E] border border-[#333] rounded-lg shadow-2xl overflow-hidden p-1">
+                <iframe
+                  src={activeItem.src}
+                  title={activeItem.title || "Embedded video"}
+                  className="w-full h-full"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            ) : (
+              <img 
+                src={activeItem.src} 
+                alt={activeItem.title} 
+                className="max-h-full max-w-full object-contain drop-shadow-2xl animate-in zoom-in-95 duration-300"
+              />
+            )
+          )}
+        </div>
+
+        <button 
+          className="p-4 text-neutral-500 hover:text-white hover:bg-white/5 rounded-full transition-all focus:outline-none -mr-2 md:mr-0 z-20"
+          onClick={(e) => { e.stopPropagation(); nextItem(); }}
+        >
+          <ChevronRight size={40} strokeWidth={1.5} />
         </button>
       </div>
 
-      <div
-        className="w-full h-full flex items-center justify-center overflow-hidden cursor-move"
-        onWheel={handleWheel}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseUp}
+      {/* Bottom Caption Panel */}
+      <div 
+        className="w-full bg-[#0a0a0a] border-t border-[#333] p-6 md:px-12 shrink-0 max-h-[35vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
-        <img
-          src={src}
-          alt={alt}
-          onDoubleClick={handleDoubleClick}
-          className={`max-w-[90%] max-h-[85vh] object-contain transition-transform duration-200 ease-out select-none shadow-2xl pointer-events-auto ${
-            isDragging ? "transition-none" : ""
-          }`}
-          style={{
-            transform: `translate(${offset.x}px, ${offset.y}px) scale(${scale})`,
-            cursor: scale > 1 ? (isDragging ? "grabbing" : "grab") : "zoom-in"
-          }}
-        />
-      </div>
-
-      <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 to-transparent pointer-events-none">
-        <div className="max-w-4xl mx-auto flex flex-col gap-1 items-center">
-          <span className="text-white/60 text-[11px] font-semibold tracking-wide">Image View</span>
-          <p className="text-white text-sm md:text-base text-center leading-relaxed max-w-2xl drop-shadow-sm">{caption}</p>
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-white text-lg font-bold mb-2 flex items-center gap-3 font-sans">
+            {activeItem.type === 'pdf' && <FileText size={18} className="text-[var(--neon-green)]" />}
+            {activeItem.title}
+          </h2>
+          
+          <div className="space-y-2 font-sans">
+            {/* Caption Short */}
+            <p className="text-[#A8C7FA] text-sm md:text-[15px] font-semibold">
+              {activeItem.captionShort}
+            </p>
+            {/* Caption Paragraph */}
+            <p className="text-neutral-400 text-sm md:text-[15px] leading-relaxed max-w-prose">
+              {activeItem.captionParagraph}
+            </p>
+          </div>
         </div>
       </div>
     </div>

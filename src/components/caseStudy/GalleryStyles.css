@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=PT+Serif:wght@400;700&display=swap');
+  
+:root {
+  --header-h: 56px;
+  --hero-pad-y: clamp(48px, 8vh, 80px);
+  --hero-gap: clamp(28px, 6vh, 44px);
+  --logo-max-w: clamp(240px, 22vw, 336px);
+  --hero-cta-gap: 16px;
+  
+  /* Colors */
+  --green-accent-muted: #88FF00;
+  --green-process: #88FF00;
+  --neon-green: #a6fa4e;
+  --neon-green-80: rgba(233, 250, 214, 0.8);
+  --deep-purple: #231f44;
+  --deep-emerald: #065f46;
+  --light-purple: #576092;
+  
+  /* Backgrounds for Demo */
+  --bg-dark: #121212;
+  
+  /* Fonts */
+  --font-sans: "Source Sans 3", sans-serif;
+  --font-serif: "PT Serif", serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-dark);
+  color: #e5e5e5;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  margin: 0;
+}
+
+p { margin: 0; }
+
+/* Utility Classes Simulation */
+.font-sans { font-family: var(--font-sans); }
+.font-serif { font-family: var(--font-serif); }
+
+/* Animation for anchor links (reused for hover states if needed) */
+@keyframes case-anchor-bounce {
+  0% { transform: scale(0.5) translateX(-2px); }
+  40% { transform: scale(1.15) translateX(0); }
+  70% { transform: scale(0.95) translateX(0); }
+  100% { transform: scale(1) translateX(0); }
+}

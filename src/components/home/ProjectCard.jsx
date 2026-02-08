@@ -64,14 +64,14 @@ const ProjectCard = ({ project, onClick }) => {
       </div>
 
       {/* Content Area */}
-      <div className="space-y-2 px-1">
+      <div className="flex flex-col gap-2 px-1">
         <div className="flex justify-between items-start gap-4">
           <h3 className="text-2xl font-bold text-[var(--deep-purple)] leading-tight tracking-tight font-sans">
             {title}
           </h3>
         </div>
 
-        <p className="text-lg md:text-xl text-slate-600 leading-normal max-w-[95%] font-sans">
+        <p className="text-lg md:text-lg text-slate-600 leading-normal max-w-[95%] font-sans">
           {impactSummary}
         </p>
 

@@ -1,4 +1,6 @@
-/** @type {import('tailwindcss').Config} */
+/** @type {import("tailwindcss").Config} */
+import plugin from "tailwindcss/plugin";
+
 export default {
   content: [
     "./index.html",
@@ -7,11 +9,20 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Source Sans 3"', 'system-ui', 'sans-serif'],
-        serif: ['"PT Serif"', 'serif'],
-        mono: ['"Source Code Pro"', 'monospace'],
+        sans: ["\"Source Sans 3\"", "system-ui", "sans-serif"],
+        serif: ["\"PT Serif\"", "serif"],
+        mono: ["\"Source Code Pro\"", "monospace"],
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function({ addUtilities }) {
+      addUtilities({
+        ".md\\:before\\:separator-dot::before": {
+          content: "\" - \"",
+          display: "inline-block",
+        },
+      }, ["responsive"]);
+    }),
+  ],
 }
