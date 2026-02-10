@@ -22,7 +22,7 @@ export const CalloutBox = ({ content, size = "small" }) => {
   // Large version for case studies
   return (
     <section className="mb-12 w-full">
-      <div className="bg-slate-100 p-8 md:p-14 rounded-2xl shadow-sm flex flex-col md:flex-row gap-6">
+      <div className="bg-slate-100 p-8 md:p-10 rounded-2xl shadow-sm flex flex-col md:flex-row gap-6">
         {/* Large Icon - Styled to match the light, airy text weight */}
         <Layers 
           size={32} 

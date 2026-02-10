@@ -9,6 +9,9 @@
   .process-list-item b {
     @apply text-2xl font-bold;
   }
+  .process-step-title {
+  @apply leading-snug block text-slate-900; margin-bottom: 0.05rem;
+}
 }
 
 @layer base {
@@ -47,7 +50,7 @@
   --header-h: 56px;
   --hero-pad-y: clamp(48px, 8vh, 80px);
   --hero-gap: clamp(28px, 6vh, 44px);
-  --logo-max-w: clamp(240px, 22vw, 336px);
+  --logo-max-w: clamp(320px, 26.4vw, 460px);
   --hero-cta-gap: 16px;
   --space-1: clamp(4px, 0.8vh, 8px);
   --space-2: clamp(6px, 1.0vh, 10px);
@@ -111,7 +114,7 @@
   align-items: flex-start;
   justify-content: center;
   flex-shrink: 0;
-  margin-top: 6px;
+  margin-top: 8px;
 }
 
 .case-anchor-bullet {
@@ -168,6 +171,6 @@
   .case-anchor-bullet-wrap {
     width: 18px;
     height: 18px;
-    margin-top: 4px;
+    margin-top: 8px;
   }
 }

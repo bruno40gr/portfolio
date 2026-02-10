@@ -19,6 +19,21 @@ function isRealUrl(url) {
 const AMAZON_DEVICES_AI_IMAGE =
   "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80";
 
+export const CASE_STUDIES_TITLES = {
+  "amazon-devices-asset-system": "Amazon Devices Asset System",
+  "jas-image-builder": "Image Builder",
+  "jas-asset-browser": "Devices Component Asset Manager",
+  "jas-metadata-studio": "Devices Metadata Studio",
+  "jas-ai-generator": "Asset System AI Agent",
+  "amazon-core-inspire-tab": "Inspire Tab",
+  "amazon-core-ai-review-highlights": "AI-powered Customer Review Highlights",
+  "alto-internal": "Internal Platform for Intra Pharmacist Communication",
+  "alto-assistant": "Alto Assistant App",
+  "patreon-creator-tools": "Benefit Delivery Tools for Creators",
+  "patreon-pledge-streak-patent": "Pledge Streak Patent",
+  "patreon-studio2.0": "Studio 2.0 Design System",
+};
+
 export const PORTFOLIO_DATA = {
   profile: {
     name: "Bruno",
@@ -30,12 +45,10 @@ export const PORTFOLIO_DATA = {
     {
       id: "amazon-devices-asset-system",
       company: "Amazon",
-      title: "Amazon Devices Asset System",
+      title: CASE_STUDIES_TITLES["amazon-devices-asset-system"],
       impactSummary: "Enabled AI-powered Amazon Devices marketing content generation at a global scale.",
-      designerNote: `I architected an enterprise-scale ecosystem for Amazon Devices to automate workflows for 400 marketers. This foundational AI framework satisfied a high-level mandate to lead in the emerging tech landscape.
-
-I structured the transformation across four strategic pillars presented here as distinct case studies, delivering the phases that established the platform as a 2026 roadmap cornerstone.
-This remains the most strategically significant project of my career.`,
+      impactSummarySentence: "",
+      designerNote: `I architected an enterprise-scale ecosystem for Amazon Devices to automate workflows for 400 marketers. This foundational AI framework satisfied a high-level mandate to lead in the emerging tech landscape.\n\nI structured the transformation across four strategic pillars presented here as distinct case studies, delivering the phases that established the platform as a 2026 roadmap cornerstone.\nThis remains the most strategically significant project of my career.`,
       thumbnail: AMAZON_DEVICES_AI_IMAGE,
       status: "IN_BUILD",
       type: "INTERNAL",
@@ -95,216 +108,243 @@ This remains the most strategically significant project of my career.`,
         ]
       }
     },
-    {
-      id: "jas-image-builder",
-      parentId: "amazon-devices-asset-system",
-      company: "Amazon Devices",
-      title: "1. Image Builder",
-      impactSummary: "Designed a WYSIWYG image system that generates thousands of campaign assets in minutes across global marketplaces.",
-      designerNote: "This project focused on empowering non-designers to create high-quality marketing assets at scale, a critical step towards automated content pipelines.",
-      thumbnail: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=80",
-      status: "LAUNCHED",
-      type: "INTERNAL",
-      details: {
-        heroImage: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=80",
-        role: "Lead UX Designer",
-        timeline: "September 2024 – Feb 2025",
-        team: "Automate & Scale",
-        type: "INTERNAL",
-        services: [SERVICES.SYSTEMS_DESIGN, SERVICES.PROTOTYPING, SERVICES.UI_DESIGN],
-        blocks: [
-          { type: "heading", title: "Overview", hasDivider: false },
+    
+   {
+  id: "jas-image-builder",
+  parentId: "amazon-devices-asset-system",
+  company: "Amazon Devices",
+  title: CASE_STUDIES_TITLES["jas-image-builder"],
+  impactSummary: "An automated production system enabling localized asset generation at scale across 23 global marketplaces.",
+  impactSummarySentence: "A scalable editor enabling localized marketing asset generation across all global marketplaces.",
+  designerNote: "I led the design of this tool to help our marketing teams create device images without needing a designer for every update. Before this, we had a massive bottleneck where designers had to manually place product photos onto backgrounds for thousands of different language and size combinations. I wanted to make the editor easy to use while building in the smart logic needed to keep every image on-brand automatically. This work gave our global teams the speed they needed for major launches and served as the foundation for our entire automation system.",
+  thumbnail: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=80",
+  status: "LAUNCHED",
+  type: "INTERNAL",
+  details: {
+    heroImage: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=80",
+    role: "Lead UX Designer",
+    timeline: "September 2024 – Feb 2025",
+    team: "Automate & Scale",
+    type: "INTERNAL",
+    services: [SERVICES.SYSTEMS_DESIGN, SERVICES.PROTOTYPING, SERVICES.UI_DESIGN],
+    blocks: [
+      { type: "heading", title: "Overview", hasDivider: false },
+      {
+        type: "callout-box",
+        content:
+          "The Image Builder is a scalable production tool that allows merchandisers to compose hero images, ads, and banners across various cultural contexts and dimensions. It replaced a patchwork of creative tools with one consistent, automated workflow."
+      },
+      {
+        type: "text",
+        content: [
+          "<b>The Manual Bottleneck:</b> Before this system, merchandisers created assets across dozens of marketplaces using Photoshop, Illustrator, and inconsistent regional templates. Teams worked in silos, assets were rebuilt multiple times, and simple variations required hours of manual labor. To scale globally, Amazon Devices needed a predictable, automated way to create localized imagery.",
+          "One of the most valuable asset types in this ecosystem is lifestyle imagery, which shows devices in real environments. These assets consistently increase click-through rates by more than 40%, yet they historically required 40,000+ hours of manual CGI and graphic design work annually."
+        ]
+      },
+      { type: "heading", title: "Design Strategy" },
+      {
+        type: "text",
+        content: [
+          "While the product strategy was collaborative, I owned the <b>end-to-end UX/UI</b>. I focused on replacing a fragmented toolchain with a WYSIWYG builder that merchandisers could trust. I designed a <b>dynamic layout engine</b> that managed spacing, copy placement, and visual balance across dozens of dimensions automatically.",
+          "The system supports structured templates for consistency but allows for flexibility when teams need it. Under the hood, I introduced <b>intelligent guardrails</b>: the system automatically checks for pricing inconsistencies, device availability, and brand constraints by \'reading\' image attributes through a robust metadata library.",
+          "The goal was never to build another design tool: it was to build a production system that handled the mechanical steps so users could focus on content and clarity. I prioritized features like drag-and-drop editing and smart filters to ensure the tool felt fast and approachable for non-designers."
+        ]
+      },
+      { type: "heading", title: "Process" },
+      {
+        type: "list",
+        items: [
           {
-            type: "callout-box",
             content:
-              "A scalable image-creation tool that lets merchandisers compose hero images, ads, and banners across marketplaces, languages, cultural contexts, and dimensions. This replaced a patchwork of creative tools with one consistent production workflow."
-          },
-          {
-            type: "callout-box",
-            content:
-              `Amazon Devices Asset System launched in March 2025 and now saves an estimated <b>5,000 hours of manual production work per month</b> across design, 3D, and content creation teams. For Prime Day July 2025 alone, the system replaced more than <b>48,000 hours</b> of labor that would have been required to create 8,000 lifestyle images by hand.`
-          },
-          {
-            type: "text",
-            content: [
-              "Before JAS, merchandisers had to create hero images, ads, banners, and promo assets across dozens of marketplaces using Photoshop, Illustrator, spreadsheets, and inconsistent regional templates. Every team worked differently, assets were rebuilt multiple times, and simple variations turned into hours of manual production. If Amazon Devices wanted launches to move faster globally, we needed a predictable, scalable way to create images.",
-              "One of the most valuable asset types in JAS is lifestyle imagery. These are the images that show our devices in real environments like living rooms, kitchens, or porches. They consistently perform better than flat backgrounds and can increase click-through by more than 40 percent.",
-              "Today these images require photoshoots, 3D rendering, CGI and manual graphic design. Across all contributing teams, this results in roughly 40,000 hours of production work every year."
-            ]
-          },
-          { type: "heading", title: "Design Strategy" },
-          {
-            type: "text",
-            content: [
-              "The design strategy was shaped collaboratively, but I owned the UX and UI for the Image Asset Builder end-to-end. As a team, we aligned on replacing a fragmented toolchain with one WYSIWYG builder that merchandisers could trust. From there, I designed a dynamic layout engine that understood spacing, copy placement, text hierarchy, and visual balance across dozens of dimensions.",
-              "The tool supported structured templates for consistency, but also allowed free placement of devices, backgrounds, and secondary elements when teams needed flexibility. Under the hood, the system checked for pricing inconsistencies, device availability, cultural sensitivities, and brand constraints so users didn’t have to.",
-              "I also designed the practical features that made the tool feel fast and approachable: drag-and-drop editing, smart filters, preview modes, and guardrails driven by Catalog data and AI metadata. The goal was never to build another design tool. It was to build a production system that handled the mechanical steps while letting merchandisers focus on judgment and clarity."
-            ]
-          },
-          {
-            type: "list",
-            items: [
+              `<span class="process-step-title"><b>Discovery & User Insights</b></span><p class="mt-2">I adopted a user-centric discovery phase, utilizing agile research methodologies and \'scrappy\' usability testing with global merchandisers to map the friction in current workflows and define the product roadmap.</p>`,
+            visuals: [
               {
-                content:
-                  `<span class="process-step-title"><b>Starting with users.</b></span><br/>I built relationships with merchandisers across regions and ran informal, scrappy testing sessions. This helped surface real pain points early and shaped the direction of the tool.`,
-                visuals: [
-                  {
-                    kind: "embed",
-                    src: "https://player.cloudinary.com/embed/?cloud_name=diy08lj9x&public_id=JAS_-_Metadata_Photoshop_1_mstvm3",
-                    caption: "Fragment of a screen capture of a conversation as I learned how brand designers crafted images assets."
-                  }
-                ]
-              },
-              {
-                content:
-                  `<span class="process-step-title"><b>Finding the right layout.</b></span><br/>Separating inputs from outputs while supporting up to 60 marketplace and language combinations took several iterations. I explored different models until the UI felt both simple and scalable.`,
-                visuals: [
-                  {
-                    kind: "image",
-                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1769731424/175c5a76-0e29-4787-a5c9-0eb3c11a870b.png",
-                    caption: "Early iteration of a top-level form field and lower level previewed images."
-                  },
-                  {
-                    kind: "image",
-                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1769731833/1fa69945-d723-433e-a7c8-0bab74c87d8e.png",
-                    caption: "Exploring different ways to showcase Marketplaces as segmented controls / filters."
-                  }
-                ]
-              },
-              {
-                content:
-                  `<span class="process-step-title"><b>Handling complexity with clarity.</b></span><br/>Users needed to choose the right device, background, and seasonal elements without feeling lost. I designed guardrails and smart defaults that guided decisions without limiting flexibility.`,
-                visuals: [{ src: ASSETS.testImage, caption: "UI guardrails and smart selection logic." }]
-              },
-              {
-                content:
-                  `<span class="process-step-title"><b>Using prototypes to align quickly.</b></span><br/>I created fast, functional prototypes to communicate ideas to leadership and engineering. These helped unblock decisions and kept the team moving even when details were still forming.`,
-                visuals: [{ src: ASSETS.testImage, caption: "Lo-fi prototype used for stakeholder alignment." }]
-              },
-              {
-                content:
-                  `<span class="process-step-title"><b>Handoff and evolving Meridian.</b></span><br/>After landing the interaction model, I documented edge cases and handed designs to engineering. Meridian covered most needs, but I extended components where required and contributed improvements back to the system.`,
-                visuals: [{ src: ASSETS.testImage, caption: "Meridian component specifications and edge-case documentation." }]
+                kind: "embed",
+                src: "https://player.cloudinary.com/embed/?cloud_name=diy08lj9x&public_id=JAS_-_Metadata_Photoshop_1_mstvm3",
+                caption: "Agile research session: Learning how brand designers manually crafted image assets."
               }
             ]
           },
           {
-            type: "image-full",
-            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1737482813/Main_Builder_q8vj9z.png",
-            caption: "Main Builder"
-          },
-          { type: "heading", title: "Impact" },
-          {
-            type: "impact-box",
-            metrics: [
-              { value: "~100k hours", label: "Saved in 2025" },
-              { value: "~120k images", label: "Generated in 2025" }
-            ],
-            description: [
-              `Amazon Devices Asset System launched in March 2025 and now saves an estimated <b>5,000 hours of manual production work per month</b> across design, 3D, and content creation teams. For Prime Day July 2025 alone, the system replaced more than <b>48,000 hours</b> of labor that would have been required to create 8,000 lifestyle images by hand.`
-            ]
-          },
-          {
-            type: "text",
-            content: [
-              "Across 2025, the Builder and JASAI turned what used to be a manual, cross-team production grind into a repeatable system. Prime Day alone produced ~8,000 lifestyle and campaign images and eliminated ~50,000 hours of work, but the impact held across the entire calendar: seasonal sales generated ~4,500 images (saving ~30,000 hours), new product launches produced ~6,500 images (saving ~36,000 hours), and a typical month averaged ~1,100 images (removing ~6,000 hours). In total, the platform supported roughly ~120,000 images across 23 marketplaces and removed 100k+ hours of manual production work annually across design, 3D, and copy.",
-              "I’m genuinely proud of what this system is already proving. JAS is now doing the kind of work that used to take entire design and 3D teams weeks to deliver, and it’s doing it across 23 marketplaces without adding more people or slowing anything down. The hours saved are real, the impact is visible, and this is just the first version of the platform."
-            ]
-          }
-        ]
-      }
-    },
-    {
-      id: "jas-asset-manager",
-      parentId: "amazon-devices-asset-system",
-      company: "Amazon Devices",
-      title: "2. Devices Asset Browser",
-      impactSummary: "Built a centralized asset library that standardizes Amazon Devices imagery and enables AI-ready metadata at scale.",
-      designerNote: "This pillar established the foundational asset management necessary for an AI-powered ecosystem, ensuring data integrity and discoverability.",
-      thumbnail: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1600&q=80",
-      status: "IN_BUILD",
-      type: "INTERNAL",
-      details: {
-        heroImage: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1600&q=80",
-        role: "Lead UX Designer",
-        timeline: "August 2025 –Today",
-        team: "Automate & Scale",
-        type: "INTERNAL",
-        services: [SERVICES.PRODUCT_DESIGN, SERVICES.UX_RESEARCH, SERVICES.UI_DESIGN],
-        blocks: [
-          { type: "heading", title: "Overview", hasDivider: false },
-          {
-            type: "callout-box",
             content:
-              "The Asset Browser served as the visual library for Amazon Devices and the operational layer that enabled AI training, metadata governance, and automated generation across the entire JAS ecosystem."
-          },
-          {
-            type: "text",
-            content: [
-              "The Amazon Devices organization had no true source of truth for visual assets. Before images reached Media Central, they passed through a basic Images section inside Journeys that lacked metadata, organization, and browseability, which made it hard for teams to find the right assets and often led to outdated or duplicated work.",
-              "From the start, we knew that after launching the Image Asset Builder, a centralized asset library had to come next. The Builder could only scale if it was powered by clean, searchable, well-governed inputs. A reliable system for device images, variants, backgrounds, and confidential prototypes was mandatory for global consistency and for reducing manual production work.",
-              "This is why the Asset Browser became the foundation for everything that followed. It served as the visual library for Amazon Devices and the operational layer that enabled AI training, metadata governance, and automated generation across the entire JAS ecosystem."
-            ]
-          },
-          { type: "heading", title: "Design Strategy" },
-          {
-            type: "text",
-            content:
-              "I owned the UX and UI for the Asset Browser, designing it as both a simple discovery tool and a scalable metadata engine. The goal was to let users find the right asset in seconds while the system quietly handled complex rules around confidentiality, device lifecycle, region availability, and metadata requirements for AI. The Browser needed to feel familiar and intuitive, but under the hood it had to support strict governance and automation workflows that touched every JAS pillar."
-          },
-          { type: "heading", title: "Process" },
-          {
-            type: "list",
-            items: [
+              `<span class="process-step-title"><b>Information Architecture & Iteration</b></span><p class="mt-2">Solving for 23+ marketplaces required a robust IA. I iterated on various interaction models to handle the high density of configuration options (marketplaces x languages) until I arrived at a scalable UI that prioritized clarity.</p>`,
+            visuals: [
               {
-                content:
-                  `<span class="process-step-title"><b>Learning how teams actually searched.</b></span><br/>I met with merchandisers across markets to understand their retrieval habits and frustrations. This revealed inconsistencies in naming, taxonomy, and access patterns that shaped the Browser’s IA.`,
-                visuals: [{ src: ASSETS.testImage, caption: "Researching asset retrieval habits across global markets." }]
+                kind: "image",
+                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1769731424/175c5a76-0e29-4787-a5c9-0eb3c11a870b.png",
+                caption: "Early iteration of top-level form fields and live preview logic."
               },
               {
-                content:
-                  `<span class="process-step-title"><b>Designing search and filtering for scale.</b></span><br/>With hundreds of SKUs, device generations, and regional rules, the challenge was creating filters that felt powerful but not overwhelming. I tested different models until users could reliably find what they needed.`,
-                visuals: [{ src: ASSETS.testImage, caption: "Designing powerful filters for a growing SKU catalog." }]
-              },
-              {
-                content:
-                  `<span class="process-step-title"><b>Managing confidentiality and device lifecycle.</b></span><br/>I added clear visual cues and access controls for prototype assets, unreleased devices, region-restricted content, and deprecated imagery to reduce risk.`,
-                visuals: [{ src: ASSETS.testImage, caption: "Visual guardrails for unreleased and restricted assets." }]              },
-              {
-                content:
-                  `<span class="process-step-title"><b>Integrating AI metadata.</b></span><br/>I designed the flows for uploading images, reviewing AI-generated metadata, and assigning standardized tags. This became the backbone for training JASAI and powering automation in the Builder.`,
-                visuals: [
-                  { src: ASSETS.testImage, caption: "Reviewing AI-generated tags for accuracy." },
-                  { src: ASSETS.testImage, caption: "Bulk tag management and governance dashboard." }
-                ]
-              },
-              {
-                content:
-                  `<span class="process-step-title"><b>Rapid prototyping to align the team.</b></span><br/>I created quick prototypes for search flows, batch actions, and metadata panels to get early alignment with leadership and engineering.`,
-                visuals: [{ src: ASSETS.testImage, caption: "Prototype explorations for search + batch actions." }]
-              },
-              {
-                content:
-                  `<span class="process-step-title"><b>Evolving Meridian.</b></span><br/>The Browser required patterns that Meridian did not yet support. I extended components and contributed improvements back to the system.`,
-                visuals: [{ src: ASSETS.testImage, caption: "Component extensions and system improvements." }]
+                kind: "image",
+                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1769731833/1fa69945-d723-433e-a7c8-0bab74c87d8e.png",
+                caption: "Exploring segmented controls vs. nested filters for marketplace selection."
               }
             ]
           },
-          { type: "heading", title: "Outcome" },
           {
-            type: "text",
             content:
-              "The Asset Browser centralized all Amazon Devices visual assets into a single, governed library that teams can search, filter, and trust. It eliminated outdated folders, reduced duplication, and dramatically improved asset discoverability."
-          }
+              `<span class="process-step-title"><b>Stress-Testing & Guardrails</b></span><p class="mt-2">To ensure the tool was \'incompatibility-proof,\' I designed intelligent guardrails and smart defaults that managed seasonal availability and regional legal requirements, guiding the user toward a \'correct-by-construction\' design.</p>`,
+            visuals: [{ src: ASSETS.testImage, caption: "UI guardrails and smart selection logic for global compliance." }]
+          },
+          {
+            content:
+              `<span class="process-step-title"><b>Prototyping for Alignment</b></span><p class="mt-2">I utilized high-fidelity prototypes to validate the interaction model and secure stakeholder alignment. These were critical in communicating complex logic to engineering and gaining the trust of marketing leadership.</p>`,
+            visuals: [{ src: ASSETS.testImage, caption: "Functional prototype used for stakeholder and engineering alignment." }]
+          },
+          {
+  content:
+    `<span class="process-step-title"><b>Handoff and Evolving Meridian</b></span>
+    <p class="mt-2">
+      Design was not a linear path: it was a cyclical process. Once the interaction model was finalized, I moved into a rigorous documentation phase to cover edge cases and ensure a seamless technical handoff to engineering.
+    </p>
+    <p class="mt-2">
+      Internally, we leveraged Meridian, which is Amazon\'s dedicated enterprise design system that powers a unified language and human-centered designs for all internal-facing digital products at scale. While the system provided a robust foundation that covered most of our needs, the unique complexity of the Image Builder necessitated custom extensions. I designed these bespoke components where gaps existed and contributed our patterns back to the core system to help evolve the library for other internal teams.
+    </p>`,
+  visuals: [{ src: ASSETS.testImage, caption: "Meridian component specifications and edge-case documentation." }]
+}
+        ]
+      },
+      {
+        type: "image-full",
+        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1737482813/Main_Builder_q8vj9z.png",
+        caption: "The Final Image Builder Interface"
+      },
+      { type: "heading", title: "Final Shipped Product" },
+      {
+        type: "text",
+        content: [
+          "The first MVP launched in February 2025 to a targeted beta group, followed by a full-scale release in April 2025, strategically timed for the Prime Day production cycle. This version covered the entire Amazon Devices catalog across North America and EMEA, supporting 70% of high-traffic marketing placements, including homepage banners (Herotators), Quad cards, and Single Image cards. By focusing on these high-volume use cases first, the system delivered maximum operational ROI from day one."
+        ]
+      },
+      { type: "heading", title: "Impact & Operational ROI" },
+      {
+        type: "impact-box",
+        metrics: [
+          { value: "100k+ hours", label: "Reclaimed Annually" },
+          { value: "120k+ assets", label: "Generated in 2025" }
+        ],
+        description: [
+          "The Image Builder transformed Amazon Devices from a manual creative bottleneck into a high-velocity production engine. For Prime Day 2025 alone, the system produced <b>8,000 lifestyle images</b>, replacing <b>48,000+ hours of manual labor</b>. This reclaimed time allowed design teams to shift from repetitive production to high-level creative strategy."
         ]
       }
-    },
+    ]
+  }
+},
+    {
+  id: "jas-asset-manager",
+  parentId: "amazon-devices-asset-system",
+  company: "Amazon Devices",
+  title: "Devices Component Asset Manager",
+  impactSummary: "A centralized library for the Amazon Devices catalog that enables AI automation and makes marketing images easy to find across global markets.",
+  impactSummarySentence: "A centralized asset library that simplifies image discovery and enables AI powered automation.",
+  designerNote: "Once we launched the Image Builder, it was clear that a centralized asset library had to be the next step. This project creates the foundation we need for an AI powered system by making sure our data is clean and easy to manage. Currently, our device and marketing images are scattered across different cloud systems, which makes them hard to track and find. With this manager, we are solving that dependency to make campaign creation intuitive and save our teams thousands of hours of manual work.",
+  thumbnail: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=80",
+  status: "IN BUILD",
+  type: "INTERNAL",
+  details: {
+    heroImage: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=80",
+    role: "Lead UX Designer",
+    timeline: "Ongoing: Estimated Q2 2026",
+    team: "Automate & Scale",
+    type: "INTERNAL",
+    services: [SERVICES.SYSTEMS_DESIGN, SERVICES.UX_RESEARCH, SERVICES.UI_DESIGN],
+    blocks: [
+      { type: "heading", title: "Overview", hasDivider: false },
+      {
+        type: "callout-box",
+        content:
+          "The Asset Manager serves as the visual library for Amazon Devices. It is the operational layer that allows for AI training, metadata organization, and automated image generation across our entire system."
+      },
+      {
+        type: "text",
+        content: [
+          "<b>The Problem:</b> Our organization had no single source of truth for visual assets. Currently, teams find it difficult to locate the right images, which leads to outdated assets being used or work being duplicated. The Image Builder can only scale if it is powered by a reliable system of device photos, backgrounds, and confidential prototypes.",
+          "Marketing images are currently scattered across multiple internal systems, requiring heavy manual tracking and off-site management. This tool, known internally as DCAM, aims to solve this dependency and simplify how our teams interact with our product catalog."
+        ]
+      },
+      { type: "heading", title: "Design Strategy" },
+      {
+        type: "text",
+        content: [
+          "I designed the Asset Browser to be a simple discovery tool that handles complex logic under the hood. The goal was to let a user find the right asset in seconds while the system managed the rules for confidentiality, region availability, and AI requirements.",
+          "By focusing on a clean and familiar interface, I ensured that the tool felt intuitive for merchandisers while still supporting the strict governance and automation workflows that touch every part of the broader Asset System."
+        ]
+      },
+      { type: "heading", title: "Process" },
+      {
+        type: "list",
+        items: [
+          {
+            content:
+              `<span class="process-step-title"><b>UX Research: Learning How Teams Search</b></span><p class="mt-2">I met with merchandisers in different markets to see how they manage images today. I found that inconsistent naming, scattered storage, and varied access patterns were the biggest blockers to speed. These insights helped me shape the browser's navigation and information architecture.</p>`,
+            visuals: [
+              {
+                kind: "image",
+                src: ASSETS.testImage,
+                caption: "Researching asset retrieval habits and naming inconsistencies across global markets."
+              }
+            ]
+          },
+          {
+            content:
+              `<span class="process-step-title"><b>Managing Complexity with Smart Filtering</b></span><p class="mt-2">With hundreds of product IDs and multiple generations of devices to track, I focused on a powerful but simple filtering UI. I added clear visual cues for unreleased prototypes and restricted content to prevent accidental leaks and reduce legal risk.</p>`,
+            visuals: [
+              {
+                kind: "image",
+                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1769731424/175c5a76-0e29-4787-a5c9-0eb3c11a870b.png",
+                caption: "Designing visual guardrails and access controls for restricted assets."
+              }
+            ]
+          },
+          {
+  content:
+    `<span class="process-step-title"><b>Streamlining the Approval Workflow</b></span><p class="mt-2">Our marketing partners needed a reliable way to approve, reject, or request changes to images without leaving the platform. Previously, these reviews happened offline and required multiple layers of manual follow-up. I worked closely with the QA and design teams to build a lean approval flow directly into the tool. This simplified the review process and was a major factor in getting teams to adopt the new system quickly.</p>`,
+  visuals: [
+    { 
+      src: ASSETS.testImage, 
+      caption: "UX flow for the integrated QA and approval process." 
+    }
+  ]
+},
+          {
+            content:
+              `<span class="process-step-title"><b>Evolving the System</b></span><p class="mt-2">This project required new UI patterns that our internal design system, Meridian, did not have yet. I designed these new components, such as batch management dashboards and metadata panels, and contributed them back to the system for other internal teams to use.</p>`,
+            visuals: [{ src: ASSETS.testImage, caption: "Component extensions and improvements contributed back to Meridian." }]
+          }
+        ]
+      },
+      { type: "heading", title: "Functional Blueprint" },
+      {
+        type: "text",
+        content: [
+          "This developer ready blueprint is the source of truth for the build. The clickable prototype covers core features that we researched and validated, including batch management and smart filtering. It clearly defines the interaction logic and edge cases to make sure the final tool works exactly as intended."
+        ]
+      },
+      {
+            type: "figma",
+            src: "https://www.figma.com/proto/PG1SSc8aZlpS9atMCvKg3M/Genie---Product-Demo-Day?page-id=174%3A13910&node-id=2243-25245&p=f&viewport=226%2C732%2C0.04&t=s3IjMY4Gl6tH4KiA-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=2243%3A25245&show-proto-sidebar=1",
+            caption: "Clickable prototype for batch management and smart filtering."
+          },
+          
+      { type: "heading", title: "Outcome" },
+      {
+        type: "text",
+        content: [
+          "Although still in development, this browser is already the foundation for the Image Builder. It has turned our massive catalog into a searchable, automation ready library that serves as the operational layer for our AI engine. By centralizing our assets, we are not only saving production time but also ensuring that every marketing image used globally is current and brand compliant."
+        ]
+      }
+    ]
+  }
+},
+    
+
     {
       id: "jas-metadata-studio",
       parentId: "amazon-devices-asset-system",
       company: "Amazon Devices",
-      title: "3. Metadata Admin Tool",
+      title: CASE_STUDIES_TITLES["jas-metadata-studio"],
       impactSummary: "Created a metadata engine that reduces manual input and powers AI-assisted automation across the asset ecosystem.",
+      impactSummarySentence: "",
       designerNote: "This project involved deeply understanding metadata structures and designing a system that leveraged AI to minimize manual effort while maintaining data quality and consistency.",
       thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80",
       status: "IN_BUILD",
@@ -345,7 +385,7 @@ This remains the most strategically significant project of my career.`,
             items: [
               {
                 content:
-                  `<span class="process-step-title"><b>Understanding real workflows.</b></span><br/>I partnered with System Designers to study how they used Photoshop automations, file naming conventions, and batch tools to produce component images. This gave me a grounded view of where metadata was created and which parts of the process could be simplified.`,
+                  `<span class="process-step-title"><b>Understanding real workflows.</b></span><p class="mt-2">I partnered with System Designers to study how they used Photoshop automations, file naming conventions, and batch tools to produce component images. This gave me a grounded view of where metadata was created and which parts of the process could be simplified.</p>`,
                 visuals: [
                   {
                     src: ASSETS.testImage,
@@ -355,7 +395,7 @@ This remains the most strategically significant project of my career.`,
               },
               {
                 content:
-                  `<span class="process-step-title"><b>Classifying metadata inputs.</b></span><br/>Working with engineering, design, and brand partners, I defined which metadata fields should be inferred, which required human judgment, and which could be suggested or generated by AI.`,
+                  `<span class="process-step-title"><b>Classifying metadata inputs.</b></span><p class="mt-2">Working with engineering, design, and brand partners, I defined which metadata fields should be inferred, which required human judgment, and which could be suggested or generated by AI.</p>`,
                 visuals: [
                   {
                     src: ASSETS.testImage,
@@ -365,7 +405,7 @@ This remains the most strategically significant project of my career.`,
               },
               {
                 content:
-                  `<span class="process-step-title"><b>Validating AI feasibility.</b></span><br/>I ran AI experiments that explored automated classification, visual variant detection, screen mapping, image warping, proportional scaling, and metadata extraction. These tests showed that many of the required metadata fields could be inferred rather than manually entered, which shaped the upload flow, UI, and underlying data model.`,
+                  `<span class="process-step-title"><b>Validating AI feasibility.</b></span><p class="mt-2">I ran AI experiments that explored automated classification, visual variant detection, screen mapping, image warping, proportional scaling, and metadata extraction. These tests showed that many of the required metadata fields could be inferred rather than manually entered, which shaped the upload flow, UI, and underlying data model.</p>`,
                 visuals: [
                   {
                     src: ASSETS.testImage,
@@ -376,7 +416,7 @@ This remains the most strategically significant project of my career.`,
               },
               {
                 content:
-                  `<span class="process-step-title"><b>Prototyping to align direction.</b></span><br/>I built low fidelity prototypes to show how a streamlined metadata workflow could function. These were shared across product, design, engineering, and Devices Brand Studio to build confidence and align expectations around what automation could realistically support.`,
+                  `<span class="process-step-title"><b>Prototyping to align direction.</b></span><p class="mt-2">I built low fidelity prototypes to show how a streamlined metadata workflow could function. These were shared across product, design, engineering, and Devices Brand Studio to build confidence and align expectations around what automation could realistically support.</p>`,
                 visuals: [
                   {src: ASSETS.testImage,
                     caption: "Lo-fi prototypes used to align teams on a reduced-input workflow and AI validation checkpoints."
@@ -385,7 +425,7 @@ This remains the most strategically significant project of my career.`,
               },
               {
                 content:
-                  `<span class="process-step-title"><b>Refining for clarity and scale.</b></span><br/>I iterated on layouts and validation flows and removed anything that introduced noise. The final workflow focused on speed, clarity, and preparing assets for future AI-driven automation.`,
+                  `<span class="process-step-title"><b>Refining for clarity and scale.</b></span><p class="mt-2">I iterated on layouts and validation flows and removed anything that introduced noise. The final workflow focused on speed, clarity, and preparing assets for future AI-driven automation.</p>`,
                 visuals: [
                   {
                     src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1769461141/admintool_r23r8u.gif",
@@ -408,8 +448,9 @@ This remains the most strategically significant project of my career.`,
       id: "jas-ai-generator",
       parentId: "amazon-devices-asset-system",
       company: "Amazon Devices",
-      title: "4. Journeys AI Agent",
+      title: CASE_STUDIES_TITLES["jas-ai-generator"],
       impactSummary: "Prototyped an AI lifestyle-image generator that trained automated placement rules for Amazon Devices campaigns.",
+      impactSummarySentence: "",
       designerNote: "This work explored the bleeding edge of generative AI for visual content, focusing on how human feedback loops can refine AI models for brand-specific quality and consistency.",
       thumbnail: AMAZON_DEVICES_AI_IMAGE,
       status: "LAUNCHED",
@@ -443,10 +484,10 @@ This remains the most strategically significant project of my career.`,
           {
             type: "list",
             items: [
-              `<span class="process-step-title"><b>Defining what correct placement meant.</b></span><br/>I worked with Brand Studio and 3D teams to establish the rules for angles, shadows, proportions, and screen behavior. This gave the model a clear standard to learn from.`,
-              `<span class="process-step-title"><b>Designing and prototyping the AI training loop.</b></span><br/>I built the workflow where designers reviewed AI outputs and corrected mistakes. This included reshaping metadata into simple controls, writing clear labels, and creating small widgets and interactions that made feedback fast and consistent.`,
-              `<span class="process-step-title"><b>Running placement and composition tests.</b></span><br/>I partnered with science to evaluate early results, check cutout quality, verify device placement in backgrounds, and understand how well the model handled lighting and perspective.`,
-              `<span class="process-step-title"><b>Preparing integration with the Image Builder.</b></span><br/>I designed how approved AI outputs flow into the Builder so teams can generate lifestyle images and local variations without manual reconstruction.`
+              `<span class="process-step-title"><b>Defining what correct placement meant.</b></span><p class="mt-2">I worked with Brand Studio and 3D teams to establish the rules for angles, shadows, proportions, and screen behavior. This gave the model a clear standard to learn from.</p>`,
+              `<span class="process-step-title"><b>Designing and prototyping the AI training loop.</b></span><p class="mt-2">I built the workflow where designers reviewed AI outputs and corrected mistakes. This included reshaping metadata into simple controls, writing clear labels, and creating small widgets and interactions that made feedback fast and consistent.</p>`,
+              `<span class="process-step-title"><b>Running placement and composition tests.</b></span><p class="mt-2">I partnered with science to evaluate early results, check cutout quality, verify device placement in backgrounds, and understand how well the model handled lighting and perspective.</p>`,
+              `<span class="process-step-title"><b>Preparing integration with the Image Builder.</b></span><p class="mt-2">I designed how approved AI outputs flow into the Builder so teams can generate lifestyle images and local variations without manual reconstruction.</p>`
             ]
           },
           { type: "heading", title: "JAS Metadata AI Automation" },
@@ -477,11 +518,8 @@ This remains the most strategically significant project of my career.`,
               { value: "12,000", label: "Lifestyle Variations Generated" },
               { value: "5%", label: "Outputs Reviewed" },
               { value: "~4 min", label: "Review Time / Output" }
-            ]
-          },
-          {
-            type: "text",
-            content: [
+            ],
+            description: [
               "We released JASAI in August 2025. The model generated roughly 12,000 lifestyle image variations across multiple devices and backgrounds to build the training library. About 5 percent of these outputs were reviewed by creative directors to evaluate whether the AI met our quality bar. Each review took about four minutes, which helped us validate the model’s strengths but also revealed the limits of our approach.",
               "While JASAI proved that automated lifestyle generation was possible, adoption was low. The human review required to train the model made the workflow harder to scale, and the outputs did not reach the level of consistency needed for full deployment. The team used these learnings to shift toward new AI strategies and explore other technologies better suited for production-level automation."
             ]
@@ -492,8 +530,9 @@ This remains the most strategically significant project of my career.`,
     {
       id: "amazon-core-inspire-tab",
       company: "Amazon Core Shopping",
-      title: "Inspire Tab",
+      title: CASE_STUDIES_TITLES["amazon-core-inspire-tab"],
       impactSummary: "Led Smart Home discovery strategy for Amazon’s feed experience, driving a measurable lift in device sales.",
+      impactSummarySentence: "",
       designerNote: "This project involved navigating a complex organizational structure and integrating new discovery patterns within a mature, high-stakes e-commerce environment.",
       thumbnail: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=1200&q=80",
       status: "DEPRECATED",
@@ -517,6 +556,7 @@ This remains the most strategically significant project of my career.`,
             content: [
               "I worked on Inspire while on the Core Shopping Smart Home Devices team at Amazon. The feature launched in December 2022 and contributed to a ~2% lift in total units sold, representing roughly 13.5M devices worldwide, before being deprecated in early 2024 as Amazon shifted focus toward newer AI-driven discovery experiences.",
               "My scope focused on making Inspire work for Smart Home at Amazon scale. The challenge was not content volume. The challenge was ensuring the right devices surfaced with the right context, without manual curation, and without eroding customer trust in a category where compatibility and correctness matter."
+          
             ]
           },
           { type: "heading", title: "The Problem" },
@@ -541,7 +581,7 @@ This remains the most strategically significant project of my career.`,
             items: [
               {
                 content:
-                  `<span class="process-step-title"><b>Defining what relevant discovery meant for Smart Home.</b></span><br/>I helped define what good looked like for Smart Home devices inside a creator-driven feed, aligning on constraints that were not needed for softer categories. Compatibility cues, correct device grouping, and avoiding accessory mis-matches became foundational expectations.`,
+                  `<span class="process-step-title"><b>Defining what relevant discovery meant for Smart Home.</b></span><p class="mt-2">I helped define what good looked like for Smart Home devices inside a creator-driven feed, aligning on constraints that were not needed for softer categories. Compatibility cues, correct device grouping, and avoiding accessory mis-matches became foundational expectations.</p>`,
                 visuals: [
                   {
                     src: ASSETS.testImage,
@@ -551,7 +591,7 @@ This remains the most strategically significant project of my career.`,
               },
               {
                 content:
-                  `<span class="process-step-title"><b>Shaping metadata inputs that supported ML ranking.</b></span><br/>I partnered closely with data science to tune how device metadata informed ranking and content association, balancing engagement signals with catalog correctness. This included identifying what needed to be treated as a hard constraint versus what could remain flexible or learned.`,
+                  `<span class="process-step-title"><b>Shaping metadata inputs that supported ML ranking.</b></span><p class="mt-2">I partnered closely with data science to tune how device metadata informed ranking and content association, balancing engagement signals with catalog correctness. This included identifying what needed to be treated as a hard constraint versus what could remain flexible or learned.</p>`,
                 visuals: [
                   {
                     src: ASSETS.testImage,
@@ -562,7 +602,7 @@ This remains the most strategically significant project of my career.`,
               },
               {
                 content:
-                  `<span class="process-step-title"><b>Making device content feel deliberate in the feed.</b></span><br/>I influenced feed-level experience decisions so Smart Home content did not feel incidental or randomly injected. The focus was product identification, clearer context, and guardrails that reduced misinterpretation and wrong-click behavior.`,
+                  `<span class="process-step-title"><b>Making device content feel deliberate in the feed.</b></span><p class="mt-2">I influenced feed-level experience decisions so Smart Home content did not feel incidental or randomly injected. The focus was product identification, clearer context, and guardrails that reduced misinterpretation and wrong-click behavior.</p>`,
                 visuals: [
                   {
                     src: ASSETS.testImage,
@@ -572,7 +612,7 @@ This remains the most strategically significant project of my career.`,
               },
               {
                 content:
-                  `<span class="process-step-title"><b>Supporting creator tools for commerce attachment.</b></span><br/>I contributed to the creator workflow that enabled influencers and brands to attach ASINs to short-form videos and photos. The goal was to reduce cool video, wrong product outcomes and strengthen product-to-content association.`,
+                  `<span class="process-step-title"><b>Supporting creator tools for commerce attachment.</b></span><p class="mt-2">I contributed to the creator workflow that enabled influencers and brands to attach ASINs to short-form videos and photos. The goal was to reduce cool video, wrong product outcomes and strengthen product-to-content association.</p>`,
                 visuals: [
                   {
                     src: ASSETS.testImage,
@@ -619,8 +659,9 @@ This remains the most strategically significant project of my career.`,
     {
       id: "amazon-core-ai-review-highlights",
       company: "Amazon Core Shopping",
-      title: "AI-powered Customer Review Highlights",
+      title: CASE_STUDIES_TITLES["amazon-core-ai-review-highlights"],
       impactSummary: "Designed AI-driven review highlights that distilled thousands of reviews into clear, actionable product insights.",
+      impactSummarySentence: "",
       designerNote: "This project leveraged advanced NLP and design thinking to transform overwhelming customer feedback into digestible, actionable product intelligence for shoppers.",
       thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
       status: "LAUNCHED",
@@ -638,8 +679,9 @@ This remains the most strategically significant project of my career.`,
     {
       id: "alto-internal",
       company: "Alto Pharmacy",
-      title: "Internal Platform for Intra Pharmacist Communication",
+      title: CASE_STUDIES_TITLES["alto-internal"],
       impactSummary: "Improved pharmacist collaboration workflows by centralizing context and streamlining internal communication.",
+      impactSummarySentence: "",
       designerNote: "This project was about empowering healthcare professionals with intuitive tools to manage complex patient interactions, directly impacting care quality and efficiency.",
       thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
       status: "LEGACY",
@@ -663,8 +705,9 @@ This remains the most strategically significant project of my career.`,
     {
       id: "alto-assistant",
       company: "Alto Pharmacy",
-      title: "Alto Assistant App",
+      title: CASE_STUDIES_TITLES["alto-assistant"],
       impactSummary: "Reduced inbound patient messaging by 38% with a smarter triage experience that improved care efficiency.",
+      impactSummarySentence: "",
       designerNote: "Designing for patient communication in healthcare required a delicate balance of clarity, empathy, and operational efficiency to truly enhance the patient experience.",
       thumbnail: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80",
       status: "LEGACY",
@@ -759,7 +802,7 @@ This remains the most strategically significant project of my career.`,
             items: [
               {
                 content:
-                  `<span class="process-step-title"><b>Exploration 1: Multi-select to capture intent.</b></span><br/>Patients frequently raised multiple concerns in a single message. Multi-select let patients express intent naturally while giving the system richer upstream context.`,
+                  `<span class="process-step-title"><b>Exploration 1: Multi-select to capture intent.</b></span><p class="mt-2">Patients frequently raised multiple concerns in a single message. Multi-select let patients express intent naturally while giving the system richer upstream context.</p>`,
                 visuals: [
                   {
                     src: "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b0484998-57a5-4e24-82db-f93be547e3c6/Untitled.png",
@@ -773,7 +816,7 @@ This remains the most strategically significant project of my career.`,
               },
               {
                 content:
-                  `<span class="process-step-title"><b>Exploration 2: Setting expectations upfront.</b></span><br/>We explored clarifying pharmacist involvement earlier in the flow. This reduced ambiguity but risked feeling blunt and over-filtering valid medical questions.`,
+                  `<span class="process-step-title"><b>Exploration 2: Setting expectations upfront.</b></span><p class="mt-2">We explored clarifying pharmacist involvement earlier in the flow. This reduced ambiguity but risked feeling blunt and over-filtering valid medical questions.</p>`,
                 visuals: [
                   {
                     src: "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cbb33b13-4fa7-4ffd-9441-39a3b78e78ea/Untitled.png",
@@ -783,7 +826,7 @@ This remains the most strategically significant project of my career.`,
               },
               {
                 content:
-                  `<span class="process-step-title"><b>Exploration 3: Minimal intervention.</b></span><br/>A low-friction approach allowed free-form questions with little guidance. It was fast for patients but pushed complexity downstream and increased operational cost.`,
+                  `<span class="process-step-title"><b>Exploration 3: Minimal intervention.</b></span><p class="mt-2">A low-friction approach allowed free-form questions with little guidance. It was fast for patients but pushed complexity downstream and increased operational cost.</p>`,
                 visuals: [
                   {
                     src: "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8614fd55-bb94-4e9b-befa-ed196009928f/Untitled.png",
@@ -793,7 +836,7 @@ This remains the most strategically significant project of my career.`,
               },
               {
                 content:
-                  `<span class="process-step-title"><b>Pre-exploration validation: two variants.</b></span><br/>We pressure-tested how much structure we could introduce while preserving trust.`,
+                  `<span class="process-step-title"><b>Pre-exploration validation: two variants.</b></span><p class="mt-2">We pressure-tested how much structure we could introduce while preserving trust.</p>`,
                 visuals: [
                   {
                     src: "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0088ec04-3183-4281-8646-9fdf5324247c/Untitled.png",
@@ -807,7 +850,7 @@ This remains the most strategically significant project of my career.`,
               },
               {
                 content:
-                  `<span class="process-step-title"><b>Prototypes explored three paths.</b></span><br/>These options explored different ways to balance clarity, flexibility, and operational cost.`,
+                  `<span class="process-step-title"><b>Prototypes explored three paths.</b></span><p class="mt-2">These options explored different ways to balance clarity, flexibility, and operational cost.</p>`,
                 visuals: [
                   {
                     src: "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e15cbff2-13a1-4b76-abe9-e7024ff64b41/AA_option_1.gif",
@@ -825,7 +868,7 @@ This remains the most strategically significant project of my career.`,
               },
               {
                 content:
-                  `<span class="process-step-title"><b>Prototype library.</b></span><br/><a href='https://www.figma.com/proto/EuDrnvOQOZx8Wrc4beLGTB/AA-Direct-to-Pharmacist?page-id=10888%3A142839&node-id=10894%3A435574&viewport=614%2C-1252%2C0.19&scaling=scale-down&starting-point-node-id=10894%3A435574&show-proto-sidebar=1' target='_blank' rel='noopener noreferrer'>View prototypes in detail</a>.`
+                  `<span class="process-step-title"><b>Prototype library.</b></span><p class="mt-2"><a href='https://www.figma.com/proto/EuDrnvOQOZx8Wrc4beLGTB/AA-Direct-to-Pharmacist?page-id=10888%3A142839&node-id=10894%3A435574&viewport=614%2C-1252%2C0.19&scaling=scale-down&starting-point-node-id=10894%3A435574&show-proto-sidebar=1' target='_blank' rel='noopener noreferrer'>View prototypes in detail</a>.</p>`
               }
             ]
           },
@@ -865,8 +908,9 @@ This remains the most strategically significant project of my career.`,
     {
       id: "patreon-creator-tools",
       company: "Patreon",
-      title: "Benefit Delivery Tools for Creators",
+      title: CASE_STUDIES_TITLES["patreon-creator-tools"],
       impactSummary: "Empowered creators with better benefit delivery tools that improved scale, clarity, and consistency.",
+      impactSummarySentence: "",
       designerNote: "This work focused on enhancing the creator experience by providing intuitive tools that streamline the delivery of member benefits, fostering a more robust creator economy.",
       thumbnail: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
       status: "LAUNCHED",
@@ -882,29 +926,31 @@ This remains the most strategically significant project of my career.`,
       }
     },
     {
-      id: "patreon-creator-tools",
+      id: "patreon-pledge-streak-patent",
       company: "Patreon",
-      title: "Benefit Delivery Tools for Creators",
-      impactSummary: "Empowered creators with better benefit delivery tools that improved scale, clarity, and consistency.",
-      designerNote: "This work focused on enhancing the creator experience by providing intuitive tools that streamline the delivery of member benefits, fostering a more robust creator economy.",
+      title: CASE_STUDIES_TITLES["patreon-pledge-streak-patent"],
+      impactSummary: "Case study coming soon.",
+      impactSummarySentence: "",
+      designerNote: "Case study coming soon.",
       thumbnail: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
-      status: "LAUNCHED",
+      status: "IN_BUILD",
+      type: "INTERNAL",
       details: {
         heroImage: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
         role: "Sr. Product Designer",
-        timeline: "October 2020",
+        timeline: "2021",
         team: "Creator Team",
         type: PRODUCT_TYPES.INTERNAL,
-        services: [SERVICES.STRATEGY, SERVICES.UI_DESIGN, SERVICES.PROTOTYPING],
+        services: [SERVICES.STRATEGY, SERVICES.PRODUCT_DESIGN],
         blocks: [{ type: "text", content: "Case study coming soon." }]
-        
       }
     },
     {
       id: "patreon-studio2.0",
       company: "Patreon",
-      title: "Studio 2.0 Design System",
+      title: CASE_STUDIES_TITLES["patreon-studio2.0"],
       impactSummary: "Modernized Patreon’s design system to streamline creator workflows and improve product consistency.",
+      impactSummarySentence: "",
       designerNote: "Leading the evolution of a design system involved not just visual and component work, but deeply understanding developer needs and advocating for design consistency across the platform.",
       thumbnail: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
       status: "DEPRECATED",
@@ -940,7 +986,7 @@ export const WORK_GROUPS = [
   {
     company: "Patreon",
     roleLine: "Sr. Product Designer · Creator Tools · 2020–2021",
-    projectIds: ["patreon-creator-tools", "patreon-studio2.0"]
+    projectIds: ["patreon-creator-tools", "patreon-pledge-streak-patent", "patreon-studio2.0"]
   },
   {
     company: "Prox",

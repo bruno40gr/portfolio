@@ -70,26 +70,25 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
   const renderBlock = (block, index) => {
     switch (block.type) {
       case "text": {
-        const textClass = block.subtype === "designer-note" ? "designer-note" : "text-lg text-neutral-700 leading-relaxed";
-        return (
-          <section key={index} className="mb-10 text-left">
-            {block.title && (
-              <h3 className="text-lg md:text-xl text-slate-900 mb-2 md:mb-3 font-bold leading-snug">
-                {block.title}
-              </h3>
-            )}
-            {Array.isArray(block.content) ? (
-              block.content.map((p, i) => (
-                <p key={i} className={`${textClass} mb-4 md:mb-6`}>
-                  {p}
-                </p>
-              ))
-            ) : (
-              <p className={textClass}>{block.content}</p>
-            )}
-          </section>
-        );
-      }
+  const textClass = block.subtype === "designer-note" ? "designer-note" : "text-lg text-neutral-700 leading-relaxed";
+  return (
+    <section key={index} className="mb-10 text-left">
+      {block.title && (
+        <h3 className="text-lg md:text-xl text-slate-900 mb-2 md:mb-3 font-bold leading-snug">
+          {block.title}
+        </h3>
+      )}
+      {Array.isArray(block.content) ? (
+        block.content.map((p, i) => (
+          <p key={i} className={`${textClass} mb-4 md:mb-6`} dangerouslySetInnerHTML={{ __html: p }} />
+        ))
+      ) : (
+        <p className={textClass} dangerouslySetInnerHTML={{ __html: block.content }} />
+      )}
+    </section>
+  );
+}
+
 
       case "callout-box":
         return <CalloutBox key={index} content={block.content} size="large" />;
@@ -149,7 +148,14 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
       case "table":
         return <DataTable key={index} columns={block.columns} rows={block.rows} />;
 
-      case "pillar-grid":
+            case "figma":
+        return (
+          <div key={index} className="mb-10">
+            <FigmaThumbnail src={block.src} caption={block.caption} />
+            {block.caption && <Caption>{block.caption}</Caption>}
+          </div>
+        );
+case "pillar-grid":
         return (
           <div key={index} className="mt-8 mb-12">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-12 text-left">
@@ -280,7 +286,8 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
               <ProjectHeader company={project.company} title={project.title} services={project.details?.services} />
             </div>
             <h1 className="font-serif text-[2.5rem] md:text-[3.5rem] text-slate-900 mb-5 md:mb-6 font-[500] tracking-tight leading-[3rem] md:!leading-[4.5rem] text-left">
-              {project.impactSummary.split(" ").slice(0, 14).join(" ")}
+              {project.impactSummarySentence || project.impactSummary}
+
             </h1>
 
             {project.designerNote && (

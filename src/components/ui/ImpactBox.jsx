@@ -33,9 +33,9 @@ export const ImpactBox = ({ metrics = [], size = "small" }) => {
         {metrics.map((m, i) => (
           <div
             key={i}
-            className="flex flex-col justify-center p-6 md:p-10 bg-slate-100 border border-slate-100 rounded-xl shadow-sm"
+            className="flex flex-col justify-center p-6 md:p-8 bg-slate-100 border border-slate-100 rounded-xl shadow-sm"
           >
-            <span className="text-3xl md:text-[3.25rem] text-slate-900 mb-2 font-[600] tracking-tight leading-none">
+            <span className="text-3xl md:text-[36px] text-slate-900 mb-2 font-[600] tracking-tight leading-none">
               {m.value}
             </span>
             <span className="text-lg text-slate-600 font-medium">

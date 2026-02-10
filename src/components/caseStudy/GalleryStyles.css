@@ -4,7 +4,7 @@
   --header-h: 56px;
   --hero-pad-y: clamp(48px, 8vh, 80px);
   --hero-gap: clamp(28px, 6vh, 44px);
-  --logo-max-w: clamp(240px, 22vw, 336px);
+    --logo-max-w: clamp(320px, 26.4vw, 460px);
   --hero-cta-gap: 16px;
   
   /* Colors */
