@@ -980,11 +980,13 @@ export const WORK_GROUPS = [
   },
   {
     company: "Alto Pharmacy",
+    logo: "Alto Pharmacy",
     roleLine: "Staff Product Designer · 2021–2022",
     projectIds: ["alto-internal", "alto-assistant"]
   },
   {
     company: "Patreon",
+    logo: "Patreon",
     roleLine: "Sr. Product Designer · Creator Tools · 2020–2021",
     projectIds: ["patreon-creator-tools", "patreon-pledge-streak-patent", "patreon-studio2.0"]
   },
@@ -993,11 +995,7 @@ export const WORK_GROUPS = [
     roleLine: "Founding Designer · 2019–2020",
     projectIds: ["prox-1"]
   },
-  {
-    company: "Instapage",
-    roleLine: "Sr. UX Designer · Growth & Dashboard · 2017–2019",
-    projectIds: ["instapage-1"]
-  }
+
 ];
 
 export const COMPANY_STRIPE_LOGOS = [

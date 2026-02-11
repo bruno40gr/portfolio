@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ArrowLeft, Menu, X } from "lucide-react";
+import { ArrowLeft, ChevronDown, Menu, X } from "lucide-react";
 
 import { ASSETS, COMPANY_STRIPE_LOGOS } from "./data/assets";
-import { PORTFOLIO_DATA } from "./data/portfolioData";
+import { PORTFOLIO_DATA, WORK_GROUPS } from "./data/portfolioData";
 
-import LogoIcon from "./components/ui/LogoIcon";
+import WorkDropdown from "./components/ui/WorkDropdown";
+import LogoIcon from "./components/ui/logoIcon";
 import Button from "./components/ui/Button";
 
 import CompanyStripe from "./components/home/CompanyStripe";
@@ -19,7 +20,24 @@ export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isWorkDropdownOpen, setIsWorkDropdownOpen] = useState(false);
+  const [isMobileWorkExpanded, setIsMobileWorkExpanded] = useState(false);
   const headerRef = useRef(null);
+  
+  // Ref for the hover delay timer
+  const workTimeoutRef = useRef(null);
+
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === 'Escape') {
+        setIsWorkDropdownOpen(false);
+        setIsMobileMenuOpen(false);
+        setIsContactOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, []);
 
   useEffect(() => {
     const update = () => {
@@ -35,6 +53,19 @@ export default function App() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  // Smooth hover handlers for the Work Dropdown
+  const handleWorkEnter = () => {
+    if (workTimeoutRef.current) clearTimeout(workTimeoutRef.current);
+    setIsWorkDropdownOpen(true);
+  };
+
+  const handleWorkLeave = () => {
+    // 200ms grace period allows mouse to travel across the gap
+    workTimeoutRef.current = setTimeout(() => {
+      setIsWorkDropdownOpen(false);
+    }, 200);
+  };
 
   const navigateTo = (page, anchor) => {
     if (page === "home" && anchor === "work") {
@@ -118,12 +149,41 @@ export default function App() {
             >
               <Menu size={18} />
             </button>
-            <button
-              onClick={() => navigateTo("home", "work")}
-              className="type-nav opacity-90 hover:opacity-100 transition-opacity hidden md:inline-flex"
-            >
-              Work
-            </button>
+            
+            {/* --- WORK DROPDOWN WRAPPER --- */}
+            <div className="relative h-full flex items-center">
+              <button
+                onMouseEnter={handleWorkEnter}
+                onMouseLeave={handleWorkLeave}
+                onClick={() => setIsWorkDropdownOpen(!isWorkDropdownOpen)}
+                className="type-nav opacity-90 hover:opacity-100 transition-opacity hidden md:inline-flex items-center gap-2"
+              >
+                Work
+                <ChevronDown size={16} />
+              </button>
+              
+              {/* This container persists so it can animate opacity/transform */}
+              <div 
+                onMouseEnter={handleWorkEnter}
+                onMouseLeave={handleWorkLeave}
+                className={`absolute top-0 left-0 transition-all duration-300 ease-in-out ${
+                  isWorkDropdownOpen 
+                    ? "opacity-100 translate-y-0 visible" 
+                    : "opacity-0 -translate-y-2 invisible pointer-events-none"
+                }`}
+              >
+                <WorkDropdown 
+                  workGroups={WORK_GROUPS} 
+                  portfolioData={PORTFOLIO_DATA}
+                  onProjectClick={(p) => {
+                    openProject(p);
+                    setIsWorkDropdownOpen(false);
+                  }}
+                  closeMenu={() => setIsWorkDropdownOpen(false)} 
+                />
+              </div>
+            </div>
+
             <button
               onClick={() => navigateTo("about")}
               className="type-nav opacity-90 hover:opacity-100 transition-opacity hidden md:inline-flex"
@@ -168,10 +228,10 @@ export default function App() {
                 setIsMobileMenuOpen(false);
                 navigateTo("home");
               }}
-              className="type-nav flex items-center gap-2 text-sm font-medium text-[#88FF00]"
+              className="type-nav flex items-center gap-2 text-2xl font-medium text-[#88FF00]"
               aria-label="Go home"
             >
-              <LogoIcon theme="green" />
+              <LogoIcon company={activeProject?.company} />
             </button>
             <button
               type="button"
@@ -182,22 +242,36 @@ export default function App() {
               <X size={18} />
             </button>
           </div>
-          <div className="px-6 py-6 flex flex-col gap-5 flex-1">
-            <button
-              onClick={() => {
-                setIsMobileMenuOpen(false);
-                navigateTo("home", "work");
-              }}
-              className="type-nav text-left text-lg font-semibold"
-            >
-              Work
-            </button>
+          <div className="px-6 py-6 flex flex-col gap-6 flex-1">
+            <div className="border-b border-slate-100">
+              <button 
+                onClick={() => setIsMobileWorkExpanded(!isMobileWorkExpanded)}
+                className="w-full flex items-center justify-between py-2 text-[#231f44]"
+              >
+                <span className="type-nav text-left text-2xl font-semibold">Work</span>
+                <ChevronDown size={20} className={`transition-transform duration-300 ${isMobileWorkExpanded ? 'rotate-180' : ''}`} />
+              </button>
+              
+              {isMobileWorkExpanded && (
+                <div className="pb-4">
+                  <WorkDropdown 
+                    workGroups={WORK_GROUPS} 
+                    portfolioData={PORTFOLIO_DATA}
+                    onProjectClick={(p) => {
+                      openProject(p);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    closeMenu={() => setIsMobileMenuOpen(false)} 
+                  />
+                </div>
+              )}
+            </div>
             <button
               onClick={() => {
                 setIsMobileMenuOpen(false);
                 navigateTo("about");
               }}
-              className="type-nav text-left text-lg font-semibold"
+              className="type-nav text-left text-2xl font-semibold border-b border-slate-100 py-2"
             >
               About
             </button>
@@ -205,7 +279,7 @@ export default function App() {
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="type-nav text-left text-lg font-semibold"
+              className="type-nav text-left text-2xl font-semibold border-b border-slate-100 py-2"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Resume
@@ -215,7 +289,7 @@ export default function App() {
                 setIsMobileMenuOpen(false);
                 setIsContactOpen(true);
               }}
-              className="type-nav text-left text-lg font-semibold"
+              className="type-nav text-left text-2xl font-semibold border-b border-slate-100 py-2"
             >
               Contact
             </button>
