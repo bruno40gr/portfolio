@@ -498,8 +498,20 @@ No. It’ll replace designers who mostly produce deliverables. If I truly believ
       </main>
 
       {view !== "project-view" && (
-        <footer className="bg-neutral-100 py-10 border-t border-neutral-200 font-sans text-center">
+        <footer className="bg-neutral-100 py-12 md:py-16 border-t border-neutral-200 font-sans">
           <div className="max-w-[1400px] mx-auto px-6 md:px-12 text-center">
+            <div className="mb-6">
+              <p className="text-neutral-400 text-xs md:text-sm font-light tracking-wide leading-relaxed">
+                Designed and built from the ground up by Bruno Wong. <br className="md:hidden" />
+                Coded in VS Code with React, Tailwind, and{" "}
+                <button 
+                  onClick={() => openProject("portfolio-systems")}
+                  className="hover:text-neutral-600 border-b border-neutral-300 hover:border-neutral-500 transition-all cursor-help"
+                >
+                  iterative refinement
+                </button>.
+              </p>
+            </div>
             <button
               type="button"
               onClick={() => navigateTo("case-styles")}

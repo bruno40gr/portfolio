@@ -32,6 +32,7 @@ export const CASE_STUDIES_TITLES = {
   "patreon-creator-tools": "Benefit Delivery Tools for Creators",
   "patreon-pledge-streak-patent": "Pledge Streak Patent",
   "patreon-studio2.0": "Studio 2.0 Design System",
+  "portfolio-systems": "Building the Bridge: An Iterative Systems Journey",
 };
 
 export const PORTFOLIO_DATA = {
@@ -47,7 +48,7 @@ export const PORTFOLIO_DATA = {
       company: "Amazon",
       title: CASE_STUDIES_TITLES["amazon-devices-asset-system"],
       impactSummary: "Enabled AI-powered Amazon Devices marketing content generation at a global scale.",
-      impactSummarySentence: "",
+      impactSummarySentence: "Enabled AI-powered Amazon Devices marketing content generation at a global scale.",
       designerNote: `I architected an enterprise-scale ecosystem for Amazon Devices to automate workflows for 400 marketers. This foundational AI framework satisfied a high-level mandate to lead in the emerging tech landscape.\n\nI structured the transformation across four strategic pillars presented here as distinct case studies, delivering the phases that established the platform as a 2026 roadmap cornerstone.\nThis remains the most strategically significant project of my career.`,
       thumbnail: AMAZON_DEVICES_AI_IMAGE,
       status: "IN_BUILD",
@@ -343,8 +344,8 @@ export const PORTFOLIO_DATA = {
       parentId: "amazon-devices-asset-system",
       company: "Amazon Devices",
       title: CASE_STUDIES_TITLES["jas-metadata-studio"],
-      impactSummary: "Created a metadata engine that reduces manual input and powers AI-assisted automation across the asset ecosystem.",
-      impactSummarySentence: "",
+      impactSummary: "Designed an AI-assisted configuration flow that autonomously compiles metadata, providing the underlying logic required for the image generation engine.",
+      impactSummarySentence: "Designed an AI-assisted configuration flow that compiles metadata to power the image generation engine.",
       designerNote: "This project involved deeply understanding metadata structures and designing a system that leveraged AI to minimize manual effort while maintaining data quality and consistency.",
       thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80",
       status: "IN_BUILD",
@@ -449,8 +450,8 @@ export const PORTFOLIO_DATA = {
       parentId: "amazon-devices-asset-system",
       company: "Amazon Devices",
       title: CASE_STUDIES_TITLES["jas-ai-generator"],
-      impactSummary: "Prototyped an AI lifestyle-image generator that trained automated placement rules for Amazon Devices campaigns.",
-      impactSummarySentence: "",
+      impactSummary: "Developed a specialized AI utility to automate product placement and layout rules, accelerating asset production for Amazon Devices.",
+      impactSummarySentence: "Developed a specialized AI utility to automate product placement and layout rules, accelerating asset production for Amazon Devices.",
       designerNote: "This work explored the bleeding edge of generative AI for visual content, focusing on how human feedback loops can refine AI models for brand-specific quality and consistency.",
       thumbnail: AMAZON_DEVICES_AI_IMAGE,
       status: "LAUNCHED",
@@ -532,7 +533,7 @@ export const PORTFOLIO_DATA = {
       company: "Amazon Core Shopping",
       title: CASE_STUDIES_TITLES["amazon-core-inspire-tab"],
       impactSummary: "Led Smart Home discovery strategy for Amazon’s feed experience, driving a measurable lift in device sales.",
-      impactSummarySentence: "",
+      impactSummarySentence: "Led Smart Home discovery strategy for Amazon’s feed experience, driving a measurable lift in device sales.",
       designerNote: "This project involved navigating a complex organizational structure and integrating new discovery patterns within a mature, high-stakes e-commerce environment.",
       thumbnail: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=1200&q=80",
       status: "DEPRECATED",
@@ -661,7 +662,7 @@ export const PORTFOLIO_DATA = {
       company: "Amazon Core Shopping",
       title: CASE_STUDIES_TITLES["amazon-core-ai-review-highlights"],
       impactSummary: "Designed AI-driven review highlights that distilled thousands of reviews into clear, actionable product insights.",
-      impactSummarySentence: "",
+      impactSummarySentence: "Designed AI-driven review highlights that distilled thousands of reviews into clear, actionable product insights.",
       designerNote: "This project leveraged advanced NLP and design thinking to transform overwhelming customer feedback into digestible, actionable product intelligence for shoppers.",
       thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
       status: "LAUNCHED",
@@ -958,27 +959,66 @@ export const PORTFOLIO_DATA = {
       services: [SERVICES.SYSTEMS_DESIGN, SERVICES.UI_DESIGN, SERVICES.PROTOTYPING],
       blocks: [{ type: "text", content: "Case study for Patreon creator hub." }]
     },
+    {
+      id: "portfolio-systems",
+      company: "Bespoke Portfolio",
+      title: CASE_STUDIES_TITLES["portfolio-systems"],
+      impactSummary: "A live demonstration of full-stack design thinking and iterative product development.",
+      impactSummarySentence: "A bespoke portfolio built to demonstrate staff-level systems thinking and engineering precision.",
+      designerNote: "This portfolio itself is a project in iterative refinement. Every interaction—from the hover stability of the mega-menu to the lazy-loading of interactive prototypes—was designed and built to respect the user's time while proving technical craft.",
+      thumbnail: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80",
+      status: "SHIPPED",
+      type: "SYSTEMS",
+      details: {
+        heroImage: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80",
+        role: "Designer & Engineer",
+        timeline: "Feb 2026",
+        team: "Solo / Ground-Up",
+        type: "FULL STACK DESIGN",
+        services: [SERVICES.SYSTEMS_DESIGN, SERVICES.PROTOTYPING, SERVICES.AI_WORKFLOWS],
+        blocks: [
+          { type: "heading", title: "Overview", hasDivider: false },
+          {
+            type: "text",
+            content: "Standard templates felt restrictive and failed to communicate the specific nuance of staff-level systems thinking. I needed a platform that mirrored the quality of the work it contained, serving as a live demonstration of my design and engineering process."
+          },
+          { type: "heading", title: "Strategy: High-Signal Navigation" },
+          {
+            type: "text",
+            content: "Busy hiring managers often have 30 seconds for an initial pass. I replaced standard project lists with a multi-column mega-menu on desktop and a lean accordion on mobile. This ensures immediate recognition of brand names (Amazon, Patreon) while providing impact-focused summaries for targeted review."
+          },
+          { type: "heading", title: "Engineering the 'Invisible Bridge'" },
+          {
+            type: "text",
+            content: "One common frustration with mega-menus is their sensitivity to mouse movement. I implemented a 'buffer bridge' container to ensure hover stability when transitioning from the navigation trigger to the dropdown, ensuring a fluid, frustration-free experience."
+          },
+          { type: "heading", title: "Responsive Performance" },
+          {
+            type: "text",
+            content: "To showcase complex interactive prototypes without sacrificing load times, I engineered a lazy-loading Figma integration. Prototypes are responsive and 'scale-to-fit' their containers, providing an interactive preview that can be expanded into a dedicated workspace with a single click."
+          }
+        ]
+      }
+    },
   ]
 };
 
 export const WORK_GROUPS = [
   {
     company: "Amazon Devices",
-    roleLine: "Sr. UX Designer · Internal Tools · Nov 2023 – Jan 2026",
+    logo: "Amazon",
+    roleLine: "Sr. UX Designer · Sep 2022 – Jan 2026",
     projectIds: [
       "amazon-devices-asset-system",
       "jas-image-builder",
       "jas-asset-manager",
       "jas-metadata-studio",
-      "jas-ai-generator"
+      "jas-ai-generator",
+      "amazon-core-inspire-tab",
+      "amazon-core-ai-review-highlights"
     ]
   },
-  {
-    company: "Amazon Devices",
-    roleLine: "Sr. UX Designer · Core Shopping · Sep 2022 – Nov 2023",
-    projectIds: ["amazon-core-inspire-tab", "amazon-core-ai-review-highlights"]
-  },
-  {
+   {
     company: "Alto Pharmacy",
     logo: "Alto Pharmacy",
     roleLine: "Staff Product Designer · 2021–2022",

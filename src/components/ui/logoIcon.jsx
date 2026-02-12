@@ -22,7 +22,7 @@ const LogoIcon = ({ theme = "light", company = null }) => {
   }
 
   return (
-    <div className="w-12 h-12 md:w-12 md:h-12 flex items-center justify-center transition-all duration-300">
+    <div className="w-10 h-10 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300">
       <img src={src} alt="Logo" className="w-full h-full object-contain" />
     </div>
   );
