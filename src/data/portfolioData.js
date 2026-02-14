@@ -48,7 +48,7 @@ export const PORTFOLIO_DATA = {
       company: "Amazon",
       title: CASE_STUDIES_TITLES["amazon-devices-asset-system"],
       impactSummary: "Enabled AI-powered Amazon Devices marketing content generation at a global scale.",
-      impactSummarySentence: "Enabled AI-powered Amazon Devices marketing content generation at a global scale.",
+      impactSummarySentence: "I architected an enterprise-scale ecosystem for Amazon Devices to automate workflows for 400 marketers.",
       designerNote: `I architected an enterprise-scale ecosystem for Amazon Devices to automate workflows for 400 marketers. This foundational AI framework satisfied a high-level mandate to lead in the emerging tech landscape.\n\nI structured the transformation across four strategic pillars presented here as distinct case studies, delivering the phases that established the platform as a 2026 roadmap cornerstone.\nThis remains the most strategically significant project of my career.`,
       thumbnail: AMAZON_DEVICES_AI_IMAGE,
       status: "IN_BUILD",
@@ -65,11 +65,11 @@ export const PORTFOLIO_DATA = {
           {
             type: "impact-box",
             metrics: [
-              { value: "5,000 hours", label: "Saved per month" },
-              { value: "48,000 hours", label: "Saved on Prime Day 2025" }
+              { value: "45-50", label: "Marketer/Designer Workflows Replaced" },
+              { value: "8,000+", label: "Assets Generated for Prime Day 2025" }
             ],
             description: [
-              `Amazon Devices Asset System launched in March 2025 and now saves an estimated <b>5,000 hours of manual production work per month</b> across design, 3D, and content creation teams. For Prime Day July 2025 alone, the system replaced more than <b>48,000 hours</b> of labor that would have been required to create 8,000 lifestyle images by hand.`
+              `The Asset System was designed to automate the work of a 45-50 person cross-functional team. For Prime Day 2025 alone, its deployed workflows generated over <b>8,000 assets</b>, accounting for an estimated <b>48,000 hours</b> of previously manual work.`
             ]
           },
           {
@@ -221,11 +221,11 @@ export const PORTFOLIO_DATA = {
       {
         type: "impact-box",
         metrics: [
-          { value: "100k+ hours", label: "Reclaimed Annually" },
-          { value: "120k+ assets", label: "Generated in 2025" }
+          { value: "100k+ hours", label: "Projected Annual Savings" },
+          { value: "45-50", label: "Marketer/Designer Workflows Replaced" }
         ],
         description: [
-          "The Image Builder transformed Amazon Devices from a manual creative bottleneck into a high-velocity production engine. For Prime Day 2025 alone, the system produced <b>8,000 lifestyle images</b>, replacing <b>48,000+ hours of manual labor</b>. This reclaimed time allowed design teams to shift from repetitive production to high-level creative strategy."
+          "For Prime Day 2025 alone, the deployed workflows produced <b>8,000 lifestyle images</b>, accounting for an estimated <b>48,000 hours</b> of previously manual work. This reclaimed time allowed creative and marketing teams to shift from repetitive production to high-level creative strategy."
         ]
       }
     ]
@@ -240,7 +240,7 @@ export const PORTFOLIO_DATA = {
   impactSummarySentence: "A centralized asset library that simplifies image discovery and enables AI powered automation.",
   designerNote: "Once we launched the Image Builder, it was clear that a centralized asset library had to be the next step. This project creates the foundation we need for an AI powered system by making sure our data is clean and easy to manage. Currently, our device and marketing images are scattered across different cloud systems, which makes them hard to track and find. With this manager, we are solving that dependency to make campaign creation intuitive and save our teams thousands of hours of manual work.",
   thumbnail: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=80",
-  status: "IN BUILD",
+  status: "IN_BUILD",
   type: "INTERNAL",
   details: {
     heroImage: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=80",
@@ -337,16 +337,14 @@ export const PORTFOLIO_DATA = {
     ]
   }
 },
-    
-
     {
       id: "jas-metadata-studio",
       parentId: "amazon-devices-asset-system",
       company: "Amazon Devices",
       title: CASE_STUDIES_TITLES["jas-metadata-studio"],
-      impactSummary: "Designed an AI-assisted configuration flow that autonomously compiles metadata, providing the underlying logic required for the image generation engine.",
-      impactSummarySentence: "Designed an AI-assisted configuration flow that compiles metadata to power the image generation engine.",
-      designerNote: "This project involved deeply understanding metadata structures and designing a system that leveraged AI to minimize manual effort while maintaining data quality and consistency.",
+      impactSummary: "Designed an AI-assisted configuration flow that automates metadata ingestion, acting as the intelligence layer for high-scale image generation.",
+      impactSummarySentence: "Designed an AI-assisted configuration flow that transforms manual data entry into intelligent automated verification.",
+      designerNote: "I approached this as a critical systems challenge. Recognizing that manual entry was being accepted as the unavoidable cost of automation, I pushed beyond the original requirements to test unapproved AI capabilities. By validating these 'scrappy' prototypes early, I was able to prove that 90% of the workload could be automated, shifting the project from simple data entry to a high-leverage intelligence tool.",
       thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80",
       status: "IN_BUILD",
       type: "INTERNAL",
@@ -362,22 +360,21 @@ export const PORTFOLIO_DATA = {
           {
             type: "callout-box",
             content:
-              "Over four weeks and one focused offsite, product, design, engineering, and the Devices Brand Studio aligned on the full metadata requirements for every component image in the system. We identified six core asset types: devices, screen images, backgrounds, lifestyle backgrounds, and logos. Each required extensive metadata, sometimes up to 90 fields, covering elements like device allocation, compatibility rules, cultural relevance, physical proportions, angles, shadow behavior, and screen placement."
+              "The Metadata Studio serves as the intelligence layer for Amazon Devices. It is the configuration engine that compiles the complex metadata required to power AI training and automated image generation."
           },
           {
             type: "text",
             content: [
-              "System Designers already had a reliable workflow that combined Photoshop automations and strict file naming conventions. The issue was not quality. The challenge was scale. Too many people were involved across too many steps, and the volume of metadata needed for future automation kept increasing. We needed a single administrative tool that could gather, structure, and validate metadata in a more efficient and scalable way.",
-              "Leadership also pushed on using AI to reduce the manual load, which introduced a tension. This system needed to train the AI, but the AI was also expected to eventually assist or replace parts of the process. Finding a solution that supported both goals became the core challenge of this pillar."
+              "<b>The Problem:</b> Our automation pipeline had a critical flaw: it required massive amounts of data that we didn't have a scalable way to collect. Currently, System Designers must manually input up to 90 metadata fields for every single asset to ensure it works with our AI models. This manual tax created a bottleneck that threatened to stall our entire automation roadmap.",
+              "The new image generation engine can only scale if it is fed precise, validated data. We needed a tool that could gather this intelligence without turning designers into data entry clerks, ensuring our AI systems have the fuel they need to operate."
             ]
           },
           { type: "heading", title: "Design Strategy" },
           {
             type: "text",
             content: [
-              "I owned the user research, UX, and product direction for the metadata system. The strategy was to design a seamless UI that could gather all required metadata while reducing manual effort as much as possible. To do this, I first classified every metadata field into three groups: information that could be inferred from the asset itself, information that required human input, and information that could realistically be generated or suggested by AI.",
-              "I ran multiple experiments with AI models to validate what could be automated. Many early results were not Amazon compliant, but they proved an important point. AI could identify colors, detect angles, locate screens, classify variants, and reduce the total number of inputs required from users. These experiments helped define where AI would play a role and where human judgment was still necessary.",
-              "The UI needed to guide system designers through a workflow that felt simple, reduced the number of fields they touched, and prepared every asset for future AI training. The design strategy focused on clarity, strong defaults, and a metadata structure that could support both current needs and the automated pipelines we were building toward."
+              "I owned the research, UX, and product direction. My strategy was to move from 'manual entry' to 'intelligent verification.' I audited every metadata field and classified them into three categories: Inferred (data the system sees), Suggested (data the AI guesses), and Manual (data requiring human judgment).",
+              "I ran multiple stress tests with AI models to validate this approach. While general image sorting proved non-essential, other tests showed incredible promise. We proved that AI could reliably identify product colors and angles with high precision. These experiments allowed us to design a UI that felt like a partner rather than a form, using 'correct-by-construction' logic to ensure every asset was ready for the engine."
             ]
           },
           { type: "heading", title: "Process" },
@@ -386,7 +383,7 @@ export const PORTFOLIO_DATA = {
             items: [
               {
                 content:
-                  `<span class="process-step-title"><b>Understanding real workflows.</b></span><p class="mt-2">I partnered with System Designers to study how they used Photoshop automations, file naming conventions, and batch tools to produce component images. This gave me a grounded view of where metadata was created and which parts of the process could be simplified.</p>`,
+                  `<span class="process-step-title"><b>Discovery & Workflow Mapping.</b></span><p class="mt-2">I partnered with the Devices Brand Studio to shadow their current Photoshop and script-based workflows. This research helped me identify exactly where metadata was being 'born' and where we could intercept it automatically to reduce manual re-entry.</p>`,
                 visuals: [
                   {
                     src: ASSETS.testImage,
@@ -396,152 +393,204 @@ export const PORTFOLIO_DATA = {
               },
               {
                 content:
-                  `<span class="process-step-title"><b>Classifying metadata inputs.</b></span><p class="mt-2">Working with engineering, design, and brand partners, I defined which metadata fields should be inferred, which required human judgment, and which could be suggested or generated by AI.</p>`,
+                  `<span class="process-step-title"><b>The Heavy Lifting: Classification.</b></span><p class="mt-2">Working with engineering and data science, I built a taxonomy model to decide which fields to hide and which to show. We moved from a model where everything was manual to a taxonomy that prioritizes intelligent defaults.</p>`,
+                visuals: []
+              }
+            ]
+          },
+          {
+            type: "table",
+            title: "Metadata Taxonomy",
+            columns: ["Category", "Metadata Fields", "How It’s Handled"],
+            rows: [
+              [
+                "Inferred",
+                "Color identification, product angle detection, and image type categorization.",
+                "Fully Automated: AI vision models extract this data directly from the uploaded file without user input."
+              ],
+              [
+                "AI-Suggested",
+                "Screen warping, visual variant matching, and proportional scaling.",
+                "Augmented: The system calculates these values or generates the visual effect, then asks the user for a quick confirmation."
+              ],
+              [
+                "Manual",
+                "Regional compatibility, legal expiration dates, and screen coordinate mapping.",
+                "Human-in-the-loop: These fields require high-level judgment or specific legal knowledge that cannot be safely automated."
+              ]
+            ]
+          },
+          {
+            type: "list",
+            items: [
+              {
+                content:
+                  `<span class="process-step-title"><b>Validation Experiments.</b></span><p class="mt-2">I ran AI experiments to test feasibility. We found that specific tasks like color detection were 100% accurate, and angle detection was 90% accurate. I also prototyped a 'Screen Mapper' where a user draws a simple boundary, allowing the AI to handle complex perspective warping and glare application automatically.</p>`,
                 visuals: [
                   {
                     src: ASSETS.testImage,
-                    caption: "Field taxonomy model separating inferred, manual, and AI-assisted metadata inputs."
+                    caption: "Early AI experiments validating what could be inferred: color detection, angle detection, screen mapping, and variant classification."
                   }
                 ]
               },
               {
                 content:
-                  `<span class="process-step-title"><b>Validating AI feasibility.</b></span><p class="mt-2">I ran AI experiments that explored automated classification, visual variant detection, screen mapping, image warping, proportional scaling, and metadata extraction. These tests showed that many of the required metadata fields could be inferred rather than manually entered, which shaped the upload flow, UI, and underlying data model.</p>`,
+                  `<span class="process-step-title"><b>Prototyping & Refining.</b></span><p class="mt-2">I built low-fidelity prototypes to show the team how a 'reduced-input' workflow would actually feel. The final workflow focused on speed, clarity, and preparing assets for future AI-driven automation.</p>`,
                 visuals: [
                   {
                     src: ASSETS.testImage,
-                    caption:
-                      "Early AI experiments validating what could be inferred: color detection, angle detection, screen mapping, and variant classification."
-                  }
-                ]
-              },
-              {
-                content:
-                  `<span class="process-step-title"><b>Prototyping to align direction.</b></span><p class="mt-2">I built low fidelity prototypes to show how a streamlined metadata workflow could function. These were shared across product, design, engineering, and Devices Brand Studio to build confidence and align expectations around what automation could realistically support.</p>`,
-                visuals: [
-                  {src: ASSETS.testImage,
-                    caption: "Lo-fi prototypes used to align teams on a reduced-input workflow and AI validation checkpoints."
-                  }
-                ]
-              },
-              {
-                content:
-                  `<span class="process-step-title"><b>Refining for clarity and scale.</b></span><p class="mt-2">I iterated on layouts and validation flows and removed anything that introduced noise. The final workflow focused on speed, clarity, and preparing assets for future AI-driven automation.</p>`,
-                visuals: [
-                  {
-                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1769461141/admintool_r23r8u.gif",
                     caption: "Low fidelity prototype focused on speed: fewer fields, stronger defaults, and clearer validation states."
                   }
                 ]
               }
             ]
           },
-          { type: "heading", title: "Outcome" },
+          { type: "heading", title: "Outcome & Impact" },
           {
             type: "text",
             content:
-              "The metadata system created a scalable foundation that changed how Amazon Devices prepares images for automation. 3D artists can now embed essential physical details directly into device renders, which removes guesswork later in the workflow. System Designers can continue using their Photoshop pipelines to bulk-generate device PNGs, but the major shift is that an AI agent can now infer most metadata fields with minimal human input."
+              "We proved that the system will handle the heavy lifting. By shipping this in Q3, we are moving from a theoretical bottleneck to a validated automated workflow. Our research confirmed that 3D artists and System Designers can stop acting as data entry clerks and focus on creative quality, knowing the system will handle the rest."
+          },
+          {
+            type: "impact-box",
+            size: "large",
+            metrics: [
+               { value: "3 Steps", label: "Down from ~50 manual inputs per component image" },
+    { value: "99% accuracy", label: "In automated image composition validation" },
+    { value: "90% accuracy", label: "In photography angle detection" },
+               { value: "0.5% risk", label: "Of leaks vs. manual, spreadsheet-dependent handoffs" }
+            ]
           }
         ]
       }
     },
-    {
+   
+     {
       id: "jas-ai-generator",
       parentId: "amazon-devices-asset-system",
       company: "Amazon Devices",
-      title: CASE_STUDIES_TITLES["jas-ai-generator"],
+      title: "Asset System AI Agent",
       impactSummary: "Developed a specialized AI utility to automate product placement and layout rules, accelerating asset production for Amazon Devices.",
-      impactSummarySentence: "Developed a specialized AI utility to automate product placement and layout rules, accelerating asset production for Amazon Devices.",
-      designerNote: "This work explored the bleeding edge of generative AI for visual content, focusing on how human feedback loops can refine AI models for brand-specific quality and consistency.",
-      thumbnail: AMAZON_DEVICES_AI_IMAGE,
+      impactSummarySentence: "Developed a generative AI utility that automates complex product placement and learns from human design feedback.",
+      designerNote: "This project was a reality check. We proved that AI could generate high-quality composites, but we also discovered that human review is a massive bottleneck. The 'red flag' of a 4-minute review cycle is exactly what pushed us to build the automated Metadata Studio.",
+      thumbnail: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1600&q=80",
       status: "LAUNCHED",
       type: "INTERNAL",
       details: {
-        heroImage: AMAZON_DEVICES_AI_IMAGE,
+        heroImage: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1600&q=80",
         role: "Lead UX Designer",
         timeline: "December 2024 – March 2025",
         team: "Automate & Scale",
         type: "INTERNAL",
-        services: [SERVICES.PRODUCT_DESIGN, SERVICES.STRATEGY, SERVICES.AI_WORKFLOWS],
+        services: [SERVICES.PRODUCT_STRATEGY, SERVICES.AI_WORKFLOWS, SERVICES.UX_DESIGN],
         blocks: [
           { type: "heading", title: "Overview", hasDivider: false },
           {
+            type: "callout-box",
+            content:
+              "JASAI is a generative sandbox designed to automate the creation of lifestyle imagery. It functions as a specialized compositing agent that understands how Amazon hardware should behave physically and aesthetically within real-world environments."
+          },
+          {
             type: "text",
-            content: [              "Lifestyle images were the most complex assets the Amazon Devices organization produced. They required correct device angles, shadows, lighting, screen behavior, and placement across a wide range of backgrounds and room types. This level of craft made them slow to produce and impossible to scale manually. To move toward automated content creation, we needed an AI model that could understand how Amazon hardware should appear in real environments.",
-              "JASAI was created as a sandbox to explore whether AI could generate these images at the quality bar we needed. It served two goals: to prove that AI could match our design expectations and to train an in-house Amazon Devices model using structured metadata and human feedback. Once the model matured, the plan was to embed JASAI directly into the Image Builder so users could generate lifestyle images and local variations through simple prompts."
+            content: [
+              "<b>The Challenge:</b> Lifestyle images are the most complex assets we produce. They require placing a proprietary device image—already cropped and measured—into a generated or photographed environment. The composite must respect camera angles, lighting volume, depth, perspective, and copy space.",
+              "Creating these manually is unscalable. We needed an agent that could generate these images in batches while adhering to our rigid design bar. The goal was not just to generate images but to create a system where every output, pass or fail, served a purpose."
             ]
           },
           { type: "heading", title: "Design Strategy" },
           {
             type: "text",
             content: [
-              "The strategy focused on training an in-house Amazon Devices AI agent to understand how our hardware behaves in real environments. Using the metadata frameworks from Pillar 3, we defined the inputs the model needed: device proportions, angles, shadows, screen behavior, and background attributes such as room type and lighting. Training the model demanded close collaboration with designers, who provided manual inputs and clarified the placement rules that define a correct Amazon Devices lifestyle image.",
-              "I partnered with science and design to build the training and review loops that would shape the model. These loops were created for the AI, not for users. When outputs missed the bar, a designer corrected them so the system could learn from the feedback. Once trained, JASAI would integrate directly into the Image Builder, enabling on-demand lifestyle image generation and localized variations through simple prompts."
+              "My strategy focused on the 'Human-in-the-Loop.' We knew the AI would not be perfect on day one, so the design challenge was creating a feedback loop that could translate subjective design direction into objective training data.",
+              "I designed a qualification interface for Creative Directors and 3D Artists. Instead of a simple approval, the UI required specific reasoning for rejections—flagging issues like 'shadow quality,' 'choppiness,' or 'perspective mismatch.' This structured data was fed directly back to the science team to adjust the algorithm, ensuring the model got smarter with every batch."
             ]
           },
-          { type: "heading",
-            title: "Process"
-          },
+          { type: "heading", title: "Process" },
           {
             type: "list",
             items: [
-              `<span class="process-step-title"><b>Defining what correct placement meant.</b></span><p class="mt-2">I worked with Brand Studio and 3D teams to establish the rules for angles, shadows, proportions, and screen behavior. This gave the model a clear standard to learn from.</p>`,
-              `<span class="process-step-title"><b>Designing and prototyping the AI training loop.</b></span><p class="mt-2">I built the workflow where designers reviewed AI outputs and corrected mistakes. This included reshaping metadata into simple controls, writing clear labels, and creating small widgets and interactions that made feedback fast and consistent.</p>`,
-              `<span class="process-step-title"><b>Running placement and composition tests.</b></span><p class="mt-2">I partnered with science to evaluate early results, check cutout quality, verify device placement in backgrounds, and understand how well the model handled lighting and perspective.</p>`,
-              `<span class="process-step-title"><b>Preparing integration with the Image Builder.</b></span><p class="mt-2">I designed how approved AI outputs flow into the Builder so teams can generate lifestyle images and local variations without manual reconstruction.</p>`
+              {
+                content:
+                  `<span class="process-step-title"><b>Defining "Correct" Placement.</b></span><p class="mt-2">I worked with the Brand Studio to codify the rules for angles, shadows, and screen behavior. We had to teach the model that a Fire TV in a living room behaves differently than an Echo Show in a kitchen, establishing a 'ground truth' for the AI to aim for.</p>`,
+                visuals: [
+                  {
+                    src: ASSETS.testImage,
+                    caption: "Codifying physical rules for device placement in varied environments."
+                  }
+                ]
+              },
+              {
+                content:
+                  `<span class="process-step-title"><b>Designing the Feedback Loop.</b></span><p class="mt-2">I built the 'micro-tool' used by directors to review batches of hundreds of images. The interface allowed them to rapidly approve market-ready assets or reject failures with specific tags. This ensured that rejected data was just as valuable as approved data for training purposes.</p>`,
+                visuals: [
+                  {
+                    src: ASSETS.testImage,
+                    caption: "The qualification interface used to tag failures and train the model."
+                  }
+                ]
+              },
+              {
+                content:
+                  `<span class="process-step-title"><b>Stress-Testing the Workflow.</b></span><p class="mt-2">We discovered that reviewing a batch took approximately 4 minutes, which leadership flagged as a scalability risk. This 'red flag' was a critical insight. It proved that while the AI could generate the visuals, the metadata input and review process needed the heavy automation I eventually built in the Metadata Studio project.</p>`,
+                visuals: []
+              }
             ]
           },
-          { type: "heading", title: "JAS Metadata AI Automation" },
+          { type: "heading", title: "The Delivered Product" },
           {
-            type: "callout-box",
+            type: "text",
+            content: [
+              "The final tool was designed for high-velocity review. The system generated 4 variations per prompt, allowing directors to select the best option or reject the set entirely. This 4:1 ratio ensured quality while maintaining speed.",
+              "To manage volume, I implemented a statistical significance model: rather than reviewing 100% of the output, the system presented a random 5% sample. If the sample passed, the batch was approved. If it failed, the rejection tags retrained the model. This workflow allowed us to ingest thousands of images without overwhelming the creative team."
+            ]},
+            {
+            type: "figma",
+            src: "https://www.figma.com/proto/PG1SSc8aZlpS9atMCvKg3M/Genie---Product-Demo-Day?page-id=174%3A13910&node-id=2243-25245&p=f&viewport=226%2C732%2C0.04&t=s3IjMY4Gl6tH4KiA-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=2243%3A25245&show-proto-sidebar=1",
+            caption: "The batch review dashboard showing the selection and rejection feedback flow."
+          },
+            
+    
+          { type: "heading", title: "Outcome & Impact" },
+          {
+            type: "text",
             content:
-              "Those experiments became the foundation for a minimal-input, AI-assisted ingestion approach that will eventually eliminate most manual steps in the upload process. The results were strong enough that I’m thinking on dedicating a case study to it, and elaborate how we built this agent and expand on automation, metadata strategy, and human-in-the-loop design inside large-scale internal systems."
+              "Since launch in December 2024, the agent has generated over 12,000 variations. Through the review process, we successfully added 3,000 fully validated, market-ready assets to the system—all created without a graphic designer moving a single pixel."
           },
-          {
-            type: "image-full",
-            src: "https://prod-files-secure.s3.us-west-2.amazonaws.com/e3d5fd0b-e2f1-4690-a852-73c6368c13a2/1f8c9dcf-a5c8-47ef-9385-c75d8c2514b1/image.png",
-            caption:
-              "Example of a technical document where we study how we plan to insert metadata so the engine can smartly place devices on top of furniture."
-          },
-          {
-            type: "image-full",
-            src: "https://files.slack.com/files-pri/T03K4F650-F067C19K81W/image.png?pub_secret=0963d3fb49",
-            caption: "Placeholder: This image is used for testing and should be replaced."
-          },
-          {
-            type: "image-full",
-            src: "https://prod-files-secure.s3.us-west-2.amazonaws.com/e3d5fd0b-e2f1-4690-a852-73c6368c13a2/5045814d-d2a4-423b-aeab-371b5f8614fc/image.png"
-          },
-          { type: "heading", title: "Outcome" },
           {
             type: "impact-box",
+            size: "large",
             metrics: [
-              { value: "12,000", label: "Lifestyle Variations Generated" },
-              { value: "5%", label: "Outputs Reviewed" },
-              { value: "~4 min", label: "Review Time / Output" }
-            ],
-            description: [
-              "We released JASAI in August 2025. The model generated roughly 12,000 lifestyle image variations across multiple devices and backgrounds to build the training library. About 5 percent of these outputs were reviewed by creative directors to evaluate whether the AI met our quality bar. Each review took about four minutes, which helped us validate the model’s strengths but also revealed the limits of our approach.",
-              "While JASAI proved that automated lifestyle generation was possible, adoption was low. The human review required to train the model made the workflow harder to scale, and the outputs did not reach the level of consistency needed for full deployment. The team used these learnings to shift toward new AI strategies and explore other technologies better suited for production-level automation."
+               { 
+                 value: "3,000 Assets", 
+                 label: "Created with zero manual design work" 
+               },
+               { 
+                 value: "99.5% approved", 
+                 label: "Q1 2026 target for GenAI images meeting the design bar" 
+               },
+               { 
+                 value: "100% of rejects reused", 
+                 label: "Every rejected image becomes training data" 
+               }
             ]
           }
         ]
       }
     },
-    {
+       {
       id: "amazon-core-inspire-tab",
-      company: "Amazon Core Shopping",
+      company: "Amazon Devices",
       title: CASE_STUDIES_TITLES["amazon-core-inspire-tab"],
-      impactSummary: "Led Smart Home discovery strategy for Amazon’s feed experience, driving a measurable lift in device sales.",
-      impactSummarySentence: "Led Smart Home discovery strategy for Amazon’s feed experience, driving a measurable lift in device sales.",
-      designerNote: "This project involved navigating a complex organizational structure and integrating new discovery patterns within a mature, high-stakes e-commerce environment.",
+      impactSummary: "Adapted Amazon's creator-driven shopping feed for Smart Home, shaping the ML ranking, catalog logic, and creator tooling that made device discovery trustworthy at scale.",
+      impactSummarySentence: "Adapted Amazon's creator-driven shopping feed for Smart Home, shaping the ML ranking, catalog logic, and creator tooling that made device discovery trustworthy at scale.",
+      designerNote: "My team didn't build Inspire. We inherited it from the Community Shopping team and were asked to make it work for Smart Home, a category where a wrong recommendation doesn't just miss, it erodes trust. That meant adapting our design library and components, working directly with Smart Home creators, and collaborating with data science to fine-tune our ML algorithms to prioritize the right products. Operating inside a platform someone else built, at Amazon scale, is its own design discipline. It demands precision about where you push, fluency across functions, and the ability to translate between catalog, ML, and customer experience in the same conversation.",
       thumbnail: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=1200&q=80",
       status: "DEPRECATED",
       type: "MOBILE",
       details: {
         heroImage: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=1200&q=80",
-        role: "UX Lead for Smart Home Devices",
-        timeline: "Late 2022-Late 2023",
+        role: "UX Lead, Smart Home Devices Adaptation",
+        timeline: "Late 2022 – Early 2025",
         team: "Core Shopping",
         type: "MOBILE",
         services: [SERVICES.STRATEGY, SERVICES.UI_DESIGN, SERVICES.PROTOTYPING],
@@ -550,31 +599,52 @@ export const PORTFOLIO_DATA = {
           {
             type: "callout-box",
             content:
-              "Inspire was a company-level initiative inside the Amazon app designed to become a primary destination for recreational shopping and product discovery. I owned the Smart Home Devices slice of the experience where trust, relevance, and catalog correctness were non-negotiable."
+              "Inspire was a company-level initiative inside the Amazon app designed to become a primary destination for recreational shopping and product discovery. The feature originated with the Community Shopping team. My team, on the Devices and Smart Home side, collaborated with them to customize and adapt Inspire specifically for our devices shopping experience."
           },
           {
             type: "text",
             content: [
-              "I worked on Inspire while on the Core Shopping Smart Home Devices team at Amazon. The feature launched in December 2022 and contributed to a ~2% lift in total units sold, representing roughly 13.5M devices worldwide, before being deprecated in early 2024 as Amazon shifted focus toward newer AI-driven discovery experiences.",
-              "My scope focused on making Inspire work for Smart Home at Amazon scale. The challenge was not content volume. The challenge was ensuring the right devices surfaced with the right context, without manual curation, and without eroding customer trust in a category where compatibility and correctness matter."
-          
+              "Inspire launched on December 8, 2022 and delivered a ~2% lift in total units sold, representing roughly 13.5M devices worldwide. Although we inherited standardized design elements and a platform already in motion, we needed to make several strategic adaptations to make it work for Smart Home.",
+              "My focus spanned three areas: adapting our design library and components, establishing partnerships with key Smart Home content creators, and collaborating with data science to fine-tune the ML algorithms to prioritize products that performed well in a social-media-style format. The challenge was not content volume. Inspire drew from a library of over 1.3 million unique content items, all ranked and personalized without manual curation. The challenge was ensuring the right devices surfaced with the right context, without eroding customer trust in a category where compatibility and correctness matter."
             ]
           },
           { type: "heading", title: "The Problem" },
           {
             type: "text",
             content: [
-              "Inspire introduced a feed-based, creator-driven discovery model to Amazon. That model worked well for many categories, but Smart Home devices behave differently. Customers are not just browsing, they are evaluating compatibility, ecosystems, and intent.",
-              "The risk was not lack of engagement. The risk was misleading discovery: showing the wrong device, at the wrong time, to the wrong customer, and eroding trust in a high-intent category."
+              "Inspire's feed was tailored to each customer based on past shopping and browsing behavior, plus ongoing engagement with content. Like everything at Amazon, it relied on ML-based ranking and personalization. For most categories, optimizing on engagement works. For Smart Home, the cost of a mismatch is high.",
+              "A customer who buys the wrong smart bulb because the feed showed them something visually compelling but incompatible doesn't just return the product, they lose trust in the entire discovery surface. Three failure modes defined the problem: ecosystem mismatches surfacing Alexa accessories to Google Home users; accessory versus device confusion leading to wrong-click purchases; and creators attaching loosely associated ASINs to their content, driving clicks to unrelated products.",
+              "The risk was not lack of engagement. The risk was misleading discovery: showing the wrong device, at the wrong time, to the wrong customer."
+            ]
+          },
+          { type: "heading", title: "What Content Did We Need to Support?" },
+          {
+            type: "text",
+            content: [
+              "Inspire pulled from three creator types, each with different needs and different failure modes for Smart Home."
+            ]
+          },
+          {
+            type: "list",
+            items: [
+              {
+                content: `<span class="process-step-title"><b>Influencers.</b></span><p class="mt-2">Creators participating in Amazon's Influencer Program (AIP) who uploaded shoppable photos and videos. I designed the tooling that let them attach ASINs to their content, and worked with Smart Home influencers directly to improve product association accuracy.</p>`
+              },
+              {
+                content: `<span class="process-step-title"><b>Brands.</b></span><p class="mt-2">Brand-registered vendors and sellers with Brand Store pages. Their content tended to be more controlled, but ecosystem and compatibility context still needed to be right.</p>`
+              },
+              {
+                content: `<span class="process-step-title"><b>Customers.</b></span><p class="mt-2">Everyday customers posting shoppable videos and photos through a Create workflow, as well as content surfaced from product reviews. Not my primary focus, but a meaningful share of feed volume and a source of catalog noise.</p>`
+              }
             ]
           },
           { type: "heading", title: "Design Strategy" },
           {
             type: "text",
             content: [
-              "My strategy was to make Smart Home discovery feel intentional inside a feed experience that was not built for that level of catalog complexity.",
+              "My strategy was to treat the Inspire platform as a constraint system I could influence at key leverage points, rather than a surface I could redesign. The goal was not to rebuild the feed. It was to shape it so Smart Home discovery became intentional, not incidental.",
               "For Smart Home, Inspire could not optimize on engagement alone. It needed ranking and presentation logic that respected device type, ecosystem compatibility, and customer intent, while still operating inside an ML-driven personalized feed.",
-              "I partnered with science and product to shape how Smart Home taxonomy and device metadata informed ranking, and I supported CX decisions that made device content feel scannable, shoppable, and trustworthy at feed speed."
+              "I partnered with science and product to shape how Smart Home taxonomy and device metadata informed ranking, and I drove CX decisions that made device content feel scannable, shoppable, and trustworthy at feed speed."
             ]
           },
           {
@@ -582,7 +652,7 @@ export const PORTFOLIO_DATA = {
             items: [
               {
                 content:
-                  `<span class="process-step-title"><b>Defining what relevant discovery meant for Smart Home.</b></span><p class="mt-2">I helped define what good looked like for Smart Home devices inside a creator-driven feed, aligning on constraints that were not needed for softer categories. Compatibility cues, correct device grouping, and avoiding accessory mis-matches became foundational expectations.</p>`,
+                  `<span class="process-step-title"><b>Defining what relevant discovery meant for Smart Home.</b></span><p class="mt-2">I worked with product and data science to establish shared criteria for what a correct, trustworthy Smart Home recommendation looked like in a feed context: device type hierarchy, ecosystem tags, compatibility constraints, and the conditions under which a device could surface as a hero recommendation without additional context. These became the foundation for everything downstream.</p>`,
                 visuals: [
                   {
                     src: ASSETS.testImage,
@@ -592,7 +662,7 @@ export const PORTFOLIO_DATA = {
               },
               {
                 content:
-                  `<span class="process-step-title"><b>Shaping metadata inputs that supported ML ranking.</b></span><p class="mt-2">I partnered closely with data science to tune how device metadata informed ranking and content association, balancing engagement signals with catalog correctness. This included identifying what needed to be treated as a hard constraint versus what could remain flexible or learned.</p>`,
+                  `<span class="process-step-title"><b>Shaping metadata inputs that supported ML ranking.</b></span><p class="mt-2">I partnered closely with data science to tune how device metadata informed ranking and content association, balancing engagement signals with catalog correctness. Ecosystem compatibility and device type classification became hard constraints. Content engagement scores remained signals, but secondary ones for high-risk device types. This work involved mapping which catalog attributes were reliable enough to trust as ranking inputs and which were too sparse or inconsistent to use.</p>`,
                 visuals: [
                   {
                     src: ASSETS.testImage,
@@ -603,7 +673,7 @@ export const PORTFOLIO_DATA = {
               },
               {
                 content:
-                  `<span class="process-step-title"><b>Making device content feel deliberate in the feed.</b></span><p class="mt-2">I influenced feed-level experience decisions so Smart Home content did not feel incidental or randomly injected. The focus was product identification, clearer context, and guardrails that reduced misinterpretation and wrong-click behavior.</p>`,
+                  `<span class="process-step-title"><b>Making device content feel deliberate in the feed.</b></span><p class="mt-2">I drove feed-level CX decisions to ensure Smart Home content surfaced with clearer product identification, device type cues, and context that reduced misinterpretation. This included defining when and how compatibility signals should appear in the feed card, how product groupings should be handled when a creator attached multiple related ASINs, and what guardrails should reduce wrong-click behavior before it reached the PDP.</p>`,
                 visuals: [
                   {
                     src: ASSETS.testImage,
@@ -613,7 +683,7 @@ export const PORTFOLIO_DATA = {
               },
               {
                 content:
-                  `<span class="process-step-title"><b>Supporting creator tools for commerce attachment.</b></span><p class="mt-2">I contributed to the creator workflow that enabled influencers and brands to attach ASINs to short-form videos and photos. The goal was to reduce cool video, wrong product outcomes and strengthen product-to-content association.</p>`,
+                  `<span class="process-step-title"><b>Tightening the creator-to-product association workflow.</b></span><p class="mt-2">A significant source of catalog error was upstream: creators attaching the wrong ASINs at upload time. I designed the influencer tooling that let creators link products to their videos and photos, worked directly with Smart Home creators to understand where misattribution happened, and introduced guardrails and feedback loops so creators understood the downstream consequences of loose product associations at Amazon scale.</p>`,
                 visuals: [
                   {
                     src: ASSETS.testImage,
@@ -630,51 +700,155 @@ export const PORTFOLIO_DATA = {
               "Inspire surfaced shoppable media primarily through influencer and brand content. My focus was on ensuring Smart Home devices had stronger product associations and clearer context so customers could trust what they were seeing and move from discovery to purchase without uncertainty."
             ]
           },
-          { type: "image-full", src: ASSETS.testImage, caption: "Creator Tools (Placeholder)" },
-          { type: "image-full", src: ASSETS.testImage, caption: "Main Feed Experience (Placeholder)" },
+          { type: "image-full", src: ASSETS.testImage, caption: "Creator Tools" },
+          { type: "image-full", src: ASSETS.testImage, caption: "Main Feed Experience" },
           { type: "heading", title: "Outcome" },
           { type: "impact-box", metrics: [{ value: "~2%", label: "Lift in Total Units Sold" }, { value: "13.5M", label: "Devices Worldwide" }] },
           {
             type: "text",
             content: [
-              "Inspire launched broadly in December 2022. Success was measured primarily through customer attention minutes, with secondary signals tied to units sold and customer satisfaction.",
-              "At launch, Inspire delivered a ~2% lift in total units sold, representing roughly 13.5M devices worldwide, validating feed-based discovery as a meaningful commerce surface at Amazon scale."
+              "Inspire launched on December 8, 2022. Success was measured primarily through customer attention minutes, with secondary signals tied to units sold and customer satisfaction. At launch, Inspire delivered a ~2% lift in total units sold, representing roughly 13.5M devices worldwide, validating feed-based discovery as a meaningful commerce surface at Amazon scale."
             ]
           },
           { type: "heading", title: "Reflection" },
           {
             type: "callout-box",
             content:
-              "This work reinforced a core lesson: in high-stakes categories like Smart Home, relevance is not only behavioral, it is structural. Compatibility, ecosystem rules, and customer intent must shape discovery as much as engagement does."
+              "In high-stakes categories like Smart Home, relevance is not only behavioral, it is structural. Compatibility, ecosystem rules, and customer intent must shape discovery as much as engagement does. You can't tune your way out of a bad taxonomy."
           },
           {
             type: "text",
             content: [
-              "In early 2024, Inspire was deprecated as Amazon’s strategic focus shifted toward AI-driven discovery and conversational shopping experiences. While Inspire itself was sunset, the work shaped how I think about integrating massive catalogs into ML-driven discovery systems where small decisions have outsized downstream impact.",
+              "Inspire was deprecated in early 2024. While the feature met its initial design objectives within our organization, ownership ultimately sat with a different Shopping team whose priorities shifted over time. Amazon's strategic focus was moving toward AI-driven discovery and conversational search, and Inspire was sunset in favor of those newer initiatives.",
               "My role required judgment more than control: knowing where to push, where to adapt, and where to align with decisions already in motion. That experience sharpened how I operate in high-stakes, cross-org environments where scale amplifies every decision."
             ]
           }
         ]
       }
     },
-    {
+        {
       id: "amazon-core-ai-review-highlights",
       company: "Amazon Core Shopping",
-      title: CASE_STUDIES_TITLES["amazon-core-ai-review-highlights"],
-      impactSummary: "Designed AI-driven review highlights that distilled thousands of reviews into clear, actionable product insights.",
-      impactSummarySentence: "Designed AI-driven review highlights that distilled thousands of reviews into clear, actionable product insights.",
-      designerNote: "This project leveraged advanced NLP and design thinking to transform overwhelming customer feedback into digestible, actionable product intelligence for shoppers.",
-      thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-      status: "LAUNCHED",
-      type: "CONSUMER",
+      title: "AI-powered Customer Review Highlights",
+      impactSummary: "When Amazon launched AI-generated review highlights, I explored how to make social proof a discovery driver across Smart Home, not just a detail page feature.",
+      impactSummarySentence: "When Amazon launched AI-generated review highlights, I explored how to make social proof a discovery driver across Smart Home, not just a detail page feature.",
+      designerNote: "Amazon launched AI-generated review highlights as a company-wide capability. Leadership asked me to figure out what that could mean specifically for Smart Home customers. This kind of work sits in an interesting space: you're not building from scratch, and you're not just implementing someone else's spec. You're identifying where a new capability creates real value for a specific customer and business context, then designing the applications that prove it. One shipped. Two moved to roadmap. All three came from asking where review data could reduce friction at the right moment in the journey.",
+      thumbnail: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=1200&q=80",
+      status: "LEGACY",
+      type: "MOBILE",
       details: {
-        heroImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-        role: "UX Lead for Smart Home Devices",
-        timeline: "Late 2023",
+        heroImage: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=1200&q=80",
+        role: "UX Lead, Smart Home Devices",
+        timeline: "2023 – 2024",
         team: "Core Shopping",
-        type: "CONSUMER",
+        type: "MOBILE",
         services: [SERVICES.STRATEGY, SERVICES.UI_DESIGN, SERVICES.PROTOTYPING],
-        blocks: [{ type: "text", content: "Case study coming soon." }]
+        blocks: [
+          { type: "heading", title: "Overview", hasDivider: false },
+          {
+            type: "callout-box",
+            content:
+              "Amazon launched AI-generated review highlights as a platform-wide capability, surfacing a short AI-written paragraph on product detail pages that summarized common themes across customer reviews. Leadership asked me to explore how our Smart Home Devices team could leverage this feature for our specific customers and business goals. I designed three distinct applications across different surfaces and different moments in the customer journey."
+          },
+          {
+            type: "text",
+            content: [
+              "Customer reviews are one of the most important inputs to a purchase decision, but at Amazon's scale they create their own problem. Customers want social proof, but not the work of reading through hundreds of reviews to find it.",
+              "The new AI-powered feature addressed this at the platform level. My job was to figure out where it could create the most value for Smart Home customers specifically, and design the applications to prove it."
+            ]
+          },
+          { type: "heading", title: "The Problem" },
+          {
+            type: "text",
+            content: [
+              "Research consistently pointed to reviews as a top driver of Amazon visits and purchase decisions. A Detail Page Read Depth Study from October 2021 found that comparing models, reading customer reviews, and comparing prices were the three most common reasons US customers visited Amazon, each cited by over 60% of respondents. Separately, 70% of US consumers reported reading reviews before purchasing.",
+              "But volume was working against customers. Internal frustration data showed customers felt overwhelmed by large numbers of reviews and wished the information was summarized for them. For Smart Home specifically, this problem was compounded: customers weren't just evaluating sentiment, they were trying to extract compatibility and use-case signals from unstructured review text.",
+              "The platform's new AI capability solved the summarization problem globally. The open question was how to bring it into Smart Home surfaces in a way that served our customers and supported our commercial goals."
+            ]
+          },
+          { type: "heading", title: "Exploration" },
+          {
+            type: "text",
+            content: [
+              "I designed three applications of the AI review highlights feature for Smart Home, each targeting a different surface and a different moment in the customer journey: the homepage, the video shopping feed, and individual product cards."
+            ]
+          },
+          {
+            type: "list",
+            items: [
+              {
+                content:
+                  `<span class="process-step-title"><b>Concept 1: Homepage widget — AI review highlights for top devices.</b></span><p class="mt-2">The idea was to bring AI-generated review sentiment upstream into the homepage, before a customer had even selected a product. Top-selling Smart Home devices surfaced alongside an LLM-generated headline and the most praised attributes across that product line, turning social proof into a discovery driver. Tapping a device card revealed the full customer review highlights with the most frequently mentioned attributes identified by the AI. The goal was to reduce the gap between browsing and confident enough to click through, using review data as the signal. This concept shipped.</p>`,
+                visuals: [
+                  {
+                    src: ASSETS.testImage,
+                    caption: "Deck row 1, frames 1-2 — Early homepage widget explorations showing Fire TV cards with AI-generated headline and attribute pills in light theme. Row 2, frame 3 — Closeup of the shipped homepage widget layout with product line attribute summary."
+                  },
+                  {
+                    src: ASSETS.testImage,
+                    caption: "Deck row 2, frames 1 and 4 — 'Concept design' and 'Customer-led recommendations' presentation slides showing the three core UX principles: top devices on homepage, AI attribute amplification, and summarized attribute list on tap."
+                  }
+                ]
+              },
+              {
+                content:
+                  `<span class="process-step-title"><b>Concept 2: Video shopping — review highlights inside the immersive feed.</b></span><p class="mt-2">Our Smart Home team had already built an experience surfacing brand-owned and expert videos for products relevant to a customer's interests, embedded within their shopping journey. I designed a method to merge top video reviews with our propensity models to generate video recommendations across category levels, then explored how AI-generated review highlights could be layered into that immersive surface. The concept included labeled, color-coded attribute summaries accessible directly from the video experience, making review signals available at the moment of highest engagement. This concept moved to roadmap and was in active consideration when I left the company.</p>`,
+                visuals: [
+                  {
+                    src: ASSETS.testImage,
+                    caption: "Deck row 1, frame 3 — Dark-mode video shopping feed mock showing the immersive experience context where review highlights would surface."
+                  },
+                  {
+                    src: ASSETS.testImage,
+                    caption: "Deck row 3, frame 3 and row 4, frame 1 — 'Video Shopping on Mobile Homepage' concept slides showing the immersive review highlights integration, with Customer Experience, Automate & Scale, and Research Scoping tracks identified."
+                  }
+                ]
+              },
+              {
+                content:
+                  `<span class="process-step-title"><b>Concept 3: ASIN cards — customer voice as the value message.</b></span><p class="mt-2">A third concept applied AI review highlights at the product card level, earlier in the funnel than the detail page. Each card surfaced an LLM-generated "better together" message, curated customer quotes that reinforced the product's benefit, and a CTA that took customers directly to the full ASIN page. The framing was that the voice of the customer generates the value message, removing the need for marketing copy to do that work. I explored both light and dark variants. This concept advanced to roadmap.</p>`,
+                visuals: [
+                  {
+                    src: ASSETS.testImage,
+                    caption: "Deck row 3, frames 5-6 — 'Customer benefit ASIN Cards' concept slide alongside the light-theme card mock, showing the LLM-generated benefit message, curated customer quotes, and CTA structure."
+                  },
+                  {
+                    src: ASSETS.testImage,
+                    caption: "Deck rows 4-6 — ASIN card iteration across light and dark themes. Row 4 frames 3-5 show the 'Customer Highlights ASIN Cards' concept slide and dark-theme variants. Rows 5-6 show the refined final card layout with tighter quote formatting and updated CTA styling."
+                  }
+                ]
+              }
+            ]
+          },
+          { type: "heading", title: "Outcome" },
+          {
+            type: "impact-box",
+            metrics: [
+              { value: "1 Shipped", label: "Homepage widget launched" },
+              { value: "2 Roadmap", label: "Video shopping and ASIN card concepts advanced" }
+            ]
+          },
+          {
+            type: "text",
+            content: [
+              "The homepage widget shipped. It became one of the first applications of Amazon's AI review highlights capability to surface on the Smart Home homepage, bringing sentiment-driven discovery upstream in the customer journey.",
+              "The video shopping and ASIN card concepts both advanced to roadmap with stakeholder buy-in. Customer Review Highlights also expanded company-wide during this period. The video shopping integration had not yet shipped when I left the company, but remained in active consideration."
+            ]
+          },
+          { type: "heading", title: "Reflection" },
+          {
+            type: "callout-box",
+            content:
+              "The most useful thing a designer can do with a new platform capability is ask who it actually helps and where. Not every feature belongs on every surface. The work here was less about visual design and more about identifying the right moments in the Smart Home customer journey where AI-summarized social proof could meaningfully reduce friction."
+          },
+          {
+            type: "text",
+            content: [
+              "Designing three applications of the same capability across three surfaces forced a useful discipline: each concept had to justify itself on its own terms, not just because the underlying technology was interesting. The homepage widget earned its place by moving discovery upstream. The video concept earned its place by adding signal at peak engagement. The ASIN card earned its place by replacing a job that marketing copy was doing inconsistently.",
+              "This project reinforced how much leverage there is in being the person who translates a broad platform capability into a specific team's context. The AI feature existed. The customer need existed. The design work was finding where they intersected with enough precision to be worth building."
+            ]
+          }
+        ]
       }
     },
     {

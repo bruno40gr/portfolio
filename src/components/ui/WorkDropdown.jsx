@@ -75,8 +75,8 @@ const WorkDropdown = ({ onProjectClick, closeMenu, workGroups = [], portfolioDat
           </div>
 
           {/* Right Column: Project List */}
-<div className="flex-1 bg-white p-5 min-h-[600px]">
-  <div className="flex flex-col gap-1 overflow-y-auto max-h-[950px] pr-2 custom-scrollbar">
+<div className="flex-1 bg-white p-3 mt-1">
+  <div className="flex flex-col gap-1 overflow-y-auto max-h-[650px] pr-2 custom-scrollbar">
     {activeProjects.length > 0 ? (
       activeProjects.map((project) => {
         const isExpanded = expandedProjectId === project.id;
@@ -84,24 +84,38 @@ const WorkDropdown = ({ onProjectClick, closeMenu, workGroups = [], portfolioDat
         return (
           <div
             key={project.id}
+            onClick={() => !isExpanded && setExpandedProjectId(project.id)}
             className={`
-              relative w-full text-left rounded-xl transition-all duration-300 group
+              relative w-full text-left rounded-xl transition-all duration-200 group cursor-pointer
               ${isExpanded 
-                ? 'bg-slate-100 px-6 py-6 mb-4 shadow-sm' // Expanded: Spacious, Gray BG locked
-                : 'px-4 py-3 hover:bg-slate-50'           // Default: Compact, Gray BG on hover only
+                ? 'bg-slate-100 px-4 py-4 mb-2 shadow-sm' // Expanded State
+                : 'px-4 py-3 hover:bg-slate-50'            // Default State
               }
             `}
           >
+            {/* HOVER ACCENT: Vertical Bar on Left */}
+            <div className={`
+                absolute left-2 top-1/2 -translate-y-1/2 w-[3px] bg-[var(--neon-green)] rounded-full 
+                transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)]
+                ${!isExpanded 
+                  ? 'h-0 opacity-0 group-hover:h-3/5 group-hover:opacity-100' 
+                  : 'h-0 opacity-0'
+                }
+            `} />
+
             {/* Title Trigger */}
             <button 
-              onClick={() => setExpandedProjectId(isExpanded ? null : project.id)} 
-              className="w-full text-left outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--neon-green)] rounded-md"
+              onClick={(e) => {
+                 e.stopPropagation();
+                 setExpandedProjectId(isExpanded ? null : project.id);
+              }} 
+              className="w-full text-left outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#39FF14] rounded-md"
             >
               <h4 className={`
-                text-[17px] leading-tight transition-colors duration-200
+                text-[17px] leading-tight transition-all duration-300 ease-out
                 ${isExpanded 
                   ? 'font-semibold text-[#231f44]' 
-                  : 'font-medium text-slate-700 group-hover:text-[#231f44]'
+                  : 'font-medium text-slate-700 group-hover:text-[#231f44] group-hover:translate-x-3' // Slide text right on hover
                 }
               `}>
                 {project.title}
@@ -112,10 +126,10 @@ const WorkDropdown = ({ onProjectClick, closeMenu, workGroups = [], portfolioDat
             <div 
               className={`
                 relative overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]
-                ${isExpanded ? 'max-h-[300px] opacity-100 mt-4' : 'max-h-0 opacity-0'}
+                ${isExpanded ? 'max-h-[300px] opacity-100 mt-2' : 'max-h-0 opacity-0'}
               `}
             >
-              <div className="flex items-center gap-2 mb-3">
+              <div className="flex items-center gap-2 mb-2">
                 <Pill
                   label={PROJECT_STATUS[project.status]?.label || project.status}
                   theme={PROJECT_STATUS[project.status]?.theme}

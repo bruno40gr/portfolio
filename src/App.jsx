@@ -443,19 +443,22 @@ No. It’ll replace designers who mostly produce deliverables. If I truly believ
               <div className="max-w-4xl w-full reveal-on-scroll hero-stack">
                 <img src={ASSETS.mainLogo} alt="Bruno Wong Marchena" className="hero-logo" />
                 <div className="max-w-3xl mx-auto">
-                  <h1 className="text-slate-200 text-3xl md:text-4xl font-light tracking-tight mb-8 leading-snug">
-                    <span className="font-semibold">Staff-level product designer</span> with <span className="font-semibold">14+ years</span> experience crafting complex systems.
-                  </h1>
-                  <p className="text-slate-400 text-2xl md:text-3xl mb-12 max-w-2xl mx-auto leading-snug font-light">
-                      I embrace AI for speed, while keeping the creative direction fully owned.
-                  </p>
-                </div>
+      <h1 className="text-slate-200 text-3xl md:text-4xl font-light tracking-tight mb-8 leading-snug">
+        <span className="font-semibold">Staff-level product designer</span> specializing in AI-powered platforms, complex systems, and high-craft UX.
+      </h1>
+      <p className="text-slate-400 text-2xl md:text-3xl mb-12 max-w-2xl mx-auto leading-snug font-light">
+        I've automated the work of entire teams at Amazon, cut fulfillment costs in healthcare logistics, and earned a patent for rethinking retention at Patreon.
+      </p>
+    </div>
                 
-                <div className="flex flex-col md:flex-row items-center justify-center gap-10">
-                  <Button onClick={() => setIsContactOpen(true)} className="px-10 py-4 bg-[#88FF00] text-black font-bold rounded-full hover:scale-105 transition-transform">
-                    Let’s chat
-                  </Button>
-                </div>
+                <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+      <Button onClick={() => setIsContactOpen(true)} className="px-10 py-4 bg-[#88FF00] text-black font-bold rounded-full hover:scale-105 transition-transform">
+        Let's chat
+      </Button>
+      <p className="text-slate-400 text-sm font-light tracking-wide">
+        Available for freelance and contract work
+      </p>
+    </div>
               </div>
             </section>
 
