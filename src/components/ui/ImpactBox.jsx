@@ -16,7 +16,7 @@ export const ImpactBox = ({ metrics = [], size = "small" }) => {
             key={i} 
             className="flex flex-col justify-center p-3 bg-slate-50 border border-slate-100 rounded-lg flex-1 min-w-[110px] max-w-[200px]"
           >
-            <span className="text-[18px] font-bold text-[#231f44] tracking-tight leading-none mb-1">
+            <span className="text-[16px] font-bold text-[#231f44] tracking-tight leading-none mb-1">
               {m.value}
             </span>
             <span className="text-[13px] leading-snug text-slate-500 font-medium">

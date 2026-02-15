@@ -7,10 +7,10 @@
     @apply text-3xl text-slate-900 font-semibold leading-snug font-sans;
   }
   .process-list-item b {
-    @apply text-2xl font-bold;
+    @apply text-2xl font-semibold;
   }
   .process-step-title {
-  @apply leading-snug block text-slate-900; margin-bottom: 0.05rem;
+  @apply text-lg font-semibold text-slate-900 block text-slate-900; margin-bottom: 0.05rem;
 }
 }
 

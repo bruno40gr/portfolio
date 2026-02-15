@@ -43,20 +43,24 @@ export const PORTFOLIO_DATA = {
     location: "Sacramento, CA"
   },
   projects: [
+
+    // ─────────────────────────────────────────────────────────
+    // AMAZON DEVICES ASSET SYSTEM (umbrella)
+    // ─────────────────────────────────────────────────────────
     {
       id: "amazon-devices-asset-system",
       company: "Amazon",
       title: CASE_STUDIES_TITLES["amazon-devices-asset-system"],
-      impactSummary: "Enabled AI-powered Amazon Devices marketing content generation at a global scale.",
-      impactSummarySentence: "I architected an enterprise-scale ecosystem for Amazon Devices to automate workflows for 400 marketers.",
-      designerNote: `I architected an enterprise-scale ecosystem for Amazon Devices to automate workflows for 400 marketers. This foundational AI framework satisfied a high-level mandate to lead in the emerging tech landscape.\n\nI structured the transformation across four strategic pillars presented here as distinct case studies, delivering the phases that established the platform as a 2026 roadmap cornerstone.\nThis remains the most strategically significant project of my career.`,
+      impactSummary: "Designed the platform giving Amazon Devices a single place to generate, manage, and publish marketing assets across 22 global marketplaces.",
+      impactSummarySentence: "Designed the platform giving Amazon Devices a single place to generate, manage, and publish marketing assets across 22 global marketplaces.",
+      designerNote: "Amazon Devices launches campaigns across 22 marketplaces, with hundreds of specialists — marketers, designers, pricing leads, localization teams, product owners — each owning a fragment of the same process, working across different tools, with no shared source of truth. Every campaign paid a coordination tax for that fragmentation. This project was my attempt to design a way out of it: a unified platform where assets could be generated, managed, and published globally without the overhead that was slowing everything down. Two of the four pillars have shipped and shown measurable impact. Two are still in build. This is the most strategically significant work of my career, and it isn't finished yet.",
       thumbnail: AMAZON_DEVICES_AI_IMAGE,
       status: "IN_BUILD",
       type: "INTERNAL",
       details: {
         heroImage: AMAZON_DEVICES_AI_IMAGE,
         role: "Lead UX Designer",
-        timeline: "2024–Today",
+        timeline: "2024 – Today",
         team: "Automate & Scale",
         type: "INTERNAL",
         services: [SERVICES.STRATEGY, SERVICES.SYSTEMS_DESIGN, SERVICES.AI_WORKFLOWS],
@@ -65,11 +69,11 @@ export const PORTFOLIO_DATA = {
           {
             type: "impact-box",
             metrics: [
-              { value: "45-50", label: "Marketer/Designer Workflows Replaced" },
+              { value: "45-50", label: "Specialist Workflows Automated" },
               { value: "8,000+", label: "Assets Generated for Prime Day 2025" }
             ],
             description: [
-              `The Asset System was designed to automate the work of a 45-50 person cross-functional team. For Prime Day 2025 alone, its deployed workflows generated over <b>8,000 assets</b>, accounting for an estimated <b>48,000 hours</b> of previously manual work.`
+              "Two of the four platform pillars have shipped. For Prime Day 2025 alone, their deployed workflows generated over <b>8,000 assets</b>, accounting for an estimated <b>48,000 hours</b> of previously manual work across the team."
             ]
           },
           {
@@ -77,266 +81,282 @@ export const PORTFOLIO_DATA = {
             content:
               "I was the lead UX designer on the Automate & Scale team inside Amazon Devices and Services. Our team supported 800 merchandisers globally across 22 marketplaces, launching and managing the Amazon family of Devices, including Echo, Ring, Blink, Fire TV, Eero, Tablets, and more."
           },
-          { type: "heading", title: "The Workflow Problem" },
+          { type: "heading", title: "The Fragmentation Problem" },
           {
             type: "text",
             content:
-              "I mapped the end-to-end workflow required to build a campaign, from landing pages and detail pages to all supporting imagery. The map revealed a fragmented process spanning spreadsheets, legacy tools, creative software, and multiple teams owning different pieces of the same asset."
+              "There was no central place to create, manage, or publish marketing assets for Amazon Devices globally. Campaigns were assembled across spreadsheets, legacy tools, creative software, and off-Amazon systems, with marketers, graphic designers, product leaders, pricing specialists, and localization teams each owning a different fragment of the same asset. Every handoff was a potential failure point. Every permission dependency added latency. Every tool switch introduced version drift."
+          },
+          {
+            type: "text",
+            content:
+              "I mapped the end-to-end workflow required to build a campaign, from landing pages and detail pages to all supporting imagery, across every team involved. The map made the problem legible to stakeholders and became the foundation for how the platform was scoped and sequenced."
           },
           {
             type: "image-full",
             src: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1600&q=80",
-            caption: "Journey map designed to align stakeholders and identify core process bottlenecks."
+            caption: "End-to-end campaign workflow map, designed to surface fragmentation points and align stakeholders on scope."
           },
-          { type: "heading", title: "The Four Phases of the Asset System" },
+          { type: "heading", title: "The Platform: Four Pillars" },
           {
             type: "text",
             content:
-              "The system was designed as a framework rather than a single tool. The approach was to break down a fragmented, manual workflow into four connected pillars."
+              "Rather than solving individual pain points in isolation, I designed the system as a connected platform. Each pillar addresses a distinct layer of the asset production problem — visual library, metadata intelligence, automated generation, and AI-assisted composition — and each feeds the next. Two pillars have shipped and are delivering measurable impact. Two are in active build."
           },
           { type: "pillar-grid" },
-          { type: "heading", title: "North star vision: End-to-End Creative Automation" },
+          { type: "heading", title: "North Star: End-to-End Creative Automation" },
           {
             type: "text",
             content:
-              "This prototype illustrates the future state. A merchandiser enters a single prompt, and the system generates campaign imagery, places copy, selects devices, and propagates the output across global marketplaces."
+              "The four pillars are each valuable independently, but they were designed with a unified end state in mind. The north star is a platform where a merchandiser can brief a campaign, and the system handles generation, copy placement, device selection, and global propagation without requiring a specialist at every step."
+          },
+          {
+            type: "text",
+            content:
+              "This prototype illustrates that future state. It is not a shipping spec. It is a strategic alignment tool, built to show leadership what becomes possible once all four pillars are in place and connected."
           },
           {
             type: "video",
             src: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-            caption: "Vision prototype illustrating end-to-end creative automation for device launches."
+            caption: "Vision prototype illustrating end-to-end creative automation for Amazon Devices campaign launches."
           }
         ]
       }
     },
-    
-   {
-  id: "jas-image-builder",
-  parentId: "amazon-devices-asset-system",
-  company: "Amazon Devices",
-  title: CASE_STUDIES_TITLES["jas-image-builder"],
-  impactSummary: "An automated production system enabling localized asset generation at scale across 23 global marketplaces.",
-  impactSummarySentence: "A scalable editor enabling localized marketing asset generation across all global marketplaces.",
-  designerNote: "I led the design of this tool to help our marketing teams create device images without needing a designer for every update. Before this, we had a massive bottleneck where designers had to manually place product photos onto backgrounds for thousands of different language and size combinations. I wanted to make the editor easy to use while building in the smart logic needed to keep every image on-brand automatically. This work gave our global teams the speed they needed for major launches and served as the foundation for our entire automation system.",
-  thumbnail: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=80",
-  status: "LAUNCHED",
-  type: "INTERNAL",
-  details: {
-    heroImage: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=80",
-    role: "Lead UX Designer",
-    timeline: "September 2024 – Feb 2025",
-    team: "Automate & Scale",
-    type: "INTERNAL",
-    services: [SERVICES.SYSTEMS_DESIGN, SERVICES.PROTOTYPING, SERVICES.UI_DESIGN],
-    blocks: [
-      { type: "heading", title: "Overview", hasDivider: false },
-      {
-        type: "callout-box",
-        content:
-          "The Image Builder is a scalable production tool that allows merchandisers to compose hero images, ads, and banners across various cultural contexts and dimensions. It replaced a patchwork of creative tools with one consistent, automated workflow."
-      },
-      {
-        type: "text",
-        content: [
-          "<b>The Manual Bottleneck:</b> Before this system, merchandisers created assets across dozens of marketplaces using Photoshop, Illustrator, and inconsistent regional templates. Teams worked in silos, assets were rebuilt multiple times, and simple variations required hours of manual labor. To scale globally, Amazon Devices needed a predictable, automated way to create localized imagery.",
-          "One of the most valuable asset types in this ecosystem is lifestyle imagery, which shows devices in real environments. These assets consistently increase click-through rates by more than 40%, yet they historically required 40,000+ hours of manual CGI and graphic design work annually."
-        ]
-      },
-      { type: "heading", title: "Design Strategy" },
-      {
-        type: "text",
-        content: [
-          "While the product strategy was collaborative, I owned the <b>end-to-end UX/UI</b>. I focused on replacing a fragmented toolchain with a WYSIWYG builder that merchandisers could trust. I designed a <b>dynamic layout engine</b> that managed spacing, copy placement, and visual balance across dozens of dimensions automatically.",
-          "The system supports structured templates for consistency but allows for flexibility when teams need it. Under the hood, I introduced <b>intelligent guardrails</b>: the system automatically checks for pricing inconsistencies, device availability, and brand constraints by \'reading\' image attributes through a robust metadata library.",
-          "The goal was never to build another design tool: it was to build a production system that handled the mechanical steps so users could focus on content and clarity. I prioritized features like drag-and-drop editing and smart filters to ensure the tool felt fast and approachable for non-designers."
-        ]
-      },
-      { type: "heading", title: "Process" },
-      {
-        type: "list",
-        items: [
+
+    // ─────────────────────────────────────────────────────────
+    // PILLAR 1: IMAGE BUILDER
+    // ─────────────────────────────────────────────────────────
+    {
+      id: "jas-image-builder",
+      parentId: "amazon-devices-asset-system",
+      company: "Amazon Devices",
+      title: CASE_STUDIES_TITLES["jas-image-builder"],
+      impactSummary: "An automated production system enabling localized asset generation at scale across 23 global marketplaces.",
+      impactSummarySentence: "A scalable editor enabling localized marketing asset generation across all global marketplaces.",
+      designerNote: "Before this tool existed, producing a single localized asset meant a designer manually compositing a product photo onto a background, then repeating that process for dozens of size and language combinations per marketplace. Multiply that by 23 markets and every major launch, and you have an unsustainable production model. I wanted to design something that handled the mechanical work automatically so teams could focus on what actually requires judgment. This became the first shipped pillar of the Asset System and the foundation everything else was built on.",
+      thumbnail: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=80",
+      status: "LAUNCHED",
+      type: "INTERNAL",
+      details: {
+        heroImage: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=80",
+        role: "Lead UX Designer",
+        timeline: "September 2024 – February 2025",
+        team: "Automate & Scale",
+        type: "INTERNAL",
+        services: [SERVICES.SYSTEMS_DESIGN, SERVICES.PROTOTYPING, SERVICES.UI_DESIGN],
+        blocks: [
+          { type: "heading", title: "Overview", hasDivider: false },
           {
+            type: "callout-box",
             content:
-              `<span class="process-step-title"><b>Discovery & User Insights</b></span><p class="mt-2">I adopted a user-centric discovery phase, utilizing agile research methodologies and \'scrappy\' usability testing with global merchandisers to map the friction in current workflows and define the product roadmap.</p>`,
-            visuals: [
-              {
-                kind: "embed",
-                src: "https://player.cloudinary.com/embed/?cloud_name=diy08lj9x&public_id=JAS_-_Metadata_Photoshop_1_mstvm3",
-                caption: "Agile research session: Learning how brand designers manually crafted image assets."
-              }
-            ]
+              "The Image Builder is a scalable production tool that allows merchandisers to compose hero images, ads, and banners across various cultural contexts and dimensions. It replaced a patchwork of creative tools with one consistent, automated workflow."
           },
           {
-            content:
-              `<span class="process-step-title"><b>Information Architecture & Iteration</b></span><p class="mt-2">Solving for 23+ marketplaces required a robust IA. I iterated on various interaction models to handle the high density of configuration options (marketplaces x languages) until I arrived at a scalable UI that prioritized clarity.</p>`,
-            visuals: [
+            type: "text",
+            content: [
+              "Before this system, merchandisers created assets across dozens of marketplaces using Photoshop, Illustrator, and inconsistent regional templates. Teams worked in silos, assets were rebuilt multiple times, and simple variations required hours of manual labor. To scale globally, Amazon Devices needed a predictable, automated way to create localized imagery.",
+              "One of the most valuable asset types in this ecosystem is lifestyle imagery, which shows devices in real environments. These assets consistently increase click-through rates by more than 40%, yet they historically required 40,000+ hours of manual CGI and graphic design work annually."
+            ]
+          },
+          { type: "heading", title: "Design Strategy" },
+          {
+            type: "text",
+            content: [
+              "While the product strategy was collaborative, I owned the end-to-end UX and UI. I focused on replacing a fragmented toolchain with a WYSIWYG builder that merchandisers could trust. I designed a dynamic layout engine that managed spacing, copy placement, and visual balance across dozens of dimensions automatically.",
+              "The system supports structured templates for consistency but allows flexibility when teams need it. Under the hood, I introduced intelligent guardrails: the system automatically checks for pricing inconsistencies, device availability, and brand constraints by reading image attributes through a robust metadata library.",
+              "The goal was never to build another design tool. It was to build a production system that handled the mechanical steps so users could focus on content and clarity. I prioritized features like drag-and-drop editing and smart filters to ensure the tool felt fast and approachable for non-designers."
+            ]
+          },
+          { type: "heading", title: "Process" },
+          {
+            type: "list",
+            items: [
               {
-                kind: "image",
-                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1769731424/175c5a76-0e29-4787-a5c9-0eb3c11a870b.png",
-                caption: "Early iteration of top-level form fields and live preview logic."
+                content:
+                  `<span class="process-step-title"><b>Discovery & User Insights</b></span><p class="mt-2">I adopted a user-centric discovery phase, using agile research methodologies and scrappy usability testing with global merchandisers to map the friction in current workflows and define the product roadmap.</p>`,
+                visuals: [
+                  {
+                    kind: "embed",
+                    src: "https://player.cloudinary.com/embed/?cloud_name=diy08lj9x&public_id=JAS_-_Metadata_Photoshop_1_mstvm3",
+                    caption: "Agile research session: Learning how brand designers manually crafted image assets."
+                  }
+                ]
               },
               {
-                kind: "image",
-                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1769731833/1fa69945-d723-433e-a7c8-0bab74c87d8e.png",
-                caption: "Exploring segmented controls vs. nested filters for marketplace selection."
-              }
-            ]
-          },
-          {
-            content:
-              `<span class="process-step-title"><b>Stress-Testing & Guardrails</b></span><p class="mt-2">To ensure the tool was \'incompatibility-proof,\' I designed intelligent guardrails and smart defaults that managed seasonal availability and regional legal requirements, guiding the user toward a \'correct-by-construction\' design.</p>`,
-            visuals: [{ src: ASSETS.testImage, caption: "UI guardrails and smart selection logic for global compliance." }]
-          },
-          {
-            content:
-              `<span class="process-step-title"><b>Prototyping for Alignment</b></span><p class="mt-2">I utilized high-fidelity prototypes to validate the interaction model and secure stakeholder alignment. These were critical in communicating complex logic to engineering and gaining the trust of marketing leadership.</p>`,
-            visuals: [{ src: ASSETS.testImage, caption: "Functional prototype used for stakeholder and engineering alignment." }]
-          },
-          {
-  content:
-    `<span class="process-step-title"><b>Handoff and Evolving Meridian</b></span>
-    <p class="mt-2">
-      Design was not a linear path: it was a cyclical process. Once the interaction model was finalized, I moved into a rigorous documentation phase to cover edge cases and ensure a seamless technical handoff to engineering.
-    </p>
-    <p class="mt-2">
-      Internally, we leveraged Meridian, which is Amazon\'s dedicated enterprise design system that powers a unified language and human-centered designs for all internal-facing digital products at scale. While the system provided a robust foundation that covered most of our needs, the unique complexity of the Image Builder necessitated custom extensions. I designed these bespoke components where gaps existed and contributed our patterns back to the core system to help evolve the library for other internal teams.
-    </p>`,
-  visuals: [{ src: ASSETS.testImage, caption: "Meridian component specifications and edge-case documentation." }]
-}
-        ]
-      },
-      {
-        type: "image-full",
-        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1737482813/Main_Builder_q8vj9z.png",
-        caption: "The Final Image Builder Interface"
-      },
-      { type: "heading", title: "Final Shipped Product" },
-      {
-        type: "text",
-        content: [
-          "The first MVP launched in February 2025 to a targeted beta group, followed by a full-scale release in April 2025, strategically timed for the Prime Day production cycle. This version covered the entire Amazon Devices catalog across North America and EMEA, supporting 70% of high-traffic marketing placements, including homepage banners (Herotators), Quad cards, and Single Image cards. By focusing on these high-volume use cases first, the system delivered maximum operational ROI from day one."
-        ]
-      },
-      { type: "heading", title: "Impact & Operational ROI" },
-      {
-        type: "impact-box",
-        metrics: [
-          { value: "100k+ hours", label: "Projected Annual Savings" },
-          { value: "45-50", label: "Marketer/Designer Workflows Replaced" }
-        ],
-        description: [
-          "For Prime Day 2025 alone, the deployed workflows produced <b>8,000 lifestyle images</b>, accounting for an estimated <b>48,000 hours</b> of previously manual work. This reclaimed time allowed creative and marketing teams to shift from repetitive production to high-level creative strategy."
-        ]
-      }
-    ]
-  }
-},
-    {
-  id: "jas-asset-manager",
-  parentId: "amazon-devices-asset-system",
-  company: "Amazon Devices",
-  title: "Devices Component Asset Manager",
-  impactSummary: "A centralized library for the Amazon Devices catalog that enables AI automation and makes marketing images easy to find across global markets.",
-  impactSummarySentence: "A centralized asset library that simplifies image discovery and enables AI powered automation.",
-  designerNote: "Once we launched the Image Builder, it was clear that a centralized asset library had to be the next step. This project creates the foundation we need for an AI powered system by making sure our data is clean and easy to manage. Currently, our device and marketing images are scattered across different cloud systems, which makes them hard to track and find. With this manager, we are solving that dependency to make campaign creation intuitive and save our teams thousands of hours of manual work.",
-  thumbnail: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=80",
-  status: "IN_BUILD",
-  type: "INTERNAL",
-  details: {
-    heroImage: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=80",
-    role: "Lead UX Designer",
-    timeline: "Ongoing: Estimated Q2 2026",
-    team: "Automate & Scale",
-    type: "INTERNAL",
-    services: [SERVICES.SYSTEMS_DESIGN, SERVICES.UX_RESEARCH, SERVICES.UI_DESIGN],
-    blocks: [
-      { type: "heading", title: "Overview", hasDivider: false },
-      {
-        type: "callout-box",
-        content:
-          "The Asset Manager serves as the visual library for Amazon Devices. It is the operational layer that allows for AI training, metadata organization, and automated image generation across our entire system."
-      },
-      {
-        type: "text",
-        content: [
-          "<b>The Problem:</b> Our organization had no single source of truth for visual assets. Currently, teams find it difficult to locate the right images, which leads to outdated assets being used or work being duplicated. The Image Builder can only scale if it is powered by a reliable system of device photos, backgrounds, and confidential prototypes.",
-          "Marketing images are currently scattered across multiple internal systems, requiring heavy manual tracking and off-site management. This tool, known internally as DCAM, aims to solve this dependency and simplify how our teams interact with our product catalog."
-        ]
-      },
-      { type: "heading", title: "Design Strategy" },
-      {
-        type: "text",
-        content: [
-          "I designed the Asset Browser to be a simple discovery tool that handles complex logic under the hood. The goal was to let a user find the right asset in seconds while the system managed the rules for confidentiality, region availability, and AI requirements.",
-          "By focusing on a clean and familiar interface, I ensured that the tool felt intuitive for merchandisers while still supporting the strict governance and automation workflows that touch every part of the broader Asset System."
-        ]
-      },
-      { type: "heading", title: "Process" },
-      {
-        type: "list",
-        items: [
-          {
-            content:
-              `<span class="process-step-title"><b>UX Research: Learning How Teams Search</b></span><p class="mt-2">I met with merchandisers in different markets to see how they manage images today. I found that inconsistent naming, scattered storage, and varied access patterns were the biggest blockers to speed. These insights helped me shape the browser's navigation and information architecture.</p>`,
-            visuals: [
+                content:
+                  `<span class="process-step-title"><b>Information Architecture & Iteration</b></span><p class="mt-2">Solving for 23+ marketplaces required a robust IA. I iterated on various interaction models to handle the high density of configuration options (marketplaces x languages) until I arrived at a scalable UI that prioritized clarity.</p>`,
+                visuals: [
+                  {
+                    kind: "image",
+                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1769731424/175c5a76-0e29-4787-a5c9-0eb3c11a870b.png",
+                    caption: "Early iteration of top-level form fields and live preview logic."
+                  },
+                  {
+                    kind: "image",
+                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1769731833/1fa69945-d723-433e-a7c8-0bab74c87d8e.png",
+                    caption: "Exploring segmented controls vs. nested filters for marketplace selection."
+                  }
+                ]
+              },
               {
-                kind: "image",
-                src: ASSETS.testImage,
-                caption: "Researching asset retrieval habits and naming inconsistencies across global markets."
-              }
-            ]
-          },
-          {
-            content:
-              `<span class="process-step-title"><b>Managing Complexity with Smart Filtering</b></span><p class="mt-2">With hundreds of product IDs and multiple generations of devices to track, I focused on a powerful but simple filtering UI. I added clear visual cues for unreleased prototypes and restricted content to prevent accidental leaks and reduce legal risk.</p>`,
-            visuals: [
+                content:
+                  `<span class="process-step-title"><b>Stress-Testing & Guardrails</b></span><p class="mt-2">To ensure the tool was incompatibility-proof, I designed intelligent guardrails and smart defaults that managed seasonal availability and regional legal requirements, guiding the user toward a correct-by-construction design.</p>`,
+                visuals: [{ src: ASSETS.testImage, caption: "UI guardrails and smart selection logic for global compliance." }]
+              },
               {
-                kind: "image",
-                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1769731424/175c5a76-0e29-4787-a5c9-0eb3c11a870b.png",
-                caption: "Designing visual guardrails and access controls for restricted assets."
+                content:
+                  `<span class="process-step-title"><b>Prototyping for Alignment</b></span><p class="mt-2">I built high-fidelity prototypes to validate the interaction model and secure stakeholder alignment. These were critical in communicating complex logic to engineering and gaining the trust of marketing leadership.</p>`,
+                visuals: [{ src: ASSETS.testImage, caption: "Functional prototype used for stakeholder and engineering alignment." }]
+              },
+              {
+                content:
+                  `<span class="process-step-title"><b>Handoff and Evolving Meridian</b></span>
+                  <p class="mt-2">Design was not a linear path: it was a cyclical process. Once the interaction model was finalized, I moved into a rigorous documentation phase to cover edge cases and ensure a seamless technical handoff to engineering.</p>
+                  <p class="mt-2">Internally, we leveraged Meridian, Amazon's dedicated enterprise design system that powers a unified language and human-centered designs for all internal-facing digital products at scale. While the system provided a robust foundation, the unique complexity of the Image Builder required custom extensions. I designed these bespoke components where gaps existed and contributed our patterns back to the core system to help evolve the library for other internal teams.</p>`,
+                visuals: [{ src: ASSETS.testImage, caption: "Meridian component specifications and edge-case documentation." }]
               }
             ]
           },
           {
-  content:
-    `<span class="process-step-title"><b>Streamlining the Approval Workflow</b></span><p class="mt-2">Our marketing partners needed a reliable way to approve, reject, or request changes to images without leaving the platform. Previously, these reviews happened offline and required multiple layers of manual follow-up. I worked closely with the QA and design teams to build a lean approval flow directly into the tool. This simplified the review process and was a major factor in getting teams to adopt the new system quickly.</p>`,
-  visuals: [
-    { 
-      src: ASSETS.testImage, 
-      caption: "UX flow for the integrated QA and approval process." 
-    }
-  ]
-},
+            type: "image-full",
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1737482813/Main_Builder_q8vj9z.png",
+            caption: "The Final Image Builder Interface"
+          },
+          { type: "heading", title: "Final Shipped Product" },
           {
-            content:
-              `<span class="process-step-title"><b>Evolving the System</b></span><p class="mt-2">This project required new UI patterns that our internal design system, Meridian, did not have yet. I designed these new components, such as batch management dashboards and metadata panels, and contributed them back to the system for other internal teams to use.</p>`,
-            visuals: [{ src: ASSETS.testImage, caption: "Component extensions and improvements contributed back to Meridian." }]
+            type: "text",
+            content: [
+              "The first MVP launched in February 2025 to a targeted beta group, followed by a full-scale release in April 2025, strategically timed for the Prime Day production cycle. This version covered the entire Amazon Devices catalog across North America and EMEA, supporting 70% of high-traffic marketing placements, including homepage banners (Herotators), Quad cards, and Single Image cards. By focusing on these high-volume use cases first, the system delivered maximum operational ROI from day one."
+            ]
+          },
+          { type: "heading", title: "Impact & Operational ROI" },
+          {
+            type: "impact-box",
+            metrics: [
+              { value: "100k+ hours", label: "Projected Annual Savings" },
+              { value: "45-50", label: "Specialist Workflows Automated" }
+            ],
+            description: [
+              "For Prime Day 2025 alone, the deployed workflows produced <b>8,000 lifestyle images</b>, accounting for an estimated <b>48,000 hours</b> of previously manual work. This reclaimed time allowed creative and marketing teams to shift from repetitive production to high-level creative strategy."
+            ]
           }
         ]
-      },
-      { type: "heading", title: "Functional Blueprint" },
-      {
-        type: "text",
-        content: [
-          "This developer ready blueprint is the source of truth for the build. The clickable prototype covers core features that we researched and validated, including batch management and smart filtering. It clearly defines the interaction logic and edge cases to make sure the final tool works exactly as intended."
-        ]
-      },
-      {
+      }
+    },
+
+    // ─────────────────────────────────────────────────────────
+    // PILLAR 2: ASSET MANAGER
+    // ─────────────────────────────────────────────────────────
+    {
+      id: "jas-asset-manager",
+      parentId: "amazon-devices-asset-system",
+      company: "Amazon Devices",
+      title: "Devices Component Asset Manager",
+      impactSummary: "A centralized library for the Amazon Devices catalog that enables AI automation and makes marketing images easy to find across global markets.",
+      impactSummarySentence: "A centralized asset library that simplifies image discovery and enables AI-powered automation.",
+      designerNote: "The Image Builder shipping made one thing immediately clear: the automation pipeline was only as good as the assets feeding it. Device photos, background images, and confidential pre-release prototypes were scattered across multiple cloud systems with no consistent naming, no access governance, and no way to know if what you found was current. Every automation run was only as reliable as the weakest asset in the chain. I designed the Asset Manager to be the source of truth that everything else depends on, simple to navigate on the surface, with the governance and AI-readiness logic handled underneath.",
+      thumbnail: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=80",
+      status: "IN_BUILD",
+      type: "INTERNAL",
+      details: {
+        heroImage: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=80",
+        role: "Lead UX Designer",
+        timeline: "Ongoing: Estimated Q2 2026",
+        team: "Automate & Scale",
+        type: "INTERNAL",
+        services: [SERVICES.SYSTEMS_DESIGN, SERVICES.UX_RESEARCH, SERVICES.UI_DESIGN],
+        blocks: [
+          { type: "heading", title: "Overview", hasDivider: false },
+          {
+            type: "callout-box",
+            content:
+              "The Asset Manager serves as the visual library for Amazon Devices. It is the operational layer that allows for AI training, metadata organization, and automated image generation across our entire system."
+          },
+          {
+            type: "text",
+            content: [
+              "Our organization had no single source of truth for visual assets. Teams struggled to locate the right images, which led to outdated assets being used in production or work being duplicated across markets. The Image Builder could only scale if it was powered by a reliable, well-governed system of device photos, backgrounds, and confidential prototypes.",
+              "Marketing images were scattered across multiple internal systems, requiring heavy manual tracking and off-platform management. This tool, known internally as DCAM, was designed to solve that dependency and simplify how teams interact with the product catalog."
+            ]
+          },
+          { type: "heading", title: "Design Strategy" },
+          {
+            type: "text",
+            content: [
+              "I designed the Asset Manager to be a simple discovery tool that handles complex logic under the hood. The goal was to let a user find the right asset in seconds while the system managed the rules for confidentiality, regional availability, and AI requirements.",
+              "By focusing on a clean and familiar interface, I ensured the tool felt intuitive for merchandisers while still supporting the strict governance and automation workflows that touch every part of the broader Asset System."
+            ]
+          },
+          { type: "heading", title: "Process" },
+          {
+            type: "list",
+            items: [
+              {
+                content:
+                  `<span class="process-step-title"><b>UX Research: Learning How Teams Search</b></span><p class="mt-2">I met with merchandisers across different markets to observe how they managed images today. Inconsistent naming, scattered storage, and varied access patterns were the biggest blockers to speed. These insights shaped the browser's navigation and information architecture.</p>`,
+                visuals: [
+                  {
+                    kind: "image",
+                    src: ASSETS.testImage,
+                    caption: "Researching asset retrieval habits and naming inconsistencies across global markets."
+                  }
+                ]
+              },
+              {
+                content:
+                  `<span class="process-step-title"><b>Managing Complexity with Smart Filtering</b></span><p class="mt-2">With hundreds of product IDs and multiple device generations to track, I focused on a powerful but simple filtering UI. I added clear visual cues for unreleased prototypes and restricted content to prevent accidental leaks and reduce legal risk.</p>`,
+                visuals: [
+                  {
+                    kind: "image",
+                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1769731424/175c5a76-0e29-4787-a5c9-0eb3c11a870b.png",
+                    caption: "Designing visual guardrails and access controls for restricted assets."
+                  }
+                ]
+              },
+              {
+                content:
+                  `<span class="process-step-title"><b>Streamlining the Approval Workflow</b></span><p class="mt-2">Marketing partners needed a reliable way to approve, reject, or request changes to images without leaving the platform. Previously, these reviews happened offline and required multiple layers of manual follow-up. I worked closely with the QA and design teams to build a lean approval flow directly into the tool, which became a major factor in early team adoption.</p>`,
+                visuals: [
+                  {
+                    src: ASSETS.testImage,
+                    caption: "UX flow for the integrated QA and approval process."
+                  }
+                ]
+              },
+              {
+                content:
+                  `<span class="process-step-title"><b>Evolving the System</b></span><p class="mt-2">This project required new UI patterns that Meridian did not yet have. I designed these new components, including batch management dashboards and metadata panels, and contributed them back to the system for other internal teams to use.</p>`,
+                visuals: [{ src: ASSETS.testImage, caption: "Component extensions and improvements contributed back to Meridian." }]
+              }
+            ]
+          },
+          { type: "heading", title: "Functional Blueprint" },
+          {
+            type: "text",
+            content: [
+              "This developer-ready blueprint is the source of truth for the build. The clickable prototype covers core features that we researched and validated, including batch management and smart filtering. It clearly defines the interaction logic and edge cases to make sure the final tool works exactly as intended."
+            ]
+          },
+          {
             type: "figma",
             src: "https://www.figma.com/proto/PG1SSc8aZlpS9atMCvKg3M/Genie---Product-Demo-Day?page-id=174%3A13910&node-id=2243-25245&p=f&viewport=226%2C732%2C0.04&t=s3IjMY4Gl6tH4KiA-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=2243%3A25245&show-proto-sidebar=1",
             caption: "Clickable prototype for batch management and smart filtering."
           },
-          
-      { type: "heading", title: "Outcome" },
-      {
-        type: "text",
-        content: [
-          "Although still in development, this browser is already the foundation for the Image Builder. It has turned our massive catalog into a searchable, automation ready library that serves as the operational layer for our AI engine. By centralizing our assets, we are not only saving production time but also ensuring that every marketing image used globally is current and brand compliant."
+          { type: "heading", title: "Outcome" },
+          {
+            type: "text",
+            content: [
+              "Although still in development, this browser is already the foundation for the Image Builder. It has turned our massive catalog into a searchable, automation-ready library that serves as the operational layer for our AI engine. By centralizing our assets, we are not only saving production time but also ensuring that every marketing image used globally is current and brand-compliant."
+            ]
+          }
         ]
       }
-    ]
-  }
-},
+    },
+
+    // ─────────────────────────────────────────────────────────
+    // PILLAR 3: METADATA STUDIO
+    // ─────────────────────────────────────────────────────────
     {
       id: "jas-metadata-studio",
       parentId: "amazon-devices-asset-system",
@@ -344,14 +364,14 @@ export const PORTFOLIO_DATA = {
       title: CASE_STUDIES_TITLES["jas-metadata-studio"],
       impactSummary: "Designed an AI-assisted configuration flow that automates metadata ingestion, acting as the intelligence layer for high-scale image generation.",
       impactSummarySentence: "Designed an AI-assisted configuration flow that transforms manual data entry into intelligent automated verification.",
-      designerNote: "I approached this as a critical systems challenge. Recognizing that manual entry was being accepted as the unavoidable cost of automation, I pushed beyond the original requirements to test unapproved AI capabilities. By validating these 'scrappy' prototypes early, I was able to prove that 90% of the workload could be automated, shifting the project from simple data entry to a high-leverage intelligence tool.",
+      designerNote: "I approached this as a critical systems challenge. The team had accepted manual metadata entry as the unavoidable cost of running an AI pipeline. I didn't think that was right. I pushed beyond the original scope to run AI feasibility experiments nobody had formally approved, and those experiments proved that 90% of the metadata burden could be automated. That shifted the project from a data-entry form into something much more interesting: a tool that meets designers where the data is born and extracts it automatically, leaving only the decisions that genuinely require human judgment.",
       thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80",
       status: "IN_BUILD",
       type: "INTERNAL",
       details: {
         heroImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80",
         role: "Lead UX Designer",
-        timeline: "August 2025 –Today",
+        timeline: "August 2025 – Today",
         team: "Automate & Scale",
         type: "INTERNAL",
         services: [SERVICES.UX_RESEARCH, SERVICES.SYSTEMS_DESIGN, SERVICES.AI_WORKFLOWS],
@@ -365,16 +385,16 @@ export const PORTFOLIO_DATA = {
           {
             type: "text",
             content: [
-              "<b>The Problem:</b> Our automation pipeline had a critical flaw: it required massive amounts of data that we didn't have a scalable way to collect. Currently, System Designers must manually input up to 90 metadata fields for every single asset to ensure it works with our AI models. This manual tax created a bottleneck that threatened to stall our entire automation roadmap.",
-              "The new image generation engine can only scale if it is fed precise, validated data. We needed a tool that could gather this intelligence without turning designers into data entry clerks, ensuring our AI systems have the fuel they need to operate."
+              "Our automation pipeline had a critical flaw: it required massive amounts of data that we had no scalable way to collect. System Designers had to manually input up to 90 metadata fields for every single asset to ensure it worked with our AI models. This manual tax created a bottleneck that threatened to stall the entire automation roadmap.",
+              "The image generation engine could only scale if it was fed precise, validated data. We needed a tool that could gather this intelligence without turning designers into data entry clerks."
             ]
           },
           { type: "heading", title: "Design Strategy" },
           {
             type: "text",
             content: [
-              "I owned the research, UX, and product direction. My strategy was to move from 'manual entry' to 'intelligent verification.' I audited every metadata field and classified them into three categories: Inferred (data the system sees), Suggested (data the AI guesses), and Manual (data requiring human judgment).",
-              "I ran multiple stress tests with AI models to validate this approach. While general image sorting proved non-essential, other tests showed incredible promise. We proved that AI could reliably identify product colors and angles with high precision. These experiments allowed us to design a UI that felt like a partner rather than a form, using 'correct-by-construction' logic to ensure every asset was ready for the engine."
+              "I owned the research, UX, and product direction. My strategy was to move from manual entry to intelligent verification. I audited every metadata field and classified them into three categories: Inferred (data the system can see), Suggested (data the AI can estimate), and Manual (data requiring human judgment).",
+              "I ran multiple stress tests with AI models to validate this approach. While general image sorting proved non-essential, other tests showed strong results. We proved that AI could reliably identify product colors and angles with high precision. These experiments let us design a UI that felt like a partner rather than a form, using correct-by-construction logic to ensure every asset was ready for the engine."
             ]
           },
           { type: "heading", title: "Process" },
@@ -383,7 +403,7 @@ export const PORTFOLIO_DATA = {
             items: [
               {
                 content:
-                  `<span class="process-step-title"><b>Discovery & Workflow Mapping.</b></span><p class="mt-2">I partnered with the Devices Brand Studio to shadow their current Photoshop and script-based workflows. This research helped me identify exactly where metadata was being 'born' and where we could intercept it automatically to reduce manual re-entry.</p>`,
+                  `<span class="process-step-title"><b>Discovery & Workflow Mapping</b></span><p class="mt-2">I partnered with the Devices Brand Studio to shadow their Photoshop and script-based workflows. This research helped me identify exactly where metadata was being created and where we could intercept it automatically to reduce manual re-entry.</p>`,
                 visuals: [
                   {
                     src: ASSETS.testImage,
@@ -393,7 +413,7 @@ export const PORTFOLIO_DATA = {
               },
               {
                 content:
-                  `<span class="process-step-title"><b>The Heavy Lifting: Classification.</b></span><p class="mt-2">Working with engineering and data science, I built a taxonomy model to decide which fields to hide and which to show. We moved from a model where everything was manual to a taxonomy that prioritizes intelligent defaults.</p>`,
+                  `<span class="process-step-title"><b>The Heavy Lifting: Classification</b></span><p class="mt-2">Working with engineering and data science, I built a taxonomy model to decide which fields to hide and which to surface. We moved from a model where everything was manual to one that prioritizes intelligent defaults.</p>`,
                 visuals: []
               }
             ]
@@ -401,7 +421,7 @@ export const PORTFOLIO_DATA = {
           {
             type: "table",
             title: "Metadata Taxonomy",
-            columns: ["Category", "Metadata Fields", "How It’s Handled"],
+            columns: ["Category", "Metadata Fields", "How It's Handled"],
             rows: [
               [
                 "Inferred",
@@ -425,7 +445,7 @@ export const PORTFOLIO_DATA = {
             items: [
               {
                 content:
-                  `<span class="process-step-title"><b>Validation Experiments.</b></span><p class="mt-2">I ran AI experiments to test feasibility. We found that specific tasks like color detection were 100% accurate, and angle detection was 90% accurate. I also prototyped a 'Screen Mapper' where a user draws a simple boundary, allowing the AI to handle complex perspective warping and glare application automatically.</p>`,
+                  `<span class="process-step-title"><b>Validation Experiments</b></span><p class="mt-2">I ran AI experiments to test feasibility. Color detection came in at 100% accuracy and angle detection at 90%. I also prototyped a Screen Mapper where a user draws a simple boundary, letting the AI handle complex perspective warping and glare application automatically.</p>`,
                 visuals: [
                   {
                     src: ASSETS.testImage,
@@ -435,11 +455,11 @@ export const PORTFOLIO_DATA = {
               },
               {
                 content:
-                  `<span class="process-step-title"><b>Prototyping & Refining.</b></span><p class="mt-2">I built low-fidelity prototypes to show the team how a 'reduced-input' workflow would actually feel. The final workflow focused on speed, clarity, and preparing assets for future AI-driven automation.</p>`,
+                  `<span class="process-step-title"><b>Prototyping & Refining</b></span><p class="mt-2">I built low-fidelity prototypes to show the team how a reduced-input workflow would actually feel. The final workflow focused on speed, clarity, and preparing assets for future AI-driven automation.</p>`,
                 visuals: [
                   {
                     src: ASSETS.testImage,
-                    caption: "Low fidelity prototype focused on speed: fewer fields, stronger defaults, and clearer validation states."
+                    caption: "Low-fidelity prototype focused on speed: fewer fields, stronger defaults, and clearer validation states."
                   }
                 ]
               }
@@ -455,24 +475,27 @@ export const PORTFOLIO_DATA = {
             type: "impact-box",
             size: "large",
             metrics: [
-               { value: "3 Steps", label: "Down from ~50 manual inputs per component image" },
-    { value: "99% accuracy", label: "In automated image composition validation" },
-    { value: "90% accuracy", label: "In photography angle detection" },
-               { value: "0.5% risk", label: "Of leaks vs. manual, spreadsheet-dependent handoffs" }
+              { value: "3 Steps", label: "Down from ~50 manual inputs per component image" },
+              { value: "99% accuracy", label: "In automated image composition validation" },
+              { value: "90% accuracy", label: "In photography angle detection" },
+              { value: "0.5% risk", label: "Of leaks vs. manual, spreadsheet-dependent handoffs" }
             ]
           }
         ]
       }
     },
-   
-     {
+
+    // ─────────────────────────────────────────────────────────
+    // PILLAR 4: AI GENERATOR
+    // ─────────────────────────────────────────────────────────
+    {
       id: "jas-ai-generator",
       parentId: "amazon-devices-asset-system",
       company: "Amazon Devices",
       title: "Asset System AI Agent",
       impactSummary: "Developed a specialized AI utility to automate product placement and layout rules, accelerating asset production for Amazon Devices.",
       impactSummarySentence: "Developed a generative AI utility that automates complex product placement and learns from human design feedback.",
-      designerNote: "This project was a reality check. We proved that AI could generate high-quality composites, but we also discovered that human review is a massive bottleneck. The 'red flag' of a 4-minute review cycle is exactly what pushed us to build the automated Metadata Studio.",
+      designerNote: "This project was a reality check. We proved that AI could generate high-quality composites at scale, but we also discovered that human review was a massive bottleneck. A 4-minute review cycle sounds fast until you multiply it by thousands of images. That finding directly drove the Metadata Studio project, which was designed to eliminate the manual overhead that was slowing the whole pipeline down. Sometimes the most valuable output of a shipped tool is what it teaches you about the next problem to solve.",
       thumbnail: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1600&q=80",
       status: "LAUNCHED",
       type: "INTERNAL",
@@ -493,7 +516,7 @@ export const PORTFOLIO_DATA = {
           {
             type: "text",
             content: [
-              "<b>The Challenge:</b> Lifestyle images are the most complex assets we produce. They require placing a proprietary device image—already cropped and measured—into a generated or photographed environment. The composite must respect camera angles, lighting volume, depth, perspective, and copy space.",
+              "Lifestyle images are the most complex assets we produce. They require placing a proprietary device image, already cropped and measured, into a generated or photographed environment. The composite must respect camera angles, lighting volume, depth, perspective, and copy space.",
               "Creating these manually is unscalable. We needed an agent that could generate these images in batches while adhering to our rigid design bar. The goal was not just to generate images but to create a system where every output, pass or fail, served a purpose."
             ]
           },
@@ -501,8 +524,8 @@ export const PORTFOLIO_DATA = {
           {
             type: "text",
             content: [
-              "My strategy focused on the 'Human-in-the-Loop.' We knew the AI would not be perfect on day one, so the design challenge was creating a feedback loop that could translate subjective design direction into objective training data.",
-              "I designed a qualification interface for Creative Directors and 3D Artists. Instead of a simple approval, the UI required specific reasoning for rejections—flagging issues like 'shadow quality,' 'choppiness,' or 'perspective mismatch.' This structured data was fed directly back to the science team to adjust the algorithm, ensuring the model got smarter with every batch."
+              "My strategy focused on the human-in-the-loop. We knew the AI would not be perfect on day one, so the design challenge was creating a feedback loop that could translate subjective design direction into objective training data.",
+              "I designed a qualification interface for Creative Directors and 3D Artists. Instead of a simple approval, the UI required specific reasoning for rejections, flagging issues like shadow quality, choppiness, or perspective mismatch. This structured data was fed directly back to the science team to adjust the algorithm, ensuring the model improved with every batch."
             ]
           },
           { type: "heading", title: "Process" },
@@ -511,7 +534,7 @@ export const PORTFOLIO_DATA = {
             items: [
               {
                 content:
-                  `<span class="process-step-title"><b>Defining "Correct" Placement.</b></span><p class="mt-2">I worked with the Brand Studio to codify the rules for angles, shadows, and screen behavior. We had to teach the model that a Fire TV in a living room behaves differently than an Echo Show in a kitchen, establishing a 'ground truth' for the AI to aim for.</p>`,
+                  `<span class="process-step-title"><b>Defining Correct Placement</b></span><p class="mt-2">I worked with the Brand Studio to codify the rules for angles, shadows, and screen behavior. We had to teach the model that a Fire TV in a living room behaves differently than an Echo Show in a kitchen, establishing a ground truth for the AI to aim for.</p>`,
                 visuals: [
                   {
                     src: ASSETS.testImage,
@@ -521,7 +544,7 @@ export const PORTFOLIO_DATA = {
               },
               {
                 content:
-                  `<span class="process-step-title"><b>Designing the Feedback Loop.</b></span><p class="mt-2">I built the 'micro-tool' used by directors to review batches of hundreds of images. The interface allowed them to rapidly approve market-ready assets or reject failures with specific tags. This ensured that rejected data was just as valuable as approved data for training purposes.</p>`,
+                  `<span class="process-step-title"><b>Designing the Feedback Loop</b></span><p class="mt-2">I built the micro-tool used by directors to review batches of hundreds of images. The interface allowed them to rapidly approve market-ready assets or reject failures with specific tags. This ensured that rejected data was just as valuable as approved data for training purposes.</p>`,
                 visuals: [
                   {
                     src: ASSETS.testImage,
@@ -531,7 +554,7 @@ export const PORTFOLIO_DATA = {
               },
               {
                 content:
-                  `<span class="process-step-title"><b>Stress-Testing the Workflow.</b></span><p class="mt-2">We discovered that reviewing a batch took approximately 4 minutes, which leadership flagged as a scalability risk. This 'red flag' was a critical insight. It proved that while the AI could generate the visuals, the metadata input and review process needed the heavy automation I eventually built in the Metadata Studio project.</p>`,
+                  `<span class="process-step-title"><b>Stress-Testing the Workflow</b></span><p class="mt-2">We discovered that reviewing a batch took approximately 4 minutes, which leadership flagged as a scalability risk. This was a critical insight: while the AI could generate the visuals, the metadata input and review process needed the heavy automation I eventually built in the Metadata Studio project.</p>`,
                 visuals: []
               }
             ]
@@ -542,42 +565,36 @@ export const PORTFOLIO_DATA = {
             content: [
               "The final tool was designed for high-velocity review. The system generated 4 variations per prompt, allowing directors to select the best option or reject the set entirely. This 4:1 ratio ensured quality while maintaining speed.",
               "To manage volume, I implemented a statistical significance model: rather than reviewing 100% of the output, the system presented a random 5% sample. If the sample passed, the batch was approved. If it failed, the rejection tags retrained the model. This workflow allowed us to ingest thousands of images without overwhelming the creative team."
-            ]},
-            {
+            ]
+          },
+          {
             type: "figma",
             src: "https://www.figma.com/proto/PG1SSc8aZlpS9atMCvKg3M/Genie---Product-Demo-Day?page-id=174%3A13910&node-id=2243-25245&p=f&viewport=226%2C732%2C0.04&t=s3IjMY4Gl6tH4KiA-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=2243%3A25245&show-proto-sidebar=1",
             caption: "The batch review dashboard showing the selection and rejection feedback flow."
           },
-            
-    
           { type: "heading", title: "Outcome & Impact" },
           {
             type: "text",
             content:
-              "Since launch in December 2024, the agent has generated over 12,000 variations. Through the review process, we successfully added 3,000 fully validated, market-ready assets to the system—all created without a graphic designer moving a single pixel."
+              "Since launch in December 2024, the agent has generated over 12,000 variations. Through the review process, we successfully added 3,000 fully validated, market-ready assets to the system, all created without a graphic designer moving a single pixel."
           },
           {
             type: "impact-box",
             size: "large",
             metrics: [
-               { 
-                 value: "3,000 Assets", 
-                 label: "Created with zero manual design work" 
-               },
-               { 
-                 value: "99.5% approved", 
-                 label: "Q1 2026 target for GenAI images meeting the design bar" 
-               },
-               { 
-                 value: "100% of rejects reused", 
-                 label: "Every rejected image becomes training data" 
-               }
+              { value: "3,000 Assets", label: "Created with zero manual design work" },
+              { value: "99.5% approved", label: "Q1 2026 target for GenAI images meeting the design bar" },
+              { value: "100% of rejects reused", label: "Every rejected image becomes training data" }
             ]
           }
         ]
       }
     },
-       {
+
+    // ─────────────────────────────────────────────────────────
+    // INSPIRE TAB
+    // ─────────────────────────────────────────────────────────
+    {
       id: "amazon-core-inspire-tab",
       company: "Amazon Devices",
       title: CASE_STUDIES_TITLES["amazon-core-inspire-tab"],
@@ -666,8 +683,7 @@ export const PORTFOLIO_DATA = {
                 visuals: [
                   {
                     src: ASSETS.testImage,
-                    caption:
-                      "Placeholder: ranking and metadata signal map showing where correctness overrode engagement-driven recommendations."
+                    caption: "Placeholder: ranking and metadata signal map showing where correctness overrode engagement-driven recommendations."
                   }
                 ]
               },
@@ -703,7 +719,13 @@ export const PORTFOLIO_DATA = {
           { type: "image-full", src: ASSETS.testImage, caption: "Creator Tools" },
           { type: "image-full", src: ASSETS.testImage, caption: "Main Feed Experience" },
           { type: "heading", title: "Outcome" },
-          { type: "impact-box", metrics: [{ value: "~2%", label: "Lift in Total Units Sold" }, { value: "13.5M", label: "Devices Worldwide" }] },
+          {
+            type: "impact-box",
+            metrics: [
+              { value: "~2%", label: "Lift in Total Units Sold" },
+              { value: "13.5M", label: "Devices Worldwide" }
+            ]
+          },
           {
             type: "text",
             content: [
@@ -726,10 +748,14 @@ export const PORTFOLIO_DATA = {
         ]
       }
     },
-        {
+
+    // ─────────────────────────────────────────────────────────
+    // AI-POWERED CUSTOMER REVIEW HIGHLIGHTS
+    // ─────────────────────────────────────────────────────────
+    {
       id: "amazon-core-ai-review-highlights",
       company: "Amazon Core Shopping",
-      title: "AI-powered Customer Review Highlights",
+      title: CASE_STUDIES_TITLES["amazon-core-ai-review-highlights"],
       impactSummary: "When Amazon launched AI-generated review highlights, I explored how to make social proof a discovery driver across Smart Home, not just a detail page feature.",
       impactSummarySentence: "When Amazon launched AI-generated review highlights, I explored how to make social proof a discovery driver across Smart Home, not just a detail page feature.",
       designerNote: "Amazon launched AI-generated review highlights as a company-wide capability. Leadership asked me to figure out what that could mean specifically for Smart Home customers. This kind of work sits in an interesting space: you're not building from scratch, and you're not just implementing someone else's spec. You're identifying where a new capability creates real value for a specific customer and business context, then designing the applications that prove it. One shipped. Two moved to roadmap. All three came from asking where review data could reduce friction at the right moment in the journey.",
@@ -851,6 +877,10 @@ export const PORTFOLIO_DATA = {
         ]
       }
     },
+
+    // ─────────────────────────────────────────────────────────
+    // ALTO PHARMACY
+    // ─────────────────────────────────────────────────────────
     {
       id: "alto-internal",
       company: "Alto Pharmacy",
@@ -911,7 +941,7 @@ export const PORTFOLIO_DATA = {
           {
             type: "text",
             content: [
-              "In 2022, Alto’s mobile app received an average of 3,200 patient messages per day. Each message created a support ticket, even when the question was non-clinical or could have been resolved through self-service. This increased operational load and pulled pharmacists into avoidable escalations.",
+              "In 2022, Alto's mobile app received an average of 3,200 patient messages per day. Each message created a support ticket, even when the question was non-clinical or could have been resolved through self-service. This increased operational load and pulled pharmacists into avoidable escalations.",
               "Patients had many entry points to message support, but little guidance on how to ask for help. Messages arrived as unstructured text with limited context, categorization, or expectation setting. This slowed triage, increased back-and-forth, and reduced confidence around response timing and outcomes.",
               "Medical questions were the most expensive category. They often required a Care Specialist handoff and then dedicated time from a Specialty Pharmacist, with duplicated effort due to context gathering and escalation workflow overhead."
             ]
@@ -930,15 +960,15 @@ export const PORTFOLIO_DATA = {
           {
             type: "text",
             content: [
-              "<b>Operational goals</b><br/>Reduce avoidable escalations to pharmacists through better upfront context. Minimize handoffs between Care Ops and Pharmacy. Reduce time spent per inbound message.",
-              "<b>Patient goals</b><br/>Help patients ask medical questions confidently and understand what happens next. Reduce unnecessary back-and-forth. Set clearer expectations for response time and next steps."
+              "Operational goals: reduce avoidable escalations to pharmacists through better upfront context, minimize handoffs between Care Ops and Pharmacy, and reduce time spent per inbound message.",
+              "Patient goals: help patients ask medical questions confidently and understand what happens next, reduce unnecessary back-and-forth, and set clearer expectations for response time and next steps."
             ]
           },
           { type: "heading", title: "Design Strategy" },
           {
             type: "text",
             content: [
-              "After auditing a week of inbound messages, I grouped them into six core topics so we could tackle problems independently instead of treating every message the same. For this case study, I focused on <b>Medical Questions</b>, the most expensive and operationally complex category.",
+              "After auditing a week of inbound messages, I grouped them into six core topics so we could tackle problems independently instead of treating every message the same. For this case study, I focused on Medical Questions, the most expensive and operationally complex category.",
               "The strategy centered on improving context collection before routing and reducing ambiguity without blocking access to care. This meant gathering better structured inputs upstream, filtering non-clinical questions through self-service where possible, and setting expectations clearly for response time and next steps."
             ]
           },
@@ -957,7 +987,7 @@ export const PORTFOLIO_DATA = {
             type: "text",
             content: [
               "Research revealed a consistent tension between patient uncertainty and internal operational risk. Patients often did not know how to classify their medical questions, frequently raised more than one concern at a time, and defaulted to messaging as a catch-all. Internally, Ops and Pharmacy worried about being overwhelmed by unfiltered messages or becoming bottlenecks when volume spiked.",
-              "The key insight was that asking patients to self-diagnose or pick the right category would add friction and undermine trust. The system needed to capture intent and context without requiring patients to understand Alto’s internal model."
+              "The key insight was that asking patients to self-diagnose or pick the right category would add friction and undermine trust. The system needed to capture intent and context without requiring patients to understand Alto's internal model."
             ]
           },
           {
@@ -1051,7 +1081,7 @@ export const PORTFOLIO_DATA = {
           {
             type: "text",
             content: [
-              "Following Alto’s release protocol, the feature was rolled out to a 10% controlled cohort. This allowed us to monitor behavior, validate impact, and quickly gate or roll back changes if issues emerged, which is critical in a medical context."
+              "Following Alto's release protocol, the feature was rolled out to a 10% controlled cohort. This allowed us to monitor behavior, validate impact, and quickly gate or roll back changes if issues emerged, which is critical in a medical context."
             ]
           },
           { type: "heading", title: "Impact" },
@@ -1066,7 +1096,13 @@ export const PORTFOLIO_DATA = {
             src: "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/71592f3f-f161-4f87-badb-1279437eb0ee/AA_final.gif",
             caption: "Shipped improvements reduced cognitive load for Care Specialists and improved clarity when reviewing patient history."
           },
-          { type: "impact-box", metrics: [{ value: "18%", label: "Reduction in Communications / Shipment" }, { value: "0.93", label: "Communications / Shipment (Late July)" }] },
+          {
+            type: "impact-box",
+            metrics: [
+              { value: "18%", label: "Reduction in Communications / Shipment" },
+              { value: "0.93", label: "Communications / Shipment (Late July)" }
+            ]
+          },
           {
             type: "callout-box",
             content:
@@ -1080,6 +1116,10 @@ export const PORTFOLIO_DATA = {
         ]
       }
     },
+
+    // ─────────────────────────────────────────────────────────
+    // PATREON
+    // ─────────────────────────────────────────────────────────
     {
       id: "patreon-creator-tools",
       company: "Patreon",
@@ -1124,7 +1164,7 @@ export const PORTFOLIO_DATA = {
       id: "patreon-studio2.0",
       company: "Patreon",
       title: CASE_STUDIES_TITLES["patreon-studio2.0"],
-      impactSummary: "Modernized Patreon’s design system to streamline creator workflows and improve product consistency.",
+      impactSummary: "Modernized Patreon's design system to streamline creator workflows and improve product consistency.",
       impactSummarySentence: "",
       designerNote: "Leading the evolution of a design system involved not just visual and component work, but deeply understanding developer needs and advocating for design consistency across the platform.",
       thumbnail: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
@@ -1133,13 +1173,17 @@ export const PORTFOLIO_DATA = {
       services: [SERVICES.SYSTEMS_DESIGN, SERVICES.UI_DESIGN, SERVICES.PROTOTYPING],
       blocks: [{ type: "text", content: "Case study for Patreon creator hub." }]
     },
+
+    // ─────────────────────────────────────────────────────────
+    // PORTFOLIO
+    // ─────────────────────────────────────────────────────────
     {
       id: "portfolio-systems",
       company: "Bespoke Portfolio",
       title: CASE_STUDIES_TITLES["portfolio-systems"],
       impactSummary: "A live demonstration of full-stack design thinking and iterative product development.",
       impactSummarySentence: "A bespoke portfolio built to demonstrate staff-level systems thinking and engineering precision.",
-      designerNote: "This portfolio itself is a project in iterative refinement. Every interaction—from the hover stability of the mega-menu to the lazy-loading of interactive prototypes—was designed and built to respect the user's time while proving technical craft.",
+      designerNote: "This portfolio itself is a project in iterative refinement. Every interaction, from the hover stability of the mega-menu to the lazy-loading of interactive prototypes, was designed and built to respect the user's time while proving technical craft.",
       thumbnail: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80",
       status: "SHIPPED",
       type: "SYSTEMS",
@@ -1161,15 +1205,15 @@ export const PORTFOLIO_DATA = {
             type: "text",
             content: "Busy hiring managers often have 30 seconds for an initial pass. I replaced standard project lists with a multi-column mega-menu on desktop and a lean accordion on mobile. This ensures immediate recognition of brand names (Amazon, Patreon) while providing impact-focused summaries for targeted review."
           },
-          { type: "heading", title: "Engineering the 'Invisible Bridge'" },
+          { type: "heading", title: "Engineering the Invisible Bridge" },
           {
             type: "text",
-            content: "One common frustration with mega-menus is their sensitivity to mouse movement. I implemented a 'buffer bridge' container to ensure hover stability when transitioning from the navigation trigger to the dropdown, ensuring a fluid, frustration-free experience."
+            content: "One common frustration with mega-menus is their sensitivity to mouse movement. I implemented a buffer bridge container to ensure hover stability when transitioning from the navigation trigger to the dropdown, ensuring a fluid, frustration-free experience."
           },
           { type: "heading", title: "Responsive Performance" },
           {
             type: "text",
-            content: "To showcase complex interactive prototypes without sacrificing load times, I engineered a lazy-loading Figma integration. Prototypes are responsive and 'scale-to-fit' their containers, providing an interactive preview that can be expanded into a dedicated workspace with a single click."
+            content: "To showcase complex interactive prototypes without sacrificing load times, I engineered a lazy-loading Figma integration. Prototypes are responsive and scale-to-fit their containers, providing an interactive preview that can be expanded into a dedicated workspace with a single click."
           }
         ]
       }
@@ -1192,7 +1236,7 @@ export const WORK_GROUPS = [
       "amazon-core-ai-review-highlights"
     ]
   },
-   {
+  {
     company: "Alto Pharmacy",
     logo: "Alto Pharmacy",
     roleLine: "Staff Product Designer · 2021–2022",
@@ -1209,7 +1253,6 @@ export const WORK_GROUPS = [
     roleLine: "Founding Designer · 2019–2020",
     projectIds: ["prox-1"]
   },
-
 ];
 
 export const COMPANY_STRIPE_LOGOS = [
@@ -1220,7 +1263,6 @@ export const COMPANY_STRIPE_LOGOS = [
 ];
 
 // Small normalizer to ensure details.heroImage and services are arrays
-
 PORTFOLIO_DATA.projects.forEach((p) => {
   p.details = p.details || {};
   if (!isRealUrl(p.details.heroImage)) {

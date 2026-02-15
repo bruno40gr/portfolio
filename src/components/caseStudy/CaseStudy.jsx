@@ -19,6 +19,7 @@ import FigmaThumbnail from "./FigmaThumbnail";
 import CaseStudyPager from "./CaseStudyPager";
 import CaseStudyAnchorNav from "./CaseStudyAnchorNav";
 import ProjectHeader from "./ProjectHeader";
+import SystemContextBanner from "./SystemContextBanner";
 
 import "./GalleryStyles.css";
 
@@ -74,7 +75,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
   return (
     <section key={index} className="mb-10 text-left">
       {block.title && (
-        <h3 className="text-lg md:text-xl text-slate-900 mb-2 md:mb-3 font-bold leading-snug">
+        <h3 className="text-lg font-bold text-slate-900 mb-3 leading-snug">
           {block.title}
         </h3>
       )}
@@ -106,7 +107,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
             key={index}
             className={`mb-4 text-left case-anchor-target ${showBorder ? "mt-10 pt-10" : ""}`}
           >
-            <h2 className="text-[2.75rem] md:text-[3rem] text-slate-900 font-[600] tracking-tight leading-normal">{block.title}</h2>
+            <h2 className="text-2xl font-semibold text-slate-900 tracking-tight">{block.title}</h2>
           </section>
         );
       }
@@ -287,8 +288,15 @@ case "pillar-grid":
             </div>
             <h1 className="font-serif text-[2.5rem] md:text-[3.5rem] text-slate-900 mb-5 md:mb-6 font-[500] tracking-tight leading-[3rem] md:!leading-[4.5rem] text-left">
               {project.impactSummarySentence || project.impactSummary}
-
             </h1>
+
+            {isPillar && (
+              <SystemContextBanner
+                pillars={PORTFOLIO_DATA.projects.filter((p) => p.parentId === project.parentId)}
+                currentId={project.id}
+                onPillarClick={onNavigateToProject}
+              />
+            )}
 
             {project.designerNote && (
               <div className="designer-note mb-8 max-w-full">
