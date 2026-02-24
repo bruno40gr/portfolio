@@ -179,7 +179,10 @@ export const PORTFOLIO_DATA = {
                   {
                     kind: "embed",
                     src: "https://player.cloudinary.com/embed/?cloud_name=diy08lj9x&public_id=JAS_-_Metadata_Photoshop_1_mstvm3",
-                    caption: "Agile research session: Learning how brand designers manually crafted image assets."
+                    caption: {
+                      short: "Agile research session: Learning how brand designers manually crafted image assets.",
+                      verbose: "During these sessions, we observed designers as they worked, noting pain points and opportunities for automation. This direct observation was crucial for informing the design of the Image Builder and ensuring it addressed real-world needs."
+                    }
                   }
                 ]
               },
@@ -187,22 +190,29 @@ export const PORTFOLIO_DATA = {
                 content:
                   `<span class="process-step-title"><b>Information Architecture & Iteration</b></span><p class="mt-2">Solving for 23+ marketplaces required a robust IA. I iterated on various interaction models to handle the high density of configuration options (marketplaces x languages) until I arrived at a scalable UI that prioritized clarity.</p>`,
                 visuals: [
-                  {
+                                    {
                     kind: "image",
-                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1769731424/175c5a76-0e29-4787-a5c9-0eb3c11a870b.png",
-                    caption: "Early iteration of top-level form fields and live preview logic."
-                  },
-                  {
-                    kind: "image",
-                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1769731833/1fa69945-d723-433e-a7c8-0bab74c87d8e.png",
-                    caption: "Exploring segmented controls vs. nested filters for marketplace selection."
+                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1771907702/layout_iterations_bwvimg.jpg",
+                    
+caption: {
+"short": "A look into my messy but methodical iteration process for solving complex navigation and multi-market filtering logic.",
+"verbose": "I apologize for the chaos in these mockups as they probably do not make sense at a glance. I wanted to demonstrate how I think and iterate across various fidelities to solve high density UI challenges. These screens represent a deep dive into screen orientation and side nav navigation while trying to fit a massive amount of data into a single cohesive experience. One of the biggest hurdles was making it easy for a user to select from 23+ marketplace and language combinations. I spent a lot of time stress testing scenarios where multiple locales and dimensions are selected at once to ensure the layout remains clear and functional even at its most complex."
+}
                   }
                 ]
               },
               {
                 content:
                   `<span class="process-step-title"><b>Stress-Testing & Guardrails</b></span><p class="mt-2">To ensure the tool was incompatibility-proof, I designed intelligent guardrails and smart defaults that managed seasonal availability and regional legal requirements, guiding the user toward a correct-by-construction design.</p>`,
-                visuals: [{ src: ASSETS.testImage, caption: "UI guardrails and smart selection logic for global compliance." }]
+                visuals: [
+                  {
+                    kind: "image",
+                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1771893728/image_builder_contraintst_d4ha0z.jpg",
+                    caption: {
+  "short": "Automated guardrails for regional compatibility, device constraints, and visual spec validation.",
+  "verbose": "Publishing images globally carried high stakes, from internal leaks to regional mismatches. To be honest, I’d usually rather avoid these kinds of loud warnings—they aren't 'sexy,' they look gnarly, and they clutter a clean UI. However, this was a hard requirement and absolutely necessary to prevent costly mistakes. By implementing 'correct-by-construction' logic, the system anticipates errors by filtering for marketplace-compatible devices and providing real-time feedback on text density, ensuring designs are validated before they ever hit a reviewer's desk."
+}}
+                    ]
               },
               {
                 content:
@@ -476,10 +486,13 @@ export const PORTFOLIO_DATA = {
             size: "large",
             metrics: [
               { value: "3 Steps", label: "Down from ~50 manual inputs per component image" },
-              { value: "99% accuracy", label: "In automated image composition validation" },
-              { value: "90% accuracy", label: "In photography angle detection" },
-              { value: "0.5% risk", label: "Of leaks vs. manual, spreadsheet-dependent handoffs" }
+              { value: "99% accuracy", label: "In automated image composition validation" }
             ]
+          },
+          {
+            type: "text",
+            content:
+              "Additional success metrics include 90% accuracy in photography angle detection through AI vision models, and a reduction in leak risk to 0.5% compared to manual, spreadsheet-dependent handoffs."
           }
         ]
       }
@@ -583,9 +596,13 @@ export const PORTFOLIO_DATA = {
             size: "large",
             metrics: [
               { value: "3,000 Assets", label: "Created with zero manual design work" },
-              { value: "99.5% approved", label: "Q1 2026 target for GenAI images meeting the design bar" },
-              { value: "100% of rejects reused", label: "Every rejected image becomes training data" }
+              { value: "99.5% approved", label: "Q1 2026 target for GenAI images meeting the design bar" }
             ]
+          },
+          {
+            type: "text",
+            content:
+              "An additional success metric: 100% of rejected images are reused as training data, ensuring every failure strengthens the model."
           }
         ]
       }

@@ -1,16 +1,14 @@
 import React from "react";
 import { FigmaEmbed } from "../ui/FigmaEmbed";
 
-const FigmaThumbnail = ({ src, caption }) => (
-  <a
-    href={src}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="block"
+const FigmaThumbnail = ({ src, caption, onClick }) => (
+  <button
+    onClick={onClick}
+    className="block w-full text-left"
     aria-label={`Open Figma prototype: ${caption}`}
   >
     <FigmaEmbed src={src} title={caption} scaling="scale-down" />
-  </a>
+  </button>
 );
 
 export default FigmaThumbnail;

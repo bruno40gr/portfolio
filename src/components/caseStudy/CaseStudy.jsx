@@ -43,8 +43,40 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
   const allMediaItems = useMemo(() => {
     const media = [];
     project.details?.blocks?.forEach(block => {
-      if (block.type === 'list' && block.items) {
+      if (block.type === 'video') {
+        const caption = block.caption || '';
+        const isCaptionObj = typeof caption === 'object' && caption !== null && caption.short;
+        const captionShort = isCaptionObj ? caption.short : caption;
+        const captionVerbose = isCaptionObj ? caption.verbose : '';
+        media.push({
+          type: 'video',
+          src: block.src,
+          title: captionShort || 'Visual',
+          captionShort: captionShort,
+          captionVerbose: captionVerbose,
+          fileSize: 'N/A',
+          processStepTitle: 'Assets in this case study',
+        });
+      } else if (block.type === 'figma') {
+        const caption = block.caption || '';
+        const isCaptionObj = typeof caption === 'object' && caption !== null && caption.short;
+        const captionShort = isCaptionObj ? caption.short : caption;
+        const captionVerbose = isCaptionObj ? caption.verbose : '';
+        media.push({
+          type: 'figma',
+          src: block.src,
+          title: captionShort || 'Visual',
+          captionShort: captionShort,
+          captionVerbose: captionVerbose,
+          fileSize: 'N/A',
+          processStepTitle: 'Assets in this case study',
+        });
+      } else if (block.type === 'list' && block.items) {
         block.items.forEach(item => {
+          const itemContent = (item && typeof item === 'object' && !Array.isArray(item)) ? item.content : item;
+          const processStepTitleMatch = itemContent.match(/<span class="process-step-title"><b>(.*?)<\/b><\/span>/);
+          const processStepTitle = processStepTitleMatch ? processStepTitleMatch[1] : 'Assets in this case study';
+
           if (item.visuals) {
             item.visuals.forEach(visual => {
               let type = 'image';
@@ -52,13 +84,19 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
               else if (visual.src && visual.src.includes('.pdf')) type = 'pdf';
               else if (visual.kind === 'figma') type = 'figma';
 
+              const caption = visual.caption || '';
+              const isCaptionObj = typeof caption === 'object' && caption !== null && caption.short;
+              const captionShort = isCaptionObj ? caption.short : caption;
+              const captionVerbose = isCaptionObj ? caption.verbose : '';
+
               media.push({
                 type,
                 src: visual.src,
-                title: visual.caption || 'Visual',
-                captionShort: visual.caption || '',
-                captionParagraph: '',
+                title: captionShort || 'Visual',
+                captionShort: captionShort,
+                captionVerbose: captionVerbose,
                 fileSize: visual.fileSize || 'N/A',
+                processStepTitle: processStepTitle,
               });
             });
           }
@@ -129,33 +167,36 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
           </div>
         );
 
-      case "video":
+      case "video": {
+        const globalIndex = allMediaItems.findIndex(item => item.src === block.src);
         return (
           <div key={index} className="mb-10">
-            <div className="w-full aspect-video bg-neutral-100 border border-neutral-200 overflow-hidden mb-2 rounded-sm shadow-sm p-4">
-              <iframe
-                src={block.src}
-                title="Video content"
-                className="w-full h-full shadow-sm rounded-sm"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
+            <VideoThumbnail 
+              src={block.src} 
+              caption={block.caption} 
+              onClick={() => setLightbox({ open: true, index: globalIndex })} 
+            />
             {block.caption && <Caption>{block.caption}</Caption>}
           </div>
         );
+      }
 
       case "table":
         return <DataTable key={index} columns={block.columns} rows={block.rows} />;
 
-            case "figma":
+            case "figma": {
+        const globalIndex = allMediaItems.findIndex(item => item.src === block.src);
         return (
           <div key={index} className="mb-10">
-            <FigmaThumbnail src={block.src} caption={block.caption} />
+            <FigmaThumbnail 
+              src={block.src} 
+              caption={block.caption} 
+              onClick={() => setLightbox({ open: true, index: globalIndex })} 
+            />
             {block.caption && <Caption>{block.caption}</Caption>}
           </div>
         );
+      }
 case "pillar-grid":
         return (
           <div key={index} className="mt-8 mb-12">
@@ -184,14 +225,20 @@ case "pillar-grid":
                 const isObj = item && typeof item === "object" && !Array.isArray(item);
                 const itemContent = isObj ? item.content : item;
                 const visuals = isObj ? item.visuals : null;
-                const mediaItems = visuals ? visuals.map(visual => ({
-                  type: visual.kind === 'embed' ? 'video' : (visual.src && visual.src.includes('.pdf') ? 'pdf' : (visual.kind === 'figma' ? 'figma' : 'image')),
-                  src: visual.src,
-                  title: visual.caption || 'Visual',
-                  captionShort: visual.caption || '',
-                  captionParagraph: '',
-                  fileSize: visual.fileSize || 'N/A',
-                })) : [];
+                const mediaItems = visuals ? visuals.map(visual => {
+                  const caption = visual.caption || '';
+                  const isCaptionObj = typeof caption === 'object' && caption !== null && caption.short;
+                  const captionShort = isCaptionObj ? caption.short : caption;
+                  const captionVerbose = isCaptionObj ? caption.verbose : '';
+                  return {
+                    type: visual.kind === 'embed' ? 'video' : (visual.src && visual.src.includes('.pdf') ? 'pdf' : (visual.kind === 'figma' ? 'figma' : 'image')),
+                    src: visual.src,
+                    title: captionShort || 'Visual',
+                    captionShort: captionShort,
+                    captionVerbose: captionVerbose,
+                    fileSize: visual.fileSize || 'N/A',
+                  };
+                }) : [];
 
                 return (
                   <li
@@ -229,7 +276,7 @@ case "pillar-grid":
                                         onClick={() => setLightbox({ open: true, index: globalIndex })}
                                       />
                                     )}
-                                    <p className="type-caption text-left text-neutral-500 text-[16px] font-normal leading-relaxed mt-2 md:mt-3 font-sans">
+                                    <p className="type-caption text-left text-neutral-600 text-[14px] font-normal leading-relaxed mt-2 md:mt-3 font-serif">
                                       {mediaItem.captionShort}
                                     </p>
                                   </div>
@@ -328,7 +375,7 @@ case "pillar-grid":
       <ImageLightbox 
         open={lightbox.open} 
         initialIndex={lightbox.index} 
-        mediaItems={allMediaItems.filter(item => item.type !== 'figma')} 
+        mediaItems={allMediaItems} 
         onClose={() => setLightbox({ ...lightbox, open: false })} 
       />
     </article>

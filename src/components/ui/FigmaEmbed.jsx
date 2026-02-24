@@ -18,14 +18,13 @@ function toFigmaEmbedUrl(url, scaling) {
 export function FigmaEmbed({
   src,
   title = "Figma prototype",
-  height = 720,
   scaling = null,
 }) {
   const embedSrc = toFigmaEmbedUrl(src, scaling);
 
   return (
     <div className="w-full overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm">
-      <div className="relative w-full" style={{ height }}>
+      <div className="relative w-full aspect-video">
         <iframe
           title={title}
           src={embedSrc}

@@ -2,6 +2,9 @@
 
 This log documents the iterative refinements and systems-thinking applied to this bespoke portfolio, built from the ground up.
 
+## Week of Feb 15, 2026: UI and Asset Management
+- **Menus and Asset Builder:** menus and asset uilder modal
+
 ## Week of Feb 4, 2026: Foundation & Core Identity
 - **Initial Commit:** Established the React + Tailwind foundation.
 - **Hero Section:** Developed the initial high-impact hero section with a focus on clean typography (Source Sans 3) and a minimalist aesthetic.
