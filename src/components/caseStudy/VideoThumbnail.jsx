@@ -8,7 +8,12 @@ const VideoThumbnail = ({ src, caption, onClick }) => {
       return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
     }
     if (src.includes("cloudinary.com")) {
-      const publicId = src.split("public_id=")[1];
+      let publicId;
+      if (src.includes("public_id=")) {
+        publicId = src.split("public_id=")[1];
+      } else {
+        publicId = src.split("/").pop().split(".")[0];
+      }
       return `https://res.cloudinary.com/diy08lj9x/video/upload/so_auto,q_auto,w_600/${publicId}.jpg`;
     }
     return "";

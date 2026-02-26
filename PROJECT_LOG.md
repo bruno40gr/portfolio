@@ -3,6 +3,9 @@
 This log documents the iterative refinements and systems-thinking applied to this bespoke portfolio, built from the ground up.
 
 ## Week of Feb 15, 2026: UI and Asset Management
+- **Format-Agnostic Hero:** The `CaseStudy.jsx` component now supports different hero types, starting with the new `AnimatedHero`. This allows for more flexibility in how case studies are presented.
+- **Lightbox for All Media:** All media types (videos, Figma files) now open in the `ImageLightbox` for a consistent experience across all case studies.
+- **Mobile Zoom:** The lightbox now supports pinch-to-zoom on images for a better mobile experience.
 - **Menus and Asset Builder:** menus and asset uilder modal
 
 ## Week of Feb 4, 2026: Foundation & Core Identity

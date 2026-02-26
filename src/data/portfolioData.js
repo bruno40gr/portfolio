@@ -127,133 +127,163 @@ export const PORTFOLIO_DATA = {
     // ─────────────────────────────────────────────────────────
     // PILLAR 1: IMAGE BUILDER
     // ─────────────────────────────────────────────────────────
-    {
-      id: "jas-image-builder",
-      parentId: "amazon-devices-asset-system",
-      company: "Amazon Devices",
-      title: CASE_STUDIES_TITLES["jas-image-builder"],
-      impactSummary: "An automated production system enabling localized asset generation at scale across 23 global marketplaces.",
-      impactSummarySentence: "A scalable editor enabling localized marketing asset generation across all global marketplaces.",
-      designerNote: "Before this tool existed, producing a single localized asset meant a designer manually compositing a product photo onto a background, then repeating that process for dozens of size and language combinations per marketplace. Multiply that by 23 markets and every major launch, and you have an unsustainable production model. I wanted to design something that handled the mechanical work automatically so teams could focus on what actually requires judgment. This became the first shipped pillar of the Asset System and the foundation everything else was built on.",
-      thumbnail: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=80",
-      status: "LAUNCHED",
-      type: "INTERNAL",
-      details: {
-        heroImage: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=80",
-        role: "Lead UX Designer",
-        timeline: "September 2024 – February 2025",
-        team: "Automate & Scale",
-        type: "INTERNAL",
-        services: [SERVICES.SYSTEMS_DESIGN, SERVICES.PROTOTYPING, SERVICES.UI_DESIGN],
-        blocks: [
-          { type: "heading", title: "Overview", hasDivider: false },
+{
+  id: "jas-image-builder",
+  parentId: "amazon-devices-asset-system",
+  company: "Amazon Devices",
+  title: CASE_STUDIES_TITLES["jas-image-builder"],
+  impactSummary: "An automated production system enabling localized asset generation at scale across 23 global marketplaces.",
+  impactSummarySentence: "A scalable editor enabling localized marketing asset generation across all global marketplaces.",
+  designerNote: "Before this system, teams were manually compositing assets across dozens of marketplaces using inconsistent regional templates, rebuilding the same work multiple times over. At 23 markets and every major launch, that model couldn't scale. I wanted to design something that absorbed the mechanical work so people could focus on what actually requires judgment. For Prime Day 2025 alone, it produced 8,000 lifestyle images and freed the equivalent of 45 designers and marketers from repetitive production work. This became the first pillar of the Asset System, and the foundation everything else was built on.",
+  thumbnail: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=80",
+  status: "LAUNCHED",
+  type: "INTERNAL",
+  details: {
+    hero: { type: 'animated' },
+    heroImage: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=80",
+    role: "Lead UX Designer",
+    timeline: "September 2024 – February 2025",
+    team: "Automate & Scale",
+    type: "INTERNAL",
+    services: [SERVICES.SYSTEMS_DESIGN, SERVICES.PROTOTYPING, SERVICES.UI_DESIGN],
+    blocks: [
+      { type: "heading", title: "Overview", hasDivider: false },
+
+      { type: "heading", title: "The Product" },
+{
+  type: "text",
+  content: [
+    "A visual editor that lets merchandisers build, localize, and export marketing assets across 23 global marketplaces without touching Photoshop. Teams select a template, configure their markets and languages, and the system handles the rest."
+  ]
+},
+{
+  type: "figma",
+  src: "https://www.figma.com/proto/Hm4V3LSFtdcJKC1e5UWYls/Untitled?page-id=0%3A1&node-id=163-36427&p=f&viewport=-5400%2C-197%2C0.33&t=PcpidMXEz6GOqzKf-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=163%3A36427",
+  caption: {
+    short: "Interactive prototype, click through to explore the full flow",
+    verbose: "This is a close representation of the shipped product. The core interaction model has been consistent since early prototyping. The flow goes like this: select your marketplaces and dimensions, add a background image, select or generate a product composition (as shown in this example), then add a logo. From there, AI generates marketing copy and auto-translates it into all the corresponding languages. Finally, you export and the images are ready for Amazon. That last step is a big shortcut in the prototype. In the real product, the experience is non-linear. You can break apart any image, edit individual elements, and drag and drop to adjust. Apologies if not everything is clickable."
+  },
+  coverImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772062490/Screenshot_2026-02-25_at_3.34.36_PM_dwqrvv.png",
+  aspectRatio: "4/3"
+},
+{
+  type: "image-full",
+  src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772062847/1326499e-dd49-4bbf-9d7e-0a82f84787e2.png",
+  caption: {
+    short: "Sample of creating lifestyle images on both desktop and mobile screens simultaneously",
+    verbose: ""
+  }
+},
+{
+  type: "image-full",
+  src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772062999/82224a14-60f5-4a43-8eae-4691b725ef61.png",
+  caption: {
+    short: "Screenshot of the bundle image generator, which creates geometrically accurate image compositions of Amazon devices",
+    verbose: "For the first launch of the Image Builder we built a micro interaction that allowed the machine, not AI, to assemble compositions that meet the design bar. Previously this was done in Photoshop and shared async, making it impossible to automate."
+  }
+},
+{
+  type: "image-full",
+  src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772081260/1f882db6-e8bd-45c9-9514-7b4546850089.png",
+  caption: {
+    short: "Leveraging LLMs to automatically translate marketing copy that is culturally relevant, native, and punchy",
+    verbose: "We studied how marketers hired local native speakers to construct, maintain, and share localized copy. By applying our brand voice, we built a flow where the tool could instantly generate copy that matches character requirements and cultural context. Human in the loop could always regenerate, edit, or override the generated copy at any time."
+  }
+},
+
+      { type: "heading", title: "Design Strategy" },
+      {
+        type: "text",
+        content: [
+          "While the product strategy was a team effort, I owned the end-to-end UX and UI. The focus was on replacing a fragmented, manual toolchain with a visual editor that merchandisers could use without needing design skills. The layout engine was built to handle spacing, copy placement, and visual balance across dozens of size formats automatically.",
+          "The system supports structured templates for consistency but allows flexibility when teams need it. Working closely with engineering, we built in guardrails that automatically flag pricing inconsistencies, device availability issues, and brand conflicts by reading each image's metadata.",
+          "The goal was never to build another design tool. It was a production system that handled the repetitive steps so users could focus on content and clarity. Features like drag-and-drop editing and smart filters kept the tool fast and usable for non-designers."
+        ]
+      },
+      { type: "heading", title: "Process" },
+      {
+        type: "list",
+        items: [
           {
-            type: "callout-box",
             content:
-              "The Image Builder is a scalable production tool that allows merchandisers to compose hero images, ads, and banners across various cultural contexts and dimensions. It replaced a patchwork of creative tools with one consistent, automated workflow."
-          },
-          {
-            type: "text",
-            content: [
-              "Before this system, merchandisers created assets across dozens of marketplaces using Photoshop, Illustrator, and inconsistent regional templates. Teams worked in silos, assets were rebuilt multiple times, and simple variations required hours of manual labor. To scale globally, Amazon Devices needed a predictable, automated way to create localized imagery.",
-              "One of the most valuable asset types in this ecosystem is lifestyle imagery, which shows devices in real environments. These assets consistently increase click-through rates by more than 40%, yet they historically required 40,000+ hours of manual CGI and graphic design work annually."
-            ]
-          },
-          { type: "heading", title: "Design Strategy" },
-          {
-            type: "text",
-            content: [
-              "While the product strategy was collaborative, I owned the end-to-end UX and UI. I focused on replacing a fragmented toolchain with a WYSIWYG builder that merchandisers could trust. I designed a dynamic layout engine that managed spacing, copy placement, and visual balance across dozens of dimensions automatically.",
-              "The system supports structured templates for consistency but allows flexibility when teams need it. Under the hood, I introduced intelligent guardrails: the system automatically checks for pricing inconsistencies, device availability, and brand constraints by reading image attributes through a robust metadata library.",
-              "The goal was never to build another design tool. It was to build a production system that handled the mechanical steps so users could focus on content and clarity. I prioritized features like drag-and-drop editing and smart filters to ensure the tool felt fast and approachable for non-designers."
-            ]
-          },
-          { type: "heading", title: "Process" },
-          {
-            type: "list",
-            items: [
+              `<span class="process-step-title"><b>Discovery & User Insights</b></span><p class="mt-2">We ran a hands-on discovery phase, doing scrappy usability sessions with global merchandisers to understand where their workflows broke down and what the tool actually needed to solve.</p>`,
+            visuals: [
               {
-                content:
-                  `<span class="process-step-title"><b>Discovery & User Insights</b></span><p class="mt-2">I adopted a user-centric discovery phase, using agile research methodologies and scrappy usability testing with global merchandisers to map the friction in current workflows and define the product roadmap.</p>`,
-                visuals: [
-                  {
-                    kind: "embed",
-                    src: "https://player.cloudinary.com/embed/?cloud_name=diy08lj9x&public_id=JAS_-_Metadata_Photoshop_1_mstvm3",
-                    caption: {
-                      short: "Agile research session: Learning how brand designers manually crafted image assets.",
-                      verbose: "During these sessions, we observed designers as they worked, noting pain points and opportunities for automation. This direct observation was crucial for informing the design of the Image Builder and ensuring it addressed real-world needs."
-                    }
-                  }
-                ]
-              },
-              {
-                content:
-                  `<span class="process-step-title"><b>Information Architecture & Iteration</b></span><p class="mt-2">Solving for 23+ marketplaces required a robust IA. I iterated on various interaction models to handle the high density of configuration options (marketplaces x languages) until I arrived at a scalable UI that prioritized clarity.</p>`,
-                visuals: [
-                                    {
-                    kind: "image",
-                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1771907702/layout_iterations_bwvimg.jpg",
-                    
-caption: {
-"short": "A look into my messy but methodical iteration process for solving complex navigation and multi-market filtering logic.",
-"verbose": "I apologize for the chaos in these mockups as they probably do not make sense at a glance. I wanted to demonstrate how I think and iterate across various fidelities to solve high density UI challenges. These screens represent a deep dive into screen orientation and side nav navigation while trying to fit a massive amount of data into a single cohesive experience. One of the biggest hurdles was making it easy for a user to select from 23+ marketplace and language combinations. I spent a lot of time stress testing scenarios where multiple locales and dimensions are selected at once to ensure the layout remains clear and functional even at its most complex."
-}
-                  }
-                ]
-              },
-              {
-                content:
-                  `<span class="process-step-title"><b>Stress-Testing & Guardrails</b></span><p class="mt-2">To ensure the tool was incompatibility-proof, I designed intelligent guardrails and smart defaults that managed seasonal availability and regional legal requirements, guiding the user toward a correct-by-construction design.</p>`,
-                visuals: [
-                  {
-                    kind: "image",
-                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1771893728/image_builder_contraintst_d4ha0z.jpg",
-                    caption: {
-  "short": "Automated guardrails for regional compatibility, device constraints, and visual spec validation.",
-  "verbose": "Publishing images globally carried high stakes, from internal leaks to regional mismatches. To be honest, I’d usually rather avoid these kinds of loud warnings—they aren't 'sexy,' they look gnarly, and they clutter a clean UI. However, this was a hard requirement and absolutely necessary to prevent costly mistakes. By implementing 'correct-by-construction' logic, the system anticipates errors by filtering for marketplace-compatible devices and providing real-time feedback on text density, ensuring designs are validated before they ever hit a reviewer's desk."
-}}
-                    ]
-              },
-              {
-                content:
-                  `<span class="process-step-title"><b>Prototyping for Alignment</b></span><p class="mt-2">I built high-fidelity prototypes to validate the interaction model and secure stakeholder alignment. These were critical in communicating complex logic to engineering and gaining the trust of marketing leadership.</p>`,
-                visuals: [{ src: ASSETS.testImage, caption: "Functional prototype used for stakeholder and engineering alignment." }]
-              },
-              {
-                content:
-                  `<span class="process-step-title"><b>Handoff and Evolving Meridian</b></span>
-                  <p class="mt-2">Design was not a linear path: it was a cyclical process. Once the interaction model was finalized, I moved into a rigorous documentation phase to cover edge cases and ensure a seamless technical handoff to engineering.</p>
-                  <p class="mt-2">Internally, we leveraged Meridian, Amazon's dedicated enterprise design system that powers a unified language and human-centered designs for all internal-facing digital products at scale. While the system provided a robust foundation, the unique complexity of the Image Builder required custom extensions. I designed these bespoke components where gaps existed and contributed our patterns back to the core system to help evolve the library for other internal teams.</p>`,
-                visuals: [{ src: ASSETS.testImage, caption: "Meridian component specifications and edge-case documentation." }]
+                kind: "embed",
+                src: "https://player.cloudinary.com/embed/?cloud_name=diy08lj9x&public_id=JAS_-_Metadata_Photoshop_1_mstvm3",
+                caption: {
+                  short: "Research session: observing how brand designers manually built image assets.",
+                  verbose: "During these sessions, we watched designers work through their existing process, noting where time was lost and where errors crept in. That direct observation shaped the core priorities of the Image Builder and made sure we were solving real problems, not assumed ones."
+                }
               }
             ]
           },
           {
-            type: "image-full",
-            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1737482813/Main_Builder_q8vj9z.png",
-            caption: "The Final Image Builder Interface"
-          },
-          { type: "heading", title: "Final Shipped Product" },
-          {
-            type: "text",
-            content: [
-              "The first MVP launched in February 2025 to a targeted beta group, followed by a full-scale release in April 2025, strategically timed for the Prime Day production cycle. This version covered the entire Amazon Devices catalog across North America and EMEA, supporting 70% of high-traffic marketing placements, including homepage banners (Herotators), Quad cards, and Single Image cards. By focusing on these high-volume use cases first, the system delivered maximum operational ROI from day one."
+            content:
+              `<span class="process-step-title"><b>Information Architecture & Iteration</b></span><p class="mt-2">Designing for 23+ marketplaces meant handling a lot of configuration options at once. I went through many rounds of iteration on the layout and navigation until landing on a structure that kept things clear even at its most complex.</p>`,
+            visuals: [
+              {
+                kind: "image",
+                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1771907702/layout_iterations_bwvimg.jpg",
+                caption: {
+                  short: "A look into my messy but methodical iteration process for solving complex navigation and multi-market filtering logic.",
+                  verbose: "I apologize for the chaos in these mockups as they probably do not make sense at a glance. I wanted to demonstrate how I think and iterate across various fidelities to solve high density UI challenges. These screens represent a deep dive into screen orientation and side nav navigation while trying to fit a massive amount of data into a single cohesive experience. One of the biggest hurdles was making it easy for a user to select from 23+ marketplace and language combinations. I spent a lot of time stress testing scenarios where multiple locales and dimensions are selected at once to ensure the layout remains clear and functional even at its most complex."
+                }
+              }
             ]
           },
-          { type: "heading", title: "Impact & Operational ROI" },
           {
-            type: "impact-box",
-            metrics: [
-              { value: "100k+ hours", label: "Projected Annual Savings" },
-              { value: "45-50", label: "Specialist Workflows Automated" }
-            ],
-            description: [
-              "For Prime Day 2025 alone, the deployed workflows produced <b>8,000 lifestyle images</b>, accounting for an estimated <b>48,000 hours</b> of previously manual work. This reclaimed time allowed creative and marketing teams to shift from repetitive production to high-level creative strategy."
+            content:
+              `<span class="process-step-title"><b>Stress-Testing & Guardrails</b></span><p class="mt-2">Publishing assets globally meant the stakes for errors were high. We designed guardrails and smart defaults to catch regional conflicts, device mismatches, and legal requirements before anything reached a reviewer, guiding users toward a result that was correct from the start.</p>`,
+            visuals: [
+              {
+                kind: "image",
+                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1771893728/image_builder_contraintst_d4ha0z.jpg",
+                caption: {
+                  short: "Automated guardrails for regional compatibility, device constraints, and visual spec validation.",
+                  verbose: "Publishing images globally carried high stakes, from internal leaks to regional mismatches. To be honest, I'd usually rather avoid these kinds of loud warnings — they aren't 'sexy,' they look gnarly, and they clutter a clean UI. However, this was a hard requirement and absolutely necessary to prevent costly mistakes. By implementing 'correct-by-construction' logic, the system anticipates errors by filtering for marketplace-compatible devices and providing real-time feedback on text density, ensuring designs are validated before they ever hit a reviewer's desk."
+                }
+              }
             ]
+          },
+          {
+            content:
+              `<span class="process-step-title"><b>Prototyping for Alignment</b></span><p class="mt-2">I built high-fidelity prototypes to validate the interaction model and get everyone on the same page, from engineering to marketing leadership. Showing the system in motion was the fastest way to build trust and surface gaps before development started.</p>`,
+            visuals: [
+              {
+                kind: "embed",
+                src: "https://res.cloudinary.com/diy08lj9x/video/upload/v1772053861/JAS-builder-demo_e7zrhr.mp4",
+                caption: {
+                  short: "Prototype presentation where I demo the future stage of the Image Builder",
+                  verbose: "Part of my process is to build high-fidelity prototypes that demonstrate the interaction logic and edge cases. This prototype was built to show leadership what becomes possible once all four pillars of the Asset System are in place and connected, with the Image Builder as the foundation. It was also a critical tool for communicating complex logic to engineering and ensuring we were aligned on how the system should function before development began."
+                }
+              }
+            ]
+          },
+          {
+            content:
+              `<span class="process-step-title"><b>Handoff and Evolving Meridian</b></span>
+              <p class="mt-2">Once the interaction model was finalized, we moved into a thorough documentation phase to cover edge cases and set engineering up for a clean handoff.</p>
+              <p class="mt-2">Amazon has an internal design system called Meridian that provides a shared visual language across internal tools. The Image Builder's complexity required components that didn't exist in the library yet. I designed those custom pieces to fill the gaps, then contributed them back to Meridian so other teams could build on them too.</p>`,
+            visuals: [{ src: ASSETS.testImage, caption: "Meridian component specifications and edge-case documentation." }]
           }
         ]
+      },
+
+      { type: "heading", title: "Impact & Operational ROI" },
+      {
+        type: "impact-box",
+        metrics: [
+          { value: "100k+ hours", label: "Projected Annual Savings" },
+          { value: "45-50", label: "Specialist Workflows Automated" }
+        ],
+        description: [
+          "For Prime Day 2025 alone, the deployed workflows produced <b>8,000 lifestyle images</b>, accounting for an estimated <b>48,000 hours</b> of previously manual work. This reclaimed time allowed creative and marketing teams to shift from repetitive production to high-level creative work."
+        ]
       }
-    },
+    ]
+  }
+},
 
     // ─────────────────────────────────────────────────────────
     // PILLAR 2: ASSET MANAGER

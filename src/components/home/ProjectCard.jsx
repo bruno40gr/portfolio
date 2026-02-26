@@ -4,6 +4,7 @@ import { PROJECT_STATUS, PRODUCT_TYPES } from "../../data/tokens";
 import Pill from "../ui/Pill";
 import { CalloutBox } from "../ui/CalloutBox";
 import { ImpactBox } from "../ui/ImpactBox";
+import AnimatedThumbnail from "./AnimatedThumbnail";
 
 const ProjectCard = ({ project, onClick }) => {
   if (!project) return null;
@@ -38,6 +39,8 @@ const ProjectCard = ({ project, onClick }) => {
     return null;
   };
 
+  const heroType = details.hero?.type;
+
   return (
     <div className="bg-white overflow-hidden text-left w-full rounded-xl">
       {/* Clickable Visual Area */}
@@ -49,13 +52,17 @@ const ProjectCard = ({ project, onClick }) => {
         className="group relative mb-5 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-green)] focus-visible:ring-offset-4 rounded-xl"
       >
         <div className="relative aspect-[9/7] md:aspect-[16/10] overflow-hidden rounded-xl bg-slate-50 border border-slate-100">
-          <img 
-            src={image} 
-            alt="" 
-            className={`w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 
-              ${status === 'IN_BUILD' ? 'saturate-[0.7]' : ''} 
-              ${(status === 'LEGACY' || status === 'DEPRECATED') ? 'saturate-[0.6] opacity-90' : ''}`}
-          />
+          {heroType === 'animated' ? (
+            <AnimatedThumbnail />
+          ) : (
+            <img 
+              src={image} 
+              alt="" 
+              className={`w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 
+                ${status === 'IN_BUILD' ? 'saturate-[0.7]' : ''} 
+                ${(status === 'LEGACY' || status === 'DEPRECATED') ? 'saturate-[0.6] opacity-90' : ''}`}
+            />
+          )}
           <div className="absolute top-4 left-4 flex flex-wrap gap-2">
             <Pill label={statusConfig.label} theme={statusConfig.theme} icon={statusConfig.icon} size="sm" />
             <span className="px-2.5 py-1 bg-white/90 text-[var(--deep-purple)] text-xs font-bold rounded-md backdrop-blur-md shadow-sm border border-slate-100/50">
