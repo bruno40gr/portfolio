@@ -53,7 +53,7 @@ const ProjectCard = ({ project, onClick }) => {
       >
         <div className="relative aspect-[9/7] md:aspect-[16/10] overflow-hidden rounded-xl bg-slate-50 border border-slate-100">
           {heroType === 'animated' ? (
-            <AnimatedThumbnail />
+            <AnimatedThumbnail projectId={project.id} />
           ) : (
             <img 
               src={image} 

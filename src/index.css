@@ -91,7 +91,15 @@
 
 .hero-wrap { padding-top: calc(var(--header-h) + var(--hero-pad-y)); padding-bottom: var(--hero-pad-y); }
 .hero-stack { display: flex; flex-direction: column; align-items: center; gap: var(--hero-gap); }
-.hero-logo { width: min(100%, var(--logo-max-w)); }
+.hero-logo {
+  width: min(100%, var(--logo-max-w));
+}
+
+@media (max-width: 768px) {
+  .hero-logo {
+    width: min(60%, 240px);
+  }
+}
 .hero-cta-row { display: flex; align-items: center; gap: var(--hero-cta-gap); }
 .case-anchor-target { scroll-margin-top: calc(var(--header-h) + 24px); }
 

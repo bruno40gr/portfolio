@@ -357,14 +357,18 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
 
   const heroSrc = project.details?.heroImage || project.thumbnail;
   const heroType = project.details?.hero?.type;
+  const heroBgColor = project.details?.hero?.bgColor || '#f5f5f5';
 
   return (
     <article className="bg-white min-h-screen w-full relative text-left font-sans">
       {heroType === 'animated' ? (
-        <AnimatedHero />
+        <AnimatedHero projectId={project.id} />
       ) : (
-        <div className="w-full h-[60vh] md:h-[80vh] bg-neutral-100 border-b border-neutral-200 overflow-hidden relative shadow-sm text-center">
-          <img src={heroSrc} alt={project.title} className="w-full h-full object-cover" />
+        <div 
+          className="w-full h-[60vh] md:h-[80vh] border-b border-neutral-200 overflow-hidden relative shadow-sm text-center"
+          style={{ backgroundColor: heroBgColor }}
+        >
+          <img src={heroSrc} alt={project.title} className="w-full h-full object-contain" />
         </div>
       )}
 

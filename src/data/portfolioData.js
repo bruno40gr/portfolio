@@ -27,7 +27,7 @@ export const CASE_STUDIES_TITLES = {
   "jas-ai-generator": "Asset System AI Agent",
   "amazon-core-inspire-tab": "Inspire Tab",
   "amazon-core-ai-review-highlights": "AI-powered Customer Review Highlights",
-  "alto-internal": "Internal Platform for Intra Pharmacist Communication",
+  "alto-internal": "Alto Pharmacy Internal Tools",
   "alto-assistant": "Alto Assistant App",
   "patreon-creator-tools": "Benefit Delivery Tools for Creators",
   "patreon-pledge-streak-patent": "Pledge Streak Patent",
@@ -168,7 +168,7 @@ export const PORTFOLIO_DATA = {
 },
 {
   type: "image-full",
-  src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772062847/1326499e-dd49-4bbf-9d7e-0a82f84787e2.png",
+  src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772133252/1326499e-dd49-4bbf-9d7e-0a82f84787e2.png",
   caption: {
     short: "Sample of creating lifestyle images on both desktop and mobile screens simultaneously",
     verbose: ""
@@ -261,14 +261,56 @@ export const PORTFOLIO_DATA = {
             ]
           },
           {
-            content:
-              `<span class="process-step-title"><b>Handoff and Evolving Meridian</b></span>
-              <p class="mt-2">Once the interaction model was finalized, we moved into a thorough documentation phase to cover edge cases and set engineering up for a clean handoff.</p>
-              <p class="mt-2">Amazon has an internal design system called Meridian that provides a shared visual language across internal tools. The Image Builder's complexity required components that didn't exist in the library yet. I designed those custom pieces to fill the gaps, then contributed them back to Meridian so other teams could build on them too.</p>`,
-            visuals: [{ src: ASSETS.testImage, caption: "Meridian component specifications and edge-case documentation." }]
-          }
+  content:
+    `<span class="process-step-title"><b>Contributing to Amazon's Design System</b></span>
+    <p class="mt-2">Meridian is Amazon's official design system, used across every internal team. Image Builder was complex enough that it needed components Meridian didn't have. I designed three of them, took each through the formal contribution process, and got them approved. They now live in the system for any team to use.</p>`,
+  type: "list",
+  visuals: [
+    { 
+      src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772132455/pg3_ygvgls.png", 
+      caption: "Interactive editing canvas component request submitted to Meridian.",
+      captionShort: "Canvas editing component request.",
+      captionVerbose: "This was the most novel of the three submissions. Image Builder needed a live editing canvas where users could select, drag, and resize content layers directly on an image preview, all inside a standard Meridian layout. Nothing like this existed in the system. This component request made the case for a supported approach so teams wouldn't have to bypass Meridian to ship interactive editing surfaces."
+    },
+    { 
+      src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772132465/pg1_uhrgx3.png", 
+      caption: "Locale filter component request submitted to Meridian.",
+      captionShort: "Locale filter component request.",
+      captionVerbose: "This submission covers the multi-select locale filter: a reusable component for selecting marketplace and language combinations, displaying country flags and grouped entries inline. The existing Meridian dropdown couldn't scale to this level of complexity, so a new component was the only clean path forward."
+    },
+    { 
+      src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772130218/pg1_a1macp.png", 
+      caption: "Warning input state component request submitted to Meridian.",
+      captionShort: "Warning input state component request.",
+      captionVerbose: "Each new component required a formal pitch to the Meridian team, reviewed by their PMs, engineers, and UX leads. This submission covers the warning (amber) state for input fields: a way to alert users that their edit may overwrite values across other locales or platforms, without implying something has gone wrong."
+    }
+  ]
+}
         ]
       },
+
+{ type: "heading", title: "Launch & Tradeoffs" },
+{
+  type: "text",
+  content: [
+    `<ul class="list-disc pl-5 space-y-3">
+      <li>Launched in March 2025 with a focused v1 scope. Scoping to two formats was the right call, though they introduced real UX tension. The Herotator, the prominent carousel on Amazon.com landing pages (desktop only), and Single Creative Cards, a homepage banner format (mobile only), had fundamentally different information architectures. Consolidating both into a single shared template made multi-format input feel cumbersome, and that tradeoff was felt throughout the experience.</li>
+      <li>Lifestyle images were the starting point and became the org-wide production standard after the Asset System AI Agent launched in mid-2025, making generation fully automated at scale.</li>
+      <li>The absence of drag and drop was the most significant tradeoff at launch. Without it, users were constrained to fixed layouts that frequently fell short of the creative bar, and that friction showed up in adoption numbers during the first two months.</li>
+      <li>By Prime Day 2025, drag and drop was live and the tool reached full adoption across all supported formats.</li>
+    </ul>`
+  ]
+},
+
+
+
+
+
+
+
+
+
+
 
       { type: "heading", title: "Impact & Operational ROI" },
       {
@@ -929,240 +971,628 @@ export const PORTFOLIO_DATA = {
     // ALTO PHARMACY
     // ─────────────────────────────────────────────────────────
     {
-      id: "alto-internal",
-      company: "Alto Pharmacy",
-      title: CASE_STUDIES_TITLES["alto-internal"],
-      impactSummary: "Improved pharmacist collaboration workflows by centralizing context and streamlining internal communication.",
-      impactSummarySentence: "",
-      designerNote: "This project was about empowering healthcare professionals with intuitive tools to manage complex patient interactions, directly impacting care quality and efficiency.",
-      thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-      status: "LEGACY",
-      type: "INTERNAL",
-      details: {
-        heroImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-        role: "Staff Product Designer",
-        timeline: "2020–2021",
-        team: "Internal Tools Team",
-        type: "INTERNAL",
-        services: [
-          SERVICES.PRODUCT_DESIGN,
-          SERVICES.UX_RESEARCH,
-          SERVICES.SYSTEMS_DESIGN,
-          SERVICES.PROTOTYPING,
-          SERVICES.STRATEGY
-        ],
-        blocks: [{ type: "text", content: "Case study for Alto internal tools development." }]
-      }
-    },
-    {
-      id: "alto-assistant",
-      company: "Alto Pharmacy",
-      title: CASE_STUDIES_TITLES["alto-assistant"],
-      impactSummary: "Reduced inbound patient messaging by 38% with a smarter triage experience that improved care efficiency.",
-      impactSummarySentence: "",
-      designerNote: "Designing for patient communication in healthcare required a delicate balance of clarity, empathy, and operational efficiency to truly enhance the patient experience.",
-      thumbnail: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80",
-      status: "LEGACY",
-      type: "MOBILE",
-      details: {
-        heroImage: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80",
-        role: "Staff Product Designer",
-        timeline: "2020–2021",
-        team: "Internal Tools Team",
-        type: "MOBILE",
-        services: [
-          SERVICES.PRODUCT_DESIGN,
-          SERVICES.UX_RESEARCH,
-          SERVICES.SYSTEMS_DESIGN,
-          SERVICES.PROTOTYPING,
-          SERVICES.STRATEGY
-        ],
-        blocks: [
-          { type: "heading", title: "Overview", hasDivider: false },
+  id: "alto-internal",
+  company: "Alto Pharmacy",
+  title: CASE_STUDIES_TITLES["alto-internal"],
+  impactSummary: "Redesigned the internal messaging and action system for a scaling digital pharmacy, reducing communications per shipment below 1.0 for the first time.",
+  impactSummarySentence: "A redesigned internal platform that helped a pharmacy operations team resolve patient requests faster, with less friction and fewer workarounds.",
+  designerNote: "Alto was scaling fast, but the internal tools hadn't kept up. Pharmacists and care specialists were stitching together Wunderbar, Marcia Notes, Notion, spreadsheets, and Slack just to resolve a single patient request. The system worked — but it placed the burden on people instead of the product. The goal was to change that: surface the right context, reduce the time it took to act, and give the team tools that matched how they actually worked. The most honest outcome was an MVP that improved Marcia Notes and got action cards onto the roadmap, with a North Star that aligned the org around where to go next.",
+  thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+  status: "LEGACY",
+  type: "INTERNAL",
+  details: {
+    hero: { type: 'animated' },
+    heroImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772144386/AAWB_message-action_nen3sq.gif",
+    heroCoverImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772144384/Untitled_3_ajvo9r.png",
+    role: "Staff Product Designer",
+    timeline: "2020–2022",
+    team: "Internal Tools",
+    type: "INTERNAL",
+    services: [
+      SERVICES.PRODUCT_DESIGN,
+      SERVICES.UX_RESEARCH,
+      SERVICES.SYSTEMS_DESIGN,
+      SERVICES.PROTOTYPING,
+      SERVICES.STRATEGY
+    ],
+    blocks: [
+
+      // ─── OVERVIEW ───────────────────────────────────────────────
+      { type: "heading", title: "Overview", hasDivider: false },
+
+      { type: "heading", title: "The Product" },
+      {
+        type: "text",
+        content: [
+          "Alto Assistant is an internal platform built to help Care Specialists resolve patient requests faster and with more confidence. The work centered on Wunderbar — Alto's operational backbone — and its legacy messaging interface, Marcia Notes."
+        ]
+      },
+      {
+        type: "image-full",
+        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772144386/Marcia_Notes__d4kfqz.gif",
+        caption: {
+          short: "Wunderbar and Marcia Notes — Alto's internal pharmacy operating system.",
+          verbose: "Marcia Notes was originally built in 2015 and had become the central interface for turning inbound patient messages into actions. Over time, features were layered on without a cohesive interaction model, and resolving a single issue often meant scrolling through a prescription's full lifecycle to reconstruct context. The system worked — but it placed a heavy cognitive burden on the people using it."
+        }
+      },
+
+      // ─── THE PROBLEM ─────────────────────────────────────────────
+      { type: "heading", title: "The Problem" },
+      {
+        type: "text",
+        content: [
+          "By 2021, internal teams were navigating a fragmented toolchain — Wunderbar, Marcia Notes, Notion, spreadsheets, and Slack — just to complete day-to-day work. The system wasn't broken. It just didn't help users understand what mattered, what needed action, or how to resolve a task confidently. That gap increased handling time, slowed onboarding, and eroded trust in the tools."
+        ]
+      },
+      {
+        type: "image-full",
+        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772144387/scattered_docs_tc6wtq.png",
+        caption: {
+          short: "The fragmented toolchain teams were navigating to complete a single task.",
+          verbose: "Critical information lived outside the system, forcing pharmacists and fulfillment teams to context-switch constantly, rely on tribal knowledge, and improvise their own coordination methods. At the time, it took roughly eight months for someone to feel proficient in the tools — in a role with an average tenure of thirteen months."
+        }
+      },
+
+      // ─── GOALS ───────────────────────────────────────────────────
+      { type: "heading", title: "Goals" },
+      {
+        type: "text",
+        content: [
+          "Three priorities shaped the direction: improve first-contact resolution so Care Specialists could act without follow-up; reduce time to resolution while preserving the ability to handle complex cross-functional cases; and maintain a consistent patient experience without relying on heroics or external coordination tools.",
+          "Alto also lacked reliable instrumentation to track metrics like first-contact resolution or time-to-resolution — actions weren't clearly structured in the system, so none of it was measurable yet. Establishing that baseline became part of the work."
+        ]
+      },
+
+      // ─── RESEARCH ────────────────────────────────────────────────
+      { type: "heading", title: "Research" },
+      {
+        type: "text",
+        content: [
+          "The team ran foundational research alongside early wireframe testing to identify which capabilities a redesigned system would actually need. Twelve usability sessions were conducted with pharmacists and operations staff across departments, tenure levels, and seniority."
+        ]
+      },
+      {
+        type: "figma",
+        src: "https://www.figma.com/proto/mec6VArSZvtpfrbp0ZUg6b/Alto-Assistant-Wunderbar?page-id=399%3A64080&node-id=417%3A67328&viewport=410%2C316%2C0.07&scaling=scale-down&starting-point-node-id=417%3A67593",
+        caption: {
+          short: "Prototype flows used during usability testing — click through to explore.",
+          verbose: "These prototypes were built to test foundational interaction models with Care Specialists before any significant engineering investment. Sessions focused on validating which structural approaches reduced cognitive load, not surface-level UI preferences."
+        },
+        aspectRatio: "4/3"
+      },
+      {
+        type: "embed",
+        src: "https://www.loom.com/share/fc0be3c402344b59bfa541c359070582",
+        href: "https://www.loom.com/share/fc0be3c402344b59bfa541c359070582",
+        coverImage: "",
+        caption: {
+          short: "Usability session recording — observing a Care Specialist working through the existing system.",
+          verbose: "One of 12 sessions conducted with pharmacists and operations staff. Watching people work through the existing process in real time — noting where time was lost, where errors crept in, and where the system forced workarounds — shaped the core priorities more than any survey or interview could have."
+        },
+        aspectRatio: "16/9"
+      },
+      {
+        type: "text",
+        content: [
+          "Sessions surfaced four consistent patterns: deep distrust in the existing system; confusion around prioritization and urgency; the realization that message threading wasn't the core issue — patients shifted topics freely and enforcing structure added friction; and strong early reactions to action-based patterns, where creating actions directly from messages consistently outperformed abstract task lists."
+        ]
+      },
+      {
+        type: "file-thumbnail",
+        title: "Hypothesis Tracker",
+        fileSize: "1.2 MB",
+        href: "https://collection.cloudinary.com/diy08lj9x/76844c63e311cdd1d960d9208a8a833e",
+      },
+
+      // ─── CONVERSATION MODEL ───────────────────────────────────────
+      { type: "heading", title: "Conversation Model" },
+      {
+        type: "text",
+        content: [
+          "Before exploring interface patterns, the team needed to define what a 'conversation' meant inside the system — a systems problem, not a UI one. The model that emerged treated conversations as time-bound sessions based on activity, not topic completion, with patients able to shift freely between subjects. That definition became the foundation every design decision was built on."
+        ]
+      },
+
+      // ─── DESIGN EXPLORATIONS ─────────────────────────────────────
+      { type: "heading", title: "Design Explorations" },
+      {
+        type: "list",
+        items: [
           {
-            type: "callout-box",
-            content:
-              "Alto Assistant is a patient support platform that reduces avoidable inbound messages and escalations by gathering better context upfront. This work reduced incoming messages by <b>38%</b>, improving operational efficiency and patient confidence across the Alto app and internal care workflows."
-          },
-          { type: "heading", title: "Problem" },
-          {
-            type: "text",
-            content: [
-              "In 2022, Alto's mobile app received an average of 3,200 patient messages per day. Each message created a support ticket, even when the question was non-clinical or could have been resolved through self-service. This increased operational load and pulled pharmacists into avoidable escalations.",
-              "Patients had many entry points to message support, but little guidance on how to ask for help. Messages arrived as unstructured text with limited context, categorization, or expectation setting. This slowed triage, increased back-and-forth, and reduced confidence around response timing and outcomes.",
-              "Medical questions were the most expensive category. They often required a Care Specialist handoff and then dedicated time from a Specialty Pharmacist, with duplicated effort due to context gathering and escalation workflow overhead."
-            ]
-          },
-          {
-            type: "image-full",
-            src: "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e97c2dad-8a7d-46a7-981a-a0b7969a7626/Untitled.png",
-            caption: "Unstructured inbound messages created tickets without reliable context, increasing triage time and escalation load."
-          },
-          { type: "heading", title: "Goals" },
-          {
-            type: "callout-box",
-            content:
-              "Reduce <b>Care Cost per Shipment (CPS)</b> by decreasing unnecessary inbound messages, without compromising patient trust or clinical quality."
-          },
-          {
-            type: "text",
-            content: [
-              "Operational goals: reduce avoidable escalations to pharmacists through better upfront context, minimize handoffs between Care Ops and Pharmacy, and reduce time spent per inbound message.",
-              "Patient goals: help patients ask medical questions confidently and understand what happens next, reduce unnecessary back-and-forth, and set clearer expectations for response time and next steps."
-            ]
-          },
-          { type: "heading", title: "Design Strategy" },
-          {
-            type: "text",
-            content: [
-              "After auditing a week of inbound messages, I grouped them into six core topics so we could tackle problems independently instead of treating every message the same. For this case study, I focused on Medical Questions, the most expensive and operationally complex category.",
-              "The strategy centered on improving context collection before routing and reducing ambiguity without blocking access to care. This meant gathering better structured inputs upstream, filtering non-clinical questions through self-service where possible, and setting expectations clearly for response time and next steps."
-            ]
-          },
-          {
-            type: "image-full",
-            src: "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ff75f08c-8f5a-4d80-bc07-7543399574e1/Untitled.png",
-            caption: "Message audit synthesis: inbound questions bucketed into six core topics so we could solve them independently."
-          },
-          {
-            type: "image-full",
-            src: "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5b48d16b-5d3d-4fe4-b073-f8780c73935e/AA_drect_to_pharmacist.gif",
-            caption: "Early concept: reframing the problem from categorization toward context and routing clarity for medical questions."
-          },
-          { type: "heading", title: "Research" },
-          {
-            type: "text",
-            content: [
-              "Research revealed a consistent tension between patient uncertainty and internal operational risk. Patients often did not know how to classify their medical questions, frequently raised more than one concern at a time, and defaulted to messaging as a catch-all. Internally, Ops and Pharmacy worried about being overwhelmed by unfiltered messages or becoming bottlenecks when volume spiked.",
-              "The key insight was that asking patients to self-diagnose or pick the right category would add friction and undermine trust. The system needed to capture intent and context without requiring patients to understand Alto's internal model."
-            ]
-          },
-          {
-            type: "image-full",
-            src: "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/115f3bc2-a673-4811-9536-2b38efcae5a5/Untitled.png",
-            caption: "Research synthesis artifact capturing recurring themes across interviews and internal discussions."
-          },
-          { type: "video", src: "https://www.youtube.com/embed/_qnZwrZqppM", caption: "Moderated usability sessions and validation work." },
-          {
-            type: "image-full",
-            src: "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8947bf5d-acbc-4bcf-9962-af1e1aeb9668/Ui_Explorations.png",
-            caption: "Broad visual exploration covering tone, hierarchy, and interaction density."
-          },
-          { type: "heading", title: "Explorations" },
-          {
-            type: "list",
-            items: [
+            content: `<span class="process-step-title"><b>Action-First Patterns</b></span><p class="mt-2">The first direction tested generating operational actions directly from patient messages and resolving them within context. Action-first patterns aligned with how internal teams already thought about their work — they reduced context switching and made progress visible. Early testing reactions were strong across the board.</p>`,
+            visuals: [
               {
-                content:
-                  `<span class="process-step-title"><b>Exploration 1: Multi-select to capture intent.</b></span><p class="mt-2">Patients frequently raised multiple concerns in a single message. Multi-select let patients express intent naturally while giving the system richer upstream context.</p>`,
-                visuals: [
-                  {
-                    src: "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b0484998-57a5-4e24-82db-f93be547e3c6/Untitled.png",
-                    caption: "Multi-select captured multiple concerns without forcing patients to self-categorize."
-                  },
-                  {
-                    src: "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2251b454-fb2d-46bc-a820-70af244d2f33/Untitled.png",
-                    caption: "Early UI iteration exploring intent selection and context capture."
-                  }
-                ]
+                kind: "image",
+                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772144381/flow_action_card_ktzpav.gif",
+                caption: {
+                  short: "Action cards: creating and resolving actions directly within a patient conversation.",
+                  verbose: ""
+                }
               },
               {
-                content:
-                  `<span class="process-step-title"><b>Exploration 2: Setting expectations upfront.</b></span><p class="mt-2">We explored clarifying pharmacist involvement earlier in the flow. This reduced ambiguity but risked feeling blunt and over-filtering valid medical questions.</p>`,
-                visuals: [
-                  {
-                    src: "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cbb33b13-4fa7-4ffd-9441-39a3b78e78ea/Untitled.png",
-                    caption: "Expectation setting improved clarity but introduced risk around false negatives and perceived access barriers."
-                  }
-                ]
+                kind: "image",
+                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772144386/AAWB_message-action_nen3sq.gif",
+                caption: {
+                  short: "Turning a patient message into a structured action without leaving the conversation view.",
+                  verbose: "This was one of the earliest micro-interactions tested. The concept — converting a message directly into a trackable action — received some of the strongest reactions across all usability sessions. It matched the mental model Care Specialists already had for how work should flow."
+                }
               },
               {
-                content:
-                  `<span class="process-step-title"><b>Exploration 3: Minimal intervention.</b></span><p class="mt-2">A low-friction approach allowed free-form questions with little guidance. It was fast for patients but pushed complexity downstream and increased operational cost.</p>`,
-                visuals: [
-                  {
-                    src: "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8614fd55-bb94-4e9b-befa-ed196009928f/Untitled.png",
-                    caption: "Minimal structure reduced friction but increased downstream triage and escalation effort."
-                  }
-                ]
+                kind: "image",
+                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772144386/AAWB_-_text_expander_cz4ogu.gif",
+                caption: {
+                  short: "Programmable responses — templated replies to reduce time on common patient communications.",
+                  verbose: "The team studied how Care Specialists were already building and maintaining their own personal snippet libraries outside the system. This exploration brought that behavior into the product — reducing time spent on routine communications while keeping the human in the loop for anything requiring judgment."
+                }
               },
               {
-                content:
-                  `<span class="process-step-title"><b>Pre-exploration validation: two variants.</b></span><p class="mt-2">We pressure-tested how much structure we could introduce while preserving trust.</p>`,
-                visuals: [
-                  {
-                    src: "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0088ec04-3183-4281-8646-9fdf5324247c/Untitled.png",
-                    caption: "Option 1: Minimal structure reduced handoffs but created uncertainty around response timing."
-                  },
-                  {
-                    src: "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/64112a43-8c56-4b6f-8c84-1188338f8fa4/Untitled.png",
-                    caption: "Option 2: Lightweight guidance added reassurance and clarity."
-                  }
-                ]
+                kind: "image",
+                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772144385/AAWB_-_Cards_jmhdzy.gif",
+                caption: {
+                  short: "Action card system — a structured format for surfacing, tracking, and resolving patient requests.",
+                  verbose: ""
+                }
               },
               {
-                content:
-                  `<span class="process-step-title"><b>Prototypes explored three paths.</b></span><p class="mt-2">These options explored different ways to balance clarity, flexibility, and operational cost.</p>`,
-                visuals: [
-                  {
-                    src: "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e15cbff2-13a1-4b76-abe9-e7024ff64b41/AA_option_1.gif",
-                    caption: "Option 1: Start with medication context to anchor the question."
-                  },
-                  {
-                    src: "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4f3c008f-01d7-4540-bc7d-85c279b571ac/AA_option_2.gif",
-                    caption: "Option 2: Support multiple medications and questions at the cost of complexity."
-                  },
-                  {
-                    src: "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/da497c8d-8565-4490-856c-eb311811f2f0/AA_option_3.gif",
-                    caption: "Option 3: Ask for medication first, then guide the question through relevant subtopics."
-                  }
-                ]
-              },
-              {
-                content:
-                  `<span class="process-step-title"><b>Prototype library.</b></span><p class="mt-2"><a href='https://www.figma.com/proto/EuDrnvOQOZx8Wrc4beLGTB/AA-Direct-to-Pharmacist?page-id=10888%3A142839&node-id=10894%3A435574&viewport=614%2C-1252%2C0.19&scaling=scale-down&starting-point-node-id=10894%3A435574&show-proto-sidebar=1' target='_blank' rel='noopener noreferrer'>View prototypes in detail</a>.</p>`
+                kind: "image",
+                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772144384/Untitled_jffcum.png",
+                caption: {
+                  short: "Anatomy of an action card.",
+                  verbose: "Each card was designed to carry enough context to act without leaving the conversation — status, ownership, urgency, and the originating message all visible in one place."
+                }
               }
             ]
           },
-          { type: "heading", title: "Launch" },
           {
-            type: "text",
-            content: [
-              "Following Alto's release protocol, the feature was rolled out to a 10% controlled cohort. This allowed us to monitor behavior, validate impact, and quickly gate or roll back changes if issues emerged, which is critical in a medical context."
+            content: `<span class="process-step-title"><b>Contextual Stacking</b></span><p class="mt-2">These explorations tested keeping actions visually close to message history — stacking them beneath or alongside conversations. Borrowing familiar patterns reduced friction and helped users maintain context, though long scroll depth remained a concern in complex cases.</p>`,
+            visuals: [
+              {
+                kind: "image",
+                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772144381/flow_2_qfqrjo.gif",
+                caption: {
+                  short: "Marcia Notes, improved — refining the existing interface with better context and visual hierarchy.",
+                  verbose: ""
+                }
+              },
+              {
+                kind: "image",
+                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772144381/flow_3_dxkf7h.gif",
+                caption: {
+                  short: "Full vertical layout — actions stacked in sequence with the conversation.",
+                  verbose: ""
+                }
+              },
+              {
+                kind: "image",
+                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772144383/Untitled_1_urcnld.png",
+                caption: {
+                  short: "A real patient message sequence sent within a five-minute window.",
+                  verbose: "This sequence was pulled from actual usage data to stress-test the contextual stacking model. Patients regularly sent multiple messages about different topics in quick succession — any threading model that assumed topic continuity would break against real behavior like this. It became a key artifact for convincing stakeholders that structural threading wasn't the right answer."
+                }
+              }
             ]
           },
-          { type: "heading", title: "Impact" },
           {
-            type: "text",
-            content: [
-              "We did not ship a full redesign of the medical questions flow. Instead, the work led to meaningful improvements in how Care Specialists handled patient conversations. We focused on simplifying and cleaning up Marcia Notes, reducing cognitive load and making patient history easier to scan and understand."
+            content: `<span class="process-step-title"><b>Structural Rethinking</b></span><p class="mt-2">The third direction questioned whether conversations and actions needed to share the same view at all. These explorations tested thread-based models and multi-panel layouts that separated message history from operational work — trading familiarity for greater structural clarity at scale.</p>`,
+            visuals: [
+              {
+                kind: "image",
+                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772144382/image_gkadqr.png",
+                caption: {
+                  short: "How a simple message could become a structured thread.",
+                  verbose: ""
+                }
+              },
+              {
+                kind: "image",
+                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772144383/Untitled_2_o3txfk.png",
+                caption: {
+                  short: "Triple panel view — separating conversation, context, and action into distinct workspaces.",
+                  verbose: "This was the most structurally ambitious direction explored. Separating the three concerns into distinct panels created cleaner organization at the cost of a steeper learning curve and higher implementation complexity. The tradeoff wasn't worth it at this stage of the product, but it informed the longer-term North Star thinking."
+                }
+              }
             ]
-          },
-          {
-            type: "image-full",
-            src: "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/71592f3f-f161-4f87-badb-1279437eb0ee/AA_final.gif",
-            caption: "Shipped improvements reduced cognitive load for Care Specialists and improved clarity when reviewing patient history."
-          },
-          {
-            type: "impact-box",
-            metrics: [
-              { value: "18%", label: "Reduction in Communications / Shipment" },
-              { value: "0.93", label: "Communications / Shipment (Late July)" }
-            ]
-          },
-          {
-            type: "callout-box",
-            content:
-              "<b>30000+ weekly visits</b> by <b>11000+ users</b>, preventing tens of thousands of unstructured inbound messages that previously required manual handling."
-          },
-          {
-            type: "image-full",
-            src: "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/740c4b95-cb34-4539-b292-bdc37f36c8c8/Untitled.png",
-            caption: "North Star: anchor medical consultation around medication selection, then layer guidance, subtopics, and self-service content on top."
           }
         ]
+      },
+
+      // ─── DIRECTION & TRADEOFFS ────────────────────────────────────
+      { type: "heading", title: "Direction & Tradeoffs" },
+      {
+        type: "text",
+        content: [
+          "The design direction focused on keeping actions tightly coupled to conversation context — not restructuring conversations or enforcing threading, but prioritizing clarity and fast action creation within existing workflows. Action-based patterns consistently resonated in reviews with Care Ops leadership, product, and engineering. Larger structural changes raised concerns around complexity, training cost, and delivery risk.",
+          "Two constraints shaped the final scope: the system still lacked instrumentation to forecast impact, and engineering capacity limited how much could be rebuilt. The team aligned on an incremental approach — improving Marcia Notes while deferring larger structural changes."
+        ]
+      },
+
+      // ─── MVP & NORTH STAR ─────────────────────────────────────────
+      { type: "heading", title: "MVP & North Star" },
+      {
+        type: "image-full",
+        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772144384/Untitled_3_ajvo9r.png",
+        caption: {
+          short: "MVP: a refactored Marcia Notes with improved context, hierarchy, and inline action creation.",
+          verbose: "The MVP improved the existing Wunderbar experience without disrupting core workflows. Marcia Notes was refactored for better context and visual hierarchy, with support for a small set of common actions created directly within the conversation — the minimum needed to move the resolution metrics without requiring a full rebuild."
+        }
+      },
+      {
+        type: "image-full",
+        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772144382/PROPOSED_ws3gnx.png",
+        caption: {
+          short: "North Star: dynamic action cards adapting to patient context alongside the conversation view.",
+          verbose: "The North Star envisioned conversations on the left and programmable action cards on the right, adapting in real time to patient context. While not built during this phase, it aligned product, engineering, and operations around a clear long-term direction — and gave the team a shared model to pressure-test near-term decisions against."
+        }
+      },
+      {
+        type: "image-full",
+        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772144382/MVP_Mapping_ijl3nj.png",
+        caption: {
+          short: "MVP scope mapping — what shipped, what was deferred, and how each decision mapped to the North Star.",
+          verbose: ""
+        }
+      },
+// ─── LAUNCH & TRADEOFFS ───────────────────────────────────────
+{ type: "heading", title: "Launch & Tradeoffs" },
+{
+  type: "text",
+  content: [
+    `<ul class="list-disc pl-5 space-y-3">
+      <li>The full North Star wasn't built. Resourcing for internal tooling improvements didn't match the ambition of the vision — patient-facing features carried clearer business cases, and engineering capacity was allocated accordingly.</li>
+      <li>What did ship were the processes with clearer operational ROI. Billing workflows and improvements to patient case handling within the Alto app moved forward, with measurable downstream effects on the patient experience and cost per shipment.</li>
+      <li>Marcia Notes was refactored and stabilized. Not the structural overhaul the research pointed toward, but a meaningful improvement to the baseline — better context, clearer hierarchy, and reduced reliance on external tools for common tasks.</li>
+      <li>The 18% reduction in communications per shipment was real and measurable, but the team lacked the instrumentation to tie it directly to a cost-per-shipment figure for internal tooling specifically. The dollar outcome (Care CPS dropping from $16 to $10) is covered in the Alto Assistant App case study, which addresses the patient-facing side of the same system.</li>
+      <li>The action cards concept and the North Star direction were approved and added to the roadmap. What happened after June 2022 is outside the scope of this case study.</li>
+    </ul>`
+  ]
+},
+
+// ─── IMPACT ───────────────────────────────────────────────────
+{ type: "heading", title: "Impact" },
+{
+  type: "impact-box",
+  metrics: [
+    { value: "18%", label: "Reduction in Communications Per Shipment" },
+    { value: "0.93", label: "Comms Per Shipment (from ~2.0 in 2020)" },
+  ],
+  
+    description: [
+  "For workflows connected to Alto Assistant, communications per shipment dropped <b>18%</b> compared to control groups — falling below 1.0 for the first time in July 2022, reaching <b>0.93</b> against a baseline of approximately 2.0 in 2020. The internal tooling work was one side of the same system: while the patient-facing app reduced inbound volume, these improvements ensured Care Specialists could handle what remained faster and with less friction. The platform served <b>11,000+ internal users</b> across <b>30,000+ weekly visits</b>."
+]
+},
+
+    ]
+  }
+},
+
+
+
+
+    {
+  id: "alto-assistant",
+  company: "Alto Pharmacy",
+  title: CASE_STUDIES_TITLES["alto-assistant"],
+  impactSummary: "Redesigned how patients asked medical questions in a digital pharmacy app, reducing inbound message volume and cutting operational cost per shipment.",
+  impactSummarySentence: "A full-service digital pharmacy app covering prescriptions, payments, insurance savings, and human pharmacist care, redesigned around patient confidence and clarity, reducing per-order costs by $2.",
+  designerNote: "Alto was building something genuinely different in a category that had resisted change for decades. The product touched nearly every part of a patient's relationship with their medication, from insurance and fulfillment to talking directly with a pharmacist. The work on Alto Assistant was about making that experience feel less like a transaction and more like being taken care of. Designing for clarity and confidence in a medical context is harder than it sounds. Patients are often anxious, the stakes are real, and the operational constraints are tight. The $2 per-order reduction was real and measurable, but the more important outcome was that patients felt guided rather than processed. That is what the design was actually trying to do.",
+  thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772157001/herocover_nsmuem.png",
+  status: "LEGACY",
+  type: "CONSUMER",
+  details: {
+    hero: { type: 'static', bgColor: '#E0F2F1' },
+    heroImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772157001/herocover_nsmuem.png",
+    heroCoverImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772155106/Untitled_9_itrgrm.png",
+    role: "Staff Product Designer",
+    timeline: "2021–2022",
+    team: "Alto Assistant",
+    type: "CONSUMER",
+    services: [
+      SERVICES.PRODUCT_DESIGN,
+      SERVICES.UX_RESEARCH,
+      SERVICES.PROTOTYPING,
+      SERVICES.STRATEGY
+    ],
+    blocks: [
+
+      // ─── OVERVIEW ────────────────────────────────────────────────
+      { type: "heading", title: "Overview", hasDivider: false },
+
+      { type: "heading", title: "The Product" },
+      {
+        type: "text",
+        content: [
+          "Alto is a full-service digital pharmacy covering prescriptions, payments, insurance savings, fulfillment, and direct pharmacist care. Alto Assistant is the patient-facing layer inside the mobile app where patients ask questions, report concerns, and request help. This project focused on medical questions: the most expensive, most complex, and most clinically sensitive category of inbound message."
+        ]
+      },
+      {
+        type: "image-full",
+        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772155106/AA_final_xwrbof.gif",
+        caption: {
+          short: "Alto Assistant — the shipped patient messaging experience.",
+          verbose: "The final experience guided patients through medical questions with lightweight structure, setting clearer expectations around response time and pharmacist involvement without adding meaningful friction to the flow."
+        }
+      },
+
+      // ─── THE PROBLEM ─────────────────────────────────────────────
+      { type: "heading", title: "The Problem" },
+      {
+        type: "text",
+        content: [
+          "In 2022, Alto's mobile app received an average of 3,200 patient messages per day, each one generating a support ticket. Many were non-clinical or resolvable through self-service, but all of them required Care Ops to triage. Medical questions required pharmacist involvement on top of that. At Alto's shipment volume, every dollar of unnecessary handling cost added up fast.",
+          "Messages arrived as unstructured text with no context, no categorization, and no expectation setting. Care Specialists spent time triaging messages that didn't need them. Pharmacists handled expensive escalations without enough upfront context. Patients were left uncertain about response times and next steps.",
+          "The business had a clear target: reduce Care Cost per Shipment from $16 to $10. Medical questions were the most expensive category — each escalation required a Care Specialist and then a Specialty Pharmacist, often duplicating effort across handoffs."
+        ]
+      },
+      {
+        type: "image-full",
+        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772155105/Untitled_zkmynm.png",
+        caption: {
+          short: "The unstructured message entry point — no context, no routing, no expectation setting.",
+          verbose: "Every message arrived as free-form text regardless of urgency or type. This placed the entire burden of triage on Care Specialists, who had to interpret intent before they could act on it."
+        }
+      },
+
+      // ─── GOALS ───────────────────────────────────────────────────
+      { type: "heading", title: "Goals" },
+      {
+        type: "text",
+        content: [
+          "Three priorities shaped the work. Reduce Care Cost per Shipment by decreasing unnecessary inbound messages. Limit avoidable escalations to pharmacists through better upfront context. And set clearer expectations for patients around response time and next steps.",
+          "For patients, the goal was simpler: make it easier to ask a medical question confidently, understand what happens next, and get qualified help without unnecessary back-and-forth.",
+          "After auditing a week of inbound messages, the team grouped them into six core topics. That bucketing made it possible to tackle each problem independently. This case study focuses on medical questions, the most operationally expensive category."
+        ]
+      },
+      {
+        type: "image-full",
+        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772155104/Untitled_2_ojnjwb.png",
+        caption: {
+          short: "Six message categories identified from the inbound audit, each with a distinct operational profile.",
+          verbose: "Bucketing messages by topic unlocked a more targeted approach. Rather than redesigning the entire messaging system, the team could address each category's specific friction and cost drivers independently."
+        }
+      },
+
+      // ─── RESEARCH ────────────────────────────────────────────────
+      { type: "heading", title: "Research" },
+      {
+        type: "text",
+        content: [
+          "Research surfaced a consistent tension between patient uncertainty and internal operational risk. Patients often didn't know how to frame medical questions, frequently raised more than one concern at a time, and defaulted to messaging as a catch-all. Internally, Care Ops and Pharmacy worried about being overwhelmed by unfiltered volume or becoming bottlenecks when escalations spiked.",
+          "Those findings made one thing clear: asking patients to self-diagnose or pick the right category would add friction and undermine trust. The solution needed to guide without gatekeeping."
+        ]
+      },
+      {
+        type: "image-full",
+        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772155103/Untitled_1_iise99.png",
+        caption: {
+          short: "Research synthesis: patient uncertainty mapped against internal operational constraints.",
+          verbose: "These artifacts captured recurring themes from patient interviews and internal stakeholder sessions. The synthesis reframed the problem away from categorization and toward context — giving the system enough signal to route correctly without asking patients to do internal triage work."
+        }
+      },
+      {
+        type: "embed",
+        src: "https://youtu.be/_qnZwrZqppM?si=8Y7YLnoBVQ2Jpbeh",
+        href: "https://youtu.be/_qnZwrZqppM?si=8Y7YLnoBVQ2Jpbeh",
+        coverImage: "",
+        caption: {
+          short: "Usability session — patients working through medical question flows.",
+          verbose: "Moderated sessions focused on how patients framed medical questions, how often multiple concerns appeared in a single message, and how expectation setting affected confidence. Sessions confirmed that patients valued clarity and reassurance over precision, and that lightweight guidance reduced anxiety without limiting access to care."
+        },
+        aspectRatio: "16/9"
+      },
+
+      // ─── EARLY EXPLORATIONS ───────────────────────────────────────
+      { type: "heading", title: "Early Explorations" },
+      {
+        type: "text",
+        content: [
+          "Before narrowing into specific interaction patterns, the team explored a wide range of visual and structural directions to understand how guidance, tone, hierarchy, and information density could affect patient confidence."
+        ]
+      },
+      {
+        type: "image-full",
+        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772155104/Ui_Explorations_c2pkga.png",
+        caption: {
+          short: "Visual exploration covering tone, hierarchy, and interaction density.",
+          verbose: "These early experiments were intentionally broad. The goal was to understand the design space before committing to a direction — testing how much structure felt helpful versus clinical, and where guidance tipped into gatekeeping."
+        }
+      },
+
+      // ─── VALIDATION ──────────────────────────────────────────────
+      { type: "heading", title: "Validation" },
+      {
+        type: "text",
+        content: [
+          "As concepts narrowed, two variants were tested with 9 patients to pressure-test the boundary between operational efficiency and patient trust."
+        ]
+      },
+      {
+        type: "list",
+        items: [
+          {
+            content: `<span class="process-step-title"><b>Option A: Minimal structure</b></span><p class="mt-2">Routed patients more directly to pharmacists. Operationally efficient, but surfaced concerns around clarity and expectation setting. Users often assumed the interaction would be synchronous and were uncertain about response timing.</p>`,
+            visuals: [
+              {
+                kind: "image",
+                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772155103/Untitled_3_baz7ff.png",
+                caption: {
+                  short: "Minimal structure variant — direct routing with limited guidance.",
+                  verbose: "This option reduced handoffs but left patients without enough context about what would happen after they submitted. Several users expected a live chat experience and were caught off guard by asynchronous response timing."
+                }
+              }
+            ]
+          },
+          {
+            content: `<span class="process-step-title"><b>Option B: Lightweight guidance</b></span><p class="mt-2">Added a medication-focused step to help patients frame their question and set clearer expectations. Slightly more complex, but users found it more reassuring, with fewer mismatched expectations about what would happen next.</p>`,
+            visuals: [
+              {
+                kind: "image",
+                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772155105/Untitled_4_jpfopt.png",
+                caption: {
+                  short: "Lightweight guidance variant — medication context step with expectation setting.",
+                  verbose: "The added step improved confidence without meaningfully increasing drop-off. The medication question language tested clearly, and users who went through this flow had more accurate expectations about pharmacist response timing."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        type: "text",
+        content: [
+          "Testing confirmed that small interventions could meaningfully improve clarity. A recurring theme also emerged: several patients wanted to see relevant medication information immediately, a capability that already existed in the app but was hard to discover. That insight shaped the North Star direction."
+        ]
+      },
+
+      // ─── DESIGN EXPLORATIONS ─────────────────────────────────────
+      { type: "heading", title: "Design Explorations" },
+      {
+        type: "text",
+        content: [
+          "Three directions were developed and reviewed with Product, Pharmacy, and Care Ops leadership. Each explored a different balance between structure, flexibility, and clinical risk."
+        ]
+      },
+      {
+        type: "list",
+        items: [
+          {
+            content: `<span class="process-step-title"><b>Option 1: Medication context first</b></span><p class="mt-2">Start with medication selection to anchor the question. Gave the system immediate routing context and helped patients frame their concern around a specific medication rather than a general symptom.</p>`,
+            visuals: [
+              {
+                kind: "image",
+                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772155109/AA_option_1_dvzvaq.gif",
+                caption: {
+                  short: "Option 1: medication context anchors the question from the start.",
+                  verbose: ""
+                }
+              }
+            ]
+          },
+          {
+            content: `<span class="process-step-title"><b>Option 2: Multi-medication support</b></span><p class="mt-2">Allowed patients to raise questions about multiple medications in a single session. More flexible and closer to real patient behavior, but introduced meaningful complexity in routing and Care Specialist triage.</p>`,
+            visuals: [
+              {
+                kind: "image",
+                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772155108/AA_option_2_xorqmj.gif",
+                caption: {
+                  short: "Option 2: multiple medications and questions in a single flow.",
+                  verbose: "This direction was closest to how patients actually messaged — rarely about a single medication in isolation. The tradeoff was downstream complexity: routing logic and Care Specialist triage both became harder when a message could span multiple contexts."
+                }
+              }
+            ]
+          },
+          {
+            content: `<span class="process-step-title"><b>Option 3: Guided subtopics</b></span><p class="mt-2">Medication selected first, then guided through relevant subtopics. The most structured of the three. Produced the richest upstream context but added the most steps, raising concerns about drop-off and access for patients with complex or ambiguous questions.</p>`,
+            visuals: [
+              {
+                kind: "image",
+                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772155108/AA_option_3_ajxzrz.gif",
+                caption: {
+                  short: "Option 3: medication first, then guided through relevant subtopics.",
+                  verbose: "The subtopic guidance reduced escalation risk significantly on paper, but testing showed it could feel clinical and gatekeeping to patients already anxious about their medication. The step count was also a concern in a mobile context where patients often messaged reactively."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        type: "figma",
+        src: "https://www.figma.com/proto/EuDrnvOQOZx8Wrc4beLGTB/AA-Direct-to-Pharmacist?page-id=10888%3A142839&node-id=10894%3A435574&viewport=614%2C-1252%2C0.19&scaling=scale-down&starting-point-node-id=10894%3A435574&show-proto-sidebar=1",
+        caption: {
+          short: "View all three options in detail — click through to explore.",
+          verbose: "These prototypes were reviewed with Product, Pharmacy, and Care Ops leadership. Rather than selecting one option wholesale, the team aligned on a set of shared principles that informed what could move forward safely given clinical risk, measurement constraints, and available resourcing."
+        },
+        aspectRatio: "4/3"
+      },
+
+      // ─── DIRECT TO PHARMACIST ─────────────────────────────────────
+      { type: "heading", title: "Direct to Pharmacist" },
+      {
+        type: "text",
+        content: [
+          "One specific flow explored during this phase was a direct-to-pharmacist routing path for high-confidence medical questions. The goal was to eliminate the Care Ops handoff entirely for cases where pharmacist involvement was clearly required from the start."
+        ]
+      },
+      {
+        type: "image-full",
+        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772155107/AA_drect_to_pharmacist_e3g608.gif",
+        caption: {
+          short: "Direct-to-pharmacist routing — bypassing Care Ops for clearly clinical questions.",
+          verbose: "This flow was designed to reduce the most expensive handoff in the system. By identifying high-confidence medical questions early and routing them directly, it removed a full triage step from the most costly message category. The challenge was defining the routing logic precisely enough to avoid false positives that would overwhelm pharmacist capacity."
+        }
+      },
+
+      // ─── WHAT SHIPPED ────────────────────────────────────────────
+      { type: "heading", title: "What Shipped" },
+      {
+        type: "text",
+        content: [
+          "A full redesign of the medical questions flow didn't ship during this phase. What did ship were targeted improvements to how Care Specialists handled patient conversations inside Wunderbar, alongside patient-facing flow improvements that launched in May 2022 to a 10% controlled cohort.",
+          "The exploratory work aligned Product, Care Ops, and Pharmacy around shared principles for future iteration — creating clarity on what a safer, more scalable system could look like when instrumentation and resourcing allowed."
+        ]
+      },
+      {
+        type: "image-full",
+        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772155103/Untitled_5_eusvw7.png",
+        caption: {
+          short: "Shipped state: the medical question flow as it went live in May 2022.",
+          verbose: ""
+        }
+      },
+      {
+        type: "image-full",
+        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772155103/Untitled_6_bedfif.png",
+        caption: {
+          short: "Care Specialist view — improved context and message clarity inside Wunderbar.",
+          verbose: ""
+        }
+      },
+
+      // ─── NORTH STAR ───────────────────────────────────────────────
+      { type: "heading", title: "North Star" },
+      {
+        type: "text",
+        content: [
+          "The longer-term vision anchored the medical consultation journey around a medication selector, with clearer guidance, relevant subtopics, and self-service content layered on top. Patients would get help faster and with better context. The system would reduce unnecessary back-and-forth and downstream escalations. Several patients had surfaced this direction during testing — they wanted relevant medication information immediately, and the capability existed in the app but was too hard to find."
+        ]
+      },
+      {
+        type: "image-full",
+        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772155106/Untitled_9_itrgrm.png",
+        caption: {
+          short: "North Star: a medication-anchored consultation experience with integrated self-service content.",
+          verbose: "This direction would have surfaced the right information at the right moment — reducing the number of questions that needed a pharmacist at all. The foundation was already in the app. The work was connecting it to the right entry point."
+        }
+      },
+
+      // ─── LAUNCH ──────────────────────────────────────────────────
+      { type: "heading", title: "Launch" },
+      {
+        type: "text",
+        content: [
+          `<ul class="list-disc pl-5 space-y-3">
+            <li>The feature launched in May 2022 following a 10% controlled cohort rollout, in line with Alto's release protocol for medical-context changes. The cohort allowed the team to monitor behavior and validate impact before full release.</li>
+            <li>This case study shares platform-level metrics with the Alto Internal Tools work. Both were part of the same Alto Assistant system — the patient-facing and internal-facing sides of the same operational problem.</li>
+          </ul>`
+        ]
+      },
+
+      // ─── IMPACT ───────────────────────────────────────────────────
+      { type: "heading", title: "Impact" },
+      {
+        type: "impact-box",
+        metrics: [
+          { value: "~$2", label: "Reduction in Per-Order Shipping Cost" },
+          { value: "$16→~$10", label: "Care Cost Per Shipment" }
+        ],
+        description: [
+          "Per-order shipping costs dropped by approximately <b>~$2</b> — a direct result of reducing unnecessary inbound message volume by <b>38%</b> and cutting the escalations that required both Care Ops and Specialty Pharmacist time. Care Cost per Shipment fell from <b>$16 to approximately $10</b> over the course of the project. The platform served <b>11,000+ internal users</b> across <b>30,000+ weekly visits</b>, preventing a significant volume of unstructured messages from entering the care queue."
+        ]
       }
-    },
+
+    ]
+  }
+},
 
     // ─────────────────────────────────────────────────────────
     // PATREON

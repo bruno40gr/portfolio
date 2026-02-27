@@ -16,16 +16,10 @@ const SystemGroupBracket = ({ title, pillars, onPillarClick, children }) => {
         <div className="absolute left-0 top-0 bottom-0 w-[3px] rounded-full bg-[var(--neon-green)] opacity-60" />
 
         <div className="flex flex-col gap-0.5 mb-8 md:mb-10">
-          <p className="text-lg text-slate-600 leading-normal">
-            The {title} powers asset creation and delivery across Devices products and marketplaces.
-            These four projects solve connected layers of that system.
+          <p className="text-xl text-slate-600 leading-normal">
+            {title} 
           </p>
-          <button
-            onClick={() => setModalOpen(true)}
-            className="text-[var(--deep-purple)] underline underline-offset-2 hover:opacity-70 transition-opacity text-left font-sans text-lg"
-          >
-            Learn more
-          </button>
+          
         </div>
 
         {children}

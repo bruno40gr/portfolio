@@ -1,6 +1,68 @@
 import React, { useState, useEffect, useRef } from "react";
 
-const AnimatedHero = () => {
+const HERO_DATA = {
+  'jas-image-builder': {
+    layout: {
+      containerHeight: "h-[50vh] md:h-[70vh]",
+      containerWidth: "w-[300px] md:w-[480px]",
+    },
+    slides: [
+      { 
+        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772042482/mobile-echoshow-_0003_USEN_zpplaz.png", 
+        colors: ["#4a341e", "#63472d"], 
+        market: "US, English",
+        flag: "🇺🇸"
+      },
+      { 
+        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772042482/mobile-echoshow-_0000_CAFR_lvfrh1.png", 
+        colors: ["#ff5f45", "#e0543d"], 
+        market: "Canada, French",
+        flag: "🇨🇦"
+      },
+      { 
+        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772042482/mobile-echoshow-_0001_BRPOR_zajgs8.png", 
+        colors: ["#dfa84a", "#c79642"], 
+        market: "Brazil, Portuguese",
+        flag: "🇧🇷"
+      },
+      { 
+        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772042483/mobile-echoshow-_0002_USES_yj4oji.png", 
+        colors: ["#1e4e71", "#1a4463"], 
+        market: "US, Spanish",
+        flag: "🇺🇸"
+      }
+    ]
+  },
+  'alto-internal': {
+    layout: {
+      containerHeight: "h-[55vh] md:h-[75vh]",
+      containerWidth: "w-[360px] md:w-[720px]",
+    },
+    slides: [
+      { 
+        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772144381/flow_action_card_ktzpav.gif", 
+        colors: ["#EAF6BA", "#D8E6A9"], 
+        market: "Action Cards",
+        flag: "✅"
+      },
+      { 
+        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772144386/AAWB_message-action_nen3sq.gif", 
+        colors: ["#EAF6BA", "#D8E6A9"], 
+        market: "Message to Action",
+        flag: "💬"
+      },
+      { 
+        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772144385/AAWB_-_Cards_jmhdzy.gif", 
+        colors: ["#EAF6BA", "#D8E6A9"], 
+        market: "Action Card System",
+        flag: "🃏"
+      }
+    ]
+  },
+};
+
+
+const AnimatedHero = ({ projectId }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [scale, setScale] = useState(1);
   const [isZooming, setIsZooming] = useState(false);
@@ -10,48 +72,23 @@ const AnimatedHero = () => {
   const initialPinchDist = useRef(null);
   const lastScale = useRef(1);
 
-  const slides = [
-    { 
-      img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772042482/mobile-echoshow-_0003_USEN_zpplaz.png", 
-      colors: ["#4a341e", "#63472d"], 
-      market: "US, English",
-      flag: "🇺🇸"
-    },
-    { 
-      img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772042482/mobile-echoshow-_0000_CAFR_lvfrh1.png", 
-      colors: ["#ff5f45", "#e0543d"], 
-      market: "Canada, French",
-      flag: "🇨🇦"
-    },
-    { 
-      img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772042482/mobile-echoshow-_0001_BRPOR_zajgs8.png", 
-      colors: ["#dfa84a", "#c79642"], 
-      market: "Brazil, Portuguese",
-      flag: "🇧🇷"
-    },
-    { 
-      img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772042483/mobile-echoshow-_0002_USES_yj4oji.png", 
-      colors: ["#1e4e71", "#1a4463"], 
-      market: "US, Spanish",
-      flag: "🇺🇸"
-    }
-  ];
+  const projectData = HERO_DATA[projectId] || HERO_DATA['jas-image-builder'];
+  const { slides, layout } = projectData;
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
-    setScale(1); // Reset zoom on slide change
+    setScale(1);
     lastScale.current = 1;
   };
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-    setScale(1); // Reset zoom on slide change
+    setScale(1);
     lastScale.current = 1;
   };
 
   useEffect(() => {
     const timer = setInterval(() => {
-      // Only auto-advance if not currently being interacted with (zoomed)
       if (scale === 1) nextSlide();
     }, 5000);
     return () => clearInterval(timer);
@@ -79,7 +116,6 @@ const AnimatedHero = () => {
     if (e.touches.length === 2 && initialPinchDist.current) {
       const currentDist = getDistance(e.touches);
       const newScale = lastScale.current * (currentDist / initialPinchDist.current);
-      // Bound the zoom between 1x and 3x
       setScale(Math.min(Math.max(1, newScale), 3));
     } else {
       touchEndX.current = e.targetTouches[0].clientX;
@@ -119,9 +155,9 @@ const AnimatedHero = () => {
     >
       <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-6xl px-8 gap-6 md:gap-8 relative pb-10 md:pb-0">
         
-        {/* Left: Device Animation Area */}
+        {/* Left: Device Animation Area — sized per project */}
         <div 
-          className="relative h-[45vh] md:h-[65vh] w-[240px] md:w-[380px] flex items-center justify-center flex-shrink-0"
+          className={`relative ${layout.containerHeight} ${layout.containerWidth} flex items-center justify-center flex-shrink-0`}
           style={{ 
             transform: `scale(${scale})`,
             zIndex: scale > 1 ? 50 : 10,
@@ -141,16 +177,14 @@ const AnimatedHero = () => {
         
         {/* Right: Text Column */}
         <div 
-          className="text-white text-center md:text-left w-full max-w-xs flex flex-col items-center md:items-start justify-start transition-opacity duration-300"
+          className="text-black text-center md:text-left w-full max-w-xs flex flex-col items-center md:items-start justify-start transition-opacity duration-300"
           style={{ opacity: scale > 1.2 ? 0 : 1 }}
         >
           
-          {/* Static Legend (Top Line) */}
-          <p className="text-white/60 text-[11px] md:text-sm font-light mb-1 md:mb-2 leading-relaxed tracking-wide">
-            Sample of promotional material of <br className="hidden md:block"/>Echo Show 8 - November 2025
+          <p className="text-black/60 text-[11px] md:text-sm font-light mb-1 md:mb-2 leading-relaxed tracking-wide">
+            Key Workflows & Interface Concepts
           </p>
 
-          {/* Dynamic Marketplace Details */}
           <div className="relative h-8 md:h-12 w-full">
             {slides.map((slide, index) => (
               <div 
@@ -169,7 +203,7 @@ const AnimatedHero = () => {
 
       </div>
 
-      {/* Slide Indicators (Bottom) */}
+      {/* Slide Indicators */}
       <nav 
         className="absolute bottom-5 md:bottom-10 flex justify-center items-center z-20 space-x-3 transition-opacity duration-300"
         style={{ opacity: scale > 1.2 ? 0 : 1 }}
@@ -183,7 +217,6 @@ const AnimatedHero = () => {
         ))}
       </nav>
 
-      {/* Helper for zoom reset on tap if zoomed */}
       {scale > 1 && (
         <button 
           onClick={() => { setScale(1); lastScale.current = 1; setIsZooming(false); }}

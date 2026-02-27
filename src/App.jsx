@@ -439,24 +439,24 @@ No. It’ll replace designers who mostly produce deliverables. If I truly believ
       <main className="min-h-screen relative bg-white text-left">
         {view === "home" && (
           <div className="bg-white animate-fade-in font-sans">
-            <section className="bg-[#231F45] hero-wrap flex flex-col justify-center items-center text-center px-6 min-h-[calc(100vh-var(--header-h))] flex-grow">
+            <section className="bg-[#231F45] hero-wrap flex flex-col justify-center items-center text-center px-6 h-[calc(100dvh-var(--header-h)-56px)] md:min-h-[calc(100dvh-var(--header-h))] py-6 md:py-0 flex-grow">
               <div className="max-w-4xl w-full reveal-on-scroll hero-stack">
-                <img src={ASSETS.mainLogo} alt="Bruno Wong Marchena" className="hero-logo" />
+                <img src={ASSETS.mainLogo} alt="Bruno Wong Marchena" className="hero-logo w-32 md:w-auto mx-auto mb-4 md:mb-0" />
                 <div className="max-w-3xl mx-auto">
-      <h1 className="text-slate-200 text-3xl md:text-4xl font-light tracking-tight mb-8 leading-snug">
+      <h1 className="text-slate-200 text-2xl md:text-4xl font-light tracking-tight mb-4 md:mb-8 leading-snug">
         <span className="font-semibold">Staff-level product designer</span> specializing in AI-powered platforms, complex systems, and high-craft UX.
       </h1>
-      <p className="text-slate-400 text-2xl md:text-3xl mb-12 max-w-2xl mx-auto leading-snug font-light">
+      <p className="text-slate-400 text-lg md:text-3xl mb-6 md:mb-12 max-w-2xl mx-auto leading-snug font-light">
         I've automated the work of entire teams at Amazon, cut fulfillment costs in healthcare logistics, and earned a patent for rethinking retention at Patreon.
       </p>
     </div>
                 
-                <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+                <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6">
       <Button onClick={() => setIsContactOpen(true)} className="px-10 py-4 bg-[#88FF00] text-black font-bold rounded-full hover:scale-105 transition-transform">
         Let's chat
       </Button>
-      <p className="text-slate-400 text-sm font-light tracking-wide">
-        Available for freelance and contract work
+      <p className="text-slate-100 text-lg md:text-3xl mb-6 md:mb-12 max-w-2xl mx-auto leading-snug font-light">
+        Available for freelance and contract work Q2, 2026
       </p>
     </div>
               </div>
