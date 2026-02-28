@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { 
-  FileText, ChevronLeft, ChevronRight, X, Loader2, Figma
-} from "lucide-react";
+import { FileText, ChevronLeft, ChevronRight, X, Loader2, Figma } from "lucide-react";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+
+// ✅ Ensure this points to the corrected FigmaEmbed file
+// If your fixed FigmaEmbed is in ../ui keep it; if it's in the same folder, use "./FigmaEmbed"
 import { FigmaEmbed } from "../ui/FigmaEmbed";
 
 const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
@@ -13,8 +14,8 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
     if (open) {
       const originalStyle = window.getComputedStyle(document.body).overflow;
       const originalTouchAction = window.getComputedStyle(document.body).touchAction;
-      document.body.style.overflow = 'hidden';
-      document.body.style.touchAction = 'none';
+      document.body.style.overflow = "hidden";
+      document.body.style.touchAction = "none";
       return () => {
         document.body.style.overflow = originalStyle;
         document.body.style.touchAction = originalTouchAction;
@@ -34,19 +35,6 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
     }
   }, [currentIndex, open]);
 
-  useEffect(() => {
-    if (!open) return;
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') onClose();
-      if (e.key === 'ArrowRight') nextItem();
-      if (e.key === 'ArrowLeft') prevItem();
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [open, currentIndex]);
-
-  const activeItem = mediaItems?.[currentIndex];
-
   const nextItem = (e) => {
     if (e) e.stopPropagation();
     setCurrentIndex((prev) => (prev + 1) % mediaItems.length);
@@ -57,14 +45,26 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
     setCurrentIndex((prev) => (prev - 1 + mediaItems.length) % mediaItems.length);
   };
 
+  useEffect(() => {
+    if (!open) return;
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowRight") nextItem();
+      if (e.key === "ArrowLeft") prevItem();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [open, currentIndex]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const activeItem = mediaItems?.[currentIndex];
   if (!open || !activeItem) return null;
 
-  const isFigma = activeItem.type === 'figma';
+  const isFigma = activeItem.type === "figma";
 
   return (
     <div
       className="fixed inset-0 z-[100] flex flex-col bg-[#050505]/98 backdrop-blur-2xl animate-in fade-in duration-300 font-sans text-white select-none overscroll-none"
-      style={{ overscrollBehavior: 'contain' }}
+      style={{ overscrollBehavior: "contain" }}
       onClick={onClose}
     >
       {/* Top Bar */}
@@ -84,7 +84,10 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
 
         <button
           className="p-1.5 md:p-2 text-neutral-500 hover:text-white hover:bg-white/10 rounded-full transition-all"
-          onClick={(e) => { e.stopPropagation(); onClose(); }}
+          onClick={(e) => {
+            e.stopPropagation();
+            onClose();
+          }}
         >
           <X size={18} className="md:w-5 md:h-5" />
         </button>
@@ -92,7 +95,6 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
 
       {/* Main Container */}
       <div className="flex-1 flex flex-col md:flex-row min-h-0 overflow-hidden">
-
         {/* Left Stage */}
         <div className="h-[60vh] md:h-auto md:flex-1 relative flex items-center justify-between group/nav bg-black/40 shrink-0 touch-none">
           <button
@@ -103,7 +105,9 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
           </button>
 
           <div
-            className={`w-full h-full flex items-center justify-center ${isFigma ? 'p-2 md:p-6' : 'p-4 md:p-12'}`}
+            className={`w-full h-full flex items-center justify-center ${
+              isFigma ? "p-2 md:p-6" : "p-4 md:p-12"
+            }`}
             onClick={(e) => e.stopPropagation()}
           >
             {isLoading ? (
@@ -112,7 +116,7 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
               </div>
             ) : (
               <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
-                {activeItem.type === 'pdf' ? (
+                {activeItem.type === "pdf" ? (
                   <div className="w-full h-full max-w-5xl bg-[#1E1E1E] border border-white/10 rounded-lg shadow-2xl overflow-hidden p-1 animate-in zoom-in-95 duration-300">
                     <iframe
                       src={activeItem.src}
@@ -120,18 +124,23 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
                       title="PDF Preview"
                     />
                   </div>
-                ) : activeItem.type === 'video' ? (
+                ) : activeItem.type === "video" ? (
                   <div className="w-full max-w-5xl aspect-video bg-black border border-white/10 rounded-lg shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
                     <iframe
-                      src={activeItem.src}
+                      src={
+                        activeItem.src.includes("loom.com/share/")
+                          ? activeItem.src.replace("loom.com/share/", "loom.com/embed/")
+                          : activeItem.src
+                      }
                       title={activeItem.title || "Video content"}
                       className="w-full h-full"
                       frameBorder="0"
                       allowFullScreen
                     />
                   </div>
-                ) : activeItem.type === 'figma' ? (
-                  <div className="w-full max-w-4xl bg-black border border-white/10 rounded-lg shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
+                ) : activeItem.type === "figma" ? (
+                  <div className="w-full max-w-4xl bg-white rounded-lg shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
+                    {/* ✅ Let FigmaEmbed normalize/wrap every time */}
                     <FigmaEmbed src={activeItem.src} title={activeItem.title} scaling="contain" />
                   </div>
                 ) : (
@@ -140,16 +149,16 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
                     minScale={0.5}
                     maxScale={8}
                     centerOnInit
-                    doubleClick={{ mode: 'zoomIn', step: 1.5 }}
+                    doubleClick={{ mode: "zoomIn", step: 1.5 }}
                   >
                     <TransformComponent
-                      wrapperStyle={{ width: '100%', height: '100%' }}
+                      wrapperStyle={{ width: "100%", height: "100%" }}
                       contentStyle={{
-                        width: '100%',
-                        height: '100%',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
+                        width: "100%",
+                        height: "100%",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
                       }}
                     >
                       <img
@@ -179,8 +188,12 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
         >
           <div className="p-5 md:p-8 pb-3 md:pb-6 shrink-0 space-y-2.5">
             <h2 className="text-white text-lg md:text-2xl font-semibold font-serif leading-tight flex items-start gap-3">
-              {activeItem.type === 'pdf' && <FileText size={18} className="mt-1 text-blue-400 shrink-0 md:w-5 md:h-5" />}
-              {activeItem.type === 'figma' && <Figma size={18} className="mt-1 text-pink-500 shrink-0 md:w-5 md:h-5" />}
+              {activeItem.type === "pdf" && (
+                <FileText size={18} className="mt-1 text-blue-400 shrink-0 md:w-5 md:h-5" />
+              )}
+              {activeItem.type === "figma" && (
+                <Figma size={18} className="mt-1 text-pink-500 shrink-0 md:w-5 md:h-5" />
+              )}
               {activeItem.captionShort || activeItem.title}
             </h2>
             <div className="h-px w-6 md:w-10 bg-neutral-700" />
@@ -188,7 +201,7 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
 
           <div
             className="flex-1 overflow-y-auto px-5 md:px-8 pb-6 md:pb-8 custom-scrollbar"
-            style={{ overscrollBehavior: 'contain' }}
+            style={{ overscrollBehavior: "contain" }}
           >
             {activeItem.captionVerbose && (
               <p className="text-neutral-400 text-[14px] md:text-[16px] font-sans leading-relaxed">

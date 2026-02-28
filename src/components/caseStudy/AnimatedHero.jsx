@@ -11,25 +11,29 @@ const HERO_DATA = {
         img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772042482/mobile-echoshow-_0003_USEN_zpplaz.png", 
         colors: ["#4a341e", "#63472d"], 
         market: "US, English",
-        flag: "🇺🇸"
+        flag: "🇺🇸",
+        theme: "dark"
       },
       { 
         img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772042482/mobile-echoshow-_0000_CAFR_lvfrh1.png", 
         colors: ["#ff5f45", "#e0543d"], 
         market: "Canada, French",
-        flag: "🇨🇦"
+        flag: "🇨🇦",
+        theme: "dark"
       },
       { 
         img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772042482/mobile-echoshow-_0001_BRPOR_zajgs8.png", 
         colors: ["#dfa84a", "#c79642"], 
         market: "Brazil, Portuguese",
-        flag: "🇧🇷"
+        flag: "🇧🇷",
+        theme: "light"
       },
       { 
         img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772042483/mobile-echoshow-_0002_USES_yj4oji.png", 
         colors: ["#1e4e71", "#1a4463"], 
         market: "US, Spanish",
-        flag: "🇺🇸"
+        flag: "🇺🇸",
+        theme: "dark"
       }
     ]
   },
@@ -43,22 +47,85 @@ const HERO_DATA = {
         img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772144381/flow_action_card_ktzpav.gif", 
         colors: ["#EAF6BA", "#D8E6A9"], 
         market: "Action Cards",
-        flag: "✅"
+        flag: "✅",
+        theme: "light"
       },
       { 
         img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772144386/AAWB_message-action_nen3sq.gif", 
         colors: ["#EAF6BA", "#D8E6A9"], 
         market: "Message to Action",
-        flag: "💬"
+        flag: "💬",
+        theme: "light"
       },
       { 
         img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772144385/AAWB_-_Cards_jmhdzy.gif", 
         colors: ["#EAF6BA", "#D8E6A9"], 
         market: "Action Card System",
-        flag: "🃏"
+        flag: "🃏",
+        theme: "light"
       }
     ]
   },
+  'patreon-creator-tools': {
+    layout: {
+      containerHeight: "h-[50vh] md:h-[65vh]",
+      containerWidth: "w-[90%] md:w-[800px]",
+    },
+    slides: [
+      { 
+        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772169709/benefits-config_wpuj3r.gif", 
+        colors: ["#FFD2D5", "#FF424D"], 
+        market: "Benefit Configuration",
+        flag: "⚙️",
+        theme: "light"
+      },
+      { 
+        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772169684/benefit_categorie_eqwjwd.png", 
+        colors: ["#052D49", "#141414"], 
+        market: "Benefit Categories",
+        flag: "🎨",
+        theme: "dark"
+      },
+      { 
+        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772169704/saved_filters_xgzc9c.gif", 
+        colors: ["#FFD2D5", "#FF424D"], 
+        market: "Smart Filters",
+        flag: "🔍",
+        theme: "light"
+      }
+    ]
+  },
+
+  'patreon-studio2.0': {
+    layout: {
+      containerHeight: "h-[50vh] md:h-[65vh]",
+      containerWidth: "w-[90%] md:w-[800px]",
+    },
+    slides: [
+      { 
+        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772238558/SS1_wbi5xq.png", 
+        colors: ["#F5F4F2", "#EAE9E7"], 
+        market: "Creator Profiles",
+        flag: "👤",
+        theme: "light"
+      },
+      { 
+        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772238558/SS3_gzembm.png", 
+        colors: ["#FF424D", "#E53B45"], 
+        market: "Content & Interactive Feeds",
+        flag: "📱",
+        theme: "dark"
+      },
+      { 
+        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772238558/SS2_mj5jli.png", 
+        colors: ["#052D49", "#141414"], 
+        market: "Creator Tools UI",
+        flag: "🛠️",
+        theme: "dark"
+      }
+    ]
+  },
+
 };
 
 
@@ -74,6 +141,13 @@ const AnimatedHero = ({ projectId }) => {
 
   const projectData = HERO_DATA[projectId] || HERO_DATA['jas-image-builder'];
   const { slides, layout } = projectData;
+  
+  // Determine if current slide needs dark or light text/ui
+  const isDarkTheme = slides[currentSlide]?.theme === 'dark';
+  const textColorClass = isDarkTheme ? "text-white" : "text-slate-900";
+  const subTextColorClass = isDarkTheme ? "text-white/60" : "text-slate-900/60";
+  const dotActiveClass = isDarkTheme ? "bg-white" : "bg-slate-900";
+  const dotInactiveClass = isDarkTheme ? "bg-white/30 hover:bg-white/50" : "bg-slate-900/20 hover:bg-slate-900/40";
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -169,7 +243,7 @@ const AnimatedHero = ({ projectId }) => {
               key={index} 
               src={slide.img} 
               alt={slide.market}
-              className={`absolute h-full w-auto object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.4)] transition-all duration-[1200ms] cubic-bezier(0.4, 0, 0.2, 1)
+              className={`absolute h-full w-auto object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.4)] rounded-xl transition-all duration-[1200ms] cubic-bezier(0.4, 0, 0.2, 1)
               ${index === currentSlide ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6 pointer-events-none'}`} 
             />
           ))}
@@ -177,11 +251,11 @@ const AnimatedHero = ({ projectId }) => {
         
         {/* Right: Text Column */}
         <div 
-          className="text-black text-center md:text-left w-full max-w-xs flex flex-col items-center md:items-start justify-start transition-opacity duration-300"
+          className={`text-center md:text-left w-full max-w-xs flex flex-col items-center md:items-start justify-start transition-colors duration-300 ${textColorClass}`}
           style={{ opacity: scale > 1.2 ? 0 : 1 }}
         >
           
-          <p className="text-black/60 text-[11px] md:text-sm font-light mb-1 md:mb-2 leading-relaxed tracking-wide">
+          <p className={`text-[11px] md:text-sm font-light mb-1 md:mb-2 leading-relaxed tracking-wide transition-colors duration-300 ${subTextColorClass}`}>
             Key Workflows & Interface Concepts
           </p>
 
@@ -212,7 +286,8 @@ const AnimatedHero = ({ projectId }) => {
           <button 
             key={index} 
             onClick={() => setCurrentSlide(index)}
-            className={`w-1.5 h-1.5 md:w-2 md:h-2 rounded-full transition-all duration-500 ${index === currentSlide ? 'bg-white scale-125' : 'bg-white/30 hover:bg-white/50'}`} 
+            className={`w-1.5 h-1.5 md:w-2 md:h-2 rounded-full transition-all duration-500 
+              ${index === currentSlide ? `${dotActiveClass} scale-125` : dotInactiveClass}`} 
           />
         ))}
       </nav>

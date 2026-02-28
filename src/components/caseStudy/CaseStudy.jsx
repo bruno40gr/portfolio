@@ -1,8 +1,9 @@
-import React, { useMemo } from "react";
-import { useEffect, useRef, useState } from "react";
+// src/components/caseStudy/CaseStudy.jsx
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowRight, Maximize2 } from "lucide-react";
 
 import { PORTFOLIO_DATA } from "../../data/portfolioData";
+import { toFigmaEmbedUrl } from "../../utils/figma"; // ✅ use one canonical helper
 
 import Caption from "../ui/Caption";
 import CalloutBox from "../ui/CalloutBox";
@@ -16,6 +17,7 @@ import ImageThumbnail from "./ImageThumbnail";
 import FileThumbnail from "./FileThumbnail";
 import VideoThumbnail from "./VideoThumbnail";
 import FigmaThumbnail from "./FigmaThumbnail";
+
 import CaseStudyPager from "./CaseStudyPager";
 import CaseStudyAnchorNav from "./CaseStudyAnchorNav";
 import ProjectHeader from "./ProjectHeader";
@@ -29,13 +31,19 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
   const [lightbox, setLightbox] = useState({ open: false, index: 0 });
 
   const isPillar = !!project.parentId;
-  const rootProject = isPillar ? PORTFOLIO_DATA.projects.find((p) => p.id === project.parentId) : null;
+  const rootProject = isPillar
+    ? PORTFOLIO_DATA.projects.find((p) => p.id === project.parentId)
+    : null;
+
   const subPillars = PORTFOLIO_DATA.projects.filter((p) => p.parentId === project.id);
 
   const allCaseStudies = PORTFOLIO_DATA.projects.filter((p) => p.status !== "coming-soon");
   const currentIdx = allCaseStudies.findIndex((p) => p.id === project.id);
   const prevProject = currentIdx > 0 ? allCaseStudies[currentIdx - 1] : null;
-  const nextProject = currentIdx >= 0 && currentIdx < allCaseStudies.length - 1 ? allCaseStudies[currentIdx + 1] : null;
+  const nextProject =
+    currentIdx >= 0 && currentIdx < allCaseStudies.length - 1
+      ? allCaseStudies[currentIdx + 1]
+      : null;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -43,77 +51,88 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
 
   const allMediaItems = useMemo(() => {
     const media = [];
-    let lastHeading = 'Assets in this case study';
-    project.details?.blocks?.forEach(block => {
-      if (block.type === 'heading') {
+    let lastHeading = "Assets in this case study";
+
+    project.details?.blocks?.forEach((block) => {
+      if (block.type === "heading") {
         lastHeading = block.title;
       }
-      if (block.type === 'video') {
-        const caption = block.caption || '';
-        const isCaptionObj = typeof caption === 'object' && caption !== null && caption.short;
+
+      if (block.type === "video") {
+        const caption = block.caption || "";
+        const isCaptionObj = typeof caption === "object" && caption !== null && caption.short;
         const captionShort = isCaptionObj ? caption.short : caption;
-        const captionVerbose = isCaptionObj ? caption.verbose : '';
+        const captionVerbose = isCaptionObj ? caption.verbose : "";
+
         media.push({
-          type: 'video',
+          type: "video",
           src: block.src,
-          title: captionShort || 'Visual',
+          title: captionShort || "Visual",
           captionShort,
           captionVerbose,
-          fileSize: 'N/A',
+          fileSize: "N/A",
           processStepTitle: lastHeading,
         });
-      } else if (block.type === 'figma') {
-        const caption = block.caption || '';
-        const isCaptionObj = typeof caption === 'object' && caption !== null && caption.short;
+      } else if (block.type === "figma") {
+        const caption = block.caption || "";
+        const isCaptionObj = typeof caption === "object" && caption !== null && caption.short;
         const captionShort = isCaptionObj ? caption.short : caption;
-        const captionVerbose = isCaptionObj ? caption.verbose : '';
+        const captionVerbose = isCaptionObj ? caption.verbose : "";
+
         media.push({
-          type: 'figma',
+          type: "figma",
           src: block.src,
-          title: captionShort || 'Visual',
+          embedSrc: toFigmaEmbedUrl(block.src), // ✅ robust embed URL
+          title: captionShort || "Visual",
           captionShort,
           captionVerbose,
-          fileSize: 'N/A',
+          fileSize: "N/A",
           processStepTitle: lastHeading,
           aspectRatio: block.aspectRatio,
         });
-      } else if (block.type === 'image-full') {
-        const imageCaption = typeof block.caption === 'object' && block.caption !== null ? block.caption.short : block.caption;
-        const imageCaptionVerbose = typeof block.caption === 'object' && block.caption !== null ? block.caption.verbose : '';
+      } else if (block.type === "image-full") {
+        const imageCaption =
+          typeof block.caption === "object" && block.caption !== null ? block.caption.short : block.caption;
+        const imageCaptionVerbose =
+          typeof block.caption === "object" && block.caption !== null ? block.caption.verbose : "";
+
         media.push({
-          type: 'image',
+          type: "image",
           src: block.src,
-          title: imageCaption || 'Visual',
-          captionShort: imageCaption || '',
-          captionVerbose: imageCaptionVerbose || '',
-          fileSize: 'N/A',
+          title: imageCaption || "Visual",
+          captionShort: imageCaption || "",
+          captionVerbose: imageCaptionVerbose || "",
+          fileSize: "N/A",
           processStepTitle: lastHeading,
         });
-      } else if (block.type === 'list' && block.items) {
-        block.items.forEach(item => {
-          const itemContent = (item && typeof item === 'object' && !Array.isArray(item)) ? item.content : item;
-          const processStepTitleMatch = itemContent.match(/<span class="process-step-title"><b>(.*?)<\/b><\/span>/);
-          const processStepTitle = processStepTitleMatch ? processStepTitleMatch[1] : 'Assets in this case study';
+      } else if (block.type === "list" && block.items) {
+        block.items.forEach((item) => {
+          const itemContent = item && typeof item === "object" && !Array.isArray(item) ? item.content : item;
+          const processStepTitleMatch = itemContent.match(
+            /<span class="process-step-title"><b>(.*?)<\/b><\/span>/
+          );
+          const processStepTitle = processStepTitleMatch ? processStepTitleMatch[1] : "Assets in this case study";
 
           if (item.visuals) {
-            item.visuals.forEach(visual => {
-              let type = 'image';
-              if (visual.kind === 'embed') type = 'video';
-              else if (visual.src && visual.src.includes('.pdf')) type = 'pdf';
-              else if (visual.kind === 'figma') type = 'figma';
+            item.visuals.forEach((visual) => {
+              let type = "image";
+              if (visual.kind === "embed") type = "video";
+              else if (visual.src && visual.src.includes(".pdf")) type = "pdf";
+              else if (visual.kind === "figma") type = "figma";
 
-              const caption = visual.caption || '';
-              const isCaptionObj = typeof caption === 'object' && caption !== null && caption.short;
+              const caption = visual.caption || "";
+              const isCaptionObj = typeof caption === "object" && caption !== null && caption.short;
               const captionShort = isCaptionObj ? caption.short : caption;
-              const captionVerbose = isCaptionObj ? caption.verbose : '';
+              const captionVerbose = isCaptionObj ? caption.verbose : "";
 
               media.push({
                 type,
                 src: visual.src,
-                title: captionShort || 'Visual',
+                embedSrc: type === "figma" ? toFigmaEmbedUrl(visual.src) : undefined, // ✅ robust
+                title: captionShort || "Visual",
                 captionShort,
                 captionVerbose,
-                fileSize: visual.fileSize || 'N/A',
+                fileSize: visual.fileSize || "N/A",
                 processStepTitle,
               });
             });
@@ -121,13 +140,18 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         });
       }
     });
+
     return media;
   }, [project]);
 
   const renderBlock = (block, index) => {
     switch (block.type) {
       case "text": {
-        const textClass = block.subtype === "designer-note" ? "designer-note" : "text-lg text-neutral-700 leading-relaxed";
+        const textClass =
+          block.subtype === "designer-note"
+            ? "designer-note"
+            : "text-lg text-neutral-700 leading-relaxed";
+
         return (
           <section key={index} className="mb-10 text-left">
             {block.title && (
@@ -135,9 +159,14 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                 {block.title}
               </h3>
             )}
+
             {Array.isArray(block.content) ? (
               block.content.map((p, i) => (
-                <p key={i} className={`${textClass} mb-4 md:mb-6`} dangerouslySetInnerHTML={{ __html: p }} />
+                <p
+                  key={i}
+                  className={`${textClass} mb-4 md:mb-6`}
+                  dangerouslySetInnerHTML={{ __html: p }}
+                />
               ))
             ) : (
               <p className={textClass} dangerouslySetInnerHTML={{ __html: block.content }} />
@@ -154,8 +183,10 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
 
       case "heading": {
         if (block.title === "Overview") return null;
+
         const slug = block.title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
         const showBorder = block.hasDivider !== false;
+
         return (
           <section
             id={slug}
@@ -168,13 +199,17 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
       }
 
       case "image-full": {
-        const globalIndex = allMediaItems.findIndex(item => item.src === block.src);
-        const imageCaption = typeof block.caption === 'object' && block.caption !== null ? block.caption.short : block.caption;
+        const globalIndex = allMediaItems.findIndex((item) => item.src === block.src);
+        const imageCaption =
+          typeof block.caption === "object" && block.caption !== null ? block.caption.short : block.caption;
+
         return (
           <div key={index} className="mb-10 px-6 md:px-0">
             <button
               type="button"
-              onClick={() => { if (globalIndex !== -1) setLightbox({ open: true, index: globalIndex }); }}
+              onClick={() => {
+                if (globalIndex !== -1) setLightbox({ open: true, index: globalIndex });
+              }}
               className="group relative w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-green)] rounded-xl"
               aria-label="Expand image"
             >
@@ -193,14 +228,17 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                 </div>
               </div>
             </button>
+
             {imageCaption && <Caption>{imageCaption}</Caption>}
           </div>
         );
       }
 
       case "video": {
-        const globalIndex = allMediaItems.findIndex(item => item.src === block.src);
-        const videoCaption = typeof block.caption === 'object' && block.caption !== null ? block.caption.short : block.caption;
+        const globalIndex = allMediaItems.findIndex((item) => item.src === block.src);
+        const videoCaption =
+          typeof block.caption === "object" && block.caption !== null ? block.caption.short : block.caption;
+
         return (
           <div key={index} className="mb-10">
             <VideoThumbnail
@@ -217,8 +255,13 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         return <DataTable key={index} columns={block.columns} rows={block.rows} />;
 
       case "figma": {
-        const globalIndex = allMediaItems.findIndex(item => item.src === block.src);
-        const figmaCaption = typeof block.caption === 'object' && block.caption !== null ? block.caption.short : block.caption;
+        const globalIndex = allMediaItems.findIndex((item) => item.src === block.src);
+        const figmaCaption =
+          typeof block.caption === "object" && block.caption !== null ? block.caption.short : block.caption;
+
+        // ✅ compute embedSrc here (don’t rely on thumbnail component doing it)
+        const embedSrc = toFigmaEmbedUrl(block.src);
+
         return (
           <div key={index} className="mb-10">
             <FigmaThumbnail
@@ -226,7 +269,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
               caption={figmaCaption}
               coverImage={block.coverImage}
               aspectRatio={block.aspectRatio}
-              onClick={() => setLightbox({ open: true, index: globalIndex })}
+              onClick={() => setLightbox({ open: true, index: globalIndex, embedSrc })}
             />
             {figmaCaption && <Caption>{figmaCaption}</Caption>}
           </div>
@@ -261,22 +304,37 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                 const isObj = item && typeof item === "object" && !Array.isArray(item);
                 const itemContent = isObj ? item.content : item;
                 const visuals = isObj ? item.visuals : null;
-                const mediaItems = visuals ? visuals.map(visual => {
-                  const caption = visual.caption || '';
-                  const isCaptionObj = typeof caption === 'object' && caption !== null && caption.short;
-                  const captionShort = isCaptionObj ? caption.short : caption;
-                  const captionVerbose = isCaptionObj ? caption.verbose : '';
-                  return {
-                    type: visual.kind === 'embed' ? 'video' : (visual.src && visual.src.includes('.pdf') ? 'pdf' : (visual.kind === 'figma' ? 'figma' : 'image')),
-                    src: visual.src,
-                    title: captionShort || 'Visual',
-                    captionShort,
-                    captionVerbose,
-                    fileSize: visual.fileSize || 'N/A',
-                    coverImage: visual.coverImage,
-                    aspectRatio: visual.aspectRatio,
-                  };
-                }) : [];
+
+                const mediaItems = visuals
+                  ? visuals.map((visual) => {
+                      const caption = visual.caption || "";
+                      const isCaptionObj =
+                        typeof caption === "object" && caption !== null && caption.short;
+                      const captionShort = isCaptionObj ? caption.short : caption;
+                      const captionVerbose = isCaptionObj ? caption.verbose : "";
+
+                      const type =
+                        visual.kind === "embed"
+                          ? "video"
+                          : visual.src && visual.src.includes(".pdf")
+                          ? "pdf"
+                          : visual.kind === "figma"
+                          ? "figma"
+                          : "image";
+
+                      return {
+                        type,
+                        src: visual.src,
+                        embedSrc: type === "figma" ? toFigmaEmbedUrl(visual.src) : undefined, // ✅ robust
+                        title: captionShort || "Visual",
+                        captionShort,
+                        captionVerbose,
+                        fileSize: visual.fileSize || "N/A",
+                        coverImage: visual.coverImage,
+                        aspectRatio: visual.aspectRatio,
+                      };
+                    })
+                  : [];
 
                 return (
                   <li
@@ -292,30 +350,45 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
 
                       {mediaItems.length > 0 && (
                         <div className="mt-6">
-                          <div className={mediaItems.length === 1 ? "grid grid-cols-1" : "grid grid-cols-1 sm:grid-cols-2 gap-4"}>
+                          <div
+                            className={
+                              mediaItems.length === 1
+                                ? "grid grid-cols-1"
+                                : "grid grid-cols-1 sm:grid-cols-2 gap-4"
+                            }
+                          >
                             {mediaItems.map((mediaItem, vi) => {
-                              const globalIndex = allMediaItems.findIndex(item => item.src === mediaItem.src);
+                              const globalIndex = allMediaItems.findIndex(
+                                (it) => it.src === mediaItem.src
+                              );
+
                               return (
                                 <div key={vi}>
-                                  {mediaItem.type === 'video' ? (
+                                  {mediaItem.type === "video" ? (
                                     <VideoThumbnail
                                       src={mediaItem.src}
                                       caption={mediaItem.captionShort}
                                       onClick={() => setLightbox({ open: true, index: globalIndex })}
                                     />
-                                  ) : mediaItem.type === 'pdf' ? (
+                                  ) : mediaItem.type === "pdf" ? (
                                     <FileThumbnail
                                       title={mediaItem.title}
                                       fileSize={mediaItem.fileSize}
                                       onClick={() => setLightbox({ open: true, index: globalIndex })}
                                     />
-                                  ) : mediaItem.type === 'figma' ? (
+                                  ) : mediaItem.type === "figma" ? (
                                     <FigmaThumbnail
                                       src={mediaItem.src}
                                       caption={mediaItem.captionShort}
                                       coverImage={mediaItem.coverImage}
                                       aspectRatio={mediaItem.aspectRatio}
-                                      onClick={() => setLightbox({ open: true, index: globalIndex })}
+                                      onClick={() =>
+                                        setLightbox({
+                                          open: true,
+                                          index: globalIndex,
+                                          embedSrc: mediaItem.embedSrc || toFigmaEmbedUrl(mediaItem.src),
+                                        })
+                                      }
                                     />
                                   ) : (
                                     <ImageThumbnail
@@ -324,6 +397,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                                       onClick={() => setLightbox({ open: true, index: globalIndex })}
                                     />
                                   )}
+
                                   <p className="type-caption text-left text-neutral-600 text-[14px] font-normal leading-relaxed mt-2 md:mt-3 font-serif">
                                     {mediaItem.captionShort}
                                   </p>
@@ -352,19 +426,19 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
       ?.filter((b) => b.type === "heading")
       .map((b) => ({
         title: b.title,
-        id: b.title === "Overview" ? "overview" : b.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")
+        id: b.title === "Overview" ? "overview" : b.title.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
       })) || [];
 
   const heroSrc = project.details?.heroImage || project.thumbnail;
   const heroType = project.details?.hero?.type;
-  const heroBgColor = project.details?.hero?.bgColor || '#f5f5f5';
+  const heroBgColor = project.details?.hero?.bgColor || "#f5f5f5";
 
   return (
     <article className="bg-white min-h-screen w-full relative text-left font-sans">
-      {heroType === 'animated' ? (
+      {heroType === "animated" ? (
         <AnimatedHero projectId={project.id} />
       ) : (
-        <div 
+        <div
           className="w-full h-[60vh] md:h-[80vh] border-b border-neutral-200 overflow-hidden relative shadow-sm text-center"
           style={{ backgroundColor: heroBgColor }}
         >
@@ -372,15 +446,15 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         </div>
       )}
 
-      <div
-        ref={contentRef}
-        className="w-full pt-12 md:pt-[calc(var(--header-h)+40px)] font-sans"
-      >
+      <div ref={contentRef} className="w-full pt-12 md:pt-[calc(var(--header-h)+40px)] font-sans">
         <div className="lg:grid lg:grid-cols-[20rem_1fr] lg:gap-12 pb-10 case-study-layout">
           <aside className="hidden lg:block pl-8 md:pl-14 case-study-anchor">
             <div className="sticky top-[calc(var(--header-h)+24px)]">
               <div className="max-h-[calc(100vh-var(--header-h)-48px)] overflow-auto">
-                <CaseStudyAnchorNav sections={sections} onBack={isPillar ? () => onNavigateToProject(rootProject) : onExit} />
+                <CaseStudyAnchorNav
+                  sections={sections}
+                  onBack={isPillar ? () => onNavigateToProject(rootProject) : onExit}
+                />
               </div>
             </div>
           </aside>
@@ -388,15 +462,20 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
           <div className="px-6 md:px-12 max-w-[1400px] mx-auto text-left case-study-content">
             <div className="flex-1 w-full lg:pb-12 max-w-4xl text-left">
               <div id="overview" className="case-anchor-target">
-                <ProjectHeader company={project.company} title={project.title} services={project.details?.services} />
+                <ProjectHeader
+                  company={project.company}
+                  title={project.title}
+                  services={project.details?.services}
+                />
               </div>
+
               <h1 className="font-serif text-[2.5rem] md:text-[3.5rem] text-slate-900 mb-5 md:mb-6 font-[500] tracking-tight leading-[3rem] md:!leading-[4.5rem] text-left">
                 {project.impactSummarySentence || project.impactSummary}
               </h1>
 
               {project.designerNote && (
                 <div className="designer-note mb-8 max-w-full">
-                  {project.designerNote.split('\n').map((line, i) => (
+                  {project.designerNote.split("\n").map((line, i) => (
                     <p key={i} className="mb-4 last:mb-0">
                       {line}
                     </p>
@@ -420,15 +499,20 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                 />
               )}
 
-              {project.details?.blocks && project.details.blocks.map((block, index) => renderBlock(block, index))}
+              {project.details?.blocks && project.details.blocks.map((block, idx) => renderBlock(block, idx))}
 
               {(prevProject || nextProject) && (
-                <CaseStudyPager prevProject={prevProject} nextProject={nextProject} onNavigate={onNavigateToProject} />
+                <CaseStudyPager
+                  prevProject={prevProject}
+                  nextProject={nextProject}
+                  onNavigate={onNavigateToProject}
+                />
               )}
             </div>
           </div>
         </div>
       </div>
+
       <ImageLightbox
         open={lightbox.open}
         initialIndex={lightbox.index}
