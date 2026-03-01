@@ -325,13 +325,14 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                       return {
                         type,
                         src: visual.src,
-                        embedSrc: type === "figma" ? toFigmaEmbedUrl(visual.src) : undefined, // ✅ robust
+                        embedSrc: type === "figma" ? toFigmaEmbedUrl(visual.src) : undefined,
                         title: captionShort || "Visual",
                         captionShort,
                         captionVerbose,
                         fileSize: visual.fileSize || "N/A",
                         coverImage: visual.coverImage,
                         aspectRatio: visual.aspectRatio,
+                        isPresentation: visual.isPresentation || false, // <--- ADD THIS
                       };
                     })
                   : [];
@@ -349,11 +350,13 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                       <div dangerouslySetInnerHTML={{ __html: itemContent }} />
 
                       {mediaItems.length > 0 && (
-                        <div className="mt-6">
+                        <div className="mt-6 md:mt-8 w-full">
                           <div
                             className={
-                              mediaItems.length === 1
-                                ? "grid grid-cols-1"
+                              // If ANY item in this list is a presentation slide, force full-width stacked layout.
+                              // Otherwise, default back to the standard 2-column grid.
+                              mediaItems.some(item => item.isPresentation) || mediaItems.length === 1
+                                ? "flex flex-col gap-8 w-full"
                                 : "grid grid-cols-1 sm:grid-cols-2 gap-4"
                             }
                           >
@@ -395,6 +398,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                                       src={mediaItem.src}
                                       alt={mediaItem.title}
                                       onClick={() => setLightbox({ open: true, index: globalIndex })}
+                                      isPresentation={mediaItem.isPresentation} // <--- ADD THIS
                                     />
                                   )}
 
@@ -432,6 +436,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
   const heroSrc = project.details?.heroImage || project.thumbnail;
   const heroType = project.details?.hero?.type;
   const heroBgColor = project.details?.hero?.bgColor || "#f5f5f5";
+  const heroPadding = project.details?.hero?.topPadding || "";
 
   return (
     <article className="bg-white min-h-screen w-full relative text-left font-sans">
@@ -439,11 +444,11 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         <AnimatedHero projectId={project.id} />
       ) : (
         <div
-          className="w-full h-[60vh] md:h-[80vh] border-b border-neutral-200 overflow-hidden relative shadow-sm text-center"
-          style={{ backgroundColor: heroBgColor }}
-        >
-          <img src={heroSrc} alt={project.title} className="w-full h-full object-contain" />
-        </div>
+  className={`w-full h-[60vh] md:h-[80vh] border-b border-neutral-200 overflow-hidden relative shadow-sm text-center pt-[var(--header-h)] ${heroPadding}`}
+  style={{ backgroundColor: heroBgColor }}
+>
+  <img src={heroSrc} alt={project.title} className="w-full h-full object-contain" />
+</div>
       )}
 
       <div ref={contentRef} className="w-full pt-12 md:pt-[calc(var(--header-h)+40px)] font-sans">

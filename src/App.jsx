@@ -54,19 +54,6 @@ export default function App() {
     };
   }, []);
 
-  // Smooth hover handlers for the Work Dropdown
-  const handleWorkEnter = () => {
-    if (workTimeoutRef.current) clearTimeout(workTimeoutRef.current);
-    setIsWorkDropdownOpen(true);
-  };
-
-  const handleWorkLeave = () => {
-    // 200ms grace period allows mouse to travel across the gap
-    workTimeoutRef.current = setTimeout(() => {
-      setIsWorkDropdownOpen(false);
-    }, 200);
-  };
-
   const navigateTo = (page, anchor) => {
     if (page === "home" && anchor === "work") {
       if (view !== "home") {
@@ -153,22 +140,26 @@ export default function App() {
             {/* --- WORK DROPDOWN WRAPPER --- */}
             <div className="relative h-full flex items-center">
               <button
-                onMouseEnter={handleWorkEnter}
-                onMouseLeave={handleWorkLeave}
-                onClick={() => setIsWorkDropdownOpen(!isWorkDropdownOpen)}
-                className="type-nav opacity-90 hover:opacity-100 transition-opacity hidden md:inline-flex items-center gap-2"
+                onClick={(e) => { e.stopPropagation(); setIsWorkDropdownOpen(!isWorkDropdownOpen); }}
+                className="type-nav opacity-90 hover:opacity-100 transition-opacity hidden md:inline-flex items-center gap-2 relative z-[101]"
               >
                 Work
-                <ChevronDown size={16} />
+                <ChevronDown
+                  size={16}
+                  className={"transition-transform duration-300 " + (isWorkDropdownOpen ? "rotate-180" : "")}
+                />
               </button>
-              
-              {/* This container persists so it can animate opacity/transform */}
-              <div 
-                onMouseEnter={handleWorkEnter}
-                onMouseLeave={handleWorkLeave}
-                className={`absolute top-0 left-0 transition-all duration-300 ease-in-out ${
-                  isWorkDropdownOpen 
-                    ? "opacity-100 translate-y-0 visible" 
+
+              {/* Click-outside overlay */}
+              {isWorkDropdownOpen && (
+                <div className="fixed inset-0 z-[99]" onClick={() => setIsWorkDropdownOpen(false)} />
+              )}
+
+              {/* Dropdown panel */}
+              <div
+                className={`absolute top-0 left-0 transition-all duration-300 ease-in-out z-[100] ${
+                  isWorkDropdownOpen
+                    ? "opacity-100 translate-y-0 visible"
                     : "opacity-0 -translate-y-2 invisible pointer-events-none"
                 }`}
               >
@@ -242,7 +233,7 @@ export default function App() {
               <X size={18} />
             </button>
           </div>
-          <div className="px-6 py-6 flex flex-col gap-6 flex-1">
+          <div className="px-6 py-6 flex flex-col gap-6 flex-1 overflow-y-auto">
             <div className="border-b border-slate-100">
               <button 
                 onClick={() => setIsMobileWorkExpanded(!isMobileWorkExpanded)}
@@ -253,7 +244,7 @@ export default function App() {
               </button>
               
               {isMobileWorkExpanded && (
-                <div className="pb-4">
+                <div className="pb-4 bg-white">
                   <WorkDropdown 
                     workGroups={WORK_GROUPS} 
                     portfolioData={PORTFOLIO_DATA}
@@ -439,14 +430,26 @@ No. It’ll replace designers who mostly produce deliverables. If I truly believ
       <main className="min-h-screen relative bg-white text-left">
         {view === "home" && (
           <div className="bg-white animate-fade-in font-sans">
-            <section className="bg-[#231F45] hero-wrap flex flex-col justify-center items-center text-center px-6 min-h-[calc(100vh-var(--header-h))] flex-grow">
+            <section className="bg-[#231F45] hero-wrap flex flex-col justify-center items-center text-center px-6 min-h-[calc(100vh-var(--header-h))] flex-grow relative overflow-hidden">
+              {/* Depth gradient — darkens edges, keeps center rich */}
+              <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 90% 80% at 50% 50%, transparent 30%, rgba(10,8,25,0.55) 100%)' }} />
+              {/* Grain texture overlay */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.22]" xmlns="http://www.w3.org/2000/svg">
+                <filter id="grain">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.68" numOctaves="4" stitchTiles="stitch" />
+                  <feColorMatrix type="saturate" values="0" />
+                </filter>
+                <rect width="100%" height="100%" filter="url(#grain)" />
+              </svg>
+              {/* Neon glow — slightly stronger to punch through */}
+              <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 50% at 50% 40%, rgba(136,255,0,0.09) 0%, transparent 65%)' }} />
               <div className="max-w-4xl w-full reveal-on-scroll hero-stack">
                 <img src={ASSETS.mainLogo} alt="Bruno Wong Marchena" className="hero-logo" />
                 <div className="max-w-3xl mx-auto">
-      <h1 className="text-slate-200 text-3xl md:text-4xl font-light tracking-tight mb-8 leading-snug">
+      <h1 className="text-slate-200 text-3xl md:text-[2rem] font-light tracking-tight mb-8 leading-snug">
         <span className="font-semibold">Staff-level product designer</span> specializing in AI-powered platforms, complex systems, and high-craft UX.
       </h1>
-      <p className="text-slate-400 text-2xl md:text-3xl mb-12 max-w-2xl mx-auto leading-snug font-light">
+      <p className="text-slate-400 text-2xl md:text-[1.5rem] mb-12 max-w-2xl mx-auto leading-snug font-light">
         I've automated the work of entire teams at Amazon, cut fulfillment costs in healthcare logistics, and earned a patent for rethinking retention at Patreon.
       </p>
     </div>
@@ -455,7 +458,7 @@ No. It’ll replace designers who mostly produce deliverables. If I truly believ
       <Button onClick={() => setIsContactOpen(true)} className="px-10 py-4 bg-[#88FF00] text-black font-bold rounded-full hover:scale-105 transition-transform">
         Let's chat
       </Button>
-      <p className="text-slate-400 text-lg md:text-2xl font-light tracking-wide">
+      <p className="text-slate-400 text-lg md:text-xl font-light tracking-wide">
         Available for freelance and contract work
       </p>
     </div>
