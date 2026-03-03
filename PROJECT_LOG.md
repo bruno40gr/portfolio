@@ -38,4 +38,13 @@ This log documents the iterative refinements and systems-thinking applied to thi
     - Standardized company branding using a unified `LogoIcon` component with squared-off assets for professional polish.
 
 ---
+## Week of Feb 23, 2026: Further Enhancements
+
+- **Image Lightbox Improvements:** Implemented image lightbox improvements and added many new screenshots. (7c5873c)
+- **Image Builder:** Developed the Image Builder functionality. (2edba5a)
+- **Alto Case Studies & Misc Improvements:** Added Alto case studies and various other improvements. (75b0ad0)
+- **Patreon and Prox Case Studies:** Incorporated Patreon and Prox case studies. (822ce87)
+- **Inspire Tab, AI Highlights, Dropdown Menu:** Introduced Inspire Tab, AI highlights, and dropdown menu enhancements. (ab693b9)
+
+---
 *Note: This portfolio is a living project, designed to demonstrate the same systems-level precision and user-advocacy found in my professional product work.*

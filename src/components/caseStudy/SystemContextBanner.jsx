@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import { PROJECT_STATUS } from "../../data/tokens";
+import AnimatedThumbnail from "../home/AnimatedThumbnail";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // SegmentedDonut
@@ -71,10 +72,10 @@ export const SystemContextModal = ({ open, onClose, pillars = [], currentId, onP
   if (!open) return null;
 
   const PILLAR_ROLES = {
-    "jas-image-builder":   "Multi-marketplace image composer.",
-    "jas-asset-manager":   "Centralized source of truth for brand-compliant assets.",
-    "jas-metadata-studio": "AI-assisted metadata compilation engine.",
-    "jas-ai-generator":    "AI image generation and quality training tool.",
+    "jas-image-builder":   "Lets non-designers build and localize assets across 23 markets.",
+    "jas-asset-manager":   "Governed library that makes assets findable, QA-able, and publishable.",
+    "jas-metadata-studio": "AI-powered metadata extraction that makes the library machine-readable.",
+    "jas-ai-generator":    "Generates realistic lifestyle scenes from structured human feedback.",
   };
 
   const isLaunched = (status) => status === "LAUNCHED" || status === "SHIPPED";
@@ -101,43 +102,34 @@ export const SystemContextModal = ({ open, onClose, pillars = [], currentId, onP
         <div className="px-7 md:px-9 pt-8 pb-10">
 
           {/* What is this */}
-          <p className="meta-label mb-3">Amazon Devices Asset System</p>
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight leading-snug mb-5">
-            The internal ecosystem behind every Devices marketing asset.
-          </h2>
-          <div className="mb-8 space-y-4">
-            <p className="text-base text-slate-600 leading-relaxed">
-              The Asset System powers how Devices teams create, manage, and ship marketing assets
-              at scale, across products like Echo, Ring, Blink, Fire TV, and eero, and across
-              global marketplaces. It connects the messy reality of inputs -- briefs, specs, copy,
-              legal requirements, localization needs, image libraries, templates -- to the outputs
-              teams actually need: approved, correctly formatted, on-brand assets and variants.
-            </p>
-            <p className="text-base text-slate-600 leading-relaxed">
-              That work has traditionally been fragmented across people, spreadsheets, folders, and
-              ad hoc requests. The goal is to turn it into a consistent experience where assets are
-              discoverable, reusable, and increasingly automatable -- so production feels less like
-              a hand-built craft project each time and more like a reliable pipeline.
-            </p>
-            <p className="text-base text-slate-600 leading-relaxed">
-              Behind it is a cross-functional network: design, engineering, product, program, and
-              operations partners working across the front-end tools marketers use, the services
-              that store and transform assets, the metadata that makes them machine-readable, and
-              the governance that keeps quality high across regions and teams.
-            </p>
-          </div>
+<p className="meta-label mb-3">Amazon Devices Asset System</p>
 
-          {/* Why phases */}
-          <h3 className="text-lg font-bold text-slate-900 mb-3">Why four pillars?</h3>
-          <p className="text-base text-slate-600 leading-relaxed mb-8">
-            The system is too broad to communicate, prioritize, and execute as one thing. Each
-            pillar has different users, different success metrics, different technical constraints,
-            and different design problems. Bundling them creates noisy roadmaps and fuzzy
-            accountability. Splitting them lets us tell a clearer story about what each part does,
-            for whom, and why it matters, while keeping everything aligned to one shared ambition.
-            Composable parts are easier for stakeholders to invest in, engineers to build, and
-            users to trust.
-          </p>
+<h2 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight leading-snug mb-5">
+  Devices Catalog-to-Campaign Automation Platform.
+</h2>
+
+<div className="mb-8 space-y-4">
+  <p className="text-base text-slate-600 leading-relaxed">
+    Across dozens of device families and 23 market-and-language combinations, Amazon Devices depends on a constant stream
+    of marketing imagery to support seasonal promotions, major device launches, partnerships, and flagship technology
+    moments like Alexa+. Historically, that work was produced and shipped through manual, labor-heavy workflows, with
+    designers assembling files, people uploading and routing assets, and teams handling translation while verifying prices
+    and active offers.
+  </p>
+
+  <p className="text-base text-slate-600 leading-relaxed">
+    The Asset System is a suite of four connected internal tools that cover the full production chain: building assets,
+    managing them, tagging them with metadata that makes them machine-readable, and generating them with AI. It serves the
+    same core pool of teams across different moments of the workflow. The pillars can progress in parallel while still
+    reinforcing each other. A governed library keeps inputs consistent, consistent inputs make metadata automation
+    dependable, and dependable automation is what makes AI generation reliable at scale.
+  </p>
+
+  <p className="text-base text-slate-600 leading-relaxed">
+    The longer-term vision extends beyond asset production into full marketing automation and performance reporting across
+    the Amazon Devices org. Vision mocks for that broader system are available on request.
+  </p>
+</div>
 
           {/* Four pillar cards */}
           <h3 className="text-lg font-bold text-slate-900 mb-4">The four pillars</h3>
@@ -166,9 +158,17 @@ export const SystemContextModal = ({ open, onClose, pillars = [], currentId, onP
                     }
                   `}
                 >
-                  <div className="shrink-0 w-12 h-12 rounded-lg overflow-hidden bg-slate-100 border border-slate-100">
-                    <img src={pillar.thumbnail} alt="" className="w-full h-full object-cover" />
-                  </div>
+                  <div className="shrink-0 w-12 h-12 rounded-lg overflow-hidden bg-slate-100 border border-slate-100 relative">
+  {pillar.details?.hero?.type === "animated" ? (
+    <AnimatedThumbnail projectId={pillar.id} />
+  ) : (
+    <img
+      src={pillar.thumbnail}
+      alt=""
+      className={`w-full h-full ${pillar.thumbnailPadding ? `object-contain ${pillar.thumbnailPadding}` : "object-cover"}`}
+    />
+  )}
+</div>
                   <div className="min-w-0">
                     <p className="text-sm font-semibold text-slate-800 leading-snug mb-0.5 font-sans">
                       {pillar.title}
@@ -201,31 +201,36 @@ const SystemContextBanner = ({ pillars = [], currentId, onPillarClick }) => {
   return (
     <>
       <div className="flex items-center gap-3 mb-8 font-sans">
-        <div className="shrink-0">
-          <SegmentedDonut
-            activeIndex={position}
-            totalSteps={pillars.length}
-            size={40}
-            strokeWidth={7}
-            activeColor="#231f44"
-            inactiveColor="#E5E7EB"
-          />
-        </div>
-        <div className="flex flex-col gap-0.5">
-          <p className="meta-label">
-            This project is{" "}
-            <span className="font-semibold text-slate-700">{position}/{pillars.length}</span>{" "}
-            part of the{" "}
-            <span className="font-semibold text-slate-700">Amazon Devices Asset System</span>
-          </p>
-          <button
-            onClick={() => setModalOpen(true)}
-            className="meta-label text-[var(--deep-purple)] underline underline-offset-2 hover:opacity-70 transition-opacity text-left font-sans"
-          >
-            Learn more
-          </button>
-        </div>
-      </div>
+  <div className="shrink-0">
+    <SegmentedDonut
+      activeIndex={position}
+      totalSteps={pillars.length}
+      size={40}
+      strokeWidth={7}
+      activeColor="#231f44"
+      inactiveColor="#E5E7EB"
+    />
+  </div>
+
+  {/* One line on desktop, wraps to two lines on mobile */}
+  <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1 min-w-0">
+    <p className="meta-label m-0 min-w-0">
+      This project is{" "}
+      <span className="font-semibold text-slate-700">
+        {position}/{pillars.length}
+      </span>{" "}
+      part of the{" "}
+      <span className="font-semibold text-slate-700">Amazon Devices Asset System</span>
+    </p>
+
+    <button
+      onClick={() => setModalOpen(true)}
+      className="meta-label text-[var(--deep-purple)] underline underline-offset-2 hover:opacity-70 transition-opacity font-sans whitespace-nowrap"
+    >
+      Learn more
+    </button>
+  </div>
+</div>
 
       <SystemContextModal
         open={modalOpen}

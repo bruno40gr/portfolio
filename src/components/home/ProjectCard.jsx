@@ -42,35 +42,51 @@ const ProjectCard = ({ project, onClick }) => {
   const heroType = details.hero?.type;
 
   return (
-    <div className="bg-white overflow-hidden text-left w-full rounded-xl">
+    <div className="bg-white text-left w-full rounded-xl">
       {/* Clickable Visual Area */}
       <div 
         role="button"
         tabIndex={0}
         onClick={() => onClick?.(project)}
         onKeyDown={handleKeyDown}
-        className="group relative mb-5 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-green)] focus-visible:ring-offset-4 rounded-xl"
+        // Removed overflow-hidden from here so the arrow can hang outside!
+        className="group relative mb-5 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-green)] focus-visible:ring-offset-4 rounded-xl aspect-[9/7] md:aspect-[16/10] isolate"
       >
-        <div className="relative aspect-[9/7] md:aspect-[16/10] overflow-hidden rounded-xl bg-slate-50 border border-slate-100">
-          {heroType === 'animated' ? (
-            <AnimatedThumbnail projectId={project.id} />
-          ) : (
-            <img 
-              src={image} 
-              alt="" 
-              className={`w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 
-                ${status === 'IN_BUILD' ? 'saturate-[0.7]' : ''} 
-                ${(status === 'LEGACY' || status === 'DEPRECATED') ? 'saturate-[0.6] opacity-90' : ''}`}
-            />
-          )}
-          <div className="absolute top-4 left-4 flex flex-wrap gap-2">
-            <Pill label={statusConfig.label} theme={statusConfig.theme} icon={statusConfig.icon} size="sm" />
-            <span className="px-2.5 py-1 bg-white/90 text-[var(--deep-purple)] text-xs font-bold rounded-md backdrop-blur-md shadow-sm border border-slate-100/50">
-              {PRODUCT_TYPES[productType] || productType}
-            </span>
+        
+        {/* INNER WRAPPER: Keeps the image and background clipped to the rounded corners */}
+        <div className="absolute inset-0 w-full h-full rounded-xl overflow-hidden border border-slate-100">
+          {/* LAYER 1: The Background */}
+          <div 
+            className={`absolute inset-0 w-full h-full ${project.thumbnailBg ? '' : (project.thumbnailBgColor || 'bg-slate-50')}`}
+            style={project.thumbnailBg ? { backgroundImage: project.thumbnailBg } : undefined}
+          />
+
+          {/* LAYER 2: The Media */}
+          <div className="absolute inset-0 w-full h-full flex items-center justify-center">
+            {heroType === 'animated' ? (
+              <AnimatedThumbnail projectId={project.id} />
+            ) : (
+              <img 
+                src={image} 
+                alt={title} 
+                className={`w-full h-full transition-transform duration-700 ease-out group-hover:scale-105 
+                  ${project.thumbnailPadding ? `object-contain ${project.thumbnailPadding}` : 'object-cover'} 
+                  ${status === 'IN_BUILD' ? 'saturate-[0.7]' : ''} 
+                  ${(status === 'LEGACY' || status === 'DEPRECATED') ? 'saturate-[0.6] opacity-90' : ''}`}
+              />
+            )}
           </div>
         </div>
 
+        {/* LAYER 3: The Overlay (Pills) */}
+        <div className="absolute top-4 left-4 flex flex-wrap gap-2 pointer-events-none">
+          <Pill label={statusConfig.label} theme={statusConfig.theme} icon={statusConfig.icon} size="sm" />
+          <span className="px-2.5 py-1 bg-white/90 text-[var(--deep-purple)] text-xs font-bold rounded-md backdrop-blur-md shadow-sm border border-slate-100/50">
+            {PRODUCT_TYPES[productType] || productType}
+          </span>
+        </div>
+
+        {/* Hover Arrow - Free from overflow-hidden, it can now hang properly */}
         <div className="absolute right-4 bottom-0 translate-y-1/2 w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-[var(--deep-purple)] shadow-sm group-hover:bg-[var(--neon-green)] group-hover:border-[var(--neon-green)] transition-all duration-300 z-10">
           <ArrowUpRight size={18} />
         </div>

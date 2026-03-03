@@ -18,9 +18,9 @@ const THUMBNAIL_DATA = {
     { img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772169704/saved_filters_xgzc9c.gif",        colors: ["#3d2a5a", "#2e1f47"] },
   ],
   'patreon-studio2.0': [
-    { img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772238558/SS1_wbi5xq.png", colors: ["#f5f4fc", "#ebe8f8"] },
+    
     { img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772238558/SS3_gzembm.png", colors: ["#2e1f47", "#231f44"] },
-    { img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772238558/SS2_mj5jli.png", colors: ["#1a2d5e", "#131f44"] },
+  
   ],
   'amazon-core-inspire-tab': [
     { img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772311186/1A_01_A-1_m8vqcf.png",    colors: ["#1a5fbf", "#1550a8"] },
@@ -54,7 +54,7 @@ const AnimatedThumbnail = ({ projectId }) => {
           key={index}
           src={slide.img}
           alt=""
-          className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-[1500ms] ease-in-out
+          className={`absolute inset-0 w-full h-full object-contain p-6 md:p-8 transition-opacity duration-[1500ms] ease-in-out
           ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}
         />
       ))}

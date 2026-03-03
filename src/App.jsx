@@ -484,10 +484,13 @@ No. It’ll replace designers who mostly produce deliverables. If I truly believ
               <div className="max-w-3xl text-left">
                 <h2 className="font-serif text-2xl md:text-5xl text-neutral-900 mb-6 md:mb-10 font-bold leading-tight tracking-tight text-left">Hi, I'm Bruno.</h2>
                 <div className="space-y-6 md:space-y-8 text-sm md:text-lg text-neutral-600 font-light leading-relaxed text-left">
-                  <p>With 14+ years across big tech and early-stage teams, I’ve worked on internal tools, B2B platforms, and AI-enabled systems where clarity, speed, and craft all matter.</p>
-                  <p>I operate like a founding designer: shaping direction early, reducing ambiguity, and executing with precision. I build with AI assistance, but design with humans.</p>
-                  <p>Visual craft is a core part of the work. Pixel-level precision is genuinely therapeutic to me. I’m fluent across tools, obsessive about hierarchy and spacing, and disciplined about clean, hygienic files that scale with teams.</p>
-                  <p>I’m currently focused on freelance and retainer work on high-impact projects. I’m open to the right full-time role if the problem and ownership are compelling.</p>
+                  <p>I'm a product designer focused on AI platforms and internal systems, usually the behind-the-scenes stuff where workflows are messy and the UX debt is real. I like that zone. It's where design has to hold up under pressure and still hit the business numbers.</p>
+                  <p>Over the last 12 years I've worked across big tech, healthcare logistics, and creator platforms. I've also been a founding designer, taking a product from zero to traction and helping secure funding. Along the way I've designed systems that automate heavy manual work, helped cut operational costs, and co-invented a patent around retention and loyalty. My design roots technically go back to making posters and album art for my punk rock band.</p>
+                  <p className="font-semibold text-neutral-900">How I work</p>
+                  <p>I work best as a hands-on lead: clarify the problem, pull risk forward early, and stay tight with engineering from day one. I'm invested in research and strategy, but equally happy in the weeds debugging a component or tightening the last 10% so it feels right in production. I build design systems that are structured enough to hand off cleanly and work with how modern teams actually build. I've been told I'm the calm in the room when things get messy. I'll take it.</p>
+                  <p>On AI work, I care about what makes it actually hold up: guardrails, fallbacks, human-in-the-loop flows, and catching the moments when the model is wrong but sounds right. Then the craft: the UI, the states, and the details that survive contact with production.</p>
+                  <p className="font-semibold text-neutral-900">When I'm not working</p>
+                  <p>Bass in a cover band around Sacramento, everything from Blink-182 to Tool. Kettlebell aficionado since the pandemic. Family in Lima and Athens means I travel there whenever life allows. The only time I tolerate being a bum is on a beach.</p>
                 </div>
               </div>
             </div>

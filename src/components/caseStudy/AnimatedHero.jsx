@@ -188,6 +188,29 @@ const HERO_DATA = {
         theme: "dark"
       }
     ]
+  },
+  'jas-metadata-studio': {
+    caption: "AI-powered metadata extraction for global compliance. Amazon Devices, 2025.",
+    layout: {
+      containerHeight: "h-[48vh] md:h-[66vh]",
+      containerWidth: "w-[90%] md:w-[720px]",
+    },
+    slides: [
+      {
+        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772414394/Background_metadata-wide_vbd1rh.png",
+        colors: ["#1e2f6e", "#17245a"],
+        market: "Metadata Studio",
+        flag: "🤖",
+        theme: "dark"
+      },
+      {
+        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772414317/Background_metadata-thumbnail_pgfkp6.png",
+        colors: ["#f5f4fc", "#ebe8f8"],
+        market: "AI Feasibility Testing",
+        flag: "🧪",
+        theme: "light"
+      }
+    ]
   }
 };
 

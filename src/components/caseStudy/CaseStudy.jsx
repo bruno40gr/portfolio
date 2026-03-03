@@ -276,6 +276,19 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         );
       }
 
+
+      case "file-thumbnail": {
+        return (
+          <div key={index} className="mb-10 max-w-sm">
+            <FileThumbnail
+              // Support both title and label for flexibility
+              title={block.title || block.label} 
+              fileSize={block.fileSize || "External Link"}
+              onClick={() => window.open(block.href, "_blank")}
+            />
+          </div>
+        );
+      }
       case "pillar-grid":
         return (
           <div key={index} className="mt-8 mb-12">
@@ -436,7 +449,12 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
   const heroSrc = project.details?.heroImage || project.thumbnail;
   const heroType = project.details?.hero?.type;
   const heroBgColor = project.details?.hero?.bgColor || "#f5f5f5";
-  const heroPadding = project.details?.hero?.topPadding || "";
+  const heroPadding = project.details?.hero?.heroPadding || "";
+  const heroGradient = project.details?.hero?.gradient;
+
+  const heroStyle = heroGradient
+    ? { backgroundImage: `linear-gradient(to bottom, ${heroGradient[0]}, ${heroGradient[1]})` }
+    : { backgroundColor: heroBgColor };
 
   return (
     <article className="bg-white min-h-screen w-full relative text-left font-sans">
@@ -444,11 +462,13 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         <AnimatedHero projectId={project.id} />
       ) : (
         <div
-  className={`w-full h-[60vh] md:h-[80vh] border-b border-neutral-200 overflow-hidden relative shadow-sm text-center pt-[var(--header-h)] ${heroPadding}`}
-  style={{ backgroundColor: heroBgColor }}
->
-  <img src={heroSrc} alt={project.title} className="w-full h-full object-contain" />
-</div>
+          className="w-full h-[60vh] md:h-[80vh] border-b border-neutral-200 overflow-hidden relative shadow-sm text-center flex items-center justify-center"
+          style={heroStyle}
+        >
+          <div className={`w-full h-full flex items-center justify-center ${heroPadding}`}>
+            <img src={heroSrc} alt={project.title} className="w-auto h-full object-contain" />
+          </div>
+        </div>
       )}
 
       <div ref={contentRef} className="w-full pt-12 md:pt-[calc(var(--header-h)+40px)] font-sans">

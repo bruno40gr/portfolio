@@ -37,7 +37,6 @@ export const CASE_STUDIES_TITLES = {
   "patreon-pledge-streak-patent": "Pledge Streak Patent",
   "patreon-studio2.0": "Studio 2.0 Design System",
   "prox": "Prox",
-  "portfolio-systems": "Building the Bridge: An Iterative Systems Journey",
 };
 
 export const PORTFOLIO_DATA = {
@@ -72,11 +71,11 @@ export const PORTFOLIO_DATA = {
           {
             type: "impact-box",
             metrics: [
-              { value: "45-50", label: "Specialist Workflows Automated" },
-              { value: "8,000+", label: "Assets Generated for Prime Day 2025" }
+              { value: "100,000+", label: "Hours of manual work eliminated in 2025" },
+              { value: "8,000+", label: "Lifestyle images generated for Prime Day 2025" }
             ],
             description: [
-              "Two of the four platform pillars have shipped. For Prime Day 2025 alone, their deployed workflows generated over <b>8,000 assets</b>, accounting for an estimated <b>48,000 hours</b> of previously manual work across the team."
+              "Two of the four platform pillars have shipped. For Prime Day 2025 alone, the system generated over <b>8,000 lifestyle images</b> that would have required an estimated <b>48,000 hours</b> of manual production work across design, 3D, and content teams. Across all of 2025, the platform eliminated over <b>100,000 hours</b> of manual work."
             ]
           },
           {
@@ -88,7 +87,7 @@ export const PORTFOLIO_DATA = {
           {
             type: "text",
             content:
-              "There was no central place to create, manage, or publish marketing assets for Amazon Devices globally. Campaigns were assembled across spreadsheets, legacy tools, creative software, and off-Amazon systems, with marketers, graphic designers, product leaders, pricing specialists, and localization teams each owning a different fragment of the same asset. Every handoff was a potential failure point. Every permission dependency added latency. Every tool switch introduced version drift."
+              "There was no central place to create, manage, or publish marketing assets for Amazon Devices globally. Campaigns were assembled across spreadsheets, legacy tools, creative software, and off-Amazon systems, with marketers, graphic designers, product leaders, pricing specialists, and localization teams each owning a different fragment of the same asset. Every handoff introduced the possibility of version drift, permission delays, and errors that only surfaced at the end of the chain."
           },
           {
             type: "text",
@@ -134,9 +133,10 @@ export const PORTFOLIO_DATA = {
       company: "Amazon Devices",
       title: CASE_STUDIES_TITLES["jas-image-builder"],
       impactSummary: "An internal tool that automates the creation of localized marketing images across 23 global marketplaces.",
-      impactSummarySentence: "A scalable visual editor that automates localized marketing asset generation.",
-      designerNote: "Before this system, teams were manually building image assets across dozens of marketplaces using inconsistent Photoshop templates, doing the same repetitive work over and over. At 23 markets and every major launch, that model couldn't scale. I wanted to design something that absorbed the mechanical work so people could focus on what actually requires judgment. For Prime Day 2025 alone, it produced 8,000 lifestyle images and freed the equivalent of 45 designers from repetitive production tasks. This became the first pillar of our Asset System, and the foundation everything else was built on.",
+      impactSummarySentence: "A production system that lets non-designers build, localize, and export marketing assets across 23 global market and language combinations, with compliance logic built in.",
+      designerNote: "The hardest design challenge here wasn't the interface. It was making a tool with serious logic underneath feel simple enough for a non-designer to use without breaking anything. Guardrails, layout rules, regional compliance checks, device availability filters, all of it had to be invisible at the surface. For Prime Day 2025 alone, the system produced 8,000 images and freed the equivalent of 45 designers, content writers, and marketing ops specialists from purely mechanical production work. That was the org-level goal. My job was to make sure the complexity didn't leak.",
       thumbnail: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=80",
+      thumbnailPadding: "p-8",
       status: "LAUNCHED",
       type: "INTERNAL",
       details: {
@@ -152,7 +152,7 @@ export const PORTFOLIO_DATA = {
           {
             type: "text",
             content: [
-              "A visual editor that lets merchandisers build, localize, and export marketing assets across 23 global marketplaces without touching Photoshop. Teams select a template, configure their markets and languages, and the system handles the rest."
+              "A production system with a visual editor surface that lets merchandisers, content writers, and marketing ops build, localize, and export marketing assets across 23 global market and language combinations. Teams select a template, configure their markets and languages, and the system handles layout, copy generation, translation, and compliance. The logic under the hood is substantial. The surface is designed to hide it."
             ]
           },
           {
@@ -187,12 +187,12 @@ export const PORTFOLIO_DATA = {
             }
           },
 
-          { type: "heading", title: "Strategy" },
+          { type: "heading", title: "Design Decisions" },
           {
             type: "text",
             content: [
-              "The goal was never to build another open-ended design tool like Figma. It was to build a strict production system. We wanted to handle the repetitive formatting steps so users could focus purely on content.",
-              "I designed the layout engine to handle spacing, text placement, and visual balance across dozens of size formats automatically. Working closely with engineering, we also built in guardrails that flag pricing inconsistencies, device availability issues, and brand conflicts before the user can even export the file."
+              "The tool needed to work for people who had never opened a design application. That constraint shaped every decision. Layouts are fixed and rules-based so users can't break brand standards. Copy generation and translation are automatic so content writers don't need to manage 23 language variants manually. The editing surface is opinionated by design.",
+              "The guardrails deserved as much attention as the interface. Working closely with brand leaders and product line leads, we built validation logic that flags pricing inconsistencies, device availability conflicts, and regional compliance issues before a user can export. Publishing at Amazon's scale means a wrong image in the wrong market carries real legal and brand consequences. Making the tool trustworthy enough for non-designers to use required making it impossible for them to ship something wrong without knowing it."
             ]
           },
 
@@ -201,7 +201,7 @@ export const PORTFOLIO_DATA = {
             type: "list",
             items: [
               {
-                content: `<b>Discovery</b><p class="mt-2">We ran scrappy usability sessions with global merchandisers to watch them use their current Photoshop templates. Seeing where their workflows broke down and where errors crept in shaped the core priorities of the tool.</p>`,
+                content: `<b>Discovery</b><p class="mt-2">We ran fast, lean usability sessions with global merchandisers to watch them work through their current production workflow. Seeing where the process broke down and where errors crept in shaped the core priorities of the tool.</p>`,
                 visuals: [
                   {
                     kind: "embed",
@@ -211,17 +211,17 @@ export const PORTFOLIO_DATA = {
                 ]
               },
               {
-                content: `<b>Iteration</b><p class="mt-2">Designing for 23 marketplaces meant handling a lot of configuration options at once. I went through many rounds of iteration on the layout and navigation until landing on a structure that kept things clear even when users selected multiple markets and dimensions.</p>`,
+                content: `<b>Iteration</b><p class="mt-2">Designing for 23 market and language combinations meant handling a lot of configuration options at once. I went through many rounds of iteration on the layout and navigation until landing on a structure that stayed clear even when users selected multiple markets and dimensions simultaneously.</p>`,
                 visuals: [
                   {
                     kind: "image",
                     src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1771907702/layout_iterations_bwvimg.jpg",
-                    caption: { short: "A look into my messy but methodical iteration process for the UI layout.", verbose: "" }
+                    caption: { short: "Layout iteration process for handling multi-market configuration.", verbose: "" }
                   }
                 ]
               },
               {
-                content: `<b>Guardrails</b><p class="mt-2">Publishing images globally carries high stakes, from internal leaks to regional mismatches. The system anticipates errors by filtering for marketplace-compatible devices and checking text limits in real time, validating designs before they go to a reviewer.</p>`,
+                content: `<b>Guardrails</b><p class="mt-2">Publishing images globally carries real stakes: unreleased device leaks, regional legal conflicts, brand violations. The system validates designs before export, filtering for marketplace-compatible devices, checking text limits in real time, and flagging conflicts before they reach a reviewer.</p>`,
                 visuals: [
                   {
                     kind: "image",
@@ -231,12 +231,22 @@ export const PORTFOLIO_DATA = {
                 ]
               },
               {
-                content: `<b>Design System Contribution</b><p class="mt-2">Meridian is Amazon's internal design system. Image Builder was complex enough that it needed UI components Meridian didn't have. I designed an interactive editing canvas, a multi-select locale filter, and a warning input state, got them approved, and added them to the global system.</p>`,
+                content: `<b>Design System Contribution</b><p class="mt-2">Meridian is Amazon's internal design system. Image Builder needed UI components that didn't exist in the library. I designed an interactive editing canvas, a multi-select locale filter, and a warning input state, got all three approved, and contributed them to the global system.</p>`,
                 visuals: [
                   {
                     kind: "image",
                     src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772132455/pg3_ygvgls.png",
-                    caption: { short: "Interactive editing canvas component request submitted to Meridian.", verbose: "" }
+                    caption: { short: "Interactive editing canvas component submitted to Meridian.", verbose: "" }
+                  },
+                  {
+                    kind: "image",
+                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772132455/pg3_ygvgls.png",
+                    caption: { short: "Multi-select locale filter component submitted to Meridian.", verbose: "PLACEHOLDER: replace with the second Meridian component mockup" }
+                  },
+                  {
+                    kind: "image",
+                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772132455/pg3_ygvgls.png",
+                    caption: { short: "Warning input state component submitted to Meridian.", verbose: "PLACEHOLDER: replace with the third Meridian component mockup" }
                   }
                 ]
               }
@@ -247,11 +257,8 @@ export const PORTFOLIO_DATA = {
           {
             type: "text",
             content: [
-              `<ul class="list-disc pl-5 space-y-3">
-                <li>Launched in March 2025 with a focused v1 scope. Scoping to just two specific banner formats was the right call to ship fast, but it caused UX friction because the formats required very different data inputs.</li>
-                <li>We intentionally shipped without a drag-and-drop canvas to hit our deadline. Users were constrained to fixed layouts, which caused friction and slowed early adoption.</li>
-                <li>By Prime Day 2025, drag-and-drop was live and the tool reached full adoption across all supported formats.</li>
-              </ul>`
+              "The tool launched in March 2025 covering two specific banner formats. Scoping that tightly was the right call to ship fast, but those two formats required very different data inputs and we didn't fully account for that friction until users hit it in production. We also made the deliberate call to ship without drag-and-drop canvas support to hit the deadline. Users were locked to fixed layouts, which created real frustration and slowed early adoption more than we expected. These were conscious tradeoffs, not oversights, but they had a cost.",
+              "By Prime Day 2025 drag-and-drop was live and the tool had reached full adoption across all supported formats."
             ]
           },
 
@@ -260,10 +267,10 @@ export const PORTFOLIO_DATA = {
             type: "impact-box",
             metrics: [
               { value: "8,000", label: "Images generated for Prime Day 2025" },
-              { value: "48,000", label: "Hours of manual work eliminated" }
+              { value: "48,000", label: "Hours of manual work replaced for Prime Day alone" }
             ],
             description: [
-              "By automating the repetitive formatting steps, we reclaimed thousands of hours, allowing creative and marketing teams to shift away from manual production and back to high-level creative work."
+              "For Prime Day 2025, the system generated 8,000 lifestyle images that would have required an estimated 48,000 hours to produce manually across Photoshop, 3D tools, and localization workflows. Across all of 2025, the platform eliminated over 100,000 hours of manual production work."
             ]
           }
         ]
@@ -272,111 +279,206 @@ export const PORTFOLIO_DATA = {
 
     // PILLAR 2: ASSET MANAGER
     {
-      id: "jas-asset-manager",
-      parentId: "amazon-devices-asset-system",
-      company: "Amazon Devices",
-      title: "Devices Component Asset Manager",
-      impactSummary: "A centralized internal library that makes Amazon Devices marketing images easy to find and use across global markets.",
-      impactSummarySentence: "A centralized asset library that simplifies image discovery and replaces manual file sharing.",
-      designerNote: "Shipping the Image Builder made one thing clear: the tool was only as good as the images feeding it. Device photos, backgrounds, and confidential prototypes were scattered across multiple cloud drives with inconsistent naming and no access control. I designed the Asset Manager to be the single source of truth, simple to search on the surface, with strict legal and regional access rules handled quietly underneath.",
-      thumbnail: "https://via.placeholder.com/1600x900?text=DCAM+Thumbnail+Placeholder",
-      status: "IN_BUILD",
-      type: "INTERNAL",
-      details: {
-        hero: { type: 'static' },
-        heroImage: "https://via.placeholder.com/1600x900?text=DCAM+Hero+Placeholder",
-        role: "Lead UX Designer",
-        timeline: "Ongoing (Estimated Q2 2026)",
-        team: "Automate & Scale",
-        type: "INTERNAL",
-        services: [SERVICES.SYSTEMS_DESIGN, SERVICES.UX_RESEARCH, SERVICES.UI_DESIGN],
-        blocks: [
-          { type: "heading", title: "The Problem", hasDivider: false },
+  id: "jas-asset-manager",
+  parentId: "amazon-devices-asset-system",
+  company: "Amazon Devices",
+  title: "Devices Component Asset Manager",
+  impactSummary: "A centralized internal library that makes Amazon Devices marketing images easy to find, QA, and place across global markets. Shipping Q2 2026.",
+  impactSummarySentence: "A centralized digital asset library that brought the entire Amazon Devices creative catalog under governance, making automated campaign publishing possible at global scale.",
+  designerNote: "The Image Builder needed a library. Without one, every asset it produced landed somewhere unstructured, ungoverned, and unreachable at scale. A single person was manually curating the catalog that fed our entire production pipeline. My job on this project wasn't to design a ground-up overhaul. It was to build the core functionalities that would drive adoption and lay the groundwork for one, surgically, while that larger effort was being scoped. That required being honest about what we could ship and what we had to defer.",
+  thumbnail: "https://via.placeholder.com/1600x900?text=DCAM+Thumbnail",
+  status: "IN_BUILD",
+  type: "INTERNAL",
+  details: {
+    hero: { type: 'static' },
+    heroImage: "https://via.placeholder.com/1600x900?text=DCAM+Hero",
+    role: "Lead UX Designer",
+    timeline: "Ongoing (Estimated Q2 2026)",
+    team: "Automate & Scale",
+    type: "INTERNAL",
+    services: [SERVICES.SYSTEMS_DESIGN, SERVICES.UX_RESEARCH, SERVICES.UI_DESIGN],
+    blocks: [
+      {
+        type: "heading",
+        title: "The Problem",
+        hasDivider: false
+      },
+      {
+        type: "text",
+        content: [
+          "Marketing images for Amazon Devices lived across multiple internal systems with no consistent naming and no access control. Teams fell back on outdated files, duplicated work across regions, and ran QA through third-party data management platforms. North America had built their entire workflow outside our internal platform, Journeys, relying on Smartsheets and sorting assumptions nobody had documented. The library feeding the Image Builder was manually curated and uploaded by a single-person team. Every asset in the production pipeline depended on one person getting it right."
+        ]
+      },
+
+      {
+        type: "image-full",
+        src: "https://via.placeholder.com/1200x700?text=PLACEHOLDER:+Old+asset+browser+or+fragmented+folder+state",
+        caption: {
+          short: "The fragmented state before: no metadata, QA handled externally.",
+          verbose: "Look for a screenshot of the old interim JAS (our internal asset generation system) Assets section or the old asset browser. A side-by-side of the old tile view next to a third-party QA board communicates the two-platform dependency clearly."
+        }
+      },
+
+      {
+        type: "heading",
+        title: "Research"
+      },
+      {
+        type: "text",
+        content: [
+          "EMEA and North America came into research with completely different problems. EMEA were the power users with four hard blockers: no cross-project cloning, exact-string-only search, QA that required opening the builder one marketplace at a time, and no way to review manually uploaded assets inside the platform. North America wasn't using Journeys for assets at all. I went into the first session with mocks already built. That was a mistake. We stepped back and rebuilt the architecture around what people were actually doing."
+        ]
+      },
+
+      {
+        type: "video",
+        src: "PLACEHOLDER_RESEARCH_SESSION_VIDEO",
+        caption: {
+          short: "Research session with EMEA merchandisers, September 2025.",
+          verbose: "Sessions revealed EMEA's four hard blockers and North America's complete dependency on Smartsheets. The gap between the two regions shaped every architectural decision that followed."
+        }
+      },
+      {
+        type: "file-thumbnail",
+        title: "UXR Report: Asset Browser Research",
+        fileSize: "PDF",
+        href: "PLACEHOLDER_UXR_REPORT_URL"
+      },
+
+      {
+        type: "heading",
+        title: "Building Core Functionalities"
+      },
+      {
+        type: "list",
+        items: [
           {
-            type: "text",
-            content: [
-              "Marketing images for Amazon Devices were scattered across multiple internal systems. Teams struggled to locate the right images, which led to outdated files being used in production or work being duplicated across different countries.",
-              "We needed a centralized visual library. This tool, known internally as DCAM, was designed to solve that dependency and give teams a single, reliable place to find approved assets."
-            ]
-          },
-          { type: "heading", title: "Strategy" },
-          {
-            type: "text",
-            content: [
-              "I designed the Asset Manager to be a simple discovery tool that handles complex legal and regional logic under the hood. The goal was to let a user find the right asset in seconds, while the system automatically restricted access to confidential unreleased devices or region-locked imagery."
-            ]
-          },
-          { type: "heading", title: "Process" },
-          {
-            type: "list",
-            items: [
+            content: `<b>Architecture</b><p class="mt-2">The core decision was how to handle two fundamentally different asset types: JAS-generated images with full inherited metadata, and manually uploaded files with none. The solution was two tabs with different interaction patterns. An Asset System tab for JAS (our internal asset generation system) content, and an Uploaded Images tab for legacy media, with manual metadata input as a P1 to unlock filtering for uploaded content. EMEA pushed for this separation. Their argument: the filter criteria differed enough between sources that mixing them forced users to track which rules applied when.</p>`,
+            visuals: [
               {
-                content: `<b>User Research</b><p class="mt-2">I met with merchandisers to observe how they managed images. Inconsistent file naming and scattered cloud storage were the biggest blockers to speed. These insights shaped the tool's search architecture.</p>`,
-                visuals: [
-                  {
-                    kind: "image",
-                    src: "https://via.placeholder.com/1200x800?text=Research+Observation",
-                    caption: { short: "Researching asset retrieval habits and naming inconsistencies.", verbose: "" }
-                  }
-                ]
-              },
-              {
-                content: `<b>Filtering & Access</b><p class="mt-2">With hundreds of products and multiple device generations to track, I focused on a powerful but simple filtering UI. I added clear visual cues for unreleased prototypes to prevent accidental leaks.</p>`,
-                visuals: [
-                  {
-                    kind: "image",
-                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1769731424/175c5a76-0e29-4787-a5c9-0eb3c11a870b.png",
-                    caption: { short: "Designing visual guardrails for restricted assets.", verbose: "" }
-                  }
-                ]
-              },
-              {
-                content: `<b>Approval Workflows</b><p class="mt-2">Previously, image approvals happened offline in chat or email. I worked with the QA and design teams to build a lean approval flow directly into the tool, allowing teams to request changes or approve assets without leaving the platform.</p>`,
-                visuals: [
-                  {
-                    kind: "image",
-                    src: "https://via.placeholder.com/1200x800?text=Approval+Flow",
-                    caption: { short: "UX flow for the integrated QA and approval process.", verbose: "" }
-                  }
-                ]
+                kind: "image",
+                src: "https://via.placeholder.com/1200x700?text=PLACEHOLDER:+Two-tab+structure",
+                caption: {
+                  short: "Two-tab structure separating JAS assets from uploaded media.",
+                  verbose: "Screenshot of the main asset browser with both tabs visible. Ideally the Asset System tab is active with real campaign tile data showing."
+                }
               }
             ]
           },
-          { type: "heading", title: "Prototype" },
           {
-            type: "figma",
-            src: "https://www.figma.com/proto/PG1SSc8aZlpS9atMCvKg3M/DCAM-Final-Build-Spec?page-id=174%3A13910&node-id=2243-25245&scaling=min-zoom&t=s3IjMY4Gl6tH4KiA-1&content-scaling=fixed&p=f",
-            caption: { 
-              short: "Clickable prototype for batch management and smart filtering.", 
-              verbose: "This developer-ready blueprint covers core features we researched and validated, defining the interaction logic and edge cases before engineering began." 
-            },
-            coverImage: "https://via.placeholder.com/1200x800?text=Prototype+Placeholder",
-            aspectRatio: "16/9"
+            content: `<b>Views and Filtering</b><p class="mt-2">Tile view prioritizes visual content. Table view surfaces locale, template, dimensions, and QA status in sortable columns. EMEA gravitated toward the table for metadata density. North America responded well to it too, mirroring the Smartsheet experience they already knew. Filters persist as chips across program name, locale, dimensions, template type, and QA status.</p>`,
+            visuals: [
+              {
+                kind: "image",
+                src: "https://via.placeholder.com/1200x700?text=PLACEHOLDER:+Tile+and+table+view",
+                caption: {
+                  short: "Tile and table views with active filter chips.",
+                  verbose: "The side-by-side from page 3 of the UXR doc. Tile view on the left, table view on the right, same asset data. Use the version with real campaign imagery visible."
+                }
+              }
+            ]
           },
-          { type: "heading", title: "Impact & What It Unlocks" },
           {
-            type: "callout-box",
-            content: "Slated to ship in Q2 2026, this system unlocks the next phase of our automation roadmap. It transitions the organization away from fragmented cloud folders and establishes a single, governable source of truth that powers our AI models and guarantees brand compliance at scale."
+            content: `<b>Detail Panel</b><p class="mt-2">Clicking any image surfaces everything needed to make a decision without opening another tool: a high-resolution preview alongside a full metadata sidebar covering asset group, program name, locales, creative type, dimensions, QA status, uploader, and last edit date. Actions sit directly in the panel. For uploaded images, program name and locale are editable here, which is what unlocks filtering for that content type.</p>`,
+            visuals: [
+              {
+                kind: "image",
+                src: "https://via.placeholder.com/1200x700?text=PLACEHOLDER:+Detail+panel",
+                caption: {
+                  short: "Detail panel with full metadata sidebar and action menu.",
+                  verbose: "The Blink camera screenshot from page 7 of the UXR doc. Full resolution preview, complete metadata sidebar on the right, actions dropdown open. Best individual screenshot in the doc."
+                }
+              }
+            ]
+          },
+          {
+            content: `<b>QA Workflow</b><p class="mt-2">We launched a QA review workflow in March 2025. EMEA adopted it. North America didn't. What shipped was lean by design: a foothold, not a full solution. In practice, you could only review assets within a single group at a time. Features designed to fix that kept getting descoped. We shipped something that got the job done but didn't meet the bar research had set. The filter system in the current build addresses the core gap: apply locale, template, and QA status filters and the review panel consolidates matching assets from across groups into one view.</p>`,
+            visuals: [
+              {
+                kind: "image",
+                src: "https://via.placeholder.com/1200x700?text=PLACEHOLDER:+QA+review+panel",
+                caption: {
+                  short: "QA review panel with assets consolidated across groups.",
+                  verbose: "Page 12 of the UXR doc: three-panel view with filtered table on the left, full-resolution preview in center, and review panel with approve/reject on the right."
+                }
+              }
+            ]
+          },
+          {
+            content: `<b>Campaign Publishing</b><p class="mt-2">Once assets live in the system with proper metadata, they can be published directly to Amazon.com placements through our campaign publishing workflow. The platform handles targeting, allocation, and placement automatically. This is one piece of a much larger publishing system outside the scope of this case study, but worth naming: the asset library was never just storage. It was the upstream dependency that made automated campaign publishing possible at all.</p>`,
+            visuals: [
+              {
+                kind: "image",
+                src: "https://via.placeholder.com/1200x700?text=PLACEHOLDER:+Campaign+publishing+flow",
+                caption: {
+                  short: "Context-aware asset browser inside the campaign builder.",
+                  verbose: "The flow on page 13 of the UXR doc. Asset browser pre-filtered to matching campaign parameters, headline and subheadline auto-populated from asset metadata."
+                }
+              }
+            ]
           }
         ]
+      },
+
+      {
+        type: "heading",
+        title: "Explorations"
+      },
+      {
+        type: "text",
+        content: [
+          "Three earlier versions shaped the current design by failing in specific ways. December 2024 tried to make single images and asset groups visually distinct objects with different CTAs. In practice the tiles were nearly identical and users couldn't tell what they were looking at. February 2025 added group name labels and folded legacy images into the single image view, which cleaned up visual complexity but removed the ability to see how many assets were inside a group. Both versions also put filters in a side panel that ran out of horizontal space as filtering capabilities expanded. Moving to a top bar with chip-based active states solved the space problem and kept the applied combination visible at all times."
+        ]
+      },
+
+      {
+        type: "image-full",
+        src: "https://via.placeholder.com/1200x800?text=PLACEHOLDER:+Dec+2024+and+Feb+2025+explorations",
+        caption: {
+          short: "December 2024 and February 2025 explorations.",
+          verbose: "Pages 15 and 16 from the UXR doc. Dec 2024 shows the side panel filter approach. Feb 2025 shows the toggle approach with group name labels. A three-panel progression with the current version as the third state would be the strongest visual."
+        }
+      },
+
+      {
+        type: "heading",
+        title: "Status"
+      },
+      {
+        type: "callout-box",
+        content: "Slated to ship Q2 2026. Once live, this eliminates the dependency on external QA tools, gives EMEA and NA a shared filtering architecture, and provides the metadata foundation the AI generation pipeline needs to run at scale."
+      },
+
+      {
+        type: "figma",
+        src: "https://www.figma.com/proto/PG1SSc8aZlpS9atMCvKg3M/DCAM-Final-Build-Spec?page-id=174%3A13910&node-id=2243-25245&scaling=min-zoom&t=s3IjMY4Gl6tH4KiA-1&content-scaling=fixed&p=f",
+        caption: {
+          short: "Final build spec prototype covering core browsing, filtering, and QA flows.",
+          verbose: "Developer-ready blueprint covering interaction logic, edge cases, and component states validated through EMEA and NA research."
+        },
+        coverImage: "https://via.placeholder.com/1200x800?text=Prototype+Cover",
+        aspectRatio: "16/9"
       }
-    },
+    ]
+  }
+},
 
     // PILLAR 3: METADATA STUDIO
+    
     {
       id: "jas-metadata-studio",
       parentId: "amazon-devices-asset-system",
       company: "Amazon Devices",
       title: CASE_STUDIES_TITLES["jas-metadata-studio"],
-      impactSummary: "An AI-assisted configuration tool that reduces manual data entry for image assets.",
-      impactSummarySentence: "An internal tool that uses AI to automatically tag and verify image data, replacing manual spreadsheets.",
-      designerNote: "The team had accepted manual data entry as the unavoidable cost of running an automated image pipeline. I pushed beyond the original scope to run feasibility experiments, proving that AI could automatically handle 90% of the tagging. That shifted the project from a boring data-entry form into a tool that extracts information automatically, leaving only the decisions that genuinely require human judgment.",
-      thumbnail: "https://via.placeholder.com/1600x900?text=Metadata+Studio+Thumbnail",
+      impactSummary: "Overcame internal stakeholder resistance by proving AI could automate the complex asset tagging required to keep global marketing campaigns legally and culturally compliant.",
+      impactSummarySentence: "An AI-first internal tool that automatically extracts image metadata to enforce global legal, cultural, and regional compliance at scale.",
+      designerNote: "A wrong image in the wrong market isn't a design error at Amazon's scale, it's a legal one. Getting compliance data into the system required between 30 and 90 manual metadata inputs per image, a number defined by PMs, creative directors, 3D artists, and data science. Most of the organization didn't believe AI could close that gap, and didn't have the appetite to find out. I built the proof before asking for permission.",
+      thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772414317/Background_metadata-thumbnail_pgfkp6.png",
       status: "IN_BUILD",
       type: "INTERNAL",
       details: {
-        hero: { type: 'static' },
-        heroImage: "https://via.placeholder.com/1600x900?text=Metadata+Studio+Hero",
+        hero: { type: "static" },
+        heroImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772414394/Background_metadata-wide_vbd1rh.png",
         role: "Lead UX Designer",
         timeline: "August 2025 to Today",
         team: "Automate & Scale",
@@ -387,166 +489,302 @@ export const PORTFOLIO_DATA = {
           {
             type: "text",
             content: [
-              "Our automation tools required massive amounts of data to function properly. Designers had to manually input up to 90 different tags (metadata) for every single asset. This manual tax created a bottleneck that slowed down the entire team.",
-              "We needed a tool that could gather this data accurately without turning designers into data entry clerks."
+              "Every component image uploaded to the system required between 30 and 90 metadata points. At Amazon's global scale, that data is what enforces regional, cultural, and legal compliance. It tells the system that an EU asset legally must show a power plug, that UAE marketing should not feature dogs, or that a US-licensed movie UI cannot appear on a Brazilian Echo Show. Without it, a single wrong image in the wrong market creates an immediate legal or brand incident.",
+              "At the volume Amazon Devices operates, that manual entry requirement had become the single largest bottleneck in the asset pipeline."
             ]
           },
+          {
+            type: "image-full",
+            src: "https://via.placeholder.com/1600x900?text=Regional+and+Temporal+Guardrails+Composition",
+            caption: { 
+              short: "Visualizing the stakes: Metadata acts as the guardrail for global compliance, ensuring region-locked features, legal requirements, and cultural nuances are respected.", 
+              verbose: "Without strict metadata, an Echo Show displaying a US-only movie release could accidentally be published to a Brazilian marketplace, causing immediate licensing and legal issues. The sheer volume of manual tags was the only thing preventing these errors." 
+            }
+          },
+          {
+            type: "image-full",
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772412234/Background_metadata_cphwlh.png",
+            caption: { 
+              short: "The manual upload UI for an AI-ready background image. This illustrates the massive volume of metadata that users had to enter manually to prepare a single asset for the system.", 
+              verbose: "System designers were forced to manually configure bounding boxes, camera angles, color hex codes, and region restrictions for every single image. This manual tax became the largest bottleneck in our asset generation pipeline." 
+            }
+          },
+
           { type: "heading", title: "Strategy" },
           {
             type: "text",
             content: [
-              "My strategy was to move from manual data entry to intelligent verification. I audited every required data field and classified them: data the system can extract automatically, data the AI can estimate, and data that strictly requires human judgment.",
-              "I ran stress tests to prove that simple AI models could reliably identify product colors and photo angles. This let us design a UI that felt like a fast review process rather than a long form."
+              "Leadership wanted AI to reduce the manual load. Product and brand teams were hesitant to give up established pipelines. Rather than debating it, I ran stress tests across multiple AI agents to find out what was actually possible, without relying on external metadata or file naming conventions."
             ]
           },
-          { type: "heading", title: "Process" },
+
+          { type: "heading", title: "Prioritization" },
           {
-            type: "list",
-            items: [
-              {
-                content: `<b>Workflow Mapping</b><p class="mt-2">I shadowed the brand studio to watch their Photoshop workflows. This helped me identify exactly where data was being created so we could intercept it automatically and reduce manual re-entry.</p>`,
-                visuals: [
-                  {
-                    kind: "image",
-                    src: "https://via.placeholder.com/1200x800?text=Shadowing+Workflows",
-                    caption: { short: "Shadowing Photoshop workflows to map where data is created.", verbose: "" }
-                  }
-                ]
-              },
-              {
-                content: `<b>Classification</b><p class="mt-2">Working with engineering, I built a taxonomy model to decide which input fields to hide and which to show. We prioritized intelligent defaults over blank form fields.</p>`,
-                visuals: []
-              }
+            type: "text",
+            content: [
+              "To focus our engineering efforts, I mapped the various component images based on how much manual metadata they required versus how much of the process could be automated. Device images and screens represented the highest impact areas for AI involvement."
             ]
           },
           {
-            type: "table",
-            title: "Data Taxonomy",
-            columns: ["Category", "Examples", "How It's Handled"],
-            rows: [
-              ["Inferred", "Color, product angle", "Fully Automated: Extracted directly from the uploaded file."],
-              ["Suggested", "Screen distortion, variants", "Augmented: System calculates values and asks for quick user confirmation."],
-              ["Manual", "Regional rules, legal dates", "Human-in-the-loop: Requires specific legal or business knowledge."]
+            type: "image-full",
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772411473/metadata-chart_nrud3c.png",
+            caption: { 
+              short: "A matrix prioritizing component images based on metadata requirements and AI generation potential.", 
+              verbose: "By mapping out which components required the most manual metadata versus how easily they could be manipulated by AI, we identified Device Images and UI Screens as the highest-priority areas for automation." 
+            }
+          },
+
+          { type: "heading", title: "Feasibility Testing" },
+          {
+            type: "text",
+            content: [
+              "I ran experiments across various AI agents to test automated classification and image manipulation. Not everything worked. A mini-tool I built to blindly classify raw component images failed. However, testing successfully demonstrated that AI can reliably match images to their visual variants from a predefined list."
             ]
           },
           {
-            type: "list",
-            items: [
-              {
-                content: `<b>Validation</b><p class="mt-2">I ran experiments to test feasibility. Color detection came in at 100% accuracy and angle detection at 90%. I also prototyped a tool where a user draws a simple boundary on a screen, and the system handles complex perspective warping automatically.</p>`,
-                visuals: [
-                  {
-                    kind: "image",
-                    src: "https://via.placeholder.com/1200x800?text=AI+Validation",
-                    caption: { short: "Validating what could be inferred automatically by the system.", verbose: "" }
-                  }
-                ]
-              },
-              {
-                content: `<b>Prototyping</b><p class="mt-2">I built prototypes to show the team how a reduced-input workflow would actually feel, focusing on speed, clarity, and strong default selections.</p>`,
-                visuals: [
-                  {
-                    kind: "image",
-                    src: "https://via.placeholder.com/1200x800?text=Prototyping",
-                    caption: { short: "Prototype focused on speed and stronger defaults.", verbose: "" }
-                  }
-                ]
-              }
+            type: "image-full",
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772411602/Screenshot_2026-03-01_at_4.32.55_PM_zlbqvz.png",
+            caption: { 
+              short: "A failed test: an AI mini-tool I built to classify generic component image types blindly.", 
+              verbose: "I prototyped this HTML mini-tool using ChatGPT to see if an LLM could categorize raw images without any filenames or contextual clues. The test failed, which was incredibly useful because it taught us exactly where human input was still mandatory." 
+            }
+          },
+          {
+            type: "image-full",
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772411765/fa9dccd2-7490-4215-b420-35251e6044b7.png",
+            caption: { 
+              short: "Capture of the HTML Visual Variant micro-tool built with ChatGPT that auto-matches visual variants.", 
+              verbose: "Unlike the classification test, this one worked. Given a predefined list of visual variants, the AI could evaluate raw product shots and match them accurately by color and camera angle. The test was small in scope but reliable enough to prove the concept and shift the internal conversation from feasibility debate to implementation planning." 
+            }
+          },
+
+          { type: "heading", title: "Outcomes & Future State" },
+          {
+            type: "text",
+            content: [
+              "By proving the viability of AI inference, I aligned leadership, product, and brand around a unified roadmap. Three core deliverables were greenlit: Visual Variant Attribution, a Devices Screen Mapper, and an AI-First Screen Image Uploader.",
+              "With feasibility proven, I designed a UI that relied on vastly less metadata overall. Instead of entering exhaustive data points, designers will upload one square image per screen type.",
+              "I introduced a 'screen mapper' tool to inform the AI of the screen space coordinates, allowing the system to place screens dynamically."
             ]
           },
-          { type: "heading", title: "Impact & What It Unlocks" },
           {
             type: "callout-box",
-            content: "By proving that AI can automatically extract 90% of the required metadata, this tool shifts our pipeline from manual data entry to intelligent verification. Slated to ship in Q3, it unlocks massive scalability for our image generation engine, allowing designers to stop acting as data entry clerks and focus purely on creative quality."
+            content: "Feasibility proven. Leadership, product, and brand aligned on a shared roadmap for the first time. Three deliverables greenlit: Visual Variant Attribution, a Devices Screen Mapper, and an AI-First Screen Image Uploader."
+          },
+          {
+            type: "image-full",
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772411818/7e25e02b-1a0c-4458-81f8-e22044a1df9c.png",
+            caption: { 
+              short: "The screen mapper tool interface, allowing users to define the digital boundary on a physical device.", 
+              verbose: "Instead of manually calculating and typing out offset parameters and artboard dimensions, users simply draw a boundary over the physical screen. The tool translates that physical boundary into coordinate data the AI can use for dynamic composition." 
+            }
+          },
+          {
+            type: "image-full",
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772412003/8fc680db-a6b5-4c46-ba00-f12af55faab4.png",
+            caption: { 
+              short: "Early concept on the Admin Tool for uploading screens, showing vastly simplified metadata requirements.", 
+              verbose: "Because the system now infers perspective, glare, and shadows automatically, the manual upload requirements are reduced to a single square image and basic legal expiration dates. The system handles the rest." 
+            }
+          },
+          {
+            type: "text",
+            content: [
+              "We successfully placed a Lord of the Rings image screen inside an Echo Show purely through AI composition. We can now take an Echo Show displaying a release in one language and instantly generate the exact same localized image with the correct shadows, angles, and glare."
+            ]
+          },
+          {
+            type: "image-full",
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772411928/4553de5d-0c9d-41d0-b126-bf3db07e532d.png",
+            caption: { 
+              short: "Successfully placing a The Lord of the Rings screen inside an Echo Show automatically. The alternative was a tedious manual Photoshop edit.", 
+              verbose: "This represents the culmination of the project. By automating the metadata and screen mapping, the platform can now instantly generate accurate, localized, and compliant marketing assets on the fly without a designer opening Photoshop." 
+            }
           }
         ]
       }
     },
+    
 
     // PILLAR 4: AI GENERATOR
     {
-      id: "jas-ai-generator",
-      parentId: "amazon-devices-asset-system",
-      company: "Amazon Devices",
-      title: "Asset System AI Agent",
-      impactSummary: "An AI tool that automates placing Amazon Devices into lifestyle backgrounds, learning from human design feedback.",
-      impactSummarySentence: "An AI tool that automates complex product placement and learns from human feedback.",
-      designerNote: "This project was a reality check. We proved that AI could generate high-quality images at scale, but we discovered that human review was a massive bottleneck. A 4-minute review cycle sounds fast until you multiply it by thousands of images. That finding directly drove the Metadata Studio project, to eliminate the manual overhead slowing the pipeline down. Sometimes the most valuable output of a shipped tool is what it teaches you about the next problem.",
-      thumbnail: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1600&q=80",
-      status: "LAUNCHED",
-      type: "INTERNAL",
-      details: {
-        hero: { type: 'static' },
-        heroImage: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1600&q=80",
-        role: "Lead UX Designer",
-        timeline: "December 2024 to March 2025",
-        team: "Automate & Scale",
-        type: "INTERNAL",
-        services: [SERVICES.PRODUCT_STRATEGY, SERVICES.AI_WORKFLOWS, SERVICES.UX_DESIGN],
-        blocks: [
-          { type: "heading", title: "The Problem", hasDivider: false },
-          {
-            type: "text",
-            content: [
-              "Lifestyle images are the most complex assets we produce. They require placing a proprietary device image into a generated or photographed environment. The final image must respect camera angles, lighting, depth, and copy space.",
-              "Creating these manually in Photoshop is unscalable. We needed a tool that could generate these images in batches while strictly adhering to our design standards."
-            ]
-          },
-          { type: "heading", title: "Strategy" },
-          {
-            type: "text",
-            content: [
-              "My strategy focused on the human-in-the-loop. We knew the AI would make mistakes, so the design challenge was creating a feedback loop that translates subjective design direction into objective training data.",
-              "I designed a review interface for Creative Directors. Instead of a simple 'approve' button, rejecting an image required specific reasoning—flagging issues like bad shadows or incorrect perspectives. This data fed directly back to the engineering team to adjust the algorithm."
-            ]
-          },
-          { type: "heading", title: "Process" },
-          {
-            type: "list",
-            items: [
-              {
-                content: `<b>Defining Placement Rules</b><p class="mt-2">I worked with the Brand Studio to codify the rules for angles, shadows, and screen placement. We had to teach the system that a TV in a living room behaves differently than a smart speaker in a kitchen.</p>`,
-                visuals: [{ kind: "image", src: "https://via.placeholder.com/1200x800?text=Placement+Rules", caption: { short: "Codifying physical rules for device placement.", verbose: "" } }]
-              },
-              {
-                content: `<b>Designing the Feedback Loop</b><p class="mt-2">I built the tool used by directors to review batches of hundreds of images. The interface allowed them to rapidly approve assets or reject failures with specific tags, ensuring rejected data was just as valuable as approved data for training.</p>`,
-                visuals: [{ kind: "image", src: "https://via.placeholder.com/1200x800?text=Feedback+Loop", caption: { short: "The review interface used to tag failures and train the model.", verbose: "" } }]
-              },
-              {
-                content: `<b>Stress Testing</b><p class="mt-2">We discovered that manually reviewing a batch took approximately 4 minutes, which became a scalability risk. This insight led directly to building the Metadata Studio to automate the input process.</p>`,
-                visuals: []
-              }
-            ]
-          },
-          { type: "heading", title: "Review Experience" },
-          {
-            type: "text",
-            content: [
-              "The final tool was designed for high-velocity review. The system generated 4 variations per prompt, allowing directors to select the best option or reject the set entirely.",
-              "To manage volume, I implemented a sampling model. Rather than reviewing 100% of the output, the system presented a random 5% sample. If the sample passed, the batch was approved. If it failed, the rejection tags retrained the model. This prevented the creative team from being overwhelmed."
-            ]
-          },
-          {
-            type: "figma",
-            src: "https://www.figma.com/proto/PG1SSc8aZlpS9atMCvKg3M/JASAI-Final-Build-Spec?page-id=174%3A13910&node-id=2243-25245&scaling=min-zoom&t=s3IjMY4Gl6tH4KiA-1&content-scaling=fixed&p=f",
-            caption: { short: "The batch review dashboard showing the selection and rejection flow.", verbose: "" },
-            coverImage: "https://via.placeholder.com/1200x800?text=Review+Dashboard",
-            aspectRatio: "16/9"
-          },
-          { type: "heading", title: "Impact" },
-          {
-            type: "impact-box",
-            metrics: [
-              { value: "3,000", label: "Market-ready assets created" },
-              { value: "100%", label: "Of rejected images reused as training data" }
-            ],
-            description: [
-              "Since launch, the tool has generated over 12,000 variations. Through the review process, we successfully added 3,000 fully validated assets to the system, created without a designer moving a single pixel."
-            ]
-          }
+  id: "jas-ai-generator",
+  parentId: "amazon-devices-asset-system",
+  company: "Amazon Devices",
+  title: "AI Lifestyle Compositor",
+  impactSummary: "An AI pipeline that generates realistic lifestyle images of Amazon Devices, learning from structured human feedback to improve with every batch.",
+  impactSummarySentence: "A generative AI pipeline that places Amazon Devices into realistic lifestyle scenes at scale, with a human review loop engineered to make itself obsolete.",
+  designerNote: "Lifestyle images are the most complex assets we produce and the hardest to automate. Getting the AI to place a device in a kitchen scene that respects lighting, reflections, and content context required codifying design rules that until then had only lived in people's heads. Leadership wasn't happy with the 4-minute review cycle. What looked slow was actually the science getting educated. The review cycle was designed to shrink itself. Precise human feedback, used sparingly, was the fastest path to removing humans from the process entirely. This was also the first time I shipped code myself, using an MCP Figma-to-code process to build the review interface directly with engineering. That changed how I work.",
+  thumbnail: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1600&q=80",
+  status: "LAUNCHED",
+  type: "INTERNAL",
+  details: {
+    hero: { type: 'static' },
+    heroImage: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1600&q=80",
+    role: "Lead UX Designer",
+    timeline: "December 2024 to March 2025",
+    team: "Automate & Scale",
+    type: "INTERNAL",
+    services: [SERVICES.PRODUCT_STRATEGY, SERVICES.AI_WORKFLOWS, SERVICES.UX_DESIGN],
+    blocks: [
+      {
+        type: "heading",
+        title: "The Problem",
+        hasDivider: false
+      },
+      {
+        type: "text",
+        content: [
+          "Before this tool, a lifestyle image meant a designer or 3D artist manually compositing a device into a scene. The device had to sit correctly in the environment, respect the light source, cast the right shadow, leave room for copy, and feel like it actually belonged there. Doing that once is craft. Doing it for thousands of SKUs across global markets is a bottleneck.",
+          "The Image Builder could assemble campaign assets at scale, but without realistic lifestyle imagery it was producing device PNGs dropped onto gradients. The output looked like specs, not campaigns. We needed a way to generate scenes that felt real, and we needed to build it ourselves."
         ]
+      },
+
+      {
+        type: "image-full",
+        src: "https://via.placeholder.com/1200x600?text=PLACEHOLDER:+Before+and+after+lifestyle+image+quality",
+        caption: {
+          short: "Before and after: device PNG on gradient vs AI-placed device in a realistic scene.",
+          verbose: "Left side: a flat device render dropped onto a solid or gradient background, the output before this tool existed. Right side: the same device placed in a kitchen or living room scene with correct lighting, reflections, and environmental context. This is the most important visual in the case study."
+        }
+      },
+
+      {
+        type: "heading",
+        title: "Strategy"
+      },
+      {
+        type: "text",
+        content: [
+          "No other team at Amazon had attempted this for proprietary devices. The Amazon Home team had built a comparable tool for furniture, but the approach didn't transfer. Furniture is static and geometrically forgiving. Amazon devices carry strict brand requirements around camera angles, screen reflections need to be handled precisely, and the device has to remain identifiable regardless of scene. Testing the Home team's approach produced exactly the kind of result you'd expect from mismatched assumptions: an Echo Pop in a room that looked assembled but felt wrong. Off-axis, flat, unconvincing.",
+          "The problem had to be solved from scratch, with device-specific rules built in from the start."
+        ]
+      },
+
+      {
+        type: "image-full",
+        src: "https://via.placeholder.com/1200x600?text=PLACEHOLDER:+Echo+Pop+failed+placement+example",
+        caption: {
+          short: "Early model output using the furniture algorithm: Echo Pop placed incorrectly in a room scene.",
+          verbose: "Use the image you have of the Echo Pop placed incorrectly in a room. This demonstrates why the Amazon Home algorithm did not transfer and sets up the correct output as a genuine technical achievement."
+        }
+      },
+
+      {
+        type: "heading",
+        title: "Placement Rules"
+      },
+      {
+        type: "text",
+        content: [
+          "Working with Brand Studio, our PM, and engineering, we codified placement rules that until then had only existed as designer intuition: how a TV behaves in a living room versus how a smart speaker sits in a kitchen, what camera angles are acceptable for each device family, how shadows and reflections should read depending on surface material, and how much negative space to preserve for copy.",
+          "These rules became the training foundation. Without them the model had no way to distinguish a technically correct composite from one that violated brand standards."
+        ]
+      },
+
+      {
+        type: "image-full",
+        src: "https://via.placeholder.com/1200x600?text=PLACEHOLDER:+Placement+rules+documentation+or+annotated+examples",
+        caption: {
+          short: "Codified placement rules for device angle, shadow, and copy space.",
+          verbose: "Look for any documentation or annotated mockups from the Brand Studio collaboration. Annotated examples showing correct vs incorrect device placement, shadow behavior, or camera angle constraints would work well."
+        }
+      },
+
+      {
+        type: "heading",
+        title: "Feedback Design"
+      },
+      {
+        type: "text",
+        content: [
+          "Defining the rejection taxonomy was as important as building the interface. We needed reviewers to tell us not just that an image was wrong, but specifically how. Working with the team, we designed a structured feedback survey with predefined rejection values: bad shadow, incorrect perspective, wrong environmental context, device unrecognizable, lighting mismatch. A vague rejection teaches the model nothing. A tagged one does."
+        ]
+      },
+
+      {
+        type: "heading",
+        title: "Review Interface"
+      },
+      {
+        type: "text",
+        content: [
+          "The system generated four variations per prompt. Creative Directors reviewed batches and either selected the best option or rejected the set with a specific failure tag. That specificity was the point. Rejection data trained the model just as much as approvals did.",
+          "The feedback loop asked internal Amazonians to go the extra mile, submitting structured feedback even on images they were skipping or rejecting. That ask is only reasonable in an internal tool context. It would be a non-starter in a consumer product.",
+          "Managing volume without burning out the creative team came down to a sampling decision. A 5% random sample was statistically representative of a full batch. If the sample passed, the batch was approved. If it failed, the rejection tags fed back into the model."
+        ]
+      },
+
+      {
+        type: "image-full",
+        src: "https://via.placeholder.com/1200x700?text=PLACEHOLDER:+Review+interface+showing+4+variations+and+rejection+tags",
+        caption: {
+          short: "The batch review interface showing four variations and failure tagging.",
+          verbose: "Look for a screenshot or mockup of the review dashboard showing the four-variation selection grid alongside the rejection tag options. A version showing an active review session with some images approved and some tagged for rejection tells the story better than a clean empty state."
+        }
+      },
+
+      {
+        type: "callout-box",
+        content: "This was the first time I took a design through to running code. I built the review interface using an MCP Figma-to-code process, working directly with engineering to ship it. That experience changed how I think about the boundary between design and implementation."
+      },
+
+      {
+        type: "heading",
+        title: "Human Review Curve"
+      },
+      {
+        type: "text",
+        content: [
+          "Leadership flagged that Creative Directors were averaging 4 minutes per review cycle. What looked like a problem was the model learning. The review requirement was designed to shrink with each calibrated batch.",
+          "The 12,000 variations in the first batch were not 12,000 unique scenes. The AI worked within controlled environments: one living room, one kitchen, matched in aesthetic. It calibrated one Fire TV placement and applied it across all Fire TV size variants. One Echo Dot calibration applied across the full rounded Echo family. One Echo Show calibration applied across all screened Echo variants. Systematic coverage, not brute force generation."
+        ]
+      },
+      {
+        type: "table",
+        columns: ["Batch", "Variations Generated", "Images Reviewed by Humans", "Review Sessions (batches of 4)", "Human Time"],
+        rows: [
+          ["1", "12,000", "600 (5% sample)", "150 sessions", "~10 hours"],
+          ["2", "12,000", "300", "75 sessions", "~5 hours"],
+          ["3", "12,000", "150", "38 sessions", "~2.5 hours"],
+          ["4+", "12,000", "75", "19 sessions", "~1.25 hours"]
+        ]
+      },
+
+      {
+        type: "heading",
+        title: "Impact"
+      },
+      {
+        type: "text",
+        content: [
+          "The first batch of 12,000 variations required roughly 10 hours of human review time. Of those, 3,000 passed and entered the production library as fully validated lifestyle images, created without a designer moving a single pixel. The 5% sample model meant the rest were batch-approved based on passing samples or fed back as training data.",
+          "The broader organizational impact is harder to quantify precisely, but worth acknowledging. The 3D artist contractors who had been producing these images manually were part of a subsequent layoff. Whether this tool was a direct factor is difficult to confirm, but automating their primary output at this scale almost certainly contributed."
+        ]
+      },
+
+      {
+        type: "impact-box",
+        metrics: [
+          { value: "3,000", label: "Market-ready lifestyle assets validated" },
+          { value: "~10hrs", label: "Total human review time for the first 12,000 variations" }
+        ],
+        description: []
+      },
+
+      {
+        type: "figma",
+        src: "https://www.figma.com/proto/PG1SSc8aZlpS9atMCvKg3M/JASAI-Final-Build-Spec?page-id=174%3A13910&node-id=2243-25245&scaling=min-zoom&t=s3IjMY4Gl6tH4KiA-1&content-scaling=fixed&p=f",
+        caption: {
+          short: "Final build spec for the batch review dashboard.",
+          verbose: "Developer-ready spec covering the review interface interaction logic, variation selection states, rejection tagging flow, and sampling model behavior."
+        },
+        coverImage: "https://via.placeholder.com/1200x800?text=Review+Dashboard",
+        aspectRatio: "16/9"
       }
-    },
+    ]
+  }
+},
 
 
 
@@ -561,6 +799,7 @@ export const PORTFOLIO_DATA = {
       impactSummarySentence: "Adapted Amazon's creator-driven shopping feed for Smart Home, shaping the ML ranking, catalog logic, and creator tooling that made device discovery trustworthy at scale.",
       designerNote: "My team did not build Inspire from scratch. We inherited it from the Community Shopping team and were asked to make it work for Smart Home, a category where a wrong recommendation does not just miss; it erodes trust. That meant adapting our design library, working directly with creators, and collaborating with data science to fine-tune our ML algorithms. Operating inside a platform someone else built at Amazon scale is its own design discipline. It demands precision about where you push, fluency across functions, and the ability to translate between catalog, ML, and customer experience in the same conversation.",
       thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772307603/main_feed_cx_vc0uaq.png",
+      thumbnailPadding: "p-8",
       status: "DEPRECATED",
       type: "MOBILE",
       details: {
@@ -738,7 +977,7 @@ export const PORTFOLIO_DATA = {
           { type: "heading", title: "Outcome & Reflection" },
           {
             type: "callout-box",
-            content: "The homepage widget shipped successfully, becoming one of the first applications of Amazon's AI review highlights capability to surface on the Smart Home homepage. The video shopping and ASIN card concepts both advanced to the roadmap with stakeholder buy-in."
+            content: "Homepage widget shipped. Video shopping and ASIN cards advanced to the roadmap."
           },
           {
             type: "text",
@@ -865,7 +1104,7 @@ export const PORTFOLIO_DATA = {
           {
             type: "text",
             content: [
-              "Before exploring interface patterns, the team needed to define what a 'conversation' meant inside the system, a systems problem, not a UI one. The model that emerged treated conversations as time-bound sessions based on activity, not topic completion, with patients able to shift freely between subjects. That definition became the foundation every design decision was built on."
+              "Defining what a 'conversation' meant inside the system was a systems problem that had to be solved before any interface work could begin. The model that emerged treated conversations as time-bound sessions based on activity, not topic completion, with patients able to shift freely between subjects. That definition became the foundation every design decision was built on."
             ]
           },
 
@@ -980,13 +1219,9 @@ export const PORTFOLIO_DATA = {
           {
             type: "text",
             content: [
-              `<ul class="list-disc pl-5 space-y-3">
-                <li>The full North Star wasn't built. Resourcing for internal tooling improvements didn't match the ambition of the vision, patient-facing features carried clearer business cases, and engineering capacity was allocated accordingly.</li>
-                <li>What did ship were the processes with clearer operational ROI. Billing workflows and improvements to patient case handling within the Alto app moved forward, with measurable downstream effects on the patient experience and cost per shipment.</li>
-                <li>Marcia Notes was refactored and stabilized. Not the structural overhaul the research pointed toward, but a meaningful improvement to the baseline, with better context, clearer hierarchy, and reduced reliance on external tools for common tasks.</li>
-                <li>The 18% reduction in communications per shipment was real and measurable, but the team lacked the instrumentation to tie it directly to a cost-per-shipment figure for internal tooling specifically. The dollar outcome, Care CPS dropping from $16 to $10, is covered in the Alto Assistant App case study, which addresses the patient-facing side of the same system.</li>
-                <li>The action cards concept and the North Star direction were approved and added to the roadmap. What happened after June 2022 is outside the scope of this case study.</li>
-              </ul>`
+              "The full North Star didn't ship. Internal tooling improvements consistently lost the resource prioritization argument to patient-facing features with clearer business cases. What did move forward were the workflows with more legible operational ROI: billing improvements and patient case handling inside the Alto app, both of which had measurable downstream effects on cost per shipment.",
+              "Marcia Notes was refactored and stabilized. Not the structural overhaul the research pointed toward, but a real improvement to the baseline: better context, clearer hierarchy, and reduced reliance on external tools for common tasks.",
+              "The 18% reduction in communications per shipment was real and measurable. The team lacked the instrumentation to tie it directly to a cost-per-shipment figure for internal tooling specifically. The dollar outcome, Care CPS dropping from $16 to $10, is covered in the Alto Assistant case study, which addresses the patient-facing side of the same system. The action cards concept and North Star direction were approved and added to the roadmap before my time there ended."
             ]
           },
 
@@ -994,11 +1229,11 @@ export const PORTFOLIO_DATA = {
           {
             type: "impact-box",
             metrics: [
-              { value: "18%", label: "Reduction in Communications Per Shipment" },
-              { value: "0.93", label: "Comms Per Shipment (from ~2.0 in 2020)" }
+              { value: "18%", label: "Reduction in communications per shipment vs control groups" },
+              { value: "11,000+", label: "Internal users across the platform" }
             ],
             description: [
-              "For workflows connected to Alto Assistant, communications per shipment dropped <b>18%</b> compared to control groups, falling below 1.0 for the first time in July 2022, reaching <b>0.93</b> against a baseline of approximately 2.0 in 2020. The internal tooling work was one side of the same system: while the patient-facing app reduced inbound volume, these improvements ensured Care Specialists could handle what remained faster and with less friction. The platform served <b>11,000+ internal users</b> across <b>30,000+ weekly visits</b>."
+              "Communications per shipment dropped 18% compared to control groups, falling below 1.0 for the first time in July 2022. The internal tooling work was one side of the same system: while the patient-facing app reduced inbound volume, these improvements ensured Care Specialists could handle what remained faster and with less friction."
             ]
           }
         ]
@@ -1279,10 +1514,7 @@ export const PORTFOLIO_DATA = {
           {
             type: "text",
             content: [
-              `<ul class="list-disc pl-5 space-y-3">
-                <li>The feature launched in May 2022 following a 10% controlled cohort rollout, in line with Alto's release protocol for medical-context changes. The cohort allowed the team to monitor behavior and validate impact before full release.</li>
-                <li>This case study shares platform-level metrics with the Alto Internal Tools work. Both were part of the same Alto Assistant system, the patient-facing and internal-facing sides of the same operational problem.</li>
-              </ul>`
+              "The feature launched in May 2022 following a 10% controlled cohort rollout, in line with Alto's release protocol for medical-context changes. The cohort allowed the team to monitor behavior and validate impact before full release. This case study shares platform-level metrics with the Alto Internal Tools work. Both were part of the same Alto Assistant system, the patient-facing and internal-facing sides of the same operational problem."
             ]
           },
 
@@ -1566,13 +1798,8 @@ export const PORTFOLIO_DATA = {
           {
             type: "text",
             content: [
-              `<ul class="list-disc pl-5 space-y-3">
-                <li>Benefit categorization tested positively across both rounds. Users understood the seven categories and knew what to expect within each with minimal guidance.</li>
-                <li>The biggest conceptual breakthrough: content and benefits are the same thing. Posting exclusive footage and configuring a live event benefit are structurally identical. That insight became a central design principle for Patreon 2.0.</li>
-                <li>Automation was understood and trusted when made explicit. Creators needed to see what the system had taken over, not just that it had.</li>
-                <li>The merch store one-off purchase model felt immediately familiar. Gamifying loyalty through the pledge streak felt natural, not forced.</li>
-                <li>Physical goods shipping remained a manual process. The team aligned on continuing to support it but not automating it without robust e-commerce integrations in place first.</li>
-              </ul>`
+              "Benefit categorization tested positively across both rounds. Users understood the seven categories and knew what to expect within each with minimal guidance. The biggest conceptual shift: content and benefits are the same thing. Posting exclusive footage and configuring a live event benefit are structurally identical interactions. That insight became a central design principle for Patreon 2.0.",
+              "Automation was understood and trusted when made explicit. Creators needed to see what the system had taken over, not just that it had. The merch store one-off purchase model felt immediately familiar, and loyalty gamification through the pledge streak felt natural. Physical goods shipping remained manual. The team aligned on supporting it but not automating it without robust e-commerce integrations in place first."
             ]
           },
 
@@ -1580,12 +1807,8 @@ export const PORTFOLIO_DATA = {
           {
             type: "text",
             content: [
-              `<ul class="list-disc pl-5 space-y-3">
-                <li>Phase 1 improvements shipped across Q4 2020 and Q1 2021 within tight engineering constraints. The cohorts feature was designed but did not ship, the predefined condition logic required backend work that fell outside scope.</li>
-                <li>The Phase 2 sprint secured executive buy-in and resources for the 2.0 build. Shortly after, company-wide restructuring impacted my team. While I didn't see Patreon 2.0 cross the finish line, the architecture established here served as its foundational blueprint.</li>
-                <li>Benefit modularity was a deliberate choice. All seven categories were designed as independent modules so the 2.0 implementation could roll them out selectively rather than committing to all seven at once.</li>
-                <li>NFTs were explored as an alternative monetization channel during the sprint given the timing. That direction was not prioritized for the 2.0 roadmap.</li>
-              </ul>`
+              "Phase 1 improvements shipped across Q4 2020 and Q1 2021 within tight engineering constraints. The cohorts feature was designed but did not ship, the predefined condition logic required backend work that fell outside scope.",
+              "The Phase 2 sprint secured executive buy-in and resources for the 2.0 build. Shortly after, company-wide restructuring impacted my team. The architecture established here served as the foundational blueprint for what followed. Benefit modularity was a deliberate choice: all seven categories were designed as independent modules so the 2.0 implementation could roll them out selectively. NFTs were explored as an alternative monetization channel during the sprint given the timing. That direction was not prioritized for the 2.0 roadmap."
             ]
           },
 
@@ -1597,7 +1820,7 @@ export const PORTFOLIO_DATA = {
               { value: "USPTO", label: "Granted Patent No. 12,154,126" }
             ],
             description: [
-              "Phase 1 improvements moved creator satisfaction from <b>49% to 73%</b> within three months. The pledge streak filter resulted in a <b>granted USPTO patent</b> (No. 12,154,126), co-invented with Jennifer Pugh. While my time at Patreon ended due to restructuring before 2.0 shipped, the Phase 2 sprint successfully secured the organizational alignment and resources needed to make it happen, leaving behind a definitive blueprint for the platform's next era."
+              "Phase 1 improvements moved creator satisfaction from <b>49% to 73%</b> within three months. The pledge streak filter resulted in a <b>granted USPTO patent</b> (No. 12,154,126), co-invented with Jennifer Pugh. The Phase 2 sprint secured the organizational alignment and resources needed to move forward, giving the team a clear architectural foundation to build from."
             ]
           }
         ]
@@ -1605,22 +1828,22 @@ export const PORTFOLIO_DATA = {
     },
 
     // PATREON PLEDGE STREAK PATENT
-    // PATREON PLEDGE STREAK PATENT (1-PAGER)
+// PATREON PLEDGE STREAK PATENT (1-PAGER)
     {
       id: "patreon-pledge-streak",
       company: "Patreon",
       title: "Pledge Streak Patent",
-
-      impactSummary: "Invented and patented a visual system for creators to evaluate patron loyalty and payment history at a glance. Granted USPTO Patent No. 12,154,126.",
-      impactSummarySentence: "A data visualization feature that turned complex billing history into a simple 'streak', earning a USPTO patent along the way.",
-      designerNote: "Sometimes the most impactful features aren't explicitly on the roadmap. While conducting research for the broader Benefit Delivery redesign, I noticed creators were deeply frustrated by how hard it was to verify a patron's loyalty. They were giving away expensive, physical merchandise blindly. This 'Pledge Streak' concept started as a quick design exploration to solve that specific anxiety. It worked so well that Patreon decided to patent the interaction model. Getting my name on a USPTO patent was an unexpected, incredibly proud milestone in my career.",
-      thumbnail: "https://via.placeholder.com/800x600?text=Pledge+Streak+Thumbnail",
+      impactSummary: "Invented a visual system for creators to read patron loyalty at a glance. Granted USPTO Patent No. 12,154,126 in November 2024.",
+      impactSummarySentence: "A data visualization pattern that turned months of billing history into a single readable streak. Granted USPTO Patent No. 12,154,126.",
+      designerNote: "This one started as a side observation during a much larger project. I was deep in research for the Benefit Delivery redesign when creators kept bringing up the same anxiety: they were mailing expensive, physical merchandise to patrons they couldn't fully trust. Not because patrons were dishonest, but because the billing system was opaque. A card declines, a patron churns involuntarily, and the creator has no way to know if that person was a loyal supporter of three years or someone whose very first payment just failed. I designed the Pledge Streak to solve that specific anxiety. It worked well enough that Patreon's legal team wanted to patent it. I drove the concept from that initial research observation through design, through usability testing, through leadership alignment, and through the patent process itself. Jennifer Pugh was my product partner throughout. The USPTO granted Patent No. US 12,154,126 B2 on November 26, 2024.",
+      thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772474135/hero-image_owhyqg.png",
+      thumbnailBg: "linear-gradient(160deg, #3d2a5a, #2e1f47)",
+      thumbnailPadding: "p-8 md:p-12",
       status: "LEGACY",
       type: "INTERNAL",
       details: {
-        hero: { type: 'static' },
-        heroImage: "https://via.placeholder.com/1200x800?text=Pledge+Streak+Hero",
-        heroCoverImage: "https://via.placeholder.com/1200x800?text=Pledge+Streak+Cover",
+        hero: { type: 'static', heroPadding: 'py-20 mt-20', gradient: ['#222222', '#000000'] },
+        heroImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772474135/hero-image_owhyqg.png",
         role: "Senior Product Designer & Co-Inventor",
         timeline: "2020 to 2021 (Granted Nov 2024)",
         team: "Creator Tools",
@@ -1631,108 +1854,146 @@ export const PORTFOLIO_DATA = {
           SERVICES.PROTOTYPING
         ],
         blocks: [
-          { type: "heading", title: "The Context", hasDivider: false },
+          {
+            type: "heading",
+            title: "The Problem",
+            hasDivider: false
+          },
           {
             type: "text",
             content: [
-              "This feature was born out of a larger initiative to overhaul Patreon's Benefit Delivery system. During our generative research, a distinct edge case kept surfacing: fulfilling high-value, physical rewards.",
-              "Creators were flying blind. When a creator goes to the post office to mail a $50 piece of exclusive merchandise, they want to ensure it is going to a loyal patron. However, patrons frequently experience involuntary churn. A credit card expires, or a bank flags a transaction. Creators had no easy way to differentiate a loyal, multi-year supporter who had a temporary card decline from a brand-new patron whose very first payment failed."
-            ]
-          },
-          
-          {
-            type: "image-full",
-            src: "https://via.placeholder.com/1200x800?text=View+1:+Patron+List+Before",
-            caption: { 
-              short: "Managing patrons at scale without visual context.", 
-              verbose: "Before the pledge streak, creators had to click into individual profiles or download CSVs to manually verify payment history, making bulk fulfillment incredibly tedious." 
-            }
-          },
-
-          { type: "heading", title: "The Concept: Visualizing Loyalty" },
-          {
-            type: "text",
-            content: [
-              "Instead of forcing creators to dig through tabular billing databases or click into individual patron profiles to audit their history, we needed to bring the data to the surface. We needed to make loyalty legible at a single glance.",
-              "The solution was the Pledge Streak. I designed a visual sequence of chronological unit graphics attached directly to the patron's row in the relationship manager. Each node represented a billing cycle, and its visual state corresponded directly to the payment status for that month."
-            ]
-          },
-          {
-            type: "list",
-            items: [
-              {
-                content: `<span class="process-step-title"><b>Green / Solid</b></span><p class="mt-2">Indicated a successful payment for that billing cycle.</p>`,
-                visuals: []
-              },
-              {
-                content: `<span class="process-step-title"><b>Red / Outlined</b></span><p class="mt-2">Indicated a failed or declined payment.</p>`,
-                visuals: []
-              },
-              {
-                content: `<span class="process-step-title"><b>Blank</b></span><p class="mt-2">Indicated the patron was not subscribed during that period.</p>`,
-                visuals: []
-              }
+              "Patreon creators at the top tier weren't just publishing digital content. They were running small merchandise operations, mailing signed prints, handmade goods, and exclusive physical items to their most loyal supporters. And they were doing it blind.",
+              "Billing on Patreon is messy by nature. Cards expire. Banks flag recurring charges. Patrons churn involuntarily all the time, fully intending to come back. The platform had no way to surface that nuance to creators. All they could see was whether a patron was currently active or not. A three-year supporter whose card just declined looked identical to someone whose very first payment had failed.",
+              "Creators were asking a reasonable question: before I drive to the post office with a $60 piece of merchandise, can I know if this person actually deserves it? The platform had no answer."
             ]
           },
 
           {
             type: "image-full",
-            src: "https://via.placeholder.com/1200x800?text=View+2:+The+Pledge+Streak+UI",
-            caption: { 
-              short: "The Pledge Streak UI integrated into the Patron Relationship Manager.", 
-              verbose: "By visualizing up to six months of payment history directly in the table row, creators could instantly spot patterns of loyalty or recurring payment failures." 
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772474137/old_no_ui_sxpto2.png",
+            caption: {
+              short: "The patron relationship manager before the Pledge Streak.",
+              verbose: "The pre-streak patron list view was flat and context-free. A long list of names with no visual signal of loyalty, tenure, or payment history. Active or not active, nothing in between."
             }
           },
 
-          { type: "heading", title: "Research Insight: The 'Heatmap' of Loyalty" },
+          {
+            type: "heading",
+            title: "The Concept"
+          },
           {
             type: "text",
             content: [
-              "During usability testing, a profound behavior emerged: creators weren't just reading the data; they were reading the texture of a patron's history. The pledge streak acted as a visual heatmap.",
-              "If a creator saw a long row of historical greens followed by a recent red, they didn't just see a 'failed payment'—they saw a loyal fan who likely just had a credit card expire. This empowered creators to make qualified, empathetic decisions, allowing them to confidently override a rigid, binary billing system to reward genuine, long-term support."
+              "The idea was to stop hiding billing history inside a database and bring it to the surface of the patron table itself. Instead of requiring creators to click into individual profiles or export CSVs, each patron row would carry its own visual record: a short sequence of nodes, one per billing cycle, each one reflecting what actually happened that month.",
+              "A solid node for a successful payment. An outlined node for a failed or declined charge. A blank for a month when the patron wasn't subscribed. Six months at a glance, directly in the table row, right next to the patron's name.",
+              "The streak turned billing history into something readable in under a second. Creators didn't need to interpret data anymore. They could see the shape of a relationship."
             ]
           },
 
-          { type: "heading", title: "Interactive Prototype" },
+          {
+            type: "image-full",
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772474139/pledge-streak-ui_wvufrl.png",
+            caption: {
+              short: "The Pledge Streak integrated into the patron relationship manager.",
+              verbose: "The shipped design showing the streak nodes sitting inline in the patron table row. This contrast allows creators to spot different streak patterns across their audience immediately."
+            }
+          },
+
+          {
+            type: "heading",
+            title: "User Research"
+          },
+          {
+            type: "text",
+            content: [
+              "Testing validated a critical behavioral shift: creators stopped parsing individual billing nodes and immediately began reading the overall texture of the sequence.",
+              "We tested the concept by asking creators to filter for patrons with 3+ months of tenure to award a high-value benefit. The visual streak allowed creators to spot loyal edge cases, like mock patron Jefferson Farfan, who missed the hard numerical cutoff but clearly demonstrated long-term support. This validated that visual pattern recognition was more effective than raw data filtering, laying the groundwork for the patent.",
+              "The system doesn't just display payment status per billing cycle. It models the likelihood of continued subscribership across the full history, weighting different signals differently. A cancellation workflow carries more weight than a single declined payment. A patron who upgraded their tier then had a card decline reads very differently than a patron in steady decline. The streak visualizes that probability, not just raw transaction data."
+            ]
+          },
+
+          {
+            type: "image-full",
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772474133/closeup_sfvasd.png",
+            caption: {
+              short: "Pattern examples showing how creators read streak shapes.",
+              verbose: "A loyal patron with one recent decline versus a patron with scattered failures. The visual pattern carries the meaning on its own without requiring creators to decipher tabular billing data."
+            }
+          },
+
+          {
+            type: "heading",
+            title: "Interactive Prototype"
+          },
+          {
+            type: "text",
+            content: [
+              "This prototype demonstrates how creators could hover over individual streak nodes to see exact billing dates and amounts, and use global filters to instantly isolate patrons with perfect streaks."
+            ]
+          },
           {
             type: "figma",
-            src: "https://www.figma.com/proto/YOUR_PROTOTYPE_LINK_HERE",
+            src: "https://www.figma.com/proto/2n40H4pfL5qhAFns1J9vt6/Benefit-Delivery--Short-term?page-id=1%3A8422&node-id=1-9099&viewport=783%2C704%2C0.18&t=JhHDRcnys481NYQn-1&scaling=min-zoom&content-scaling=fixed",
             caption: { 
-              short: "Interactive prototype of the Pledge Streak filter and tooltip.", 
-              verbose: "This prototype demonstrates how creators could hover over individual streak nodes to see exact billing dates and amounts, and use the global filters to isolate patrons with perfect streaks." 
+              short: "Interactive prototype of the Pledge Streak filter and tooltip. Click through to explore.", 
+              verbose: "" 
             },
-            coverImage: "https://via.placeholder.com/1200x800?text=Prototype+Cover",
+            coverImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772474141/prototype_cover_pgcjnx.png",
             aspectRatio: "4/3"
           },
 
-          { type: "heading", title: "The Impact: USPTO Patent" },
+          {
+            type: "heading",
+            title: "The Patent"
+          },
           {
             type: "text",
             content: [
-              "By turning a complex array of billing statuses into a simple, recognizable pattern, we removed a massive cognitive load from creators managing their own fulfillment. The interaction model proved so novel and effective for the creator economy space that Patreon's legal team filed for a patent.",
-              "On November 26, 2024, the United States Patent and Trademark Office officially granted Patent No. US 12,154,126 B2, naming myself and my product partner, Jennifer Pugh, as co-inventors."
+              "Patreon's legal team decided the interaction model was novel enough to protect. The filing covered the full system: obtaining subscriber behavior data across billing intervals, determining weighted likelihood values using a trained machine learning model, and presenting those values as sequences of visual interface elements in an account management UI.",
+              "The patent is specific about the design layer. Color, shape, size, and indicia are all named as display characteristics. The grid layout with attribute-named columns is described.",
+              "The USPTO granted Patent No. US 12,154,126 B2 on November 26, 2024. I am listed as co-inventor alongside Jennifer Pugh, my product partner on the Patreon Creator Tools team."
             ]
           },
 
           {
             type: "image-full",
-            src: "https://via.placeholder.com/1200x800?text=Patent+Drawing+FIG.+8", 
-            caption: { 
-              short: "Excerpt from USPTO Patent No. 12,154,126.", 
-              verbose: "This drawing from the official patent filing illustrates the core interaction model. It shows how payment history information is displayed via unit graphics arranged in a preset chronological direction to immediately communicate payment status." 
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772474131/closer_look_vfpqgs.png",
+            caption: {
+              short: "A closer look at the core UI concept that was submitted for Patent No. 12,154,126.",
+              verbose: "The grid layout with sequences of interface elements per patron row directly corresponds to the streak design detailed in the patent filing."
             }
           },
 
           {
-             type: "button",
-             label: "View Official Patent Document",
-             href: "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/12154126",
-             external: true
+            type: "callout-box",
+            content: "USPTO Patent No. US 12,154,126 B2, granted November 26, 2024. Inventors: Bruno Wong and Jennifer Pugh. Assignee: Patreon Inc."
+          },
+
+          {
+            type: "heading",
+            title: "Reflection"
+          },
+          {
+            type: "text",
+            content: [
+              "The thing I keep coming back to is how small the original observation was. One recurring complaint in a research session. Creators frustrated by a very specific moment: standing at a post office, unsure whether a patron had earned the thing they were about to mail.",
+              "That anxiety pointed to a real gap between what the platform knew and what it was willing to show. The design work was mostly about closing that gap as simply as possible. Six nodes in a row. The rest followed from that.",
+              "Getting a USPTO patent out of a research observation I made mid-project is something I'm genuinely proud of. Not because of the legal credential, but because it confirmed that the insight was real and that the solution was actually novel. That doesn't happen often."
+            ]
+          },
+
+          {
+            type: "file-thumbnail",
+            title: "View Official Patent Document",
+            fileSize: "USPTO PDF",
+            href: "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/12154126"
           }
         ]
       }
     },
- 
+
+
+    
       // PATREON STUDIO 2.0 DESIGN SYSTEM
     {
       id: "patreon-studio2.0",
@@ -1741,8 +2002,9 @@ export const PORTFOLIO_DATA = {
 
       impactSummary: "Co-created Studio 2.0, Patreon's mobile-first design system, establishing a unified visual language and component library across the entire platform in an 8-week cross-functional sprint.",
       impactSummarySentence: "An 8-week collaborative sprint to build a scalable, mobile-first design system that unified Patreon's disjointed UI and set the visual foundation for the platform's rebrand.",
-      designerNote: "Looking back at this work, I am incredibly proud of the visual explorations and the sheer craft we put into establishing Patreon's aesthetic. Back then, the focus was heavily on visual cohesion, finding the right textures, and perfecting component states. Today, my approach to design systems extends much further into AI-readiness, semantic token scaling, and seamless React implementation. While my methodology has evolved to be more heavily integrated with code and AI pipelines, this project remains a cornerstone of my visual design foundation and a masterclass in cross-departmental collaboration.",
+      designerNote: "Eight weeks, three designers from different departments, no prior shared system to build from. Studio 2.0 was Patreon's first real attempt at a unified visual language, built during a period when the product strategy had shifted significantly but the UI hadn't caught up. My contribution came from the Creator Tools side: the design explorations, the shape system, and the component architecture that became the foundation for the 2.0 migration. The system shipped to engineering in January 2021. I didn't see it fully rolled out across the live product, restructuring ended my time at Patreon shortly after. The work held up well enough to be used as the blueprint for what came next.",
       thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772231263/DS_1_lihqgs.png",
+      thumbnailPadding: "p-20",
       status: "LEGACY",
       type: "INTERNAL",
       details: {
@@ -1926,12 +2188,8 @@ export const PORTFOLIO_DATA = {
 
           { type: "heading", title: "Impact & Reflections" },
           {
-            type: "text",
-            content: [
-              "We successfully set the foundation, established the design language, and got the green light for the 2.0 migration. However, tech can be volatile. Company restructuring meant my time at Patreon ended before I could see Studio 2.0 fully implemented across the live product from the inside.",
-              "Because of that early exit, the biggest trade-off of this project is the lack of measurable, quantitative metrics. I can't point to a specific conversion lift or internal engineering adoption speed. The real impact here was inherently intangible: aligning fragmented departments under a single visual language, securing executive buy-in for a massive overhaul, and leaving behind a robust, fully documented blueprint for the team that remained.",
-              "Looking at the platform today in 2026, the UI has naturally evolved and iterated away from these exact screens. But that is the true lifecycle of a successful design system—it acts as a bridge to the next era, a living organism meant to be adapted and built upon, not frozen in time."
-            ]
+            type: "callout-box",
+            content: "Studio 2.0 shipped to engineering in January 2021 with a full rollout plan and executive buy-in. No conversion metrics to point to. What it produced was a shared design language, a four-tier component library, and an implementation plan the team could execute without me."
           }
         ]
       }
@@ -1944,6 +2202,8 @@ export const PORTFOLIO_DATA = {
       impactSummarySentence: "Designed the entire product as founding designer, from blank canvas to closed beta. Helped raise $800k. Then COVID happened.",
       designerNote: "This was 2019. I was the only designer, and I was figuring out things nobody had really figured out yet: how to make a structured video call feel better than an in-person conversation, how to give 15 minutes of paid access to an expert a shape that justified the price. Video calls were not a mainstream work tool yet. Zoom fatigue wasn't a phrase. The problems we were solving became widely understood only after a global pandemic made them everyone's daily reality.\n\nThe work looks dated now. The UI has the texture of 2019. But the product decisions underneath it were real, and some of them held up under actual user testing. This is where I learned what it means to be the only designer in the room when the room includes investors, engineers, and paying users.",
       thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772257040/booking-workflow-hero_odxazy.gif",
+      thumbnailPadding: "p-8",
+      thumbnailBgColor: "bg-blue-50",
       status: "complete",
       type: "product",
       details: {
@@ -2256,13 +2516,20 @@ export const PORTFOLIO_DATA = {
           {
             type: "impact-box",
             metrics: [
-              { value: "$2,676", label: "Platform revenue in the first beta month (Prox's 12% cut)" },
               { value: "51%", label: "Rebooking rate across 130+ sessions" },
-              { value: "4.3 / 5", label: "Average session star rating" },
-              { value: "17 min", label: "Average time to complete a booking" },
+              { value: "4.3 / 5", label: "Average session rating" },
             ],
             description: [
-              "The beta confirmed the core mechanic worked. Rebooking at 51% was the number that mattered most: it meant learners found enough value to pay again. The average 17-minute booking time was a known friction point flagged for the next iteration."
+              "51% of learners rebooked after their first session. That was the number that mattered: it meant the product delivered enough value to pay for again."
+            ]
+          },
+          {
+            type: "impact-box",
+            metrics: [
+              { value: "$800k", label: "Seed round raised" },
+            ],
+            description: [
+              "Raised before the video session feature shipped. The raise was built on the calendaring, landing pages, and marketplace prototype, and a thesis the investors bought before COVID changed the context entirely."
             ]
           },
           {
@@ -2296,7 +2563,7 @@ export const PORTFOLIO_DATA = {
             type: "text",
             content: [
               "Prox raised an $800k seed round. The product shipped, ran a real beta, and generated real revenue. Then COVID hit, and the world it was built for changed faster than the company could adapt. We shut down in early 2020.",
-              "In hindsight, the timing was the cruelest kind of irony. We were building infrastructure for video-based expert access before anyone thought they needed it. Six months later, remote video was everyone's daily reality and the market we were targeting exploded. We just weren't there to be part of it.",
+              "We were building infrastructure for video-based expert access before anyone thought they needed it. Six months after we shut down, remote video was everyone's daily reality and the market we had been targeting exploded. That's a difficult thing to sit with.",
               "What I took from Prox: how to make product decisions under real constraints, how to run research that actually changed what shipped, and what it feels like to be the only designer in a room with investors, engineers, and paying users all wanting different things. That education had a price tag attached to it."
             ]
           }
@@ -2306,48 +2573,6 @@ export const PORTFOLIO_DATA = {
     },
       
 
-    // PORTFOLIO
-    {
-      id: "portfolio-systems",
-      company: "Bespoke Portfolio",
-      title: CASE_STUDIES_TITLES["portfolio-systems"],
-      impactSummary: "A live demonstration of full-stack design thinking and iterative product development.",
-      impactSummarySentence: "A bespoke portfolio built to demonstrate staff-level systems thinking and engineering precision.",
-      designerNote: "This portfolio itself is a project in iterative refinement. Every interaction, from the hover stability of the mega-menu to the lazy-loading of interactive prototypes, was designed and built to respect the user's time while proving technical craft.",
-      thumbnail: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80",
-      status: "SHIPPED",
-      type: "SYSTEMS",
-      details: {
-        heroImage: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80",
-        role: "Designer & Engineer",
-        timeline: "Feb 2026",
-        team: "Solo / Ground-Up",
-        type: "FULL STACK DESIGN",
-        services: [SERVICES.SYSTEMS_DESIGN, SERVICES.PROTOTYPING, SERVICES.AI_WORKFLOWS],
-        blocks: [
-          { type: "heading", title: "Overview", hasDivider: false },
-          {
-            type: "text",
-            content: "Standard templates felt restrictive and failed to communicate the specific nuance of staff-level systems thinking. I needed a platform that mirrored the quality of the work it contained, serving as a live demonstration of my design and engineering process."
-          },
-          { type: "heading", title: "Strategy: High-Signal Navigation" },
-          {
-            type: "text",
-            content: "Busy hiring managers often have 30 seconds for an initial pass. I replaced standard project lists with a multi-column mega-menu on desktop and a lean accordion on mobile. This ensures immediate recognition of brand names (Amazon, Patreon) while providing impact-focused summaries for targeted review."
-          },
-          { type: "heading", title: "Engineering the Invisible Bridge" },
-          {
-            type: "text",
-            content: "One common frustration with mega-menus is their sensitivity to mouse movement. I implemented a buffer bridge container to ensure hover stability when transitioning from the navigation trigger to the dropdown, ensuring a fluid, frustration-free experience."
-          },
-          { type: "heading", title: "Responsive Performance" },
-          {
-            type: "text",
-            content: "To showcase complex interactive prototypes without sacrificing load times, I engineered a lazy-loading Figma integration. Prototypes are responsive and scale-to-fit their containers, providing an interactive preview that can be expanded into a dedicated workspace with a single click."
-          }
-        ]
-      }
-    }
   ]
 };
 
