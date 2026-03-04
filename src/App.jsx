@@ -193,7 +193,7 @@ export default function App() {
             }`}
           >
             <a
-              href="/resume.pdf"
+              href="https://docs.google.com/document/d/e/2PACX-1vR6OZ_g0O3dJvY7HvvShcBjGBmurMKH_hLXthETpGtTAb9nhegJg_StEFLdIZGRvB0XVDpW7TIHKkOh/pub"
               target="_blank"
               rel="noopener noreferrer"
               className="type-nav opacity-90 hover:opacity-100 transition-opacity"
@@ -405,9 +405,7 @@ export default function App() {
                   id="form-message"
                   name="message"
                   rows={5}
-                  placeholder={`Do you think AI will replace UX designers?
-
-No. It’ll replace designers who mostly produce deliverables. If I truly believed that, I’d be a full-time bass player already and making it work.`}
+                  placeholder={`Be nice`}
                   className="w-full px-3 py-2 bg-neutral-50 border border-neutral-200 rounded-sm text-sm focus:outline-none focus:border-[#88FF00] transition-colors resize-none"
                 />
               </div>
@@ -419,7 +417,7 @@ No. It’ll replace designers who mostly produce deliverables. If I truly believ
                   <button className="w-full justify-center">Send message</button>
                 </div>
                 <p className="mt-2 text-[10px] text-neutral-400 text-center">
-                  This sends via your email client.
+                  Talk soon!
                 </p>
               </div>
             </form>
@@ -427,14 +425,14 @@ No. It’ll replace designers who mostly produce deliverables. If I truly believ
         </div>
       )}
 
-      <main className="min-h-screen relative bg-white text-left">
+       <main className="min-h-screen relative bg-white text-left">
         {view === "home" && (
           <div className="bg-white animate-fade-in font-sans">
-            <section className="bg-[#231F45] hero-wrap flex flex-col justify-center items-center text-center px-6 min-h-[calc(100vh-var(--header-h))] flex-grow relative overflow-hidden">
+            <section className="bg-[#13102e] hero-wrap flex flex-col justify-center items-center text-center px-6 min-h-[calc(100vh-var(--header-h))] flex-grow relative overflow-hidden">
               {/* Depth gradient — darkens edges, keeps center rich */}
-              <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 90% 80% at 50% 50%, transparent 30%, rgba(10,8,25,0.55) 100%)' }} />
+              <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 90% 80% at 50% 50%, transparent 20%, rgba(5,3,15,0.75) 100%)' }}/>
               {/* Grain texture overlay */}
-              <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.22]" xmlns="http://www.w3.org/2000/svg">
+              <svg className="absolute -top-[5%] -left-[5%] w-[110%] h-[110%] pointer-events-none opacity-[0.22] z-0 animate-grain" xmlns="http://www.w3.org/2000/svg">
                 <filter id="grain">
                   <feTurbulence type="fractalNoise" baseFrequency="0.68" numOctaves="4" stitchTiles="stitch" />
                   <feColorMatrix type="saturate" values="0" />
@@ -442,15 +440,15 @@ No. It’ll replace designers who mostly produce deliverables. If I truly believ
                 <rect width="100%" height="100%" filter="url(#grain)" />
               </svg>
               {/* Neon glow — slightly stronger to punch through */}
-              <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 50% at 50% 40%, rgba(136,255,0,0.09) 0%, transparent 65%)' }} />
-              <div className="max-w-4xl w-full reveal-on-scroll hero-stack">
-                <img src={ASSETS.mainLogo} alt="Bruno Wong Marchena" className="hero-logo" />
+              <div className="absolute inset-0 pointer-events-none z-0" style={{ background: 'radial-gradient(ellipse 70% 50% at 50% 40%, rgba(136,255,0,0.09) 0%, transparent 65%)' }} />
+              <div className="max-w-4xl w-full reveal-on-scroll hero-stack relative z-10">
+                <img src={ASSETS.mainLogo} alt="Bruno Wong Marchena" className="hero-logo glitch-effect" />
                 <div className="max-w-3xl mx-auto">
-      <h1 className="text-slate-100 text-3xl md:text-[2rem] font-medium tracking-tight mb-8 leading-snug">
-  I build AI-powered platforms and use automation to scale what teams can ship.
+      <h1 className="text-slate-100 text-2xl md:text-[1.8rem] font-normal mb-8 leading-snug">
+I build AI-powered platforms and automation systems that redefine how complex organizations operate.
 </h1>
-<p className="text-slate-400 text-2xl md:text-[1.5rem] mb-12 max-w-2xl mx-auto leading-snug font-light">
-  I've automated the work of entire teams at Amazon, cut fulfillment costs in healthcare logistics, and co-invented a <a href="https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/12154126" target="_blank" className="underline underline-offset-4 hover:text-slate-200 transition-colors">patent</a> for how subscription loyalty gets rewarded.
+<p className="text-slate-400 text-2xl md:text-[1.5rem] mb-6 max-w-2xl mx-auto leading-snug font-light">
+  I've automated the work of entire teams at Amazon, cut fulfillment costs in healthcare logistics, and co-invented a <a href="https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/12154126" target="_blank" className="underline underline-offset-4 hover:text-slate-200 transition-colors">patent</a> for subscription systems in the creator economy.
 </p>
     </div>
                 

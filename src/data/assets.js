@@ -3,7 +3,7 @@ export const ASSETS = {
   isoGreen: "https://res.cloudinary.com/diy08lj9x/image/upload/v1768952513/isotipo_green_gusyjv.png",
   jetSansReg: "",
   jetSansItalic: "",
-  mainLogo: "https://res.cloudinary.com/diy08lj9x/image/upload/v1768953149/bruno_mainlogo_unupxd.png",
+  mainLogo: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772603437/bruno_logo_nq6mx6.png",
   aboutPhoto: "https://res.cloudinary.com/diy08lj9x/image/upload/v1768960431/main_photo_ydhs8m.jpg",
   testImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1763877541/cld-sample-4.jpg"
 };

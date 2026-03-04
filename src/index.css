@@ -62,7 +62,7 @@
   --header-h: 56px;
   --hero-pad-y: clamp(48px, 8vh, 80px);
   --hero-gap: clamp(28px, 6vh, 44px);
-  --logo-max-w: clamp(320px, 26.4vw, 460px);
+  --logo-max-w: clamp(280px, 26.4vw, 380px);
   --hero-cta-gap: 16px;
   --space-1: clamp(4px, 0.8vh, 8px);
   --space-2: clamp(6px, 1.0vh, 10px);
@@ -105,9 +105,9 @@
 
 .designer-note {
   font-family: "Source Sans 3", sans-serif;
-  font-size: 1.5rem; /* text-lg */
+  font-size: 1.3rem; /* text-lg */
   font-weight: 300; /* lighter */
-  line-height: 1.5; /* airier */
+  line-height: 1.4; /* airier */
   color: #262626; /* neutral-800 */
 }
 
@@ -192,4 +192,69 @@
     height: 18px;
     margin-top: 8px;
   }
+}
+
+/* --- GLITCH & GRAIN EFFECTS --- */
+
+/* Combined 8-second subtle glitch loop */
+@keyframes subtle-loop-glitch {
+  /* Main Glitch (0% to 5%) - Digital tear/stutter (No clip-path blinking) */
+  0% {
+    transform: translate(0) skewX(0) scale(1);
+    filter: none;
+  }
+  1% {
+    /* Horizontal shift and RGB split */
+    transform: translate(-4px, 0) skewX(4deg) scale(1.02);
+    filter: drop-shadow(3px 0px 0px rgba(255, 0, 85, 0.5)) drop-shadow(-3px 0px 0px rgba(0, 255, 255, 0.5));
+  }
+  2% {
+    /* Snap back the other way */
+    transform: translate(4px, 0) skewX(-4deg) scale(1.02);
+    filter: drop-shadow(-3px 0px 0px rgba(255, 0, 85, 0.5)) drop-shadow(3px 0px 0px rgba(0, 255, 255, 0.5));
+  }
+  3% {
+    /* Settle with a green flash */
+    transform: translate(-2px, 1px) skewX(1deg);
+    filter: drop-shadow(2px 0px 0px rgba(136, 255, 0, 0.5));
+  }
+  4% {
+    transform: translate(1px, -1px) skewX(-1deg);
+    filter: none;
+  }
+  5%, 48% {
+    transform: translate(0) skewX(0) scale(1);
+    filter: none;
+  }
+  
+  /* Mid-cycle tiny flicker (49% to 52%) - kept exactly as requested! */
+  49% { opacity: 1; filter: none; transform: translate(0); }
+  50% { opacity: 0.9; filter: drop-shadow(1px 0px 0px rgba(0, 255, 255, 0.3)); transform: translate(-1px, 1px); }
+  51% { opacity: 0.9; filter: drop-shadow(-1px 0px 0px rgba(255, 0, 85, 0.3)); transform: translate(1px, -1px); }
+  52%, 100% { opacity: 1; filter: none; transform: translate(0); }
+}
+
+.glitch-effect {
+  /* Runs the entire 8-second cycle infinitely */
+  animation: subtle-loop-glitch 8s infinite;
+}
+
+/* Subtle Animated Grain / Static Effect */
+@keyframes grain-jitter {
+  0% { transform: translate(0, 0); }
+  10% { transform: translate(-0.5%, -0.5%); }
+  20% { transform: translate(0.5%, 0.5%); }
+  30% { transform: translate(-0.5%, 0.5%); }
+  40% { transform: translate(0.5%, -0.5%); }
+  50% { transform: translate(-0.5%, -0.5%); }
+  60% { transform: translate(0.5%, 0.5%); }
+  70% { transform: translate(-0.5%, 1%); }
+  80% { transform: translate(0.5%, -1%); }
+  90% { transform: translate(-1%, 0.5%); }
+  100% { transform: translate(0, 0); }
+}
+
+.animate-grain {
+  /* steps(1) creates a choppy, frame-by-frame look instead of smooth sliding */
+  animation: grain-jitter 0.8s steps(1) infinite;
 }

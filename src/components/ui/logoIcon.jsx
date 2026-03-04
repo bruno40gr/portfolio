@@ -23,7 +23,7 @@ const LogoIcon = ({ theme = "light", company = null }) => {
 
   return (
     <div className="w-10 h-10 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300">
-      <img src={src} alt="Logo" className="w-full h-full object-contain" />
+      <img src={src} alt="Logo" className="w-full h-full object-contain glitch-effect" />
     </div>
   );
 };
