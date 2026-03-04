@@ -6,7 +6,7 @@ import { PORTFOLIO_DATA, WORK_GROUPS } from "./data/portfolioData";
 
 import WorkDropdown from "./components/ui/WorkDropdown";
 import LogoIcon from "./components/ui/logoIcon";
-import Button from "./components/ui/Button";
+
 
 import CompanyStripe from "./components/home/CompanyStripe";
 import WorkSection from "./components/home/WorkSection";
@@ -416,7 +416,7 @@ No. It’ll replace designers who mostly produce deliverables. If I truly believ
 
               <div className="pt-1 flex flex-col items-center">
                 <div className="w-full flex justify-center">
-                  <Button className="w-full justify-center">Send message</Button>
+                  <button className="w-full justify-center">Send message</button>
                 </div>
                 <p className="mt-2 text-[10px] text-neutral-400 text-center">
                   This sends via your email client.
@@ -455,9 +455,8 @@ No. It’ll replace designers who mostly produce deliverables. If I truly believ
     </div>
                 
                 <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-      <Button onClick={() => setIsContactOpen(true)} className="px-10 py-4 bg-[#88FF00] text-black font-bold rounded-full hover:scale-105 transition-transform">
-        Let's chat
-      </Button>
+     <button onClick={() => setIsContactOpen(true)} className="px-10 py-4 bg-[#88FF00] text-black font-bold rounded-full hover:scale-105 transition-transform">
+Let's chat</button>
       <p className="text-slate-400 text-lg md:text-xl font-light tracking-wide">
         Available for freelance and contract work
       </p>
