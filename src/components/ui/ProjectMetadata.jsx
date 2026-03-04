@@ -1,36 +1,41 @@
 import React from "react";
-import { PROJECT_STATUS, PRODUCT_TYPES } from "../../data/tokens";
-import Pill from "./Pill";
+import { PROJECT_STATUS } from "../../data/tokens";
 
-const MetaLabel = ({ children, mb = 2 }) => (
-  <div className={`meta-label mb-${mb}`}>{children}</div>
-);
+const STATUS_TEXT_COLOR = {
+  LAUNCHED:   "text-emerald-700",
+  IN_BUILD:   "text-blue-700",
+  LEGACY:     "text-slate-500",
+  DEPRECATED: "text-rose-700",
+};
 
-export default function ProjectMetadata({ role, timeline, status, type }) {
+const MetaField = ({ label, value, valueClassName = "" }) => {
+  if (!value) return null;
+  return (
+    <div className="min-w-0">
+      <div className="meta-label mb-1">{label}</div>
+      <div className={`text-base font-normal leading-snug ${valueClassName || "text-neutral-900"}`}>
+        {value}
+      </div>
+    </div>
+  );
+};
+
+export default function ProjectMetadata({ role, timeline, status, collaborators }) {
   const safeStatus = PROJECT_STATUS[status] || PROJECT_STATUS.IN_BUILD;
-  const typeLabel = PRODUCT_TYPES[type] || type;
+  const statusKey = Object.keys(PROJECT_STATUS).find((k) => k === status) || "IN_BUILD";
+  const statusColor = STATUS_TEXT_COLOR[statusKey] || "text-neutral-600";
 
   return (
-    <div className="w-full mb-6 md:mb-8 py-3 md:py-4">
-      <div className="grid grid-cols-2 md:grid-cols-[140px_140px_140px_1fr] gap-y-4 md:gap-y-6 gap-x-4">
-        <div>
-          <MetaLabel>Status</MetaLabel>
-          <Pill label={safeStatus.label} theme={safeStatus.theme} icon={safeStatus.icon} size="md" />
-        </div>
-        <div className="min-w-0">
-          <MetaLabel mb={4}>Product Type</MetaLabel>
-          <div className="text-neutral-900 text-lg font-semibold leading-tight truncate ">
-            {Array.isArray(typeLabel) ? typeLabel.join(", ") : typeLabel}
-          </div>
-        </div>
-        <div className="min-w-0">
-          <MetaLabel mb={4}>Role</MetaLabel>
-          <div className="text-neutral-900 text-lg font-semibold leading-tight">{role}</div>
-        </div>
-        <div className="min-w-0">
-          <MetaLabel mb={4}>Timeline</MetaLabel>
-          <div className="text-neutral-900 text-lg font-semibold leading-tight">{timeline}</div>
-        </div>
+    <div className="w-full mb-6 md:mb-8 py-3 md:py-4 border-t border-b border-neutral-100">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-y-6 gap-x-6 pt-4 pb-2">
+        <MetaField
+          label="Status"
+          value={safeStatus.label}
+          valueClassName={statusColor}
+        />
+        <MetaField label="Role" value={role} />
+        <MetaField label="With" value={collaborators} />
+        <MetaField label="Timeline" value={timeline} />
       </div>
     </div>
   );

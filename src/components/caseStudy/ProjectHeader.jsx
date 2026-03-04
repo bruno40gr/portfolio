@@ -1,5 +1,6 @@
 import React from "react";
 import { COMPANY_STRIPE_LOGOSSQUARED } from "../../data/assets";
+import { PRODUCT_TYPES } from "../../data/tokens";
 
 const normalize = (value) => value?.toLowerCase?.().trim?.() || "";
 const findLogo = (company) => {
@@ -10,10 +11,18 @@ const findLogo = (company) => {
   });
 };
 
-const ProjectHeader = ({ company, title, services = [] }) => {
+const ProjectHeader = ({ company, title, type }) => {
   if (!company && !title) return null;
   const logo = company ? findLogo(company) : null;
-  const serviceLine = Array.isArray(services) ? services.join(" · ") : services;
+  
+  let typeLabel = "";
+  if (type) {
+     if (Array.isArray(type)) {
+         typeLabel = type.map(t => PRODUCT_TYPES[t] || t).join(" · ");
+     } else {
+         typeLabel = PRODUCT_TYPES[type] || type;
+     }
+  }
 
   return (
     <div className="flex items-center gap-4 mb-8">
@@ -27,7 +36,7 @@ const ProjectHeader = ({ company, title, services = [] }) => {
       )}
       <div className="text-left">
         <h2 className="text-xl md:text-2xl text-slate-900 font-bold tracking-tight leading-snug">{title || company}</h2>
-        {serviceLine && <div className="meta-label">{serviceLine}</div>}
+        {typeLabel && <div className="meta-label mt-1">{typeLabel}</div>}
       </div>
     </div>
   );

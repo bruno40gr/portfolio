@@ -119,6 +119,8 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
             processStepTitle: lastHeading,
           });
         });
+      } else if (block.type === "list" && block.items) {          // <-- PASTE ENDS HERE
+        
       } else if (block.type === "list" && block.items) {
         block.items.forEach((item) => {
           const itemContent = item && typeof item === "object" && !Array.isArray(item) ? item.content : item;
@@ -232,7 +234,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                   <img
                     src={block.src}
                     alt={imageCaption}
-                    className="w-full h-auto object-cover transition-transform duration-700 ease-in-out group-hover:scale-[1.005]"
+                    className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-[1.01]"
                   />
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <div className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center text-[var(--deep-purple)] shadow-lg opacity-0 translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 group-hover:bg-[var(--neon-green)] group-hover:border-[var(--neon-green)] transition-all duration-300 transform scale-90 group-hover:scale-100">
@@ -267,7 +269,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                   <img
                     src={img.src}
                     alt={captionShort}
-                    className="w-full h-auto object-cover transition-transform duration-700 ease-in-out group-hover:scale-[1.005]"
+                    className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-[1.01]"
                   />
                 </div>
               </div>
@@ -542,7 +544,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                 <ProjectHeader
                   company={project.company}
                   title={project.title}
-                  services={project.details?.services}
+                  type={project.details?.type || project.type}
                 />
               </div>
 
@@ -564,8 +566,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                 role={project.details?.role || "Role TBD"}
                 timeline={project.details?.timeline || "Timeline TBD"}
                 status={project.status}
-                type={project.type || project.details?.type}
-                services={project.details?.services || []}
+                collaborators={project.details?.collaborators}
               />
 
               {isPillar && (

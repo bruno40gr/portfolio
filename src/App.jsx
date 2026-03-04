@@ -10,11 +10,20 @@ import LogoIcon from "./components/ui/logoIcon";
 
 import CompanyStripe from "./components/home/CompanyStripe";
 import WorkSection from "./components/home/WorkSection";
+import Changelog from "./components/home/Changelog";
 
 import CaseStudy from "./components/caseStudy/CaseStudy";
 import CaseStudyStyleGuide from "./components/caseStudy/CaseStudyStyleGuide";
 
 export default function App() {
+  // Authentication State
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    return sessionStorage.getItem("portfolio_auth") === "true";
+  });
+  const [password, setPassword] = useState("");
+  const [authError, setAuthError] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
+
   const [view, setView] = useState("home");
   const [activeProject, setActiveProject] = useState(null);
   const [scrolled, setScrolled] = useState(false);
@@ -53,6 +62,25 @@ export default function App() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  // --- LOGIN LOGIC ---
+  const handleLogin = (e) => {
+    e.preventDefault();
+    
+    // CHANGE YOUR PASSWORD HERE
+    if (password.toLowerCase() === "lima") {
+      setAuthError("");
+      setIsSuccess(true);
+      // Small artificial delay so the user sees the "Access Granted" message
+      setTimeout(() => {
+        setIsAuthenticated(true);
+        sessionStorage.setItem("portfolio_auth", "true");
+      }, 600);
+    } else {
+      setAuthError("Incorrect password");
+      setIsSuccess(false);
+    }
+  };
 
   const navigateTo = (page, anchor) => {
     if (page === "home" && anchor === "work") {
@@ -114,14 +142,137 @@ export default function App() {
 
   const navTheme = view === "home" && !scrolled ? "dark" : "light";
 
+  // Shared footer component extracted so it can be used on both Gatekeeper and Main App
+  const renderFooter = (theme = "light") => {
+    const isDark = theme === "dark";
+    
+    const footerBg = isDark ? "bg-transparent border-t-0" : "bg-neutral-100 border-t border-neutral-200";
+    const textColor = isDark ? "text-slate-400" : "text-neutral-400";
+    const hoverColor = isDark ? "hover:text-slate-200" : "hover:text-neutral-600";
+    const borderColor = isDark ? "border-slate-500 hover:border-slate-300" : "border-neutral-300 hover:border-neutral-500";
+    const yearColor = isDark ? "text-slate-500 hover:text-slate-300" : "text-stone-400 hover:text-stone-600";
+
+    return (
+      <footer className={`py-12 md:py-16 font-sans mt-auto relative z-20 ${footerBg}`}>
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12 text-center">
+          <div className="mb-6">
+            <p className={`${textColor} text-xs md:text-sm font-light tracking-wide leading-relaxed`}>
+              Designed and built from the ground up by Bruno Wong. <br className="md:hidden" />
+              Coded in VS Code with React, Tailwind, and{" "}
+              <button 
+                onClick={() => navigateTo("changelog")}
+                className={`${hoverColor} border-b ${borderColor} transition-all cursor-help`}
+              >
+                iterative refinement
+              </button>.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => navigateTo("case-styles")}
+            className={`${yearColor} font-bold uppercase tracking-[0.2em] text-[10px] transition-colors`}
+            aria-label="Open case study style guide"
+          >
+            &copy; {new Date().getFullYear()} Bruno Wong Marchena.
+          </button>
+        </div>
+      </footer>
+    );
+  };
+
+  // --- PASSWORD GATEKEEPER VIEW ---
+  // Allow access to the changelog without authentication
+  if (!isAuthenticated && view !== "changelog") {
+    return (
+      <div className="min-h-screen flex flex-col text-left selection:bg-[#88FF00] selection:text-black bg-[#2d255c] relative overflow-hidden">
+        
+        {/* Background effects moved to outer wrapper so they underlap the footer */}
+        {/* Depth gradient: Increased contrast with a harsher, darker falloff at the edges */}
+        <div className="absolute inset-0 pointer-events-none z-0" style={{ background: 'radial-gradient(circle at 50% 50%, transparent 10%, rgba(10, 8, 20, 0.95) 90%)' }}></div>
+        
+        {/* Grain texture overlay: Bumped opacity up to 0.40 for heavier texture */}
+        <svg className="absolute -top-[5%] -left-[5%] w-[110%] h-[110%] pointer-events-none opacity-[0.30] z-0 animate-grain" xmlns="http://www.w3.org/2000/svg">
+          <filter id="grain">
+            <feTurbulence type="fractalNoise" baseFrequency="0.68" numOctaves="4" stitchTiles="stitch" />
+            <feColorMatrix type="saturate" values="0" />
+          </filter>
+          <rect width="100%" height="100%" filter="url(#grain)" />
+        </svg>
+        
+        {/* Neon glow: Increased opacity from 0.09 to 0.20 to create a noticeable backlight */}
+        <div className="absolute inset-0 pointer-events-none z-0" style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 40%, rgba(136,255,0,0.20) 0%, transparent 65%)' }}></div>
+
+        {/* Added pt-[var(--header-h)] to perfectly match the homepage's vertical centering offsets */}
+        <main className="flex-grow flex flex-col justify-center items-center text-center px-6 relative z-10 hero-wrap pt-[var(--header-h)]">
+          
+          <div className="relative w-full max-w-4xl animate-fade-in hero-stack">
+            
+            {/* Logo */}
+            <img 
+              src="https://res.cloudinary.com/diy08lj9x/image/upload/v1772648447/bruno-logo-whitewong_q7cxxn.png" 
+              alt="Bruno Wong Marchena" 
+              className="hero-logo glitch-effect" 
+            />
+            
+            {/* Subheadline */}
+            <h2 className="font-sans text-xl md:text-2xl text-slate-400 font-light tracking-wide -mt-4 mb-8">
+              Product Design
+            </h2>
+            
+            {/* The Form */}
+            <form onSubmit={handleLogin} className="w-full flex flex-col items-center gap-4 mt-2">
+              
+              {/* Stark White Input Field */}
+              <div className="w-full max-w-[280px]">
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => { setPassword(e.target.value); setAuthError(""); setIsSuccess(false); }}
+                  placeholder="Password"
+                  autoComplete="off"
+                  className={`w-full px-4 py-3 bg-white border border-transparent rounded-sm text-lg focus:outline-none focus:ring-2 focus:ring-[#88FF00] transition-shadow text-slate-900 text-center font-bold tracking-widest placeholder:text-slate-400 placeholder:font-normal placeholder:tracking-normal ${authError ? 'ring-2 ring-red-500' : ''}`}
+                />
+              </div>
+
+              {/* Classic Pill Button matching your existing UI */}
+              <button 
+                type="submit" 
+                className="w-full max-w-[280px] px-10 py-4 bg-[#88FF00] text-black font-bold rounded-full hover:scale-105 transition-transform"
+              >
+                Enter
+              </button>
+              
+              {/* Error / Loading States */}
+              <div className="h-6 flex items-center justify-center mt-2">
+                {authError && (
+                  <p className="text-red-500 text-sm font-bold tracking-wide">
+                    {authError}
+                  </p>
+                )}
+                {isSuccess && (
+                  <p className="text-[#88FF00] text-sm font-bold tracking-wide">
+                    Access Granted...
+                  </p>
+                )}
+              </div>
+            </form>
+          </div>
+        </main>
+        {renderFooter("dark")}
+      </div>
+    );
+  }
+
+  // --- MAIN SITE RENDER ---
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-black selection:text-white relative text-left">
-      <nav
-        ref={headerRef}
-        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
-          navTheme === "dark" ? "bg-transparent py-4" : "bg-white/95 border-b border-neutral-200 py-3 shadow-sm"
-        }`}
-      >
+      {view !== "changelog" && (
+        <nav
+          ref={headerRef}
+          className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
+            navTheme === "dark" ? "bg-transparent py-4" : "bg-white/95 border-b border-neutral-200 py-3 shadow-sm"
+          }`}
+        >
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-[1fr_auto_1fr] items-center">
           <div
             className={`flex items-center justify-start md:justify-end gap-4 md:gap-14 transition-colors duration-300 ${
@@ -208,7 +359,8 @@ export default function App() {
             </button>
           </div>
         </div>
-      </nav>
+        </nav>
+      )}
 
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-[180] bg-white text-slate-900 md:hidden flex flex-col">
@@ -425,14 +577,14 @@ export default function App() {
         </div>
       )}
 
-       <main className="min-h-screen relative bg-white text-left">
+      <main className="min-h-screen relative bg-white text-left">
         {view === "home" && (
           <div className="bg-white animate-fade-in font-sans">
-            <section className="bg-[#13102e] hero-wrap flex flex-col justify-center items-center text-center px-6 min-h-[calc(100vh-var(--header-h))] flex-grow relative overflow-hidden">
+            <section className="bg-[#2d255c] hero-wrap flex flex-col justify-center items-center text-center px-6 min-h-[calc(100vh-var(--header-h))] flex-grow relative overflow-hidden">
               {/* Depth gradient — darkens edges, keeps center rich */}
-              <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 90% 80% at 50% 50%, transparent 20%, rgba(5,3,15,0.75) 100%)' }}/>
+              <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 50% 50%, transparent 10%, rgba(10, 8, 20, 1) 90%)' }}/>
               {/* Grain texture overlay */}
-              <svg className="absolute -top-[5%] -left-[5%] w-[110%] h-[110%] pointer-events-none opacity-[0.22] z-0 animate-grain" xmlns="http://www.w3.org/2000/svg">
+              <svg className="absolute -top-[5%] -left-[5%] w-[110%] h-[110%] pointer-events-none opacity-[0.30] z-0 animate-grain" xmlns="http://www.w3.org/2000/svg">
                 <filter id="grain">
                   <feTurbulence type="fractalNoise" baseFrequency="0.68" numOctaves="4" stitchTiles="stitch" />
                   <feColorMatrix type="saturate" values="0" />
@@ -440,25 +592,27 @@ export default function App() {
                 <rect width="100%" height="100%" filter="url(#grain)" />
               </svg>
               {/* Neon glow — slightly stronger to punch through */}
-              <div className="absolute inset-0 pointer-events-none z-0" style={{ background: 'radial-gradient(ellipse 70% 50% at 50% 40%, rgba(136,255,0,0.09) 0%, transparent 65%)' }} />
+              <div className="absolute inset-0 pointer-events-none z-0" style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 40%, rgba(136,255,0,0.20) 0%, transparent 65%)' }} />
+              
               <div className="max-w-4xl w-full reveal-on-scroll hero-stack relative z-10">
-                <img src={ASSETS.mainLogo} alt="Bruno Wong Marchena" className="hero-logo glitch-effect" />
+                <img src="https://res.cloudinary.com/diy08lj9x/image/upload/v1772648447/bruno-logo-whitewong_q7cxxn.png" alt="Bruno Wong Marchena" className="hero-logo glitch-effect" />
                 <div className="max-w-3xl mx-auto">
-      <h1 className="text-slate-100 text-2xl md:text-[1.8rem] font-normal mb-8 leading-snug">
-I build AI-powered platforms and automation systems that redefine how complex organizations operate.
-</h1>
-<p className="text-slate-400 text-2xl md:text-[1.5rem] mb-6 max-w-2xl mx-auto leading-snug font-light">
-  I've automated the work of entire teams at Amazon, cut fulfillment costs in healthcare logistics, and co-invented a <a href="https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/12154126" target="_blank" className="underline underline-offset-4 hover:text-slate-200 transition-colors">patent</a> for subscription systems in the creator economy.
-</p>
-    </div>
+                  <h1 className="text-slate-300 text-2xl md:text-[1.8rem] font-light md:mt-8 mb-8 leading-snug">
+                    I build AI-powered platforms and automation systems that redefine how complex organizations operate.
+                  </h1>
+                  <p className="text-slate-400 text-2xl md:text-[1.5rem] mb-4 max-w-2xl mx-auto leading-snug font-light">
+                    I've automated the work of entire teams at Amazon, cut fulfillment costs in healthcare logistics, and co-invented a patent for subscription systems in the creator economy.
+                  </p>
+                </div>
                 
                 <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-     <button onClick={() => setIsContactOpen(true)} className="px-10 py-4 bg-[#88FF00] text-black font-bold rounded-full hover:scale-105 transition-transform">
-Let's chat</button>
-      <p className="text-slate-400 text-lg md:text-xl font-light tracking-wide">
-        Available for freelance and contract work
-      </p>
-    </div>
+                  <button onClick={() => setIsContactOpen(true)} className="px-10 py-4 bg-[#88FF00] text-black font-bold rounded-full hover:scale-105 transition-transform">
+                    Let's chat
+                  </button>
+                  <p className="text-slate-400 text-lg md:text-xl font-light tracking-wide">
+                    Available for freelance and contract work
+                  </p>
+                </div>
               </div>
             </section>
 
@@ -501,34 +655,14 @@ Let's chat</button>
         {view === "case-styles" && (
           <CaseStudyStyleGuide onBack={handleBackNavigation} />
         )}
+
+        {view === "changelog" && (
+          <Changelog />
+        )}
       </main>
 
-      {view !== "project-view" && (
-        <footer className="bg-neutral-100 py-12 md:py-16 border-t border-neutral-200 font-sans">
-          <div className="max-w-[1400px] mx-auto px-6 md:px-12 text-center">
-            <div className="mb-6">
-              <p className="text-neutral-400 text-xs md:text-sm font-light tracking-wide leading-relaxed">
-                Designed and built from the ground up by Bruno Wong. <br className="md:hidden" />
-                Coded in VS Code with React, Tailwind, and{" "}
-                <button 
-                  onClick={() => openProject("portfolio-systems")}
-                  className="hover:text-neutral-600 border-b border-neutral-300 hover:border-neutral-500 transition-all cursor-help"
-                >
-                  iterative refinement
-                </button>.
-              </p>
-            </div>
-            <button
-              type="button"
-              onClick={() => navigateTo("case-styles")}
-              className="text-stone-400 font-bold uppercase tracking-[0.2em] text-[10px] hover:text-stone-600 transition-colors"
-              aria-label="Open case study style guide"
-            >
-              &copy; {new Date().getFullYear()} Bruno Wong Marchena.
-            </button>
-          </div>
-        </footer>
-      )}
+      {/* RENDER FOOTER FOR MAIN SITE */}
+      {view !== "project-view" && renderFooter(view === "changelog" ? "dark" : "light")}
     </div>
   );
 }
