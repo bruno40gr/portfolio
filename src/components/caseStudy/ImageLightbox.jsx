@@ -1,50 +1,64 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { FileText, ChevronLeft, ChevronRight, X, Loader2, Figma } from "lucide-react";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
-// ✅ Ensure this points to the corrected FigmaEmbed file
-// If your fixed FigmaEmbed is in ../ui keep it; if it's in the same folder, use "./FigmaEmbed"
 import { FigmaEmbed } from "../ui/FigmaEmbed";
 
 const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
-  const [currentIndex, setCurrentIndex] = useState(initialIndex);
-  const [isLoading, setIsLoading] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(initialIndex ?? 0);
+  const [imgLoaded, setImgLoaded] = useState(false);
+  // Ref to capture the body overflow value at the moment the lightbox opens,
+  // so we can restore it reliably even if the component unmounts while open.
+  const savedOverflow = useRef("");
 
+  // ─── Body scroll lock ────────────────────────────────────────────────────
+  // This effect always runs (no `if (open)` guard) so its cleanup always fires,
+  // which is what prevents the page from staying locked after the lightbox closes.
   useEffect(() => {
     if (open) {
-      const originalStyle = window.getComputedStyle(document.body).overflow;
-      const originalTouchAction = window.getComputedStyle(document.body).touchAction;
+      savedOverflow.current = document.body.style.overflow || "";
       document.body.style.overflow = "hidden";
-      document.body.style.touchAction = "none";
-      return () => {
-        document.body.style.overflow = originalStyle;
-        document.body.style.touchAction = originalTouchAction;
-      };
+    } else {
+      // Restore unconditionally whenever open flips to false.
+      document.body.style.overflow = savedOverflow.current;
     }
+    // Also restore on unmount, regardless of `open` value.
+    return () => {
+      document.body.style.overflow = savedOverflow.current;
+    };
   }, [open]);
 
-  useEffect(() => {
-    if (open) setCurrentIndex(initialIndex);
-  }, [open, initialIndex]);
-
+  // ─── Sync index when lightbox opens ─────────────────────────────────────
   useEffect(() => {
     if (open) {
-      setIsLoading(true);
-      const timer = setTimeout(() => setIsLoading(false), 400);
-      return () => clearTimeout(timer);
+      setCurrentIndex(initialIndex ?? 0);
+      setImgLoaded(false);
     }
-  }, [currentIndex, open]);
+  }, [open, initialIndex]);
 
-  const nextItem = (e) => {
-    if (e) e.stopPropagation();
-    setCurrentIndex((prev) => (prev + 1) % mediaItems.length);
-  };
+  // ─── Reset loaded state when navigating ─────────────────────────────────
+  useEffect(() => {
+    setImgLoaded(false);
+  }, [currentIndex]);
 
-  const prevItem = (e) => {
-    if (e) e.stopPropagation();
-    setCurrentIndex((prev) => (prev - 1 + mediaItems.length) % mediaItems.length);
-  };
+  // ─── Navigation ──────────────────────────────────────────────────────────
+  const nextItem = useCallback(
+    (e) => {
+      if (e) e.stopPropagation();
+      setCurrentIndex((prev) => (prev + 1) % mediaItems.length);
+    },
+    [mediaItems.length]
+  );
 
+  const prevItem = useCallback(
+    (e) => {
+      if (e) e.stopPropagation();
+      setCurrentIndex((prev) => (prev - 1 + mediaItems.length) % mediaItems.length);
+    },
+    [mediaItems.length]
+  );
+
+  // ─── Keyboard shortcuts ───────────────────────────────────────────────────
   useEffect(() => {
     if (!open) return;
     const handleKeyDown = (e) => {
@@ -54,12 +68,15 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [open, currentIndex]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [open, nextItem, prevItem, onClose]);
 
   const activeItem = mediaItems?.[currentIndex];
   if (!open || !activeItem) return null;
 
   const isFigma = activeItem.type === "figma";
+  const isImage = !activeItem.type || activeItem.type === "image";
+  // Show spinner only for plain images while they load; iframes handle their own loading.
+  const showSpinner = isImage && !imgLoaded;
 
   return (
     <div
@@ -67,7 +84,7 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
       style={{ overscrollBehavior: "contain" }}
       onClick={onClose}
     >
-      {/* Top Bar */}
+      {/* ── Top Bar ─────────────────────────────────────────────────────────── */}
       <div
         className="flex justify-between items-center px-4 py-2.5 md:px-6 md:py-4 z-20 border-b border-white/10 shrink-0 bg-[#050505]"
         onClick={(e) => e.stopPropagation()}
@@ -93,7 +110,7 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
         </button>
       </div>
 
-      {/* Main Container */}
+      {/* ── Main Container ───────────────────────────────────────────────────── */}
       <div className="flex-1 flex flex-col md:flex-row min-h-0 overflow-hidden">
         {/* Left Stage */}
         <div className="h-[60vh] md:h-auto md:flex-1 relative flex items-center justify-between group/nav bg-black/40 shrink-0 touch-none">
@@ -110,41 +127,56 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
             }`}
             onClick={(e) => e.stopPropagation()}
           >
-            {isLoading ? (
-              <div className="flex flex-col items-center justify-center gap-4">
-                <Loader2 size={32} className="animate-spin text-neutral-600 md:w-10 md:h-10" />
-              </div>
-            ) : (
-              <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
-                {activeItem.type === "pdf" ? (
-                  <div className="w-full h-full max-w-5xl bg-[#1E1E1E] border border-white/10 rounded-lg shadow-2xl overflow-hidden p-1 animate-in zoom-in-95 duration-300">
-                    <iframe
-                      src={activeItem.src}
-                      className="w-full h-full bg-white rounded-sm"
-                      title="PDF Preview"
-                    />
-                  </div>
-                ) : activeItem.type === "video" ? (
-                  <div className="w-full max-w-5xl aspect-video bg-black border border-white/10 rounded-lg shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
-                    <iframe
-                      src={
-                        activeItem.src.includes("loom.com/share/")
-                          ? activeItem.src.replace("loom.com/share/", "loom.com/embed/")
-                          : activeItem.src
-                      }
-                      title={activeItem.title || "Video content"}
-                      className="w-full h-full"
-                      frameBorder="0"
-                      allowFullScreen
-                    />
-                  </div>
-                ) : activeItem.type === "figma" ? (
-                  <div className="w-full max-w-4xl bg-white rounded-lg shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
-                    {/* ✅ Let FigmaEmbed normalize/wrap every time */}
-                    <FigmaEmbed src={activeItem.src} title={activeItem.title} scaling="contain" />
-                  </div>
-                ) : (
+            <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+
+              {/* ── PDF ──────────────────────────────────────────────────────── */}
+              {activeItem.type === "pdf" && (
+                <div className="w-full h-full max-w-5xl bg-[#1E1E1E] border border-white/10 rounded-lg shadow-2xl overflow-hidden p-1 animate-in zoom-in-95 duration-300">
+                  <iframe
+                    src={activeItem.src}
+                    className="w-full h-full bg-white rounded-sm"
+                    title="PDF Preview"
+                  />
+                </div>
+              )}
+
+              {/* ── Video ────────────────────────────────────────────────────── */}
+              {activeItem.type === "video" && (
+                <div className="w-full max-w-5xl aspect-video bg-black border border-white/10 rounded-lg shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
+                  <iframe
+                    src={
+                      activeItem.src.includes("loom.com/share/")
+                        ? activeItem.src.replace("loom.com/share/", "loom.com/embed/")
+                        : activeItem.src
+                    }
+                    title={activeItem.title || "Video content"}
+                    className="w-full h-full"
+                    frameBorder="0"
+                    allowFullScreen
+                  />
+                </div>
+              )}
+
+              {/* ── Figma ────────────────────────────────────────────────────── */}
+              {activeItem.type === "figma" && (
+                <div className="w-full max-w-4xl bg-white rounded-lg shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
+                  <FigmaEmbed src={activeItem.src} title={activeItem.title} scaling="contain" />
+                </div>
+              )}
+
+              {/* ── Image ────────────────────────────────────────────────────── */}
+              {isImage && (
+                <>
+                  {/* Spinner sits on top while the image loads, but the image
+                      is always mounted so the browser can fetch it immediately. */}
+                  {showSpinner && (
+                    <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+                      <Loader2 size={32} className="animate-spin text-neutral-600 md:w-10 md:h-10" />
+                    </div>
+                  )}
+
                   <TransformWrapper
+                    key={activeItem.src} // reset zoom state when image changes
                     limitToBounds={false}
                     minScale={0.5}
                     maxScale={8}
@@ -162,15 +194,23 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
                       }}
                     >
                       <img
+                        key={activeItem.src}
                         src={activeItem.src}
-                        alt={activeItem.captionShort}
-                        className="max-h-full max-w-full object-contain drop-shadow-[0_15px_45px_rgba(0,0,0,0.8)] animate-in zoom-in-95 duration-300"
+                        alt={activeItem.captionShort || ""}
+                        // Fade in only after the image has decoded and painted.
+                        className={`max-h-full max-w-full object-contain drop-shadow-[0_15px_45px_rgba(0,0,0,0.8)] transition-opacity duration-300 ${
+                          imgLoaded ? "opacity-100 animate-in zoom-in-95" : "opacity-0"
+                        }`}
+                        onLoad={() => setImgLoaded(true)}
+                        // If the browser serves from cache, onLoad may not fire;
+                        // onError is also a terminal state — stop spinning either way.
+                        onError={() => setImgLoaded(true)}
                       />
                     </TransformComponent>
                   </TransformWrapper>
-                )}
-              </div>
-            )}
+                </>
+              )}
+            </div>
           </div>
 
           <button
@@ -181,7 +221,7 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
           </button>
         </div>
 
-        {/* Sidebar */}
+        {/* ── Sidebar ─────────────────────────────────────────────────────────── */}
         <div
           className="flex-1 md:flex-none md:w-[25%] md:min-w-[320px] bg-[#0a0a0a] border-t md:border-t-0 md:border-l border-white/10 flex flex-col overflow-hidden"
           onClick={(e) => e.stopPropagation()}

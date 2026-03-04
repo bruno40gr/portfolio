@@ -105,6 +105,20 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
           fileSize: "N/A",
           processStepTitle: lastHeading,
         });
+      } else if (block.type === "image-grid" && block.images) {   // <-- PASTE STARTS HERE
+        block.images.forEach((img) => {
+          const captionShort = typeof img.caption === "object" ? img.caption.short : img.caption;
+          const captionVerbose = typeof img.caption === "object" ? img.caption.verbose : "";
+          media.push({
+            type: "image",
+            src: img.src,
+            title: captionShort || "Visual",
+            captionShort: captionShort || "",
+            captionVerbose: captionVerbose || "",
+            fileSize: "N/A",
+            processStepTitle: lastHeading,
+          });
+        });
       } else if (block.type === "list" && block.items) {
         block.items.forEach((item) => {
           const itemContent = item && typeof item === "object" && !Array.isArray(item) ? item.content : item;
@@ -218,7 +232,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                   <img
                     src={block.src}
                     alt={imageCaption}
-                    className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-[1.01]"
+                    className="w-full h-auto object-cover transition-transform duration-700 ease-in-out group-hover:scale-[1.005]"
                   />
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <div className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center text-[var(--deep-purple)] shadow-lg opacity-0 translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 group-hover:bg-[var(--neon-green)] group-hover:border-[var(--neon-green)] transition-all duration-300 transform scale-90 group-hover:scale-100">
@@ -234,6 +248,43 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         );
       }
 
+      case "image-grid": {
+  const cols = block.columns || 2;
+  return (
+    <div key={index} className={`mb-10 grid grid-cols-1 sm:grid-cols-${cols} gap-4`}>
+      {block.images.map((img, i) => {
+        const globalIndex = allMediaItems.findIndex((item) => item.src === img.src);
+        const captionShort = typeof img.caption === "object" ? img.caption.short : img.caption;
+        return (
+          <div key={i}>
+            <button
+              type="button"
+              onClick={() => { if (globalIndex !== -1) setLightbox({ open: true, index: globalIndex }); }}
+              className="group relative w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-green)] rounded-xl"
+            >
+              <div className="relative w-full bg-white border border-neutral-200 rounded-xl transition-all duration-300 ease-out p-2 shadow-sm group-hover:shadow-md group-hover:border-neutral-300">
+                <div className="relative rounded-lg overflow-hidden w-full">
+                  <img
+                    src={img.src}
+                    alt={captionShort}
+                    className="w-full h-auto object-cover transition-transform duration-700 ease-in-out group-hover:scale-[1.005]"
+                  />
+                </div>
+              </div>
+            </button>
+            {captionShort && <Caption>{captionShort}</Caption>}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+
+
+
+
+
       case "video": {
         const globalIndex = allMediaItems.findIndex((item) => item.src === block.src);
         const videoCaption =
@@ -244,6 +295,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
             <VideoThumbnail
               src={block.src}
               caption={videoCaption}
+              coverImage={block.coverImage}
               onClick={() => setLightbox({ open: true, index: globalIndex })}
             />
             {videoCaption && <Caption>{videoCaption}</Caption>}

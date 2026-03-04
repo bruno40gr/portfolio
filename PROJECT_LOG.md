@@ -47,4 +47,10 @@ This log documents the iterative refinements and systems-thinking applied to thi
 - **Inspire Tab, AI Highlights, Dropdown Menu:** Introduced Inspire Tab, AI highlights, and dropdown menu enhancements. (ab693b9)
 
 ---
+## Week of Mar 2, 2026: Hero Section Overhaul & UI Polish
+- **Immersive Hero Layout:** Rearchitected the hero section in `App.jsx` to be a full-viewport (`min-h-[100dvh]`) container. Utilized Flexbox properties (`flex`, `flex-col`, `flex-1`, and `mt-auto`) to vertically center the main headline content while pushing the company logo stripe to the absolute bottom of the viewport.
+- **Integrated Company Stripe:** Relocated the `CompanyStripe` component to be inside the hero section, serving as a sleek footer element and creating a more unified, immersive initial view before the user scrolls.
+- **Project Thumbnail Padding:** Added `p-8` Tailwind CSS padding to "Image Builder," "Inspire Tab," and "Studio 2.0" project thumbnails for improved visual spacing.
+
+---
 *Note: This portfolio is a living project, designed to demonstrate the same systems-level precision and user-advocacy found in my professional product work.*

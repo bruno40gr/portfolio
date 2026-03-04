@@ -28,6 +28,12 @@ const THUMBNAIL_DATA = {
     { img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772311186/1A_01_A-2_jnyfjt.png",    colors: ["#1e2f6e", "#17245a"] },
     { img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772311186/1A_01_A_jycg58.png",      colors: ["#231f55", "#1c1944"] },
   ],
+  'jas-asset-manager': [
+    { img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772596156/1_xrlcq0.png", colors: ["#1a2d5e", "#131f44"] },
+    { img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772596156/2_h3xok9.png", colors: ["#2a2850", "#231f44"] },
+    { img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772596156/3_omv1qd.png", colors: ["#1e3d6e", "#162d55"] },
+    { img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772596156/4_ngo0ba.png", colors: ["#231f55", "#1c1944"] },
+  ],
   'amazon-core-ai-review-highlights': [
     { img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772333741/aihighlights-stockimage_tfee9p.jpg", colors: ["#1a2d5e", "#131f44"] },
     { img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772333742/aihighlights_banner_b6o4ad.png", colors: ["#2e1f47", "#231f44"] },

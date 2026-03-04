@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 
-// Grain overlay — reusable, same as App.jsx hero but tunable per opacity
 const GrainOverlay = ({ opacity = 0.28 }) => (
   <>
     <svg
@@ -17,13 +16,6 @@ const GrainOverlay = ({ opacity = 0.28 }) => (
   </>
 );
 
-/*
-  All colors harmonized to #231f44 (deep blue-violet, HSL ~244°, 36%, 19%)
-  Strategy:
-    - Dark slides: analogous indigo/navy/violet family (210–280°)
-    - Light slides: pale violet-whites or cool sage (desaturated split-comp)
-    - Avoided: warm browns, oranges, pure reds, lime greens
-*/
 const HERO_DATA = {
   'jas-image-builder': {
     caption: "Echo Show 8 launch campaign across 4 markets. September 2025.",
@@ -34,34 +26,73 @@ const HERO_DATA = {
     slides: [
       {
         img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772042482/mobile-echoshow-_0003_USEN_zpplaz.png",
-        colors: ["#2a2850", "#231f44"],   // deep indigo → deep purple (core)
+        colors: ["#2a2850", "#231f44"],
         market: "US, English",
         flag: "🇺🇸",
         theme: "dark"
       },
       {
         img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772042482/mobile-echoshow-_0000_CAFR_lvfrh1.png",
-        colors: ["#5c3566", "#4a2a55"],   // deep violet-mauve (split-comp, desaturated)
+        colors: ["#5c3566", "#4a2a55"],
         market: "Canada, French",
         flag: "🇨🇦",
         theme: "dark"
       },
       {
         img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772042482/mobile-echoshow-_0001_BRPOR_zajgs8.png",
-        colors: ["#edeaf6", "#ddd8f0"],   // pale lavender-white (analogous light)
+        colors: ["#edeaf6", "#ddd8f0"],
         market: "Brazil, Portuguese",
         flag: "🇧🇷",
         theme: "light"
       },
       {
         img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772042483/mobile-echoshow-_0002_USES_yj4oji.png",
-        colors: ["#1e3d6e", "#162d55"],   // cool navy-indigo (analogous)
+        colors: ["#1e3d6e", "#162d55"],
         market: "US, Spanish",
         flag: "🇺🇸",
         theme: "dark"
       }
     ]
   },
+
+  'jas-asset-manager': {
+    caption: "Centralized asset browser for Amazon Devices. Browse, filter, QA, and publish. 2026.",
+    layout: {
+      containerHeight: "h-[44vh] md:h-[60vh]",
+      containerWidth: "w-[90%] md:w-[820px]",
+    },
+    slides: [
+      {
+        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772596156/1_xrlcq0.png",
+        colors: ["#1a2d5e", "#131f44"],
+        market: "Asset Browser",
+        flag: "🗂️",
+        theme: "dark"
+      },
+      {
+        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772596156/2_h3xok9.png",
+        colors: ["#2a2850", "#231f44"],
+        market: "Filtering",
+        flag: "🔍",
+        theme: "dark"
+      },
+      {
+        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772596156/3_omv1qd.png",
+        colors: ["#1e3d6e", "#162d55"],
+        market: "Detail Panel",
+        flag: "🖼️",
+        theme: "dark"
+      },
+      {
+        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772596156/4_ngo0ba.png",
+        colors: ["#231f55", "#1c1944"],
+        market: "QA Workflow",
+        flag: "✅",
+        theme: "dark"
+      }
+    ]
+  },
+
   'alto-internal': {
     caption: "Internal pharmacy ops tooling. Action-first patterns for fulfillment teams. 2021.",
     layout: {
@@ -71,7 +102,7 @@ const HERO_DATA = {
     slides: [
       {
         img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772144381/flow_action_card_ktzpav.gif",
-        colors: ["#eceaf8", "#e2dff4"],   // pale violet-white
+        colors: ["#eceaf8", "#e2dff4"],
         market: "Action Cards",
         flag: "✅",
         theme: "light"
@@ -92,6 +123,7 @@ const HERO_DATA = {
       }
     ]
   },
+
   'patreon-creator-tools': {
     caption: "Creator-facing membership tools. Benefit management and audience filtering. 2020–2021.",
     layout: {
@@ -101,27 +133,28 @@ const HERO_DATA = {
     slides: [
       {
         img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772169709/benefits-config_wpuj3r.gif",
-        colors: ["#ede8f5", "#ddd5ee"],   // pale violet (analogous light)
+        colors: ["#ede8f5", "#ddd5ee"],
         market: "Benefit Configuration",
         flag: "⚙️",
         theme: "light"
       },
       {
         img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772169684/benefit_categorie_eqwjwd.png",
-        colors: ["#2d1f44", "#231540"],   // dark violet (darker sibling of deep-purple)
+        colors: ["#2d1f44", "#231540"],
         market: "Benefit Categories",
         flag: "🎨",
         theme: "dark"
       },
       {
         img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772169704/saved_filters_xgzc9c.gif",
-        colors: ["#3d2a5a", "#2e1f47"],   // deep plum-violet
+        colors: ["#3d2a5a", "#2e1f47"],
         market: "Smart Filters",
         flag: "🔍",
         theme: "dark"
       }
     ]
   },
+
   'patreon-studio2.0': {
     caption: "Patreon's unified design system and creator profile redesign. 2021.",
     layout: {
@@ -131,27 +164,28 @@ const HERO_DATA = {
     slides: [
       {
         img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772238558/SS1_wbi5xq.png",
-        colors: ["#f5f4fc", "#ebe8f8"],   // cool near-white with violet tint
+        colors: ["#f5f4fc", "#ebe8f8"],
         market: "Creator Profiles",
         flag: "👤",
         theme: "light"
       },
       {
         img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772238558/SS3_gzembm.png",
-        colors: ["#2e1f47", "#231f44"],   // deep plum → deep purple
+        colors: ["#2e1f47", "#231f44"],
         market: "Content & Interactive Feeds",
         flag: "📱",
         theme: "dark"
       },
       {
         img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772238558/SS2_mj5jli.png",
-        colors: ["#1a2d5e", "#131f44"],   // deep blue-indigo
+        colors: ["#1a2d5e", "#131f44"],
         market: "Creator Tools UI",
         flag: "🛠️",
         theme: "dark"
       }
     ]
   },
+
   'amazon-core-inspire-tab': {
     caption: "Inspire shoppable feed adapted for Smart Home devices. Amazon app, 2023.",
     layout: {
@@ -161,34 +195,35 @@ const HERO_DATA = {
     slides: [
       {
         img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772311186/1A_01_A-1_m8vqcf.png",
-        colors: ["#1a5fbf", "#1550a8"],   // vivid blue (analogous, ~225°)
+        colors: ["#1a5fbf", "#1550a8"],
         market: "Shoppable Feeds",
         flag: "📱",
         theme: "dark"
       },
       {
         img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772311186/product_tagging_jsevmd.png",
-        colors: ["#1a3f8f", "#132f75"],   // deeper indigo-blue
+        colors: ["#1a3f8f", "#132f75"],
         market: "Creator Tooling",
         flag: "🛠️",
         theme: "dark"
       },
       {
         img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772311186/1A_01_A-2_jnyfjt.png",
-        colors: ["#1e2f6e", "#17245a"],   // navy-indigo
+        colors: ["#1e2f6e", "#17245a"],
         market: "Ecosystem Compatibility",
         flag: "🔗",
         theme: "dark"
       },
       {
         img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772311186/1A_01_A_jycg58.png",
-        colors: ["#231f55", "#1c1944"],   // deepest violet-navy, close to deep-purple
+        colors: ["#231f55", "#1c1944"],
         market: "ML-Driven Ranking",
         flag: "🤖",
         theme: "dark"
       }
     ]
   },
+
   'jas-metadata-studio': {
     caption: "AI-powered metadata extraction for global compliance. Amazon Devices, 2025.",
     layout: {
@@ -228,10 +263,6 @@ const AnimatedHero = ({ projectId }) => {
   const { slides, layout, caption } = projectData;
 
   const isDarkTheme = slides[currentSlide]?.theme === 'dark';
-  const textColorClass = isDarkTheme ? "text-white" : "text-slate-900";
-  const subTextColorClass = isDarkTheme ? "text-white/60" : "text-slate-900/60";
-  const dotActiveClass = isDarkTheme ? "bg-white" : "bg-slate-900";
-  const dotInactiveClass = isDarkTheme ? "bg-white/30 hover:bg-white/50" : "bg-slate-900/20 hover:bg-slate-900/40";
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -309,17 +340,14 @@ const AnimatedHero = ({ projectId }) => {
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      {/* Grain texture — same filter as hero, tuned per theme */}
       <GrainOverlay opacity={isDarkTheme ? 0.30 : 0.15} />
 
-      {/* Side-by-side: image + text */}
       <div
-        className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 px-6 md:px-12 w-full max-w-5xl relative z-10"
+        className="flex items-center justify-center w-full max-w-5xl px-6 md:px-12 relative z-10"
         style={{ opacity: scale > 1.2 ? 0 : 1, transition: "opacity 0.3s" }}
       >
-        {/* LEFT — Image */}
         <div
-          className={`relative ${layout.containerHeight} ${layout.containerWidth} flex items-center justify-center flex-shrink-0`}
+          className={`relative ${layout.containerHeight} ${layout.containerWidth} flex items-center justify-center`}
           style={{
             transform: `scale(${scale})`,
             zIndex: scale > 1 ? 50 : 10,
@@ -335,39 +363,6 @@ const AnimatedHero = ({ projectId }) => {
               ${index === currentSlide ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}
             />
           ))}
-        </div>
-
-        {/* RIGHT — Text + dots */}
-        <div className={`flex flex-col items-center md:items-start text-center md:text-left flex-shrink-0 transition-colors duration-300 ${textColorClass}`}>
-          <p className={`meta-label mb-3 leading-snug ${isDarkTheme ? '!text-white/50' : '!text-slate-900/50'}`}>
-            {caption}
-          </p>
-
-          <div className="relative h-9 md:h-11 w-[220px] md:w-[260px] mb-5">
-            {slides.map((slide, index) => (
-              <div
-                key={index}
-                className={`absolute inset-0 flex items-center justify-center md:justify-start gap-2 transition-opacity duration-[1200ms] ease-in-out
-                ${index === currentSlide ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
-              >
-                <span className="text-xl md:text-2xl leading-none">{slide.flag}</span>
-                <span className="text-xl md:text-2xl font-semibold tracking-tight leading-none whitespace-nowrap">
-                  {slide.market}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          <nav className="flex items-center gap-2.5">
-            {slides.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentSlide(index)}
-                className={`w-1.5 h-1.5 md:w-2 md:h-2 rounded-full transition-all duration-500
-                  ${index === currentSlide ? `${dotActiveClass} scale-125` : dotInactiveClass}`}
-              />
-            ))}
-          </nav>
         </div>
       </div>
 

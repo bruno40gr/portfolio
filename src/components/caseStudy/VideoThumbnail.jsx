@@ -1,14 +1,18 @@
 import React from "react";
 import { Play } from "lucide-react";
 
-const VideoThumbnail = ({ src, caption, onClick }) => {
+const VideoThumbnail = ({ src, caption, onClick, coverImage }) => {
   const getThumbnailUrl = () => {
+    // If a custom coverImage is provided, use it directly.
+    if (coverImage) {
+      return coverImage;
+    }
+
     if (src.includes("youtube.com") || src.includes("youtu.be")) {
       const videoId = src.split("v=")[1]?.split("&")[0] || src.split("/").pop();
       return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
     }
     if (src.includes("loom.com")) {
-      // Loom share URLs: https://www.loom.com/share/<id>
       const loomId = src.split("/").pop().split("?")[0];
       return `https://cdn.loom.com/sessions/thumbnails/${loomId}-with-play.gif`;
     }

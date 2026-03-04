@@ -69,7 +69,7 @@ const ProjectCard = ({ project, onClick }) => {
               <img 
                 src={image} 
                 alt={title} 
-                className={`w-full h-full transition-transform duration-700 ease-out group-hover:scale-105 
+                className={`w-full h-full transition-transform duration-700 ease-out group-hover:scale-[1.02] 
                   ${project.thumbnailPadding ? `object-contain ${project.thumbnailPadding}` : 'object-cover'} 
                   ${status === 'IN_BUILD' ? 'saturate-[0.7]' : ''} 
                   ${(status === 'LEGACY' || status === 'DEPRECATED') ? 'saturate-[0.6] opacity-90' : ''}`}

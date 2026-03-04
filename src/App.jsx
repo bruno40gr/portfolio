@@ -446,12 +446,12 @@ No. It’ll replace designers who mostly produce deliverables. If I truly believ
               <div className="max-w-4xl w-full reveal-on-scroll hero-stack">
                 <img src={ASSETS.mainLogo} alt="Bruno Wong Marchena" className="hero-logo" />
                 <div className="max-w-3xl mx-auto">
-      <h1 className="text-slate-200 text-3xl md:text-[2rem] font-light tracking-tight mb-8 leading-snug">
-        <span className="font-semibold">Staff-level product designer</span> specializing in AI-powered platforms, complex systems, and high-craft UX.
-      </h1>
-      <p className="text-slate-400 text-2xl md:text-[1.5rem] mb-12 max-w-2xl mx-auto leading-snug font-light">
-        I've automated the work of entire teams at Amazon, cut fulfillment costs in healthcare logistics, and earned a patent for rethinking retention at Patreon.
-      </p>
+      <h1 className="text-slate-100 text-3xl md:text-[2rem] font-medium tracking-tight mb-8 leading-snug">
+  I build AI-powered platforms and use automation to scale what teams can ship.
+</h1>
+<p className="text-slate-400 text-2xl md:text-[1.5rem] mb-12 max-w-2xl mx-auto leading-snug font-light">
+  I've automated the work of entire teams at Amazon, cut fulfillment costs in healthcare logistics, and co-invented a <a href="https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/12154126" target="_blank" className="underline underline-offset-4 hover:text-slate-200 transition-colors">patent</a> for how subscription loyalty gets rewarded.
+</p>
     </div>
                 
                 <div className="flex flex-col md:flex-row items-center justify-center gap-6">
@@ -487,10 +487,10 @@ No. It’ll replace designers who mostly produce deliverables. If I truly believ
                   <p>I'm a product designer focused on AI platforms and internal systems, usually the behind-the-scenes stuff where workflows are messy and the UX debt is real. I like that zone. It's where design has to hold up under pressure and still hit the business numbers.</p>
                   <p>Over the last 12 years I've worked across big tech, healthcare logistics, and creator platforms. I've also been a founding designer, taking a product from zero to traction and helping secure funding. Along the way I've designed systems that automate heavy manual work, helped cut operational costs, and co-invented a patent around retention and loyalty. My design roots technically go back to making posters and album art for my punk rock band.</p>
                   <p className="font-semibold text-neutral-900">How I work</p>
-                  <p>I work best as a hands-on lead: clarify the problem, pull risk forward early, and stay tight with engineering from day one. I'm invested in research and strategy, but equally happy in the weeds debugging a component or tightening the last 10% so it feels right in production. I build design systems that are structured enough to hand off cleanly and work with how modern teams actually build. I've been told I'm the calm in the room when things get messy. I'll take it.</p>
+                  <p>I work best as a hands-on lead and stay tight with product and engineering from day one. I'm invested in research and strategy, but equally happy in the weeds debugging a component or tightening the last 10% so it feels right in production. I build design systems that are structured enough to hand off cleanly and work with how modern teams actually build. I've been told I'm the calm in the room when things get messy. I'll take it.</p>
                   <p>On AI work, I care about what makes it actually hold up: guardrails, fallbacks, human-in-the-loop flows, and catching the moments when the model is wrong but sounds right. Then the craft: the UI, the states, and the details that survive contact with production.</p>
                   <p className="font-semibold text-neutral-900">When I'm not working</p>
-                  <p>Bass in a cover band around Sacramento, everything from Blink-182 to Tool. Kettlebell aficionado since the pandemic. Family in Lima and Athens means I travel there whenever life allows. The only time I tolerate being a bum is on a beach.</p>
+                  <p>Bass in a cover band around Sacramento, everything from Blink 182 to Tool. Kettlebell aficionado. Family in Lima and Athens means I travel there whenever life allows. The only time I tolerate being a bum is on a beach.</p>
                 </div>
               </div>
             </div>
