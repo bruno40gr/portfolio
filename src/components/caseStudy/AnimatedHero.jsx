@@ -18,7 +18,7 @@ const GrainOverlay = ({ opacity = 0.28 }) => (
 
 const HERO_DATA = {
   'jas-image-builder': {
-    caption: "Echo Show 8 launch campaign across 4 markets. September 2025.",
+    caption: "Echo Show 8 launch campaign across 4 markets, built at once. September 2025.",
     layout: {
       containerHeight: "h-[48vh] md:h-[66vh]",
       containerWidth: "w-[260px] md:w-[420px]",
@@ -56,10 +56,10 @@ const HERO_DATA = {
   },
 
   'jas-asset-manager': {
-    caption: "Centralized asset browser for Amazon Devices. Browse, filter, QA, and publish. 2026.",
+    caption: "Centralized asset browser for Amazon Devices.",
     layout: {
       containerHeight: "h-[44vh] md:h-[60vh]",
-      containerWidth: "w-[90%] md:w-[820px]",
+      containerWidth: "w-[90%] md:w-[780px]",
     },
     slides: [
       {
@@ -72,21 +72,21 @@ const HERO_DATA = {
       {
         img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772596156/2_h3xok9.png",
         colors: ["#2a2850", "#231f44"],
-        market: "Filtering",
+        market: "Filtering options",
         flag: "🔍",
         theme: "dark"
       },
       {
         img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772596156/3_omv1qd.png",
         colors: ["#1e3d6e", "#162d55"],
-        market: "Detail Panel",
+        market: "Bulk actions",
         flag: "🖼️",
         theme: "dark"
       },
       {
         img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772596156/4_ngo0ba.png",
         colors: ["#231f55", "#1c1944"],
-        market: "QA Workflow",
+        market: "QA Workflow and Detail panel",
         flag: "✅",
         theme: "dark"
       }
@@ -263,6 +263,9 @@ const AnimatedHero = ({ projectId }) => {
   const { slides, layout, caption } = projectData;
 
   const isDarkTheme = slides[currentSlide]?.theme === 'dark';
+  const textColorClass = isDarkTheme ? "text-white" : "text-slate-900";
+  const dotActiveClass = isDarkTheme ? "bg-white" : "bg-slate-900";
+  const dotInactiveClass = isDarkTheme ? "bg-white/30 hover:bg-white/50" : "bg-slate-900/20 hover:bg-slate-900/40";
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -343,11 +346,12 @@ const AnimatedHero = ({ projectId }) => {
       <GrainOverlay opacity={isDarkTheme ? 0.30 : 0.15} />
 
       <div
-        className="flex items-center justify-center w-full max-w-5xl px-6 md:px-12 relative z-10"
+        className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-6 px-6 md:px-8 w-full max-w-5xl relative z-10"
         style={{ opacity: scale > 1.2 ? 0 : 1, transition: "opacity 0.3s" }}
       >
+        {/* Image */}
         <div
-          className={`relative ${layout.containerHeight} ${layout.containerWidth} flex items-center justify-center`}
+          className={`relative ${layout.containerHeight} ${layout.containerWidth} flex items-center justify-center flex-shrink-0`}
           style={{
             transform: `scale(${scale})`,
             zIndex: scale > 1 ? 50 : 10,
@@ -363,6 +367,37 @@ const AnimatedHero = ({ projectId }) => {
               ${index === currentSlide ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}
             />
           ))}
+        </div>
+
+        {/* Caption + dots, no emoji/market line */}
+        <div className={`flex flex-col items-center md:items-start text-center md:text-left flex-shrink-0 transition-colors duration-300 ${textColorClass}`}>
+          <p className={`meta-label mb-2 leading-snug ${isDarkTheme ? '!text-white/50' : '!text-slate-900/50'}`}>
+  {caption}
+</p>
+
+<div className="relative h-7 mb-4">
+  {slides.map((slide, index) => (
+    <span
+      key={index}
+      className={`absolute whitespace-nowrap text-lg md:text-xl font-semibold tracking-tight transition-opacity duration-[1200ms]
+      ${index === currentSlide ? 'opacity-100' : 'opacity-0 pointer-events-none'}
+      ${isDarkTheme ? 'text-white' : 'text-slate-900'}`}
+    >
+      {slide.market}
+    </span>
+  ))}
+</div>
+
+          <nav className="flex items-center gap-2.5">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`w-1.5 h-1.5 md:w-2 md:h-2 rounded-full transition-all duration-500
+                  ${index === currentSlide ? `${dotActiveClass} scale-125` : dotInactiveClass}`}
+              />
+            ))}
+          </nav>
         </div>
       </div>
 

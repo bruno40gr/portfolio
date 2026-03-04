@@ -286,11 +286,11 @@ export const PORTFOLIO_DATA = {
   impactSummary: "A centralized internal library that makes Amazon Devices marketing images easy to find, QA, and place across global markets. Shipping Q2 2026.",
   impactSummarySentence: "A centralized digital asset library that brought the entire Amazon Devices creative catalog under governance, making automated campaign publishing possible at global scale.",
   designerNote: "The Image Builder needed a library. Without one, every asset it produced landed somewhere unstructured, ungoverned, and unreachable at scale. A single person was manually curating the catalog that fed our entire production pipeline. My job on this project wasn't to design a ground-up overhaul. It was to build the core functionalities that would drive adoption and lay the groundwork for one, surgically, while that larger effort was being scoped. That required being honest about what we could ship and what we had to defer.",
-  thumbnail: "https://via.placeholder.com/1600x900?text=DCAM+Thumbnail",
+  thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772596156/1_xrlcq0.png",
   status: "IN_BUILD",
   type: "INTERNAL",
   details: {
-    hero: { type: 'static' },
+    hero: { type: 'animated' },
     heroImage: "https://via.placeholder.com/1600x900?text=DCAM+Hero",
     role: "Lead UX Designer",
     timeline: "Ongoing (Estimated Q2 2026)",
@@ -405,14 +405,14 @@ blocks: [
         ]
       },
       {
-        content: `<b>Views</b><p class="mt-2">Two ways to look at the same catalog, built for different needs. Tile view puts the images front and center, useful when you're scanning for a specific visual or trying to QA image quality at a glance. Table view trades that for data: locale, template, dimensions, and QA status all sortable in columns, closer to a spreadsheet than a gallery. EMEA gravitated toward the table for metadata density. North America responded well to it too. Filters persist as chips across program name, locale, dimensions, template type, and QA status.</p>`,
+        content: `<b>Views</b><p class="mt-2">Two ways to look at the same catalog, built for different needs. Tile view puts the images front and center, useful when you're scanning for a specific visual or trying to QA image quality at a glance. Table view trades that for data: locale, template, dimensions, and QA status all sortable in columns, closer to a spreadsheet than a gallery. EMEA gravitated toward the table for metadata density. North America responded well to it too. Designers, naturally preferred the Tile view.</p>`,
         visuals: [
           {
             kind: "image",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772586379/Views_shuapy.png",
             caption: {
               short: "Tile view and table view side by side.",
-              verbose: "Tile view prioritizes visual content at a glance. Table view surfaces locale, template, dimensions, and QA status in sortable columns. EMEA gravitated toward the table for metadata density. North America responded well to it too, mirroring the Smartsheet experience they already knew."
+              verbose: "Tile view prioritizes visual content at a glance. Table view surfaces locale, template, dimensions, and QA status in sortable columns. EMEA gravitated toward the table for metadata density. North America responded well to it too, mirroring outside UI experiences they already knew."
             }
           }
         ]
@@ -424,7 +424,7 @@ blocks: [
             kind: "image",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772586894/Filters_tnevnj.png",
             caption: {
-              short: "Persistent filter bar with active chips.",
+              short: "Persistent filter bar with metadata filters.",
               verbose: ""
             }
           }
