@@ -317,7 +317,10 @@ export default function App() {
 
               {/* Click-outside overlay */}
               {isWorkDropdownOpen && (
-                <div className="fixed inset-0 z-[99]" onClick={() => setIsWorkDropdownOpen(false)} />
+                <div 
+                  className="fixed inset-0 bg-black/20 z-[90] transition-opacity duration-300" 
+                  onClick={() => setIsWorkDropdownOpen(false)} 
+                />
               )}
 
               {/* Dropdown panel */}

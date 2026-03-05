@@ -66,7 +66,7 @@ const AnimatedThumbnail = ({ projectId }) => {
           key={index}
           src={slide.img}
           alt=""
-          className={`absolute inset-0 w-full h-full object-contain p-6 md:p-8 transition-opacity duration-[1500ms] ease-in-out
+          className={`absolute inset-0 w-full h-full object-contain p-6 md:p-8 transition-transform duration-700 ease-out group-hover:scale-[1.02]
           ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}
         />
       ))}

@@ -12,7 +12,7 @@ const MetaField = ({ label, value, valueClassName = "" }) => {
   if (!value) return null;
   return (
     <div className="min-w-0">
-      <div className="meta-label mb-1">{label}</div>
+      <div className="meta-label mb-1 text-slate-900">{label}</div>
       <div className={`text-base font-normal leading-snug ${valueClassName || "text-neutral-900"}`}>
         {value}
       </div>
@@ -23,7 +23,7 @@ const MetaField = ({ label, value, valueClassName = "" }) => {
 export default function ProjectMetadata({ role, timeline, status, collaborators }) {
   const safeStatus = PROJECT_STATUS[status] || PROJECT_STATUS.IN_BUILD;
   const statusKey = Object.keys(PROJECT_STATUS).find((k) => k === status) || "IN_BUILD";
-  const statusColor = STATUS_TEXT_COLOR[statusKey] || "text-neutral-600";
+  const statusColor = STATUS_TEXT_COLOR[statusKey] || "text-slate-700";
 
   return (
     <div className="w-full mb-6 md:mb-8 py-3 md:py-4 border-t border-b border-neutral-100">

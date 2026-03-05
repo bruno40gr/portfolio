@@ -205,22 +205,22 @@ const SystemContextBanner = ({ pillars = [], currentId, onPillarClick }) => {
     <SegmentedDonut
       activeIndex={position}
       totalSteps={pillars.length}
-      size={40}
-      strokeWidth={7}
+      size={30}
+      strokeWidth={4}
       activeColor="#231f44"
       inactiveColor="#E5E7EB"
     />
   </div>
 
   {/* One line on desktop, wraps to two lines on mobile */}
-  <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1 min-w-0">
-    <p className="meta-label m-0 min-w-0">
+  <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1 min-w-0 py-8">
+    <p className="meta-label m-0 min-w-0 text-slate-700">
       This project is{" "}
-      <span className="font-semibold text-slate-700">
+      <span className="font-normal text-slate-700">
         {position}/{pillars.length}
       </span>{" "}
       part of the{" "}
-      <span className="font-semibold text-slate-700">Amazon Devices Asset System</span>
+      <span className="font-normal text-slate-700">Amazon Devices Asset System</span>
     </p>
 
     <button

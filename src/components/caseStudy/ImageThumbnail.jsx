@@ -10,7 +10,7 @@ const ImageThumbnail = ({ src, alt, onClick, isPresentation = false }) => (
     }`}
     aria-label="Expand image"
   >
-    <div className="relative w-full bg-white border border-neutral-200 rounded-xl transition-all duration-300 ease-out p-2 shadow-sm group-hover:shadow-md group-hover:border-neutral-300">
+    <div className="relative w-full bg-white border border-neutral-200 rounded-sm transition-all duration-300 ease-out p-2 shadow-sm group-hover:shadow-md group-hover:border-neutral-300">
       
       {/* Conditionally apply the aspect ratio and background */}
       <div className={`relative rounded-lg overflow-hidden flex items-center justify-center ${

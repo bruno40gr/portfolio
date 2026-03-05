@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowUpRight, AlertCircle } from "lucide-react";
+import { ArrowRight, AlertCircle } from "lucide-react";
 import { PROJECT_STATUS, PRODUCT_TYPES } from "../../data/tokens";
 import Pill from "../ui/Pill";
 import { CalloutBox } from "../ui/CalloutBox";
@@ -42,7 +42,7 @@ const ProjectCard = ({ project, onClick }) => {
   const heroType = details.hero?.type;
 
   return (
-    <div className="bg-white text-left w-full rounded-xl">
+    <div className="bg-white text-left w-full rounded-md">
       {/* Clickable Visual Area */}
       <div 
         role="button"
@@ -54,7 +54,7 @@ const ProjectCard = ({ project, onClick }) => {
       >
         
         {/* INNER WRAPPER: Keeps the image and background clipped to the rounded corners */}
-        <div className="absolute inset-0 w-full h-full rounded-xl overflow-hidden border border-slate-100">
+        <div className="absolute inset-0 w-full h-full rounded-md overflow-hidden border border-slate-100">
           {/* LAYER 1: The Background */}
           <div 
             className={`absolute inset-0 w-full h-full ${project.thumbnailBg ? '' : (project.thumbnailBgColor || 'bg-slate-50')}`}
@@ -81,21 +81,21 @@ const ProjectCard = ({ project, onClick }) => {
         {/* LAYER 3: The Overlay (Pills) */}
         <div className="absolute top-4 left-4 flex flex-wrap gap-2 pointer-events-none">
           <Pill label={statusConfig.label} theme={statusConfig.theme} icon={statusConfig.icon} size="sm" />
-          <span className="px-2.5 py-1 bg-white/90 text-[var(--deep-purple)] text-xs font-bold rounded-md backdrop-blur-md shadow-sm border border-slate-100/50">
+          <span className="uppercase tracking-wider px-2.5 py-1 bg-white/90 text-[var(--deep-purple)] text-xs font-bold rounded-sm backdrop-blur-md shadow-sm border border-slate-100/50">
             {PRODUCT_TYPES[productType] || productType}
           </span>
         </div>
 
         {/* Hover Arrow - Free from overflow-hidden, it can now hang properly */}
-        <div className="absolute right-4 bottom-0 translate-y-1/2 w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-[var(--deep-purple)] shadow-sm group-hover:bg-[var(--neon-green)] group-hover:border-[var(--neon-green)] transition-all duration-300 z-10">
-          <ArrowUpRight size={18} />
-        </div>
+<div className="absolute right-4 bottom-0 translate-y-1/2 w-14 h-14 bg-white rounded-full flex items-center justify-center text-[#231f44] shadow-[0_4px_12px_rgba(35,31,68,0.2)] group-hover:bg-[#a6fa4e] group-hover:text-[#13102e] group-hover:shadow-[0_6px_16px_rgba(166,250,78,0.5)] group-hover:-translate-y-[calc(-50%+4px)] transition-all duration-300 ease-out z-20">
+  <ArrowRight size={22} className="-rotate-45 transition-transform duration-300" />
+</div>
       </div>
 
       {/* Static Content Area */}
       <div className="flex flex-col gap-2 px-1">
         <h3 className="text-2xl font-bold text-[var(--deep-purple)] leading-tight tracking-tight">{title}</h3>
-        <p className="text-lg text-slate-600 leading-normal max-w-[95%]">{impactSummary}</p>
+        <p className="text-base md:text-lg text-slate-700 leading-relaxed mb-4 md:mb-6 max-w-[95%]">{impactSummary}</p>
         <div className="space-y-3">{renderBlocks()}</div>
       </div>
     </div>

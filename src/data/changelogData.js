@@ -1,5 +1,14 @@
 export const CHANGELOG_DATA = [
   {
+    week: "Week of Mar 9, 2026",
+    title: "Final Case Study and UI Polish",
+    items: [
+      { day: "Mar 11", text: "**Final Case Study Added:** Integrated the final case study, completing the core content of the portfolio." },
+      { day: "Mar 10", text: "**Gatekeeper Screen Enhancements:** Refined the gatekeeper screen styling, including adjustments to the metadata stripe for better visual consistency." },
+      { day: "Mar 9", text: "**Hero Animation Improvements:** Made several enhancements to the animated hero components for a smoother and more engaging user experience." }
+    ]
+  },
+  {
     week: "Week of Mar 2, 2026",
     title: "Portfolio Infrastructure Updates",
     items: [

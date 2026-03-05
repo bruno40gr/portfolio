@@ -9,8 +9,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["\"Source Sans 3\"", "system-ui", "sans-serif"],
-        serif: ["\"PT Serif\"", "serif"],
+        sans: ["\"DM Sans\"", "system-ui", "sans-serif"],
+        serif: ["\"Fraunces\"", "serif"],
         mono: ["\"Source Code Pro\"", "monospace"],
       },
     },

@@ -7,11 +7,11 @@ export const CalloutBox = ({ content, size = "small" }) => {
   if (isSmall) {
     return (
       <div className="w-full mb-4">
-        <div className="bg-slate-50 border border-slate-100 rounded-lg p-3 flex gap-3">
+        <div className="bg-slate-100 rounded-sm p-3 flex gap-3 py-4">
           {/* Small Icon - Fixed width to prevent shrinking */}
           <Layers size={18} className="text-slate-400 mt-1 flex-shrink-0" strokeWidth={1.5} />
           <p
-            className="text-[13px] leading-snug text-slate-500 font-medium"
+            className="text-[13px] leading-relaxed text-slate-500 font-medium"
             dangerouslySetInnerHTML={{ __html: content }}
           />
         </div>
@@ -22,7 +22,7 @@ export const CalloutBox = ({ content, size = "small" }) => {
   // Large version for case studies
   return (
     <section className="mb-12 w-full">
-      <div className="bg-slate-100 p-4 md:p-6 rounded-2xl shadow-sm flex flex-col md:flex-row gap-6">
+      <div className="bg-slate-100 p-4 md:p-6 rounded-sm border border-slate-200 shadow-sm flex flex-col md:flex-row gap-6">
         {/* Large Icon - Styled to match the light, airy text weight */}
         <Layers 
           size={32} 

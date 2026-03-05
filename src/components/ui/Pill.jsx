@@ -9,7 +9,7 @@ const Pill = ({ label, theme = "bg-white text-neutral-800 border-neutral-200", s
   return (
     <span
       className={[
-        "inline-flex items-center rounded-md border font-semibold shadow-sm transition-colors gap-1.5",
+        "inline-flex items-center rounded-sm uppercase tracking-wider border font-bold shadow-sm transition-colors gap-1.5",
         theme,
         sizes[size] || sizes.sm,
         className

@@ -1,7 +1,201 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Briefcase, ChevronDown } from 'lucide-react';
 import LogoIcon from './logoIcon';
 
+// ─── Flappy Bird ──────────────────────────────────────────────────────────────
+const W = 60, H = 36, PX = 5;
+const GRAVITY = 0.28, FLAP_VEL = -4.2, PIPE_V = 1.1;
+const GAP = 10, PW = 5, PIPE_EVERY = 80;
+const FLOOR = H - 4;
+
+const BIRD_PX = [
+  [0,1,1,0,0],
+  [1,1,1,1,0],
+  [1,1,0,1,1],
+  [1,1,1,1,0],
+  [0,1,1,0,0],
+];
+
+function makeGame(best = 0, startPlaying = false) {
+  return {
+    phase:  startPlaying ? 'playing' : 'idle',
+    bx: 12, by: H / 2 - 2,
+    vy: startPlaying ? FLAP_VEL : 0,
+    pipes: [], frame: 0, score: 0, best,
+  };
+}
+
+const FlappyBird = () => {
+  const canvasRef = useRef(null);
+  const gRef      = useRef(makeGame());
+  const rafRef    = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    // helpers
+    const fillPx = (x, y, w, h, col = '#1a1a1a') => {
+      ctx.fillStyle = col;
+      ctx.fillRect(Math.floor(x) * PX, Math.floor(y) * PX, w * PX, h * PX);
+    };
+
+    const txt = (str, cx, cy, size, col) => {
+      ctx.fillStyle = col;
+      ctx.font = `bold ${size * PX}px monospace`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(str, cx * PX, cy * PX);
+    };
+
+    const drawBird = (bx, by, dead) => {
+      if (dead) ctx.globalAlpha = 0.35;
+      BIRD_PX.forEach((row, ry) =>
+        row.forEach((on, rx) => { if (on) fillPx(bx + rx, by + ry, 1, 1); })
+      );
+      ctx.globalAlpha = 1;
+    };
+
+    const draw = () => {
+      const g = gRef.current;
+
+      // background
+      ctx.fillStyle = '#f9f9f9';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // ground
+      fillPx(0, FLOOR, W, 1, '#c0c0c0');
+      for (let x = 0; x < W; x += 3) fillPx(x, FLOOR + 1, 2, H - FLOOR - 1, '#e4e4e4');
+
+      // pipes
+      g.pipes.forEach(p => {
+        fillPx(p.x,     0,           PW,       p.top,           '#1a1a1a');
+        fillPx(p.x - 1, p.top - 2,   PW + 2,   2,               '#1a1a1a');
+        const bot = p.top + GAP;
+        fillPx(p.x - 1, bot,         PW + 2,   2,               '#1a1a1a');
+        fillPx(p.x,     bot + 2,     PW,       FLOOR - bot - 2, '#1a1a1a');
+      });
+
+      // bird
+      drawBird(g.bx, g.by, g.phase === 'dead');
+
+      // score
+      if (g.phase !== 'idle') txt(String(g.score), W / 2, 4, 2.5, '#1a1a1a');
+
+      // overlay: idle
+      if (g.phase === 'idle') {
+        ctx.fillStyle = 'rgba(0,0,0,0.03)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        txt('CLICK TO PLAY', W / 2, H / 2 - 3, 1.9, '#555');
+        txt('tap or click to flap', W / 2, H / 2 + 3, 1.3, '#aaa');
+      }
+
+      // overlay: dead
+      if (g.phase === 'dead') {
+        ctx.fillStyle = 'rgba(0,0,0,0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        txt('GAME OVER', W / 2, H / 2 - 5, 2.2, '#1a1a1a');
+        txt(`score ${g.score}   best ${g.best}`, W / 2, H / 2, 1.6, '#555');
+        txt('click to retry', W / 2, H / 2 + 5, 1.5, '#aaa');
+      }
+    };
+
+    const tick = () => {
+      const g = gRef.current;
+
+      if (g.phase === 'playing') {
+        g.frame++;
+        g.vy += GRAVITY;
+        g.by += g.vy;
+
+        // spawn pipe
+        if (g.frame % PIPE_EVERY === 1) {
+          const top = 3 + Math.floor(Math.random() * (H - GAP - 8));
+          g.pipes.push({ x: W, top, passed: false });
+        }
+
+        // move & cull
+        g.pipes.forEach(p => { p.x -= PIPE_V; });
+        g.pipes = g.pipes.filter(p => p.x > -PW - 2);
+
+        // score
+        g.pipes.forEach(p => {
+          if (!p.passed && p.x + PW < g.bx) { p.passed = true; g.score++; }
+        });
+
+        // floor / ceiling
+        if (g.by + 4 >= FLOOR || g.by <= 0) {
+          g.best = Math.max(g.best, g.score);
+          g.phase = 'dead';
+        } else {
+          // pipe collision (bird hitbox: x+1..x+3, y+1..y+3)
+          const bx1 = g.bx + 1, bx2 = g.bx + 3;
+          const by1 = g.by + 1, by2 = g.by + 3;
+          for (const p of g.pipes) {
+            if (bx2 > p.x && bx1 < p.x + PW) {
+              if (by1 < p.top || by2 > p.top + GAP) {
+                g.best = Math.max(g.best, g.score);
+                g.phase = 'dead';
+                break;
+              }
+            }
+          }
+        }
+      }
+
+      draw();
+      rafRef.current = requestAnimationFrame(tick);
+    };
+
+    const flap = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const g = gRef.current;
+      if (g.phase === 'idle') {
+        g.phase = 'playing';
+        g.vy = FLAP_VEL;
+      } else if (g.phase === 'playing') {
+        g.vy = FLAP_VEL;
+      } else if (g.phase === 'dead') {
+        gRef.current = makeGame(g.best, true);
+      }
+    };
+
+    canvas.addEventListener('mousedown', flap);
+    canvas.addEventListener('touchstart', flap, { passive: false });
+
+    rafRef.current = requestAnimationFrame(tick);
+
+    return () => {
+      cancelAnimationFrame(rafRef.current);
+      canvas.removeEventListener('mousedown', flap);
+      canvas.removeEventListener('touchstart', flap);
+    };
+  }, []);
+
+  return (
+    <div className="flex flex-col items-center gap-2 py-6 select-none">
+      <p className="text-[10px] text-slate-300 tracking-widest uppercase mb-1">
+        nothing to see here
+      </p>
+      <canvas
+        ref={canvasRef}
+        width={W * PX}
+        height={H * PX}
+        style={{
+          imageRendering: 'pixelated',
+          borderRadius: 2,
+          border: '1px solid #ebebeb',
+          display: 'block',
+          cursor: 'pointer',
+        }}
+      />
+    </div>
+  );
+};
+
+// ─── WorkDropdown ─────────────────────────────────────────────────────────────
 const WorkDropdown = ({ onProjectClick, closeMenu, workGroups = [], portfolioData = { projects: [] } }) => {
   const [activeCompany, setActiveCompany] = useState(null);
   const [panelKey, setPanelKey] = useState(0);
@@ -54,7 +248,7 @@ const WorkDropdown = ({ onProjectClick, closeMenu, workGroups = [], portfolioDat
       return (
         <button
           onClick={() => handleProjectClick(project)}
-          className="w-full text-left flex flex-col px-4 py-3 rounded-xl bg-slate-100 mb-2 group active:bg-slate-200 transition-colors"
+          className="w-full text-left flex flex-col px-4 py-3 rounded-sm bg-slate-100 mb-2 group active:bg-slate-200 transition-colors"
         >
           <h4 className="text-[17px] font-semibold text-[#231f44] leading-tight group-hover:underline underline-offset-2">
             {project.title}
@@ -67,7 +261,7 @@ const WorkDropdown = ({ onProjectClick, closeMenu, workGroups = [], portfolioDat
     return (
       <button
         onClick={() => handleProjectClick(project)}
-        className="w-full text-left rounded-xl bg-slate-50 hover:bg-slate-100 px-4 pt-4 pb-5 mb-2 transition-colors duration-200 group outline-none focus-visible:ring-2 focus-visible:ring-[#39FF14]"
+        className="w-full text-left rounded-sm hover:bg-slate-100 px-4 pt-4 pb-5 mb-2 transition-colors duration-200 group outline-none focus-visible:ring-2 focus-visible:ring-[#39FF14]"
       >
         <h4 className="text-[17px] font-semibold text-[#231f44] leading-tight group-hover:underline underline-offset-2 decoration-[var(--neon-green)] decoration-2">
           {project.title}
@@ -84,7 +278,7 @@ const WorkDropdown = ({ onProjectClick, closeMenu, workGroups = [], portfolioDat
       {/* DESKTOP */}
       <div className={"hidden md:flex absolute top-full left-0 md:-left-12 pt-10 w-[768px] z-[100] " + fontClass}>
         <div className="absolute top-0 left-0 w-full h-10 bg-transparent" />
-        <div className="flex w-full bg-white rounded-2xl shadow-[0_25px_60px_rgba(35,31,68,0.15)] ring-1 ring-[#231f44]/5 overflow-hidden">
+        <div className="flex w-full bg-white rounded-sm shadow-[0_25px_60px_rgba(35,31,68,0.15)] ring-1 ring-[#231f44]/5 overflow-hidden">
 
           {/* Left: company list */}
           <div className="w-[220px] bg-[#FBFBFB] border-r border-slate-100 p-5 flex-shrink-0">
@@ -125,19 +319,15 @@ const WorkDropdown = ({ onProjectClick, closeMenu, workGroups = [], portfolioDat
             )}
             <div
               key={panelKey}
-              className="flex flex-col gap-1 overflow-y-auto max-h-[600px] pr-2 custom-scrollbar"
+              className="flex flex-col gap-1 overflow-y-auto max-h-[860px] pr-2 custom-scrollbar"
               style={{ animation: activeCompany ? 'panelFadeIn 220ms ease both' : 'none' }}
             >
               {!activeCompany ? (
-                <div className="flex flex-col items-center justify-center h-full text-center py-20">
-                  <p className="text-sm text-slate-400 italic">Select a company to see projects</p>
-                </div>
+                <FlappyBird />
               ) : allActiveProjects.length > 0 ? (
                 <>
-                  {/* Umbrella groups — ONE continuous neon line down the left side of the group */}
                   {umbrellas.map(umbrella => (
                     <div key={umbrella.id} className="relative pl-4 mb-3">
-                      {/* Single continuous neon stripe for the whole group */}
                       <div className="absolute left-0 top-0 bottom-0 w-[3px] rounded-full bg-[var(--neon-green)] opacity-70" />
                       <p className="text-xs text-slate-400 mb-2 px-1">{umbrella.title}</p>
                       {pillars
@@ -146,7 +336,6 @@ const WorkDropdown = ({ onProjectClick, closeMenu, workGroups = [], portfolioDat
                       }
                     </div>
                   ))}
-                  {/* Standalone projects — no stripe */}
                   {standalones.map(project => <ProjectCard key={project.id} project={project} />)}
                 </>
               ) : (
@@ -160,7 +349,7 @@ const WorkDropdown = ({ onProjectClick, closeMenu, workGroups = [], portfolioDat
         </div>
       </div>
 
-      {/* MOBILE — fully scrollable, no height clipping */}
+      {/* MOBILE */}
       <div className={"flex md:hidden flex-col w-full " + fontClass}>
         {workGroups.map((group) => {
           const isExpanded = activeCompany === group.company;
@@ -185,7 +374,6 @@ const WorkDropdown = ({ onProjectClick, closeMenu, workGroups = [], portfolioDat
                 />
               </button>
 
-              {/* Height-based accordion — no overflow:hidden wrapper, just natural height */}
               <div
                 className="grid transition-all duration-500 ease-in-out"
                 style={{ gridTemplateRows: isExpanded ? '1fr' : '0fr' }}

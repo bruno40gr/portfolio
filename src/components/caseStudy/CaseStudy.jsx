@@ -119,7 +119,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
             processStepTitle: lastHeading,
           });
         });
-      } else if (block.type === "list" && block.items) {          // <-- PASTE ENDS HERE
+      
         
       } else if (block.type === "list" && block.items) {
         block.items.forEach((item) => {
@@ -209,7 +209,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
             key={index}
             className={`mb-4 text-left case-anchor-target ${showBorder ? "mt-10 pt-10" : ""}`}
           >
-            <h2 className="text-2xl font-semibold text-slate-900 tracking-tight">{block.title}</h2>
+            <h2 className="text-3xl font-serif font-semibold text-slate-900 tracking-tight">{block.title}</h2>
           </section>
         );
       }
@@ -222,8 +222,8 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         return (
           <div key={index} className="mb-10 px-6 md:px-0">
             {block.noLightbox ? (
-              <div className="relative w-full bg-white border border-neutral-200 rounded-xl p-2 shadow-sm">
-                <div className="relative rounded-lg overflow-hidden w-full">
+              <div className="relative w-full bg-white border border-neutral-200 rounded-sm p-2 shadow-sm">
+                <div className="relative rounded-sm overflow-hidden w-full">
                   <img
                     src={block.src}
                     alt={imageCaption}
@@ -240,8 +240,8 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                 className="group relative w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-green)] rounded-xl"
                 aria-label="Expand image"
               >
-                <div className="relative w-full bg-white border border-neutral-200 rounded-xl transition-all duration-300 ease-out p-2 shadow-sm group-hover:shadow-md group-hover:border-neutral-300">
-                  <div className="relative rounded-lg overflow-hidden w-full">
+                <div className="relative w-full bg-white border border-neutral-200 rounded-sm transition-all duration-300 ease-out p-2 shadow-sm group-hover:shadow-md group-hover:border-neutral-300">
+                  <div className="relative rounded-sm overflow-hidden w-full">
                     <img
                       src={block.src}
                       alt={imageCaption}
@@ -276,8 +276,8 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
               onClick={() => { if (globalIndex !== -1) setLightbox({ open: true, index: globalIndex }); }}
               className="group relative w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-green)] rounded-xl"
             >
-              <div className="relative w-full bg-white border border-neutral-200 rounded-xl transition-all duration-300 ease-out p-2 shadow-sm group-hover:shadow-md group-hover:border-neutral-300">
-                <div className="relative rounded-lg overflow-hidden w-full">
+              <div className="relative w-full bg-white border border-neutral-200 rounded-sm transition-all duration-300 ease-out p-2 shadow-sm group-hover:shadow-md group-hover:border-neutral-300">
+                <div className="relative rounded-sm overflow-hidden w-full">
                   <img
                     src={img.src}
                     alt={captionShort}
@@ -310,7 +310,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
               src={block.src}
               caption={videoCaption}
               coverImage={block.coverImage}
-              onClick={() => setLightbox({ open: true, index: globalIndex })}
+              onClick={() => { if (globalIndex !== -1) setLightbox({ open: true, index: globalIndex }); }}
             />
             {videoCaption && <Caption>{videoCaption}</Caption>}
           </div>
@@ -482,7 +482,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                                     />
                                   )}
 
-                                  <p className="type-caption text-left text-neutral-600 text-[14px] font-normal leading-relaxed mt-2 md:mt-3 font-serif">
+                                  <p className="type-caption text-left text-slate-400 text-[16px] font-normal leading-relaxed mt-2 md:mt-3 font-serif">
                                     {mediaItem.captionShort}
                                   </p>
                                 </div>
@@ -529,11 +529,15 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         <AnimatedHero projectId={project.id} />
       ) : (
         <div
-          className="w-full h-[60vh] md:h-[80vh] border-b border-neutral-200 overflow-hidden relative shadow-sm text-center flex items-center justify-center"
-          style={heroStyle}
+          className="w-full h-[80vh] border-b border-neutral-200 overflow-hidden relative shadow-sm text-center flex items-center justify-center"
+          style={{ backgroundColor: heroBgColor }}
         >
-          <div className={`w-full h-full flex items-center justify-center ${heroPadding}`}>
-            <img src={heroSrc} alt={project.title} className="w-auto h-full object-contain" />
+          <div className="w-full h-full flex items-center justify-center">
+            <img
+              src={heroSrc}
+              alt={project.title}
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
       )}
@@ -545,7 +549,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
               <div className="max-h-[calc(100vh-var(--header-h)-48px)] overflow-auto">
                 <CaseStudyAnchorNav
                   sections={sections}
-                  onBack={isPillar ? () => onNavigateToProject(rootProject) : onExit}
+                  onBack={() => window.history.back()}
                 />
               </div>
             </div>
@@ -608,7 +612,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         open={lightbox.open}
         initialIndex={lightbox.index}
         mediaItems={allMediaItems}
-        onClose={() => setLightbox({ ...lightbox, open: false })}
+        onClose={() => setLightbox(prev => ({ ...prev, open: false }))}
       />
     </article>
   );

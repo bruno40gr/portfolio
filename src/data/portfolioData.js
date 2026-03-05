@@ -517,14 +517,7 @@ export const PORTFOLIO_DATA = {
               "At the volume Amazon Devices operates, that manual entry requirement had become the single largest bottleneck in the asset pipeline."
             ]
           },
-          {
-            type: "image-full",
-            src: "https://via.placeholder.com/1600x900?text=Regional+and+Temporal+Guardrails+Composition",
-            caption: { 
-              short: "Visualizing the stakes: Metadata acts as the guardrail for global compliance, ensuring region-locked features, legal requirements, and cultural nuances are respected.", 
-              verbose: "Without strict metadata, an Echo Show displaying a US-only movie release could accidentally be published to a Brazilian marketplace, causing immediate licensing and legal issues. The sheer volume of manual tags was the only thing preventing these errors." 
-            }
-          },
+          
           {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772412234/Background_metadata_cphwlh.png",
