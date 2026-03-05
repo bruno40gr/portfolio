@@ -22,17 +22,17 @@ const ResumePage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <h3 className="font-semibold text-lg text-gray-800 mb-2">Product</h3>
-            <ul className="list-disc list-inside space-y-1 text-gray-700">
+            <ul className="space-y-1 text-gray-700 pl-5">
               {content.product.map((item, index) => (
-                <li key={index}>{item}</li>
+                <li key={index} className="list-disc">{item}</li>
               ))}
             </ul>
           </div>
           <div>
             <h3 className="font-semibold text-lg text-gray-800 mb-2">Technical</h3>
-            <ul className="list-disc list-inside space-y-1 text-gray-700">
+            <ul className="space-y-1 text-gray-700 pl-5">
               {content.technical.map((item, index) => (
-                <li key={index}>{item}</li>
+                <li key={index} className="list-disc">{item}</li>
               ))}
             </ul>
           </div>
@@ -46,9 +46,9 @@ const ResumePage = () => {
               <h3 className="font-semibold text-lg text-gray-900 leading-tight">{item.role || item.degree}</h3>
               <p className="text-gray-700 text-base">{item.company || item.institution}{item.dates ? ` | ${item.dates}` : ''}</p>
               {item.description && (
-                <ul className="list-disc list-inside space-y-1 text-gray-700 mt-2">
+                <ul className="space-y-1 text-gray-700 mt-2 pl-5">
                   {item.description.map((desc, i) => (
-                    <li key={i}>{desc}</li>
+                    <li key={i} className="list-disc">{desc}</li>
                   ))}
                 </ul>
               )}
