@@ -4,7 +4,7 @@ export const ASSETS = {
   jetSansReg: "",
   jetSansItalic: "",
   mainLogo: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772603437/bruno_logo_nq6mx6.png",
-  aboutPhoto: "https://res.cloudinary.com/diy08lj9x/image/upload/v1768960431/main_photo_ydhs8m.jpg",
+  aboutPhoto: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772741533/fe3891d1-b923-41e7-a33d-1083059bd15d.png",
   testImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1763877541/cld-sample-4.jpg"
 };
 
