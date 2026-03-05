@@ -57,6 +57,7 @@ This log documents the iterative refinements and systems-thinking applied to thi
 - **Mar 3:** **Immersive Hero Layout:** Rearchitected the hero section in `App.jsx` to be a full-viewport container, vertically centering content and integrating the `CompanyStripe` component.
 - **Mar 3:** **Project Thumbnail Padding:** Added `p-8` Tailwind CSS padding to "Image Builder," "Inspire Tab," and "Studio 2.0" project thumbnails for improved visual spacing.
 - **Mar 3:** **Branding and Asset Updates:** Replaced the hero logo with a new version, added a custom favicon to `index.html`, and updated the main navigation to point to the correct resume URL.
+- **Mar 5:** **Resume Page Creation:** Created a dedicated resume page (`src/components/ResumePage.jsx`) displaying structured resume content from `src/data/resumeData.js`, integrated into `src/App.jsx` with updated navigation.
 
 ---
 *Note: This portfolio is a living project, designed to demonstrate the same systems-level precision and user-advocacy found in my professional product work.*

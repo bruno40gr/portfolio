@@ -14,6 +14,7 @@ import Changelog from "./components/home/Changelog";
 
 import CaseStudy from "./components/caseStudy/CaseStudy";
 import CaseStudyStyleGuide from "./components/caseStudy/CaseStudyStyleGuide";
+import ResumePage from "./components/ResumePage"; // Import new ResumePage component
 import { Analytics } from "@vercel/analytics/react";
 
 export default function App() {
@@ -142,6 +143,11 @@ export default function App() {
       return;
     }
     if (view === "about") {
+      setView("home");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+    if (view === "resume") { // Handle back navigation from resume page
       setView("home");
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -370,14 +376,12 @@ export default function App() {
               navTheme === "dark" ? "text-white" : "text-[#231F45]"
             }`}
           >
-            <a
-              href="https://docs.google.com/document/d/e/2PACX-1vR6OZ_g0O3dJvY7HvvShcBjGBmurMKH_hLXthETpGtTAb9nhegJg_StEFLdIZGRvB0XVDpW7TIHKkOh/pub"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={() => navigateTo("resume")}
               className="type-nav opacity-90 hover:opacity-100 transition-opacity"
             >
               Resume
-            </a>
+            </button>
             <button
               onClick={() => setIsContactOpen(true)}
               className="type-nav opacity-90 hover:opacity-100 transition-opacity"
@@ -445,15 +449,15 @@ export default function App() {
             >
               About
             </button>
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                navigateTo("resume");
+              }}
               className="type-nav text-left text-2xl font-semibold border-b border-slate-100 py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
             >
               Resume
-            </a>
+            </button>
             <button
               onClick={() => {
                 setIsMobileMenuOpen(false);
@@ -688,6 +692,10 @@ export default function App() {
 
         {view === "changelog" && (
           <Changelog />
+        )}
+
+        {view === "resume" && (
+          <ResumePage />
         )}
       </main>
 
