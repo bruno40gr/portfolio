@@ -246,6 +246,30 @@ const HERO_DATA = {
         theme: "light"
       }
     ]
+  },
+  'jas-ai-generator': {
+    caption: "Fire TV campaign assets. Both built in Image Builder — one drops the device onto a gradient, one places it in a real scene. The difference is what this tool makes possible.",
+    layout: {
+      containerHeight: "h-[48vh] md:h-[60vh]",
+      containerWidth: "w-[260px] md:w-[420px]",
+    },
+    slides: [
+      {
+        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772662326/firetv-lifestyle_dlyenh.png",
+        colors: ["#1a2a1a", "#0f1f0f"],
+        market: "Device placed inside a realistic scene",
+        flag: "",
+        theme: "dark"
+      },
+      {
+        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772662326/firetv-gradient_dfwvl0.png",
+        colors: ["#1a1a2e", "#13102e"],
+        market: "Device on a gradient",
+        flag: "",
+        theme: "dark"
+      },
+      
+      ]
   }
 };
 
@@ -332,12 +356,13 @@ const AnimatedHero = ({ projectId }) => {
 
   return (
     <div
-      className="w-full overflow-hidden relative transition-colors duration-[1500ms] ease-in-out touch-pan-y flex items-center justify-center"
+      className="w-full overflow-hidden relative transition-colors duration-[1500ms] ease-in-out touch-pan-y"
       style={{
         backgroundColor: slides[currentSlide]?.colors[0] || "#231f44",
-        paddingTop: "clamp(5rem, 10vw, 8rem)",
-        paddingBottom: "clamp(4rem, 8vw, 6rem)",
-        minHeight: "100vh",
+        paddingTop: "calc(var(--header-h) + clamp(2rem, 5vw, 4rem))",
+        paddingBottom: "clamp(2.5rem, 5vw, 4rem)",
+        minHeight: "100svh",
+        boxSizing: "border-box",
       }}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
@@ -345,61 +370,119 @@ const AnimatedHero = ({ projectId }) => {
     >
       <GrainOverlay opacity={isDarkTheme ? 0.30 : 0.15} />
 
-      <div
-        className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-6 px-6 md:px-8 w-full max-w-5xl relative z-10"
-        style={{ opacity: scale > 1.2 ? 0 : 1, transition: "opacity 0.3s" }}
-      >
-        {/* Image */}
+      {projectId === 'jas-ai-generator' ? (
+        /* jas-ai-generator: vertical stack — image on top, caption below */
         <div
-          className={`relative ${layout.containerHeight} ${layout.containerWidth} flex items-center justify-center flex-shrink-0`}
-          style={{
-            transform: `scale(${scale})`,
-            zIndex: scale > 1 ? 50 : 10,
-            transition: isZooming ? 'none' : 'transform 0.3s ease-out'
-          }}
+          className="flex flex-col items-start gap-4 px-6 md:px-12 w-full max-w-6xl mx-auto relative z-10"
+          style={{ opacity: scale > 1.2 ? 0 : 1, transition: "opacity 0.3s" }}
         >
-          {slides.map((slide, index) => (
-            <img
-              key={index}
-              src={slide.img}
-              alt={slide.market}
-              className={`absolute h-full w-auto object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.35)] rounded-xl transition-all duration-[1200ms]
-              ${index === currentSlide ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}
-            />
-          ))}
+          <div
+            className="w-full"
+            style={{
+              transform: `scale(${scale})`,
+              transformOrigin: "top left",
+              zIndex: scale > 1 ? 50 : 10,
+              transition: isZooming ? 'none' : 'transform 0.3s ease-out'
+            }}
+          >
+            <div className={`relative ${layout.containerHeight} w-full`}>
+              {slides.map((slide, index) => (
+                <img
+                  key={index}
+                  src={slide.img}
+                  alt={slide.market}
+                  className={`absolute inset-0 h-full w-full object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.35)] rounded-2xl transition-all duration-[1200ms]
+                  ${index === currentSlide ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div className={`w-full flex flex-col items-start text-left transition-colors duration-300 ${textColorClass}`}>
+            <div className="relative w-full mb-2" style={{ minHeight: "1.5rem" }}>
+              {slides.map((slide, index) => (
+                <span
+                  key={index}
+                  className={`absolute top-0 left-0 w-full text-base font-semibold tracking-tight transition-opacity duration-[1200ms]
+                  ${index === currentSlide ? 'opacity-100' : 'opacity-0 pointer-events-none'}
+                  ${isDarkTheme ? 'text-white' : 'text-slate-900'}`}
+                >
+                  {slide.market}
+                </span>
+              ))}
+            </div>
+            <p className={`text-sm leading-relaxed mb-3 ${isDarkTheme ? 'text-white/50' : 'text-slate-900/50'}`}>
+              {caption}
+            </p>
+            <nav className="flex items-center gap-2.5">
+              {slides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`w-1.5 h-1.5 md:w-2 md:h-2 rounded-full transition-all duration-500
+                    ${index === currentSlide ? `${dotActiveClass} scale-125` : dotInactiveClass}`}
+                />
+              ))}
+            </nav>
+          </div>
         </div>
+      ) : (
+        /* All other projects: horizontal — image left 70%, caption right 30% */
+        <div
+          className="flex flex-col md:flex-row items-start gap-6 md:gap-10 px-6 md:px-12 w-full max-w-6xl mx-auto relative z-10"
+          style={{ opacity: scale > 1.2 ? 0 : 1, transition: "opacity 0.3s" }}
+        >
+          <div
+            className="w-full md:w-[70%] flex-shrink-0"
+            style={{
+              transform: `scale(${scale})`,
+              transformOrigin: "top left",
+              zIndex: scale > 1 ? 50 : 10,
+              transition: isZooming ? 'none' : 'transform 0.3s ease-out'
+            }}
+          >
+            <div className={`relative ${layout.containerHeight} w-full`}>
+              {slides.map((slide, index) => (
+                <img
+                  key={index}
+                  src={slide.img}
+                  alt={slide.market}
+                  className={`absolute inset-0 h-full w-full object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.35)] rounded-2xl transition-all duration-[1200ms]
+                  ${index === currentSlide ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}
+                />
+              ))}
+            </div>
+          </div>
 
-        {/* Caption + dots, no emoji/market line */}
-        <div className={`flex flex-col items-center md:items-start text-center md:text-left flex-shrink-0 transition-colors duration-300 ${textColorClass}`}>
-          <p className={`meta-label mb-2 leading-snug ${isDarkTheme ? '!text-white/50' : '!text-slate-900/50'}`}>
-  {caption}
-</p>
-
-<div className="relative h-7 mb-4">
-  {slides.map((slide, index) => (
-    <span
-      key={index}
-      className={`absolute whitespace-nowrap text-lg md:text-xl font-semibold tracking-tight transition-opacity duration-[1200ms]
-      ${index === currentSlide ? 'opacity-100' : 'opacity-0 pointer-events-none'}
-      ${isDarkTheme ? 'text-white' : 'text-slate-900'}`}
-    >
-      {slide.market}
-    </span>
-  ))}
-</div>
-
-          <nav className="flex items-center gap-2.5">
-            {slides.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentSlide(index)}
-                className={`w-1.5 h-1.5 md:w-2 md:h-2 rounded-full transition-all duration-500
-                  ${index === currentSlide ? `${dotActiveClass} scale-125` : dotInactiveClass}`}
-              />
-            ))}
-          </nav>
+          <div className={`w-full md:w-[30%] flex flex-col items-start text-left pt-2 transition-colors duration-300 ${textColorClass}`}>
+            <p className={`text-sm leading-relaxed mb-4 ${isDarkTheme ? 'text-white/50' : 'text-slate-900/50'}`}>
+              {caption}
+            </p>
+            <div className="relative w-full mb-4" style={{ minHeight: "2rem" }}>
+              {slides.map((slide, index) => (
+                <span
+                  key={index}
+                  className={`absolute top-0 left-0 w-full text-base font-semibold tracking-tight transition-opacity duration-[1200ms]
+                  ${index === currentSlide ? 'opacity-100' : 'opacity-0 pointer-events-none'}
+                  ${isDarkTheme ? 'text-white' : 'text-slate-900'}`}
+                >
+                  {slide.market}
+                </span>
+              ))}
+            </div>
+            <nav className="flex items-center gap-2.5">
+              {slides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`w-1.5 h-1.5 md:w-2 md:h-2 rounded-full transition-all duration-500
+                    ${index === currentSlide ? `${dotActiveClass} scale-125` : dotInactiveClass}`}
+                />
+              ))}
+            </nav>
+          </div>
         </div>
-      </div>
+      )}
 
       {scale > 1 && (
         <button

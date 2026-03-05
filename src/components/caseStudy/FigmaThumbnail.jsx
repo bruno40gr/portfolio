@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import { Figma } from "lucide-react";
 import { toFigmaEmbedUrl } from "../../utils/figma";
 
-const FigmaThumbnail = ({ src, caption, onClick, coverImage, aspectRatio }) => {
+const FigmaThumbnail = ({ src, caption, onClick, coverImage, aspectRatio, isFigJam }) => {
   const embedSrc = useMemo(() => toFigmaEmbedUrl(src), [src]);
 
   const handleClick = (e) => {
@@ -32,8 +32,7 @@ const FigmaThumbnail = ({ src, caption, onClick, coverImage, aspectRatio }) => {
           <Figma size={22} className="text-white" />
         </div>
         <div className="text-center">
-          <p className="text-white font-medium text-base">Interactive Prototype</p>
-          <p className="text-white/50 text-sm mt-1">Click to explore</p>
+          <p className="text-white font-medium text-base">{isFigJam ? "View FigJam Board" : "Interactive Prototype"}</p>
         </div>
       </div>
 

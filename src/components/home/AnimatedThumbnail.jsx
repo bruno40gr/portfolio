@@ -28,6 +28,12 @@ const THUMBNAIL_DATA = {
     { img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772311186/1A_01_A-2_jnyfjt.png",    colors: ["#1e2f6e", "#17245a"] },
     { img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772311186/1A_01_A_jycg58.png",      colors: ["#231f55", "#1c1944"] },
   ],
+  'jas-ai-generator': [
+    { img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772662326/firetv-lifestyle_dlyenh.png", colors: ["#1a2a1a", "#0f1f0f"] },
+    { img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772662326/firetv-gradient_dfwvl0.png", colors: ["#1a1a2e", "#13102e"] },
+    
+
+  ],
   'jas-asset-manager': [
     { img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772596156/1_xrlcq0.png", colors: ["#1a2d5e", "#131f44"] },
     { img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772596156/2_h3xok9.png", colors: ["#2a2850", "#231f44"] },

@@ -7,7 +7,7 @@ const renderFormattedText = (text) => {
   return parts.map((part, index) => {
     if (part.startsWith("**") && part.endsWith("**")) {
       // Keep color same as rest of text, just bold and code-y font
-      return <strong key={index} className="font-semibold font-mono tracking-tight text-slate-400">{part.slice(2, -2)}</strong>;
+      return <strong key={index} className="font-bold font-mono tracking-tight text-slate-200">{part.slice(2, -2)}</strong>;
     }
     return part;
   });
@@ -46,11 +46,11 @@ export default function Changelog() {
           <div key={index} className="relative flex flex-col md:flex-row items-start group">
             
             {/* Timeline Node - precisely positioned over the line */}
-            <div className="absolute left-2 md:left-1/2 top-1.5 md:top-2 -ml-[5px] w-3 h-3 rounded-full bg-[#13102e] border-2 border-[#88FF00] z-10 group-hover:bg-[#88FF00] group-hover:scale-125 transition-all duration-300 shadow-[0_0_10px_rgba(136,255,0,0.3)]"></div>
+            <div className="absolute left-2 md:left-1/2 top-1.5 md:top-2 -ml-[5px] md:-ml-[6px] w-3 h-3 rounded-full bg-[#13102e] border-2 border-[#88FF00] z-10 group-hover:bg-[#88FF00] group-hover:scale-125 transition-all duration-300 shadow-[0_0_10px_rgba(136,255,0,0.3)]"></div>
             
             {/* Desktop Week (Left side) */}
             <div className="hidden md:block w-1/2 text-right pr-12 mt-1">
-              <span className="text-slate-400 text-normal tracking-normal font-mono">
+              <span className="text-slate-400 text-sm tracking-widest uppercase font-semibold">
                 {entry.week}
               </span>
             </div>
@@ -59,18 +59,18 @@ export default function Changelog() {
             <div className="w-full md:w-1/2 pl-10 md:pl-12">
               {/* Mobile Week */}
               <div className="md:hidden mb-2">
-                <span className="text-[#88FF00] text-xs tracking-widest font-mono">
+                <span className="text-[#88FF00] text-xs tracking-widest uppercase font-bold">
                   {entry.week}
                 </span>
               </div>
               
-              <h3 className="text-xl md:text-2xl text-slate-200 font-normal mb-4 tracking-normal leading-snug">
+              <h3 className="text-xl md:text-2xl text-slate-200 font-semibold mb-4 tracking-tight leading-snug">
                 {entry.title}
               </h3>
               
               <ul className="space-y-4">
                 {entry.items.map((item, itemIdx) => (
-                  <li key={itemIdx} className="text-slate-400 text-[15px] md:text-base leading-relaxed font-thin flex items-start gap-3">
+                  <li key={itemIdx} className="text-slate-400 text-[15px] md:text-base leading-relaxed font-light flex items-start gap-3">
                     <span className="text-white/20 mt-1.5 text-[10px]">■</span>
                     <span className="text-slate-400 text-sm tracking-normal font-mono mr-2">{item.day}</span>
                     <span className="flex-1">{renderFormattedText(item.text)}</span>

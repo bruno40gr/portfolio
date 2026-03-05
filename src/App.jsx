@@ -48,6 +48,24 @@ export default function App() {
     return () => window.removeEventListener('keydown', handleEsc);
   }, []);
 
+  // Effect to manage body overflow for the gatekeeper page
+  useEffect(() => {
+    const isGatekeeperActive = !isAuthenticated && view !== "changelog";
+    if (isGatekeeperActive) {
+      document.documentElement.classList.add("overflow-hidden"); // Add to html
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.documentElement.classList.remove("overflow-hidden"); // Remove from html
+      document.body.classList.remove("overflow-hidden");
+    }
+    // Cleanup function to remove the class when component unmounts or dependencies change
+    return () => {
+      document.documentElement.classList.remove("overflow-hidden"); // Ensure cleanup for html
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, [isAuthenticated, view]); // Re-run effect when authentication state or view changes
+
+
   useEffect(() => {
     const update = () => {
       const h = headerRef.current?.offsetHeight || 56;
@@ -184,7 +202,7 @@ export default function App() {
   // Allow access to the changelog without authentication
   if (!isAuthenticated && view !== "changelog") {
     return (
-      <div className="min-h-screen flex flex-col text-left selection:bg-[#88FF00] selection:text-black bg-[#2d255c] relative overflow-hidden">
+      <div className="h-screen w-screen flex flex-col text-left selection:bg-[#88FF00] selection:text-black bg-[#2d255c] relative overflow-hidden">
         
         {/* Background effects moved to outer wrapper so they underlap the footer */}
         {/* Depth gradient: Increased contrast with a harsher, darker falloff at the edges */}
@@ -202,10 +220,9 @@ export default function App() {
         {/* Neon glow: Increased opacity from 0.09 to 0.20 to create a noticeable backlight */}
         <div className="absolute inset-0 pointer-events-none z-0" style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 40%, rgba(136,255,0,0.20) 0%, transparent 65%)' }}></div>
 
-        {/* Added pt-[var(--header-h)] to perfectly match the homepage's vertical centering offsets */}
-        <main className="flex-grow flex flex-col justify-center items-center text-center px-6 relative z-10 hero-wrap pt-[var(--header-h)]">
+        <main className="flex-grow flex flex-col items-center text-center px-6 relative z-10 w-full">
           
-          <div className="relative w-full max-w-4xl animate-fade-in hero-stack">
+          <div className="relative w-full max-w-4xl animate-fade-in hero-stack mt-[15vh]">
             
             {/* Logo */}
             <img 
@@ -214,30 +231,25 @@ export default function App() {
               className="hero-logo glitch-effect" 
             />
             
-            {/* Subheadline */}
-            <h2 className="font-sans text-xl md:text-2xl text-slate-400 font-light tracking-wide -mt-4 mb-8">
-              Product Design
-            </h2>
-            
             {/* The Form */}
             <form onSubmit={handleLogin} className="w-full flex flex-col items-center gap-4 mt-2">
               
               {/* Stark White Input Field */}
-              <div className="w-full max-w-[280px]">
+              <div className="w-full max-w-[200px]">
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => { setPassword(e.target.value); setAuthError(""); setIsSuccess(false); }}
                   placeholder="Password"
                   autoComplete="off"
-                  className={`w-full px-4 py-3 bg-white border border-transparent rounded-sm text-lg focus:outline-none focus:ring-2 focus:ring-[#88FF00] transition-shadow text-slate-900 text-center font-bold tracking-widest placeholder:text-slate-400 placeholder:font-normal placeholder:tracking-normal ${authError ? 'ring-2 ring-red-500' : ''}`}
+                  className={`w-full px-3 py-2 bg-white border border-transparent rounded-sm text-base focus:outline-none focus:ring-2 focus:ring-[#88FF00] transition-shadow text-slate-900 text-center font-bold tracking-widest placeholder:text-slate-400 placeholder:font-normal placeholder:tracking-normal ${authError ? 'ring-2 ring-red-500' : ''}`}
                 />
               </div>
 
               {/* Classic Pill Button matching your existing UI */}
               <button 
                 type="submit" 
-                className="w-full max-w-[280px] px-10 py-4 bg-[#88FF00] text-black font-bold rounded-full hover:scale-105 transition-transform"
+                className="w-full max-w-[200px] px-10 py-3 bg-[#88FF00] text-black font-bold rounded-full hover:scale-105 transition-transform text-base"
               >
                 Enter
               </button>
@@ -258,7 +270,9 @@ export default function App() {
             </form>
           </div>
         </main>
-        {renderFooter("dark")}
+        <div className="fixed inset-x-0 bottom-0 z-20">
+          {renderFooter("dark")}
+        </div>
       </div>
     );
   }

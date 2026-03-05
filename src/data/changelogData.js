@@ -1,23 +1,23 @@
 export const CHANGELOG_DATA = [
   {
     week: "Week of Mar 2, 2026",
-    title: "Hero Section Overhaul & UI Polish",
+    title: "Portfolio Infrastructure Updates",
     items: [
       { day: "Mar 6", text: "**Immersive Hero Layout:** Rearchitected the hero section in `App.jsx` to be a full-viewport (`min-h-[100dvh]`) container. Utilized Flexbox properties (`flex`, `flex-col`, `flex-1`, and `mt-auto`) to vertically center the main headline content while pushing the company logo stripe to the absolute bottom of the viewport." },
       { day: "Mar 4", text: "**Integrated Company Stripe:** Relocated the `CompanyStripe` component to be inside the hero section, serving as a sleek footer element and creating a more unified, immersive initial view before the user scrolls." },
-      { day: "Mar 3", text: "**Project Thumbnail Padding:** Added `p-8` Tailwind CSS padding to \"Image Builder,\" \"Inspire Tab,\" and \"Studio 2.0\" project thumbnails for improved visual spacing." },
+      { day: "Mar 3", text: "**Project Thumbnail Padding:** Added `p-8` Tailwind CSS padding to project thumbnails for improved visual spacing." },
       { day: "Mar 2", text: "**Branding and Asset Updates:** Replaced the hero logo with a new version, added a custom favicon to `index.html`, and updated the main navigation to point to the correct resume URL." }
     ]
   },
   {
     week: "Week of Feb 23, 2026",
-    title: "Further Enhancements",
+    title: "Further Enhancements & Content Expansion",
     items: [
       { day: "Feb 27", text: "**Image Lightbox Improvements:** Implemented image lightbox improvements and added many new screenshots." },
-      { day: "Feb 26", text: "**Image Builder:** Developed the Image Builder functionality." },
-      { day: "Feb 25", text: "**Alto Case Studies & Misc Improvements:** Added Alto case studies and various other improvements." },
-      { day: "Feb 24", text: "**Patreon and Prox Case Studies:** Incorporated Patreon and Prox case studies." },
-      { day: "Feb 23", text: "**Inspire Tab, AI Highlights, Dropdown Menu:** Introduced Inspire Tab, AI highlights, and dropdown menu enhancements." }
+      { day: "Feb 26", text: "**New Project View Added:** Developed new project view functionality." },
+      { day: "Feb 25", text: "**New Case Studies & Misc Improvements:** Added several new case studies and various other improvements." },
+      { day: "Feb 24", text: "**Additional Case Studies:** Incorporated more case studies." },
+      { day: "Feb 23", text: "**New Features & UI:** Introduced new tabs, AI highlights, and dropdown menu enhancements." }
     ]
   },
   {

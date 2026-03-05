@@ -221,29 +221,41 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
 
         return (
           <div key={index} className="mb-10 px-6 md:px-0">
-            <button
-              type="button"
-              onClick={() => {
-                if (globalIndex !== -1) setLightbox({ open: true, index: globalIndex });
-              }}
-              className="group relative w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-green)] rounded-xl"
-              aria-label="Expand image"
-            >
-              <div className="relative w-full bg-white border border-neutral-200 rounded-xl transition-all duration-300 ease-out p-2 shadow-sm group-hover:shadow-md group-hover:border-neutral-300">
+            {block.noLightbox ? (
+              <div className="relative w-full bg-white border border-neutral-200 rounded-xl p-2 shadow-sm">
                 <div className="relative rounded-lg overflow-hidden w-full">
                   <img
                     src={block.src}
                     alt={imageCaption}
-                    className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-[1.01]"
+                    className="w-full h-auto object-cover"
                   />
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <div className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center text-[var(--deep-purple)] shadow-lg opacity-0 translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 group-hover:bg-[var(--neon-green)] group-hover:border-[var(--neon-green)] transition-all duration-300 transform scale-90 group-hover:scale-100">
-                      <Maximize2 size={20} aria-hidden="true" />
+                </div>
+              </div>
+            ) : (
+              <button
+                type="button"
+                onClick={() => {
+                  if (globalIndex !== -1) setLightbox({ open: true, index: globalIndex });
+                }}
+                className="group relative w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-green)] rounded-xl"
+                aria-label="Expand image"
+              >
+                <div className="relative w-full bg-white border border-neutral-200 rounded-xl transition-all duration-300 ease-out p-2 shadow-sm group-hover:shadow-md group-hover:border-neutral-300">
+                  <div className="relative rounded-lg overflow-hidden w-full">
+                    <img
+                      src={block.src}
+                      alt={imageCaption}
+                      className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-[1.01]"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                      <div className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center text-[var(--deep-purple)] shadow-lg opacity-0 translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 group-hover:bg-[var(--neon-green)] group-hover:border-[var(--neon-green)] transition-all duration-300 transform scale-90 group-hover:scale-100">
+                        <Maximize2 size={20} aria-hidden="true" />
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </button>
+              </button>
+            )}
 
             {imageCaption && <Caption>{imageCaption}</Caption>}
           </div>
@@ -323,6 +335,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
               caption={figmaCaption}
               coverImage={block.coverImage}
               aspectRatio={block.aspectRatio}
+              isFigJam={block.src?.includes("figma.com/board")}
               onClick={() => setLightbox({ open: true, index: globalIndex, embedSrc })}
             />
             {figmaCaption && <Caption>{figmaCaption}</Caption>}
