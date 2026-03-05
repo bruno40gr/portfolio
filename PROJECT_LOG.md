@@ -47,14 +47,16 @@ This log documents the iterative refinements and systems-thinking applied to thi
 - **Inspire Tab, AI Highlights, Dropdown Menu:** Introduced Inspire Tab, AI highlights, and dropdown menu enhancements. (ab693b9)
 
 ---
-## Week of Mar 2, 2026: Hero Section Overhaul & UI Polish
-- **Immersive Hero Layout:** Rearchitected the hero section in `App.jsx` to be a full-viewport (`min-h-[100dvh]`) container. Utilized Flexbox properties (`flex`, `flex-col`, `flex-1`, and `mt-auto`) to vertically center the main headline content while pushing the company logo stripe to the absolute bottom of the viewport.
-- **Integrated Company Stripe:** Relocated the `CompanyStripe` component to be inside the hero section, serving as a sleek footer element and creating a more unified, immersive initial view before the user scrolls.
-- **Project Thumbnail Padding:** Added `p-8` Tailwind CSS padding to "Image Builder," "Inspire Tab," and "Studio 2.0" project thumbnails for improved visual spacing.
-- **Branding and Asset Updates:** Replaced the hero logo with a new version, added a custom favicon to `index.html`, and updated the main navigation to point to the correct resume URL.
-- **Gatekeeper Page Toggle:** Implemented a new `gatekeeperEnabled` flag in `src/data/portfolioData.js` to quickly activate/deactivate the portfolio's gatekeeper page.
-- **Tailwind Typography Color Palette Update:** Standardized text colors by replacing all `text-slate-*` instances with `text-neutral-*` across `.jsx`, `.tsx`, and `.css` files in the `src` directory.
-- **Tailwind Typography Color Palette Reversion (Targeted):** Reverted specific components/sections (CalloutBox, ImpactBox, WorkDropdown, and Hero Section in App.jsx and AnimatedHero.jsx) back to `text-slate-*` to address coloring issues.
+## Week of Mar 2, 2026: Design Updates & Functionality
+- **Mar 5:** **Vercel Analytics Integration:** Installed Vercel Analytics and integrated the `Analytics` component into `src/App.jsx` for tracking.
+- **Mar 5:** **Tailwind Typography Refinement:** Adjusted the color palette from `text-neutral-*` back to `text-slate-*` for `ImpactBox`, `CalloutBox`, `WorkDropdown`, and the Hero Sections (`App.jsx` and `AnimatedHero.jsx`) to resolve coloring issues.
+- **Mar 4:** **Tailwind Typography Update:** Standardized text colors by replacing `text-slate-*` instances with `text-neutral-*` across `.jsx`, `.tsx`, and `.css` files in the `src` directory.
+- **Mar 4:** **Final Case Study Added:** Integrated the final case study into the portfolio, completing the core content.
+- **Mar 4:** **Gatekeeper Screen & Metadata Stripe:** Implemented a new `gatekeeperEnabled` flag in `src/data/portfolioData.js` to quickly activate/deactivate the portfolio's gatekeeper page; also refined gatekeeper screen styling and metadata stripe.
+- **Mar 3:** **Hero Animation Improvements:** Made several enhancements to the animated hero components for a smoother and more engaging user experience.
+- **Mar 3:** **Immersive Hero Layout:** Rearchitected the hero section in `App.jsx` to be a full-viewport container, vertically centering content and integrating the `CompanyStripe` component.
+- **Mar 3:** **Project Thumbnail Padding:** Added `p-8` Tailwind CSS padding to "Image Builder," "Inspire Tab," and "Studio 2.0" project thumbnails for improved visual spacing.
+- **Mar 3:** **Branding and Asset Updates:** Replaced the hero logo with a new version, added a custom favicon to `index.html`, and updated the main navigation to point to the correct resume URL.
 
 ---
 *Note: This portfolio is a living project, designed to demonstrate the same systems-level precision and user-advocacy found in my professional product work.*

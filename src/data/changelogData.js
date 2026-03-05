@@ -1,32 +1,28 @@
 export const CHANGELOG_DATA = [
   {
-    week: "Week of Mar 9, 2026",
-    title: "Final Case Study and UI Polish",
+    week: "Week of Mar 2, 2026",
+    title: "Design Updates & Functionality",
     items: [
-      { day: "Mar 11", text: "**Final Case Study Added:** Integrated the final case study, completing the core content of the portfolio." },
-      { day: "Mar 10", text: "**Gatekeeper Screen Enhancements:** Refined the gatekeeper screen styling, including adjustments to the metadata stripe for better visual consistency." },
-      { day: "Mar 9", text: "**Hero Animation Improvements:** Made several enhancements to the animated hero components for a smoother and more engaging user experience." }
+      { day: "Mar 5", text: "**Vercel Analytics Integration:** Installed Vercel Analytics and integrated the `Analytics` component into `src/App.jsx` for tracking." },
+      { day: "Mar 5", text: "**Tailwind Typography Refinement:** Adjusted the color palette from `text-neutral-*` back to `text-slate-*` for `ImpactBox`, `CalloutBox`, `WorkDropdown`, and the Hero Sections (`App.jsx` and `AnimatedHero.jsx`) to resolve coloring issues." },
+      { day: "Mar 4", text: "**Tailwind Typography Update:** Standardized text colors by replacing `text-slate-*` instances with `text-neutral-*` across `.jsx`, `.tsx`, and `.css` files in the `src` directory." },
+      { day: "Mar 4", text: "**Final Case Study Added:** Integrated the final case study into the portfolio, completing the core content." },
+      { day: "Mar 4", text: "**Gatekeeper Screen & Metadata Stripe:** Implemented a new `gatekeeperEnabled` flag in `src/data/portfolioData.js` to quickly activate/deactivate the portfolio's gatekeeper page; also refined gatekeeper screen styling and metadata stripe." },
+      { day: "Mar 3", text: "**Hero Animation Improvements:** Made several enhancements to the animated hero components for a smoother and more engaging user experience." },
+      { day: "Mar 3", text: "**Immersive Hero Layout:** Rearchitected the hero section in `App.jsx` to be a full-viewport container, vertically centering content and integrating the `CompanyStripe` component." },
+      { day: "Mar 3", text: "**Project Thumbnail Padding:** Added `p-8` Tailwind CSS padding to project thumbnails for improved visual spacing." },
+      { day: "Mar 3", text: "**Branding and Asset Updates:** Replaced the hero logo with a new version, added a custom favicon to `index.html`, and updated the main navigation to point to the correct resume URL." }
     ]
   },
   {
-    week: "Week of Mar 2, 2026",
+    week: "Week of Feb 26, 2026",
     title: "Portfolio Infrastructure Updates",
     items: [
-      { day: "Mar 6", text: "**Immersive Hero Layout:** Rearchitected the hero section in `App.jsx` to be a full-viewport (`min-h-[100dvh]`) container. Utilized Flexbox properties (`flex`, `flex-col`, `flex-1`, and `mt-auto`) to vertically center the main headline content while pushing the company logo stripe to the absolute bottom of the viewport." },
-      { day: "Mar 4", text: "**Integrated Company Stripe:** Relocated the `CompanyStripe` component to be inside the hero section, serving as a sleek footer element and creating a more unified, immersive initial view before the user scrolls." },
-      { day: "Mar 3", text: "**Project Thumbnail Padding:** Added `p-8` Tailwind CSS padding to project thumbnails for improved visual spacing." },
-      { day: "Mar 2", text: "**Branding and Asset Updates:** Replaced the hero logo with a new version, added a custom favicon to `index.html`, and updated the main navigation to point to the correct resume URL." }
-    ]
-  },
-  {
-    week: "Week of Feb 23, 2026",
-    title: "Further Enhancements & Content Expansion",
-    items: [
-      { day: "Feb 27", text: "**Image Lightbox Improvements:** Implemented image lightbox improvements and added many new screenshots." },
-      { day: "Feb 26", text: "**New Project View Added:** Developed new project view functionality." },
-      { day: "Feb 25", text: "**New Case Studies & Misc Improvements:** Added several new case studies and various other improvements." },
-      { day: "Feb 24", text: "**Additional Case Studies:** Incorporated more case studies." },
-      { day: "Feb 23", text: "**New Features & UI:** Introduced new tabs, AI highlights, and dropdown menu enhancements." }
+      { day: "Feb 28", text: "**Inspire Tab, AI Highlights, Dropdown Menu:** Introduced Inspire Tab, AI highlights, and dropdown menu enhancements." },
+      { day: "Feb 27", text: "**Patreon and Prox Case Studies:** Incorporated Patreon and Prox case studies." },
+      { day: "Feb 26", text: "**Alto Case Studies & Misc Improvements:** Added Alto case studies and various other improvements." },
+      { day: "Feb 25", text: "**Image Builder:** Developed the Image Builder functionality." },
+      { day: "Feb 23", text: "**Image Lightbox Improvements:** Implemented image lightbox improvements and added many new screenshots." }
     ]
   },
   {

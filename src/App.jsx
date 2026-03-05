@@ -14,6 +14,7 @@ import Changelog from "./components/home/Changelog";
 
 import CaseStudy from "./components/caseStudy/CaseStudy";
 import CaseStudyStyleGuide from "./components/caseStudy/CaseStudyStyleGuide";
+import { Analytics } from "@vercel/analytics/react";
 
 export default function App() {
   // Authentication State
@@ -692,6 +693,7 @@ export default function App() {
 
       {/* RENDER FOOTER FOR MAIN SITE */}
       {view !== "project-view" && renderFooter(view === "changelog" ? "dark" : "light")}
+      <Analytics />
     </div>
   );
 }
