@@ -94,8 +94,8 @@ const ProjectCard = ({ project, onClick }) => {
 
       {/* Static Content Area */}
       <div className="flex flex-col gap-2 px-1">
-        <h3 className="text-2xl font-bold text-[var(--deep-purple)] leading-tight tracking-tight">{title}</h3>
-        <p className="text-base md:text-lg text-slate-700 leading-relaxed mb-4 md:mb-6 max-w-[95%]">{impactSummary}</p>
+        <h3 className="text-2xl font-bold text-neutral-900 leading-tight tracking-tight">{title}</h3>
+        <p className="text-base md:text-lg text-neutral-700 leading-relaxed mb-4 md:mb-6 max-w-[95%]">{impactSummary}</p>
         <div className="space-y-3">{renderBlocks()}</div>
       </div>
     </div>

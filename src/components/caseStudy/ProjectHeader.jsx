@@ -35,7 +35,7 @@ const ProjectHeader = ({ company, title, type }) => {
         />
       )}
       <div className="text-left">
-        <h2 className="text-xl md:text-2xl text-slate-900 font-semibold tracking-tight leading-snug">{title || company}</h2>
+        <h2 className="text-xl md:text-2xl text-neutral-900 font-semibold tracking-tight leading-snug">{title || company}</h2>
         {typeLabel && <div className="meta-label mt-1">{typeLabel}</div>}
       </div>
     </div>

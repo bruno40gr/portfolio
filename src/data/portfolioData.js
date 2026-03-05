@@ -40,6 +40,7 @@ export const CASE_STUDIES_TITLES = {
 };
 
 export const PORTFOLIO_DATA = {
+  gatekeeperEnabled: false, // Set to false to disable the gatekeeper page
   profile: {
     name: "Bruno",
     subName: "Wong M.",
@@ -114,7 +115,7 @@ export const PORTFOLIO_DATA = {
           {
             type: "text",
             content:
-              "This prototype illustrates that future state. It is not a shipping spec. It is a strategic alignment tool, built to show leadership what becomes possible once all four pillars are in place and connected."
+              "This prototype illustrates the upcoming future state. Functioning as an strategic alignment asset, it show leadership what becomes possible once all four pillars are in place and connected."
           },
           {
             type: "video",
@@ -133,7 +134,7 @@ export const PORTFOLIO_DATA = {
       title: CASE_STUDIES_TITLES["jas-image-builder"],
       impactSummary: "An internal tool that automates the creation of localized marketing images across 23 global marketplaces.",
       impactSummarySentence: "A production system that lets non-designers build, localize, and export marketing assets across 23 global market and language combinations, with compliance logic built in.",
-      designerNote: "The hardest design challenge here wasn't the interface. It was making a tool with serious logic underneath feel simple enough for a non-designer to use without breaking anything. Guardrails, layout rules, regional compliance checks, device availability filters, all of it had to be invisible at the surface. For Prime Day 2025 alone, the system produced 8,000 images and freed the equivalent of 45 designers, content writers, and marketing ops specialists from purely mechanical production work. That was the org-level goal. My job was to make sure the complexity didn't leak.",
+      designerNote: "The goal was to make a complex system usable by non-designers while keeping everything brand compliant and technically safe. Beyond the familiar image-editing layout, the rules and parameters stayed out of sight. For Prime Day 2025 alone, the system produced about 8,000 images and removed the equivalent workload of roughly 45 designers, content writers, and marketing ops specialists who previously handled production tasks. It met the organization’s efficiency target and secured continued funding for the Asset System platform.",
       thumbnail: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=80",
       thumbnailPadding: "p-8",
       status: "LAUNCHED",
@@ -283,7 +284,7 @@ export const PORTFOLIO_DATA = {
       title: "Devices Component Asset Manager",
       impactSummary: "A centralized internal library that makes Amazon Devices marketing images easy to find, QA, and place across global markets. Shipping Q2 2026.",
       impactSummarySentence: "A centralized digital asset library that brought the entire Amazon Devices creative catalog under governance, making automated campaign publishing possible at global scale.",
-      designerNote: "The Image Builder needed a library. Without one, every asset it produced landed somewhere unstructured, ungoverned, and unreachable at scale. A single person was manually curating the catalog that fed our entire production pipeline. My job on this project wasn't to design a ground-up overhaul. It was to build the core functionalities that would drive adoption and lay the groundwork for one, surgically, while that larger effort was being scoped. That required being honest about what we could ship and what we had to defer.",
+      designerNote: "The Image Builder needed a manageable centralized library because after launch the team was still uploading PNGs through backchannels. Building one allowed assets to inherit structure, governance, and rich metadata for AI automation. My goal on this project was to deliver the core functionality that would drive adoption and lay the groundwork for it, while introducing features that reduced reliance on external tools. This work also brought me closer to end users and, once fully adopted, enables full campaign placement automation.",
       thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772596156/1_xrlcq0.png",
       status: "IN_BUILD",
       type: "INTERNAL",
@@ -292,7 +293,7 @@ export const PORTFOLIO_DATA = {
         heroImage: "https://via.placeholder.com/1600x900?text=DCAM+Hero",
         role: "Lead UX Designer",
         timeline: "Ongoing (Estimated Q2 2026)",
-        collaborators: "PM, 4 Engineers, Brand Studio",
+        collaborators: "PM, 8 Engineers, Designer Ops, Brand leaders",
         type: "INTERNAL",
         blocks: [
           {
@@ -303,7 +304,7 @@ export const PORTFOLIO_DATA = {
           {
             type: "text",
             content: [
-              "Marketing images for Amazon Devices were scattered across multiple internal systems with no consistent naming and no access control. Teams fell back on outdated files, duplicated work across regions, and ran QA through third-party tools outside our platform. North America had built their entire workflow on Smartsheets because nothing inside the system was reliable enough to use. The library feeding the Image Builder was manually curated and uploaded by a single person. Every asset in the production pipeline depended on one person getting it right."
+              "Quite a few. Marketing images for Amazon Devices were scattered across multiple internal systems with no consistent naming and no access control. Teams reused outdated files, duplicated work across regions, and ran QA through third-party tools outside the platform. North America had built their entire workflow on Smartsheets because nothing inside the system was reliable enough to use. The library feeding the Image Builder was manually curated and uploaded by a single person, so every asset in the production pipeline depended on that person getting it right. It sounds chaotic, but for them it was actually quite efficient, which made the biggest challenge convincing teams to migrate to our system."
             ]
           },
           {
@@ -483,7 +484,7 @@ export const PORTFOLIO_DATA = {
           },
           {
             type: "callout-box",
-            content: "One thing worth noting: the asset browser is the last step before campaign publishing. Once an image is approved and tagged, marketers can move directly from this view into campaign programming, letting the platform handle targeting, placement, and allocation automatically. That publishing flow sits outside the scope of this case study, but the asset library was never just storage. It's what makes automated publishing possible at all."
+            content: "The asset browser is the last step before campaign publishing. Once an image is approved and tagged, marketers can move directly from this view into campaign programming, letting the platform handle targeting, placement, and allocation automatically. The asset library is the foundation that makes automated publishing possible, though the publishing flow itself is outside the scope of this case study."
           }
         ]
       }
@@ -497,7 +498,7 @@ export const PORTFOLIO_DATA = {
       title: CASE_STUDIES_TITLES["jas-metadata-studio"],
       impactSummary: "Overcame internal stakeholder resistance by proving AI could automate the complex asset tagging required to keep global marketing campaigns legally and culturally compliant.",
       impactSummarySentence: "An AI-first internal tool that automatically extracts image metadata to enforce global legal, cultural, and regional compliance at scale.",
-      designerNote: "A wrong image in the wrong market isn't a design error at Amazon's scale, it's a legal one. Getting compliance data into the system required between 30 and 90 manual metadata inputs per image, a number defined by PMs, creative directors, 3D artists, and data science. Most of the organization didn't believe AI could close that gap, and didn't have the appetite to find out. I built the proof before asking for permission.",
+      designerNote: "At Amazon’s scale, an incorrect image in the wrong screen can become a data leak or a legal issue. Getting compliance data into the system required between 30 and 90 manual metadata inputs per image, a number defined by PMs, creative directors, 3D artists, and data science. Most of the organization didn't believe AI could close that gap, and didn't have the appetite to find out. With this project I built the proof that all of this was already possible.",
       thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772414317/Background_metadata-thumbnail_pgfkp6.png",
       status: "IN_BUILD",
       type: "INTERNAL",
@@ -632,7 +633,7 @@ export const PORTFOLIO_DATA = {
   title: "AI Lifestyle Compositor",
   impactSummary: "A science-backed AI tool built on Amazon's proprietary device data that generates realistic 3D lifestyle imagery at scale, with a human review system designed to improve the model with every batch.",
   impactSummarySentence: "Designed the human review system for a vertically trained AI tool that generates realistic 3D lifestyle imagery for Amazon Devices, built on proprietary device data that only Amazon owns.",
-  designerNote: "3D lifestyle imagery is the most complex asset type we produce and the hardest to automate. The model is trained on proprietary Amazon device data covering specific camera angles, surface materials, shadow behavior, and screen reflections per device family. That knowledge only exists inside Amazon and no external tool can replicate it. My primary contribution was designing the human review system. I defined the feedback taxonomy, the sampling model, and the interface that turned structured Creative Director input into training signal. This was also the first time I shipped code myself, using an MCP Figma-to-code process to build the review interface directly with engineering. That changed how I work.",
+  designerNote: "3D lifestyle imagery is the most complex asset type we produce and the hardest to automate. The model is trained on proprietary Amazon device data covering specific camera angles, surface materials, shadow behavior, and screen reflections per device family. That knowledge only exists inside Amazon and no external tool can replicate it at scale like we do. My primary contribution was the Ui of course, but also designing the human review system. I defined the feedback taxonomy, the sampling model, and the interface that turned structured Creative Director input into training signal. Amazon assembled a 'tiger team' and this was also the first time I shipped code myself, using an MCP Figma-to-code process to build the review interface directly with engineering. That changed how I work.",
   thumbnail: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1600&q=80",
   status: "LAUNCHED",
   type: "INTERNAL",
@@ -641,7 +642,7 @@ export const PORTFOLIO_DATA = {
     heroImage: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1600&q=80",
     role: "Lead UX Designer",
     timeline: "December 2024 to March 2025",
-    collaborators: "PM, ML Engineers, Brand Studio, Creative Directors",
+    collaborators: "1 PM, 2 ML Engineers, 1 Creative Director and 2(!) engineers",
     type: "INTERNAL",
     blocks: [
 
@@ -676,9 +677,9 @@ export const PORTFOLIO_DATA = {
       {
         type: "text",
         content: [
-          "We couldn't use an off-the-shelf model. Amazon devices are confidential hardware — you can't feed them into an external AI. The Amazon Home team had built something comparable for furniture, so we tested their approach first. An Echo Pop in a room scene: off-axis, flat, wrong shadow. Their model had no knowledge of our devices and no way to learn it.",
-          "The decision was to build in-house, trained on Amazon's proprietary device data: mandated camera angles, surface materials, shadow behavior, screen reflections per device family. That data only exists inside Amazon. The model had to be trained on it from scratch.",
-          "The other constraint was the Creative Director workflow. We weren't just generating images — we were building a loop. Creative Directors needed to come in, review output, and send structured feedback back so the model could learn from it. That workflow was as much of the design problem as the interface itself. We had to move fast. The team was small and the timeline was tight."
+          "Amazon devices are confidential hardware so you can't feed them into an external AI. Looking internally, the Amazon Home team had built something comparable for furniture, so we tested their approach first. We put an Echo Pop in a room scene but the technology back then didn't make the cut: off-axis, flat, wrong shadow.",
+          "The decision was to build in-house, trained on Amazon's proprietary device data: mandated camera angles, surface materials, shadow behavior, screen reflections per device family. The model had to be trained on it from scratch.",
+          "The other constraint was the need to well, train it. Creative Directors needed to come in, review output, and send structured feedback back so the model could learn from it. That workflow was as much of the design problem as the interface itself. So we had to move fast, plus the team was small and the timeline was tight."
         ]
       },
       {
@@ -697,7 +698,7 @@ export const PORTFOLIO_DATA = {
         type: "list",
         items: [
           {
-            content: `<b>Placement Rules</b><p class="mt-2">Before anything could be generated, the model needed rules. How a TV sits in a living room is not the same as how a smart speaker sits on a kitchen counter. Camera angles are brand-mandated per device family. Shadows and reflections depend on surface material. Copy space has to be preserved. These rules had existed as designer intuition — we worked with Brand Studio and engineering to write them down and turn them into training data.</p>`,
+            content: `<b>Placement Rules</b><p class="mt-2">Before anything could be generated, the model needed rules. How a TV sits in a living room is not the same as how a smart speaker sits on a kitchen counter. Also, camera angles are brand-mandated per device family, Blink vs Ring have their own set of rules, for exmaple. Taking account of basic physics, shadows and reflections depend on surface material. Also, copy space has to be preserved. We worked with Brand Studio and engineering to write them down and turn them into training data.</p>`,
             visuals: [
               {
                 kind: "image",
@@ -707,7 +708,7 @@ export const PORTFOLIO_DATA = {
               {
                 kind: "image",
                 src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772663942/Echo_show_-_nightstand_udihhr.png",
-                caption: { short: "Echo Show in a defined scene. The copy space at top left was a rule, not a coincidence.", verbose: "" }
+                caption: { short: "Echo Show in a defined scene. The copy space illustrate placement options", verbose: "" }
               }
             ]
           },
@@ -835,7 +836,7 @@ export const PORTFOLIO_DATA = {
       title: CASE_STUDIES_TITLES["amazon-core-inspire-tab"],
       impactSummary: "Adapted Amazon's creator-driven shopping feed for Smart Home, shaping the ML ranking, catalog logic, and creator tooling that made device discovery trustworthy at scale.",
       impactSummarySentence: "Adapted Amazon's creator-driven shopping feed for Smart Home, shaping the ML ranking, catalog logic, and creator tooling that made device discovery trustworthy at scale.",
-      designerNote: "My team did not build Inspire from scratch. We inherited it from the Community Shopping team and were asked to make it work for Smart Home, a category where a wrong recommendation does not just miss; it erodes trust. That meant adapting our design library, working directly with creators, and collaborating with data science to fine-tune our ML algorithms. Operating inside a platform someone else built at Amazon scale is its own design discipline. It demands precision about where you push, fluency across functions, and the ability to translate between catalog, ML, and customer experience in the same conversation.",
+      designerNote: "My team did not build Inspire from scratch. We inherited it from the Community Shopping team and were asked to make it work for Smart Home, a category where a wrong recommendation can deeply erodes trust. That meant adapting our design library, working directly with creators, and collaborating with data science to fine-tune our ML algorithms and suggest devices that were compatible, interesting and relevant to whomever opening the tab. Operating inside a platform someone else built at Amazon scale is its own design discipline. It demands precision about where you push, influence across stakeholders, and range.",
       thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772307603/main_feed_cx_vc0uaq.png",
       thumbnailPadding: "p-8",
       status: "DEPRECATED",
@@ -853,7 +854,7 @@ export const PORTFOLIO_DATA = {
             type: "text",
             content: [
               "Inspire was a company-level initiative inside the Amazon app designed to become a primary destination for recreational shopping and product discovery. The feature originated with the Community Shopping team. My team, on the Devices and Smart Home side, collaborated with them to customize and adapt Inspire specifically for our devices shopping experience.",
-              "My focus spanned three areas: adapting our design components, establishing partnerships with key content creators, and collaborating with data science to fine-tune the ML algorithms. The challenge was not content volume. Inspire drew from a library of over 1.3 million unique items. The challenge was ensuring the right devices surfaced with the right context, without eroding customer trust in a category where compatibility and correctness matter."
+              "My focus spanned three areas: adapting our design components, establishing partnerships with key content creators, and collaborating with data science to fine-tune the ML algorithms. Inspire drew from a library of over 1.3 million unique items. The challenge was ensuring the right devices surfaced with the right context, without eroding customer trust in a category where compatibility and correctness matter."
             ]
           },
           {
@@ -879,7 +880,7 @@ export const PORTFOLIO_DATA = {
             type: "text",
             content: [
               "My strategy was to treat the Inspire platform as a constraint system I could influence at key leverage points, rather than a surface I could redesign. The goal was to shape it so Smart Home discovery became intentional, not incidental.",
-              "For Smart Home, Inspire could not optimize on engagement alone. It needed ranking and presentation logic that respected device type, ecosystem compatibility, and customer intent. I partnered with science and product teams to shape how Smart Home taxonomy informed ranking, and I drove CX decisions that made device content feel scannable, shoppable, and trustworthy at feed speed."
+              "We needed to design a ranking and presentation logic that respected device type, ecosystem compatibility, and customer intent. I partnered with science and product teams to shape how Smart Home taxonomy informed ranking, and I drove CX decisions that made device content feel scannable, shoppable, and trustworthy at feed speed."
             ]
           },
 
@@ -896,11 +897,11 @@ export const PORTFOLIO_DATA = {
             caption: { short: "Feed scannability explorations showing product context and interaction patterns.", verbose: "" } 
           },
 
-          { type: "heading", title: "Tightening Creator Tooling" },
+          { type: "heading", title: "Working with Creators" },
           {
             type: "text",
             content: [
-              "A significant source of catalog error was upstream: creators attaching the wrong ASINs at upload time. I designed the influencer tooling that let creators link products to their media, and introduced guardrails so creators understood the consequences of loose product associations at scale."
+              "A significant source of catalog error was upstream: creators attaching the wrong ASINs at upload time. I adapted the influencer tooling that let creators link products to their media, and introduced guardrails so creators understood the consequences of loose product associations. Also taught them on how to identify their biggest sellers, their influence channels and the opportunities to use the new set of tools to broaden their income."
             ]
           },
           { 
@@ -938,7 +939,7 @@ export const PORTFOLIO_DATA = {
       title: CASE_STUDIES_TITLES["amazon-core-ai-review-highlights"],
       impactSummary: "Explored and designed new applications for Amazon's AI-generated review highlights to drive product discovery across the Smart Home category.",
       impactSummarySentence: "Explored and designed new applications for Amazon's AI-generated review highlights to drive product discovery across the Smart Home category.",
-      designerNote: "Amazon launched AI-generated review highlights as a company-wide capability. Leadership asked me to figure out what that could mean specifically for Smart Home customers. This kind of work sits in an interesting space: you are not building from scratch, and you are not just implementing someone else's spec. You are identifying where a new capability creates real value for a specific customer and business context, then designing the applications that prove it. The artifacts shown below are the exact slides I used to pitch these concepts to leadership, reflecting how product strategy and design communication actually happen at Amazon. One concept shipped, and two moved to the roadmap.",
+      designerNote: "Amazon launched AI-generated review highlights as a company-wide capability. Leadership asked me to figure out what that could mean specifically for Smart Home customers. This kind of work sit in an interesting space because we wouldn't be building from scratch nor implementing someone else's spec with all the baggage that that implies. Thankfully, our org had always had certain room and influence to break away from company-level initiatives, so we were asked to ideate yet new ways to showcase this technology.  The artifacts shown below are the exact slides I used to pitch these concepts to leadership, reflecting how product strategy and design communication actually happen at Amazon. One concept shipped, and two moved to the roadmap upstream at the org and company level.",
       thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772333741/aihighlights-stockimage_tfee9p.jpg",
       status: "LEGACY",
       type: "MOBILE",
@@ -952,7 +953,7 @@ export const PORTFOLIO_DATA = {
         heroImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772333749/videohighlights-hero_pww6ch.png",
         role: "UX Lead, Smart Home Devices",
         timeline: "2023 to 2024",
-        collaborators: "PM, Data Science, ML Engineers, Creator Partnerships",
+        collaborators: "PM, Data Science,3 UX Designers, Brand leaders, VPs",
         type: "MOBILE",
         blocks: [
           { type: "heading", title: "Overview", hasDivider: false },
@@ -1011,7 +1012,7 @@ export const PORTFOLIO_DATA = {
             type: "text",
             content: [
               "The most useful thing a designer can do with a new platform capability is ask who it actually helps and where. Not every feature belongs on every surface. Designing three applications of the same capability forced a useful discipline: each concept had to justify itself on its own terms.",
-              "This project reinforced how much leverage there is in being the person who translates a broad platform capability into a specific team's context. The AI feature existed. The customer need existed. The design work was finding where they intersected with enough precision to be worth building."
+              "This project reinforced how much leverage there is in being the person who translates a broad platform capability into a specific team's context. The AI feature existed, allthough was new to everyone. My design work was finding where they intersected with enough precision to be worth building."
             ]
           }
         ]

@@ -52,6 +52,9 @@ This log documents the iterative refinements and systems-thinking applied to thi
 - **Integrated Company Stripe:** Relocated the `CompanyStripe` component to be inside the hero section, serving as a sleek footer element and creating a more unified, immersive initial view before the user scrolls.
 - **Project Thumbnail Padding:** Added `p-8` Tailwind CSS padding to "Image Builder," "Inspire Tab," and "Studio 2.0" project thumbnails for improved visual spacing.
 - **Branding and Asset Updates:** Replaced the hero logo with a new version, added a custom favicon to `index.html`, and updated the main navigation to point to the correct resume URL.
+- **Gatekeeper Page Toggle:** Implemented a new `gatekeeperEnabled` flag in `src/data/portfolioData.js` to quickly activate/deactivate the portfolio's gatekeeper page.
+- **Tailwind Typography Color Palette Update:** Standardized text colors by replacing all `text-slate-*` instances with `text-neutral-*` across `.jsx`, `.tsx`, and `.css` files in the `src` directory.
+- **Tailwind Typography Color Palette Reversion (Targeted):** Reverted specific components/sections (CalloutBox, ImpactBox, WorkDropdown, and Hero Section in App.jsx and AnimatedHero.jsx) back to `text-slate-*` to address coloring issues.
 
 ---
 *Note: This portfolio is a living project, designed to demonstrate the same systems-level precision and user-advocacy found in my professional product work.*

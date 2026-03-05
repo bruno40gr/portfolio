@@ -16,7 +16,7 @@ const SystemGroupBracket = ({ title, pillars, onPillarClick, children }) => {
         <div className="absolute left-0 top-0 bottom-0 w-[3px] rounded-full bg-[var(--neon-green)] opacity-60" />
 
         <div className="flex flex-col gap-0.5 mb-8 md:mb-10">
-          <p className="text-xl text-slate-600 leading-normal">
+          <p className="text-xl text-neutral-600 leading-normal">
             {title} 
           </p>
           
@@ -66,10 +66,10 @@ const CompanySection = ({ group, onProjectClick }) => {
         className="border-b border-neutral-200 flex flex-col md:flex-row md:items-baseline justify-between"
         style={{ marginBottom: "var(--space-4)", paddingBottom: "var(--space-2)" }}
       >
-        <h2 className="text-4xl text-[color:var(--deep-purple)] font-bold tracking-tight leading-snug font-sans">
+        <h2 className="text-4xl text-neutral-900 font-bold tracking-normal leading-snug font-sans">
           {group.company}
         </h2>
-        <h3 className="text-lg font-medium text-slate-500 font-sans flex flex-col md:flex-row">
+        <h3 className="text-lg font-medium text-neutral-500 font-sans flex flex-col md:flex-row">
           <span>{group.roleLine.split(" · ").slice(0, -1).join(" · ")}</span>
           {group.roleLine.split(" · ").length > 1 && (
             <>

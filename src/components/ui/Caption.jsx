@@ -1,6 +1,7 @@
 import React from "react";
+
 const Caption = ({ children }) => (
-  <p className="type-caption text-left text-slate-400 text-[16px] font-normal leading-relaxed mt-2 md:mt-3 font-serif">
+  <p className="type-caption text-left text-neutral-600 text-sm md:text-[16px] font-normal leading-relaxed mt-2 md:mt-3">
     {children}
   </p>
 );

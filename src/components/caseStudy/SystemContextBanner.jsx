@@ -104,12 +104,12 @@ export const SystemContextModal = ({ open, onClose, pillars = [], currentId, onP
           {/* What is this */}
 <p className="meta-label mb-3">Amazon Devices Asset System</p>
 
-<h2 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight leading-snug mb-5">
+<h2 className="text-2xl md:text-3xl font-bold text-neutral-900 tracking-tight leading-snug mb-5">
   Devices Catalog-to-Campaign Automation Platform.
 </h2>
 
 <div className="mb-8 space-y-4">
-  <p className="text-base text-slate-600 leading-relaxed">
+  <p className="text-base text-neutral-600 leading-relaxed">
     Across dozens of device families and 23 market-and-language combinations, Amazon Devices depends on a constant stream
     of marketing imagery to support seasonal promotions, major device launches, partnerships, and flagship technology
     moments like Alexa+. Historically, that work was produced and shipped through manual, labor-heavy workflows, with
@@ -117,7 +117,7 @@ export const SystemContextModal = ({ open, onClose, pillars = [], currentId, onP
     and active offers.
   </p>
 
-  <p className="text-base text-slate-600 leading-relaxed">
+  <p className="text-base text-neutral-600 leading-relaxed">
     The Asset System is a suite of four connected internal tools that cover the full production chain: building assets,
     managing them, tagging them with metadata that makes them machine-readable, and generating them with AI. It serves the
     same core pool of teams across different moments of the workflow. The pillars can progress in parallel while still
@@ -125,14 +125,14 @@ export const SystemContextModal = ({ open, onClose, pillars = [], currentId, onP
     dependable, and dependable automation is what makes AI generation reliable at scale.
   </p>
 
-  <p className="text-base text-slate-600 leading-relaxed">
+  <p className="text-base text-neutral-600 leading-relaxed">
     The longer-term vision extends beyond asset production into full marketing automation and performance reporting across
     the Amazon Devices org. Vision mocks for that broader system are available on request.
   </p>
 </div>
 
           {/* Four pillar cards */}
-          <h3 className="text-lg font-bold text-slate-900 mb-4">The four pillars</h3>
+          <h3 className="text-lg font-bold text-neutral-900 mb-4">The four pillars</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {pillars.map((pillar, i) => {
               const isCurrent = pillar.id === currentId;
@@ -170,10 +170,10 @@ export const SystemContextModal = ({ open, onClose, pillars = [], currentId, onP
   )}
 </div>
                   <div className="min-w-0">
-                    <p className="text-sm font-semibold text-slate-800 leading-snug mb-0.5 font-sans">
+                    <p className="text-sm font-semibold text-neutral-800 leading-snug mb-0.5 font-sans">
                       {pillar.title}
                     </p>
-                    <p className="text-xs text-slate-400 leading-snug font-sans">{roleLine}</p>
+                    <p className="text-xs text-neutral-400 leading-snug font-sans">{roleLine}</p>
                   </div>
                 </button>
               );
@@ -214,13 +214,13 @@ const SystemContextBanner = ({ pillars = [], currentId, onPillarClick }) => {
 
   {/* One line on desktop, wraps to two lines on mobile */}
   <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1 min-w-0 py-8">
-    <p className="meta-label m-0 min-w-0 text-slate-700">
+    <p className="meta-label m-0 min-w-0 text-neutral-700">
       This project is{" "}
-      <span className="font-normal text-slate-700">
+      <span className="font-normal text-neutral-700">
         {position}/{pillars.length}
       </span>{" "}
       part of the{" "}
-      <span className="font-normal text-slate-700">Amazon Devices Asset System</span>
+      <span className="font-normal text-neutral-700">Amazon Devices Asset System</span>
     </p>
 
     <button

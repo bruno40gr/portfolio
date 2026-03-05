@@ -18,7 +18,8 @@ import CaseStudyStyleGuide from "./components/caseStudy/CaseStudyStyleGuide";
 export default function App() {
   // Authentication State
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
-    return sessionStorage.getItem("portfolio_auth") === "true";
+    // If gatekeeper is disabled, always authenticate. Otherwise, check session storage.
+    return !PORTFOLIO_DATA.gatekeeperEnabled || sessionStorage.getItem("portfolio_auth") === "true";
   });
   const [password, setPassword] = useState("");
   const [authError, setAuthError] = useState("");
@@ -50,7 +51,7 @@ export default function App() {
 
   // Effect to manage body overflow for the gatekeeper page
   useEffect(() => {
-    const isGatekeeperActive = !isAuthenticated && view !== "changelog";
+    const isGatekeeperActive = PORTFOLIO_DATA.gatekeeperEnabled && !isAuthenticated && view !== "changelog";
     if (isGatekeeperActive) {
       document.documentElement.classList.add("overflow-hidden"); // Add to html
       document.body.classList.add("overflow-hidden");
@@ -164,11 +165,11 @@ export default function App() {
   const renderFooter = (theme = "light") => {
     const isDark = theme === "dark";
     
-    const footerBg = isDark ? "bg-transparent border-t-0" : "bg-neutral-100 border-t border-neutral-200";
-    const textColor = isDark ? "text-slate-400" : "text-neutral-400";
-    const hoverColor = isDark ? "hover:text-slate-200" : "hover:text-neutral-600";
-    const borderColor = isDark ? "border-slate-500 hover:border-slate-300" : "border-neutral-300 hover:border-neutral-500";
-    const yearColor = isDark ? "text-slate-500 hover:text-slate-300" : "text-stone-400 hover:text-stone-600";
+    const footerBg = isDark ? "bg-transparent border-t-0" : "bg-slate-100 border-t border-slate-200";
+    const textColor = isDark ? "text-slate-400" : "text-slate-400";
+    const hoverColor = isDark ? "hover:text-slate-200" : "hover:text-slate-600";
+    const borderColor = isDark ? "border-slate-500 hover:border-slate-300" : "border-slate-300 hover:border-slate-500";
+    const yearColor = isDark ? "text-slate-500 hover:text-slate-300" : "text-slate-400 hover:text-slate-600";
 
     return (
       <footer className={`py-12 md:py-16 font-sans mt-auto relative z-20 ${footerBg}`}>
@@ -185,22 +186,30 @@ export default function App() {
               </button>.
             </p>
           </div>
-          <button
-            type="button"
-            onClick={() => navigateTo("case-styles")}
-            className={`${yearColor} font-bold uppercase tracking-[0.2em] text-[10px] transition-colors`}
-            aria-label="Open case study style guide"
-          >
-            &copy; {new Date().getFullYear()} Bruno Wong Marchena.
-          </button>
+          <div className="flex items-center justify-center gap-3">
+            <span className={`${yearColor} font-bold uppercase tracking-[0.2em] text-[10px]`}>
+              &copy; {new Date().getFullYear()} Bruno Wong Marchena.
+            </span>
+            <a
+              href="https://www.linkedin.com/in/brunowong"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className={`${yearColor} transition-colors`}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.447 20.452H17.21v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.991V9h3.114v1.561h.046c.434-.823 1.494-1.691 3.076-1.691 3.292 0 3.9 2.167 3.9 4.984v6.598zM5.337 7.433a1.81 1.81 0 1 1 0-3.62 1.81 1.81 0 0 1 0 3.62zm1.559 13.019H3.776V9h3.12v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
+          </div>
         </div>
       </footer>
     );
   };
 
   // --- PASSWORD GATEKEEPER VIEW ---
-  // Allow access to the changelog without authentication
-  if (!isAuthenticated && view !== "changelog") {
+  // Allow access to the changelog without authentication, or if gatekeeper is disabled
+  if (PORTFOLIO_DATA.gatekeeperEnabled && !isAuthenticated && view !== "changelog") {
     return (
       <div className="h-screen w-screen flex flex-col text-left selection:bg-[#88FF00] selection:text-black bg-[#2d255c] relative overflow-hidden">
         
@@ -356,7 +365,7 @@ export default function App() {
           </div>
 
           <div
-            className={`hidden md:flex items-center justify-start gap-10 md:gap-14 transition-colors duration-300 ${
+            className={`flex items-center justify-start gap-10 md:gap-14 transition-colors duration-300 ${
               navTheme === "dark" ? "text-white" : "text-[#231F45]"
             }`}
           >
@@ -421,7 +430,7 @@ export default function App() {
                       openProject(p);
                       setIsMobileMenuOpen(false);
                     }}
-                    closeMenu={() => setIsMobileMenuOpen(false)} 
+                    closeMenu={() => setIsWorkDropdownOpen(false)} 
                   />
                 </div>
               )}
@@ -489,21 +498,21 @@ export default function App() {
       )}
 
       {isContactOpen && (
-        <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-6 text-center">
+        <div className="fixed inset-0 z-[200] flex items-start justify-center p-4 md:p-6 pt-[8vh] md:pt-[10vh] text-center">
           <div
             className="absolute inset-0 bg-black/40 backdrop-blur-md"
             onClick={() => setIsContactOpen(false)}
           />
 
           <div
-            className="relative bg-white p-6 md:p-7 rounded-sm shadow-2xl max-w-md w-full text-left font-sans animate-fade-in-up"
+            className="relative bg-white border border-slate-200 p-6 md:p-7 rounded-sm shadow-2xl max-w-md w-full text-left font-sans animate-fade-in-up"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               type="button"
               onClick={() => setIsContactOpen(false)}
               aria-label="Close"
-              className="absolute top-3 right-3 p-2 rounded-sm hover:bg-neutral-100 transition-colors"
+              className="absolute top-3 right-3 p-2 rounded-sm hover:bg-slate-100 transition-colors"
             >
               <X size={18} className="text-neutral-500" />
             </button>
@@ -550,7 +559,7 @@ export default function App() {
                   id="form-name"
                   name="name"
                   type="text"
-                  className="w-full px-3 py-2 bg-neutral-50 border border-neutral-200 rounded-sm text-sm focus:outline-none focus:border-[#88FF00] transition-colors"
+                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-[#88FF00] transition-shadow text-slate-900 font-bold tracking-widest placeholder:text-slate-400 placeholder:font-normal placeholder:tracking-normal"
                 />
               </div>
 
@@ -562,7 +571,7 @@ export default function App() {
                   id="form-email"
                   name="email"
                   type="email"
-                  className="w-full px-3 py-2 bg-neutral-50 border border-neutral-200 rounded-sm text-sm focus:outline-none focus:border-[#88FF00] transition-colors"
+                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-[#88FF00] transition-shadow text-slate-900 font-bold tracking-widest placeholder:text-slate-400 placeholder:font-normal placeholder:tracking-normal"
                 />
               </div>
 
@@ -575,18 +584,21 @@ export default function App() {
                   name="message"
                   rows={5}
                   placeholder={`Be nice`}
-                  className="w-full px-3 py-2 bg-neutral-50 border border-neutral-200 rounded-sm text-sm focus:outline-none focus:border-[#88FF00] transition-colors resize-none"
+                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-[#88FF00] transition-shadow text-slate-900 font-bold tracking-widest placeholder:text-slate-400 placeholder:font-normal placeholder:tracking-normal resize-none"
                 />
               </div>
 
               <div id="form-error" className="text-red-500 text-[11px] font-bold min-h-[14px]" />
 
               <div className="pt-1 flex flex-col items-center">
-                <div className="w-full flex justify-center">
-                  <button className="w-full justify-center">Send message</button>
-                </div>
-                <p className="mt-2 text-[10px] text-neutral-400 text-center">
-                  Talk soon!
+                <button
+                  type="submit"
+                  className="w-full px-10 py-3 bg-[#88FF00] text-black font-bold rounded-full hover:scale-105 transition-transform text-base"
+                >
+                  Send message
+                </button>
+                <p className="mt-6 text-[14px] text-neutral-400 text-center">
+                  Give me 24hrs. Talk soon!
                 </p>
               </div>
             </form>
@@ -657,7 +669,7 @@ export default function App() {
                   <p className="font-semibold text-neutral-900">How I work</p>
                   <p>I work best as a hands-on lead and stay tight with product and engineering from day one. I'm invested in research and strategy, but equally happy in the weeds debugging a component or tightening the last 10% so it feels right in production. I build design systems that are structured enough to hand off cleanly and work with how modern teams actually build. I've been told I'm the calm in the room when things get messy. I'll take it.</p>
                   <p>On AI work, I care about what makes it actually hold up: guardrails, fallbacks, human-in-the-loop flows, and catching the moments when the model is wrong but sounds right. Then the craft: the UI, the states, and the details that survive contact with production.</p>
-                  <p className="font-semibold text-neutral-900">When I'm not working</p>
+                  <p>When I'm not working</p>
                   <p>Bass in a cover band around Sacramento, everything from Blink 182 to Tool. Kettlebell aficionado. Family in Lima and Athens means I travel there whenever life allows. The only time I tolerate being a bum is on a beach.</p>
                 </div>
               </div>

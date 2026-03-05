@@ -26,7 +26,7 @@ export const CalloutBox = ({ content, size = "small" }) => {
         {/* Large Icon - Styled to match the light, airy text weight */}
         <Layers 
           size={32} 
-          className="text-slate-300 mt-1 md:mt-2 flex-shrink-0" 
+          className="text-slate-300 mt-1 md:mt-2 flex-shrink-0"
           strokeWidth={1.2} 
         />
         <p

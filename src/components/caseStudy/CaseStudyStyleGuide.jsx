@@ -41,7 +41,7 @@ const CaseStudyStyleGuide = ({ onBack }) => (
           </button>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-[2.5rem] text-slate-900 mb-5 md:mb-6 font-[600] tracking-tight !leading-snug md:!leading-[3.5rem] text-left">
+            <h1 className="text-3xl md:text-[2.5rem] text-neutral-900 mb-5 md:mb-6 font-[600] tracking-tight !leading-snug md:!leading-[3.5rem] text-left">
               Case Study Style Guide
             </h1>
             <h3 className="text-[1.05rem] md:text-[1.2rem] text-neutral-700 font-light leading-relaxed md:leading-[1.9] mb-6">
@@ -57,7 +57,7 @@ const CaseStudyStyleGuide = ({ onBack }) => (
           />
 
           <section className="mb-10 text-left">
-            <h2 className="text-lg md:text-xl text-slate-900 mb-2 md:mb-3 font-bold leading-snug">Text block</h2>
+            <h2 className="text-lg md:text-xl text-neutral-900 mb-2 md:mb-3 font-bold leading-snug">Text block</h2>
             <p className="text-base md:text-lg text-neutral-700 leading-relaxed mb-4 md:mb-6">
               I led the 0-to-1 build of a four-phase AI platform designed to automate and scale global marketing
               image production. The rollout established core architecture and delivered measurable impact.
@@ -68,7 +68,7 @@ const CaseStudyStyleGuide = ({ onBack }) => (
           </section>
 
           <section className="mb-6 text-left case-anchor-target mt-10 pt-10">
-            <h2 className="text-xl md:text-2xl text-slate-900 font-bold tracking-tight leading-snug">
+            <h2 className="text-xl md:text-2xl text-neutral-900 font-bold tracking-tight leading-snug">
               Heading section with divider
             </h2>
           </section>

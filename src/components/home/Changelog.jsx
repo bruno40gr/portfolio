@@ -7,7 +7,7 @@ const renderFormattedText = (text) => {
   return parts.map((part, index) => {
     if (part.startsWith("**") && part.endsWith("**")) {
       // Keep color same as rest of text, just bold and code-y font
-      return <strong key={index} className="font-bold font-mono tracking-tight text-slate-200">{part.slice(2, -2)}</strong>;
+      return <strong key={index} className="font-bold font-mono tracking-tight text-neutral-200">{part.slice(2, -2)}</strong>;
     }
     return part;
   });
@@ -32,10 +32,10 @@ export default function Changelog() {
         <h1 className="text-[#88FF00] text-sm md:text-base font-mono tracking-[0.4em] mb-4">
           Development Log
         </h1>
-        <h2 className="font-serif text-3xl md:text-5xl text-slate-100 font-bold leading-tight tracking-tight">
+        <h2 className="font-serif text-3xl md:text-5xl text-neutral-100 font-bold leading-tight tracking-tight">
           Iterative Refinement
         </h2>
-        <p className="text-slate-400 text-lg md:text-xl mt-6 max-w-2xl font-light leading-relaxed">
+        <p className="text-neutral-400 text-lg md:text-xl mt-6 max-w-2xl font-light leading-relaxed">
           Here is the running log of how I built this.
         </p>
       </div>
@@ -50,7 +50,7 @@ export default function Changelog() {
             
             {/* Desktop Week (Left side) */}
             <div className="hidden md:block w-1/2 text-right pr-12 mt-1">
-              <span className="text-slate-400 text-sm tracking-widest uppercase font-semibold">
+              <span className="text-neutral-400 text-sm tracking-widest uppercase font-semibold">
                 {entry.week}
               </span>
             </div>
@@ -64,15 +64,15 @@ export default function Changelog() {
                 </span>
               </div>
               
-              <h3 className="text-xl md:text-2xl text-slate-200 font-semibold mb-4 tracking-tight leading-snug">
+              <h3 className="text-xl md:text-2xl text-neutral-200 font-semibold mb-4 tracking-tight leading-snug">
                 {entry.title}
               </h3>
               
               <ul className="space-y-4">
                 {entry.items.map((item, itemIdx) => (
-                  <li key={itemIdx} className="text-slate-400 text-[15px] md:text-base leading-relaxed font-light flex items-start gap-3">
+                  <li key={itemIdx} className="text-neutral-400 text-[15px] md:text-base leading-relaxed font-light flex items-start gap-3">
                     <span className="text-white/20 mt-1.5 text-[10px]">■</span>
-                    <span className="text-slate-400 text-sm tracking-normal font-mono mr-2">{item.day}</span>
+                    <span className="text-neutral-400 text-sm tracking-normal font-mono mr-2">{item.day}</span>
                     <span className="flex-1">{renderFormattedText(item.text)}</span>
                   </li>
                 ))}

@@ -171,7 +171,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         return (
           <section key={index} className="mb-10 text-left">
             {block.title && (
-              <h3 className="text-lg font-bold text-slate-900 mb-3 leading-snug">
+              <h3 className="text-lg font-bold text-neutral-900 mb-3 leading-snug">
                 {block.title}
               </h3>
             )}
@@ -209,7 +209,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
             key={index}
             className={`mb-4 text-left case-anchor-target ${showBorder ? "mt-10 pt-10" : ""}`}
           >
-            <h2 className="text-3xl font-serif font-semibold text-slate-900 tracking-tight">{block.title}</h2>
+            <h2 className="text-3xl font-serif font-semibold text-neutral-900 tracking-tight">{block.title}</h2>
           </section>
         );
       }
@@ -482,7 +482,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                                     />
                                   )}
 
-                                  <p className="type-caption text-left text-slate-400 text-[16px] font-normal leading-relaxed mt-2 md:mt-3 font-serif">
+                                  <p className="type-caption text-left text-neutral-400 text-[16px] font-normal leading-relaxed mt-2 md:mt-3 font-serif">
                                     {mediaItem.captionShort}
                                   </p>
                                 </div>
@@ -565,7 +565,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                 />
               </div>
 
-              <h1 className="font-serif text-[2.5rem] md:text-[3.5rem] text-slate-900 mb-5 md:mb-6 font-[500] tracking-tight leading-[3rem] md:!leading-[4.5rem] text-left">
+              <h1 className="font-serif text-[2.5rem] md:text-[3.5rem] text-neutral-900 mb-5 md:mb-6 font-[500] tracking-tight leading-[3rem] md:!leading-[4.5rem] text-left">
                 {project.impactSummarySentence || project.impactSummary}
               </h1>
 
