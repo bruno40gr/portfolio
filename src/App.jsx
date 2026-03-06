@@ -651,9 +651,7 @@ export default function App() {
             </section>
 
             <CompanyStripe logos={COMPANY_STRIPE_LOGOS} />
-            <div className="max-w-[1400px] mx-auto px-6 md:px-12 pt-16 pb-2">
-              <p className="text-xs text-slate-400 font-light">This portfolio covers 2020 to present. Earlier work predates modern design tooling and hasn't aged well enough to show.</p>
-            </div>
+            
             <WorkSection onProjectClick={openProject} />
           </div>
         )}
