@@ -549,7 +549,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
               <div className="max-h-[calc(100vh-var(--header-h)-48px)] overflow-auto">
                 <CaseStudyAnchorNav
                   sections={sections}
-                  onBack={() => window.history.back()}
+                  onBack={onExit}
                 />
               </div>
             </div>
