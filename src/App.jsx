@@ -14,7 +14,7 @@ import Changelog from "./components/home/Changelog";
 
 import CaseStudy from "./components/caseStudy/CaseStudy";
 import CaseStudyStyleGuide from "./components/caseStudy/CaseStudyStyleGuide";
-import ResumePage from "./components/ResumePage"; // Import new ResumePage component
+import ResumePage from "./components/ResumePage";
 import { Analytics } from "@vercel/analytics/react";
 
 export default function App() {
@@ -147,7 +147,7 @@ export default function App() {
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
-    if (view === "resume") { // Handle back navigation from resume page
+    if (view === "resume") {
       setView("home");
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -187,7 +187,7 @@ export default function App() {
               Coded in VS Code with React, Tailwind, and{" "}
               <button 
                 onClick={() => navigateTo("changelog")}
-                className={`${hoverColor} border-b ${borderColor} transition-all cursor-help`}
+                className={`${hoverColor} border-b ${borderColor} transition-all`}
               >
                 iterative refinement
               </button>.
@@ -564,7 +564,7 @@ export default function App() {
                   id="form-name"
                   name="name"
                   type="text"
-                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-[#88FF00] transition-shadow text-slate-900 font-bold tracking-widest placeholder:text-slate-400 placeholder:font-normal placeholder:tracking-normal"
+                  className="w-full px-3 py-2 bg-white border border-transparent rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-[#88FF00] transition-shadow text-slate-900 font-bold tracking-widest placeholder:text-slate-400 placeholder:font-normal placeholder:tracking-normal"
                 />
               </div>
 
@@ -576,7 +576,7 @@ export default function App() {
                   id="form-email"
                   name="email"
                   type="email"
-                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-[#88FF00] transition-shadow text-slate-900 font-bold tracking-widest placeholder:text-slate-400 placeholder:font-normal placeholder:tracking-normal"
+                  className="w-full px-3 py-2 bg-white border border-transparent rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-[#88FF00] transition-shadow text-slate-900 font-bold tracking-widest placeholder:text-slate-400 placeholder:font-normal placeholder:tracking-normal"
                 />
               </div>
 
@@ -589,7 +589,7 @@ export default function App() {
                   name="message"
                   rows={5}
                   placeholder={`Be nice`}
-                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-[#88FF00] transition-shadow text-slate-900 font-bold tracking-widest placeholder:text-slate-400 placeholder:font-normal placeholder:tracking-normal resize-none"
+                  className="w-full px-3 py-2 bg-white border border-transparent rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-[#88FF00] transition-shadow text-slate-900 font-bold tracking-widest placeholder:text-slate-400 placeholder:font-normal placeholder:tracking-normal resize-none"
                 />
               </div>
 
@@ -602,8 +602,8 @@ export default function App() {
                 >
                   Send message
                 </button>
-                <p className="mt-6 text-[14px] text-neutral-400 text-center">
-                  Give me 24hrs. Talk soon!
+                <p className="mt-2 text-[10px] text-neutral-400 text-center">
+                  Talk soon!
                 </p>
               </div>
             </form>
@@ -632,10 +632,10 @@ export default function App() {
                 <img src="https://res.cloudinary.com/diy08lj9x/image/upload/v1772648447/bruno-logo-whitewong_q7cxxn.png" alt="Bruno Wong Marchena" className="hero-logo glitch-effect" />
                 <div className="max-w-3xl mx-auto">
                   <h1 className="text-slate-300 text-2xl md:text-[1.8rem] font-light md:mt-8 mb-8 leading-snug">
-                    I build AI-powered platforms and automation systems that redefine how complex organizations operate.
+                    14 years in product design, the last few building AI systems that changed how large teams work.
                   </h1>
-                  <p className="text-slate-400 text-2xl md:text-[1.5rem] mb-4 max-w-2xl mx-auto leading-snug font-light">
-                    I've automated the work of entire teams at Amazon, cut fulfillment costs in healthcare logistics, and co-invented a patent for subscription systems in the creator economy.
+                  <p className="text-slate-400 text-2xl md:text-[1.3rem] mb-4 max-w-2xl mx-auto leading-snug font-light">
+                    I've automated the work of global teams at Amazon, cut fulfillment costs in healthcare logistics, and co-invented a patent for subscription systems in the creator economy.
                   </p>
                 </div>
                 
@@ -643,14 +643,17 @@ export default function App() {
                   <button onClick={() => setIsContactOpen(true)} className="px-10 py-4 bg-[#88FF00] text-black font-bold rounded-full hover:scale-105 transition-transform">
                     Let's chat
                   </button>
-                  <p className="text-slate-400 text-lg md:text-xl font-light tracking-wide">
-                    Available for freelance and contract work
+                  <p className="text-slate-400 text-lg md:text-[1.3rem] font-light tracking-wide">
+                    Available in Q2 2026
                   </p>
                 </div>
               </div>
             </section>
 
             <CompanyStripe logos={COMPANY_STRIPE_LOGOS} />
+            <div className="max-w-[1400px] mx-auto px-6 md:px-12 pt-16 pb-2">
+              <p className="text-xs text-slate-400 font-light">This portfolio covers 2020 to present. Earlier work predates modern design tooling and hasn't aged well enough to show.</p>
+            </div>
             <WorkSection onProjectClick={openProject} />
           </div>
         )}
@@ -669,12 +672,13 @@ export default function App() {
               <div className="max-w-3xl text-left">
                 <h2 className="font-serif text-2xl md:text-5xl text-neutral-900 mb-6 md:mb-10 font-bold leading-tight tracking-tight text-left">Hi, I'm Bruno.</h2>
                 <div className="space-y-6 md:space-y-8 text-sm md:text-lg text-neutral-600 font-light leading-relaxed text-left">
-                  <p>I'm a product designer focused on AI platforms and internal systems, usually the behind-the-scenes stuff where workflows are messy and the UX debt is real. I like that zone. It's where design has to hold up under pressure and still hit the business numbers.</p>
-                  <p>Over the last 12 years I've worked across big tech, healthcare logistics, and creator platforms. I've also been a founding designer, taking a product from zero to traction and helping secure funding. Along the way I've designed systems that automate heavy manual work, helped cut operational costs, and co-invented a patent around retention and loyalty. My design roots technically go back to making posters and album art for my punk rock band.</p>
-                  <p className="font-semibold text-neutral-900">How I work</p>
-                  <p>I work best as a hands-on lead and stay tight with product and engineering from day one. I'm invested in research and strategy, but equally happy in the weeds debugging a component or tightening the last 10% so it feels right in production. I build design systems that are structured enough to hand off cleanly and work with how modern teams actually build. I've been told I'm the calm in the room when things get messy. I'll take it.</p>
-                  <p>On AI work, I care about what makes it actually hold up: guardrails, fallbacks, human-in-the-loop flows, and catching the moments when the model is wrong but sounds right. Then the craft: the UI, the states, and the details that survive contact with production.</p>
-                  <p>When I'm not working</p>
+                  <p>14 years in product design. I work best at the system level, on the behind-the-scenes stuff where workflows are messy, the UX debt is real, and the decisions carry actual downstream consequences. I like that zone. It's where design has to hold up under pressure and still hit the business numbers.</p>
+                  <p>I work as a hands-on lead, tight with product and engineering from day one. I'm invested in research and strategy, but equally happy in the weeds debugging a component or tightening the last 10% until it feels right in production. I build design systems structured enough to hand off cleanly and work with how modern teams actually build. I've been told I'm the calm in the room when things get messy. I'll take it.</p>
+                  <p>Across Amazon, Alto Pharmacy, Patreon, and earlier at Instapage, Carta, and Webgility, I've led design for systems that automate heavy manual work, cut real operating costs, and shipped at global scale. I've also been a founding designer, taking a product from zero to traction and helping close an $800K seed round. I hold a USPTO patent. I prototype in React.</p>
+                  <p>My design roots technically go back to making posters and album art for my punk rock band.</p>
+                  <p className="font-semibold text-neutral-900">On AI work</p>
+                  <p>I care about what makes it actually hold up: guardrails, fallbacks, human-in-the-loop flows, and catching the moments when the model is wrong but sounds right. Then the craft: the UI, the states, and the details that survive contact with production.</p>
+                  <p className="font-semibold text-neutral-900">When I'm not working</p>
                   <p>Bass in a cover band around Sacramento, everything from Blink 182 to Tool. Kettlebell aficionado. Family in Lima and Athens means I travel there whenever life allows. The only time I tolerate being a bum is on a beach.</p>
                 </div>
               </div>

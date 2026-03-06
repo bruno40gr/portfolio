@@ -174,7 +174,7 @@ const WorkDropdown = ({ onProjectClick, closeMenu, workGroups = [], portfolioDat
               >
                 <div className="flex items-center gap-4">
                   <LogoIcon theme={isExpanded ? 'light' : 'dark'} company={group.logo} />
-                  <span className={"text-[24px] tracking-tight " + (isExpanded ? "font-bold text-[#231f44]" : "font-semibold text-slate-700")}>
+                  <span className={"text-2xl tracking-tight " + (isExpanded ? "font-bold text-[#231f44]" : "font-semibold text-slate-700")}>
                     {group.company}
                   </span>
                 </div>

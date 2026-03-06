@@ -400,16 +400,13 @@ const AnimatedHero = ({ projectId }) => {
           </p>
 
           <div className="relative h-7 mb-4 w-full">
-            {slides.map((slide, index) => (
-              <span
-                key={index}
-                className={`absolute whitespace-normal text-lg md:text-xl font-semibold tracking-tight transition-opacity duration-[1200ms] w-full
-                ${index === currentSlide ? 'opacity-100' : 'opacity-0 pointer-events-none'}
-                ${isDarkTheme ? 'text-white' : 'text-slate-900'}`}
-              >
-                {slide.market}
-              </span>
-            ))}
+            <span
+              key={currentSlide}
+              className={`block whitespace-normal text-lg md:text-xl font-semibold tracking-tight transition-opacity duration-[1200ms] w-full
+              ${isDarkTheme ? 'text-white' : 'text-slate-900'}`}
+            >
+              {slides[currentSlide]?.market}
+            </span>
           </div>
 
           <nav className="flex items-center gap-2.5">

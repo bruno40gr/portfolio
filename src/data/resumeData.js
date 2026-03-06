@@ -65,8 +65,32 @@ export const RESUME_DATA = {
         "Designed the product from zero to launch, achieving a 51% rebooking rate and 4.3/5 session rating in closed beta.",
         "Led product storytelling and live demos that helped secure an $800,000 seed round.",
         "Scaled design from a solo function to a team of six, establishing quality standards during rapid growth."
-      ],
-      additional: "Additional experience in fintech and martech product design at Carta and Instapage."
+      ]
+    },
+    {
+      company: "Instapage",
+      role: "Senior Product Designer",
+      dates: "2016 to 2019",
+      description: [
+        "Led design initiatives for core marketing technology features, driving continuous conversion improvements.",
+        "Collaborated closely with product and engineering teams to refine the platform's core landing page builder experience."
+      ]
+    },
+    {
+      company: "Carta",
+      role: "Product Designer",
+      dates: "2016",
+      description: [
+        "Designed fintech workflows for cap table management and equity administration, simplifying complex financial data for users."
+      ]
+    },
+    {
+      company: "Webgility",
+      role: "Product Design Manager",
+      dates: "2013 to 2016",
+      description: [
+        "Promoted to manager. Guided the product design strategy for e-commerce automation software, streamlining order management and accounting workflows."
+      ]
     }
   ],
   education: [
