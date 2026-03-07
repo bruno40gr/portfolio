@@ -12,8 +12,8 @@ const SystemGroupBracket = ({ title, pillars, onPillarClick, children }) => {
 
   return (
     <>
-      <div className="relative pl-5 md:pl-6 mb-16 md:mb-20">
-        <div className="absolute left-0 top-0 bottom-0 w-[3px] rounded-full bg-[var(--neon-green)] opacity-60" />
+      <div className="relative pl-0 md:pl-6 mb-16 md:mb-20">
+        <div className="hidden md:block absolute left-0 top-0 bottom-0 w-[3px] rounded-full bg-[var(--neon-green)] opacity-60" />
 
         <div className="flex flex-col gap-0.5 mb-8 md:mb-10">
           <p className="text-xl text-neutral-600 leading-normal">

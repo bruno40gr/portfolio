@@ -144,7 +144,7 @@ export const PORTFOLIO_DATA = {
         heroImage: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=80",
         role: "Lead UX Designer",
         timeline: "September 2024 to February 2025",
-        collaborators: "PM, 6 Engineers, Brand Studio, 23-market Localization team",
+        collaborators: "PM, 6 Engineers, Brand Studio",
         type: "INTERNAL",
         blocks: [
           { type: "heading", title: "The Product", hasDivider: false },
@@ -1033,7 +1033,7 @@ export const PORTFOLIO_DATA = {
         hero: { type: 'animated' },
         heroImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772144386/AAWB_message-action_nen3sq.gif",
         heroCoverImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772144384/Untitled_3_ajvo9r.png",
-        role: "Staff Product Designer",
+        role: "Product Designer",
         timeline: "2020 to 2022",
         collaborators: "PM, 5 Engineers, Operations, Fulfillment team",
         type: "INTERNAL",
@@ -2030,7 +2030,7 @@ export const PORTFOLIO_DATA = {
         heroCoverImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772236528/DS20_dxajby.jpg",
         role: "Senior Product Designer",
         timeline: "Nov 2020 to Jan 2021",
-        collaborators: "3 Designers (cross-dept), Engineering, Brand",
+        collaborators: "4 Designers, Engineering, Brand",
         type: "INTERNAL",
         services: [
           SERVICES.DESIGN_SYSTEMS,
@@ -2598,7 +2598,7 @@ export const WORK_GROUPS = [
   {
     company: "Amazon Devices",
     logo: "Amazon",
-    roleLine: "Sr. UX Designer · Sep 2022 to Jan 2026",
+    roleLine: "UX Designer - Devices · Sep 2022 to Jan 2026",
     projectIds: [
       "amazon-devices-asset-system",
       "jas-image-builder",
@@ -2612,7 +2612,7 @@ export const WORK_GROUPS = [
   {
     company: "Alto Pharmacy",
     logo: "Alto Pharmacy",
-    roleLine: "Staff Product Designer · 2021 to 2022",
+    roleLine: "Designer · 2021 to 2022",
     projectIds: ["alto-internal", "alto-assistant"]
   },
   {
