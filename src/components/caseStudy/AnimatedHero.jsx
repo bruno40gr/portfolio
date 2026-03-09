@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
+import "./AnimatedHero.css";
 
 const GrainOverlay = ({ opacity = 0.28 }) => (
   <>
     <svg
-      className="absolute inset-0 w-full h-full pointer-events-none"
+      // Made it 110% wide/tall, shifted it back 5%, and added the animate-grain class
+      className="absolute -top-[5%] -left-[5%] w-[110%] h-[110%] pointer-events-none animate-grain z-0"
       xmlns="http://www.w3.org/2000/svg"
       style={{ opacity }}
     >
@@ -22,6 +24,7 @@ const HERO_DATA = {
     layout: {
       containerHeight: "h-[48vh] md:h-[66vh]",
       containerWidth: "w-[260px] md:w-[420px]",
+      containerGap: "gap-6 md:gap-12",
     },
     slides: [
       {
@@ -58,8 +61,9 @@ const HERO_DATA = {
   'jas-asset-manager': {
     caption: "Centralized asset browser for Amazon Devices.",
     layout: {
-      containerHeight: "h-[44vh] md:h-[60vh]",
+      containerHeight: "h-[28vh] md:h-[60vh]",
       containerWidth: "w-[90%] md:w-[780px]",
+      containerGap: "gap-2 md:gap-16",
     },
     slides: [
       {
@@ -98,6 +102,7 @@ const HERO_DATA = {
     layout: {
       containerHeight: "h-[48vh] md:h-[66vh]",
       containerWidth: "w-[320px] md:w-[640px]",
+      containerGap: "gap-6 md:gap-16",
     },
     slides: [
       {
@@ -127,8 +132,9 @@ const HERO_DATA = {
   'patreon-creator-tools': {
     caption: "Creator-facing membership tools. Benefit management and audience filtering. 2020–2021.",
     layout: {
-      containerHeight: "h-[48vh] md:h-[66vh]",
+      containerHeight: "h-[28vh] md:h-[66vh]",
       containerWidth: "w-[90%] md:w-[720px]",
+      containerGap: "gap-2 md:gap-16",
     },
     slides: [
       {
@@ -160,6 +166,7 @@ const HERO_DATA = {
     layout: {
       containerHeight: "h-[48vh] md:h-[66vh]",
       containerWidth: "w-[90%] md:w-[720px]",
+      containerGap: "gap-6 md:gap-16",
     },
     slides: [
       {
@@ -191,6 +198,7 @@ const HERO_DATA = {
     layout: {
       containerHeight: "h-[48vh] md:h-[66vh]",
       containerWidth: "w-[80%] md:w-[340px]",
+      containerGap: "gap-6 md:gap-12",
     },
     slides: [
       {
@@ -229,6 +237,7 @@ const HERO_DATA = {
     layout: {
       containerHeight: "h-[48vh] md:h-[66vh]",
       containerWidth: "w-[70vw]",
+      containerGap: "gap-6 md:gap-16",
     },
     slides: [
       {
@@ -250,8 +259,9 @@ const HERO_DATA = {
   'jas-ai-generator': {
     caption: "Fire TV campaign assets. Both built in Image Builder — one drops the device onto a gradient, one places it in a real scene. The difference is what this tool makes possible.",
     layout: {
-      containerHeight: "h-[48vh] md:h-[60vh]",
+      containerHeight: "h-[28vh] md:h-[60vh]",
       containerWidth: "w-[260px] md:w-[420px]",
+      containerGap: "gap-2 md:gap-12",
     },
     slides: [
       {
@@ -268,7 +278,6 @@ const HERO_DATA = {
         flag: "",
         theme: "dark"
       },
-      
       ]
   }
 };
@@ -356,7 +365,8 @@ const AnimatedHero = ({ projectId }) => {
 
   return (
     <div
-      className="w-full overflow-hidden relative transition-colors duration-[1500ms] ease-in-out touch-pan-y flex items-center justify-center"
+      // Removed transitions entirely for instant cut
+      className="w-full overflow-hidden relative touch-pan-y flex items-center justify-center"
       style={{
         backgroundColor: slides[currentSlide]?.colors[0] || "#231f44",
         paddingTop: "clamp(5rem, 10vw, 8rem)",
@@ -370,31 +380,27 @@ const AnimatedHero = ({ projectId }) => {
       <GrainOverlay opacity={isDarkTheme ? 0.30 : 0.15} />
 
       <div
-        className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-6 px-6 md:px-8 w-full max-w-8xl relative z-10"
+        className={`flex flex-col md:flex-row items-center justify-center ${layout.containerGap || 'gap-6 md:gap-12'} px-6 md:px-8 w-full max-w-8xl relative z-10`}
         style={{ opacity: scale > 1.2 ? 0 : 1, transition: "opacity 0.3s" }}
       >
-        {/* Image */}
         <div
-          className={`relative ${layout.containerHeight} ${layout.containerWidth} flex items-center justify-center flex-shrink-0 md:w-[70%]`}
+          className={`relative ${layout.containerHeight} ${layout.containerWidth} flex items-center justify-center flex-shrink-0`}
           style={{
             transform: `scale(${scale})`,
             zIndex: scale > 1 ? 50 : 10,
             transition: isZooming ? 'none' : 'transform 0.3s ease-out'
           }}
         >
-          {slides.map((slide, index) => (
-            <img
-              key={index}
-              src={slide.img}
-              alt={slide.market}
-              className={`absolute h-full w-auto object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.35)] rounded-xl transition-all duration-[1200ms]
-              ${index === currentSlide ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}
-            />
-          ))}
+          <img
+            key={currentSlide}
+            src={slides[currentSlide].img}
+            alt={slides[currentSlide].market}
+            className="absolute h-full w-auto object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.35)] rounded-xl tv-zap-active"
+          />
         </div>
 
-        {/* Caption + dots */}
-        <div className={`flex flex-col items-center md:items-start text-center md:text-left flex-shrink-0 md:w-[30%] transition-colors duration-300 ${textColorClass} w-full`}>
+        {/* Removed text color transition */}
+        <div className={`flex flex-col items-center md:items-start text-center md:text-left flex-shrink-0 ${layout.textMaxWidth || 'max-w-md'} ${textColorClass} w-full md:w-auto`}>
           <p className={`meta-label mb-2 leading-snug ${isDarkTheme ? '!text-white/50' : '!text-slate-900/50'} text-balance`}>
             {caption}
           </p>
@@ -402,7 +408,7 @@ const AnimatedHero = ({ projectId }) => {
           <div className="relative h-7 mb-4 w-full">
             <span
               key={currentSlide}
-              className={`block whitespace-normal text-lg md:text-xl font-semibold tracking-tight transition-opacity duration-[1200ms] w-full
+              className={`block whitespace-normal text-lg md:text-xl font-semibold tracking-tight w-full
               ${isDarkTheme ? 'text-white' : 'text-slate-900'}`}
             >
               {slides[currentSlide]?.market}
@@ -414,7 +420,7 @@ const AnimatedHero = ({ projectId }) => {
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
-                className={`w-1.5 h-1.5 md:w-2 md:h-2 rounded-full transition-all duration-500
+                className={`w-1.5 h-1.5 md:w-2 md:h-2 rounded-full transition-all duration-300
                   ${index === currentSlide ? `${dotActiveClass} scale-125` : dotInactiveClass}`}
               />
             ))}
