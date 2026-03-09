@@ -1,8 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { ArrowLeft } from "lucide-react";
 
-const CaseStudyAnchorNav = ({ sections, onBack }) => {
+const CaseStudyAnchorNav = ({ sections }) => {
   const [activeId, setActiveId] = useState("");
 
   useEffect(() => {
@@ -65,42 +64,32 @@ const CaseStudyAnchorNav = ({ sections, onBack }) => {
     requestAnimationFrame(step);
   };
 
-  return (
-    <nav className="flex flex-col gap-10 w-full">
-      <button
-        onClick={onBack}
-        className="type-nav flex items-center gap-2 transition-colors text-sm font-medium group"
-      >
-        <ArrowLeft size={16} />
-        <span className="type-nav">Back</span>
-      </button>
+  if (sections.length === 0) return null;
 
-      {sections.length > 0 && (
-        <div className="flex flex-col gap-4">
-          {sections.map((section) => {
-            const isActive = activeId === section.id;
-            return (
-              <a
-                key={section.id}
-                href={"#" + section.id}
-                title={section.title}
-                className={
-                  "case-anchor-link block meta-label leading-snug whitespace-normal break-words transition-colors " +
-                  (isActive
-                    ? "is-active !text-neutral-900 !font-[600]"
-                    : "!text-neutral-400 !font-[400] hover:!text-neutral-900")
-                }
-                onClick={(e) => handleAnchorClick(e, section.id)}
-              >
-                <span className="case-anchor-bullet-wrap" aria-hidden="true">
-                  <span className="case-anchor-bullet" />
-                </span>
-                <span>{section.title}</span>
-              </a>
-            );
-          })}
-        </div>
-      )}
+  return (
+    <nav className="flex flex-col gap-4 w-full">
+      {sections.map((section) => {
+        const isActive = activeId === section.id;
+        return (
+          <a
+            key={section.id}
+            href={"#" + section.id}
+            title={section.title}
+            className={
+              "case-anchor-link block meta-label leading-snug whitespace-normal break-words transition-colors " +
+              (isActive
+                ? "is-active !text-neutral-900 !font-[600]"
+                : "!text-neutral-400 !font-[400] hover:!text-neutral-900")
+            }
+            onClick={(e) => handleAnchorClick(e, section.id)}
+          >
+            <span className="case-anchor-bullet-wrap" aria-hidden="true">
+              <span className="case-anchor-bullet" />
+            </span>
+            <span>{section.title}</span>
+          </a>
+        );
+      })}
     </nav>
   );
 };

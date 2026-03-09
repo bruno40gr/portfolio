@@ -154,6 +154,13 @@ export const PORTFOLIO_DATA = {
               "A production system with a visual editor surface that lets merchandisers, content writers, and marketing ops build, localize, and export marketing assets across 23 global market and language combinations. Teams select a template, configure their markets and languages, and the system handles layout, copy generation, translation, and compliance. The logic under the hood is substantial. The surface is designed to hide it."
             ]
           },
+          { type: "heading", title: "Who Is This For" },
+          {
+            type: "text",
+            content: [
+              "Marketing operatives who build campaigns for their regions, mainly North America and EMEA, which covers European and Asian markets. Also product line strategists who manage pricing, deals, and promotions, and copywriters who handle messaging. The tool is also gradually reducing the need for regional translators who were previously contracted to handle culturally appropriate copy for each marketplace and language. About 600 users in total. None of them are designers."
+            ]
+          },
           {
             type: "figma",
             src: "https://www.figma.com/proto/Hm4V3LSFtdcJKC1e5UWYls/JAS-Image-Builder-Final-Build-Spec?page-id=0%3A1&node-id=163-36427&scaling=min-zoom&t=PcpidMXEz6GOqzKf-1&content-scaling=fixed&p=f",
@@ -190,9 +197,9 @@ export const PORTFOLIO_DATA = {
           {
             type: "text",
             content: [
-              "The tool needed to work for people who had never opened a design application. That constraint shaped every decision. Layouts are fixed and rules-based so users can't break brand standards. Copy generation and translation are automatic so content writers don't need to manage 23 language variants manually. The editing surface is opinionated by design.",
-              "The guardrails deserved as much attention as the interface. Working closely with brand leaders and product line leads, we built validation logic that flags pricing inconsistencies, device availability conflicts, and regional compliance issues before a user can export. Publishing at Amazon's scale means a wrong image in the wrong market carries real legal and brand consequences. Making the tool trustworthy enough for non-designers to use required making it impossible for them to ship something wrong without knowing it."
-            ]
+  "The tool needed to work for people who had never opened a design application, and that single constraint shaped every call I made. I kept layouts fixed and rules-based, made copy generation and translation automatic, and built an editing surface that was deliberately opinionated. Giving non-designers too many choices is just a slower way to get to brand violations.",
+  "The guardrails took as much of my time as the interface itself. I worked closely with brand leaders and product line leads to map every way the system could produce a wrong output: a pricing inconsistency, a device that hadn't launched in a market, a text string that violated regional compliance. Publishing at Amazon's scale means a wrong image in the wrong market carries real legal consequences, so I made it structurally impossible to export something broken without the system flagging it first. Trustworthy enough for non-designers meant the tool had to do the judgment work, not the user."
+]
           },
 
           { type: "heading", title: "Process" },
@@ -298,8 +305,18 @@ export const PORTFOLIO_DATA = {
         blocks: [
           {
             type: "heading",
-            title: "The Problem",
+            title: "Who Is This For",
             hasDivider: false
+          },
+          {
+            type: "text",
+            content: [
+              "Roughly the same audience as Image Builder, with a few differences. No product line strategists or copywriters, but creative directors, graphic designers, and system designers are part of the mix. About 220 people today. Once the product is live and permission levels are fully set up, the goal is to open access company wide, so anyone at Amazon who needs to find or use a Devices image would have a path in."
+            ]
+          },
+          {
+            type: "heading",
+            title: "The Problem",
           },
           {
             type: "text",
@@ -455,12 +472,12 @@ export const PORTFOLIO_DATA = {
 
           {
             type: "heading",
-            title: "Working Prototype"
+            title: "Working (almost) Prototype"
           },
           {
             type: "text",
             content: [
-              "Here's a prototype demonstrating some key flows, as handed off to developers and tested with our marketer users."
+              "Here's a prototype demonstrating some key flows, as handed off to developers and tested with our marketer users.Some of the key interactions are pending a Figma quirk update."
             ]
           },
           {
@@ -510,7 +527,14 @@ export const PORTFOLIO_DATA = {
         collaborators: "PM, ML Engineers, Data Science, Compliance",
         type: "INTERNAL",
         blocks: [
-          { type: "heading", title: "The Problem", hasDivider: false },
+          { type: "heading", title: "Who Is This For", hasDivider: false },
+          {
+            type: "text",
+            content: [
+              "System designers, about 6 people. The tool is designed to reduce reliance on 3D artists, photographers, and contractors who previously had to generate metadata manually, typically by exporting from Photoshop and other source tools. A very small team with a disproportionate impact on the process."
+            ]
+          },
+          { type: "heading", title: "The Problem" },
           {
             type: "text",
             content: [
@@ -646,11 +670,23 @@ export const PORTFOLIO_DATA = {
     type: "INTERNAL",
     blocks: [
 
+      // ── WHO IS THIS FOR ──────────────────────────────────────────
+      {
+        type: "heading",
+        title: "Who Is This For",
+        hasDivider: false
+      },
+      {
+        type: "text",
+        content: [
+          "Engineers who uploaded the images, data scientists (about 12 people), and creative directors (about 4 people)."
+        ]
+      },
+
       // ── THE PROBLEM ──────────────────────────────────────────────
       {
         type: "heading",
-        title: "The Problem",
-        hasDivider: false
+        title: "The Problem"
       },
       {
         type: "text",

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ArrowLeft, ChevronDown, Menu, X } from "lucide-react";
+import { ArrowLeft, ChevronDown, ChevronLeft, ChevronRight, Menu, X } from "lucide-react";
 
 import { ASSETS, COMPANY_STRIPE_LOGOS } from "./data/assets";
 import { PORTFOLIO_DATA, WORK_GROUPS } from "./data/portfolioData";
@@ -121,7 +121,11 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const caseStudyProjects = PORTFOLIO_DATA.projects.filter((p) => !p.summary?.includes("Coming soon"));
+  // Nav-only list: exclude umbrella parents (projects that have children) to prevent looping
+  const navProjectIds = new Set(PORTFOLIO_DATA.projects.filter((p) => p.parentId).map((p) => p.parentId));
+  const caseStudyProjects = PORTFOLIO_DATA.projects.filter(
+    (p) => !p.summary?.includes("Coming soon") && !navProjectIds.has(p.id)
+  );
   const activeProjectIndex = caseStudyProjects.findIndex((p) => p.id === activeProject?.id);
   const prevProject = activeProjectIndex > 0 ? caseStudyProjects[activeProjectIndex - 1] : null;
   const nextProject =
@@ -304,6 +308,7 @@ export default function App() {
           }`}
         >
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-[1fr_auto_1fr] items-center">
+          {/* LEFT: Work + About (desktop) / Hamburger (mobile) */}
           <div
             className={`flex items-center justify-start md:justify-end gap-4 md:gap-14 transition-colors duration-300 ${
               navTheme === "dark" ? "text-white" : "text-[#231F45]"
@@ -317,7 +322,7 @@ export default function App() {
             >
               <Menu size={18} />
             </button>
-            
+
             {/* --- WORK DROPDOWN WRAPPER --- */}
             <div className="relative h-full flex items-center">
               <button
@@ -333,9 +338,9 @@ export default function App() {
 
               {/* Click-outside overlay */}
               {isWorkDropdownOpen && (
-                <div 
-                  className="fixed inset-0 bg-black/20 z-[90] transition-opacity duration-300" 
-                  onClick={() => setIsWorkDropdownOpen(false)} 
+                <div
+                  className="fixed inset-0 bg-black/20 z-[90] transition-opacity duration-300"
+                  onClick={() => setIsWorkDropdownOpen(false)}
                 />
               )}
 
@@ -347,14 +352,14 @@ export default function App() {
                     : "opacity-0 -translate-y-2 invisible pointer-events-none"
                 }`}
               >
-                <WorkDropdown 
-                  workGroups={WORK_GROUPS} 
+                <WorkDropdown
+                  workGroups={WORK_GROUPS}
                   portfolioData={PORTFOLIO_DATA}
                   onProjectClick={(p) => {
                     openProject(p);
                     setIsWorkDropdownOpen(false);
                   }}
-                  closeMenu={() => setIsWorkDropdownOpen(false)} 
+                  closeMenu={() => setIsWorkDropdownOpen(false)}
                 />
               </div>
             </div>
@@ -367,27 +372,57 @@ export default function App() {
             </button>
           </div>
 
+          {/* CENTER: Logo only */}
           <div onClick={() => navigateTo("home")} className="cursor-pointer mx-10 md:mx-16 shrink-0 flex justify-center">
             <LogoIcon theme={navTheme} />
           </div>
 
-          <div
-            className={`flex items-center justify-start gap-10 md:gap-14 transition-colors duration-300 ${
-              navTheme === "dark" ? "text-white" : "text-[#231F45]"
-            }`}
-          >
-            <button
-              onClick={() => navigateTo("resume")}
-              className="type-nav opacity-90 hover:opacity-100 transition-opacity"
-            >
-              Resume
-            </button>
-            <button
-              onClick={() => setIsContactOpen(true)}
-              className="type-nav opacity-90 hover:opacity-100 transition-opacity"
-            >
-              Contact
-            </button>
+          {/* RIGHT: Resume+Contact left-anchored, Prev+Next right-anchored */}
+          <div className={`hidden md:flex items-center justify-between transition-colors duration-300 ${
+            navTheme === "dark" ? "text-white" : "text-[#231F45]"
+          }`}>
+            <div className="flex items-center gap-6 md:gap-10">
+              <button
+                onClick={() => navigateTo("resume")}
+                className="type-nav opacity-90 hover:opacity-100 transition-opacity"
+              >
+                Resume
+              </button>
+              <button
+                onClick={() => setIsContactOpen(true)}
+                className="type-nav opacity-90 hover:opacity-100 transition-opacity"
+              >
+                Contact
+              </button>
+            </div>
+            {view === "project-view" ? (
+              <div className="flex items-center gap-6 md:gap-10">
+                <button
+                  onClick={() => prevProject && openProject(prevProject)}
+                  disabled={!prevProject}
+                  title={prevProject ? prevProject.title : undefined}
+                  className={`type-nav flex items-center gap-0.5 transition-opacity ${
+                    prevProject ? "opacity-90 hover:opacity-100" : "opacity-25 cursor-default"
+                  }`}
+                >
+                  <ChevronLeft size={15} />
+                  <span>Prev</span>
+                </button>
+                <button
+                  onClick={() => nextProject && openProject(nextProject)}
+                  disabled={!nextProject}
+                  title={nextProject ? nextProject.title : undefined}
+                  className={`type-nav flex items-center gap-0.5 transition-opacity ${
+                    nextProject ? "opacity-90 hover:opacity-100" : "opacity-25 cursor-default"
+                  }`}
+                >
+                  <span>Next</span>
+                  <ChevronRight size={15} />
+                </button>
+              </div>
+            ) : (
+              <div />
+            )}
           </div>
         </div>
         </nav>
@@ -471,32 +506,26 @@ export default function App() {
 
           {view === "project-view" && (prevProject || nextProject) && (
             <div className="px-6 pb-8 pt-4 flex items-center justify-between mt-auto">
-              <div>
-                {prevProject && (
-                  <button
-                    onClick={() => {
-                      setIsMobileMenuOpen(false);
-                      openProject(prevProject);
-                    }}
-                    className="type-nav text-left text-base font-semibold"
-                  >
-                    ← Previous
-                  </button>
-                )}
-              </div>
-              <div>
-                {nextProject && (
-                  <button
-                    onClick={() => {
-                      setIsMobileMenuOpen(false);
-                      openProject(nextProject);
-                    }}
-                    className="type-nav text-right text-base font-semibold"
-                  >
-                    Next →
-                  </button>
-                )}
-              </div>
+              <button
+                onClick={() => { setIsMobileMenuOpen(false); if (prevProject) openProject(prevProject); }}
+                disabled={!prevProject}
+                className={`type-nav flex items-center gap-0.5 text-base font-semibold ${
+                  prevProject ? "" : "opacity-25 cursor-default"
+                }`}
+              >
+                <ChevronLeft size={15} />
+                <span>Prev</span>
+              </button>
+              <button
+                onClick={() => { setIsMobileMenuOpen(false); if (nextProject) openProject(nextProject); }}
+                disabled={!nextProject}
+                className={`type-nav flex items-center gap-0.5 text-base font-semibold ${
+                  nextProject ? "" : "opacity-25 cursor-default"
+                }`}
+              >
+                <span>Next</span>
+                <ChevronRight size={15} />
+              </button>
             </div>
           )}
         </div>
@@ -702,7 +731,7 @@ export default function App() {
       </main>
 
       {/* RENDER FOOTER FOR MAIN SITE */}
-      {view !== "project-view" && renderFooter(view === "changelog" ? "dark" : "light")}
+      {renderFooter(view === "changelog" ? "dark" : "light")}
       <Analytics />
     </div>
   );
