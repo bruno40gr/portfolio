@@ -13,7 +13,7 @@ const RESUME = {
     website: "brunowong.me",
     websiteHref: "https://brunowong.me",
   },
-  summary: `14 years in product design, the last few building AI systems that changed how large teams work. My work sits at the intersection of product strategy, systems thinking, and close partnership with engineering, where design decisions carry real downstream consequences. I prototype in React and Tailwind to close execution gaps, pressure-test interactions, and ensure what ships matches intent. I hold a USPTO patent from Patreon, cut pharmacy operating costs at Alto, and led the design of a global campaign production system at Amazon.`,
+  summary: `14 years in product design, the last few building AI systems that changed how large teams work. Works at the intersection of product strategy, systems thinking, and engineering, with the human and the business outcome always in the same frame. Brings visual craft and design-to-code fluency across the full process, from scrappy early concepts to production-ready. USPTO patent from Patreon, cut pharmacy operating costs at Alto, and led the design of a global campaign production system at Amazon.`,
   skills: {
     product: [
       "Product strategy",
@@ -36,11 +36,10 @@ const RESUME = {
       company: "Amazon",
       dates: "September 2022 to January 2026",
       bullets: [
-        "Led design for an AI-powered campaign production system built to give Amazon Devices a single place to generate, manage, and publish marketing assets across 22 global marketplaces. Aligned product, engineering, brand, and marketing teams around a unified direction that replaced a fragmented manual workflow used by hundreds of specialists worldwide.",
-        "Defined the interaction model for a production tool that lets non-designers build, localize, and export marketing assets across 23 global markets. AI generates and translates copy automatically with compliance and brand guardrails built in. Generated 8,000+ images for Prime Day 2025, replacing an estimated 48,000 hours of manual work. Contributed three components to Meridian, Amazon's internal design system.",
-        "Led the design of a review system for an AI pipeline that enabled marketers to generate campaign-ready lifestyle scenes without a designer or 3D artist. Codified device-specific placement rules as the training foundation, then structured a sampling model and rejection taxonomy that improved output quality batch-over-batch.",
-        "Directed the design of a governed asset library built to enable automated campaign publishing at global scale. Ran AI feasibility testing that proved automated metadata classification could replace up to 90 manual inputs per asset, securing resources to build the capability in-house. Shipping Q2 2026.",
-        "Shaped device discovery across the Inspire feed and AI review highlights surfaces. Contributed to a ~2% lift in units sold. One AI review highlights concept shipped to the homepage.",
+        "Led design of an AI-powered campaign production system that unified asset generation, localization, and publishing across 23 global markets for Amazon Devices. Replaced a fragmented manual workflow used by hundreds of specialists worldwide, generating ~8,000 images for Prime Day 2025 and replacing an estimated ~48,000 hours of manual work.",
+        "Designed AI Metadata Studio, an internal tool that let marketers generate realistic lifestyle images without a designer or 3D artist. Defined device placement rules as model inputs, accounting for geometry, lighting, and compositional accuracy, and built a human-in-the-loop review process that continuously raised output quality over time.",
+        "Directed design of a proprietary asset management platform for automated campaign targeting and publishing at global scale, reducing the manual metadata work required to ship each asset.",
+        "Contributed to the global launch of Inspire feed and AI review highlights surfaces, then designed an exclusive Smart Home version for Amazon Devices that shipped in 2023-2024 with an attributable ~2% lift in units sold.",
       ],
     },
     {
@@ -74,11 +73,11 @@ const RESUME = {
       ],
     },
     {
-      role: "Product Designer",
+      role: "Sr. Product Designer",
       company: "Instapage",
       dates: "2016 to 2019",
       bullets: [
-        "Designed core product features for a SaaS landing page and conversion optimization platform serving thousands of marketing teams.",
+        "Drove core product design across IA, analytics, and enterprise onboarding through Instapage's evolution into Postclick.",
       ],
     },
     {
@@ -86,7 +85,7 @@ const RESUME = {
       company: "Carta",
       dates: "2016",
       bullets: [
-        "Contributed to product design for equity management workflows during an early growth stage.",
+        "Refined core workflows across equity management, cap tables, document signing, and financing at an early-stage Carta.",
       ],
     },
     {
@@ -132,7 +131,7 @@ const generatePDF = async () => {
     doc.setDrawColor(220, 220, 220);
     doc.setLineWidth(0.5);
     doc.line(ML, y, ML + CONTENT_W, y);
-    y += 8;
+    y += 16;
   };
 
   const sectionHeader = (title) => {
@@ -152,6 +151,13 @@ const generatePDF = async () => {
   doc.setTextColor(17, 17, 17);
   doc.text(RESUME.personalInfo.name, ML, y);
   y += 16;
+
+  // Title
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(8.5);
+  doc.setTextColor(160, 160, 160);
+  doc.text("PRODUCT DESIGNER", ML, y);
+  y += 14;
 
   // Contact
   const { phone, email, linkedin, website, location } = RESUME.personalInfo;
@@ -223,7 +229,7 @@ const generatePDF = async () => {
       doc.text("\u2022", ML, y);
       lines.forEach((line) => { checkPage(13); doc.text(line, ML + 10, y); y += 13; });
     });
-    y += 4;
+    y += 12;
   });
 
   // Education
@@ -291,6 +297,7 @@ const ResumePage = () => {
         <h1 className="font-serif text-4xl md:text-5xl text-gray-900 font-bold leading-tight tracking-tight mb-1">
           {p.name}
         </h1>
+        <p className="text-sm text-gray-400 font-medium tracking-widest uppercase mb-2">Product Designer</p>
         <p className="text-gray-500 text-sm mb-3">{p.location}</p>
         <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-gray-500">
           <span>{p.phone}</span>
