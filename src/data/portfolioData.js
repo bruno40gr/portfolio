@@ -1195,19 +1195,19 @@ export const PORTFOLIO_DATA = {
           },
           {
             type: "figma",
-            src: "https://www.figma.com/proto/XyqOU2Cu66sT0y4Sza5TcC/Alto-Assistant---Internal-Tools-Final-Build-Spec?page-id=10888%3A142839&node-id=10894-435574&scaling=scale-down&starting-point-node-id=10894%3A435574&show-proto-sidebar=1",
+            src: "https://www.figma.com/proto/mec6VArSZvtpfrbp0ZUg6b/Alto-Assistant-Wunderbar?page-id=399%3A64080&node-id=399-65346&viewport=772%2C560%2C0.13&t=AA5tliTi8OqZo81U-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=399%3A65346&show-proto-sidebar=1",
             caption: {
               short: "Prototype flows used during usability testing, click through to explore.",
-              verbose: "These prototypes were built to test foundational interaction models with Care Specialists before any significant engineering investment. Sessions focused on validating which structural approaches reduced cognitive load, not surface-level UI preferences."
+              verbose: "These prototypes were built to test foundational interaction models with Care Specialists before any significant engineering investment. Sessions focused on validating which structural approaches reduced cognitive load."
             },
-            coverImage: FIGMA_PLACEHOLDER,
+            coverImage:"https://res.cloudinary.com/diy08lj9x/image/upload/v1773182595/81ffa1c1-3fc8-4cad-8076-a4131388d848.png",
             aspectRatio: "4/3"
           },
           {
             type: "video",
             src: "https://www.loom.com/share/fc0be3c402344b59bfa541c359070582",
             href: "https://www.loom.com/share/fc0be3c402344b59bfa541c359070582",
-            coverImage: LOOM_PLACEHOLDER,
+            coverImage:"https://res.cloudinary.com/diy08lj9x/image/upload/v1773182684/f13a0390-953d-4261-9744-001039cb63c4.png",
             caption: {
               short: "Usability session recording, observing a Care Specialist working through the existing system.",
               verbose: "One of 12 sessions conducted with pharmacists and operations staff. Watching people work through the existing process in real time, noting where time was lost, where errors crept in, and where the system forced workarounds, shaped the core priorities more than any survey or interview could have."
@@ -1591,7 +1591,7 @@ export const PORTFOLIO_DATA = {
               short: "View all three options in detail, click through to explore.",
               verbose: "These prototypes were reviewed with Product, Pharmacy, and Care Ops leadership. Rather than selecting one option wholesale, the team aligned on a set of shared principles that informed what could move forward safely given clinical risk, measurement constraints, and available resourcing."
             },
-            coverImage: FIGMA_PLACEHOLDER,
+            coverImage:"https://res.cloudinary.com/diy08lj9x/image/upload/v1773182978/e81b0663-c636-40d2-9329-49934c77f62c.png",
             aspectRatio: "4/3"
           },
 
@@ -1810,7 +1810,7 @@ export const PORTFOLIO_DATA = {
               short: "Pledge Streak Filter prototype, click through to explore.",
               verbose: "The pledge streak was designed to make loyalty legible at a glance. A creator managing thousands of patrons could not manually assess payment consistency. This visualization surfaced it automatically, letting the system do the judgment work instead of the creator."
             },
-            coverImage: FIGMA_PLACEHOLDER,
+            coverImage:"https://res.cloudinary.com/diy08lj9x/image/upload/v1773183272/c1ee526a-7e37-4a2c-a7d0-b967326ad2fa.png",
             aspectRatio: "4/3"
           },
 
@@ -1836,12 +1836,12 @@ export const PORTFOLIO_DATA = {
           },
           {
             type: "figma",
-            src: "https://www.figma.com/proto/2n40H4pfL5qhAFns1J9vt6/Benefit-Delivery--Short-term?page-id=2%3A53&node-id=2-364&viewport=416%2C713%2C0.39&t=JMD5yGAFr4NUFQEW-1&scaling=contain&content-scaling=fixed&starting-point-node-id=2%3A364",
+            src: "https://www.figma.com/proto/2n40H4pfL5qhAFns1J9vt6/Benefit-Delivery--Short-term?node-id=2-82&t=52ihPrzUwGkkfKdX-1&scaling=min-zoom&content-scaling=fixed&page-id=2%3A53&starting-point-node-id=2%3A82",
             caption: {
               short: "Audience chart exploration, tier distribution visualization.",
               verbose: "This was a speculative exploration that addressed a gap that kept coming up in research: creators knew roughly how many patrons they had, but had no way to understand how those patrons were distributed or where tier structures were underperforming."
             },
-            coverImage: FIGMA_PLACEHOLDER,
+            coverImage:"https://res.cloudinary.com/diy08lj9x/image/upload/v1773183764/ffbb6bc0-9099-4324-a11a-e657349a5a7c.png",
             aspectRatio: "4/3"
           },
           {
@@ -1851,7 +1851,7 @@ export const PORTFOLIO_DATA = {
               short: "Mobile Benefit Planner prototype, the concept that seeded Phase 2.",
               verbose: ""
             },
-            coverImage: FIGMA_PLACEHOLDER,
+            coverImage:"https://res.cloudinary.com/diy08lj9x/image/upload/v1773184070/5cd5a830-8900-4afb-bdb8-b2148d0edc7e.png",
             aspectRatio: "4/3"
           },
 
@@ -1913,7 +1913,7 @@ export const PORTFOLIO_DATA = {
               short: "Round 1 prototype, initial benefit delivery system concept.",
               verbose: "The first round established the core structure: benefit categories, configuration flows, and the automation model. User testing revealed the configuration screens were overwhelming at this level of density, which drove the simplification work in Round 2."
             },
-            coverImage: FIGMA_PLACEHOLDER,
+            coverImage:"https://res.cloudinary.com/diy08lj9x/image/upload/v1773184162/800c9f09-543d-4347-832c-371a0703aaf5.png",
             aspectRatio: "4/3"
           },
           {
@@ -1923,14 +1923,14 @@ export const PORTFOLIO_DATA = {
               short: "Round 2 prototype, refined after user testing. Click through to explore.",
               verbose: "The second round addressed the density and complexity issues from Round 1. Results were overwhelmingly positive. Users grasped the automation model clearly, the merch store one-off purchase concept felt familiar, and loyalty gamification through the pledge streak felt natural rather than pushy."
             },
-            coverImage: FIGMA_PLACEHOLDER,
+            coverImage:"https://res.cloudinary.com/diy08lj9x/image/upload/v1773184366/2ccb3c38-c718-463f-9b7a-7a0b2048b443.png",
             aspectRatio: "4/3"
           },
           {
             type: "video",
             src: "https://www.loom.com/share/5926ef35ac1d44c899afea4344018b7c",
             href: "https://www.loom.com/share/5926ef35ac1d44c899afea4344018b7c",
-            coverImage: LOOM_PLACEHOLDER,
+            coverImage:"https://res.cloudinary.com/diy08lj9x/image/upload/v1773184417/b5d0b545-8155-483f-bb1c-9df9a6bdacf1.png",
             caption: { short: "Walkthrough of the Round 2 prototype and research findings.", verbose: "" },
             aspectRatio: "16/9"
           },

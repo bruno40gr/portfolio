@@ -565,12 +565,24 @@ export default function App() {
       {isContactOpen && (
         <div className="fixed inset-0 z-[200] flex items-start justify-center p-4 md:p-6 pt-[8vh] md:pt-[10vh] text-center">
           <div
-            className="absolute inset-0 bg-black/40 backdrop-blur-md"
-            onClick={() => setIsContactOpen(false)}
-          />
+  className="absolute inset-0 backdrop-blur-md"
+  onClick={() => setIsContactOpen(false)}
+  style={{ background: 'rgba(0,0,0,0.55)' }}
+>
+  <svg
+    className="absolute -top-[5%] -left-[5%] w-[110%] h-[110%] pointer-events-none opacity-[0.25] animate-grain"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <filter id="modal-grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.68" numOctaves="4" stitchTiles="stitch" />
+      <feColorMatrix type="saturate" values="0" />
+    </filter>
+    <rect width="100%" height="100%" filter="url(#modal-grain)" />
+  </svg>
+</div>
 
           <div
-            className="relative bg-white border border-slate-200 p-6 md:p-7 rounded-sm shadow-2xl max-w-md w-full text-left font-sans animate-fade-in-up"
+            className="relative bg-white border border-slate-200 p-6 md:p-7 rounded-sm shadow-2xl max-w-md w-full text-left font-sans modal-glitch-in"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -582,7 +594,8 @@ export default function App() {
               <X size={18} className="text-neutral-500" />
             </button>
 
-            <h3 className="text-xl md:text-3xl font-bold mb-3 md:mb-4 pr-10 text-center">Let's chat</h3>
+            <h3 className="text-xl md:text-3xl font-bold mb-2 md:mb-3 pr-10 text-center">Let's talk</h3>
+<p className="text-sm text-neutral-500 text-center mb-4 md:mb-5">Open to senior IC, lead, and fractional design roles starting Q2 2026.</p>
 
             <form
               className="space-y-3"
@@ -624,7 +637,7 @@ export default function App() {
                   id="form-name"
                   name="name"
                   type="text"
-                  className="w-full px-3 py-2 bg-white border border-transparent rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-[#88FF00] transition-shadow text-slate-900 font-bold tracking-widest placeholder:text-slate-400 placeholder:font-normal placeholder:tracking-normal"
+                  className="w-full px-3 py-2 bg-white border-2 border-slate-200 rounded-sm text-md focus:outline-none focus:ring-2 focus:ring-[#88FF00] transition-shadow text-slate-900 font-bold tracking-widest placeholder:text-slate-400 placeholder:font-normal placeholder:tracking-normal"
                 />
               </div>
 
@@ -636,7 +649,7 @@ export default function App() {
                   id="form-email"
                   name="email"
                   type="email"
-                  className="w-full px-3 py-2 bg-white border border-transparent rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-[#88FF00] transition-shadow text-slate-900 font-bold tracking-widest placeholder:text-slate-400 placeholder:font-normal placeholder:tracking-normal"
+                  className="w-full px-3 py-2 bg-white border-2 border-slate-200 rounded-sm text-md focus:outline-none focus:ring-2 focus:ring-[#88FF00] transition-shadow text-slate-900 font-bold tracking-widest placeholder:text-slate-400 placeholder:font-normal placeholder:tracking-normal"
                 />
               </div>
 
@@ -648,8 +661,8 @@ export default function App() {
                   id="form-message"
                   name="message"
                   rows={5}
-                  placeholder={`Be nice`}
-                  className="w-full px-3 py-2 bg-white border border-transparent rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-[#88FF00] transition-shadow text-slate-900 font-bold tracking-widest placeholder:text-slate-400 placeholder:font-normal placeholder:tracking-normal resize-none"
+                  placeholder="What are you working on?"
+                  className="w-full px-3 py-2 bg-white border-2 border-slate-200 rounded-sm text-md focus:outline-none focus:ring-2 focus:ring-[#88FF00] transition-shadow text-slate-900 font-bold tracking-widest placeholder:text-slate-400 placeholder:font-normal placeholder:tracking-normal"
                 />
               </div>
 
@@ -662,9 +675,9 @@ export default function App() {
                 >
                   Send message
                 </button>
-                <p className="mt-2 text-[10px] text-neutral-400 text-center">
-                  Talk soon!
-                </p>
+                <p className="mt-2 text-[14px] text-neutral-400 text-center">
+  I respond within one business day.
+</p>
               </div>
             </form>
           </div>
