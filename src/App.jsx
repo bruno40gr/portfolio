@@ -377,11 +377,42 @@ export default function App() {
             <LogoIcon theme={navTheme} />
           </div>
 
-          {/* RIGHT: Resume+Contact left-anchored, Prev+Next right-anchored */}
-          <div className={`hidden md:flex items-center justify-between transition-colors duration-300 ${
+          {/* RIGHT: desktop = Resume+Contact + Prev/Next (case study only), justified apart
+                     mobile  = Prev/Next only when in case study, nothing otherwise */}
+
+          {/* Mobile only: Prev/Next in case study */}
+          {view === "project-view" && (
+            <div className={`flex md:hidden items-center gap-4 ml-auto transition-colors duration-300 ${
+              navTheme === "dark" ? "text-white" : "text-[#231F45]"
+            }`}>
+              <button
+                onClick={() => prevProject && openProject(prevProject)}
+                disabled={!prevProject}
+                className={`type-nav flex items-center gap-0.5 transition-opacity ${
+                  prevProject ? "opacity-90 hover:opacity-100" : "opacity-25 cursor-default"
+                }`}
+              >
+                <ChevronLeft size={15} />
+                <span>Prev</span>
+              </button>
+              <button
+                onClick={() => nextProject && openProject(nextProject)}
+                disabled={!nextProject}
+                className={`type-nav flex items-center gap-0.5 transition-opacity ${
+                  nextProject ? "opacity-90 hover:opacity-100" : "opacity-25 cursor-default"
+                }`}
+              >
+                <span>Next</span>
+                <ChevronRight size={15} />
+              </button>
+            </div>
+          )}
+
+          {/* Desktop only: Resume+Contact always, Prev/Next appended in case study */}
+          <div className={`hidden md:flex items-center justify-between w-full transition-colors duration-300 ${
             navTheme === "dark" ? "text-white" : "text-[#231F45]"
           }`}>
-            <div className="flex items-center gap-6 md:gap-10">
+            <div className="flex items-center gap-10">
               <button
                 onClick={() => navigateTo("resume")}
                 className="type-nav opacity-90 hover:opacity-100 transition-opacity"
@@ -396,7 +427,7 @@ export default function App() {
               </button>
             </div>
             {view === "project-view" ? (
-              <div className="flex items-center gap-6 md:gap-10">
+              <div className="flex items-center gap-10">
                 <button
                   onClick={() => prevProject && openProject(prevProject)}
                   disabled={!prevProject}
@@ -440,7 +471,7 @@ export default function App() {
               className="type-nav flex items-center gap-2 text-2xl font-medium text-[#88FF00]"
               aria-label="Go home"
             >
-              <LogoIcon company={activeProject?.company} />
+              <LogoIcon />
             </button>
             <button
               type="button"

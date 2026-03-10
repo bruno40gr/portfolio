@@ -422,7 +422,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                     key={i}
                     className="process-list-item flex gap-3 md:gap-4 items-start text-lg text-neutral-700 leading-relaxed"
                   >
-                    <div className="mt-1 flex items-center justify-center w-6 h-6 rounded-full bg-[var(--green-process)] shrink-0">
+                    <div className="mt-1 flex items-center justify-center w-6 h-6 rounded-sm bg-[var(--green-process)] shrink-0">
                       <ArrowRight size={14} strokeWidth={3} className="text-[#231F45]" />
                     </div>
 
@@ -482,9 +482,9 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                                     />
                                   )}
 
-                                  <p className="type-caption text-left text-neutral-400 text-[16px] font-normal leading-relaxed mt-2 md:mt-3 font-serif">
-                                    {mediaItem.captionShort}
-                                  </p>
+                                  {mediaItem.captionShort && (
+                                    <Caption>{mediaItem.captionShort}</Caption>
+                                  )}
                                 </div>
                               );
                             })}
@@ -565,7 +565,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                 />
               </div>
 
-              <h1 className="font-serif text-[2.5rem] md:text-[3.5rem] text-neutral-900 mb-5 md:mb-6 font-[500] tracking-tight leading-[3rem] md:!leading-[4.5rem] text-left">
+              <h1 className="font-serif text-[2.5rem] md:text-[3rem] text-neutral-900 mb-5 md:mb-6 font-[500] tracking-tight leading-[3rem] md:!leading-[4.2rem] text-left">
                 {project.impactSummarySentence || project.impactSummary}
               </h1>
 

@@ -269,16 +269,26 @@ export const PORTFOLIO_DATA = {
           },
 
           { type: "heading", title: "Impact" },
-          {
-            type: "impact-box",
-            metrics: [
-              { value: "~8,000", label: "Images generated for Prime Day 2025" },
-              { value: "~48,000", label: "Hours of manual work replaced for Prime Day alone" }
-            ],
-            description: [
-              "For Prime Day 2025, the system generated 8,000 lifestyle images that would have required an estimated ~48,000 hours to produce manually across Photoshop, 3D tools, and localization workflows. Across all of 2025, the platform eliminated over ~100,000 hours of manual production work."
-            ]
-          }
+          
+  {type: "impact-box",
+  metrics: [
+    { value: "~8,000", label: "Images generated for Prime Day 2025" },
+    { value: "~48,000", label: "Hours of production work freed for one event" }
+  ],
+  description: [
+    "For Prime Day 2025 alone, the system generated approx 8,000 lifestyle images that would have required an estimated 48,000 hours across Photoshop, 3D, and localization workflows."
+  ]
+},
+{
+  type: "impact-box",
+  metrics: [
+    { value: "45–50 FTE", label: "Operational capacity freed in 2025. Estimated in partnership with finance and people teams." }
+  ],
+  description: [
+    "Based on ~100,000 hours across design, marketing, content, and localization teams. Estimated in partnership with finance and people teams."
+  ]
+},
+
         ]
       }
     },
@@ -497,7 +507,7 @@ export const PORTFOLIO_DATA = {
           },
           {
             type: "callout-box",
-            content: "Slated to ship Q2 2026. Once live, this will eliminates the dependency on external tooling, giving NA and Europe total control of Devices catalog. This will provide the metadata foundation for complete AI content generation."
+            content: "Slated to ship Q2 2026. Once live, this will eliminate the dependency on external tooling, giving NA and Europe total control of Devices catalog. This will provide the metadata foundation for complete AI content generation."
           },
           {
             type: "callout-box",

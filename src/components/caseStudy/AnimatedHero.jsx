@@ -67,28 +67,28 @@ const HERO_DATA = {
     },
     slides: [
       {
-        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772596156/1_xrlcq0.png",
+        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1773094784/Asset_library_1_afidgt.png",
         colors: ["#1a2d5e", "#131f44"],
         market: "Asset Browser",
         flag: "🗂️",
         theme: "dark"
       },
       {
-        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772596156/2_h3xok9.png",
+        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1773094921/Asset_library_2_wpmrih.png",
         colors: ["#2a2850", "#231f44"],
         market: "Filtering options",
         flag: "🔍",
         theme: "dark"
       },
       {
-        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772596156/3_omv1qd.png",
+        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1773094785/Asset_library_3_dlyfq2.png",
         colors: ["#1e3d6e", "#162d55"],
         market: "Bulk actions",
         flag: "🖼️",
         theme: "dark"
       },
       {
-        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772596156/4_ngo0ba.png",
+        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1773094785/Asset_library_4_vrol06.png",
         colors: ["#231f55", "#1c1944"],
         market: "QA Workflow and Detail panel",
         flag: "✅",
