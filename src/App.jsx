@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { ArrowLeft, ChevronDown, ChevronLeft, ChevronRight, Menu, X } from "lucide-react";
 
 import { ASSETS, COMPANY_STRIPE_LOGOS } from "./data/assets";
@@ -18,6 +19,9 @@ import ResumePage from "./components/ResumePage";
 import { Analytics } from "@vercel/analytics/react";
 
 export default function App() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   // Authentication State
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
     // If gatekeeper is disabled, always authenticate. Otherwise, check session storage.
@@ -27,8 +31,18 @@ export default function App() {
   const [authError, setAuthError] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const [view, setView] = useState("home");
-  const [activeProject, setActiveProject] = useState(null);
+  const view = location.pathname === "/" ? "home" 
+             : location.pathname === "/about" ? "about"
+             : location.pathname === "/resume" ? "resume"
+             : location.pathname === "/changelog" ? "changelog"
+             : location.pathname.startsWith("/project/") ? "project-view"
+             : location.pathname === "/styles" ? "case-styles"
+             : "home";
+
+  const projectIdMatch = location.pathname.match(/^\/project\/(.+)$/);
+  const projectId = projectIdMatch ? projectIdMatch[1] : null;
+  const activeProject = projectId ? PORTFOLIO_DATA.projects.find((p) => p.id === projectId) : null;
+
   const [scrolled, setScrolled] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -103,10 +117,17 @@ export default function App() {
     }
   };
 
+  useEffect(() => {
+    // Scroll to top on route change unless we are explicitly navigating to the work anchor
+    if (!location.state?.anchor) {
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
+  }, [location.pathname, location.state]);
+
   const navigateTo = (page, anchor) => {
     if (page === "home" && anchor === "work") {
-      if (view !== "home") {
-        setView("home");
+      if (location.pathname !== "/") {
+        navigate("/", { state: { anchor: "work" } });
         setTimeout(() => {
           const el = document.getElementById("work");
           if (el) window.scrollTo({ top: el.offsetTop - 100, behavior: "smooth" });
@@ -117,8 +138,12 @@ export default function App() {
       }
       return;
     }
-    setView(page);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    
+    if (page === "home") navigate("/");
+    else if (page === "about") navigate("/about");
+    else if (page === "resume") navigate("/resume");
+    else if (page === "changelog") navigate("/changelog");
+    else if (page === "case-styles") navigate("/styles");
   };
 
   // Nav-only list: exclude umbrella parents (projects that have children) to prevent looping
@@ -135,38 +160,13 @@ export default function App() {
 
   const handleBackNavigation = () => {
     setIsMobileMenuOpen(false);
-    if (view === "project-view") {
-      setActiveProject(null);
-      setView("home");
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      return;
-    }
-    if (view === "case-styles") {
-      setView("home");
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      return;
-    }
-    if (view === "about") {
-      setView("home");
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      return;
-    }
-    if (view === "resume") {
-      setView("home");
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+    navigate("/");
   };
 
   const openProject = (projectOrId) => {
-    const project =
-      typeof projectOrId === "string"
-        ? PORTFOLIO_DATA.projects.find((p) => p.id === projectOrId)
-        : projectOrId;
-
-    if (project) {
-      setActiveProject(project);
-      setView("project-view");
-      window.scrollTo({ top: 0, behavior: "instant" });
+    const pId = typeof projectOrId === "string" ? projectOrId : projectOrId.id;
+    if (pId) {
+      navigate(`/project/${pId}`);
     }
   };
 
@@ -672,93 +672,95 @@ export default function App() {
       )}
 
       <main className="min-h-screen relative bg-white text-left">
-        {view === "home" && (
-          <div className="bg-white animate-fade-in font-sans">
-            <section className="bg-[#2d255c] hero-wrap flex flex-col justify-center items-center text-center px-6 min-h-[calc(100vh-var(--header-h))] flex-grow relative overflow-hidden">
-              {/* Depth gradient — darkens edges, keeps center rich */}
-              <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 50% 50%, transparent 10%, rgba(10, 8, 20, 1) 90%)' }}/>
-              {/* Grain texture overlay */}
-              <svg className="absolute -top-[5%] -left-[5%] w-[110%] h-[110%] pointer-events-none opacity-[0.30] z-0 animate-grain" xmlns="http://www.w3.org/2000/svg">
-                <filter id="grain">
-                  <feTurbulence type="fractalNoise" baseFrequency="0.68" numOctaves="4" stitchTiles="stitch" />
-                  <feColorMatrix type="saturate" values="0" />
-                </filter>
-                <rect width="100%" height="100%" filter="url(#grain)" />
-              </svg>
-              {/* Neon glow — slightly stronger to punch through */}
-              <div className="absolute inset-0 pointer-events-none z-0" style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 40%, rgba(136,255,0,0.20) 0%, transparent 65%)' }} />
-              
-              <div className="max-w-4xl w-full reveal-on-scroll hero-stack relative z-10">
-                <img src="https://res.cloudinary.com/diy08lj9x/image/upload/v1772648447/bruno-logo-whitewong_q7cxxn.png" alt="Bruno Wong Marchena" className="hero-logo glitch-effect" />
-                <div className="max-w-3xl mx-auto">
-                  <h1 className="text-slate-300 text-2xl md:text-[1.8rem] font-light md:mt-8 mb-8 leading-snug">
-                    14 years in product design, the last few building AI systems that changed how large teams work.
-                  </h1>
-                  <p className="text-slate-400 text-2xl md:text-[1.3rem] mb-4 max-w-2xl mx-auto leading-snug font-light">
-                    I've automated the work of global teams at Amazon, cut fulfillment costs in healthcare logistics, and co-invented a patent for subscription systems in the creator economy.
-                  </p>
-                </div>
+        <Routes>
+          <Route path="/" element={
+            <div className="bg-white animate-fade-in font-sans">
+              <section className="bg-[#2d255c] hero-wrap flex flex-col justify-center items-center text-center px-6 min-h-[calc(100vh-var(--header-h))] flex-grow relative overflow-hidden">
+                {/* Depth gradient — darkens edges, keeps center rich */}
+                <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 50% 50%, transparent 10%, rgba(10, 8, 20, 1) 90%)' }}/>
+                {/* Grain texture overlay */}
+                <svg className="absolute -top-[5%] -left-[5%] w-[110%] h-[110%] pointer-events-none opacity-[0.30] z-0 animate-grain" xmlns="http://www.w3.org/2000/svg">
+                  <filter id="grain">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.68" numOctaves="4" stitchTiles="stitch" />
+                    <feColorMatrix type="saturate" values="0" />
+                  </filter>
+                  <rect width="100%" height="100%" filter="url(#grain)" />
+                </svg>
+                {/* Neon glow — slightly stronger to punch through */}
+                <div className="absolute inset-0 pointer-events-none z-0" style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 40%, rgba(136,255,0,0.20) 0%, transparent 65%)' }} />
                 
-                <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-                  <button onClick={() => setIsContactOpen(true)} className="px-10 py-4 bg-[#88FF00] text-black font-bold rounded-full hover:scale-105 transition-transform">
-                    Let's chat
-                  </button>
-                  <p className="text-slate-400 text-lg md:text-[1.3rem] font-light tracking-wide">
-                    Available in Q2 2026
-                  </p>
+                <div className="max-w-4xl w-full reveal-on-scroll hero-stack relative z-10">
+                  <img src="https://res.cloudinary.com/diy08lj9x/image/upload/v1772648447/bruno-logo-whitewong_q7cxxn.png" alt="Bruno Wong Marchena" className="hero-logo glitch-effect" />
+                  <div className="max-w-3xl mx-auto">
+                    <h1 className="text-slate-300 text-2xl md:text-[1.8rem] font-light md:mt-8 mb-8 leading-snug">
+                      14 years in product design, the last few building AI systems that changed how large teams work.
+                    </h1>
+                    <p className="text-slate-400 text-2xl md:text-[1.3rem] mb-4 max-w-2xl mx-auto leading-snug font-light">
+                      I've automated the work of global teams at Amazon, cut fulfillment costs in healthcare logistics, and co-invented a patent for subscription systems in the creator economy.
+                    </p>
+                  </div>
+                  
+                  <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+                    <button onClick={() => setIsContactOpen(true)} className="px-10 py-4 bg-[#88FF00] text-black font-bold rounded-full hover:scale-105 transition-transform">
+                      Let's chat
+                    </button>
+                    <p className="text-slate-400 text-lg md:text-[1.3rem] font-light tracking-wide">
+                      Available in Q2 2026
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </section>
+              </section>
 
-            <CompanyStripe logos={COMPANY_STRIPE_LOGOS} />
-            
-            <WorkSection onProjectClick={openProject} />
-          </div>
-        )}
+              <CompanyStripe logos={COMPANY_STRIPE_LOGOS} />
+              
+              <WorkSection onProjectClick={openProject} />
+            </div>
+          } />
 
-        {view === "about" && (
-          <div className="pt-40 px-6 md:px-12 lg:px-16 max-w-none mx-auto min-h-screen bg-white animate-fade-in text-left font-sans">
-            <div className="max-w-4xl mx-auto mb-20 text-left">
-              <div className="w-full max-w-md mx-auto mb-12 text-center">
-                <div className="aspect-[3/4] bg-neutral-100 border border-neutral-200 overflow-hidden relative rounded-sm p-4 shadow-sm">
-                  <div className="w-full h-full relative overflow-hidden bg-white shadow-sm">
-                    <img src={ASSETS.aboutPhoto} alt="Bruno Wong Marchena" className="w-full h-full object-cover" />
+          <Route path="/about" element={
+            <div className="pt-40 px-6 md:px-12 lg:px-16 max-w-none mx-auto min-h-screen bg-white animate-fade-in text-left font-sans">
+              <div className="max-w-4xl mx-auto mb-20 text-left">
+                <div className="w-full max-w-md mx-auto mb-12 text-center">
+                  <div className="aspect-[3/4] bg-neutral-100 border border-neutral-200 overflow-hidden relative rounded-sm p-4 shadow-sm">
+                    <div className="w-full h-full relative overflow-hidden bg-white shadow-sm">
+                      <img src={ASSETS.aboutPhoto} alt="Bruno Wong Marchena" className="w-full h-full object-cover" />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="max-w-3xl text-left">
+                  <h2 className="font-serif text-2xl md:text-5xl text-neutral-900 mb-6 md:mb-10 font-bold leading-tight tracking-tight text-left">Hi, I'm Bruno.</h2>
+                  <div className="space-y-6 md:space-y-8 text-sm md:text-lg text-neutral-600 font-light leading-relaxed text-left">
+                    <p>14 years in product design. I work best at the system level, on the behind-the-scenes stuff where workflows are messy, the UX debt is real, and the decisions carry actual downstream consequences. I like that zone. It's where design has to hold up under pressure and still hit the business numbers.</p>
+                    <p>I work as a hands-on lead, tight with product and engineering from day one. I'm invested in research and strategy, but equally happy in the weeds debugging a component or tightening the last 10% until it feels right in production. I build design systems structured enough to hand off cleanly and work with how modern teams actually build. I've been told I'm the calm in the room when things get messy. I'll take it.</p>
+                    <p>Across Amazon, Alto Pharmacy, Patreon, and earlier at Instapage, Carta, and Webgility, I've led design for systems that automate heavy manual work, cut real operating costs, and shipped at global scale. I've also been a founding designer, taking a product from zero to traction and helping close an $800K seed round. I hold a USPTO patent. I prototype in React.</p>
+                    <p>My design roots technically go back to making posters and album art for my punk rock band.</p>
+                    <p className="font-semibold text-neutral-900">On AI work</p>
+                    <p>I care about what makes it actually hold up: guardrails, fallbacks, human-in-the-loop flows, and catching the moments when the model is wrong but sounds right. Then the craft: the UI, the states, and the details that survive contact with production.</p>
+                    <p className="font-semibold text-neutral-900">When I'm not working</p>
+                    <p>Bass in a cover band around Sacramento, everything from Blink 182 to Tool. Kettlebell aficionado. Family in Lima and Athens means I travel there whenever life allows. The only time I tolerate being a bum is on a beach.</p>
                   </div>
                 </div>
               </div>
-
-              <div className="max-w-3xl text-left">
-                <h2 className="font-serif text-2xl md:text-5xl text-neutral-900 mb-6 md:mb-10 font-bold leading-tight tracking-tight text-left">Hi, I'm Bruno.</h2>
-                <div className="space-y-6 md:space-y-8 text-sm md:text-lg text-neutral-600 font-light leading-relaxed text-left">
-                  <p>14 years in product design. I work best at the system level, on the behind-the-scenes stuff where workflows are messy, the UX debt is real, and the decisions carry actual downstream consequences. I like that zone. It's where design has to hold up under pressure and still hit the business numbers.</p>
-                  <p>I work as a hands-on lead, tight with product and engineering from day one. I'm invested in research and strategy, but equally happy in the weeds debugging a component or tightening the last 10% until it feels right in production. I build design systems structured enough to hand off cleanly and work with how modern teams actually build. I've been told I'm the calm in the room when things get messy. I'll take it.</p>
-                  <p>Across Amazon, Alto Pharmacy, Patreon, and earlier at Instapage, Carta, and Webgility, I've led design for systems that automate heavy manual work, cut real operating costs, and shipped at global scale. I've also been a founding designer, taking a product from zero to traction and helping close an $800K seed round. I hold a USPTO patent. I prototype in React.</p>
-                  <p>My design roots technically go back to making posters and album art for my punk rock band.</p>
-                  <p className="font-semibold text-neutral-900">On AI work</p>
-                  <p>I care about what makes it actually hold up: guardrails, fallbacks, human-in-the-loop flows, and catching the moments when the model is wrong but sounds right. Then the craft: the UI, the states, and the details that survive contact with production.</p>
-                  <p className="font-semibold text-neutral-900">When I'm not working</p>
-                  <p>Bass in a cover band around Sacramento, everything from Blink 182 to Tool. Kettlebell aficionado. Family in Lima and Athens means I travel there whenever life allows. The only time I tolerate being a bum is on a beach.</p>
-                </div>
-              </div>
             </div>
-          </div>
-        )}
+          } />
 
-        {view === "project-view" && activeProject && (
-          <CaseStudy project={activeProject} onNavigateToProject={openProject} onExit={() => navigateTo("home", "work")} />
-        )}
+          <Route path="/project/:id" element={
+            activeProject ? <CaseStudy project={activeProject} onNavigateToProject={openProject} onExit={() => navigateTo("home", "work")} /> : <div className="pt-40 text-center min-h-screen">Project not found</div>
+          } />
 
-        {view === "case-styles" && (
-          <CaseStudyStyleGuide onBack={handleBackNavigation} />
-        )}
+          <Route path="/styles" element={
+            <CaseStudyStyleGuide onBack={handleBackNavigation} />
+          } />
 
-        {view === "changelog" && (
-          <Changelog />
-        )}
+          <Route path="/changelog" element={
+            <Changelog />
+          } />
 
-        {view === "resume" && (
-          <ResumePage />
-        )}
+          <Route path="/resume" element={
+            <ResumePage />
+          } />
+        </Routes>
       </main>
 
       {/* RENDER FOOTER FOR MAIN SITE */}

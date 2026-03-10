@@ -24,18 +24,18 @@ const AMAZON_DEVICES_AI_IMAGE =
   "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80";
 
 export const CASE_STUDIES_TITLES = {
-  "amazon-devices-asset-system": "Amazon Devices Asset System",
-  "jas-image-builder": "Image Builder",
-  "jas-asset-browser": "Devices Component Asset Manager",
-  "jas-metadata-studio": "Devices Metadata Studio",
-  "jas-ai-generator": "Asset System AI Agent",
-  "amazon-core-inspire-tab": "Inspire Tab",
-  "amazon-core-ai-review-highlights": "AI-powered Customer Review Highlights",
-  "alto-internal": "Alto Pharmacy Internal Tools",
+  "amazon-asset-system": "Amazon Devices Asset System",
+  "amazon-image-builder": "Image Builder",
+  "amazon-asset-manager": "Devices Component Asset Manager",
+  "amazon-metadata-studio": "Devices Metadata Studio",
+  "amazon-ai-compositor": "Asset System AI Agent",
+  "amazon-inspire-tab": "Inspire Tab",
+  "amazon-ai-review-highlights": "AI-powered Customer Review Highlights",
+  "alto-internal-tools": "Alto Pharmacy Internal Tools",
   "alto-assistant": "Alto Assistant App",
   "patreon-creator-tools": "Benefit Delivery Tools for Creators",
-  "patreon-pledge-streak-patent": "Pledge Streak Patent",
-  "patreon-studio2.0": "Studio 2.0 Design System",
+  "patreon-pledge-streak": "Pledge Streak Patent",
+  "patreon-studio-2": "Studio 2.0 Design System",
   "prox": "Prox",
 };
 
@@ -51,9 +51,9 @@ export const PORTFOLIO_DATA = {
 
     // AMAZON DEVICES ASSET SYSTEM (umbrella)
     {
-      id: "amazon-devices-asset-system",
+      id: "amazon-asset-system",
       company: "Amazon",
-      title: CASE_STUDIES_TITLES["amazon-devices-asset-system"],
+      title: CASE_STUDIES_TITLES["amazon-asset-system"],
       impactSummary: "Designed the platform giving Amazon Devices a single place to generate, manage, and publish marketing assets across 22 global marketplaces.",
       impactSummarySentence: "Designed the platform giving Amazon Devices a single place to generate, manage, and publish marketing assets across 22 global marketplaces.",
       designerNote: "Amazon Devices launches campaigns across 22 marketplaces, with hundreds of specialists, marketers, designers, pricing leads, localization teams, product owners, each owning a fragment of the same process, working across different tools, with no shared source of truth. Every campaign paid a coordination tax for that fragmentation. This project was my attempt to design a way out of it: a unified platform where assets could be generated, managed, and published globally without the overhead that was slowing everything down. Two of the four pillars have shipped and shown measurable impact. Two are still in build. This is the most strategically significant work of my career, and it isn't finished yet.",
@@ -128,10 +128,10 @@ export const PORTFOLIO_DATA = {
 
     // PILLAR 1: IMAGE BUILDER
     {
-      id: "jas-image-builder",
-      parentId: "amazon-devices-asset-system",
+      id: "amazon-image-builder",
+      parentId: "amazon-asset-system",
       company: "Amazon Devices",
-      title: CASE_STUDIES_TITLES["jas-image-builder"],
+      title: CASE_STUDIES_TITLES["amazon-image-builder"],
       impactSummary: "An internal tool that automates the creation of localized marketing images across 23 global marketplaces.",
       impactSummarySentence: "A production system that lets non-designers build, localize, and export marketing assets across 23 global market and language combinations, with compliance logic built in.",
       designerNote: "The goal was to make a complex system usable by non-designers while keeping everything brand compliant and technically safe. Beyond the familiar image-editing layout, the rules and parameters stayed out of sight. For Prime Day 2025 alone, the system produced about 8,000 images and removed the equivalent workload of roughly 45 designers, content writers, and marketing ops specialists who previously handled production tasks. It met the organization’s efficiency target and secured continued funding for the Asset System platform.",
@@ -304,10 +304,10 @@ export const PORTFOLIO_DATA = {
 
     // PILLAR 2: ASSET MANAGER
     {
-      id: "jas-asset-manager",
-      parentId: "amazon-devices-asset-system",
+      id: "amazon-asset-manager",
+      parentId: "amazon-asset-system",
       company: "Amazon Devices",
-      title: "Devices Component Asset Manager",
+      title: CASE_STUDIES_TITLES["amazon-asset-manager"],
       impactSummary: "A centralized internal library that makes Amazon Devices marketing images easy to find, QA, and place across global markets. Shipping Q2 2026.",
       impactSummarySentence: "A centralized digital asset library that brought the entire Amazon Devices creative catalog under governance, making automated campaign publishing possible at global scale.",
       designerNote: "The Image Builder needed a manageable centralized library because after launch the team was still uploading PNGs through backchannels. Building one allowed assets to inherit structure, governance, and rich metadata for AI automation. My goal on this project was to deliver the core functionality that would drive adoption and lay the groundwork for it, while introducing features that reduced reliance on external tools. This work also brought me closer to end users and, once fully adopted, enables full campaign placement automation.",
@@ -534,10 +534,10 @@ export const PORTFOLIO_DATA = {
 
     // PILLAR 3: METADATA STUDIO
     {
-      id: "jas-metadata-studio",
-      parentId: "amazon-devices-asset-system",
+      id: "amazon-metadata-studio",
+      parentId: "amazon-asset-system",
       company: "Amazon Devices",
-      title: CASE_STUDIES_TITLES["jas-metadata-studio"],
+      title: CASE_STUDIES_TITLES["amazon-metadata-studio"],
       impactSummary: "Overcame internal stakeholder resistance by proving AI could automate the complex asset tagging required to keep global marketing campaigns legally and culturally compliant.",
       impactSummarySentence: "An AI-first internal tool that automatically extracts image metadata to enforce global legal, cultural, and regional compliance at scale.",
       designerNote: "At Amazon’s scale, an incorrect image in the wrong screen can become a data leak or a legal issue. Getting compliance data into the system required between 30 and 90 manual metadata inputs per image, a number defined by PMs, creative directors, 3D artists, and data science. Most of the organization didn't believe AI could close that gap, and didn't have the appetite to find out. With this project I built the proof that all of this was already possible.",
@@ -682,10 +682,10 @@ export const PORTFOLIO_DATA = {
    
     // PILLAR 4: AI GENERATOR
     {
-  id: "jas-ai-generator",
-  parentId: "amazon-devices-asset-system",
+  id: "amazon-ai-compositor",
+  parentId: "amazon-asset-system",
   company: "Amazon Devices",
-  title: "AI Lifestyle Compositor",
+  title: CASE_STUDIES_TITLES["amazon-ai-compositor"],
   impactSummary: "A science-backed AI tool built on Amazon's proprietary device data that generates realistic 3D lifestyle imagery at scale, with a human review system designed to improve the model with every batch.",
   impactSummarySentence: "Designed the human review system for a vertically trained AI tool that generates realistic 3D lifestyle imagery for Amazon Devices, built on proprietary device data that only Amazon owns.",
   designerNote: "3D lifestyle imagery is the most complex asset type we produce and the hardest to automate. The model is trained on proprietary Amazon device data covering specific camera angles, surface materials, shadow behavior, and screen reflections per device family. That knowledge only exists inside Amazon and no external tool can replicate it at scale like we do. My primary contribution was the Ui of course, but also designing the human review system. I defined the feedback taxonomy, the sampling model, and the interface that turned structured Creative Director input into training signal. Amazon assembled a 'tiger team' and this was also the first time I shipped code myself, using an MCP Figma-to-code process to build the review interface directly with engineering. That changed how I work.",
@@ -907,9 +907,9 @@ export const PORTFOLIO_DATA = {
 
     // INSPIRE TAB
     {
-      id: "amazon-core-inspire-tab",
+      id: "amazon-inspire-tab",
       company: "Amazon Devices",
-      title: CASE_STUDIES_TITLES["amazon-core-inspire-tab"],
+      title: CASE_STUDIES_TITLES["amazon-inspire-tab"],
       impactSummary: "Adapted Amazon's creator-driven shopping feed for Smart Home, shaping the ML ranking, catalog logic, and creator tooling that made device discovery trustworthy at scale.",
       impactSummarySentence: "Adapted Amazon's creator-driven shopping feed for Smart Home, shaping the ML ranking, catalog logic, and creator tooling that made device discovery trustworthy at scale.",
       designerNote: "My team did not build Inspire from scratch. We inherited it from the Community Shopping team and were asked to make it work for Smart Home, a category where a wrong recommendation can deeply erodes trust. That meant adapting our design library, working directly with creators, and collaborating with data science to fine-tune our ML algorithms and suggest devices that were compatible, interesting and relevant to whomever opening the tab. Operating inside a platform someone else built at Amazon scale is its own design discipline. It demands precision about where you push, influence across stakeholders, and range.",
@@ -1017,9 +1017,9 @@ export const PORTFOLIO_DATA = {
 
     // AI-POWERED CUSTOMER REVIEW HIGHLIGHTS
     {
-      id: "amazon-core-ai-review-highlights",
+      id: "amazon-ai-review-highlights",
       company: "Amazon Core Shopping",
-      title: CASE_STUDIES_TITLES["amazon-core-ai-review-highlights"],
+      title: CASE_STUDIES_TITLES["amazon-ai-review-highlights"],
       impactSummary: "Explored and designed new applications for Amazon's AI-generated review highlights to drive product discovery across the Smart Home category.",
       impactSummarySentence: "Explored and designed new applications for Amazon's AI-generated review highlights to drive product discovery across the Smart Home category.",
       designerNote: "Amazon launched AI-generated review highlights as a company-wide capability. Leadership asked me to figure out what that could mean specifically for Smart Home customers. This kind of work sit in an interesting space because we wouldn't be building from scratch nor implementing someone else's spec with all the baggage that that implies. Thankfully, our org had always had certain room and influence to break away from company-level initiatives, so we were asked to ideate yet new ways to showcase this technology.  The artifacts shown below are the exact slides I used to pitch these concepts to leadership, reflecting how product strategy and design communication actually happen at Amazon. One concept shipped, and two moved to the roadmap upstream at the org and company level.",
@@ -1110,9 +1110,9 @@ export const PORTFOLIO_DATA = {
 
     // ALTO INTERNAL TOOLS
     {
-      id: "alto-internal",
+      id: "alto-internal-tools",
       company: "Alto Pharmacy",
-      title: CASE_STUDIES_TITLES["alto-internal"],
+      title: CASE_STUDIES_TITLES["alto-internal-tools"],
       impactSummary: "Redesigned the internal messaging and action system for a scaling digital pharmacy, reducing communications per shipment below 1.0 for the first time.",
       impactSummarySentence: "A redesigned internal platform that helped a pharmacy operations team resolve patient requests faster, with less friction and fewer workarounds.",
       designerNote: "Alto was scaling fast, but the internal tools hadn't kept up. Pharmacists and care specialists were stitching together Wunderbar, Marcia Notes, Notion, spreadsheets, and Slack just to resolve a single patient request. The system worked, but it placed the burden on people instead of the product. The goal was to change that: surface the right context, reduce the time it took to act, and give the team tools that matched how they actually worked. The most honest outcome was an MVP that improved Marcia Notes and got action cards onto the roadmap, with a North Star that aligned the org around where to go next.",
@@ -2136,9 +2136,9 @@ export const PORTFOLIO_DATA = {
 
     // PATREON STUDIO 2.0 DESIGN SYSTEM
     {
-      id: "patreon-studio2.0",
+      id: "patreon-studio-2",
       company: "Patreon",
-      title: CASE_STUDIES_TITLES["patreon-studio2.0"],
+      title: CASE_STUDIES_TITLES["patreon-studio-2"],
       impactSummary: "Co-created Studio 2.0, Patreon's mobile-first design system, establishing a unified visual language and component library across the entire platform in an 8-week cross-functional sprint.",
       impactSummarySentence: "An 8-week collaborative sprint to build a scalable, mobile-first design system that unified Patreon's disjointed UI and set the visual foundation for the platform's rebrand.",
       designerNote: "Eight weeks, three designers from different departments, no prior shared system to build from. Studio 2.0 was Patreon's first real attempt at a unified visual language, built during a period when the product strategy had shifted significantly but the UI hadn't caught up. My contribution came from the Creator Tools side: the design explorations, the shape system, and the component architecture that became the foundation for the 2.0 migration. The system shipped to engineering in January 2021. I didn't see it fully rolled out across the live product, restructuring ended my time at Patreon shortly after. The work held up well enough to be used as the blueprint for what came next.",
@@ -2737,26 +2737,26 @@ export const WORK_GROUPS = [
     logo: "Amazon",
     roleLine: "UX Designer - Devices · Sep 2022 to Jan 2026",
     projectIds: [
-      "amazon-devices-asset-system",
-      "jas-image-builder",
-      "jas-asset-manager",
-      "jas-metadata-studio",
-      "jas-ai-generator",
-      "amazon-core-inspire-tab",
-      "amazon-core-ai-review-highlights"
+      "amazon-asset-system",
+      "amazon-image-builder",
+      "amazon-asset-manager",
+      "amazon-metadata-studio",
+      "amazon-ai-compositor",
+      "amazon-inspire-tab",
+      "amazon-ai-review-highlights"
     ]
   },
   {
     company: "Alto Pharmacy",
     logo: "Alto Pharmacy",
     roleLine: "Designer · 2021 to 2022",
-    projectIds: ["alto-internal", "alto-assistant"]
+    projectIds: ["alto-internal-tools", "alto-assistant"]
   },
   {
     company: "Patreon",
     logo: "Patreon",
     roleLine: "Sr. Product Designer · Creator Tools · 2020 to 2021",
-    projectIds: ["patreon-creator-tools", "patreon-pledge-streak", "patreon-studio2.0"]
+    projectIds: ["patreon-creator-tools", "patreon-pledge-streak", "patreon-studio-2"]
   },
   {
     company: "Prox",
