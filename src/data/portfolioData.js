@@ -13,8 +13,8 @@ function isRealUrl(url) {
 }
 
 // Generic Logos for placeholders
-const FIGMA_PLACEHOLDER = "https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg";
-const LOOM_PLACEHOLDER = "https://cdn.worldvectorlogo.com/logos/loom-1.svg";
+const FIGMA_PLACEHOLDER = "";
+const LOOM_PLACEHOLDER = "";
 
 // ------------------------------------------
 // Global data

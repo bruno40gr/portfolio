@@ -451,6 +451,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                                     <VideoThumbnail
                                       src={mediaItem.src}
                                       caption={mediaItem.captionShort}
+                                      coverImage={mediaItem.coverImage}
                                       onClick={() => setLightbox({ open: true, index: globalIndex })}
                                     />
                                   ) : mediaItem.type === "pdf" ? (

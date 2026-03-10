@@ -19,7 +19,7 @@ const GrainOverlay = ({ opacity = 0.28 }) => (
 );
 
 const HERO_DATA = {
-  'jas-image-builder': {
+  'amazon-image-builder': {
     caption: "Echo Show 8 launch campaign across 4 markets, built at once. September 2025.",
     layout: {
       containerHeight: "h-[48vh] md:h-[66vh]",
@@ -58,7 +58,7 @@ const HERO_DATA = {
     ]
   },
 
-  'jas-asset-manager': {
+  'amazon-asset-manager': {
     caption: "Centralized asset browser for Amazon Devices.",
     layout: {
       containerHeight: "h-[28vh] md:h-[60vh]",
@@ -97,7 +97,7 @@ const HERO_DATA = {
     ]
   },
 
-  'alto-internal': {
+  'alto-internal-tools': {
     caption: "Internal pharmacy ops tooling. Action-first patterns for fulfillment teams. 2021.",
     layout: {
       containerHeight: "h-[48vh] md:h-[66vh]",
@@ -161,7 +161,7 @@ const HERO_DATA = {
     ]
   },
 
-  'patreon-studio2.0': {
+  'patreon-studio-2': {
     caption: "Patreon's unified design system and creator profile redesign. 2021.",
     layout: {
       containerHeight: "h-[48vh] md:h-[66vh]",
@@ -193,7 +193,7 @@ const HERO_DATA = {
     ]
   },
 
-  'amazon-core-inspire-tab': {
+  'amazon-inspire-tab': {
     caption: "Inspire shoppable feed adapted for Smart Home devices. Amazon app, 2023.",
     layout: {
       containerHeight: "h-[48vh] md:h-[66vh]",
@@ -232,7 +232,7 @@ const HERO_DATA = {
     ]
   },
 
-  'jas-metadata-studio': {
+  'amazon-metadata-studio': {
     caption: "AI-powered metadata extraction for global compliance. Amazon Devices, 2025.",
     layout: {
       containerHeight: "h-[48vh] md:h-[66vh]",
@@ -256,7 +256,7 @@ const HERO_DATA = {
       }
     ]
   },
-  'jas-ai-generator': {
+  'amazon-ai-compositor': {
     caption: "This Fire TV campaign built in Image Builder compares a standard gradient background against an AI-generated lifestyle scene. By placing the device in a realistic setting, the campaign aims for the 40% higher CTR typically seen with lifestyle imagery over basic product shots.",
     layout: {
       containerHeight: "h-[40vh] md:h-[70vh]",
@@ -292,7 +292,7 @@ const AnimatedHero = ({ projectId }) => {
   const initialPinchDist = useRef(null);
   const lastScale = useRef(1);
 
-  const projectData = HERO_DATA[projectId] || HERO_DATA['jas-image-builder'];
+  const projectData = HERO_DATA[projectId] || HERO_DATA['amazon-image-builder'];
   const { slides, layout, caption } = projectData;
 
   const isDarkTheme = slides[currentSlide]?.theme === 'dark';
