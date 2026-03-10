@@ -1,29 +1,33 @@
 import React from "react";
 
-export const ImpactBox = ({ metrics = [], size = "small" }) => {
+export const ImpactBox = ({ metrics = [], description = [], size = "small" }) => {
   const isSmall = size === "small";
 
   if (isSmall) {
-    // COZY CARD STYLE (Small)
-    // Updated to match the "Asset System AI Agent" reference:
-    // 1. Changed to 'bg-slate-50' to provide contrast against the white dropdown background
-    // 2. Used 'border-slate-100' for a subtle definition
-    // 3. Kept text left-aligned and sentence-case
     return (
-      <div className="flex flex-wrap gap-2 font-sans mt-2 w-full">
-        {metrics.map((m, i) => (
-          <div 
-            key={i} 
-            className="flex flex-col justify-center p-3 bg-slate-100  rounded-sm flex-1 min-w-[110px] max-w-[200px]"
-          >
-            <span className="text-[16px] font-bold text-[#231f44] tracking-tight leading-none mb-1">
-              {m.value}
-            </span>
-            <span className="text-[13px] leading-snug text-slate-500 font-medium">
-              {m.label}
-            </span>
+      <div className="flex flex-col gap-3 font-sans mt-2 w-full">
+        <div className="flex flex-wrap gap-2">
+          {metrics.map((m, i) => (
+            <div
+              key={i}
+              className="flex flex-col justify-center p-3 bg-slate-100 rounded-sm flex-1 min-w-[110px] max-w-[200px]"
+            >
+              <span className="text-[16px] font-bold text-[#231f44] tracking-tight leading-none mb-1">
+                {m.value}
+              </span>
+              <span className="text-[13px] leading-snug text-slate-500 font-medium">
+                {m.label}
+              </span>
+            </div>
+          ))}
+        </div>
+        {description?.length > 0 && (
+          <div className="flex flex-col gap-1">
+            {description.map((line, i) => (
+              <p key={i} className="text-[13px] text-slate-400 leading-snug" dangerouslySetInnerHTML={{ __html: line }} />
+            ))}
           </div>
-        ))}
+        )}
       </div>
     );
   }
@@ -48,6 +52,13 @@ export const ImpactBox = ({ metrics = [], size = "small" }) => {
           </div>
         ))}
       </div>
+      {description?.length > 0 && (
+        <div className="mt-4 flex flex-col gap-1.5">
+          {description.map((line, i) => (
+            <p key={i} className="text-sm text-slate-500 leading-relaxed" dangerouslySetInnerHTML={{ __html: line }} />
+          ))}
+        </div>
+      )}
     </section>
   );
 };

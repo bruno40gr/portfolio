@@ -19,19 +19,20 @@ const ProjectCard = ({ project, onClick }) => {
     }
   };
 
-  // Helper to render blocks without the messy inline IIFE
+  // Renders card-level blocks from top-level `blocks` only.
+  // details.blocks is case study content and is never read here.
   const renderBlocks = () => {
-    const allBlocks = [
-      ...(details.blocks || []),
-      ...blocks.map(b => ({ ...b, type: b.type === 'callout' ? 'callout-box' : b.type === 'impact' ? 'impact-box' : b.type }))
-    ];
+    const cardBlocks = blocks.map(b => ({
+      ...b,
+      type: b.type === 'callout' ? 'callout-box' : b.type === 'impact' ? 'impact-box' : b.type
+    }));
 
-    const impactBlock = allBlocks.find(block => block.type === 'impact-box');
+    const impactBlock = cardBlocks.find(b => b.type === 'impact-box');
     if (impactBlock) {
-      return <ImpactBox size="small" metrics={impactBlock.metrics} />;
+      return <ImpactBox size="small" metrics={impactBlock.metrics} description={impactBlock.description} />;
     }
 
-    const calloutBlock = allBlocks.find(block => block.type === 'callout-box');
+    const calloutBlock = cardBlocks.find(b => b.type === 'callout-box');
     if (calloutBlock) {
       return <CalloutBox size="small" content={calloutBlock.content || calloutBlock.text} />;
     }

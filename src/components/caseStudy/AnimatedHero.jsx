@@ -257,11 +257,11 @@ const HERO_DATA = {
     ]
   },
   'jas-ai-generator': {
-    caption: "Fire TV campaign assets. Both built in Image Builder — one drops the device onto a gradient, one places it in a real scene. The difference is what this tool makes possible.",
+    caption: "This Fire TV campaign built in Image Builder compares a standard gradient background against an AI-generated lifestyle scene. By placing the device in a realistic setting, the campaign aims for the 40% higher CTR typically seen with lifestyle imagery over basic product shots.",
     layout: {
-      containerHeight: "h-[28vh] md:h-[60vh]",
-      containerWidth: "w-[260px] md:w-[420px]",
-      containerGap: "gap-2 md:gap-12",
+      containerHeight: "h-[40vh] md:h-[70vh]",
+      containerWidth: "w-[90vw] md:w-[75vw]",
+      containerGap: "gap-4 md:gap-8",
     },
     slides: [
       {
