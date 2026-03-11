@@ -51,9 +51,13 @@ This log documents the iterative refinements and systems-thinking applied to thi
 - **Mar 10:** **Client-Side Routing:** Migrated the app from a state-based single-page architecture to real URL routing using `react-router-dom`. Each section and case study now has its own dedicated URL, enabling standard browser back-button functionality and direct deep-linking.
 - **Mar 10:** **Clean URLs & ID Normalization:** Refactored project IDs across the data schema to generate clean, readable URL slugs (e.g., `/project/amazon-image-builder`), and updated dependent components (`AnimatedThumbnail`, `AnimatedHero`) to properly sync with the new architecture.
 - **Mar 10:** **Media & Interaction Fixes:** Resolved missing Figma and Video preview thumbnails by deprecating fragile external placeholders. Also resolved a React Router reconciliation issue that was preventing the "Let's chat" contact overlay from rendering.
+- **Mar 10:** **Case Study Refinements:** Debugged layout rendering for Impact Boxes, fixed typos across the Image Builder case study, and implemented the dynamic JAS AI animated hero component.
+- **Mar 9:** **Navigation & Hero Upgrades:** Deployed structural improvements to the `AnimatedHero` component, refined general navigation routing, and pushed copy updates for the Image Builder case study.
 
 ---
 ## Week of Mar 2, 2026: Design Updates & Functionality
+- **Mar 6:** **Mobile Layout & Navigation:** Resolved layout issues on the mobile `CompanyStripe` component and fixed persistent back-button navigation bugs.
+- **Mar 5:** **Copywriting & Resume Features:** Executed a 'kill jargon' pass to tighten case study copy and finalized the downloadable resume implementation.
 - **Mar 5:** **Vercel Analytics Integration:** Installed Vercel Analytics and integrated the `Analytics` component into `src/App.jsx` for tracking.
 - **Mar 5:** **Tailwind Typography Refinement:** Adjusted the color palette from `text-neutral-*` back to `text-slate-*` for `ImpactBox`, `CalloutBox`, `WorkDropdown`, and the Hero Sections (`App.jsx` and `AnimatedHero.jsx`) to resolve coloring issues.
 - **Mar 4:** **Tailwind Typography Update:** Standardized text colors by replacing `text-slate-*` instances with `text-neutral-*` across `.jsx`, `.tsx`, and `.css` files in the `src` directory.
