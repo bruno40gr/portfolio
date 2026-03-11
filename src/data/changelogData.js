@@ -1,5 +1,14 @@
 export const CHANGELOG_DATA = [
   {
+    week: "Week of Mar 9, 2026",
+    title: "Routing & URL Architecture",
+    items: [
+      { day: "Mar 10", text: "**Client-Side Routing:** Migrated the app from a state-based single-page architecture to real URL routing using `react-router-dom`. Each section and case study now has its own dedicated URL, enabling standard browser back-button functionality and direct deep-linking." },
+      { day: "Mar 10", text: "**Clean URLs & ID Normalization:** Refactored project IDs across the data schema to generate clean, readable URL slugs (e.g., `/project/amazon-image-builder`), and updated dependent components (`AnimatedThumbnail`, `AnimatedHero`) to properly sync with the new architecture." },
+      { day: "Mar 10", text: "**Media & Interaction Fixes:** Resolved missing Figma and Video preview thumbnails by deprecating fragile external placeholders. Also resolved a React Router reconciliation issue that was preventing the 'Let's chat' contact overlay from rendering." }
+    ]
+  },
+  {
     week: "Week of Mar 2, 2026",
     title: "Design Updates & Functionality",
     items: [
