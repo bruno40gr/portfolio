@@ -722,6 +722,43 @@ export default function App() {
                     </p>
                   </div>
                 </div>
+
+                    {/* --- RAGGED EDGE & GLITCH --- */}
+                <div className="absolute bottom-0 left-0 w-full pointer-events-none z-20">
+                  <style>{`
+                    @keyframes intermittent-glitch {
+                      0%, 92%, 96%, 100% { opacity: 0; transform: translateX(0); }
+                      93% { opacity: 1; transform: translateX(-15px); }
+                      94% { opacity: 0.8; transform: translateX(15px); }
+                      95% { opacity: 1; transform: translateX(-5px); }
+                    }
+                    .glitch-flash {
+                      opacity: 0;
+                      animation: intermittent-glitch infinite;
+                    }
+                  `}</style>
+
+                  {/* Intermittent glitch lines right above the edge */}
+                  <div className="absolute bottom-3 md:bottom-5 left-0 w-full flex flex-col justify-end gap-[2px] md:gap-[3px] opacity-90 mix-blend-screen">
+                    <div className="w-[45%] h-[2px] md:h-[3px] bg-[#88FF00] glitch-flash mx-auto" style={{ animationDuration: '4s' }}></div>
+                    <div className="w-[25%] h-[3px] md:h-[4px] bg-[#00ffff] glitch-flash ml-[20%]" style={{ animationDelay: '1.5s', animationDuration: '6s' }}></div>
+                    <div className="w-[15%] h-[2px] md:h-[3px] bg-[#ff0055] glitch-flash ml-[60%]" style={{ animationDelay: '3s', animationDuration: '7s' }}></div>
+                  </div>
+
+                  {/* Wide, blocky trapezoid paths mapped to look like your logo's shallow, flat steps.
+                    preserveAspectRatio="xMidYMax slice" prevents the SVG from squishing on mobile, 
+                    keeping the flat plateaus wide and smooth instead of turning into spikes.
+                  */}
+                  <svg viewBox="0 0 2560 48" preserveAspectRatio="xMidYMax slice" className="w-full h-6 md:h-10 lg:h-14 text-white fill-current block relative z-10">
+                    {/* Layer 1: Base flats */}
+                    <path d="M0,48 L2560,48 L2560,36 L2200,36 L2160,32 L1800,32 L1760,38 L1300,38 L1260,30 L800,30 L760,35 L400,35 L360,32 L0,32 Z" opacity="0.9" />
+                    {/* Layer 2: Offset steps */}
+                    <path d="M0,48 L2560,48 L2560,32 L2350,32 L2310,38 L1900,38 L1860,30 L1400,30 L1360,36 L900,36 L860,31 L500,31 L460,37 L100,37 L60,34 L0,34 Z" opacity="0.95" />
+                    {/* Layer 3: Finer, shorter plateaus */}
+                    <path d="M0,48 L2560,48 L2560,34 L2450,34 L2410,29 L2000,29 L1960,35 L1500,35 L1460,32 L1000,32 L960,38 L600,38 L560,28 L200,28 L160,35 L0,35 Z" />
+                  </svg>
+                </div>
+              
               </section>
 
               <CompanyStripe logos={COMPANY_STRIPE_LOGOS} />
