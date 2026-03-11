@@ -750,13 +750,15 @@ export default function App() {
                     keeping the flat plateaus wide and smooth instead of turning into spikes.
                   */}
                   <svg viewBox="0 0 2560 48" preserveAspectRatio="xMidYMax slice" className="w-full h-6 md:h-10 lg:h-14 text-white fill-current block relative z-10">
-                    {/* Layer 1: Base flats */}
-                    <path d="M0,48 L2560,48 L2560,36 L2200,36 L2160,32 L1800,32 L1760,38 L1300,38 L1260,30 L800,30 L760,35 L400,35 L360,32 L0,32 Z" opacity="0.9" />
-                    {/* Layer 2: Offset steps */}
-                    <path d="M0,48 L2560,48 L2560,32 L2350,32 L2310,38 L1900,38 L1860,30 L1400,30 L1360,36 L900,36 L860,31 L500,31 L460,37 L100,37 L60,34 L0,34 Z" opacity="0.95" />
-                    {/* Layer 3: Finer, shorter plateaus */}
-                    <path d="M0,48 L2560,48 L2560,34 L2450,34 L2410,29 L2000,29 L1960,35 L1500,35 L1460,32 L1000,32 L960,38 L600,38 L560,28 L200,28 L160,35 L0,35 Z" />
-                  </svg>
+  {/* Layer 1: Base - Dips dropped from 32/35 to 29/38 */}
+  <path d="M0,48 L2560,48 L2560,36 L2200,36 L2160,29 L1800,29 L1760,41 L1300,41 L1260,27 L800,27 L760,38 L400,38 L360,29 L0,29 Z" opacity="0.9" />
+  
+  {/* Layer 2: Offset - Dips dropped from 34/37 to 31/40 */}
+  <path d="M0,48 L2560,48 L2560,32 L2350,32 L2310,41 L1900,41 L1860,27 L1400,27 L1360,39 L900,39 L860,28 L500,28 L460,40 L100,40 L60,31 L0,31 Z" opacity="0.95" />
+  
+  {/* Layer 3: Finer Plateaus - Slightly stretched vertical range */}
+  <path d="M0,48 L2560,48 L2560,34 L2450,34 L2410,26 L2000,26 L1960,38 L1500,38 L1460,29 L1000,29 L960,41 L600,41 L560,25 L200,25 L160,38 L0,38 Z" />
+</svg>
                 </div>
               
               </section>
