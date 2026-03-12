@@ -193,6 +193,31 @@ const HERO_DATA = {
     ]
   },
 
+  'patreon-pledge-streak': {
+    caption: "Data visualization pattern that turned months of billing history into a readable streak.",
+    layout: {
+      containerHeight: "h-[30vh] md:h-[50vh]",
+      containerWidth: "w-[90vw] md:w-[720px]",
+      containerGap: "gap-4 md:gap-8",
+    },
+    slides: [
+      {
+        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772474139/pledge-streak-ui_wvufrl.png",
+        colors: ["#3d2a5a", "#2e1f47"],
+        market: "Integrated Streak UI",
+        flag: "🌟",
+        theme: "dark"
+      },
+      {
+        img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772474131/closer_look_vfpqgs.png",
+        colors: ["#2d1f44", "#231540"],
+        market: "Patent-Pending Interface",
+        flag: "📜",
+        theme: "dark"
+      }
+    ]
+  },
+
   'amazon-inspire-tab': {
     caption: "Inspire shoppable feed adapted for Smart Home devices. Amazon app, 2023.",
     layout: {

@@ -28,7 +28,7 @@ export const CASE_STUDIES_TITLES = {
   "amazon-image-builder": "Image Builder",
   "amazon-asset-manager": "Devices Component Asset Manager",
   "amazon-metadata-studio": "Devices Metadata Studio",
-  "amazon-ai-compositor": "Asset System AI Agent",
+  "amazon-ai-compositor": "AI Lifestyle Compositor",
   "amazon-inspire-tab": "Inspire Tab",
   "amazon-ai-review-highlights": "AI-powered Customer Review Highlights",
   "alto-internal-tools": "Alto Pharmacy Internal Tools",
@@ -199,6 +199,16 @@ export const PORTFOLIO_DATA = {
             caption: {
               short: "Automatically translating marketing copy.",
               verbose: "We studied how marketers managed localized copy. We built a flow where the tool instantly generates copy that matches character limits and cultural context. A human can always regenerate or manually edit the text."
+            }
+          },
+
+          {
+            type: "image-full",
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1773289976/layers-nometadata_nloelx.png",
+            noLightbox: true,
+            caption: {
+              short: "How Image Builder assembles a campaign image: device PNG, gradient background, and copy stack as discrete layers. Each layer is uploaded manually and organized in folders by product line and format. The tool handles dimensions, text generation, and auto-translation. No design software required.",
+              verbose: "This diagram shows the layered composition model at the core of Image Builder. A marketing operative selects a background gradient from a pre-organized folder, places a device PNG, and adds copy. The platform enforces brand rules: correct dimensions per format, character limits per market, compliant layouts. Non-designers can assemble market-ready campaign images without touching the underlying composition logic. Text generation and auto-translation are built into the same flow."
             }
           },
 
@@ -680,7 +690,7 @@ export const PORTFOLIO_DATA = {
     
     
    
-    // PILLAR 4: AI GENERATOR
+    // PILLAR 4: AI LIFESTYLE COMPOSITOR
     {
   id: "amazon-ai-compositor",
   parentId: "amazon-asset-system",
@@ -710,16 +720,48 @@ export const PORTFOLIO_DATA = {
     type: "INTERNAL",
     blocks: [
 
-      // ── WHO IS THIS FOR ──────────────────────────────────────────
+      // ── THE PRODUCT ──────────────────────────────────────────────
       {
         type: "heading",
-        title: "Who Is This For",
+        title: "The Product",
         hasDivider: false
       },
       {
         type: "text",
         content: [
-          "Engineers who uploaded the images, data scientists (about 12 people), and creative directors (about 4 people)."
+          "Two connected surfaces. The first lets design operatives upload background scene images and assign structured metadata: environment type, campaign context, product family. The second is a review tool for Creative Directors, so they come in, evaluate AI-generated image variations, approve or reject with tagged reasons, and send that feedback back as training signal.",
+          "Together they form a closed loop. The model generates, humans calibrate, the model improves. The output is lifestyle images with real Amazon devices placed in real scenes, produced without a 3D artist, photographer, or editor in the loop."
+        ]
+      },
+      {
+        type: "image-full",
+        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1773290008/layers-metadata_sfcohu.png",
+        noLightbox: true,
+        caption: {
+          short: "Three metadata-rich layers assemble into a campaign image: device, background scene, screen content. Each layer carries its own context so the system knows what belongs together.",
+          verbose: "This diagram shows what changes between Image Builder v1 and the AI Lifestyle Compositor. In v1, layers were static files: a device PNG, a gradient, copy. In the compositor, every layer carries structured metadata. The device image knows its product family and brand-mandated camera angle. The background scene knows its environment type. The screen image knows which campaign it belongs to. That metadata is what allows the system to assemble contextually correct lifestyle images automatically, across thousands of SKUs, without a designer directing each one."
+        }
+      },
+      {
+        type: "figma",
+        src: "https://www.figma.com/proto/u5gNazpXiOCPbn8tiH5ACU/JASAI?page-id=1438%3A5102&node-id=40000015-16958&viewport=324%2C-1055%2C0.14&t=LvK2dm3PYrsudLBc-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=40000015%3A16958",
+        caption: {
+          short: "Review and approval experience.",
+          verbose: ""
+        },
+        coverImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772665456/a7ec2337-4f73-4b0c-932f-b66e6b73190d.png",
+        aspectRatio: "16/9"
+      },
+
+      // ── WHO IS THIS FOR ──────────────────────────────────────────
+      {
+        type: "heading",
+        title: "Who Is This For"
+      },
+      {
+        type: "text",
+        content: [
+          "A very liited group of qualified power users. Design technologists uploading background images, data scientists (about 12 people) that didn't see the app but gathered the survey responses, and Creative Directors (about 4 people) who set the quality bar for what the model learns from."
         ]
       },
 
@@ -745,17 +787,10 @@ export const PORTFOLIO_DATA = {
         }
       },
 
-      // ── PRODUCT STRATEGY ─────────────────────────────────────────
-      {
-        type: "heading",
-        title: "Product Strategy"
-      },
       {
         type: "text",
         content: [
-          "Amazon devices are confidential hardware so you can't feed them into an external AI. Looking internally, the Amazon Home team had built something comparable for furniture, so we tested their approach first. We put an Echo Pop in a room scene but the technology back then didn't make the cut: off-axis, flat, wrong shadow.",
-          "The decision was to build in-house, trained on Amazon's proprietary device data: mandated camera angles, surface materials, shadow behavior, screen reflections per device family. The model had to be trained on it from scratch.",
-          "The other constraint was the need to well, train it. Creative Directors needed to come in, review output, and send structured feedback back so the model could learn from it. That workflow was as much of the design problem as the interface itself. So we had to move fast, plus the team was small and the timeline was tight."
+          "Amazon devices are confidential hardware so you can't feed them into an external AI. The Amazon Home team had built something comparable for furniture, so we tested their approach first. We put an Echo Pop in a room scene and it didn't work: off-axis, flat, wrong shadow. Their model had no knowledge of our devices and no way to learn it."
         ]
       },
       {
@@ -766,6 +801,19 @@ export const PORTFOLIO_DATA = {
           short: "Amazon Home Team furniture AI, 2024. Scale, placement, and shadow all wrong for our use case.",
           verbose: ""
         }
+      },
+
+      // ── PRODUCT STRATEGY ─────────────────────────────────────────
+      {
+        type: "heading",
+        title: "Product Strategy"
+      },
+      {
+        type: "text",
+        content: [
+          "The decision was to build in-house, trained on Amazon's proprietary device data: mandated camera angles, surface materials, shadow behavior, screen reflections per device family. The model had to be trained on it from scratch.",
+          "The other constraint was the need to train it. Creative Directors needed to come in, review output, and send structured feedback back so the model could learn from it. That workflow was as much of the design problem as the interface itself. The team was small and the timeline was tight."
+        ]
       },
 
       // ── PROCESS ──────────────────────────────────────────────────
@@ -868,17 +916,6 @@ export const PORTFOLIO_DATA = {
           ["4+", "12,000", "75", "19 sessions", "~1.25 hours"]
         ]
       },
-      {
-        type: "figma",
-        src: "https://www.figma.com/proto/u5gNazpXiOCPbn8tiH5ACU/JASAI?page-id=1438%3A5102&node-id=40000015-16958&viewport=324%2C-1055%2C0.14&t=LvK2dm3PYrsudLBc-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=40000015%3A16958",
-        caption: {
-          short: "Review dashboard — final build spec.",
-          verbose: ""
-        },
-        coverImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772665456/a7ec2337-4f73-4b0c-932f-b66e6b73190d.png",
-        aspectRatio: "16/9"
-      },
-
       // ── IMPACT ───────────────────────────────────────────────────
       {
         type: "heading",
@@ -1988,7 +2025,7 @@ export const PORTFOLIO_DATA = {
         }
       ],
       details: {
-        hero: { type: 'static', heroPadding: 'py-20 mt-20', gradient: ['#222222', '#000000'] },
+        hero: { type: 'animated' },
         heroImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772474135/hero-image_owhyqg.png",
         role: "Senior Product Designer & Co-Inventor",
         timeline: "2020 to 2021 (Granted Nov 2024)",

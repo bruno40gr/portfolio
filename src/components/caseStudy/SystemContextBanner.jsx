@@ -75,7 +75,7 @@ export const SystemContextModal = ({ open, onClose, pillars = [], currentId, onP
     "jas-image-builder":   "Lets non-designers build and localize assets across 23 markets.",
     "jas-asset-manager":   "Governed library that makes assets findable, QA-able, and publishable.",
     "jas-metadata-studio": "AI-powered metadata extraction that makes the library machine-readable.",
-    "jas-ai-generator":    "Generates realistic lifestyle scenes from structured human feedback.",
+    "amazon-ai-compositor": "Generates realistic lifestyle scenes from structured human feedback.",
   };
 
   const isLaunched = (status) => status === "LAUNCHED" || status === "SHIPPED";

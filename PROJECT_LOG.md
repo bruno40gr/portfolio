@@ -48,6 +48,7 @@ This log documents the iterative refinements and systems-thinking applied to thi
 
 ---
 ## Week of Mar 9, 2026: Routing & URL Architecture
+- **Mar 11:** **Content Consistency & Bug Fix:** Standardized the nomenclature for Pillar 4 across the portfolio to 'AI Lifestyle Compositor' for clarity. Resolved a broken component mapping in `SystemContextBanner` to restore the project description in the context modal.
 - **Mar 10:** **Client-Side Routing:** Migrated the app from a state-based single-page architecture to real URL routing using `react-router-dom`. Each section and case study now has its own dedicated URL, enabling standard browser back-button functionality and direct deep-linking.
 - **Mar 10:** **Clean URLs & ID Normalization:** Refactored project IDs across the data schema to generate clean, readable URL slugs (e.g., `/project/amazon-image-builder`), and updated dependent components (`AnimatedThumbnail`, `AnimatedHero`) to properly sync with the new architecture.
 - **Mar 10:** **Media & Interaction Fixes:** Resolved missing Figma and Video preview thumbnails by deprecating fragile external placeholders. Also resolved a React Router reconciliation issue that was preventing the "Let's chat" contact overlay from rendering.
