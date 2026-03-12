@@ -17,6 +17,10 @@ const THUMBNAIL_DATA = {
     { img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772169684/benefit_categorie_eqwjwd.png",    colors: ["#2d1f44", "#231540"] },
     { img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772169704/saved_filters_xgzc9c.gif",        colors: ["#3d2a5a", "#2e1f47"] },
   ],
+  'patreon-pledge-streak': [
+    { img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772474135/hero-image_owhyqg.png", colors: ["#3d2a5a", "#2e1f47"] },
+    { img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772474139/pledge-streak-ui_wvufrl.png", colors: ["#2e1f47", "#231f44"] },
+  ],
   'patreon-studio-2': [
     
     { img: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772238558/SS3_gzembm.png", colors: ["#2e1f47", "#231f44"] },

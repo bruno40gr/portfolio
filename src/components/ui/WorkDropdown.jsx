@@ -55,12 +55,12 @@ const WorkDropdown = ({ onProjectClick, closeMenu, workGroups = [], portfolioDat
       return (
         <button
           onClick={() => handleProjectClick(project)}
-          className="w-full text-left flex flex-col px-4 py-3 rounded-sm bg-slate-100 mb-2 group active:bg-slate-200 transition-colors"
+          className="w-full text-left flex flex-col px-3 py-2.5 rounded-sm bg-slate-100 mb-2 group active:bg-slate-200 transition-colors"
         >
-          <h4 className="text-[17px] font-semibold text-[#231f44] leading-tight group-hover:underline underline-offset-2">
+          <h4 className="text-[15px] font-semibold text-[#231f44] leading-tight group-hover:underline underline-offset-2">
             {project.title}
           </h4>
-          <p className="text-sm text-slate-600 mt-1.5">{project.impactSummary}</p>
+          <p className="text-[13px] text-slate-600 mt-1">{project.impactSummary}</p>
         </button>
       );
     }
@@ -68,12 +68,12 @@ const WorkDropdown = ({ onProjectClick, closeMenu, workGroups = [], portfolioDat
     return (
       <button
         onClick={() => handleProjectClick(project)}
-        className="w-full text-left rounded-sm hover:bg-slate-100 px-4 pt-4 pb-5 mb-2 transition-colors duration-200 group outline-none focus-visible:ring-2 focus-visible:ring-[#39FF14]"
+        className="w-full text-left rounded-sm hover:bg-slate-100 px-3 pt-3 pb-4 mb-2 transition-colors duration-200 group outline-none focus-visible:ring-2 focus-visible:ring-[#39FF14]"
       >
-        <h4 className="text-[17px] font-semibold text-[#231f44] leading-tight group-hover:underline underline-offset-2 decoration-[var(--neon-green)] decoration-2">
+        <h4 className="text-[14px] font-semibold text-[#231f44] leading-tight group-hover:underline underline-offset-2 decoration-[var(--neon-green)] decoration-2">
           {project.title}
         </h4>
-        <p className="text-[14px] leading-relaxed text-slate-500 mt-2">
+        <p className="text-[12px] leading-relaxed text-slate-500 mt-1.5">
           {project.impactSummarySentence}
         </p>
       </button>
@@ -83,13 +83,13 @@ const WorkDropdown = ({ onProjectClick, closeMenu, workGroups = [], portfolioDat
   return (
     <>
       {/* DESKTOP */}
-      <div className={"hidden md:flex absolute top-full left-0 pt-10 w-[768px] z-[100] " + fontClass}>
-        <div className="absolute top-0 left-0 w-full h-10 bg-transparent" />
+      <div className={"hidden md:flex absolute top-full left-0 pt-8 w-[600px] z-[100] " + fontClass}>
+        <div className="absolute top-0 left-0 w-full h-8 bg-transparent" />
         <div className="flex w-full bg-white rounded-md shadow-[0_30px_80px_rgba(0,0,0,0.4),0_15px_20px_rgba(0,0,0,0.2)] ring-1 ring-[#231f44]/5 overflow-hidden">
 
           {/* Left: company list */}
-          <div className="w-[220px] bg-[#FBFBFB] border-r border-slate-100 py-5 pr-5 pl-2 flex-shrink-0">
-            <nav className="flex flex-col gap-1.5">
+          <div className="w-[175px] bg-[#FBFBFB] border-r border-slate-100 py-4 pr-4 pl-2 flex-shrink-0">
+            <nav className="flex flex-col gap-1">
               {workGroups.map((group) => {
                 const isActive = activeCompany === group.company;
                 return (
@@ -97,14 +97,14 @@ const WorkDropdown = ({ onProjectClick, closeMenu, workGroups = [], portfolioDat
                     key={group.company}
                     onClick={() => handleCompanyClick(group.company)}
                     className={
-                      "case-anchor-link flex items-start text-left transition-colors py-2 " +
+                      "case-anchor-link flex items-start text-left transition-colors py-1.5 " +
                       (isActive ? "is-active !text-[#231f44]" : "!text-slate-400 hover:!text-[#231f44]")
                     }
                   >
-                    <span className="case-anchor-bullet-wrap" aria-hidden="true">
+                    <span className="case-anchor-bullet-wrap mt-0.5" aria-hidden="true">
                       <span className="case-anchor-bullet" />
                     </span>
-                    <span className={"type-nav leading-tight " + (isActive ? "font-semibold" : "")}>
+                    <span className={"type-nav text-[13px] leading-tight " + (isActive ? "font-semibold" : "")}>
                       {group.company}
                     </span>
                   </button>
@@ -114,7 +114,7 @@ const WorkDropdown = ({ onProjectClick, closeMenu, workGroups = [], portfolioDat
           </div>
 
           {/* Right: project panel */}
-          <div className="flex-1 bg-white p-3 pt-3 pb-6 mt-1 min-h-0">
+          <div className="flex-1 bg-white p-2 pt-2 pb-4 mt-1 min-h-0">
             {activeYears && (
               <div
                 key={panelKey + '-years'}
@@ -126,7 +126,7 @@ const WorkDropdown = ({ onProjectClick, closeMenu, workGroups = [], portfolioDat
             )}
             <div
               key={panelKey}
-              className="flex flex-col gap-1 overflow-y-auto max-h-[860px] pr-2 custom-scrollbar"
+              className="flex flex-col gap-1 overflow-y-auto max-h-[60vh] overscroll-contain pr-2 custom-scrollbar"
               style={{ animation: activeCompany ? 'panelFadeIn 220ms ease both' : 'none' }}
             >
               {!activeCompany ? (
@@ -170,16 +170,18 @@ const WorkDropdown = ({ onProjectClick, closeMenu, workGroups = [], portfolioDat
             <div key={group.company} className="border-b border-slate-100 last:border-b-0">
               <button
                 onClick={() => handleCompanyClick(group.company)}
-                className="w-full flex items-center justify-between py-4 px-1 text-[#231f44] transition-colors active:bg-slate-50"
+                className="w-full flex items-center justify-between py-3 px-1 text-[#231f44] transition-colors active:bg-slate-50"
               >
-                <div className="flex items-center gap-4">
-                  <LogoIcon theme={isExpanded ? 'light' : 'dark'} company={group.logo} />
-                  <span className={"text-2xl tracking-tight " + (isExpanded ? "font-bold text-[#231f44]" : "font-semibold text-slate-700")}>
+                <div className="flex items-center gap-3">
+                  <div className="scale-90 transform origin-left">
+                    <LogoIcon theme={isExpanded ? 'light' : 'dark'} company={group.logo} />
+                  </div>
+                  <span className={"text-[19px] tracking-tight " + (isExpanded ? "font-bold text-[#231f44]" : "font-semibold text-slate-700")}>
                     {group.company}
                   </span>
                 </div>
                 <ChevronDown
-                  size={20}
+                  size={18}
                   className={"text-slate-400 transition-transform duration-300 " + (isExpanded ? "rotate-180" : "")}
                 />
               </button>
