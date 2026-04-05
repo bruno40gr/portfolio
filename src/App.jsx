@@ -16,6 +16,7 @@ import Changelog from "./components/home/Changelog";
 import CaseStudy from "./components/caseStudy/CaseStudy";
 import CaseStudyStyleGuide from "./components/caseStudy/CaseStudyStyleGuide";
 import ResumePage from "./components/ResumePage";
+import Presentation from "./components/presentation/Presentation";
 import { Analytics } from "@vercel/analytics/react";
 
 export default function App() {
@@ -37,6 +38,7 @@ export default function App() {
              : location.pathname === "/changelog" ? "changelog"
              : location.pathname.startsWith("/project/") ? "project-view"
              : location.pathname === "/styles" ? "case-styles"
+             : location.pathname.startsWith("/presentation") ? "presentation"
              : "home";
 
   const projectIdMatch = location.pathname.match(/^\/project\/(.+)$/);
@@ -300,7 +302,7 @@ export default function App() {
   // --- MAIN SITE RENDER ---
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-black selection:text-white relative text-left">
-      {view !== "changelog" && (
+      {view !== "changelog" && view !== "presentation" && (
         <nav
           ref={headerRef}
           className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
@@ -812,11 +814,18 @@ export default function App() {
           <Route path="/resume" element={
             <ResumePage />
           } />
+
+          <Route path="/presentation/:id" element={
+            <Presentation />
+          } />
+          <Route path="/presentation" element={
+            <Presentation />
+          } />
         </Routes>
       </main>
 
       {/* RENDER FOOTER FOR MAIN SITE */}
-      {renderFooter(view === "changelog" ? "dark" : "light")}
+      {view !== "presentation" && renderFooter(view === "changelog" ? "dark" : "light")}
       <Analytics />
     </div>
   );
