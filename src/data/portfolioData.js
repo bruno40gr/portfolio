@@ -1161,7 +1161,7 @@ export const PORTFOLIO_DATA = {
           type: "impact-box",
           metrics: [
             { value: "18%", label: "Reduction in communications per shipment vs control groups" },
-            { value: "11,000+", label: "Internal users across the platform" }
+            { value: "11,000+", label: "Patients across the platform" }
           ]
         }
       ],
@@ -1394,7 +1394,7 @@ export const PORTFOLIO_DATA = {
             type: "impact-box",
             metrics: [
               { value: "18%", label: "Reduction in communications per shipment vs control groups" },
-              { value: "11,000+", label: "Internal users across the platform" }
+              { value: "11,000+", label: "Patients across the platform" }
             ],
             description: [
               "Communications per shipment dropped 18% compared to control groups, falling below 1.0 for the first time in July 2022. The internal tooling work was one side of the same system: while the patient-facing app reduced inbound volume, these improvements ensured Care Specialists could handle what remained faster and with less friction."
