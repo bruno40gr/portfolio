@@ -124,6 +124,18 @@ export default function App() {
     if (!location.state?.anchor) {
       window.scrollTo({ top: 0, behavior: "instant" });
     }
+
+    // Update Canonical URL for SEO
+    let canonicalLink = document.querySelector("link[rel='canonical']");
+    if (!canonicalLink) {
+      canonicalLink = document.createElement("link");
+      canonicalLink.setAttribute("rel", "canonical");
+      document.head.appendChild(canonicalLink);
+    }
+    const cleanPath = location.pathname.endsWith('/') && location.pathname.length > 1 
+      ? location.pathname.slice(0, -1) 
+      : location.pathname;
+    canonicalLink.setAttribute("href", `https://www.brunowong.me${cleanPath}`);
   }, [location.pathname, location.state]);
 
   const navigateTo = (page, anchor) => {
@@ -820,6 +832,20 @@ export default function App() {
           } />
           <Route path="/presentation" element={
             <Presentation />
+          } />
+          
+          {/* Catch-all 404 route */}
+          <Route path="*" element={
+            <div className="pt-40 px-6 text-center min-h-screen font-sans">
+              <h2 className="text-3xl font-bold mb-4">404 - Page Not Found</h2>
+              <p className="text-neutral-500 mb-8">The page you are looking for doesn't exist or has been moved.</p>
+              <button 
+                onClick={() => navigate("/")}
+                className="px-8 py-3 bg-[#88FF00] text-black font-bold rounded-full hover:scale-105 transition-transform"
+              >
+                Return Home
+              </button>
+            </div>
           } />
         </Routes>
       </main>
