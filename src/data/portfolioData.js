@@ -550,7 +550,7 @@ export const PORTFOLIO_DATA = {
       title: CASE_STUDIES_TITLES["amazon-metadata-studio"],
       impactSummary: "Overcame internal stakeholder resistance by proving AI could automate the complex asset tagging required to keep global marketing campaigns legally and culturally compliant.",
       impactSummarySentence: "An AI-first internal tool that automatically extracts image metadata to enforce global legal, cultural, and regional compliance at scale.",
-      designerNote: "At Amazon’s scale, an incorrect image in the wrong screen can become a data leak or a legal issue. Getting compliance data into the system required between 30 and 90 manual metadata inputs per image, a number defined by PMs, creative directors, 3D artists, and data science. Most of the organization didn't believe AI could close that gap, and didn't have the appetite to find out. With this project I built the proof that all of this was already possible.",
+      designerNote: "At Amazon’s scale, an incorrect image in the wrong screen can become a data leak or a legal issue. Getting compliance data into the system required between 30 and 90 manual metadata inputs per image, a number defined by PMs, creative directors, 3D artists, and data science. Too much information at once would overwhelm the user. I designed the interface with progressive disclosure to show the critical metadata first and let them drill into detail only when needed. Most of the organization didn't believe AI could close that gap, and didn't have the appetite to find out. With this project I built the proof that all of this was already possible.",
       thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772414317/Background_metadata-thumbnail_pgfkp6.png",
       status: "IN_BUILD",
       type: "INTERNAL",
@@ -646,7 +646,7 @@ export const PORTFOLIO_DATA = {
             type: "text",
             content: [
               "By proving the viability of AI inference, I aligned leadership, product, and brand around a unified roadmap. Three core deliverables were greenlit: Visual Variant Attribution, a Devices Screen Mapper, and an AI-First Screen Image Uploader.",
-              "With feasibility proven, I designed a UI that relied on vastly less metadata overall. Instead of entering exhaustive data points, designers will upload one square image per screen type.",
+              "With feasibility proven, I designed a UI that relied on vastly less metadata overall. Too much information at once would overwhelm the user. I designed the experience with progressive disclosure to show the critical metadata first and let them drill into detail only when needed. That is how we scaled it.",
               "I introduced a 'screen mapper' tool to inform the AI of the screen space coordinates, allowing the system to place screens dynamically."
             ]
           },
@@ -2149,7 +2149,11 @@ export const PORTFOLIO_DATA = {
 
           {
             type: "heading",
-            title: "Reflection"
+            title: "Impact & Reflection"
+          },
+          {
+            type: "callout-box",
+            content: "The Pledge Streak gave creators a clear, nuanced picture of their audience's subscription behavior. It helped them deliver high-value benefits to truly qualified patrons confidently, while avoiding the unfair punishment of loyal members due to temporary bank freezes or missed payments. This ultimately protected revenue and fostered trust for everyone involved."
           },
           {
             type: "text",
