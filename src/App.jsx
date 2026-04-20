@@ -452,38 +452,60 @@ export default function App() {
         <Routes>
           <Route path="/" element={
             <div className="bg-white animate-fade-in font-sans">
-              <section className="bg-[#2d255c] hero-wrap flex flex-col justify-center items-center text-center px-6 min-h-[calc(100vh-var(--header-h))] flex-grow relative overflow-hidden">
+
+              {/* ===== HERO ===== */}
+              <section className="bg-[#2d255c] hero-wrap flex flex-col justify-center items-center text-center px-6 min-h-[calc(100vh-var(--header-h))] flex-grow relative overflow-hidden pb-28 md:pb-40">
                 <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 50% 50%, transparent 10%, rgba(10, 8, 20, 1) 90%)' }} />
                 <svg className="absolute -top-[5%] -left-[5%] w-[110%] h-[110%] pointer-events-none opacity-[0.30] z-0 animate-grain" xmlns="http://www.w3.org/2000/svg">
-                  <filter id="grain">
-                    <feTurbulence type="fractalNoise" baseFrequency="0.68" numOctaves="4" stitchTiles="stitch" />
-                    <feColorMatrix type="saturate" values="0" />
-                  </filter>
+                  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.68" numOctaves="4" stitchTiles="stitch" /><feColorMatrix type="saturate" values="0" /></filter>
                   <rect width="100%" height="100%" filter="url(#grain)" />
                 </svg>
                 <div className="absolute inset-0 pointer-events-none z-0" style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 40%, rgba(136,255,0,0.20) 0%, transparent 65%)' }} />
 
                 <div className="max-w-4xl w-full reveal-on-scroll hero-stack relative z-10">
-                  <img src="https://res.cloudinary.com/diy08lj9x/image/upload/v1772648447/bruno-logo-whitewong_q7cxxn.png" alt="Bruno Wong Marchena" className="hero-logo glitch-effect" />
-                  <div className="max-w-3xl mx-auto">
-                    <h1 className="text-slate-300 text-2xl md:text-[1.8rem] font-light md:mt-8 mb-8 leading-snug">
+
+                  {/*
+                    MAIN LOGO SIZING:
+                    - Mobile: w-full max-w-[240px] (locked in to your preferred layout)
+                    - Desktop: md:w-[25vw] md:max-w-[430px] (Decreased max size by ~10% from 480px)
+                    To change desktop size, tweak the 430px.
+                  */}
+                  <img
+                    src="https://res.cloudinary.com/diy08lj9x/image/upload/v1772648447/bruno-logo-whitewong_q7cxxn.png"
+                    alt="Bruno Wong Marchena"
+                    className="hero-logo glitch-effect mx-auto w-full max-w-[240px] md:w-[25vw] md:max-w-[430px]"
+                  />
+
+                  {/* Copy: Kept fluid desktop type, forced mobile to strict readable sizes */}
+                  <div className="max-w-3xl mx-auto mt-6 md:mt-[clamp(1.5rem,2.5vh,2.5rem)]">
+                    <h1 className="text-slate-300 font-light leading-snug text-[1.6rem] md:text-[clamp(1.15rem,2vw,1.75rem)] mb-4 md:mb-[clamp(0.75rem,1.5vh,1.5rem)]">
                       14 years in product design, the last few building AI systems that change how large teams work.
                     </h1>
-                    <p className="text-slate-400 text-2xl md:text-[1.3rem] mb-4 max-w-2xl mx-auto leading-snug font-light">
+                    <p className="text-slate-400 font-light leading-relaxed max-w-xl mx-auto text-[1.4rem] md:text-[clamp(0.9rem,1.3vw,1.2rem)]">
                       I've automated the work of global teams at Amazon, cut fulfillment costs in healthcare logistics, and co-invented a patent for subscription systems in the creator economy.
                     </p>
                   </div>
 
-                  {/* FIX 2: Carta (index 3) is non-clickable and dimmed */}
-                  <div className="grid grid-cols-2 md:flex md:flex-wrap place-items-center md:justify-center md:items-center gap-x-12 gap-y-10 md:gap-16 mt-12 md:mt-16 mb-24 md:mb-32 z-10 relative w-fit md:w-full max-w-4xl mx-auto">
+                  {/*
+                    COMPANY LOGOS LAYOUT & SPACING:
+                    - Mobile: grid-cols-2 (2x2 grid), gap-y-10, mt-5 (Tighter gap to paragraph text)
+                    - Desktop: flex flex-wrap, md:mt-[clamp(...)]
+                  */}
+                  <div className="grid grid-cols-2 md:flex md:flex-wrap place-items-center md:justify-center md:items-center gap-x-8 gap-y-10 md:gap-[clamp(1.5rem,3vw,4rem)] mt-5 md:mt-[clamp(1.5rem,3vh,3rem)] mb-16 md:mb-[clamp(1.2rem,3vh,2.5rem)] z-10 relative w-fit md:w-full max-w-4xl mx-auto px-4 md:px-0">
                     {COMPANY_STRIPE_LOGOS.map((logo, index) => {
                       const companyKeys = ["amazon", "alto", "patreon", null];
                       const key = companyKeys[index];
 
+                      // COMPANY LOGO SIZING:
+                      // - Mobile: h-10 sm:h-12 (robust proportions from previous version)
+                      // - Desktop: md:h-[clamp(2rem,2.8vw,3.85rem)] (Increased max size 10% from Claude's 3.5rem)
+                      // To make them even bigger on desktop, change 3.85rem to 4.2rem.
+                      const imgClasses = "object-contain brightness-0 invert h-10 sm:h-12 md:h-[clamp(2rem,2.8vw,3.85rem)]";
+
                       if (!key) {
                         return (
                           <div key={index} className="flex items-center justify-center opacity-80 cursor-default">
-                            <img src={logo.src || logo} alt={logo.name || "Company Logo"} className="h-12 sm:h-14 md:h-14 lg:h-16 object-contain brightness-0 invert" />
+                            <img src={logo.src || logo} alt={logo.name || "Company Logo"} className={imgClasses} />
                           </div>
                         );
                       }
@@ -495,13 +517,15 @@ export default function App() {
                           className="cursor-pointer transition-all duration-300 hover:scale-105 opacity-80 hover:opacity-100 focus:outline-none flex items-center justify-center"
                           aria-label={`Jump to ${logo.name || "company"} projects`}
                         >
-                          <img src={logo.src || logo} alt={logo.name || "Company Logo"} className="h-12 sm:h-14 md:h-14 lg:h-16 object-contain brightness-0 invert" />
+                          <img src={logo.src || logo} alt={logo.name || "Company Logo"} className={imgClasses} />
                         </button>
                       );
                     })}
                   </div>
+
                 </div>
 
+                
                 {/* Scroll indicator — sibling of hero-stack, anchored to section bottom */}
                 <ScrollIndicator />
 

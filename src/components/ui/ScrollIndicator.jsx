@@ -1,8 +1,11 @@
 import React from "react";
+import { ChevronDown } from "lucide-react";
 
 const ScrollIndicator = () => {
   const handleClick = () => {
     const el = document.getElementById("work");
+    // "smooth" creates a nice glide down to the work section. 
+    // You can change it to "instant" if you prefer an immediate jump.
     if (el) window.scrollTo({ top: el.offsetTop - 100, behavior: "smooth" });
   };
 
@@ -10,41 +13,49 @@ const ScrollIndicator = () => {
     <button
       onClick={handleClick}
       aria-label="Scroll to work"
-      className="absolute bottom-16 md:bottom-24 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-3 group cursor-pointer bg-transparent border-none p-0"
+      className="absolute bottom-10 md:bottom-16 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 group cursor-pointer bg-transparent border-none p-0 focus:outline-none"
     >
       <style>{`
-        @keyframes scrollDrop {
-          0% { 
-            transform: scaleY(0); 
-            transform-origin: top; 
+        @keyframes chevron-glitch {
+          0%, 92%, 96%, 100% { 
+            transform: translateY(0); 
+            filter: none; 
+            opacity: 0.7; 
           }
-          45% { 
-            transform: scaleY(1); 
-            transform-origin: top; 
+          93% { 
+            transform: translateY(2px) skewX(15deg); 
+            filter: drop-shadow(-2px 0 0 #00ffff) drop-shadow(2px 0 0 #ff0055); 
+            opacity: 1; 
           }
-          55% { 
-            transform: scaleY(1); 
-            transform-origin: bottom; 
+          94% { 
+            transform: translateY(-2px) skewX(-15deg); 
+            filter: drop-shadow(2px 0 0 #00ffff) drop-shadow(-2px 0 0 #ff0055); 
+            opacity: 0.8; 
           }
-          100% { 
-            transform: scaleY(0); 
-            transform-origin: bottom; 
+          95% { 
+            transform: translateY(0) skewX(5deg); 
+            filter: drop-shadow(-1px 0 0 #88FF00); 
+            opacity: 1; 
           }
         }
-        .scroll-line {
-          animation: scrollDrop 1.8s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+        .glitch-chevron {
+          animation: chevron-glitch 4s infinite;
+          color: #88FF00; /* Neon green matching your palette */
         }
       `}</style>
 
       {/* Text Label */}
       <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] text-white/50 group-hover:text-white transition-colors duration-500 font-light">
-        View Work
+        View work
       </span>
 
-      {/* Track */}
-      <div className="relative w-[1px] h-12 md:h-16 bg-white/20 overflow-hidden">
-        {/* Animated Drop Line */}
-        <div className="scroll-line absolute top-0 left-0 w-full h-full bg-[#88FF00]" />
+      {/* Glitching Chevron */}
+      <div className="mt-0.5">
+        <ChevronDown 
+          size={20} 
+          strokeWidth={1.5} 
+          className="glitch-chevron group-hover:opacity-100 transition-opacity duration-300" 
+        />
       </div>
     </button>
   );
