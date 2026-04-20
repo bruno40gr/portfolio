@@ -17,6 +17,7 @@ import CaseStudy from "./components/caseStudy/CaseStudy";
 import CaseStudyStyleGuide from "./components/caseStudy/CaseStudyStyleGuide";
 import ResumePage from "./components/ResumePage";
 import Presentation from "./components/presentation/Presentation";
+import ScrollIndicator from "./components/ui/ScrollIndicator";
 import { Analytics } from "@vercel/analytics/react";
 
 export default function App() {
@@ -720,23 +721,16 @@ export default function App() {
                   <img src="https://res.cloudinary.com/diy08lj9x/image/upload/v1772648447/bruno-logo-whitewong_q7cxxn.png" alt="Bruno Wong Marchena" className="hero-logo glitch-effect" />
                   <div className="max-w-3xl mx-auto">
                     <h1 className="text-slate-300 text-2xl md:text-[1.8rem] font-light md:mt-8 mb-8 leading-snug">
-                      14 years in product design, the last few building AI systems that changed how large teams work.
+                      14 years in product design, the last few building AI systems that change how large teams work.
                     </h1>
                     <p className="text-slate-400 text-2xl md:text-[1.3rem] mb-4 max-w-2xl mx-auto leading-snug font-light">
                       I've automated the work of global teams at Amazon, cut fulfillment costs in healthcare logistics, and co-invented a patent for subscription systems in the creator economy.
                     </p>
                   </div>
                   
-                  <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-                    <button onClick={() => setIsContactOpen(true)} className="px-10 py-4 bg-[#88FF00] text-black font-bold rounded-full hover:scale-105 transition-transform">
-                      Let's chat
-                    </button>
-                    <p className="text-slate-400 text-lg md:text-[1.3rem] font-light tracking-wide">
-                      Available in Q2 2026
-                    </p>
-                  </div>
+                  
                 </div>
-
+<ScrollIndicator />
                     {/* --- RAGGED EDGE & GLITCH --- */}
                 <div className="absolute bottom-0 left-0 w-full pointer-events-none z-20">
                   <style>{`

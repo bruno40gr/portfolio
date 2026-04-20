@@ -13,7 +13,7 @@ const RESUME = {
     website: "brunowong.me",
     websiteHref: "https://brunowong.me",
   },
-  summary: `14 years in product design, the last few building AI systems that changed how large teams work. Works at the intersection of product strategy, systems thinking, and engineering, with the human and the business outcome always in the same frame. Brings visual craft and design-to-code fluency across the full process, from scrappy early concepts to production-ready. USPTO patent from Patreon, cut pharmacy operating costs at Alto, and led the design of a global campaign production system at Amazon.`,
+  summary: `14 years in product design, the last few building AI systems that changed how large teams work. Co-invented a patented ML pattern for surfacing subscriber loyalty at Patreon, cut pharmacy operating costs at Alto, and led design of a global campaign production system at Amazon. Full-stack in process, from early strategy and rough concepts to visual craft and production. Design-to-code proficient, fast in ambiguity, and focused on the infrastructure layer that most product work never reaches.`,
   skills: {
     product: [
       "Product strategy",
@@ -37,8 +37,8 @@ const RESUME = {
       dates: "September 2022 to January 2026",
       bullets: [
         "Led design of an AI-powered campaign production system that unified asset generation, localization, and publishing across 23 global markets for Amazon Devices. Replaced a fragmented manual workflow used by hundreds of specialists worldwide, generating ~8,000 images for Prime Day 2025 and replacing an estimated ~48,000 hours of manual work.",
-        "Designed AI Metadata Studio, an internal tool that let marketers generate realistic lifestyle images without a designer or 3D artist. Defined device placement rules as model inputs, accounting for geometry, lighting, and compositional accuracy, and built a human-in-the-loop review process that continuously raised output quality over time.",
-        "Directed design of a proprietary asset management platform for automated campaign targeting and publishing at global scale, reducing the manual metadata work required to ship each asset.",
+        "Designed AI Metadata Studio, an internal asset intelligence tool that structured device placement rules as model inputs, built a human-in-the-loop quality pipeline, and removed the designer bottleneck from the generation workflow entirely.",
+        "Directed design of a horizontal asset management platform serving five product lines simultaneously, reducing the metadata overhead required to route and publish each asset at global scale.",
         "Contributed to the global launch of Inspire feed and AI review highlights surfaces, then designed an exclusive Smart Home version for Amazon Devices that shipped in 2023-2024 with an attributable ~2% lift in units sold.",
       ],
     },
@@ -156,20 +156,43 @@ const generatePDF = async () => {
   doc.setFont("helvetica", "normal");
   doc.setFontSize(8.5);
   doc.setTextColor(160, 160, 160);
-  doc.text("PRODUCT DESIGNER", ML, y);
+  doc.text("SENIOR PRODUCT DESIGNER", ML, y);
   y += 14;
 
   // Contact
-  const { phone, email, linkedin, website, location } = RESUME.personalInfo;
+  const { phone, email, linkedin, website, location, linkedinHref, websiteHref } = RESUME.personalInfo;
   doc.setFont("helvetica", "normal");
   doc.setFontSize(8.5);
   doc.setTextColor(110, 110, 110);
-  const contactLines = doc.splitTextToSize(
-    `${location}  |  ${phone}  |  ${email}  |  ${linkedin}  |  ${website}`,
-    CONTENT_W
-  );
-  contactLines.forEach((line) => { doc.text(line, ML, y); y += 12; });
-  y += 4;
+
+  const contactItems = [
+    { text: location },
+    { text: "  |  " },
+    { text: phone },
+    { text: "  |  " },
+    { text: email, url: `mailto:${email}` },
+    { text: "  |  " },
+    { text: linkedin, url: linkedinHref },
+    { text: "  |  " },
+    { text: website, url: websiteHref }
+  ];
+
+  let currentX = ML;
+  contactItems.forEach(item => {
+    const textWidth = doc.getTextWidth(item.text);
+    
+    if (item.url) {
+      doc.setTextColor(110, 110, 110); // keep text color consistent
+      doc.textWithLink(item.text, currentX, y, { url: item.url });
+    } else {
+      doc.setTextColor(110, 110, 110);
+      doc.text(item.text, currentX, y);
+    }
+    
+    currentX += textWidth;
+  });
+  
+  y += 16;
   rule();
 
   // Summary
@@ -297,7 +320,7 @@ const ResumePage = () => {
         <h1 className="font-serif text-4xl md:text-5xl text-gray-900 font-bold leading-tight tracking-tight mb-1">
           {p.name}
         </h1>
-        <p className="text-sm text-gray-400 font-medium tracking-widest uppercase mb-2">Product Designer</p>
+        <p className="text-sm text-gray-400 font-medium tracking-widest uppercase mb-2">Senior Product Designer</p>
         <p className="text-gray-500 text-sm mb-3">{p.location}</p>
         <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-gray-500">
           <span>{p.phone}</span>
