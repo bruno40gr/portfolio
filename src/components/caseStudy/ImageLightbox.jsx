@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { FileText, ChevronLeft, ChevronRight, X, Loader2, Figma } from "lucide-react";
+import { FileText, ChevronLeft, ChevronRight, X, Loader2, Figma, ExternalLink } from "lucide-react";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 import { FigmaEmbed } from "../ui/FigmaEmbed";
@@ -99,15 +99,17 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
           </span>
         </div>
 
-        <button
-          className="p-1.5 md:p-2 text-neutral-500 hover:text-white hover:bg-white/10 rounded-full transition-all"
-          onClick={(e) => {
-            e.stopPropagation();
-            onClose();
-          }}
-        >
-          <X size={18} className="md:w-5 md:h-5" />
-        </button>
+        <div className="flex items-center gap-2 md:gap-4">
+          <button
+            className="p-1.5 md:p-2 text-neutral-500 hover:text-white hover:bg-white/10 rounded-full transition-all"
+            onClick={(e) => {
+              e.stopPropagation();
+              onClose();
+            }}
+          >
+            <X size={18} className="md:w-5 md:h-5" />
+          </button>
+        </div>
       </div>
 
       {/* ── Main Container ───────────────────────────────────────────────────── */}
@@ -166,7 +168,7 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
 
               {/* ── Image ────────────────────────────────────────────────────── */}
               {isImage && (
-                <>
+                <div className="w-full h-full flex flex-col items-center justify-center">
                   {/* Spinner sits on top while the image loads, but the image
                       is always mounted so the browser can fetch it immediately. */}
                   {showSpinner && (
@@ -175,40 +177,56 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
                     </div>
                   )}
 
-                  <TransformWrapper
-                    key={activeItem.src} // reset zoom state when image changes
-                    limitToBounds={false}
-                    minScale={0.5}
-                    maxScale={8}
-                    centerOnInit
-                    doubleClick={{ mode: "zoomIn", step: 1.5 }}
-                  >
-                    <TransformComponent
-                      wrapperStyle={{ width: "100%", height: "100%" }}
-                      contentStyle={{
-                        width: "100%",
-                        height: "100%",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
+                  <div className="flex-1 w-full min-h-0 relative">
+                    <TransformWrapper
+                      key={activeItem.src} // reset zoom state when image changes
+                      limitToBounds={false}
+                      minScale={0.5}
+                      maxScale={8}
+                      centerOnInit
+                      doubleClick={{ mode: "zoomIn", step: 1.5 }}
                     >
-                      <img
-                        key={activeItem.src}
-                        src={activeItem.src}
-                        alt={activeItem.captionShort || ""}
-                        // Fade in only after the image has decoded and painted.
-                        className={`max-h-full max-w-full object-contain drop-shadow-[0_15px_45px_rgba(0,0,0,0.8)] transition-opacity duration-300 ${
-                          imgLoaded ? "opacity-100 animate-in zoom-in-95" : "opacity-0"
-                        }`}
-                        onLoad={() => setImgLoaded(true)}
-                        // If the browser serves from cache, onLoad may not fire;
-                        // onError is also a terminal state — stop spinning either way.
-                        onError={() => setImgLoaded(true)}
-                      />
-                    </TransformComponent>
-                  </TransformWrapper>
-                </>
+                      <TransformComponent
+                        wrapperStyle={{ width: "100%", height: "100%" }}
+                        contentStyle={{
+                          width: "100%",
+                          height: "100%",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <img
+                          key={activeItem.src}
+                          src={activeItem.src}
+                          alt={activeItem.captionShort || ""}
+                          // Fade in only after the image has decoded and painted.
+                          className={`max-h-full max-w-full object-contain drop-shadow-[0_15px_45px_rgba(0,0,0,0.8)] transition-opacity duration-300 ${
+                            imgLoaded ? "opacity-100 animate-in zoom-in-95" : "opacity-0"
+                          }`}
+                          onLoad={() => setImgLoaded(true)}
+                          // If the browser serves from cache, onLoad may not fire;
+                          // onError is also a terminal state — stop spinning either way.
+                          onError={() => setImgLoaded(true)}
+                        />
+                      </TransformComponent>
+                    </TransformWrapper>
+                  </div>
+                  
+                  <div className="hidden md:block shrink-0 mt-6 z-20">
+                    <a
+                      href={activeItem.src}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-neutral-800 hover:bg-neutral-700 border border-white/10 rounded-full transition-all shadow-lg"
+                      onClick={(e) => e.stopPropagation()}
+                      title="Open image in full size"
+                    >
+                      <ExternalLink size={16} />
+                      <span>Open image in full size</span>
+                    </a>
+                  </div>
+                </div>
               )}
             </div>
           </div>
