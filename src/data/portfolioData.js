@@ -129,7 +129,7 @@ export const PORTFOLIO_DATA = {
     // PILLAR 1: IMAGE BUILDER
     {
       id: "amazon-image-builder",
-      parentId: "amazon-asset-system",
+      parentId_disabled: "amazon-asset-system",
       company: "Amazon Devices",
       title: CASE_STUDIES_TITLES["amazon-image-builder"],
       impactSummary: "An internal tool that automates the creation of localized marketing images across 23 global marketplaces.",
@@ -315,7 +315,7 @@ export const PORTFOLIO_DATA = {
     // PILLAR 2: ASSET MANAGER
     {
       id: "amazon-asset-manager",
-      parentId: "amazon-asset-system",
+      parentId_disabled: "amazon-asset-system",
       company: "Amazon Devices",
       title: CASE_STUDIES_TITLES["amazon-asset-manager"],
       impactSummary: "A centralized internal library that makes Amazon Devices marketing images easy to find, QA, and place across global markets. Shipping Q2 2026.",
@@ -545,7 +545,7 @@ export const PORTFOLIO_DATA = {
     // PILLAR 3: METADATA STUDIO
     {
       id: "amazon-metadata-studio",
-      parentId: "amazon-asset-system",
+      parentId_disabled: "amazon-asset-system",
       company: "Amazon Devices",
       title: CASE_STUDIES_TITLES["amazon-metadata-studio"],
       impactSummary: "Overcame internal stakeholder resistance by proving AI could automate the complex asset tagging required to keep global marketing campaigns legally and culturally compliant.",
@@ -693,7 +693,7 @@ export const PORTFOLIO_DATA = {
     // PILLAR 4: AI LIFESTYLE COMPOSITOR
     {
   id: "amazon-ai-compositor",
-  parentId: "amazon-asset-system",
+  parentId_disabled: "amazon-asset-system",
   company: "Amazon Devices",
   title: CASE_STUDIES_TITLES["amazon-ai-compositor"],
   impactSummary: "A science-backed AI tool built on Amazon's proprietary device data that generates realistic 3D lifestyle imagery at scale, with a human review system designed to improve the model with every batch.",
@@ -2842,9 +2842,8 @@ export const WORK_GROUPS = [
     logo: "Amazon",
     roleLine: "UX Designer - Devices · Sep 2022 to Jan 2026",
     projectIds: [
-      "amazon-asset-system",
-      "amazon-inspire-tab",
       "amazon-image-builder",
+      "amazon-inspire-tab",
       "amazon-asset-manager",
       "amazon-metadata-studio",
       "amazon-ai-compositor",
