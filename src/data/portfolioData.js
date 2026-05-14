@@ -944,177 +944,181 @@ export const PORTFOLIO_DATA = {
 
     // INSPIRE TAB
     {
-      id: "amazon-inspire-tab",
-      company: "Amazon Devices",
-      title: CASE_STUDIES_TITLES["amazon-inspire-tab"],
-      impactSummary: "Led the Smart Home vertical on Amazon Inspire, owning the ranking strategy, feed CX, and creator tooling that made device discovery trustworthy at scale.",
-      impactSummarySentence: "Led the Smart Home vertical on Amazon Inspire, owning the ranking strategy, feed CX, and creator tooling that made device discovery trustworthy at scale.",
-      designerNote: "Recommendations in the Smart Home category have to be accurate. A badly informed purchase erodes trust in the entire discovery surface. For Inspire, I owned the interaction patterns within the design system, and the content strategy behind them: which product types surface, how relevancy gets weighted, and the ranking logic I built with data science.\n\nThe creator side of this project was where my background from Patreon and Prox was directly useful. I already understood how creators think about monetization, content framing, and audience. I designed the tooling that structured how they attach products to content in the catalog, and worked with them directly to help them get the most out of it.",
-      thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772307603/main_feed_cx_vc0uaq.png",
-      thumbnailPadding: "p-8",
-      status: "DEPRECATED",
-      type: "MOBILE",
-      blocks: [
-        {
-          type: "impact-box",
-          metrics: [
-            { value: "13.5M", label: "Lift of units sold worldwide attributed to the feature" }
-          ]
-        }
-      ],
-      details: {
-        hero: { type: "animated" },
-        heroImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772307603/main_feed_cx_vc0uaq.png",
-        role: "UX Lead, Smart Home Devices",
-        timeline: "Late 2022 to Early 2025",
-        collaborators: "PM, Data Science, ML Engineers, Creator Partnerships",
-        type: "MOBILE",
-        blocks: [
-          { type: "heading", title: "Overview", hasDivider: false },
-          {
-            type: "text",
-            content: [
-              "Inspire was Amazon's creator-driven shopping feed inside the main app. I led the Smart Home Devices vertical, owning three things: the full interaction system, the content strategy behind what surfaces and how, and the creator tooling on the back end.",
-              "The feed pulled from over 1.3 million items. Smart Home made that hard. Compatibility matters in this category, so relevancy and ranking required more rigor than a standard engagement-optimized feed."
-            ]
-          },
-          {
-            type: "video",
-            src: "https://www.youtube.com/embed/ULOuVqjdy3c",
-            href: "https://www.youtube.com/watch?v=ULOuVqjdy3c",
-            coverImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1778774957/de495f72-af90-4869-a23d-eeb61aca5e0f.png",
-            caption: { short: "Interactive prototype for the Smart Home Devices vertical on Amazon Inspire.", verbose: "" },
-            aspectRatio: "16/9"
-          },
-
-          { type: "heading", title: "The Problem" },
-          {
-            type: "text",
-            content: [
-              "For most categories, optimizing for engagement works. For Smart Home, a bad recommendation has a higher cost. A customer who buys the wrong device loses trust in the surface that sent them there. The ML ranking needed to account for device type, ecosystem compatibility, and customer context, not just click behavior."
-            ]
-          },
-
-          { type: "heading", title: "Strategy" },
-          {
-            type: "text",
-            content: [
-              "I worked with data science to shape how Smart Home taxonomy fed into ranking. Compatibility and device type signals had to carry real weight in the algorithm. On the surface, I owned the CX decisions that determined how device content read at feed speed.",
-              "On the back end, I interviewed creators directly and designed the tooling that structured how they attach products to content in the Amazon catalog."
-            ]
-          },
-
-          { type: "heading", title: "Interaction System" },
-          {
-            type: "text",
-            content: [
-              "I designed the full interaction spec for the Smart Home Devices vertical. The feed runs five distinct views: a landing view, two sub-feed states (high density grid and immersive), and two tag-drilled sub-feed states. Each view has its own navigation behavior, back-stack rules, and configurable layout variables including tag placement and product metadata density.",
-              "Tag navigation drives the entire sub-feed architecture. Tapping a tag slides in a sub-feed page using standard page transitions. Back-stack is present on all child pages. The system was designed to test tag placement at top vs. bottom of screen without requiring a redesign."
-            ]
-          },
-          {
-            type: "image-full",
-            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1778772693/Navigation_interactions_vjgv2e.png",
-            caption: {
-              short: "Feed architecture across five views: landing, sub-feed landing, sub-feed immersive, and tag-drilled states.",
-              verbose: ""
-            }
-          },
-
-          { type: "heading", title: "Component Specs" },
-          {
-            type: "text",
-            content: [
-              "Each component in the feed had documented interaction states. The main container responds to swipe up/down for content navigation and tap to toggle chrome. Product thumbnails scroll as carousels and tap to a quick view bottom sheet. Video controls appear only when media type is video."
-            ]
-          },
-          {
-            type: "image-full",
-            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1778773220/basic_interactions_fvgvua.png",
-            caption: {
-              short: "Basic interactions spec: component anatomy, gesture map, and chrome behavior for the main feed view.",
-              verbose: ""
-            }
-          },
-          {
-            type: "text",
-            content: [
-              "Creator text truncates to one line in the default state. Tapping expands to full text in an overlay. When text is scrolling, the gesture zones split: swiping inside the text area scrolls the description, swiping outside it advances to the next piece of content. That distinction required explicit touch area documentation to hand off to engineering without ambiguity."
-            ]
-          },
-          {
-            type: "image-full",
-            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1778773523/creator_lookup_expanded_tyrxhs.png",
-            caption: {
-              short: "Creator lockup expanded state: touch areas and behavior when navigating away and returning.",
-              verbose: ""
-            }
-          },
-          {
-            type: "image-full",
-            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1778773487/creator_lookup_scrolling_logic_bcub6k.png",
-            caption: {
-              short: "Gesture zone logic for scrolling vs. non-scrolling text states.",
-              verbose: ""
-            }
-          },
-
-          { type: "heading", title: "Creator and Reviewer Trust System" },
-          {
-            type: "text",
-            content: [
-              "The feed surfaces two distinct content types with different trust signals. Verified creators show a blue checkmark, an Earns Commissions label, and link to a creator storefront. CGC reviewers show a star rating, verified purchase status, and link to a customer profile.",
-              "Tapping the Earns Commissions label triggers a bottom sheet disclosure explaining that contributors independently recommend products and may earn commissions. I designed this flow to meet the disclosure requirement without interrupting the shopping experience."
-            ]
-          },
-          {
-            type: "image-full",
-            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1778773688/earns_comission_influecner_program_eom1nn.png",
-            caption: {
-              short: "Earns Commissions disclosure flow: trigger, bottom sheet, and handoff to Amazon Influencer Program.",
-              verbose: ""
-            }
-          },
-
-          { type: "heading", title: "Working with Creators" },
-          {
-            type: "text",
-            content: [
-              "The opportunity for creators on Inspire was real: a direct commission path tied to one of the highest-traffic shopping surfaces in the world. I designed the tooling that let them attach products to their content in the Amazon catalog, structure their offers, and understand which of their products were actually driving purchases. In the sessions I ran with them, a big part of the work was helping them frame the feature as a storytelling opportunity, not just a product tag, and showing them how to identify their top sellers and build content around them."
-            ]
-          },
-          {
-            type: "image-full",
-            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772307600/creator_tool_bfammp.png",
-            caption: {
-              short: "Creator tool flow: ASIN attachment and product association controls.",
-              verbose: ""
-            }
-          },
-
-          
-          { type: "heading", title: "Impact" },
-{
-  type: "impact-box",
-  metrics: [
-    { value: "2.5%", label: "Lift in total Amazon Devices units sold worldwide attributed to the Inspire tab" },
-    { value: "13.5M", label: "Device units sold worldwide attributed to the feature" }
+  id: "amazon-inspire-tab",
+  company: "Amazon Devices",
+  title: CASE_STUDIES_TITLES["amazon-inspire-tab"],
+  impactSummary: "Led the Smart Home vertical on Amazon Inspire, owning the ranking strategy, feed CX, and creator tooling that made device discovery trustworthy at scale.",
+  impactSummarySentence: "Led the Smart Home vertical on Amazon Inspire, owning the ranking strategy, feed CX, and creator tooling that made device discovery trustworthy at scale.",
+  designerNote: "Recommendations in the Smart Home category have to be accurate. A badly informed purchase erodes trust in the entire discovery surface. I owned the interaction patterns, content strategy, and the ranking logic I built with data science. My background from Patreon and Prox made the creator side natural -- I already understood how creators think about monetization and audience.",
+  thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772307603/main_feed_cx_vc0uaq.png",
+  thumbnailPadding: "p-8",
+  status: "DEPRECATED",
+  type: "MOBILE",
+  blocks: [
+    {
+      type: "impact-box",
+      metrics: [
+        { value: "13.5M", label: "Lift of units sold worldwide attributed to the feature" }
+      ]
+    }
   ],
-  description: [
-    "At Amazon's device sales volume, a 2.5% lift represents roughly 13.5M units."
-  ]
-},
-{
-  type: "text",
-  content: [
-    "On the creator side, the tooling and onboarding work had a direct effect on earnings. Amazon Influencer commissions range from 1% to 10% per sale, with dedicated creators earning anywhere from $1,000 to $5,000+ per month through on-site video placements. Our top creators saw measurable income growth after we restructured how they attached products to content and helped them identify their highest-converting inventory.",
-    "Inspire was deprecated in early 2024 as Amazon shifted toward AI-driven conversational search. The interaction system and creator tooling I built informed how the org approached catalog integrity on later projects."
-  ]
-},
-          
+  details: {
+    hero: { type: "animated" },
+    heroImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772307603/main_feed_cx_vc0uaq.png",
+    role: "UX Lead, Smart Home Devices",
+    timeline: "Late 2022 to Early 2025",
+    collaborators: "PM, Data Science, ML Engineers, Creator Partnerships",
+    type: "MOBILE",
+    blocks: [
+      { type: "heading", title: "Overview", hasDivider: false },
+      {
+        type: "text",
+        content: [
+          "Inspire was Amazon's TikTok-style shopping feed, built inside the main app. Photo and video content from influencers and verified buyers, all shoppable. I led the Smart Home Devices vertical: the interaction system, what surfaces in the feed and how, and the creator tooling -- a space I knew well from Patreon and building Prox.",
+          "Smart Home is not a category you can rank by engagement alone. A customer buying the wrong smart bulb because a video looked good is a trust problem, not a conversion win. The feed needed to know device type, ecosystem compatibility, and customer context before surfacing anything."
+        ]
+      },
+      {
+        type: "text",
+        content: [
+          "Recommendations in the Smart Home category have to be accurate. A badly informed purchase erodes trust in the entire discovery surface. For Inspire, I owned the interaction patterns within the design system, and the content strategy behind them: which product types surface, how relevancy gets weighted, and the ranking logic I built with data science.",
+          "The creator side of this project was where my background from Patreon and Prox was directly useful. I already understood how creators think about monetization, content framing, and audience. I designed the tooling that structured how they attach products to content in the catalog, and worked with them directly to help them get the most out of it."
+        ]
+      },
+      {
+        type: "video",
+        src: "https://www.youtube.com/embed/ULOuVqjdy3c",
+        href: "https://www.youtube.com/watch?v=ULOuVqjdy3c",
+        coverImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772307603/main_feed_cx_vc0uaq.png",
+        caption: { short: "Interactive prototype for the Smart Home Devices vertical on Amazon Inspire.", verbose: "" },
+        aspectRatio: "16/9"
+      },
+
+      { type: "heading", title: "The Problem" },
+      {
+        type: "text",
+        content: [
+          "While for most categories, optimizing for engagement generally worked, for Smart Home, a bad recommendation had severe implications. To show the customer relevant products, the ML ranking needed to account for device type, ecosystem compatibility, and customer context/ownership."
+        ]
+      },
+
+      { type: "heading", title: "Strategy" },
+      {
+        type: "text",
+        content: [
+          "I worked with data science to shape how Smart Home taxonomy fed into ranking. Compatibility and device type signals had to carry real weight in the algorithm. On the surface, I owned the CX decisions that determined how device content read at feed speed."
+        ]
+      },
+
+      { type: "heading", title: "Interaction System" },
+      {
+        type: "text",
+        content: [
+          "I designed the full interaction spec across five distinct views: landing, two sub-feed states, and two tag-drilled states. Each has its own navigation behavior, back-stack rules, and configurable layout variables.",
+          "Tag navigation drives the sub-feed architecture. Some concepts explored testing tag placement at top vs. bottom of screen."
+        ]
+      },
+      {
+        type: "image-full",
+        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1778772693/Navigation_interactions_vjgv2e.png",
+        caption: {
+          short: "Feed architecture across five views: landing, sub-feed landing, sub-feed immersive, and tag-drilled states.",
+          verbose: ""
+        }
+      },
+
+      { type: "heading", title: "Component Specs" },
+      {
+        type: "text",
+        content: [
+          "I documented each component interaction states. The main container responds to swipe up/down and tap to toggle chrome. Product thumbnails scroll as carousels and tap to a quick view sheet. Video controls appear only when media type is video."
+        ]
+      },
+      {
+        type: "image-full",
+        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1778773220/basic_interactions_fvgvua.png",
+        caption: {
+          short: "Basic interactions spec: component anatomy, gesture map, and chrome behavior for the main feed view.",
+          verbose: ""
+        }
+      },
+      {
+        type: "text",
+        content: [
+          "Creator text truncates to one line by default. Tapping expands in an overlay. When text is scrolling, gesture zones split: inside scrolls the description, outside advances to the next piece of content. That required explicit touch area documentation to hand off without ambiguity."
+        ]
+      },
+      {
+        type: "image-full",
+        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1778773523/creator_lookup_expanded_tyrxhs.png",
+        caption: {
+          short: "Creator lockup expanded state: touch areas and behavior when navigating away and returning.",
+          verbose: ""
+        }
+      },
+      {
+        type: "image-full",
+        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1778773487/creator_lookup_scrolling_logic_bcub6k.png",
+        caption: {
+          short: "Gesture zone logic for scrolling vs. non-scrolling text states.",
+          verbose: ""
+        }
+      },
+
+      { type: "heading", title: "Creator and Reviewer Trust System" },
+      {
+        type: "text",
+        content: [
+          "Two distinct content types, different trust signals. Verified creators show a blue checkmark, Earns Commissions label, and link to a creator storefront. CGC reviewers show star rating, verified purchase status, and link to a customer profile.",
+          "Tapping Earns Commissions triggers a bottom sheet disclosure. I designed this flow to meet the requirement without interrupting the shopping experience."
+        ]
+      },
+      {
+        type: "image-full",
+        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1778773688/earns_comission_influecner_program_eom1nn.png",
+        caption: {
+          short: "Earns Commissions disclosure flow: trigger, bottom sheet, and handoff to Amazon Influencer Program.",
+          verbose: ""
+        }
+      },
+
+      { type: "heading", title: "Working with Creators" },
+      {
+        type: "text",
+        content: [
+          "Amazon has the Influencer Program. And this feature amplified their revenue stream. The opportunity for creators was a direct commission path on one of the highest-traffic shopping surfaces in the world. I designed the tooling that let them attach products to content, structure their offers, and identify their top sellers. In sessions with creator partners, the work was helping them treat the feature as a storytelling opportunity and build content around what was actually converting."
+        ]
+      },
+      {
+        type: "image-full",
+        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772307600/creator_tool_bfammp.png",
+        caption: {
+          short: "Creator tool flow: ASIN attachment and product association controls.",
+          verbose: ""
+        }
+      },
+
+      { type: "heading", title: "Impact" },
+      {
+        type: "impact-box",
+        metrics: [
+          { value: "2.5%", label: "Lift in total Amazon Devices units sold worldwide attributed to the Inspire tab" },
+          { value: "13.5M", label: "Device units sold worldwide attributed to the feature" }
+        ],
+        description: [
+          "At Amazon's device sales volume, a 2.5% lift represents roughly 13.5M units."
+        ]
+      },
+      {
+        type: "text",
+        content: [
+          "On the creator side, Amazon Influencer commissions range from 1% to 10% per sale, with dedicated creators earning $1,000 to $5,000+ per month. Our top creators saw measurable income growth after we restructured how they attached products to content.",
+          "Inspire was deprecated in early 2024 as Amazon shifted toward conversational search. The interaction system and creator tooling informed how the org approached catalog integrity on later projects."
         ]
       }
-    },
+    ]
+  }
+},
 
     // AI-POWERED CUSTOMER REVIEW HIGHLIGHTS
     {

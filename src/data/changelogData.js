@@ -3,6 +3,7 @@ export const CHANGELOG_DATA = [
     week: "Week of Mar 9, 2026",
     title: "Routing & URL Architecture",
     items: [
+      { day: "May 14", text: "**Content Fixes:** Fixed syntax errors and typos in portfolioData.js, specifically addressing missing content and broken blocks in the Amazon Image Builder and Inspire Tab case studies." },
       { day: "Apr 8", text: "**Case Study Narrative Updates:** Added explicit context to the Patreon Pledge Streak case study detailing the business and user problems it solved using a new Callout Box format. Updated the Amazon Metadata Studio case study to explicitly highlight 'progressive disclosure' as the core design strategy for managing cognitive load." },
       { day: "Mar 11", text: "**Case Study & Visual Enhancements:** Upgraded case studies with new infographics and layout improvements. Standardized the nomenclature for Pillar 4 across the portfolio to 'AI Lifestyle Compositor' and resolved a broken component mapping in the `SystemContextBanner` modal." },
       { day: "Mar 10", text: "**UI Polish:** Fine-tuned visual assets by fixing glitches, adjusting glitch effect variance, and smoothing out jagged borders across UI elements." },
