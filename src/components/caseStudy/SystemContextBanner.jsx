@@ -102,7 +102,7 @@ export const SystemContextModal = ({ open, onClose, pillars = [], currentId, onP
         <div className="px-7 md:px-9 pt-8 pb-10">
 
           {/* What is this */}
-<p className="meta-label mb-3">Amazon Devices Asset System</p>
+<p className="meta-label mb-3">Amazon Devices AI Creative Platform</p>
 
 <h2 className="text-2xl md:text-3xl font-bold text-neutral-900 tracking-tight leading-snug mb-5">
   Devices Catalog-to-Campaign Automation Platform.
@@ -220,7 +220,7 @@ const SystemContextBanner = ({ pillars = [], currentId, onPillarClick }) => {
         {position}/{pillars.length}
       </span>{" "}
       part of the{" "}
-      <span className="font-normal text-neutral-700">Amazon Devices Asset System</span>
+      <span className="font-normal text-neutral-700">Amazon Devices AI Creative Platform</span>
     </p>
 
     <button

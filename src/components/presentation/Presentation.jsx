@@ -379,7 +379,7 @@ const PRESENTATIONS = {
         render: (isDark) => SlideTemplates.Overview({
           isDark,
           company: "Amazon",
-          title: "Amazon Devices Asset System",
+          title: "Amazon Devices AI Creative Platform",
           vision: "A unified, AI-powered platform to generate, manage, and publish marketing assets across 22 global marketplaces — with no manual handoffs.",
           problem: "AI can generate images at scale. The hard part is making them trustworthy. We had to solve metadata, reference constraints, quality gates, and feedback loops before scale was even possible.",
           role: "Led end-to-end system architecture and hands-on UX/UI across four interconnected pillars, from data ingestion through AI generation and human review.",
