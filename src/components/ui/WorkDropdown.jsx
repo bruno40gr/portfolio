@@ -40,7 +40,11 @@ const WorkDropdown = ({ onProjectClick, closeMenu, workGroups = [], portfolioDat
     const standalones = projects.filter(
       p => !p.parentId && !umbrellas.includes(p)
     );
-    return { umbrellas, pillars, standalones };
+    // Orphaned pillars: parent umbrella no longer exists in this project list
+    const orphanedPillars = pillars.filter(
+      p => !projects.find(parent => parent.id === p.parentId)
+    );
+    return { umbrellas, pillars: pillars.filter(p => !orphanedPillars.includes(p)), standalones: [...orphanedPillars, ...standalones] };
   };
 
   const activeGroup = workGroups.find(g => g.company === activeCompany);

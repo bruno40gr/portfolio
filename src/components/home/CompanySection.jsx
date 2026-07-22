@@ -51,9 +51,14 @@ const CompanySection = ({ group, onProjectClick }) => {
   const getPillars = (umbrellaId) =>
     allProjects.filter((p) => p.parentId === umbrellaId);
 
-  const standaloneProjects = allProjects.filter(
-    (p) => !p.parentId && !umbrellaProjects.includes(p)
+  const orphanedPillars = allProjects.filter(
+    (p) => p.parentId && !allProjects.find((parent) => parent.id === p.parentId)
   );
+
+  const standaloneProjects = [
+    ...orphanedPillars,
+    ...allProjects.filter((p) => !p.parentId && !umbrellaProjects.includes(p))
+  ];
 
   const gridStyle = {
     gap: "var(--work-grid-gap-x)",

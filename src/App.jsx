@@ -479,10 +479,10 @@ export default function App() {
                   {/* Copy: Kept fluid desktop type, forced mobile to strict readable sizes */}
                   <div className="max-w-3xl mx-auto mt-6 md:mt-[clamp(1.5rem,2.5vh,2.5rem)]">
                     <h1 className="text-slate-300 font-light leading-snug text-[1.6rem] md:text-[clamp(1.15rem,2vw,1.75rem)] mb-4 md:mb-[clamp(0.75rem,1.5vh,1.5rem)]">
-                      14 years in product design, the last few building AI systems that change how large teams work.
+                      Usually the only designer in the room. Lead design on engineering-heavy SaaS and B2B products.
                     </h1>
                     <p className="text-slate-400 font-light leading-relaxed max-w-xl mx-auto text-[1.4rem] md:text-[clamp(0.9rem,1.3vw,1.2rem)]">
-                      I've automated the work of global teams at Amazon, cut fulfillment costs in healthcare logistics, and co-invented a patent for subscription systems in the creator economy.
+                      I've automated global team workflows at Amazon, made medicine delivery more affordable for patients in healthcare logistics, and helped creators monetize their expertise. Patent co-inventor, retired touring musician, family business owner.
                     </p>
                   </div>
 
