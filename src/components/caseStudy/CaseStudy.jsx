@@ -31,9 +31,6 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
   const [lightbox, setLightbox] = useState({ open: false, index: 0 });
 
   const isPillar = !!project.parentId;
-  const rootProject = isPillar
-    ? PORTFOLIO_DATA.projects.find((p) => p.id === project.parentId)
-    : null;
 
   const subPillars = PORTFOLIO_DATA.projects.filter((p) => p.parentId === project.id);
 

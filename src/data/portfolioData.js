@@ -1,5 +1,4 @@
 import { PROJECT_STATUS, PRODUCT_TYPES, SERVICES } from "./tokens";
-import { ASSETS } from "./assets";
 
 // ------------------------------------------
 // Small helpers + data normalization
@@ -12,19 +11,11 @@ function isRealUrl(url) {
   return true;
 }
 
-// Generic Logos for placeholders
-const FIGMA_PLACEHOLDER = "";
-const LOOM_PLACEHOLDER = "";
-
 // ------------------------------------------
 // Global data
 // ------------------------------------------
 
-const AMAZON_DEVICES_AI_IMAGE =
-  "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80";
-
 export const CASE_STUDIES_TITLES = {
-  "amazon-asset-system": "Amazon Devices AI Creative Platform",
   "amazon-image-builder": "Image Builder",
   "amazon-asset-manager": "Devices Component Asset Manager",
   "amazon-metadata-studio": "Devices Metadata Studio",
@@ -48,83 +39,6 @@ export const PORTFOLIO_DATA = {
     location: "Sacramento, CA"
   },
   projects: [
-
-    // AMAZON DEVICES ASSET SYSTEM (umbrella)
-    {
-      id: "amazon-asset-system",
-      company: "Amazon",
-      title: CASE_STUDIES_TITLES["amazon-asset-system"],
-      impactSummary: "Designed the platform giving Amazon Devices a single place to generate, manage, and publish marketing assets across 22 global marketplaces.",
-      impactSummarySentence: "Designed the platform giving Amazon Devices a single place to generate, manage, and publish marketing assets across 22 global marketplaces.",
-      designerNote: "Amazon Devices launches campaigns across 22 marketplaces, with hundreds of specialists, marketers, designers, pricing leads, localization teams, product owners, each owning a fragment of the same process, working across different tools, with no shared source of truth. Every campaign paid a coordination tax for that fragmentation. This project was my attempt to design a way out of it: a unified platform where assets could be generated, managed, and published globally without the overhead that was slowing everything down. Two of the four pillars have shipped and shown measurable impact. Two are still in build. This is the most strategically significant work of my career, and it isn't finished yet.",
-      thumbnail: AMAZON_DEVICES_AI_IMAGE,
-      status: "IN_BUILD",
-      type: "INTERNAL",
-      details: {
-        heroImage: AMAZON_DEVICES_AI_IMAGE,
-        role: "Lead UX Designer",
-        timeline: "2024 to Today",
-        collaborators: "PM, Engineering, Brand Studio, Legal",
-        type: "INTERNAL",
-        blocks: [
-          {
-            type: "impact-box",
-            metrics: [
-              { value: "45–50 FTE", label: "Operational capacity freed in 2025. Estimated in partnership with finance and people teams." },
-              { value: "~8,000+", label: "Lifestyle images generated for Prime Day 2025" }
-            ],
-            description: [
-              "Two of the four platform pillars have shipped. For Prime Day 2025 alone, the system generated over <b>8,000 lifestyle images</b> that would have required an estimated <b>~48,000 hours</b> of manual production work across design, 3D, and content teams. Across all of 2025, the platform eliminated over <b>~100,000 hours</b> of manual work."
-            ]
-          },
-          { type: "heading", title: "Overview", hasDivider: false },
-          {
-            type: "text",
-            content:
-              "I was the lead UX designer on the Automate & Scale team inside Amazon Devices and Services. Our team supported 800 merchandisers globally across 22 marketplaces, launching and managing the Amazon family of Devices, including Echo, Ring, Blink, Fire TV, Eero, Tablets, and more."
-          },
-          { type: "heading", title: "The Fragmentation Problem" },
-          {
-            type: "text",
-            content:
-              "There was no central place to create, manage, or publish marketing assets for Amazon Devices globally. Campaigns were assembled across spreadsheets, legacy tools, creative software, and off-Amazon systems, with marketers, graphic designers, product leaders, pricing specialists, and localization teams each owning a different fragment of the same asset. Every handoff introduced the possibility of version drift, permission delays, and errors that only surfaced at the end of the chain."
-          },
-          {
-            type: "text",
-            content:
-              "I mapped the end-to-end workflow required to build a campaign, from landing pages and detail pages to all supporting imagery, across every team involved. The map made the problem legible to stakeholders and became the foundation for how the platform was scoped and sequenced."
-          },
-          {
-            type: "image-full",
-            src: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1600&q=80",
-            caption: "End-to-end campaign workflow map, designed to surface fragmentation points and align stakeholders on scope."
-          },
-          { type: "heading", title: "The Platform: Four Pillars" },
-          {
-            type: "text",
-            content:
-              "Rather than solving individual pain points in isolation, I designed the system as a connected platform. Each pillar addresses a distinct layer of the asset production problem, visual library, metadata intelligence, automated generation, and AI-assisted composition, and each feeds the next. Two pillars have shipped and are delivering measurable impact. Two are in active build."
-          },
-          { type: "pillar-grid" },
-          { type: "heading", title: "North Star: End-to-End Creative Automation" },
-          {
-            type: "text",
-            content:
-              "The four pillars are each valuable independently, but they were designed with a unified end state in mind. The north star is a platform where a merchandiser can brief a campaign, and the system handles generation, copy placement, device selection, and global propagation without requiring a specialist at every step."
-          },
-          {
-            type: "text",
-            content:
-              "This prototype illustrates the upcoming future state. Functioning as an strategic alignment asset, it show leadership what becomes possible once all four pillars are in place and connected."
-          },
-          {
-            type: "video",
-            src: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-            caption: "Vision prototype illustrating end-to-end creative automation for Amazon Devices campaign launches."
-          }
-        ]
-      }
-    },
 
     // PILLAR 1: IMAGE BUILDER
     {
@@ -263,16 +177,6 @@ export const PORTFOLIO_DATA = {
                     src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772132455/pg3_ygvgls.png",
                     caption: { short: "Interactive editing canvas component submitted to Meridian.", verbose: "" }
                   },
-                  {
-                    kind: "image",
-                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772132455/pg3_ygvgls.png",
-                    caption: { short: "Multi-select locale filter component submitted to Meridian.", verbose: "PLACEHOLDER: replace with the second Meridian component mockup" }
-                  },
-                  {
-                    kind: "image",
-                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772132455/pg3_ygvgls.png",
-                    caption: { short: "Warning input state component submitted to Meridian.", verbose: "PLACEHOLDER: replace with the third Meridian component mockup" }
-                  }
                 ]
               }
             ]
@@ -332,7 +236,7 @@ export const PORTFOLIO_DATA = {
       ],
       details: {
         hero: { type: 'animated' },
-        heroImage: "https://via.placeholder.com/1600x900?text=DCAM+Hero",
+        heroImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772596156/1_xrlcq0.png",
         role: "Lead UX Designer",
         timeline: "Ongoing (Estimated Q2 2026)",
         collaborators: "PM, 8 Engineers, Designer Ops, Brand leaders",
@@ -2429,7 +2333,7 @@ export const PORTFOLIO_DATA = {
             type: "video",
             src: "https://www.youtube.com/embed/NV5lxh0182E",
             href: "https://youtu.be/NV5lxh0182E",
-            coverImage: LOOM_PLACEHOLDER,
+            coverImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772236528/DS20_dxajby.jpg",
             caption: { short: "A sneak preview of our ongoing iteration process focused on our core product surfaces.", verbose: "" },
             aspectRatio: "16/9"
           },
@@ -2839,15 +2743,14 @@ export const WORK_GROUPS = [
     company: "Amazon Devices",
     logo: "Amazon",
     roleLine: "UX Designer - Devices · Sep 2022 to Jan 2026",
-    projectIds: [
-      "amazon-asset-system",
-      "amazon-image-builder",
-      "amazon-asset-manager",
-      "amazon-metadata-studio",
-      "amazon-ai-compositor",
-      "amazon-inspire-tab",
-      "amazon-ai-review-highlights"
-    ]
+      projectIds: [
+        "amazon-image-builder",
+        "amazon-asset-manager",
+        "amazon-metadata-studio",
+        "amazon-ai-compositor",
+        "amazon-inspire-tab",
+        "amazon-ai-review-highlights"
+      ]
   },
   {
     company: "Alto Pharmacy",

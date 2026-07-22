@@ -127,7 +127,7 @@ export const SystemContextModal = ({ open, onClose, pillars = [], currentId, onP
 
   <p className="text-base text-neutral-600 leading-relaxed">
     The longer-term vision extends beyond asset production into full marketing automation and performance reporting across
-    the Amazon Devices org. Vision mocks for that broader system are available on request.
+    the Amazon Devices org. Vision mocks for that broader system are available on request. This is the most strategically significant work of my career, and it isn't finished yet.
   </p>
 </div>
 
