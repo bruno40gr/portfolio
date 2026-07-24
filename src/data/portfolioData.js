@@ -174,8 +174,21 @@ export const PORTFOLIO_DATA = {
                 visuals: [
                   {
                     kind: "image",
+                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772130218/pg1_a1macp.png",
+                    caption: { short: "Interactive editing canvas component submitted to Meridian.", verbose: "" },
+                    noLightbox: true
+                  },
+                  {
+                    kind: "image",
+                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772132465/pg1_uhrgx3.png",
+                    caption: { short: "Multi-select locale filter component submitted to Meridian.", verbose: "" },
+                    noLightbox: true
+                  },
+                  {
+                    kind: "image",
                     src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772132455/pg3_ygvgls.png",
-                    caption: { short: "Interactive editing canvas component submitted to Meridian.", verbose: "" }
+                    caption: { short: "Warning input state component submitted to Meridian.", verbose: "" },
+                    noLightbox: true
                   },
                 ]
               }

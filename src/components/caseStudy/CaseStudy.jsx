@@ -405,12 +405,13 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                         embedSrc: type === "figma" ? toFigmaEmbedUrl(visual.src) : undefined,
                         title: captionShort || "Visual",
                         captionShort,
-                        captionVerbose,
-                        fileSize: visual.fileSize || "N/A",
-                        coverImage: visual.coverImage,
-                        aspectRatio: visual.aspectRatio,
-                        isPresentation: visual.isPresentation || false, // <--- ADD THIS
-                      };
+                      captionVerbose,
+                      fileSize: visual.fileSize || "N/A",
+                      coverImage: visual.coverImage,
+                      aspectRatio: visual.aspectRatio,
+                      isPresentation: visual.isPresentation || false,
+                      noLightbox: visual.noLightbox || false,
+                    };
                     })
                   : [];
 
@@ -471,14 +472,22 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                                         })
                                       }
                                     />
-                                  ) : (
-                                    <ImageThumbnail
+                                ) : mediaItem.noLightbox ? (
+                                  <div className="relative w-full bg-white border border-neutral-200 rounded-sm p-2 shadow-sm">
+                                    <img
                                       src={mediaItem.src}
                                       alt={mediaItem.title}
-                                      onClick={() => setLightbox({ open: true, index: globalIndex })}
-                                      isPresentation={mediaItem.isPresentation} // <--- ADD THIS
+                                      className="w-full h-auto"
                                     />
-                                  )}
+                                  </div>
+                                ) : (
+                                  <ImageThumbnail
+                                    src={mediaItem.src}
+                                    alt={mediaItem.title}
+                                    onClick={() => setLightbox({ open: true, index: globalIndex })}
+                                    isPresentation={mediaItem.isPresentation}
+                                  />
+                                )}
 
                                   {mediaItem.captionShort && (
                                     <Caption>{mediaItem.captionShort}</Caption>
