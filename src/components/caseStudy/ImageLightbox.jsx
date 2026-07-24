@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { FileText, ChevronLeft, ChevronRight, X, Loader2, Figma, ExternalLink } from "lucide-react";
+import { FileText, ChevronLeft, ChevronRight, X, Loader2, Figma, ExternalLink, ArrowRightLeft } from "lucide-react";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 import { FigmaEmbed } from "../ui/FigmaEmbed";
@@ -7,6 +7,7 @@ import { FigmaEmbed } from "../ui/FigmaEmbed";
 const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
   const [currentIndex, setCurrentIndex] = useState(initialIndex ?? 0);
   const [imgLoaded, setImgLoaded] = useState(false);
+  const [showDeepDive, setShowDeepDive] = useState(false);
   // Ref to capture the body overflow value at the moment the lightbox opens,
   // so we can restore it reliably even if the component unmounts while open.
   const savedOverflow = useRef("");
@@ -33,12 +34,14 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
     if (open) {
       setCurrentIndex(initialIndex ?? 0);
       setImgLoaded(false);
+      setShowDeepDive(false);
     }
   }, [open, initialIndex]);
 
-  // ─── Reset loaded state when navigating ─────────────────────────────────
+  // ─── Reset loaded state and deep dive when navigating ─────────────────────
   useEffect(() => {
     setImgLoaded(false);
+    setShowDeepDive(false);
   }, [currentIndex]);
 
   // ─── Navigation ──────────────────────────────────────────────────────────
@@ -62,13 +65,19 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
   useEffect(() => {
     if (!open) return;
     const handleKeyDown = (e) => {
-      if (e.key === "Escape") onClose();
-      if (e.key === "ArrowRight") nextItem();
-      if (e.key === "ArrowLeft") prevItem();
+      if (e.key === "Escape") {
+        if (showDeepDive) {
+          setShowDeepDive(false);
+        } else {
+          onClose();
+        }
+      }
+      if (e.key === "ArrowRight" && !showDeepDive) nextItem();
+      if (e.key === "ArrowLeft" && !showDeepDive) prevItem();
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [open, nextItem, prevItem, onClose]);
+  }, [open, nextItem, prevItem, onClose, showDeepDive]);
 
   const activeItem = mediaItems?.[currentIndex];
   if (!open || !activeItem) return null;
@@ -77,6 +86,7 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
   const isImage = !activeItem.type || activeItem.type === "image";
   // Show spinner only for plain images while they load; iframes handle their own loading.
   const showSpinner = isImage && !imgLoaded;
+  const hasDeepDive = !!activeItem.deepDive;
 
   return (
     <div
@@ -255,17 +265,30 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
               {activeItem.captionShort || activeItem.title}
             </h2>
             <div className="h-px w-6 md:w-10 bg-neutral-700" />
+            {hasDeepDive && (
+              <button
+                onClick={() => setShowDeepDive(!showDeepDive)}
+                className="flex items-center gap-2 text-[13px] md:text-[14px] font-medium text-neutral-400 hover:text-white transition-colors mt-2 group"
+              >
+                <ArrowRightLeft size={14} className={showDeepDive ? "rotate-180 transition-transform" : "transition-transform"} />
+                <span>{showDeepDive ? "Back to artifact" : "Explore the thinking →"}</span>
+              </button>
+            )}
           </div>
 
           <div
             className="flex-1 overflow-y-auto px-5 md:px-8 pb-6 md:pb-8 custom-scrollbar"
             style={{ overscrollBehavior: "contain" }}
           >
-            {activeItem.captionVerbose && (
+            {showDeepDive && hasDeepDive ? (
+              <p className="text-neutral-300 text-[14px] md:text-[16px] font-sans leading-relaxed whitespace-pre-line">
+                {activeItem.deepDive}
+              </p>
+            ) : activeItem.captionVerbose ? (
               <p className="text-neutral-400 text-[14px] md:text-[16px] font-sans leading-relaxed">
                 {activeItem.captionVerbose}
               </p>
-            )}
+            ) : null}
           </div>
         </div>
       </div>

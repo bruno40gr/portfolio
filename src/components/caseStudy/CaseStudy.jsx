@@ -99,6 +99,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
           title: imageCaption || "Visual",
           captionShort: imageCaption || "",
           captionVerbose: imageCaptionVerbose || "",
+          deepDive: block.deepDive || "",
           fileSize: "N/A",
           processStepTitle: lastHeading,
         });
@@ -112,6 +113,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
             title: captionShort || "Visual",
             captionShort: captionShort || "",
             captionVerbose: captionVerbose || "",
+            deepDive: img.deepDive || "",
             fileSize: "N/A",
             processStepTitle: lastHeading,
           });
@@ -145,6 +147,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                 title: captionShort || "Visual",
                 captionShort,
                 captionVerbose,
+                deepDive: visual.deepDive || "",
                 fileSize: visual.fileSize || "N/A",
                 processStepTitle,
               });
