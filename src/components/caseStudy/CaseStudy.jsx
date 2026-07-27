@@ -1,9 +1,9 @@
 // src/components/caseStudy/CaseStudy.jsx
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import { ArrowRight, Maximize2 } from "lucide-react";
 
 import { PORTFOLIO_DATA } from "../../data/portfolioData";
-import { toFigmaEmbedUrl } from "../../utils/figma"; // ✅ use one canonical helper
+import { toFigmaEmbedUrl } from "../../utils/figma";
 
 import Caption from "../ui/Caption";
 import CalloutBox from "../ui/CalloutBox";
@@ -28,7 +28,9 @@ import "./GalleryStyles.css";
 
 const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
   const contentRef = useRef(null);
+  const heroRef = useRef(null);
   const [lightbox, setLightbox] = useState({ open: false, index: 0 });
+  const [heroScrollProgress, setHeroScrollProgress] = useState(0);
 
   const isPillar = !!project.parentId;
 
@@ -44,6 +46,34 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, [project.id]);
+
+  // Scroll-driven animation for editorial hero split panel
+  // Tracks the wrapper's position to derive scroll progress through the residency zone
+  // Scroll-driven animation for editorial hero split panel
+  // The wrapper has minHeight = 100vh + scrollResidency (200vh default)
+  useEffect(() => {
+    if (!heroRef.current) return;
+
+    const handleScroll = () => {
+      const wrapper = heroRef.current;
+      if (!wrapper) return;
+      const rect = wrapper.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const wrapperHeight = rect.height;
+      const residencyZone = wrapperHeight - viewportHeight;
+      if (residencyZone <= 0) {
+        setHeroScrollProgress(0);
+        return;
+      }
+      const scrolledIntoResidency = -rect.top;
+      const progress = Math.max(0, Math.min(1, scrolledIntoResidency / residencyZone));
+      setHeroScrollProgress(progress);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [project.id]);
 
   const allMediaItems = useMemo(() => {
@@ -79,7 +109,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         media.push({
           type: "figma",
           src: block.src,
-          embedSrc: toFigmaEmbedUrl(block.src), // ✅ robust embed URL
+          embedSrc: toFigmaEmbedUrl(block.src),
           title: captionShort || "Visual",
           captionShort,
           captionVerbose,
@@ -103,7 +133,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
           fileSize: "N/A",
           processStepTitle: lastHeading,
         });
-      } else if (block.type === "image-grid" && block.images) {   // <-- PASTE STARTS HERE
+      } else if (block.type === "image-grid" && block.images) {
         block.images.forEach((img) => {
           const captionShort = typeof img.caption === "object" ? img.caption.short : img.caption;
           const captionVerbose = typeof img.caption === "object" ? img.caption.verbose : "";
@@ -118,8 +148,8 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
             processStepTitle: lastHeading,
           });
         });
-      
-        
+
+
       } else if (block.type === "list" && block.items) {
         block.items.forEach((item) => {
           const itemContent = item && typeof item === "object" && !Array.isArray(item) ? item.content : item;
@@ -143,7 +173,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
               media.push({
                 type,
                 src: visual.src,
-                embedSrc: type === "figma" ? toFigmaEmbedUrl(visual.src) : undefined, // ✅ robust
+                embedSrc: type === "figma" ? toFigmaEmbedUrl(visual.src) : undefined,
                 title: captionShort || "Visual",
                 captionShort,
                 captionVerbose,
@@ -166,12 +196,12 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         const textClass =
           block.subtype === "designer-note"
             ? "designer-note"
-            : "text-lg text-neutral-700 leading-relaxed";
+            : "text-lg md:text-xl text-warm-700 font-light leading-relaxed";
 
         return (
           <section key={index} className="mb-10 text-left">
             {block.title && (
-              <h3 className="text-lg font-bold text-neutral-900 mb-3 leading-snug">
+              <h3 className="text-lg md:text-xl font-normal text-warm-900 mb-4 leading-snug">
                 {block.title}
               </h3>
             )}
@@ -192,10 +222,10 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
       }
 
       case "callout-box":
-        return <CalloutBox key={index} content={block.content} size="large" />;
+        return <CalloutBox key={index} content={block.content} size="large" className="mb-12 md:mb-16" />;
 
       case "impact-box":
-        return <ImpactBox key={index} metrics={block.metrics} size="large" />;
+        return <ImpactBox key={index} metrics={block.metrics} description={block.description} size="large" variant={isEditorial ? "editorial" : "default"} className="mb-12 md:mb-16" />;
 
       case "heading": {
         if (block.title === "Overview") return null;
@@ -207,9 +237,9 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
           <section
             id={slug}
             key={index}
-            className={`mb-4 text-left case-anchor-target ${showBorder ? "mt-10 pt-10" : ""}`}
+            className={`mb-8 text-left case-anchor-target ${showBorder ? "mt-16 md:mt-20 pt-10" : ""}`}
           >
-            <h2 className="text-3xl font-serif font-semibold text-neutral-900 tracking-tight">{block.title}</h2>
+            <h2 className="text-3xl md:text-4xl font-sans font-semibold text-warm-900 tracking-normal leading-[1.1]">{block.title}</h2>
           </section>
         );
       }
@@ -263,41 +293,36 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
       }
 
       case "image-grid": {
-  const cols = block.columns || 2;
-  return (
-    <div key={index} className={`mb-10 grid grid-cols-1 sm:grid-cols-${cols} gap-4`}>
-      {block.images.map((img, i) => {
-        const globalIndex = allMediaItems.findIndex((item) => item.src === img.src);
-        const captionShort = typeof img.caption === "object" ? img.caption.short : img.caption;
+        const cols = block.columns || 2;
         return (
-          <div key={i}>
-            <button
-              type="button"
-              onClick={() => { if (globalIndex !== -1) setLightbox({ open: true, index: globalIndex }); }}
-              className="group relative w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-green)] rounded-xl"
-            >
-              <div className="relative w-full bg-white border border-neutral-200 rounded-sm transition-all duration-300 ease-out p-2 shadow-sm group-hover:shadow-md group-hover:border-neutral-300">
-                <div className="relative rounded-sm overflow-hidden w-full">
-                  <img
-                    src={img.src}
-                    alt={captionShort}
-                    className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-[1.01]"
-                  />
+          <div key={index} className={`mb-12 md:mb-16 grid grid-cols-1 sm:grid-cols-${cols} gap-6`}>
+            {block.images.map((img, i) => {
+              const globalIndex = allMediaItems.findIndex((item) => item.src === img.src);
+              const captionShort = typeof img.caption === "object" ? img.caption.short : img.caption;
+              return (
+                <div key={i}>
+                  <button
+                    type="button"
+                    onClick={() => { if (globalIndex !== -1) setLightbox({ open: true, index: globalIndex }); }}
+                    className="group relative w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-green)] rounded-xl"
+                  >
+                    <div className="relative w-full bg-white border border-neutral-200 rounded-sm transition-all duration-300 ease-out p-2 shadow-sm group-hover:shadow-md group-hover:border-neutral-300">
+                      <div className="relative rounded-sm overflow-hidden w-full">
+                        <img
+                          src={img.src}
+                          alt={captionShort}
+                          className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-[1.01]"
+                        />
+                      </div>
+                    </div>
+                  </button>
+                  {captionShort && <Caption>{captionShort}</Caption>}
                 </div>
-              </div>
-            </button>
-            {captionShort && <Caption>{captionShort}</Caption>}
+              );
+            })}
           </div>
         );
-      })}
-    </div>
-  );
-}
-
-
-
-
-
+      }
 
       case "video": {
         const globalIndex = allMediaItems.findIndex((item) => item.src === block.src);
@@ -305,7 +330,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
           typeof block.caption === "object" && block.caption !== null ? block.caption.short : block.caption;
 
         return (
-          <div key={index} className="mb-10">
+          <div key={index} className="mb-12 md:mb-16">
             <VideoThumbnail
               src={block.src}
               caption={videoCaption}
@@ -325,11 +350,10 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         const figmaCaption =
           typeof block.caption === "object" && block.caption !== null ? block.caption.short : block.caption;
 
-        // ✅ compute embedSrc here (don’t rely on thumbnail component doing it)
         const embedSrc = toFigmaEmbedUrl(block.src);
 
         return (
-          <div key={index} className="mb-10">
+          <div key={index} className="mb-12 md:mb-16">
             <FigmaThumbnail
               src={block.src}
               caption={figmaCaption}
@@ -343,13 +367,11 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         );
       }
 
-
       case "file-thumbnail": {
         return (
           <div key={index} className="mb-10 max-w-sm">
             <FileThumbnail
-              // Support both title and label for flexibility
-              title={block.title || block.label} 
+              title={block.title || block.label}
               fileSize={block.fileSize || "External Link"}
               onClick={() => window.open(block.href, "_blank")}
             />
@@ -378,12 +400,13 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         if (!block.items || !Array.isArray(block.items)) return null;
 
         return (
-          <section key={index} className="mb-8 md:mb-12 text-left font-sans">
-            <ul className="space-y-10 md:space-y-16 font-sans">
+          <section key={index} className="mb-12 md:mb-20 text-left font-sans">
+            <ul className="space-y-14 md:space-y-20 font-sans">
               {block.items.map((item, i) => {
                 const isObj = item && typeof item === "object" && !Array.isArray(item);
                 const itemContent = isObj ? item.content : item;
                 const visuals = isObj ? item.visuals : null;
+                const hasContent = itemContent && itemContent.trim() !== "";
 
                 const mediaItems = visuals
                   ? visuals.map((visual) => {
@@ -408,34 +431,34 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                         embedSrc: type === "figma" ? toFigmaEmbedUrl(visual.src) : undefined,
                         title: captionShort || "Visual",
                         captionShort,
-                      captionVerbose,
-                      fileSize: visual.fileSize || "N/A",
-                      coverImage: visual.coverImage,
-                      aspectRatio: visual.aspectRatio,
-                      isPresentation: visual.isPresentation || false,
-                      noLightbox: visual.noLightbox || false,
-                    };
+                        captionVerbose,
+                        fileSize: visual.fileSize || "N/A",
+                        coverImage: visual.coverImage,
+                        aspectRatio: visual.aspectRatio,
+                        isPresentation: visual.isPresentation || false,
+                        noLightbox: visual.noLightbox || false,
+                      };
                     })
                   : [];
 
                 return (
                   <li
                     key={i}
-                    className="process-list-item flex gap-3 md:gap-4 items-start text-lg text-neutral-700 leading-relaxed"
+                    className="process-list-item flex gap-4 md:gap-6 items-start text-lg md:text-xl text-warm-700 font-light leading-relaxed"
                   >
-                    <div className="mt-1 flex items-center justify-center w-6 h-6 rounded-sm bg-[var(--green-process)] shrink-0">
-                      <ArrowRight size={14} strokeWidth={3} className="text-[#231F45]" />
-                    </div>
+                    {hasContent && (
+                      <div className="mt-1 flex items-center justify-center w-6 h-6 rounded-sm bg-[var(--green-process)] shrink-0">
+                        <ArrowRight size={14} strokeWidth={3} className="text-[#231F45]" />
+                      </div>
+                    )}
 
                     <div className="flex-1">
-                      <div dangerouslySetInnerHTML={{ __html: itemContent }} />
+                      {hasContent && <div dangerouslySetInnerHTML={{ __html: itemContent }} />}
 
                       {mediaItems.length > 0 && (
-                        <div className="mt-6 md:mt-8 w-full">
+                        <div className="mt-8 md:mt-12 w-full">
                           <div
                             className={
-                              // If ANY item in this list is a presentation slide, force full-width stacked layout.
-                              // Otherwise, default back to the standard 2-column grid.
                               mediaItems.some(item => item.isPresentation) || mediaItems.length === 1
                                 ? "flex flex-col gap-8 w-full"
                                 : "grid grid-cols-1 sm:grid-cols-2 gap-4"
@@ -475,22 +498,22 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                                         })
                                       }
                                     />
-                                ) : mediaItem.noLightbox ? (
-                                  <div className="relative w-full bg-white border border-neutral-200 rounded-sm p-2 shadow-sm">
-                                    <img
+                                  ) : mediaItem.noLightbox ? (
+                                    <div className="relative w-full bg-white border border-neutral-200 rounded-sm p-2 shadow-sm">
+                                      <img
+                                        src={mediaItem.src}
+                                        alt={mediaItem.title}
+                                        className="w-full h-auto"
+                                      />
+                                    </div>
+                                  ) : (
+                                    <ImageThumbnail
                                       src={mediaItem.src}
                                       alt={mediaItem.title}
-                                      className="w-full h-auto"
+                                      onClick={() => setLightbox({ open: true, index: globalIndex })}
+                                      isPresentation={mediaItem.isPresentation}
                                     />
-                                  </div>
-                                ) : (
-                                  <ImageThumbnail
-                                    src={mediaItem.src}
-                                    alt={mediaItem.title}
-                                    onClick={() => setLightbox({ open: true, index: globalIndex })}
-                                    isPresentation={mediaItem.isPresentation}
-                                  />
-                                )}
+                                  )}
 
                                   {mediaItem.captionShort && (
                                     <Caption>{mediaItem.captionShort}</Caption>
@@ -528,15 +551,141 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
   const heroBgColor = project.details?.hero?.bgColor || "#f5f5f5";
   const heroPadding = project.details?.hero?.heroPadding || "";
   const heroGradient = project.details?.hero?.gradient;
+  const heroLeftImage = project.details?.hero?.heroLeftImage;
+  const heroRightImage = project.details?.hero?.heroRightImage;
+  const hasHeroSplit = !!(heroLeftImage && heroRightImage);
+  const isEditorial = heroType === "editorial";
 
   const heroStyle = heroGradient
     ? { backgroundImage: `linear-gradient(to bottom, ${heroGradient[0]}, ${heroGradient[1]})` }
     : { backgroundColor: heroBgColor };
 
+  // Right image is taller (3 screens stacked) — pan it vertically as user scrolls
+  // Use a generous fixed overflow estimate; the wrapper minHeight handles residency
+  const rightImageTranslateY = heroScrollProgress * 600;
+
   return (
-    <article className="bg-white min-h-screen w-full relative text-left font-sans">
+    <article className={`min-h-screen w-full relative text-left font-sans ${isEditorial ? "bg-white" : "bg-white"}`}>
       {heroType === "animated" ? (
         <AnimatedHero projectId={project.id} />
+      ) : isEditorial ? (
+        <>
+          {/* Header metadata (non-sticky, scrolls away immediately) */}
+          <div className="w-full border-b border-neutral-200 relative shadow-sm bg-white">
+            <div className="px-6 md:px-12 lg:px-20 pt-28 md:pt-32 pb-12 md:pb-16 max-w-[1800px] mx-auto">
+              <div className="mb-4">
+                <ProjectHeader
+                  company={project.company}
+                  title={project.title}
+                  type={project.details?.type || project.type}
+                  compact
+                />
+              </div>
+              <div className="mb-6">
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif leading-[1.1] tracking-tight text-[#231F45] max-w-4xl mb-6">
+                  {project.title}
+                </h1>
+                <p className="text-lg md:text-xl text-warm-400 font-light leading-relaxed max-w-2xl font-sans">
+                  {project.impactSummarySentence || project.impactSummary}
+                </p>
+                {project.blocks && project.blocks.filter(b => b.type === "impact-box").length > 0 && (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10 max-w-lg">
+                    {project.blocks.filter(b => b.type === "impact-box").slice(0, 1).map((ib, i) =>
+                      ib.metrics.map((m, j) => (
+                        <div key={`${i}-${j}`} className="flex items-baseline gap-3">
+                          <span className="text-3xl md:text-4xl font-serif text-[#231F45] tabular-nums">{m.value}</span>
+                          <span className="text-sm text-warm-500 leading-snug max-w-[140px] font-sans">{m.label}</span>
+                        </div>
+                      ))
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {hasHeroSplit ? (
+            <>
+              {/* Desktop: sticky split-panel hero with scroll-driven right panel */}
+              <section
+                ref={heroRef}
+                className="hidden md:block w-full border-b border-neutral-200"
+                style={{ minHeight: "200vh" }}
+              >
+                <div
+                  className="sticky top-0 z-0 w-full bg-white"
+                  style={{ height: "100vh" }}
+                >
+                  <div className="flex w-full h-full">
+                    <div className="w-[68.125%] h-full overflow-hidden relative bg-neutral-100">
+                      <img
+                        src={heroLeftImage}
+                        alt={project.title}
+                        className="absolute top-0 left-0 w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="w-[31.875%] h-full overflow-hidden relative bg-neutral-100 border-l border-neutral-200">
+                      <img
+                        src={heroRightImage}
+                        alt={project.title}
+                        className="absolute top-0 left-0 w-full object-cover"
+                        style={{
+                          minHeight: "100vh",
+                          transform: `translateY(-${rightImageTranslateY}px)`,
+                          transition: "transform 0.1s linear",
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* Mobile: stacked full-width images */}
+              <div className="md:hidden w-full border-b border-neutral-200 bg-neutral-100">
+                <img
+                  src={heroLeftImage}
+                  alt={project.title}
+                  className="w-full h-auto"
+                />
+                <img
+                  src={heroRightImage}
+                  alt={project.title}
+                  className="w-full h-auto"
+                />
+              </div>
+            </>
+          ) : (
+            /* Single-image hero (no split panels) */
+            <div className="w-full border-b border-neutral-200 bg-neutral-100">
+              <img
+                src={heroSrc}
+                alt={project.title}
+                className="w-full h-auto"
+              />
+            </div>
+          )}
+
+                    {/* Metadata (Role / Timeline / Team) — sits below the hero */}
+          <div className="w-full border-b border-neutral-200 bg-white">
+            <div className="px-6 md:px-12 lg:px-20 py-8 md:py-12 max-w-[1800px] mx-auto">
+              <div className="flex flex-col md:flex-row md:flex-wrap gap-x-16 gap-y-6 font-sans">
+                <div>
+                  <h3 className="text-[11px] font-bold text-warm-400 tracking-[0.25em] uppercase mb-2">Role</h3>
+                  <p className="text-[15px] text-warm-700 leading-relaxed">{project.details?.role}</p>
+                </div>
+                <div>
+                  <h3 className="text-[11px] font-bold text-warm-400 tracking-[0.25em] uppercase mb-2">Timeline</h3>
+                  <p className="text-[15px] text-warm-700 leading-relaxed">{project.details?.timeline}</p>
+                </div>
+                <div>
+                  <h3 className="text-[11px] font-bold text-warm-400 tracking-[0.25em] uppercase mb-2">Team</h3>
+                  <p className="text-[15px] text-warm-700 leading-relaxed">{project.details?.collaborators}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </>
       ) : (
         <div
           className="w-full h-[80vh] border-b border-neutral-200 overflow-hidden relative shadow-sm text-center flex items-center justify-center"
@@ -552,7 +701,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         </div>
       )}
 
-      <div ref={contentRef} className="w-full pt-12 md:pt-[calc(var(--header-h)+40px)] font-sans">
+      <div ref={contentRef} className={`w-full pt-16 md:pt-[calc(var(--header-h)+40px)] font-sans ${isEditorial ? "bg-white" : ""}`}>
         <div className="lg:grid lg:grid-cols-[20rem_1fr] lg:gap-12 pb-10 case-study-layout">
           <aside className="hidden lg:block pl-8 md:pl-14 case-study-anchor">
             <div className="sticky top-[calc(var(--header-h)+24px)]">
@@ -566,18 +715,22 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
           </aside>
 
           <div className="px-6 md:px-12 max-w-[1400px] mx-auto text-left case-study-content">
-            <div className="flex-1 w-full lg:pb-12 max-w-4xl text-left">
-              <div id="overview" className="case-anchor-target">
-                <ProjectHeader
-                  company={project.company}
-                  title={project.title}
-                  type={project.details?.type || project.type}
-                />
-              </div>
+            <div className={`flex-1 w-full lg:pb-12 text-left ${isEditorial ? 'max-w-6xl' : 'max-w-4xl'}`}>
+              {!isEditorial && (
+                <>
+                  <div id="overview" className="case-anchor-target">
+                    <ProjectHeader
+                      company={project.company}
+                      title={project.title}
+                      type={project.details?.type || project.type}
+                    />
+                  </div>
 
-              <h1 className="font-serif text-[2.5rem] md:text-[3rem] text-neutral-900 mb-5 md:mb-6 font-[500] tracking-tight leading-[3rem] md:!leading-[4.2rem] text-left">
-                {project.impactSummarySentence || project.impactSummary}
-              </h1>
+                  <h1 className="font-serif text-[2.5rem] md:text-[3rem] text-warm-900 mb-5 md:mb-6 font-[500] tracking-tight leading-[3rem] md:!leading-[4.2rem] text-left">
+                    {project.impactSummarySentence || project.impactSummary}
+                  </h1>
+                </>
+              )}
 
               {project.designerNote && (
                 <div className="designer-note mb-8 max-w-full">
@@ -589,19 +742,23 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                 </div>
               )}
 
-              <ProjectMetadata
-                role={project.details?.role || "Role TBD"}
-                timeline={project.details?.timeline || "Timeline TBD"}
-                status={project.status}
-                collaborators={project.details?.collaborators}
-              />
+              {!isEditorial && (
+                <>
+                  <ProjectMetadata
+                    role={project.details?.role || "Role TBD"}
+                    timeline={project.details?.timeline || "Timeline TBD"}
+                    status={project.status}
+                    collaborators={project.details?.collaborators}
+                  />
 
-              {isPillar && (
-                <SystemContextBanner
-                  pillars={PORTFOLIO_DATA.projects.filter((p) => p.parentId === project.parentId)}
-                  currentId={project.id}
-                  onPillarClick={onNavigateToProject}
-                />
+                  {isPillar && (
+                    <SystemContextBanner
+                      pillars={PORTFOLIO_DATA.projects.filter((p) => p.parentId === project.parentId)}
+                      currentId={project.id}
+                      onPillarClick={onNavigateToProject}
+                    />
+                  )}
+                </>
               )}
 
               {project.details?.blocks && project.details.blocks.map((block, idx) => renderBlock(block, idx))}

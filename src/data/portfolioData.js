@@ -237,8 +237,8 @@ export const PORTFOLIO_DATA = {
       title: CASE_STUDIES_TITLES["amazon-asset-manager"],
       impactSummary: "A centralized internal library that makes Amazon Devices marketing images easy to find, QA, and place across global markets. Shipping Q2 2026.",
       impactSummarySentence: "A centralized digital asset library that brought the entire Amazon Devices creative catalog under governance, making automated campaign publishing possible at global scale.",
-      designerNote: "The Image Builder needed a manageable centralized library because after launch the team was still uploading PNGs through backchannels. Building one allowed assets to inherit structure, governance, and rich metadata for AI automation. My goal on this project was to deliver the core functionality that would drive adoption and lay the groundwork for it, while introducing features that reduced reliance on external tools. This work also brought me closer to end users and, once fully adopted, enables full campaign placement automation.",
-      thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772596156/1_xrlcq0.png",
+      designerNote: "This isn't the most visually exciting project in the portfolio, but it's probably the one that shows the most systems thinking. The work was less about designing an asset browser and more about understanding how a fragmented global workflow actually worked, then building the structure, metadata, and governance needed to make it scalable. I went unusually deep on research for this one, spending time with marketers and testing working prototypes against their real workflows. The result is the foundation for a scalable asset management system that can eventually support AI-generated content and automated campaign publishing.",
+      thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1785167948/hero_asset_browser_ee1vwu.png",
       status: "IN_BUILD",
       type: "INTERNAL",
       blocks: [
@@ -248,52 +248,40 @@ export const PORTFOLIO_DATA = {
         }
       ],
       details: {
-        hero: { type: 'animated' },
-        heroImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772596156/1_xrlcq0.png",
+        hero: {
+          type: 'editorial',
+          heroLeftImage: '', // TODO: upload left-cropped hero image
+          heroRightImage: '', // TODO: upload right-cropped (taller) hero image
+        },
+        heroImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1785167948/hero_asset_browser_ee1vwu.png",
         role: "Lead UX Designer",
         timeline: "Ongoing (Estimated Q2 2026)",
         collaborators: "PM, 8 Engineers, Designer Ops, Brand leaders",
         type: "INTERNAL",
         blocks: [
-          {
-            type: "heading",
-            title: "Who Is This For",
-            hasDivider: false
-          },
-          {
-            type: "text",
-            content: [
-              "Roughly the same audience as Image Builder, with a few differences. No product line strategists or copywriters, but creative directors, graphic designers, and system designers are part of the mix. About 220 people today. Once the product is live and permission levels are fully set up, the goal is to open access company wide, so anyone at Amazon who needs to find or use a Devices image would have a path in."
-            ]
-          },
-          {
-            type: "heading",
-            title: "The Problem",
-          },
+
+          
+
+          // 2. THE PROBLEM
+          { type: "heading", title: "The Problem" },
           {
             type: "text",
             content: [
-              "Quite a few. Marketing images for Amazon Devices were scattered across multiple internal systems with no consistent naming and no access control. Teams reused outdated files, duplicated work across regions, and ran QA through third-party tools outside the platform. North America had built their entire workflow on Smartsheets because nothing inside the system was reliable enough to use. The library feeding the Image Builder was manually curated and uploaded by a single person, so every asset in the production pipeline depended on that person getting it right. It sounds chaotic, but for them it was actually quite efficient, which made the biggest challenge convincing teams to migrate to our system."
+              "Marketing images for Amazon Devices were scattered across internal systems with no consistent naming, no access control, and QA handled through third-party tools outside the platform. The library feeding Image Builder was manually curated by a single person, so every asset in the pipeline depended on them getting it right."
             ]
           },
           {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772556411/asset-management-old_dpjrc3.png",
             caption: {
-              short: "The fragmented state before: no metadata, QA handled externally.",
-              verbose: ""
-            }
-          },
-
-          {
-            type: "heading",
-            title: "Research"
+              short: "The fragmented state before: no metadata, QA handled externally."
+            },
+            deepDive: "Marketing images for Amazon Devices were scattered across multiple internal systems with no consistent naming and no access control. Teams reused outdated files, duplicated work across regions, and ran QA through third-party tools outside the platform. North America had built their entire workflow on Smartsheets because nothing inside the system was reliable enough to use. The library feeding the Image Builder was manually curated and uploaded by a single person — every asset in the pipeline depended on that person getting it right. It sounds chaotic, but for them it was actually quite efficient, which made the biggest challenge convincing teams to migrate to our system."
           },
           {
             type: "text",
             content: [
-              "I ran three in-depth interviews with marketers from our two largest regions, Europe (EMEA) and North America, watching them move through their actual day-to-day workflows rather than asking them to describe it. I also brought working prototypes into those sessions, which surfaced problems I wouldn't have found any other way.",
-              "EMEA and North America came in with completely different problems. EMEA were the power users, and they had four hard blockers: no way to clone assets across projects, search that only worked on exact strings, QA that required opening the builder one marketplace at a time, and no way to review manually uploaded assets inside the platform at all. North America wasn't using our system for assets at all. I went into the first session with mocks already built. That was a mistake. We stepped back and rebuilt the architecture around what people were actually doing."
+              "I interviewed marketers across EMEA and North America and brought working prototypes into the sessions. Their workflows were different, but both teams had stopped trusting the existing system. EMEA had built workarounds around missing features; North America had moved its asset workflow into Smartsheets entirely."
             ]
           },
           {
@@ -314,14 +302,39 @@ export const PORTFOLIO_DATA = {
             href: "https://drive.google.com/file/d/1aiyJ8up5Q85KTNIEU6Iyb4fiuKY4sY3G/view?usp=sharing"
           },
 
-          {
-            type: "heading",
-            title: "Explorations"
-          },
+          // 3. THE SYSTEM
+          { type: "heading", title: "The System" },
           {
             type: "text",
             content: [
-              "We went through four major rounds before landing on the current architecture. Each version taught us something different about how merchandisers actually think about their assets, and the filter dimensions we tested fed directly into the engineering spec."
+              "The architecture separates Image Builder assets from manual uploads because the two needed different ways of being managed. Tile and table views support visual browsing and metadata-heavy work, while filters make it possible to narrow thousands of assets by device, campaign, locale, template, or QA status."
+            ]
+          },
+          {
+            type: "image-full",
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772585962/architecture_xw17mw.png",
+            caption: { short: "Two-tab structure separating Image Builder assets from manual uploads." },
+            deepDive: "The core decision was how to handle two fundamentally different asset types: Asset system-generated images with rich metadata, and manually uploaded files with none. EMEA pushed for this separation. Their argument: the filter criteria differed enough between sources that mixing them forced users to track which rules applied when. The solution was two tabs with different interaction patterns."
+          },
+          {
+            type: "image-full",
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772586379/Views_shuapy.png",
+            caption: { short: "Tile view and table view side by side." },
+            deepDive: "Two ways to look at the same catalog, built for different needs. Tile view puts the images front and center, useful when scanning for a specific visual or QAing image quality at a glance. Table view trades that for data: locale, template, dimensions, and QA status all sortable in columns, closer to a spreadsheet than a gallery. EMEA gravitated toward the table for metadata density. North America responded well to it too. Designers, naturally preferred the Tile view."
+          },
+          {
+            type: "image-full",
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772586894/Filters_tnevnj.png",
+            caption: { short: "Persistent filter bar with metadata filters." },
+            deepDive: "Once assets had proper metadata, filtering became the main way people moved through the catalog. You could narrow by device type, campaign, locale, date, template type, and QA status simultaneously. For a global team managing thousands of images across 22 markets, that meant finding the right image for a specific campaign in seconds instead of scrolling through everything or asking someone who remembered where it lived."
+          },
+
+          // 4. DESIGN AND BUILD
+          { type: "heading", title: "Design and Build" },
+          {
+            type: "text",
+            content: [
+              "Four rounds of exploration led to the current architecture. The final design brought the asset detail view and QA workflow into the same place, so marketers could find an image, understand its context, and review it without jumping between projects or tools."
             ]
           },
           {
@@ -346,114 +359,34 @@ export const PORTFOLIO_DATA = {
               }
             ]
           },
-
           {
-            type: "heading",
-            title: "Building Core Functionalities"
+            type: "image-full",
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772587676/Detail_Panel_qlnlym.png",
+            caption: { short: "Full-screen detail panel with metadata sidebar." },
+            deepDive: "Clicking any image opens a full, immersive view of it alongside everything known about that asset: group, program, locales, creative type, dimensions, QA status, who uploaded it, and when it was last edited. Actions sit directly in this panel. It's designed to be a complete picture in one place, so you're not bouncing between tabs or tools to make a decision. For manually uploaded images, program name and locale are editable here, which unlocks filtering for that content type."
           },
           {
-            type: "list",
-            items: [
-              {
-                content: `<b>Architecture</b><p class="mt-2">The core decision was how to handle two fundamentally different asset types: Asset system-generated images with rich metadata, and manually uploaded files with none. EMEA pushed for this separation. Their argument: the filter criteria differed enough between sources that mixing them forced users to track which rules applied when. The solution was two tabs with different interaction patterns.</p>`,
-                visuals: [
-                  {
-                    kind: "image",
-                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772585962/architecture_xw17mw.png",
-                    caption: {
-                      short: "Two-tab structure separating images built in Image Builder from ordinary uploaded media.",
-                      verbose: ""
-                    }
-                  }
-                ]
-              },
-              {
-                content: `<b>Views</b><p class="mt-2">Two ways to look at the same catalog, built for different needs. Tile view puts the images front and center, useful when you're scanning for a specific visual or trying to QA image quality at a glance. Table view trades that for data: locale, template, dimensions, and QA status all sortable in columns, closer to a spreadsheet than a gallery. EMEA gravitated toward the table for metadata density. North America responded well to it too. Designers, naturally preferred the Tile view.</p>`,
-                visuals: [
-                  {
-                    kind: "image",
-                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772586379/Views_shuapy.png",
-                    caption: {
-                      short: "Tile view and table view side by side.",
-                      verbose: "Tile view prioritizes visual content at a glance. Table view surfaces locale, template, dimensions, and QA status in sortable columns. EMEA gravitated toward the table for metadata density. North America responded well to it too, mirroring outside UI experiences they already knew."
-                    }
-                  }
-                ]
-              },
-              {
-                content: `<b>Filters</b><p class="mt-2">Once assets had proper metadata, filtering became the main way people actually moved through the catalog. You could narrow down by device type, campaign, locale, date, template type, and QA status simultaneously. For a global team managing thousands of images across 22 markets, that meant finding the right image for a specific campaign in seconds instead of scrolling through everything or asking someone who remembered where it lived.</p>`,
-                visuals: [
-                  {
-                    kind: "image",
-                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772586894/Filters_tnevnj.png",
-                    caption: {
-                      short: "Persistent filter bar with metadata filters.",
-                      verbose: ""
-                    }
-                  }
-                ]
-              },
-              {
-                content: `<b>Detail Panel</b><p class="mt-2">Clicking any image opens a full, immersive view of it alongside everything known about that asset: group, program, locales, creative type, dimensions, QA status, who uploaded it, and when it was last edited. Actions sit directly in this panel. It's designed to be a complete picture in one place, so you're not bouncing between tabs or tools to make a decision. For manually uploaded images, program name and locale are editable here, which is what unlocks filtering for that content type.</p>`,
-                visuals: [
-                  {
-                    kind: "image",
-                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772587676/Detail_Panel_qlnlym.png",
-                    caption: {
-                      short: "Full-screen detail panel with metadata sidebar.",
-                      verbose: "An immersive single-image view that surfaces all relevant metadata alongside a high-resolution preview. Everything needed to evaluate, approve, or act on an asset is accessible without leaving this screen."
-                    }
-                  }
-                ]
-              },
-              {
-                content: `<b>QA Workflow</b><p class="mt-2">Before this tool, reviewing images meant opening the Image Builder one marketplace at a time. There was no way to look across groups or consolidate assets for a batch review. The QA workflow we built moves that into the asset browser: apply filters for locale, template, or status, and the review panel pulls matching assets from across groups into a single view so a reviewer can work through them without context-switching between projects.</p>`,
-                visuals: [
-                  {
-                    kind: "image",
-                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772591484/178a10cd-4d5d-4b70-8066-a1cbfa73689c.png",
-                    caption: {
-                      short: "Capture of the handed off QA workflow spec. (See prototype for interaction details)",
-                      verbose: ""
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-
-          {
-            type: "heading",
-            title: "Working (almost) Prototype"
-          },
-          {
-            type: "text",
-            content: [
-              "Here's a prototype demonstrating some key flows, as handed off to developers and tested with our marketer users.Some of the key interactions are pending a Figma quirk update."
-            ]
+            type: "image-full",
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772591484/178a10cd-4d5d-4b70-8066-a1cbfa73689c.png",
+            caption: { short: "QA workflow spec — apply filters and review assets across groups." },
+            deepDive: "Before this tool, reviewing images meant opening the Image Builder one marketplace at a time. There was no way to look across groups or consolidate assets for a batch review. The QA workflow we built moves that into the asset browser: apply filters for locale, template, or status, and the review panel pulls matching assets from across groups into a single view so a reviewer can work through them without context-switching between projects."
           },
           {
             type: "figma",
             src: "https://www.figma.com/proto/RalVHLTD2GOTo3DY91Ow8k/JAS-ASSET-MANAGER?page-id=85%3A22371&node-id=85-22884&viewport=-1498%2C-1342%2C0.07&t=PgdR2ntUXOpXVKPs-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=85%3A22884&show-proto-sidebar=1",
             caption: {
-              short: "Final build spec prototype covering core browsing, filtering, and QA flows.",
+              short: "Final build spec prototype covering browsing, filtering, and QA flows.",
               verbose: "Developer-ready blueprint covering interaction logic, edge cases, and component states validated through EMEA and NA research."
             },
             coverImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772592239/5958a787-a37d-410e-8821-1f8584a6a20c.png",
             aspectRatio: "16/9"
           },
 
-          {
-            type: "heading",
-            title: "Status"
-          },
+          // 5. RESULT
+          { type: "heading", title: "Result" },
           {
             type: "callout-box",
-            content: "Slated to ship Q2 2026. Once live, this will eliminate the dependency on external tooling, giving NA and Europe total control of Devices catalog. This will provide the metadata foundation for complete AI content generation."
-          },
-          {
-            type: "callout-box",
-            content: "The asset browser is the last step before campaign publishing. Once an image is approved and tagged, marketers can move directly from this view into campaign programming, letting the platform handle targeting, placement, and allocation automatically. The asset library is the foundation that makes automated publishing possible, though the publishing flow itself is outside the scope of this case study."
+            content: "Slated to ship in Q2 2026, the asset browser gives the Devices team a single place to manage its catalog and removes the need for external QA tools. Once the metadata is in place, approved assets can move directly into automated campaign publishing."
           }
         ]
       }
@@ -616,21 +549,19 @@ export const PORTFOLIO_DATA = {
   impactSummary: "A science-backed AI tool built on Amazon's proprietary device data that generates realistic 3D lifestyle imagery at scale, with a human review system designed to improve the model with every batch.",
   impactSummarySentence: "Built an Amazon-exclusive generative AI compositor for 3D lifestyle imagery, and designed the human-in-the-loop review system that turned Creative Director feedback into training signal.",
   designerNote: "",
-  thumbnail: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1600&q=80",
+  thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1785079389/hero-image_h61hdi.png",
   status: "LAUNCHED",
   type: "INTERNAL",
   blocks: [
-    {
-      type: "impact-box",
-      metrics: [
-        { value: "3,000", label: "Market-ready lifestyle assets generated by AI and curated by Creative Directors" },
-        { value: "~Only 10hrs", label: "Total human review time spent for 12,000 market ready images" }
-      ]
-    }
+    
   ],
   details: {
-    hero: { type: 'animated' },
-    heroImage: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1600&q=80",
+    hero: {
+      type: 'editorial',
+      heroLeftImage: 'https://res.cloudinary.com/diy08lj9x/image/upload/v1785086067/hero-left_zlmffw.png',
+      heroRightImage: 'https://res.cloudinary.com/diy08lj9x/image/upload/v1785086066/hero-right_lrgz9e.png',
+    },
+    heroImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1785079389/hero-image_h61hdi.png",
     role: "Lead UX Designer",
     timeline: "December 2024 to March 2025",
     collaborators: "1 PM, 2 ML Engineers, 1 Creative Director, 2 Engineers",
@@ -668,10 +599,10 @@ export const PORTFOLIO_DATA = {
       },
       {
         type: "image-full",
-        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772662326/firetv-gradient_dfwvl0.png",
+        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1785165384/comparisong-horizontal_hicf1p.png",
         noLightbox: true,
         caption: {
-          short: "Scalable, but not converting.",
+          short: "Gradient backgrounds were much easier to scale, but lifestyle backgrounds converted about 40% better.",
           verbose: ""
         },
         deepDive: "This Fire TV campaign built in Image Builder compares a standard gradient background against an AI-generated lifestyle scene. By placing the device in a realistic setting, the campaign aims for the 40% higher CTR typically seen with lifestyle imagery over basic product shots."
@@ -681,19 +612,18 @@ export const PORTFOLIO_DATA = {
         src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772667460/1273f947-b73f-4af2-b036-dee49ef913f0.png",
         noLightbox: true,
         caption: {
-          short: "An existing furniture model couldn't reproduce the specific characteristics of Amazon devices.",
+          short: "Built for furniture, the Amazon Home genAI tool couldn’t quite fit the scale, perspective, or setting of Amazon Devices.",
           verbose: ""
         },
         deepDive: "We put an Echo Pop into a room scene, but the results were off: the perspective was wrong, the device looked flat, and the shadows didn't match. The model simply didn't understand Amazon devices. Our proprietary device data, including camera angles, surface materials, shadow behavior, and screen reflections for each device family, only exists inside Amazon. No external tool could be trained on that data at the scale we needed, so we had to build the model in-house from scratch."
       },
 
       // ── THE SYSTEM ────────────────────────────────────────────────
-      { type: "heading", title: "The System" },
+      { type: "heading", title: "Systems thinking" },
       {
         type: "text",
         content: [
   "We built an in-house AI compositor trained on Amazon's proprietary device data: camera angles, materials, shadows, and screen reflections specific to each device family. Design technologists prepared background scenes with structured metadata, while Creative Directors reviewed generated variations and approved or rejected them with tagged reasons.",
-  "The model needed a feedback loop to learn what good looked like. I worked with Brand Studio, Engineering, and Data Science to translate device-specific knowledge into training data and define the feedback taxonomy. I then designed the human-in-the-loop review system that captured Creative Director judgment, with each round of feedback improving the model and reducing the human review needed for the next."
 ]
       },
       {
@@ -706,6 +636,8 @@ export const PORTFOLIO_DATA = {
         },
         deepDive: "This diagram shows what changes between Image Builder v1 and the AI Lifestyle Compositor. In v1, layers were static files: a device PNG, a gradient, copy. In the compositor, every layer carries structured metadata. The device image knows its product family and brand-mandated camera angle. The background scene knows its environment type. The screen image knows which campaign it belongs to. That metadata is what allows the system to assemble contextually correct lifestyle images automatically, across thousands of SKUs, without a designer directing each one."
       },
+
+    
       
       {
         type: "list",
@@ -727,6 +659,13 @@ export const PORTFOLIO_DATA = {
             ]
           }
         ]
+      },
+      {
+        type: "text",
+        content: [
+  
+  "However, the model still needed a feedback loop to gauge good looked like. I worked with Brand Studio, Engineering, and Data Science to translate device-specific knowledge into training data and define the feedback taxonomy. I then designed the human-in-the-loop review system that captured Creative Director judgment, with each round of feedback improving the model and reducing the human review needed for the next."
+]
       },
       {
         type: "list",

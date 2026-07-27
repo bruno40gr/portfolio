@@ -1,7 +1,35 @@
 import React from "react";
 
-export const ImpactBox = ({ metrics = [], description = [], size = "small" }) => {
+export const ImpactBox = ({ metrics = [], description = [], size = "small", variant = "default" }) => {
   const isSmall = size === "small";
+  const isEditorial = variant === "editorial";
+
+  // EDITORIAL VARIANT — no boxes, serif values, minimal clean prestige
+  if (isEditorial) {
+    return (
+      <section className="mb-12 md:mb-16 w-full">
+        <div className="flex flex-wrap gap-x-12 gap-y-6">
+          {metrics.map((m, i) => (
+            <div key={i} className="flex flex-col">
+              <span className="font-serif text-4xl md:text-5xl tracking-tight text-warm-900">
+                {m.value}
+              </span>
+              <span className="font-sans text-xs md:text-sm tracking-[0.15em] uppercase text-warm-400 mt-1 max-w-[220px] leading-snug">
+                {m.label}
+              </span>
+            </div>
+          ))}
+        </div>
+        {description?.length > 0 && (
+          <div className="mt-6 pt-6 border-t border-neutral-200 flex flex-col gap-2">
+            {description.map((line, i) => (
+              <p key={i} className="text-base text-warm-500 leading-relaxed font-sans max-w-2xl" dangerouslySetInnerHTML={{ __html: line }} />
+            ))}
+          </div>
+        )}
+      </section>
+    );
+  }
 
   if (isSmall) {
     return (
@@ -32,7 +60,7 @@ export const ImpactBox = ({ metrics = [], description = [], size = "small" }) =>
     );
   }
 
-  // HERO CASE STUDY STYLE (Large)
+  // DEFAULT LARGE STYLE (SaaS)
   return (
     <section className="mb-12 w-full">
       <div className={`grid gap-6 ${

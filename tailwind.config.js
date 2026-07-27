@@ -8,9 +8,17 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        warm: {
+          900: '#1A1A1A',
+          700: '#333',
+          500: '#5A5A5A',
+          400: '#777',
+        },
+      },
       fontFamily: {
         sans: ["\"DM Sans\"", "system-ui", "sans-serif"],
-        serif: ["\"Fraunces\"", "serif"],
+        serif: ["\"Gelasio\"", "serif"],
         mono: ["\"Source Code Pro\"", "monospace"],
       },
     },

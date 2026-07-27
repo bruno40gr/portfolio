@@ -11,7 +11,7 @@ const findLogo = (company) => {
   });
 };
 
-const ProjectHeader = ({ company, title, type }) => {
+const ProjectHeader = ({ company, title, type, compact }) => {
   if (!company && !title) return null;
   const logo = company ? findLogo(company) : null;
   
@@ -25,18 +25,24 @@ const ProjectHeader = ({ company, title, type }) => {
   }
 
   return (
-    <div className="flex items-center gap-4 mb-8">
+    <div className={`flex items-center ${compact ? 'gap-2' : 'gap-4'} ${compact ? '' : 'mb-8'}`}>
       {logo && (
         <img
           src={logo.src}
           alt={`${company} logo`}
-          className="h-12 w-12 rounded-sm object-cover"
+          className={`rounded-sm object-cover ${compact ? 'h-8 w-8' : 'h-12 w-12'}`}
           loading="lazy"
         />
       )}
       <div className="text-left">
-        <h2 className="text-xl md:text-2xl text-neutral-900 font-semibold tracking-tight leading-snug">{title || company}</h2>
-        {typeLabel && <div className="meta-label mt-1">{typeLabel}</div>}
+        {compact ? (
+          <span className="text-sm text-neutral-500 font-sans tracking-normal">{company}</span>
+        ) : (
+          <>
+            <h2 className="text-xl md:text-2xl text-neutral-900 font-semibold tracking-tight leading-snug">{title || company}</h2>
+            {typeLabel && <div className="meta-label mt-1">{typeLabel}</div>}
+          </>
+        )}
       </div>
     </div>
   );

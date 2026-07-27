@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;0,9..144,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700&family=Gelasio:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -43,7 +43,7 @@
   h1.font-serif, 
   h2.font-serif, 
   h3.font-serif {
-    font-family: "Fraunces", serif;
+    font-family: "Gelasio", serif;
   }
 
   .font-sans, 
@@ -118,8 +118,11 @@
   /* Softer gray */
   color: #52525b;
   
+  /* Italic for editorial distinction */
+  font-style: italic;
+  
   /* Radically larger responsive size */
-  font-size: clamp(1.2rem, 1.5vw + 0.5rem, 1.5rem);
+  font-size: clamp(1.05rem, 1.2vw + 0.35rem, 1.25rem);
 }
 
 
