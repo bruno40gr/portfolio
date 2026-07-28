@@ -338,26 +338,28 @@ export const PORTFOLIO_DATA = {
             ]
           },
           {
-            type: "image-grid",
-            columns: 2,
-            images: [
-              {
-                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772558345/Explorations-old_amgyt0.png",
-                caption: { short: "Earliest iteration with persistent right-side filter panel.", verbose: "An early iteration with filters in a persistent right panel alongside a dense 4-column tile grid. The layout handled volume well but mixed system-generated and manually uploaded assets in the same view without enough visual distinction, creating confusion about which filter rules applied to which content." }
-              },
-              {
-                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772558344/Old_Exploration_2_agvjar.png",
-                caption: { short: "Filter drawer with locale chips surfaced on group cards.", verbose: "Filter panel moved to a right-side drawer with locale chips surfaced on each asset group card. Cleaner than the flat tile approach, but the side panel ran out of space as filtering requirements grew and the drawer pattern added an extra step to every filter operation." }
-              },
-              {
-                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772558344/old_exploration_3_apwk1b.png",
-                caption: { short: "Group detail view with metadata side panel.", verbose: "Early group detail view with a side panel for asset metadata and approval. Actions were buried and the panel required too many clicks to reach from the main browser. Approval logic was also unclear about who could check what." }
-              },
-              {
-                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772558346/Exploration_4_wjsedf.png",
-                caption: { short: "December 2024: flat tile view alongside grouped asset view.", verbose: "Flat tile view on the left, grouped asset view on the right. The grouped model was a step forward for navigating related assets, but tiles were visually identical across both states and users could not tell what they were looking at without reading the labels." }
-              }
-            ]
+            type: "image-full",
+            layout: "side",
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772558345/Explorations-old_amgyt0.png",
+            caption: { short: "Earliest iteration with persistent right-side filter panel.", verbose: "An early iteration with filters in a persistent right panel alongside a dense 4-column tile grid. The layout handled volume well but mixed system-generated and manually uploaded assets in the same view without enough visual distinction, creating confusion about which filter rules applied to which content." }
+          },
+          {
+            type: "image-full",
+            layout: "side",
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772558344/Old_Exploration_2_agvjar.png",
+            caption: { short: "Filter drawer with locale chips surfaced on group cards.", verbose: "Filter panel moved to a right-side drawer with locale chips surfaced on each asset group card. Cleaner than the flat tile approach, but the side panel ran out of space as filtering requirements grew and the drawer pattern added an extra step to every filter operation." }
+          },
+          {
+            type: "image-full",
+            layout: "side",
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772558344/old_exploration_3_apwk1b.png",
+            caption: { short: "Group detail view with metadata side panel.", verbose: "Early group detail view with a side panel for asset metadata and approval. Actions were buried and the panel required too many clicks to reach from the main browser. Approval logic was also unclear about who could check what." }
+          },
+          {
+            type: "image-full",
+            layout: "side",
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772558346/Exploration_4_wjsedf.png",
+            caption: { short: "December 2024: flat tile view alongside grouped asset view.", verbose: "Flat tile view on the left, grouped asset view on the right. The grouped model was a step forward for navigating related assets, but tiles were visually identical across both states and users could not tell what they were looking at without reading the labels." }
           },
           {
             type: "image-full",
@@ -398,140 +400,136 @@ export const PORTFOLIO_DATA = {
       parentId: "amazon-asset-system",
       company: "Amazon Devices",
       title: CASE_STUDIES_TITLES["amazon-metadata-studio"],
-      impactSummary: "Overcame internal stakeholder resistance by proving AI could automate the complex asset tagging required to keep global marketing campaigns legally and culturally compliant.",
+      impactSummary: "An AI-first internal tool that automatically extracts image metadata to enforce global legal, cultural, and regional compliance at scale.",
       impactSummarySentence: "An AI-first internal tool that automatically extracts image metadata to enforce global legal, cultural, and regional compliance at scale.",
-      designerNote: "At Amazon’s scale, an incorrect image in the wrong screen can become a data leak or a legal issue. Getting compliance data into the system required between 30 and 90 manual metadata inputs per image, a number defined by PMs, creative directors, 3D artists, and data science. Too much information at once would overwhelm the user. I designed the interface with progressive disclosure to show the critical metadata first and let them drill into detail only when needed. Most of the organization didn't believe AI could close that gap, and didn't have the appetite to find out. With this project I built the proof that all of this was already possible.",
       thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772414317/Background_metadata-thumbnail_pgfkp6.png",
       status: "IN_BUILD",
       type: "INTERNAL",
-      blocks: [
-        {
-          type: "callout-box",
-          content: "Leadership, Product, and Brand teams unified around a strategic roadmap to launch a sophisticated AI tool designed to aggregate metadata from diverse Amazon-owned sources."
-        }
-      ],
+      blocks: [],
       details: {
-        hero: { type: "static" },
+        hero: { type: "editorial" },
         heroImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772414394/Background_metadata-wide_vbd1rh.png",
         role: "Lead UX Designer",
         timeline: "August 2025 to Today",
         collaborators: "PM, ML Engineers, Data Science, Compliance",
         type: "INTERNAL",
         blocks: [
-          { type: "heading", title: "Who Is This For", hasDivider: false },
+
+          // ── DESIGNER NOTE ───────────────────────────────────────────
+          {
+            type: "text",
+            subtype: "designer-note",
+            content: [
+              "We all knew that entering 30 to 90 metadata points for every image was tedious. But this was proprietary Amazon data, and we couldn't use external AI tools to do the work for us. The manual effort was the tradeoff we'd accepted to build a system around knowledge that only Amazon had.",
+              "I wanted to see where that tradeoff was actually necessary. I built a series of small experimental tools to test what AI could infer from images, what it couldn't, and where it was reliable enough to be useful. The results weren't always successful, but they gave me enough evidence to start separating the work AI could take on from the work that still needed a person."
+            ]
+          },
+
+          // ── THE PROBLEM ──────────────────────────────────────────────
+          { type: "heading", title: "The Problem", hasDivider: false },
           {
             type: "text",
             content: [
-              "System designers, about 6 people. The tool is designed to reduce reliance on 3D artists, photographers, and contractors who previously had to generate metadata manually, typically by exporting from Photoshop and other source tools. A very small team with a disproportionate impact on the process."
+              "Every component image uploaded to the system required between 30 and 90 metadata points. This metadata was necessary for global legal, cultural, and regional compliance. An EU asset legally needed to show the correct power plug. UAE marketing could not feature dogs. A US-licensed movie UI could not appear on a Brazilian Echo Show. Without the right metadata, a single wrong image in the wrong market created an immediate legal or brand incident.",
+              "The work was manual, the team was small, the data was proprietary, and external AI tools were not an option. The manual metadata requirement had become the single largest bottleneck in the asset pipeline."
             ]
           },
-          { type: "heading", title: "The Problem" },
-          {
-            type: "text",
-            content: [
-              "Every component image uploaded to the system required between 30 and 90 metadata points. At Amazon's global scale, that data is what enforces regional, cultural, and legal compliance. It tells the system that an EU asset legally must show a power plug, that UAE marketing should not feature dogs, or that a US-licensed movie UI cannot appear on a Brazilian Echo Show. Without it, a single wrong image in the wrong market creates an immediate legal or brand incident.",
-              "At the volume Amazon Devices operates, that manual entry requirement had become the single largest bottleneck in the asset pipeline."
-            ]
-          },
-          
           {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772412234/Background_metadata_cphwlh.png",
-            caption: { 
-              short: "The manual upload UI for an AI-ready background image. This illustrates the massive volume of metadata that users had to enter manually to prepare a single asset for the system.", 
-              verbose: "System designers were forced to manually configure bounding boxes, camera angles, color hex codes, and region restrictions for every single image. This manual tax became the largest bottleneck in our asset generation pipeline." 
+            layout: "side",
+            caption: {
+              short: "The manual upload UI for an AI-ready background image. A single asset could require up to 90 metadata inputs before it was ready for the system."
             }
           },
 
-          { type: "heading", title: "Strategy" },
+          // ── THE BET ──────────────────────────────────────────────────
+          { type: "heading", title: "The Bet" },
           {
             type: "text",
             content: [
-              "Leadership wanted AI to reduce the manual load. Product and brand teams were hesitant to give up established pipelines. Rather than debating it, I ran stress tests across multiple AI agents to find out what was actually possible, without relying on external metadata or file naming conventions."
+              "We all knew that entering 30 to 90 metadata points for every image was tedious. But this was proprietary Amazon data, and we couldn't use external AI tools to do the work for us. The manual effort was the tradeoff we'd accepted to build a system around knowledge that only Amazon had.",
+              "I wanted to see where that tradeoff was actually necessary. I built a series of small experimental tools to test what AI could infer from images, what it couldn't, and where it was reliable enough to be useful. The results weren't always successful, but they gave me enough evidence to start separating the work AI could take on from the work that still needed a person."
             ]
           },
 
-          { type: "heading", title: "Prioritization" },
+          // ── DESIGN AND BUILD ──────────────────────────────────────────
+          { type: "heading", title: "Design and Build" },
           {
             type: "text",
             content: [
-              "To focus our engineering efforts, I mapped the various component images based on how much manual metadata they required versus how much of the process could be automated. Device images and screens represented the highest impact areas for AI involvement."
+              "To focus engineering efforts, I mapped the various component image types against their metadata requirements and potential for AI automation. This matrix became my framework for deciding where AI could replace manual metadata work, where it couldn't, and where engineering effort was worth investing."
             ]
           },
           {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772411473/metadata-chart_nrud3c.png",
-            caption: { 
-              short: "A matrix prioritizing component images based on metadata requirements and AI generation potential.", 
-              verbose: "By mapping out which components required the most manual metadata versus how easily they could be manipulated by AI, we identified Device Images and UI Screens as the highest-priority areas for automation." 
+            layout: "side",
+            caption: {
+              short: "My framework for prioritizing where AI could replace manual metadata work, and where it couldn't."
             }
           },
-
-          { type: "heading", title: "Feasibility Testing" },
           {
             type: "text",
             content: [
-              "I ran experiments across various AI agents to test automated classification and image manipulation. Not everything worked. A mini-tool I built to blindly classify raw component images failed. However, testing successfully demonstrated that AI can reliably match images to their visual variants from a predefined list."
+              "With the matrix identifying the highest-value opportunities, I tested specific possibilities through small, purpose-built experiments and prototypes. Not everything worked. A mini-tool I built to blindly classify raw component images failed. But another prototype successfully matched component images to predefined visual variants, proving the concept was viable. These weren't abstract explorations — they were concrete, hands-on tools built to make the argument with evidence before asking Engineering to invest in production functionality. This was early 2025, when AI capabilities were significantly less mature than they are now."
             ]
           },
           {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772411602/Screenshot_2026-03-01_at_4.32.55_PM_zlbqvz.png",
-            caption: { 
-              short: "A failed test: an AI mini-tool I built to classify generic component image types blindly.", 
-              verbose: "I prototyped this HTML mini-tool using ChatGPT to see if an LLM could categorize raw images without any filenames or contextual clues. The test failed, which was incredibly useful because it taught us exactly where human input was still mandatory." 
+            layout: "side",
+            caption: {
+              short: "A failed experiment: an AI tool I built to classify raw component images without relying on existing metadata."
             }
           },
           {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772411765/fa9dccd2-7490-4215-b420-35251e6044b7.png",
-            caption: { 
-              short: "Capture of the HTML Visual Variant micro-tool built with ChatGPT that auto-matches visual variants.", 
-              verbose: "Unlike the classification test, this one worked. Given a predefined list of visual variants, the AI could evaluate raw product shots and match them accurately by color and camera angle. The test was small in scope but reliable enough to prove the concept and shift the internal conversation from feasibility debate to implementation planning." 
+            layout: "side",
+            caption: {
+              short: "A small prototype that successfully matched component images to predefined visual variants."
             }
           },
-
-          { type: "heading", title: "Outcomes & Future State" },
           {
             type: "text",
             content: [
-              "By proving the viability of AI inference, I aligned leadership, product, and brand around a unified roadmap. Three core deliverables were greenlit: Visual Variant Attribution, a Devices Screen Mapper, and an AI-First Screen Image Uploader.",
-              "With feasibility proven, I designed a UI that relied on vastly less metadata overall. Too much information at once would overwhelm the user. I designed the experience with progressive disclosure to show the critical metadata first and let them drill into detail only when needed. That is how we scaled it.",
-              "I introduced a 'screen mapper' tool to inform the AI of the screen space coordinates, allowing the system to place screens dynamically."
+              "The experiments established what was technically feasible, and the resulting product direction reduced the metadata users needed to provide manually. Critical metadata is shown first. Deeper metadata is available through progressive disclosure when needed. The user is not overwhelmed by 30–90 fields at once. AI is used where it can reliably infer information, and human input remains where it is still necessary.",
+              "A screen mapper tool was introduced to give the AI the spatial information needed to place screen content correctly on physical devices. Users define the digital boundary on a physical device, and the system translates that into coordinate data for dynamic composition."
             ]
-          },
-          {
-            type: "callout-box",
-            content: "Leadership, Product, and Brand teams unified around a strategic roadmap to launch a sophisticated AI tool designed to aggregate metadata from diverse Amazon-owned sources."
           },
           {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772411818/7e25e02b-1a0c-4458-81f8-e22044a1df9c.png",
-            caption: { 
-              short: "The screen mapper tool interface, allowing users to define the digital boundary on a physical device.", 
-              verbose: "Instead of manually calculating and typing out offset parameters and artboard dimensions, users simply draw a boundary over the physical screen. The tool translates that physical boundary into coordinate data the AI can use for dynamic composition." 
+            layout: "side",
+            caption: {
+              short: "The screen mapper lets users define the digital boundary on a physical device so the system knows where screen content belongs."
             }
           },
           {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772412003/8fc680db-a6b5-4c46-ba00-f12af55faab4.png",
-            caption: { 
-              short: "Early concept on the Admin Tool for uploading screens, showing vastly simplified metadata requirements.", 
-              verbose: "Because the system now infers perspective, glare, and shadows automatically, the manual upload requirements are reduced to a single square image and basic legal expiration dates. The system handles the rest." 
+            layout: "side",
+            caption: {
+              short: "An early concept for the Admin Tool, showing how AI could reduce the amount of metadata users needed to enter manually."
             }
           },
+
+          // ── RESULT ────────────────────────────────────────────────────
+          { type: "heading", title: "Result" },
           {
             type: "text",
             content: [
-              "We successfully placed a Lord of the Rings image screen inside an Echo Show purely through AI composition. We can now take an Echo Show displaying a release in one language and instantly generate the exact same localized image with the correct shadows, angles, and glare."
+              "The feasibility work demonstrated that AI could meaningfully reduce manual metadata work. The experiments provided enough evidence to align Product, Engineering, Data Science, Compliance, and Brand around a unified roadmap. Three capabilities were greenlit: Visual Variant Attribution, Devices Screen Mapper, and AI-First Screen Image Uploader.",
+              "The screen mapper and AI composition work demonstrated that the system can place localized screen content into device imagery with the correct perspective, shadows, angles, and glare. The remaining product work — the final UI for mechanized metadata ingestion — is currently in build."
             ]
           },
           {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772411928/4553de5d-0c9d-41d0-b126-bf3db07e532d.png",
-            caption: { 
-              short: "Successfully placing a The Lord of the Rings screen inside an Echo Show automatically. The alternative was a tedious manual Photoshop edit.", 
-              verbose: "This represents the culmination of the project. By automating the metadata and screen mapping, the platform can now instantly generate accurate, localized, and compliant marketing assets on the fly without a designer opening Photoshop." 
+            layout: "side",
+            caption: {
+              short: "AI-generated placement of a Lord of the Rings screen inside an Echo Show. The same process can localize the screen content while preserving perspective, shadows, angles, and glare."
             }
           }
         ]
@@ -599,8 +597,8 @@ export const PORTFOLIO_DATA = {
       },
       {
         type: "image-full",
-        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1785165384/comparisong-horizontal_hicf1p.png",
-        noLightbox: true,
+        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1785165421/comparisong-vertical_ww0kcw.png",
+        layout: "side",
         caption: {
           short: "Gradient backgrounds were much easier to scale, but lifestyle backgrounds converted about 40% better.",
           verbose: ""
@@ -609,10 +607,10 @@ export const PORTFOLIO_DATA = {
       },
       {
         type: "image-full",
-        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772667460/1273f947-b73f-4af2-b036-dee49ef913f0.png",
-        noLightbox: true,
-        caption: {
-          short: "Built for furniture, the Amazon Home genAI tool couldn’t quite fit the scale, perspective, or setting of Amazon Devices.",
+                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772667460/1273f947-b73f-4af2-b036-dee49ef913f0.png",
+                layout: "side",
+                caption: {
+          short: "Built for furniture, the Amazon Home genAI tool couldn't quite fit the scale, perspective, or setting of Amazon Devices.",
           verbose: ""
         },
         deepDive: "We put an Echo Pop into a room scene, but the results were off: the perspective was wrong, the device looked flat, and the shadows didn't match. The model simply didn't understand Amazon devices. Our proprietary device data, including camera angles, surface materials, shadow behavior, and screen reflections for each device family, only exists inside Amazon. No external tool could be trained on that data at the scale we needed, so we had to build the model in-house from scratch."
@@ -629,7 +627,7 @@ export const PORTFOLIO_DATA = {
       {
         type: "image-full",
         src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1773290008/layers-metadata_sfcohu.png",
-        noLightbox: true,
+        layout: "side",
         caption: {
           short: "Represenation on how every assembled image layer carries structured metadata",
           verbose: ""
@@ -648,12 +646,14 @@ export const PORTFOLIO_DATA = {
               {
                 kind: "image",
                 src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772664107/techinical_doc_jrqkte.png",
+                layout: "side",
                 caption: { short: "Camera angles, shadow behavior, and copy space by device family.", verbose: "" },
                 deepDive: "Before anything could be generated, the model needed rules. How a TV sits in a living room is not the same as how a smart speaker sits on a kitchen counter. Also, camera angles are brand-mandated per device family — Blink vs Ring have their own set of rules, for example. Taking account of basic physics, shadows and reflections depend on surface material. Copy space has to be preserved. We worked with Brand Studio and engineering to write them down and turn them into training data."
               },
               {
                 kind: "image",
                 src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772663942/Echo_show_-_nightstand_udihhr.png",
+                layout: "side",
                 caption: { short: "Echo Show in a defined scene. The copy space illustrates placement options.", verbose: "" }
               }
             ]
@@ -676,6 +676,7 @@ export const PORTFOLIO_DATA = {
               {
                 kind: "image",
                 src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772670917/rejection_reasons_cyhn9l.png",
+                layout: "side-lightbox",
                 caption: { short: "Structured rejection reasons turned Creative Director judgment into training signal.", verbose: "" },
                 deepDive: "Working with Data Science, we had to define what a rejection meant before we could build the form to capture it. Bad shadow, incorrect perspective, wrong environment, device unrecognizable, lighting mismatch, etc. Those categories came out of sessions mapping what went wrong in early outputs. The copy was harder than the categories. We were asking Creative Directors to tag images they were already skipping. I went through several versions and landed in something similar to this image."
               }
@@ -702,12 +703,14 @@ export const PORTFOLIO_DATA = {
               {
                 kind: "image",
                 src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772671746/565c0c1b-f554-49f5-a4ce-ef5739234bf8.png",
+                layout: "side-lightbox",
                 caption: { short: "Early exploration: color-coded status toggles. Confusing for reviewers and not Meridian compliant.", verbose: "" },
                 deepDive: "A few explorations where I went wide and unconventional to design a flow that seemed useful for science and non-intrusive for design directors. The early color-coded status toggles made rejection states ambiguous. Reviewers couldn't tell at a glance whether something was approved, rejected, or pending. The colors also violated Meridian compliance requirements, which meant the component couldn't ship inside Amazon's design system."
               },
               {
                 kind: "image",
                 src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772670918/confusing_kxavxq.png",
+                layout: "side-lightbox",
                 caption: { short: "Revised: labelled rejection reasons without color dependency.", verbose: "" },
                 deepDive: "I shifted to explicit labels and reason-based feedback. The revised design removed color dependency entirely — every state was communicated through text labels, making it accessible and Meridian-compliant. This also solved a deeper UX problem: Creative Directors could now see exactly why something was rejected without having to decode a color system."
               }

@@ -5,6 +5,8 @@ export const ASSETS = {
   jetSansItalic: "",
   mainLogo: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772603437/bruno_logo_nq6mx6.png",
   aboutPhoto: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772741533/fe3891d1-b923-41e7-a33d-1083059bd15d.png",
+  aboutPhoto2: "https://res.cloudinary.com/diy08lj9x/image/upload/v1785254720/FB_IMG_1640948771944_cgbivr.jpg",
+  aboutPhoto3: "https://res.cloudinary.com/diy08lj9x/image/upload/v1785254682/PXL_20260715_175007964.PORTRAIT_da0h40.jpg",
   testImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1763877541/cld-sample-4.jpg"
 };
 

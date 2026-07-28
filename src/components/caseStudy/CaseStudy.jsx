@@ -248,45 +248,101 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         const globalIndex = allMediaItems.findIndex((item) => item.src === block.src);
         const imageCaption =
           typeof block.caption === "object" && block.caption !== null ? block.caption.short : block.caption;
+        const layout = block.layout || (block.noLightbox ? "full" : "lightbox");
+        const isSide = layout === "side";
+        const isSideLightbox = layout === "side-lightbox";
+        const isFull = layout === "full";
+        const isLightbox = layout === "lightbox";
 
+        // Shared side-layout image component
+        const renderSideImage = (clickable, globalIdx) => {
+          const imgEl = (
+            <div className="bg-white border border-neutral-200 rounded-sm p-2 shadow-sm">
+              <img
+                src={block.src}
+                alt={imageCaption}
+                className="w-full h-auto"
+              />
+            </div>
+          );
+          if (clickable && globalIdx !== -1) {
+            return (
+              <button
+                type="button"
+                onClick={() => setLightbox({ open: true, index: globalIdx })}
+                className="w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-green)] rounded-sm"
+                aria-label="Expand image"
+              >
+                {imgEl}
+              </button>
+            );
+          }
+          return imgEl;
+        };
+
+        const renderSideLayout = (clickable) => (
+          <div key={index} className="mb-10 px-6 md:px-0">
+            <div className="flex flex-col md:flex-row md:gap-14 md:items-center">
+              <div className="md:w-[62%] md:shrink-0">
+                {renderSideImage(clickable, globalIndex)}
+              </div>
+              {imageCaption && (
+                <div className="mt-3 md:mt-0 md:w-[38%] md:pt-1">
+                  <Caption>{imageCaption}</Caption>
+                </div>
+              )}
+            </div>
+          </div>
+        );
+
+        // SIDE LAYOUT — no lightbox
+        if (isSide) return renderSideLayout(false);
+
+        // SIDE + LIGHTBOX LAYOUT
+        if (isSideLightbox) return renderSideLayout(true);
+
+        // FULL LAYOUT — full width, no lightbox, no zoom
+        if (isFull) {
+          return (
+            <div key={index} className="mb-10 px-6 md:px-0">
+              <div className="relative w-full bg-white border border-neutral-200 rounded-sm p-2 shadow-sm">
+                <img
+                  src={block.src}
+                  alt={imageCaption}
+                  className="w-full h-auto"
+                />
+              </div>
+              {imageCaption && <Caption>{imageCaption}</Caption>}
+            </div>
+          );
+        }
+
+        // LIGHTBOX LAYOUT (default) — full width, clickable lightbox, zoom hover
         return (
           <div key={index} className="mb-10 px-6 md:px-0">
-            {block.noLightbox ? (
-              <div className="relative w-full bg-white border border-neutral-200 rounded-sm p-2 shadow-sm">
+            <button
+              type="button"
+              onClick={() => {
+                if (globalIndex !== -1) setLightbox({ open: true, index: globalIndex });
+              }}
+              className="group relative w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-green)] rounded-xl"
+              aria-label="Expand image"
+            >
+              <div className="relative w-full bg-white border border-neutral-200 rounded-sm transition-all duration-300 ease-out p-2 shadow-sm group-hover:shadow-md group-hover:border-neutral-300">
                 <div className="relative rounded-sm overflow-hidden w-full">
                   <img
                     src={block.src}
                     alt={imageCaption}
-                    className="w-full h-auto object-cover"
+                    className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-[1.01]"
                   />
-                </div>
-              </div>
-            ) : (
-              <button
-                type="button"
-                onClick={() => {
-                  if (globalIndex !== -1) setLightbox({ open: true, index: globalIndex });
-                }}
-                className="group relative w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-green)] rounded-xl"
-                aria-label="Expand image"
-              >
-                <div className="relative w-full bg-white border border-neutral-200 rounded-sm transition-all duration-300 ease-out p-2 shadow-sm group-hover:shadow-md group-hover:border-neutral-300">
-                  <div className="relative rounded-sm overflow-hidden w-full">
-                    <img
-                      src={block.src}
-                      alt={imageCaption}
-                      className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-[1.01]"
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                      <div className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center text-[var(--deep-purple)] shadow-lg opacity-0 translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 group-hover:bg-[var(--neon-green)] group-hover:border-[var(--neon-green)] transition-all duration-300 transform scale-90 group-hover:scale-100">
-                        <Maximize2 size={20} aria-hidden="true" />
-                      </div>
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center text-[var(--deep-purple)] shadow-lg opacity-0 translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 group-hover:bg-[var(--neon-green)] group-hover:border-[var(--neon-green)] transition-all duration-300 transform scale-90 group-hover:scale-100">
+                      <Maximize2 size={20} aria-hidden="true" />
                     </div>
                   </div>
                 </div>
-              </button>
-            )}
-
+              </div>
+            </button>
             {imageCaption && <Caption>{imageCaption}</Caption>}
           </div>
         );
@@ -437,6 +493,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                         aspectRatio: visual.aspectRatio,
                         isPresentation: visual.isPresentation || false,
                         noLightbox: visual.noLightbox || false,
+                        layout: visual.layout || null,
                       };
                     })
                   : [];
@@ -448,7 +505,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                   >
                     {hasContent && (
                       <div className="mt-1 flex items-center justify-center w-6 h-6 rounded-sm bg-[var(--green-process)] shrink-0">
-                        <ArrowRight size={14} strokeWidth={3} className="text-[#231F45]" />
+                        <ArrowRight size={14} strokeWidth={3} className="text-black" />
                       </div>
                     )}
 
@@ -457,17 +514,44 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
 
                       {mediaItems.length > 0 && (
                         <div className="mt-8 md:mt-12 w-full">
-                          <div
-                            className={
-                              mediaItems.some(item => item.isPresentation) || mediaItems.length === 1
-                                ? "flex flex-col gap-8 w-full"
-                                : "grid grid-cols-1 sm:grid-cols-2 gap-4"
-                            }
-                          >
+                          <div className="flex flex-col gap-8 w-full">
                             {mediaItems.map((mediaItem, vi) => {
                               const globalIndex = allMediaItems.findIndex(
                                 (it) => it.src === mediaItem.src
                               );
+
+                              // Side layout for list visuals
+                              if (mediaItem.type === "image" && (mediaItem.layout === "side" || mediaItem.layout === "side-lightbox")) {
+                                const isClickable = mediaItem.layout === "side-lightbox" && globalIndex !== -1;
+                                const imgEl = (
+                                  <div className="bg-white border border-neutral-200 rounded-sm p-2 shadow-sm">
+                                    <img src={mediaItem.src} alt={mediaItem.title} className="w-full h-auto" />
+                                  </div>
+                                );
+                                return (
+                                  <div key={vi}>
+                                    <div className="flex flex-col md:flex-row md:gap-14 md:items-center">
+                                      <div className="md:w-[62%] md:shrink-0">
+                                        {isClickable ? (
+                                          <button
+                                            type="button"
+                                            onClick={() => setLightbox({ open: true, index: globalIndex })}
+                                            className="w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-green)] rounded-sm"
+                                            aria-label="Expand image"
+                                          >
+                                            {imgEl}
+                                          </button>
+                                        ) : imgEl}
+                                      </div>
+                                      {mediaItem.captionShort && (
+                                        <div className="mt-3 md:mt-0 md:w-[38%] md:pt-1">
+                                          <Caption>{mediaItem.captionShort}</Caption>
+                                        </div>
+                                      )}
+                                    </div>
+                                  </div>
+                                );
+                              }
 
                               return (
                                 <div key={vi}>
@@ -582,7 +666,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                 />
               </div>
               <div className="mb-6">
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif leading-[1.1] tracking-tight text-[#231F45] max-w-4xl mb-6">
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif leading-[1.1] tracking-tight text-black max-w-4xl mb-6">
                   {project.title}
                 </h1>
                 <p className="text-lg md:text-xl text-warm-400 font-light leading-relaxed max-w-2xl font-sans">
@@ -593,7 +677,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                     {project.blocks.filter(b => b.type === "impact-box").slice(0, 1).map((ib, i) =>
                       ib.metrics.map((m, j) => (
                         <div key={`${i}-${j}`} className="flex items-baseline gap-3">
-                          <span className="text-3xl md:text-4xl font-serif text-[#231F45] tabular-nums">{m.value}</span>
+                          <span className="text-3xl md:text-4xl font-serif text-black tabular-nums">{m.value}</span>
                           <span className="text-sm text-warm-500 leading-snug max-w-[140px] font-sans">{m.label}</span>
                         </div>
                       ))

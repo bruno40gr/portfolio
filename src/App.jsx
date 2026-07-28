@@ -564,10 +564,19 @@ export default function App() {
           <Route path="/about" element={
             <div className="pt-40 px-6 md:px-12 lg:px-16 max-w-none mx-auto min-h-screen bg-white animate-fade-in text-left font-sans">
               <div className="max-w-4xl mx-auto mb-20 text-left">
-                <div className="w-full max-w-md mx-auto mb-12 text-center">
-                  <div className="aspect-[3/4] bg-neutral-100 border border-neutral-200 overflow-hidden relative rounded-sm p-4 shadow-sm">
-                    <div className="w-full h-full relative overflow-hidden bg-white shadow-sm">
-                      <img src={ASSETS.aboutPhoto} alt="Bruno Wong Marchena" className="w-full h-full object-cover" />
+                <div className="w-full max-w-md mx-auto mb-12">
+                  <div className="relative flex justify-center items-start">
+                    {/* Left photo — vintage shot, slightly offset */}
+                    <div className="relative z-10 w-[52%] -mr-6 mt-8">
+                      <div className="bg-white border border-neutral-200 rounded-sm p-1.5 shadow-sm">
+                        <img src={ASSETS.aboutPhoto2} alt="Bruno" className="w-full h-auto" />
+                      </div>
+                    </div>
+                    {/* Right photo — recent portrait, dominant */}
+                    <div className="relative z-20 w-[60%]">
+                      <div className="bg-white border border-neutral-200 rounded-sm p-1.5 shadow-sm">
+                        <img src={ASSETS.aboutPhoto3} alt="Bruno" className="w-full h-auto" />
+                      </div>
                     </div>
                   </div>
                 </div>
