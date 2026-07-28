@@ -70,18 +70,15 @@ export const PORTFOLIO_DATA = {
         collaborators: "PM, 6 Engineers, Brand Studio",
         type: "INTERNAL",
         blocks: [
-          { type: "heading", title: "The Product", hasDivider: false },
+
+          // ── THE PROBLEM ──────────────────────────────────────────────
+          { type: "heading", title: "The Problem", hasDivider: false },
           {
             type: "text",
             content: [
-              "A production system with a visual editor surface that lets merchandisers, content writers, and marketing ops build, localize, and export marketing assets across 23 global market and language combinations. Teams select a template, configure their markets and languages, and the system handles layout, copy generation, translation, and compliance. The logic under the hood is substantial. The surface is designed to hide it."
-            ]
-          },
-          { type: "heading", title: "Who Is This For" },
-          {
-            type: "text",
-            content: [
-              "Marketing operatives who build campaigns for their regions, mainly North America and EMEA, which covers European and Asian markets. Also product line strategists who manage pricing, deals, and promotions, and copywriters who handle messaging. The tool is also gradually reducing the need for regional translators who were previously contracted to handle culturally appropriate copy for each marketplace and language. About 600 users in total. None of them are designers."
+              "Image Builder was built for about 600 people across marketing, merchandising, product line strategy, and content. None of them were designers.",
+              "Before this, producing a campaign image meant moving work through designers, copywriters, translators, and marketing operations. At Amazon's scale, every new market and language multiplied the work.",
+              "The goal was to let a merchandiser select a template, configure their markets, and produce a campaign without opening Photoshop or relying on someone else to finish it. The system also had to prevent the mistakes that came with giving non-designers more control: an unavailable device in the wrong market, incorrect pricing, a translation that violated regional requirements, or a product that hadn't launched yet."
             ]
           },
           {
@@ -93,6 +90,26 @@ export const PORTFOLIO_DATA = {
             },
             coverImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772062490/Screenshot_2026-02-25_at_3.34.36_PM_dwqrvv.png",
             aspectRatio: "4/3"
+          },
+
+          // ── THE SYSTEM ────────────────────────────────────────────────
+          { type: "heading", title: "The System" },
+          {
+            type: "text",
+            content: [
+              "Image Builder turned a multi-step production workflow into a single controlled surface.",
+              "Users selected a template, configured their markets and languages, and assembled their campaign. The system handled dimensions, copy generation, translation, and compliance behind the scenes.",
+              "The interface deliberately hid most of that complexity. Users didn't need to understand the rules. They needed to make the right decisions and know when something was wrong."
+            ]
+          },
+          {
+            type: "image-full",
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1773289976/layers-nometadata_nloelx.png",
+            noLightbox: true,
+            caption: {
+              short: "Image Builder assembles a campaign from discrete layers: device, background, and copy. Each layer carries structured data that the system uses to handle dimensions, localization, and compliance.",
+              verbose: "This diagram shows the layered composition model at the core of Image Builder. A marketing operative selects a background gradient from a pre-organized folder, places a device PNG, and adds copy. The platform enforces brand rules: correct dimensions per format, character limits per market, compliant layouts. Non-designers can assemble market-ready campaign images without touching the underlying composition logic. Text generation and auto-translation are built into the same flow."
+            }
           },
           {
             type: "image-full",
@@ -116,114 +133,77 @@ export const PORTFOLIO_DATA = {
             }
           },
 
+          // ── DESIGN AND BUILD ──────────────────────────────────────────
+          { type: "heading", title: "Design and Build" },
+          {
+            type: "text",
+            content: [
+              "The first constraint was the audience. These weren't designers, so the interface couldn't behave like a stripped-down version of Photoshop. I kept layouts fixed and rules-based, automated copy and translation, and made the editing surface deliberately opinionated.",
+              "The harder problem was scale. A campaign could span 23 markets, multiple languages, device families, and formats. I went through multiple rounds of layout and navigation exploration to find a structure that stayed understandable as those combinations multiplied.",
+              "The guardrails took as much design work as the interface itself. I worked with Brand Studio and product line leads to map the ways a campaign could go wrong: a device that wasn't available in a market, a pricing conflict, a regional copy violation, or an unreleased product appearing where it shouldn't.",
+              "Those rules became part of the product rather than something users had to remember. The system checked the work before export and surfaced problems while they could still be fixed.",
+              "The project also resulted in three new components contributed to Meridian, Amazon's internal design system: an interactive editing canvas, a multi-select locale filter, and a warning input state."
+            ]
+          },
           {
             type: "image-full",
-            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1773289976/layers-nometadata_nloelx.png",
+            layout: "side",
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1771907702/layout_iterations_bwvimg.jpg",
+            caption: { short: "Layout exploration for handling multi-market configuration without overwhelming the user.", verbose: "" }
+          },
+          {
+            type: "image-full",
+            layout: "side",
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1771893728/image_builder_contraintst_d4ha0z.jpg",
+            caption: { short: "Automated checks for regional compatibility and visual specifications.", verbose: "" }
+          },
+          {
+            type: "image-full",
+            layout: "side",
             noLightbox: true,
-            caption: {
-              short: "How Image Builder assembles a campaign image: device PNG, gradient background, and copy stack as discrete layers. Each layer is uploaded manually and organized in folders by product line and format. The tool handles dimensions, text generation, and auto-translation. No design software required.",
-              verbose: "This diagram shows the layered composition model at the core of Image Builder. A marketing operative selects a background gradient from a pre-organized folder, places a device PNG, and adds copy. The platform enforces brand rules: correct dimensions per format, character limits per market, compliant layouts. Non-designers can assemble market-ready campaign images without touching the underlying composition logic. Text generation and auto-translation are built into the same flow."
-            }
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772130218/pg1_a1macp.png",
+            caption: { short: "Interactive editing canvas component submitted to Meridian.", verbose: "" }
+          },
+          {
+            type: "image-full",
+            layout: "side",
+            noLightbox: true,
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772132465/pg1_uhrgx3.png",
+            caption: { short: "Multi-select locale filter component submitted to Meridian.", verbose: "" }
+          },
+          {
+            type: "image-full",
+            layout: "side",
+            noLightbox: true,
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772132455/pg3_ygvgls.png",
+            caption: { short: "Warning input state component submitted to Meridian.", verbose: "" }
           },
 
-          { type: "heading", title: "Design Decisions" },
+          // ── LAUNCH AND ITERATION ──────────────────────────────────────
+          { type: "heading", title: "Launch and Iteration" },
           {
             type: "text",
             content: [
-  "The tool needed to work for people who had never opened a design application, and that single constraint shaped every call I made. I kept layouts fixed and rules-based, made copy generation and translation automatic, and built an editing surface that was deliberately opinionated. Giving non-designers too many choices is just a slower way to get to brand violations.",
-  "The guardrails took as much of my time as the interface itself. I worked closely with brand leaders and product line leads to map every way the system could produce a wrong output: a pricing inconsistency, a device that hadn't launched in a market, a text string that violated regional compliance. Publishing at Amazon's scale means a wrong image in the wrong market carries real legal consequences, so I made it structurally impossible to export something broken without the system flagging it first. Trustworthy enough for non-designers meant the tool had to do the judgment work, not the user."
-]
-          },
-
-          { type: "heading", title: "Process" },
-          {
-            type: "list",
-            items: [
-              {
-                content: `<b>Discovery</b><p class="mt-2">We ran fast, lean usability sessions with global merchandisers to watch them work through their current production workflow. Seeing where the process broke down and where errors crept in shaped the core priorities of the tool.</p>`,
-                visuals: [
-                  {
-                    kind: "embed",
-                    src: "https://player.cloudinary.com/embed/?cloud_name=diy08lj9x&public_id=JAS_-_Metadata_Photoshop_1_mstvm3",
-                    caption: { short: "Research session observing how brand designers manually built image assets.", verbose: "" }
-                  }
-                ]
-              },
-              {
-                content: `<b>Iteration</b><p class="mt-2">Designing for 23 market and language combinations meant handling a lot of configuration options at once. I went through many rounds of iteration on the layout and navigation until landing on a structure that stayed clear even when users selected multiple markets and dimensions simultaneously.</p>`,
-                visuals: [
-                  {
-                    kind: "image",
-                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1771907702/layout_iterations_bwvimg.jpg",
-                    caption: { short: "Layout iteration process for handling multi-market configuration.", verbose: "" }
-                  }
-                ]
-              },
-              {
-                content: `<b>Guardrails</b><p class="mt-2">Publishing images globally carries real stakes: unreleased device leaks, regional legal conflicts, brand violations. The system validates designs before export, filtering for marketplace-compatible devices, checking text limits in real time, and flagging conflicts before they reach a reviewer.</p>`,
-                visuals: [
-                  {
-                    kind: "image",
-                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1771893728/image_builder_contraintst_d4ha0z.jpg",
-                    caption: { short: "Automated guardrails for regional compatibility and visual spec validation.", verbose: "" }
-                  }
-                ]
-              },
-              {
-                content: `<b>Design System Contribution</b><p class="mt-2">Meridian is Amazon's internal design system. Image Builder needed UI components that didn't exist in the library. I designed an interactive editing canvas, a multi-select locale filter, and a warning input state, got all three approved, and contributed them to the global system.</p>`,
-                visuals: [
-                  {
-                    kind: "image",
-                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772130218/pg1_a1macp.png",
-                    caption: { short: "Interactive editing canvas component submitted to Meridian.", verbose: "" },
-                    noLightbox: true
-                  },
-                  {
-                    kind: "image",
-                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772132465/pg1_uhrgx3.png",
-                    caption: { short: "Multi-select locale filter component submitted to Meridian.", verbose: "" },
-                    noLightbox: true
-                  },
-                  {
-                    kind: "image",
-                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772132455/pg3_ygvgls.png",
-                    caption: { short: "Warning input state component submitted to Meridian.", verbose: "" },
-                    noLightbox: true
-                  },
-                ]
-              }
+              "We launched in March 2025 with two banner formats. The narrow scope helped us ship, but it also exposed problems we hadn't fully anticipated.",
+              "The two formats required very different data inputs, and we hadn't accounted for all of that friction until users were working with them in production. We also made the deliberate decision to ship without drag-and-drop canvas support to hit the deadline. Users were locked into fixed layouts, which made the first version more frustrating than it needed to be.",
+              "Those tradeoffs had a cost. By Prime Day, drag-and-drop was live and the tool had reached full adoption across all supported formats."
             ]
           },
 
-          { type: "heading", title: "Launch" },
+          // ── RESULT ────────────────────────────────────────────────────
+          { type: "heading", title: "Result" },
           {
-            type: "text",
-            content: [
-              "The tool launched in March 2025 covering two specific banner formats. Scoping that tightly was the right call to ship fast, but those two formats required very different data inputs and we didn't fully account for that friction until users hit it in production. We also made the deliberate call to ship without drag-and-drop canvas support to hit the deadline. Users were locked to fixed layouts, which created real frustration and slowed early adoption more than we expected. These were conscious tradeoffs, not oversights, but they had a cost.",
-              "By Prime Day 2025 drag-and-drop was live and the tool had reached full adoption across all supported formats."
+            type: "impact-box",
+            metrics: [
+              { value: "~8,000", label: "Images generated for Prime Day 2025" },
+              { value: "~48,000 hours", label: "Estimated production work replaced for one event" },
+              { value: "45–50 FTE", label: "Estimated operational capacity freed in 2025" }
+            ],
+            description: [
+              "For Prime Day 2025 alone, the system generated about 8,000 images that would have required an estimated 48,000 hours across Photoshop, 3D, design, marketing, content, and localization workflows.",
+              "The system met its efficiency target and secured continued funding for the broader Amazon Devices Asset System platform."
             ]
-          },
-
-          { type: "heading", title: "Impact" },
-          
-  {type: "impact-box",
-  metrics: [
-    { value: "~8,000", label: "Images generated for Prime Day 2025" },
-    { value: "~48,000", label: "Hours of production work freed for one event" }
-  ],
-  description: [
-    "For Prime Day 2025 alone, the system generated approx 8,000 lifestyle images that would have required an estimated 48,000 hours across Photoshop, 3D, and localization workflows."
-  ]
-},
-{
-  type: "impact-box",
-  metrics: [
-    { value: "45–50 FTE", label: "Operational capacity freed in 2025. Estimated in partnership with finance and people teams." }
-  ],
-  description: [
-    "Based on ~100,000 hours across design, marketing, content, and localization teams. Estimated in partnership with finance and people teams."
-  ]
-},
+          }
 
         ]
       }
