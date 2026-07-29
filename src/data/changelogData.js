@@ -1,5 +1,16 @@
 export const CHANGELOG_DATA = [
   {
+    week: "Week of Jul 29, 2026",
+    title: "Editorial Case Study Overhaul",
+    items: [
+      { day: "Jul 29", text: "**Image Builder Editorial Hero:** Converted Image Builder from animated hero to editorial layout with a scroll-driven crossfade carousel. Four campaign variants crossfade as the user scrolls, with per-slide background colors, dark/light text treatment, and a persistent caption. One-way scroll clamping prevents slides from reversing." },
+      { day: "Jul 29", text: "**Side Image Layouts:** Introduced `layout: 'side'` and `layout: 'side-lightbox'` props for `image-full` blocks. Images display at 62% width alongside captions on the right, vertically centered. Added side layout support to list visuals. Applied across Image Builder, AI Compositor, and Asset Manager case studies." },
+      { day: "Jul 29", text: "**About Page Photo Collage:** Replaced single about photo with a two-image overlapping collage with white borders matching the editorial image treatment." },
+      { day: "Jul 29", text: "**Typography Refinements:** Changed deep purple `#231F45` to black for editorial case study titles and impact metrics. Reduced serif numeric kerning. Tightened impact summary spacing in editorial headers." },
+      { day: "Jul 29", text: "**List Layout Simplification:** Removed two-column grid from list visuals. All list images now stack vertically in a single column." },
+    ]
+  },
+  {
     week: "Week of Mar 9, 2026",
     title: "Routing & URL Architecture",
     items: [
