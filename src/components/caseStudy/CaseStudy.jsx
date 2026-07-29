@@ -670,24 +670,12 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                 />
               </div>
               <div className="mb-6">
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif leading-[1.1] tracking-tight text-black max-w-4xl mb-6">
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif leading-[1.1] tracking-tight text-black max-w-4xl mb-6">
                   {project.title}
                 </h1>
-                <p className="text-lg md:text-xl text-warm-400 font-light leading-relaxed max-w-2xl font-sans">
+                <p className="text-xl md:text-xl text-warm-400 font-light leading-relaxed max-w-2xl font-sans">
                   {project.impactSummarySentence || project.impactSummary}
                 </p>
-                {project.blocks && project.blocks.filter(b => b.type === "impact-box").length > 0 && (
-                  <div className="flex flex-wrap gap-x-8 gap-y-2 mt-10 max-w-none">
-                    {project.blocks.filter(b => b.type === "impact-box").slice(0, 1).map((ib, i) =>
-                      ib.metrics.map((m, j) => (
-                        <div key={`${i}-${j}`} className="flex items-baseline gap-2">
-                          <span className="text-3xl md:text-4xl font-serif text-black tabular-nums tracking-[-0.03em]">{m.value}</span>
-                          <span className="text-sm text-warm-500 leading-snug max-w-[140px] font-sans">{m.label}</span>
-                        </div>
-                      ))
-                    )}
-                  </div>
-                )}
               </div>
             </div>
           </div>
@@ -809,6 +797,24 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                 alt={project.title}
                 className="w-full h-auto"
               />
+            </div>
+          )}
+
+          {/* Impact metrics — below hero, above metadata */}
+          {isEditorial && project.blocks && project.blocks.filter(b => b.type === "impact-box").length > 0 && (
+            <div className="w-full border-b border-neutral-200 bg-white">
+              <div className="px-6 md:px-12 lg:px-20 py-8 md:py-10 max-w-[1800px] mx-auto">
+                <div className="flex flex-wrap gap-x-8 gap-y-2 max-w-none">
+                  {project.blocks.filter(b => b.type === "impact-box").slice(0, 1).map((ib, i) =>
+                    ib.metrics.map((m, j) => (
+                      <div key={`${i}-${j}`} className="flex items-baseline gap-2">
+                        <span className="text-3xl md:text-4xl font-serif text-black tabular-nums tracking-[-0.03em]">{m.value}</span>
+                        <span className="text-sm text-warm-500 leading-snug max-w-[140px] font-sans">{m.label}</span>
+                      </div>
+                    ))
+                  )}
+                </div>
+              </div>
             </div>
           )}
 

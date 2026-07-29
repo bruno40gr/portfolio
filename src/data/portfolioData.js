@@ -49,8 +49,8 @@ export const PORTFOLIO_DATA = {
       impactSummary: "An internal tool that automates the creation of localized marketing images across 23 global marketplaces.",
       impactSummarySentence: "A production system that lets non-designers build, localize, and export marketing assets across 23 global market and language combinations, with compliance logic built in.",
       designerNote: "The goal was to make a complex system usable by non-designers while keeping everything brand compliant and technically safe. Beyond the familiar image-editing layout, the rules and parameters stayed out of sight. For Prime Day 2025 alone, the system produced about 8,000 images and removed the equivalent workload of roughly 45 designers, content writers, and marketing ops specialists who previously handled production tasks. It met the organization’s efficiency target and secured continued funding for the Asset System platform.",
-      thumbnail: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=80",
-      thumbnailPadding: "p-8",
+      thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772042482/mobile-echoshow-_0003_USEN_zpplaz.png",
+      thumbnailPadding: "p-12",
       status: "LAUNCHED",
       type: "INTERNAL",
       blocks: [
