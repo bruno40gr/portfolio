@@ -11,11 +11,45 @@ export const CHANGELOG_DATA = [
     ]
   },
   {
+    week: "Week of Jul 22, 2026",
+    title: "Content & Editorial Polish",
+    items: [
+      { day: "Jul 27", text: "**Editorial Case Study Infrastructure:** Converted AI Lifestyle Compositor and Devices Component Asset Manager from static layouts to the new editorial case study format, with header/title/hero/metadata architecture reused across all four Amazon Devices case studies." },
+      { day: "Jul 25", text: "**AI Lifestyle Compositor Optimization:** Refined the AI Lifestyle Compositor case study copy and visuals. Audited and fixed broken image placeholders." },
+      { day: "Jul 24", text: "**Meridian Component Images:** Added Meridian design system component screenshots to the Image Builder case study." },
+      { day: "Jul 22", text: "**About Page Updates:** Replaced the umbrella-section hero with an improved about hero layout. Updated bio copy across the about page." },
+    ]
+  },
+  {
+    week: "Week of May 14, 2026",
+    title: "Inspire Tab & Homepage Polish",
+    items: [
+      { day: "May 18", text: "**Layout Reshuffling:** Reorganized component structure and spacing across case study pages." },
+      { day: "May 14", text: "**Inspire Tab:** Integrated the Inspire Tab case study with interactive prototype and revised copy." },
+      { day: "May 14", text: "**Homepage & Copy Updates:** Switched homepage layout structure. Tightened copy across multiple case studies for brevity. Fixed paragraph formatting issues." },
+    ]
+  },
+  {
+    week: "Week of Apr 20, 2026",
+    title: "Hero & Navigation Refinements",
+    items: [
+      { day: "Apr 20", text: "**Hero Polish:** Refined hero logo sizing and alignment across breakpoints. Removed CTA elements from the hero section for a cleaner editorial feel." },
+    ]
+  },
+  {
+    week: "Week of Apr 5, 2026",
+    title: "SEO, Metrics & Presentation",
+    items: [
+      { day: "Apr 8", text: "**Narrative & Progressive Disclosure:** Updated case study copy to emphasize progressive disclosure as a core design strategy. Troubleshot Google indexing for the portfolio site." },
+      { day: "Apr 6", text: "**Metrics Fix:** Corrected impact metric formatting across case studies." },
+      { day: "Apr 5", text: "**Presentation & Meta:** Updated presentation component and `metadescription` tags for SEO." },
+    ]
+  },
+  {
     week: "Week of Mar 9, 2026",
     title: "Routing & URL Architecture",
     items: [
-      { day: "May 14", text: "**Content Fixes:** Fixed syntax errors and typos in portfolioData.js, specifically addressing missing content and broken blocks in the Amazon Image Builder and Inspire Tab case studies." },
-      { day: "Apr 8", text: "**Case Study Narrative Updates:** Added explicit context to the Patreon Pledge Streak case study detailing the business and user problems it solved using a new Callout Box format. Updated the Amazon Metadata Studio case study to explicitly highlight 'progressive disclosure' as the core design strategy for managing cognitive load." },
+      { day: "Mar 12", text: "**Dropdown Polish:** Refined work dropdown sizing and layout." },
       { day: "Mar 11", text: "**Case Study & Visual Enhancements:** Upgraded case studies with new infographics and layout improvements. Standardized the nomenclature for Pillar 4 across the portfolio to 'AI Lifestyle Compositor' and resolved a broken component mapping in the `SystemContextBanner` modal." },
       { day: "Mar 10", text: "**UI Polish:** Fine-tuned visual assets by fixing glitches, adjusting glitch effect variance, and smoothing out jagged borders across UI elements." },
       { day: "Mar 10", text: "**Client-Side Routing:** Migrated the app from a state-based single-page architecture to real URL routing using `react-router-dom`. Each section and case study now has its own dedicated URL, enabling standard browser back-button functionality and direct deep-linking." },
