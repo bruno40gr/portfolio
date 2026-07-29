@@ -63,8 +63,16 @@ export const PORTFOLIO_DATA = {
         }
       ],
       details: {
-        hero: { type: 'animated' },
-        heroImage: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=80",
+        hero: {
+          type: 'editorial',
+          heroSlides: [
+            { src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772042482/mobile-echoshow-_0003_USEN_zpplaz.png", colors: ["#2a2850", "#231f44"], market: "US, English", theme: "dark" },
+            { src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772042482/mobile-echoshow-_0000_CAFR_lvfrh1.png", colors: ["#5c3566", "#4a2a55"], market: "Canada, French", theme: "dark" },
+            { src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772042482/mobile-echoshow-_0001_BRPOR_zajgs8.png", colors: ["#edeaf6", "#ddd8f0"], market: "Brazil, Portuguese", theme: "light" },
+            { src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772042483/mobile-echoshow-_0002_USES_yj4oji.png", colors: ["#1e3d6e", "#162d55"], market: "US, Spanish", theme: "dark" },
+          ],
+        },
+        heroImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772042482/mobile-echoshow-_0003_USEN_zpplaz.png",
         role: "Lead UX Designer",
         timeline: "September 2024 to February 2025",
         collaborators: "PM, 6 Engineers, Brand Studio",

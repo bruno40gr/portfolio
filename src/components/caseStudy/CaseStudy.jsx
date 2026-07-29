@@ -31,6 +31,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
   const heroRef = useRef(null);
   const [lightbox, setLightbox] = useState({ open: false, index: 0 });
   const [heroScrollProgress, setHeroScrollProgress] = useState(0);
+  const maxHeroProgress = useRef(0);
 
   const isPillar = !!project.parentId;
 
@@ -68,6 +69,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
       }
       const scrolledIntoResidency = -rect.top;
       const progress = Math.max(0, Math.min(1, scrolledIntoResidency / residencyZone));
+      maxHeroProgress.current = Math.max(maxHeroProgress.current, progress);
       setHeroScrollProgress(progress);
     };
 
@@ -637,6 +639,8 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
   const heroGradient = project.details?.hero?.gradient;
   const heroLeftImage = project.details?.hero?.heroLeftImage;
   const heroRightImage = project.details?.hero?.heroRightImage;
+  const heroSlides = project.details?.hero?.heroSlides;
+  const hasHeroSlides = !!(heroSlides && heroSlides.length > 0);
   const hasHeroSplit = !!(heroLeftImage && heroRightImage);
   const isEditorial = heroType === "editorial";
 
@@ -673,11 +677,11 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                   {project.impactSummarySentence || project.impactSummary}
                 </p>
                 {project.blocks && project.blocks.filter(b => b.type === "impact-box").length > 0 && (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10 max-w-lg">
+                  <div className="flex flex-wrap gap-x-8 gap-y-2 mt-10 max-w-none">
                     {project.blocks.filter(b => b.type === "impact-box").slice(0, 1).map((ib, i) =>
                       ib.metrics.map((m, j) => (
-                        <div key={`${i}-${j}`} className="flex items-baseline gap-3">
-                          <span className="text-3xl md:text-4xl font-serif text-black tabular-nums">{m.value}</span>
+                        <div key={`${i}-${j}`} className="flex items-baseline gap-2">
+                          <span className="text-3xl md:text-4xl font-serif text-black tabular-nums tracking-[-0.03em]">{m.value}</span>
                           <span className="text-sm text-warm-500 leading-snug max-w-[140px] font-sans">{m.label}</span>
                         </div>
                       ))
@@ -688,7 +692,66 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
             </div>
           </div>
 
-          {hasHeroSplit ? (
+          {hasHeroSlides ? (
+            <>
+              {/* Desktop: sticky crossfade hero with scroll-driven opacity */}
+              <section
+                ref={heroRef}
+                className="w-full border-b border-neutral-200"
+                style={{ minHeight: "240vh" }}
+              >
+                <div
+                  className="sticky top-0 z-0 w-full overflow-hidden flex items-center justify-center"
+                  style={{ height: "100vh", backgroundColor: heroSlides[0].colors?.[0] || "#231f44" }}
+                >
+                  {heroSlides.map((slide, i) => {
+                    const zoneStart = i / heroSlides.length;
+                    const zoneEnd = (i + 1) / heroSlides.length;
+                    const clamped = Math.min(heroScrollProgress, maxHeroProgress.current);
+                    let opacity = 0;
+                    if (clamped >= zoneStart && clamped <= zoneEnd) {
+                      const zonePos = (clamped - zoneStart) / (zoneEnd - zoneStart);
+                      opacity = zonePos < 0.15 ? zonePos / 0.15
+                        : zonePos > 0.85 ? (1 - zonePos) / 0.15
+                        : 1;
+                    }
+                    if (clamped < 0.02 && i === 0) opacity = 1;
+                    if (clamped > 0.98 && i === heroSlides.length - 1) opacity = 1;
+                    const isDark = slide.theme !== "light";
+                    const textColorClass = isDark ? "text-white" : "text-slate-900";
+
+                    return (
+                      <div
+                        key={i}
+                        className="absolute inset-0 transition-opacity duration-300 ease-out"
+                        style={{ opacity, backgroundColor: slide.colors?.[0] || "#231f44", paddingTop: "clamp(5rem, 10vw, 8rem)", paddingBottom: "clamp(4rem, 8vw, 6rem)" }}
+                      >
+                        <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 px-6 md:px-8 w-full h-full max-w-8xl mx-auto relative z-10">
+                          <div className="relative h-[48vh] md:h-[66vh] w-[260px] md:w-[420px] flex items-center justify-center flex-shrink-0">
+                            <img
+                              src={slide.src}
+                              alt={slide.market || ""}
+                              className="absolute h-full w-auto object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.35)] rounded-xl"
+                            />
+                          </div>
+                          <div className={`flex flex-col items-center md:items-start text-center md:text-left flex-shrink-0 max-w-md w-full md:w-auto ${textColorClass}`}>
+                            <p className={`meta-label mb-2 leading-snug ${isDark ? '!text-white/50' : '!text-slate-900/50'}`}>
+                              A single campaign image generated simultaneously for four different marketplaces.
+                            </p>
+                            <div className="relative h-7 mb-4 w-full">
+                              <span className={`block whitespace-normal text-lg md:text-xl font-semibold tracking-tight w-full ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                                {slide.market}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </section>
+            </>
+          ) : hasHeroSplit ? (
             <>
               {/* Desktop: sticky split-panel hero with scroll-driven right panel */}
               <section
