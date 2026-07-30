@@ -47,7 +47,7 @@ export const PORTFOLIO_DATA = {
       company: "Amazon Devices",
       title: CASE_STUDIES_TITLES["amazon-image-builder"],
       impactSummary: "Designed the rules and guardrails that let an automated production system publish across 23 global markets with expert-level compliance, without a designer reviewing every export.",
-      impactSummarySentence: "Encoded brand, legal, and regional compliance into the product so 600 non-designers could publish globally — the system caught what a human reviewer would have flagged.",
+      impactSummarySentence: "Encoded brand, legal, and regional compliance into the product so 600 non-designers could publish globally , the system caught what a human reviewer would have flagged.",
       designerNote: "This project is the most direct demonstration of how I think about designing for non-designers. The interface hides far more than it shows. Every guardrail, every locked layout, every automated translation was a deliberate choice to remove judgment from the user and put it in the system. Giving 600 people without design training the ability to publish globally meant the product had to be the expert, not the user.",
       thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772042482/mobile-echoshow-_0003_USEN_zpplaz.png",
       thumbnailPadding: "p-12",
@@ -264,7 +264,7 @@ export const PORTFOLIO_DATA = {
             caption: {
               short: "No metadata, no access control, external QA. One person manually curated the library feeding Image Builder."
             },
-            deepDive: "Marketing images for Amazon Devices were scattered across multiple internal systems with no consistent naming and no access control. Teams reused outdated files, duplicated work across regions, and ran QA through third-party tools outside the platform. North America had built their entire workflow on Smartsheets because nothing inside the system was reliable enough to use. The library feeding the Image Builder was manually curated and uploaded by a single person — every asset in the pipeline depended on that person getting it right. It sounds chaotic, but for them it was actually quite efficient, which made the biggest challenge convincing teams to migrate to our system."
+            deepDive: "Marketing images for Amazon Devices were scattered across multiple internal systems with no consistent naming and no access control. Teams reused outdated files, duplicated work across regions, and ran QA through third-party tools outside the platform. North America had built their entire workflow on Smartsheets because nothing inside the system was reliable enough to use. The library feeding the Image Builder was manually curated and uploaded by a single person , every asset in the pipeline depended on that person getting it right. It sounds chaotic, but for them it was actually quite efficient, which made the biggest challenge convincing teams to migrate to our system."
           },
           {
             type: "text",
@@ -388,7 +388,7 @@ export const PORTFOLIO_DATA = {
       parentId: "amazon-asset-system",
       company: "Amazon Devices",
       title: CASE_STUDIES_TITLES["amazon-metadata-studio"],
-      impactSummary: "Designed the experiment-to-roadmap loop where small AI prototypes proved what was feasible, and failed tests ruled out what wasn't — changing the product direction from manual metadata entry to AI-assisted workflows.",
+      impactSummary: "Designed the experiment-to-roadmap loop where small AI prototypes proved what was feasible, and failed tests ruled out what wasn't , changing the product direction from manual metadata entry to AI-assisted workflows.",
       impactSummarySentence: "Built a series of AI experiments to test what metadata could be inferred from images, what couldn't, and where the tradeoff between automation and human input actually belonged.",
       thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772414317/Background_metadata-thumbnail_pgfkp6.png",
       status: "IN_BUILD",
@@ -460,7 +460,7 @@ export const PORTFOLIO_DATA = {
           {
             type: "text",
             content: [
-              "With the matrix identifying the highest-value opportunities, I tested specific possibilities through small, experiments and prototypes. Not everything worked. A mini-tool I built to blindly classify raw component images failed. But another prototype successfully matched component images to predefined visual variants, proving the concept was viable. These weren't abstract explorations — they were concrete, hands-on tools built to make the argument with evidence before asking Engineering to invest in production functionality. This was early 2025, when AI capabilities were significantly less mature than they are now."
+              "With the matrix identifying the highest-value opportunities, I tested specific possibilities through small, experiments and prototypes. Not everything worked. A mini-tool I built to blindly classify raw component images failed. But another prototype successfully matched component images to predefined visual variants, proving the concept was viable. These weren't abstract explorations , they were concrete, hands-on tools built to make the argument with evidence before asking Engineering to invest in production functionality. This was early 2025, when AI capabilities were significantly less mature than they are now."
             ]
           },
           {
@@ -533,7 +533,7 @@ export const PORTFOLIO_DATA = {
   company: "Amazon Devices",
   title: CASE_STUDIES_TITLES["amazon-ai-compositor"],
   impactSummary: "Designed the human-in-the-loop system where Creative Director judgment became training signal, closing the loop between model output, human review, and measurable model improvement over time.",
-  impactSummarySentence: "Designed the review system where Creative Director judgment became training signal — each batch of 12,000 variations improved the model, reducing human review from 600 images to 75 over four cycles.",
+  impactSummarySentence: "Designed the review system where Creative Director judgment became training signal , each batch of 12,000 variations improved the model, reducing human review from 600 images to 75 over four cycles.",
   designerNote: "This project sits at the intersection of AI systems and design craft. Teaching a model what 'good' looks like required a feedback taxonomy, a sampling model, and a review interface that Creative Directors would actually use. It was also the first time I shipped production UI using an AI-assisted coding workflow, building directly with Engineering instead of handing off static files.",
   thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1785079389/hero-image_h61hdi.png",
   status: "LAUNCHED",
@@ -636,7 +636,7 @@ export const PORTFOLIO_DATA = {
                 src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772664107/techinical_doc_jrqkte.png",
                 layout: "side",
                 caption: { short: "Brand-mandated camera angles, shadow rules, and copy space documented per device family. Turned into training data.", verbose: "" },
-                deepDive: "Before anything could be generated, the model needed rules. How a TV sits in a living room is not the same as how a smart speaker sits on a kitchen counter. Also, camera angles are brand-mandated per device family — Blink vs Ring have their own set of rules, for example. Taking account of basic physics, shadows and reflections depend on surface material. Copy space has to be preserved. We worked with Brand Studio and engineering to write them down and turn them into training data."
+                deepDive: "Before anything could be generated, the model needed rules. How a TV sits in a living room is not the same as how a smart speaker sits on a kitchen counter. Also, camera angles are brand-mandated per device family , Blink vs Ring have their own set of rules, for example. Taking account of basic physics, shadows and reflections depend on surface material. Copy space has to be preserved. We worked with Brand Studio and engineering to write them down and turn them into training data."
               },
               {
                 kind: "image",
@@ -700,7 +700,7 @@ export const PORTFOLIO_DATA = {
                 src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772670918/confusing_kxavxq.png",
                 layout: "side-lightbox",
                 caption: { short: "Explicit labels replaced colors. Every state readable at a glance, Meridian compliant, no decoding required.", verbose: "" },
-                deepDive: "I shifted to explicit labels and reason-based feedback. The revised design removed color dependency entirely — every state was communicated through text labels, making it accessible and Meridian-compliant. This also solved a deeper UX problem: Creative Directors could now see exactly why something was rejected without having to decode a color system."
+                deepDive: "I shifted to explicit labels and reason-based feedback. The revised design removed color dependency entirely , every state was communicated through text labels, making it accessible and Meridian-compliant. This also solved a deeper UX problem: Creative Directors could now see exactly why something was rejected without having to decode a color system."
               }
             ]
           }
@@ -740,7 +740,7 @@ export const PORTFOLIO_DATA = {
           short: "End-to-end: four variations per prompt, 5 percent sample per batch, tagged rejection reasons fed back as training signal.",
           verbose: ""
         },
-        deepDive: "The system generated four variations per prompt. Creative Directors reviewed batches and either selected the best option or rejected the set with a tagged reason. A 5% random sample was enough to represent a full batch. Creative Directors were averaging 4 minutes per review session. Leadership flagged it, but what looked slow was the model learning — each calibrated batch reduced how much review the next one needed.\n\nBatch 1: 12,000 variations generated, 600 images reviewed (5% sample), 150 review sessions, ~10 hours\nBatch 2: 12,000 variations generated, 300 images reviewed, 75 review sessions, ~5 hours\nBatch 3: 12,000 variations generated, 150 images reviewed, 38 review sessions, ~2.5 hours\nBatch 4+: 12,000 variations generated, 75 images reviewed, 19 review sessions, ~1.25 hours"
+        deepDive: "The system generated four variations per prompt. Creative Directors reviewed batches and either selected the best option or rejected the set with a tagged reason. A 5% random sample was enough to represent a full batch. Creative Directors were averaging 4 minutes per review session. Leadership flagged it, but what looked slow was the model learning , each calibrated batch reduced how much review the next one needed.\n\nBatch 1: 12,000 variations generated, 600 images reviewed (5% sample), 150 review sessions, ~10 hours\nBatch 2: 12,000 variations generated, 300 images reviewed, 75 review sessions, ~5 hours\nBatch 3: 12,000 variations generated, 150 images reviewed, 38 review sessions, ~2.5 hours\nBatch 4+: 12,000 variations generated, 75 images reviewed, 19 review sessions, ~1.25 hours"
       }
 
     ]
@@ -2109,7 +2109,7 @@ export const PORTFOLIO_DATA = {
             type: "text",
             content: [
               "We didn't have one. Patreon's product strategy had shifted from being known as the 'Kickstarter for musicians' to a massive, content-first community platform fostering cross-collaboration, creativity, and passion.",
-              "Patreon urgently needed a common language to align product, engineering, marketing, and legal—not a disjointed combination of legacy UI components. Tech debt had accumulated across buttons, labels, navigation paradigms, and spacing scales. Truth be told, Patreon was long overdue for a complete visual and structural rebrand."
+              "Patreon urgently needed a common language to align product, engineering, marketing, and legal,not a disjointed combination of legacy UI components. Tech debt had accumulated across buttons, labels, navigation paradigms, and spacing scales. Truth be told, Patreon was long overdue for a complete visual and structural rebrand."
             ]
           },
 
@@ -2142,7 +2142,7 @@ export const PORTFOLIO_DATA = {
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772239961/streamlining_and_shapes_f9hr3z.png",
             caption: {
               short: "Exploration: Streamlining & Shapes.",
-              verbose: "This iteration played heavily with circle and rectangle constraints—a direct nod to the geometric shapes in the Patreon logo—to successfully marry the brand identity with creator content."
+              verbose: "This iteration played heavily with circle and rectangle constraints,a direct nod to the geometric shapes in the Patreon logo,to successfully marry the brand identity with creator content."
             }
           },
           {
@@ -2207,7 +2207,7 @@ export const PORTFOLIO_DATA = {
             src: "https://www.figma.com/file/kyNnCjYk2XaG21kp5ITQhI/Component-Library-Sample?node-id=1%3A84638",
             caption: { 
               short: "A sample of the resulting Studio 2.0 Component Library.", 
-              verbose: "I put together this quick Figma sample containing a small demo of components and elements exactly as they were structured in early 2021. Figma has evolved massively since then, so this serves as a time capsule—built before variables, advanced auto-layout properties, and modern component tokenization were standard practice." 
+              verbose: "I put together this quick Figma sample containing a small demo of components and elements exactly as they were structured in early 2021. Figma has evolved massively since then, so this serves as a time capsule,built before variables, advanced auto-layout properties, and modern component tokenization were standard practice." 
             },
             coverImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772245483/3491f0c6-f019-41e1-9205-e383213af11b.png",
             aspectRatio: "4/3"
@@ -2315,7 +2315,7 @@ export const PORTFOLIO_DATA = {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772257055/Perosna_yufum6.png",
             caption: {
-              short: "Learner persona research — Gen Z and millennial users seeking direct access to experts.",
+              short: "Learner persona research , Gen Z and millennial users seeking direct access to experts.",
               verbose: "Research included 12 interviews with content creators and professionals, conducted at their consulting rate. We also worked through the angel investor network to reach people with experience in online mentorship and consulting relationships."
             }
           },
@@ -2338,7 +2338,7 @@ export const PORTFOLIO_DATA = {
                     kind: "image",
                     src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772257051/Landing_page_creator_bys296.png",
                     caption: {
-                      short: "Final expert landing page — one CTA, no calendar conflict.",
+                      short: "Final expert landing page , one CTA, no calendar conflict.",
                       verbose: "Early versions embedded the calendar on the landing page, which competed with the booking CTA. Moving the calendar to a later step in the flow improved conversion clarity."
                     }
                   }
@@ -2351,7 +2351,7 @@ export const PORTFOLIO_DATA = {
                     kind: "image",
                     src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772257044/Calendar_pwaoct.png",
                     caption: {
-                      short: "Time selection — available slots only, no visual noise.",
+                      short: "Time selection , available slots only, no visual noise.",
                       verbose: ""
                     }
                   }
@@ -2364,7 +2364,7 @@ export const PORTFOLIO_DATA = {
                     kind: "image",
                     src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772257047/1_on_1_request_form_d7duh7.png",
                     caption: {
-                      short: "Original request form — too much friction before booking.",
+                      short: "Original request form , too much friction before booking.",
                       verbose: "The topics and questions distinction confused users across all test sessions. The form length created a decision barrier before learners had committed to the value of the session."
                     }
                   }
@@ -2406,7 +2406,7 @@ export const PORTFOLIO_DATA = {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772257058/row_component_yake7v.png",
             caption: {
-              short: "Session row component iterations — tested with a five-second test to find the clearest information hierarchy.",
+              short: "Session row component iterations , tested with a five-second test to find the clearest information hierarchy.",
               verbose: "The five-second test was used to identify which version communicated cost, date, time, and required action most immediately. The winning version deliberately led with the dollar amount: critical for experts evaluating whether to accept a request, and for learners to feel urgency around preparing their agenda."
             }
           },
@@ -2414,7 +2414,7 @@ export const PORTFOLIO_DATA = {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772257060/session_requests_creator_side_bwieoo.png",
             caption: {
-              short: "Expert-side session management — incoming requests and session queue.",
+              short: "Expert-side session management , incoming requests and session queue.",
               verbose: ""
             }
           },
@@ -2422,7 +2422,7 @@ export const PORTFOLIO_DATA = {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772257042/agenda_items_and_requests_on_mobile_z0jl6g.png",
             caption: {
-              short: "Agenda management on mobile — setting up questions before a session.",
+              short: "Agenda management on mobile , setting up questions before a session.",
               verbose: "The side panel pattern kept users in context while managing their agenda. A modal would have removed them from the sessions list entirely. The panel let them see both at once."
             }
           },
@@ -2439,7 +2439,7 @@ export const PORTFOLIO_DATA = {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772256906/mockup_handwritten_bxp2wx.png",
             caption: {
-              short: "Early sketches — two-section layout with camera feeds and agenda space.",
+              short: "Early sketches , two-section layout with camera feeds and agenda space.",
               verbose: "Starting on paper before opening Figma. The two-section layout with separate camera and content areas became the foundational decision that all subsequent iterations built on."
             }
           },
@@ -2447,7 +2447,7 @@ export const PORTFOLIO_DATA = {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772256901/video_chat_wireframe_wxfkmq.png",
             caption: {
-              short: "Early wireframe iterations — working through navigation and information distribution.",
+              short: "Early wireframe iterations , working through navigation and information distribution.",
               verbose: "Tabbed navigation was explored and rejected early. Too much cognitive switching while also trying to hold a conversation. The goal became finding a single-screen layout that kept everything visible without feeling cluttered."
             }
           },
@@ -2455,7 +2455,7 @@ export const PORTFOLIO_DATA = {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772256909/multi_screens_hy5xgi.png",
             caption: {
-              short: "Mid-process exploration — dark mode to shift attention toward the video feed.",
+              short: "Mid-process exploration , dark mode to shift attention toward the video feed.",
               verbose: "The dark mode exploration came from a specific insight: the UI should recede so the camera feed dominates. Dark backgrounds reduced the visual weight of the agenda and controls without hiding them."
             }
           },
@@ -2463,7 +2463,7 @@ export const PORTFOLIO_DATA = {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772256911/video_chat_sample_xdjlon.png",
             caption: {
-              short: "Final video engagement screen — camera feeds, agenda, and session controls.",
+              short: "Final video engagement screen , camera feeds, agenda, and session controls.",
               verbose: ""
             }
           },
@@ -2471,7 +2471,7 @@ export const PORTFOLIO_DATA = {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772256913/video_chat_queue_questions_isczae.png",
             caption: {
-              short: "Agenda in session — questions highlighted as the conversation progresses.",
+              short: "Agenda in session , questions highlighted as the conversation progresses.",
               verbose: "The decision to highlight rather than cross off answered questions came from a specific debate: who decides when a question is answered? The expert or the learner? Crossing off implied finality and created ownership friction. Highlighting the active question let the conversation flow without forcing either party to make that call."
             }
           },
@@ -2493,7 +2493,7 @@ export const PORTFOLIO_DATA = {
                   {
                     kind: "image",
                     src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772256903/waiting_room_lfjgie.png",
-                    caption: { short: "Lobby V1 — unclear status, premature controls.", verbose: "" }
+                    caption: { short: "Lobby V1 , unclear status, premature controls.", verbose: "" }
                   }
                 ]
               },
@@ -2503,7 +2503,7 @@ export const PORTFOLIO_DATA = {
                   {
                     kind: "image",
                     src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772256899/waiting_room_2_tlrsu8.png",
-                    caption: { short: "Lobby V2 — better hierarchy, still some unresolved controls.", verbose: "" }
+                    caption: { short: "Lobby V2 , better hierarchy, still some unresolved controls.", verbose: "" }
                   }
                 ]
               },
@@ -2513,7 +2513,7 @@ export const PORTFOLIO_DATA = {
                   {
                     kind: "image",
                     src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772256908/forum_sample_-_future_vision_jt7us5.png",
-                    caption: { short: "Lobby V3 — anticipation-first layout, controls out of the way.", verbose: "" }
+                    caption: { short: "Lobby V3 , anticipation-first layout, controls out of the way.", verbose: "" }
                   }
                 ]
               }
@@ -2549,7 +2549,7 @@ export const PORTFOLIO_DATA = {
             type: "video",
             src: "https://www.youtube.com/embed/7HZtA0n1Hio",
             caption: {
-              short: "User testing session recording — post-session interviews with beta participants.",
+              short: "User testing session recording , post-session interviews with beta participants.",
               verbose: "Conducted remotely due to COVID social distancing protocols. 11 interviews total, completed immediately after sessions to capture fresh recall."
             }
           },
@@ -2601,7 +2601,7 @@ export const PORTFOLIO_DATA = {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772257053/Launch_metrics_2_ytihks.png",
             caption: {
-              short: "Beta launch metrics — acquisition and conversion data from April to May 2020.",
+              short: "Beta launch metrics , acquisition and conversion data from April to May 2020.",
               verbose: ""
             }
           },
