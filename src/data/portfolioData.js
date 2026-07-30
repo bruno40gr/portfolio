@@ -46,9 +46,9 @@ export const PORTFOLIO_DATA = {
       parentId: "amazon-asset-system",
       company: "Amazon Devices",
       title: CASE_STUDIES_TITLES["amazon-image-builder"],
-      impactSummary: "Designed the rules and guardrails that let an automated production system publish across 23 global markets with expert-level compliance, without a designer reviewing every export.",
-      impactSummarySentence: "Encoded brand, legal, and regional compliance into the product so 600 non-designers could publish globally , the system caught what a human reviewer would have flagged.",
-      designerNote: "This project is the most direct demonstration of how I think about designing for non-designers. The interface hides far more than it shows. Every guardrail, every locked layout, every automated translation was a deliberate choice to remove judgment from the user and put it in the system. Giving 600 people without design training the ability to publish globally meant the product had to be the expert, not the user.",
+      impactSummary: "Built an internal tool for Amazon Devices, enabling non-designers to create production-ready marketing campaigns across 23 marketplaces through image and localized copy generation, eliminating dependency on graphic designers.",
+      impactSummarySentence: "Built an internal tool for Amazon Devices, enabling non-designers to create production-ready marketing campaigns across 23 marketplaces through image and localized copy generation, eliminating dependency on graphic designers.",
+      designerNote: "This creative tool gave marketers total control of content creation, at scale. Didn't want to create design tools for them. Instead, my team encoded brand guidelines, localization rules, and production constraints directly into the product through PNG files of devices, backgrounds, and logos. Amazon has a well-defined set of templates, and this engine, at first, assembled them while being cautious of aspect ratios, spacing, and composition.\n\nEventually, it evolved into assembling images and copy with the Amazon voice, in multiple languages. Proud of contributing new interaction patterns to our global design system that has my signature on it.",
       thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772042482/mobile-echoshow-_0003_USEN_zpplaz.png",
       thumbnailPadding: "p-12",
       status: "LAUNCHED",
@@ -79,14 +79,12 @@ export const PORTFOLIO_DATA = {
         type: "INTERNAL",
         blocks: [
 
-          // ── THE PROBLEM ──────────────────────────────────────────────
           { type: "heading", title: "The Problem", hasDivider: false },
           {
             type: "text",
             content: [
-              "Image Builder was built for about 600 people across marketing, merchandising, product line strategy, and content. None of them were designers.",
-              "Before this, producing a campaign image meant moving work through designers, copywriters, translators, and marketing operations. At Amazon's scale, every new market and language multiplied the work.",
-              "The goal was to let a merchandiser select a template, configure their markets, and produce a campaign without opening Photoshop or relying on someone else to finish it. The system also had to prevent the mistakes that came with giving non-designers more control: an unavailable device in the wrong market, incorrect pricing, a translation that violated regional requirements, or a product that hadn't launched yet."
+              "Creating a single campaign required designers, copywriters, translators, and marketing operations. Amazon served 23 marketplaces and up to 5 language variations on each. Before Image Builder, each marketing team was responsible for their asset generation, composition, and copywriting/translation, and leadership wanted to move away from that.",
+              "The challenge was giving hundreds of non-designers the ability to publish to Amazon.com while being completely error proof. Eg: promoting a product unavailable in a region, displaying incorrect currencies, wrong translations, or product leaks."
             ]
           },
           {
@@ -100,14 +98,12 @@ export const PORTFOLIO_DATA = {
             aspectRatio: "4/3"
           },
 
-          // ── THE SYSTEM ────────────────────────────────────────────────
           { type: "heading", title: "The System" },
           {
             type: "text",
             content: [
-              "Image Builder turned a multi-step production workflow into a single controlled surface.",
-              "Users selected a template, configured their markets and languages, and assembled their campaign. The system handled dimensions, copy generation, translation, and compliance behind the scenes.",
-              "The interface deliberately hid most of that complexity. Users didn't need to understand the rules. They needed to make the right decisions and know when something was wrong."
+              "Image Builder gave marketers a friendly but constrained workspace. Users chose a background, selected a product composition, configured their marketplaces, and added a logo. The platform generated localized copy, assembled device compositions, resized layouts, validated market compatibility, and exported production-ready assets.",
+              "The interface I designed deliberately exposed very little. Guardrails were set up based on information gathered from Brand Studio, legal, and localization teams, and the beauty behind it is that users didn't need to learn or correct the rules."
             ]
           },
           {
@@ -115,14 +111,14 @@ export const PORTFOLIO_DATA = {
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1773289976/layers-nometadata_nloelx.png",
             noLightbox: true,
             caption: {
-              short: "Three layers assemble into a campaign: device, background, and copy. The system handles dimensions, localization, and compliance without the user touching the rules.",
+              short: "Illustration of how Image Builder composed promotional assets in layers. Each layer carried metadata that established guardrails and enabled automated image generation, localization, and validation.",
               verbose: "This diagram shows the layered composition model at the core of Image Builder. A marketing operative selects a background gradient from a pre-organized folder, places a device PNG, and adds copy. The platform enforces brand rules: correct dimensions per format, character limits per market, compliant layouts. Non-designers can assemble market-ready campaign images without touching the underlying composition logic. Text generation and auto-translation are built into the same flow."
             }
           },
           {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772133252/1326499e-dd49-4bbf-9d7e-0a82f84787e2.png",
-            caption: { short: "Desktop and mobile variants generated from the same campaign configuration.", verbose: "" }
+            caption: { short: "One campaign, multiple formats. Users configured the content once, while Image Builder adapted it across different layouts automatically.", verbose: "" }
           },
           {
             type: "image-full",
@@ -136,21 +132,18 @@ export const PORTFOLIO_DATA = {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772081260/1f882db6-e8bd-45c9-9514-7b4546850089.png",
             caption: {
-              short: "Copy generated and translated across all active markets. Regeneration and manual edits are available when needed.",
+              short: "Eventually, Image Builder didn't just assemble the visuals. It also generated promotional copy with AI for every selected marketplace, while still allowing regeneration and manual edits whenever needed.",
               verbose: "We studied how marketers managed localized copy. We built a flow where the tool instantly generates copy that matches character limits and cultural context. A human can always regenerate or manually edit the text."
             }
           },
 
-          // ── DESIGN AND BUILD ──────────────────────────────────────────
-          { type: "heading", title: "Design and Build" },
+          { type: "heading", title: "Design" },
           {
             type: "text",
             content: [
-              "The first constraint was the audience. These weren't designers, so the interface couldn't behave like a stripped-down version of Photoshop. I kept layouts fixed and rules-based, automated copy and translation, and made the editing surface deliberately opinionated.",
-              "The harder problem was scale. A campaign could span 23 markets, multiple languages, device families, and formats. I went through multiple rounds of layout and navigation exploration to find a structure that stayed understandable as those combinations multiplied.",
-              "The guardrails took as much design work as the interface itself. I worked with Brand Studio and product line leads to map the ways a campaign could go wrong: a device that wasn't available in a market, a pricing conflict, a regional copy violation, or an unreleased product appearing where it shouldn't.",
-              "Those rules became part of the product rather than something users had to remember. The system checked the work before export and surfaced problems while they could still be fixed.",
-              "The project also resulted in three new components contributed to Meridian, Amazon's internal design system: an interactive editing canvas, a multi-select locale filter, and a warning input state."
+              "When you look at the interface, I sincerely think I didn't design anything groundbreaking. In fact, the hardest part of the project wasn't designing the interface. It was making it lean, scalable, and deciding which design decisions users should never have to make.",
+              "Had to adapt Amazon's never-ending set of templates. And as the platform expanded across 23 marketplaces, multiple device families, and dozens of campaign formats, the challenge shifted from editing images to managing complexity.",
+              "Along the way, I stumbled upon design system walls and contributed three components back to Meridian, Amazon's internal design system: an interactive editing canvas, a multi-select locale filter, and a reusable validation state."
             ]
           },
           {
@@ -187,18 +180,15 @@ export const PORTFOLIO_DATA = {
             caption: { short: "Warning input state. Flags export-blocking issues inline instead of at a final validation step.", verbose: "" }
           },
 
-          // ── LAUNCH AND ITERATION ──────────────────────────────────────
-          { type: "heading", title: "Launch and Iteration" },
+          { type: "heading", title: "Launch & Iteration" },
           {
             type: "text",
             content: [
-              "We launched in March 2025 with two banner formats. The narrow scope helped us ship, but it also exposed problems we hadn't fully anticipated.",
-              "The two formats required very different data inputs, and we hadn't accounted for all of that friction until users were working with them in production. We also made the deliberate decision to ship without drag-and-drop canvas support to hit the deadline. Users were locked into fixed layouts, which made the first version more frustrating than it needed to be.",
-              "Those tradeoffs had a cost. By Prime Day, drag-and-drop was live and the tool had reached full adoption across all supported formats."
+              "After 3 months of deep dive, we launched a version of the Image Builder that supported our 2 most converting banner formats. We did it to maximize business impact and user adoption. At the same time, had to make compromises in the product, like, umm, no drag & dropping. Different formats required different configuration models, and users immediately pushed against the limits of fixed layouts. We intentionally postponed drag-and-drop editing to meet the launch window.",
+              "By Prime Day, 4 months post-release, we had incrementally improved the interaction model and the platform had expanded across all supported campaign formats."
             ]
           },
 
-          // ── RESULT ────────────────────────────────────────────────────
           { type: "heading", title: "Result" },
           {
             type: "impact-box",
@@ -208,14 +198,208 @@ export const PORTFOLIO_DATA = {
               { value: "45–50 FTE", label: "Estimated operational capacity freed in 2025" }
             ],
             description: [
-              "8,000 images. 48,000 hours of production work replaced for a single event. 45 to 50 FTE of operational capacity freed.",
-              "The numbers were clear enough to secure continued funding for the broader Asset System platform."
+              "~8,000 campaign assets generated for Prime Day 2025. ~48,000 hours of production work eliminated for a single event. 45–50 FTE of operational capacity freed across creative, localization, and marketing operations.",
+              "The success of Image Builder secured continued investment in the broader Amazon Devices Asset System, expanding the platform into asset governance, AI-assisted metadata, and automated lifestyle image generation."
             ]
           }
 
         ]
       }
     },
+
+   // PILLAR 4: AI LIFESTYLE COMPOSITOR
+    {
+  id: "amazon-ai-compositor",
+  parentId: "amazon-asset-system",
+  company: "Amazon Devices",
+  title: CASE_STUDIES_TITLES["amazon-ai-compositor"],
+  impactSummary: "Built the AI compositor and review workflow that let teams generate high-converting lifestyle imagery at scale, curated and approved by Creative Directors before anything shipped.",
+  impactSummarySentence: "Built the AI compositor and review workflow that let teams generate high-converting lifestyle imagery at scale, curated and approved by Creative Directors before anything shipped.",
+  designerNote: "Real photographs and 3D lifestyle imagery are the most expensive image types to produce. Once GenAI made it possible to generate at scale, the real challenge became teaching the model what \"good\" actually looked like. I helped shape the GenAI model itself, on Amazon Bedrock, defining the training data and device-specific rules it learned from, and designed the human-in-the-loop system that turned Creative Director feedback into training signal: the feedback taxonomy, the sampling model, and the review interface. Also my first time shipping actual code, using an MCP-powered Figma-to-code workflow to build directly with Engineering instead of throwing static files over the wall.",
+  thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1785079389/hero-image_h61hdi.png",
+  status: "LAUNCHED",
+  type: "INTERNAL",
+  blocks: [
+    
+  ],
+  details: {
+    hero: {
+      type: 'editorial',
+      heroLeftImage: 'https://res.cloudinary.com/diy08lj9x/image/upload/v1785086067/hero-left_zlmffw.png',
+      heroRightImage: 'https://res.cloudinary.com/diy08lj9x/image/upload/v1785086066/hero-right_lrgz9e.png',
+    },
+    heroImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1785079389/hero-image_h61hdi.png",
+    role: "Lead UX Designer",
+    timeline: "December 2024 to March 2025",
+    collaborators: "1 PM, 2 ML Engineers, 1 Creative Director, 2 Engineers",
+    type: "INTERNAL",
+    blocks: [
+
+      {
+        type: "figma",
+        src: "https://www.figma.com/proto/u5gNazpXiOCPbn8tiH5ACU/JASAI?page-id=1438%3A5102&node-id=40000015-16958&viewport=324%2C-1055%2C0.14&t=LvK2dm3PYrsudLBc-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=40000015%3A16958",
+        caption: {
+          short: "Review and approval experience.",
+          verbose: ""
+        },
+        coverImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772665456/a7ec2337-4f73-4b0c-932f-b66e6b73190d.png",
+        aspectRatio: "16/9"
+      },
+
+      { type: "heading", title: "The Problem", hasDivider: false },
+      {
+        type: "text",
+        content: [
+  "Lifestyle imagery converted about 70% better than gradient backgrounds (internal data). The Image Builder tool could pump out gradient backgrounds at scale, but lifestyle imagery needed 3D artists, photographers, editors, not so much.",
+  
+  "Amazon devices are confidential hardware, so external AI tools were off the table. We first tried an internal image generation tool the Amazon Home team had built for placing furniture in home environments. But the model, having zero knowledge of our devices, placed them in odd spots, rooms with the wrong perspective, wrong scale, shadows that didn't match anything. The challenge, then, was to build and train this GenAI tool ourselves."
+]
+      },
+      {
+        type: "image-full",
+        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1785165421/comparisong-vertical_ww0kcw.png",
+        layout: "side",
+        caption: {
+          short: "Gradient backgrounds scaled easily. Lifestyle backgrounds converted about 40 percent better. The production cost was the barrier.",
+          verbose: ""
+        },
+        deepDive: "This Fire TV campaign built in Image Builder compares a standard gradient background against an AI-generated lifestyle scene. By placing the device in a realistic setting, the campaign aims for the 40% higher CTR typically seen with lifestyle imagery over basic product shots."
+      },
+      {
+        type: "image-full",
+                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772667460/1273f947-b73f-4af2-b036-dee49ef913f0.png",
+                layout: "side",
+                caption: {
+          short: "The furniture tool placed an Echo Pop in a room. Wrong perspective, flat device, mismatched shadows. The model simply did not understand our hardware.",
+          verbose: ""
+        },
+        deepDive: "We put an Echo Pop into a room scene, but the results were off: the perspective was wrong, the device looked flat, and the shadows didn't match. The model simply didn't understand Amazon devices. Our proprietary device data, including camera angles, surface materials, shadow behavior, and screen reflections for each device family, only exists inside Amazon. No external tool could be trained on that data at the scale we needed, so we had to build the model in-house from scratch."
+      },
+
+      { type: "heading", title: "System Thinking" },
+      {
+        type: "text",
+        content: [
+  "We built our own compositor on Bedrock, trained on Amazon's own proprietary device data. I focused on making sure the model understood what actually mattered for a believable device placement: camera angles, materials, shadows, screen reflections, all specific to each device family.",
+  "I designed a review workflow to gather two kinds of input: design technologists prepping and uploading background scenes with structured metadata (see Metadata Studio), and Creative Directors reviewing the generated variations, approving or rejecting with a tagged reason. We'll focus on the latter. I worked with Brand Studio, Engineering, and Data Science to turn device-specific knowledge into training data and define a feedback loop to actually learn what good looked like. Then I designed the human-in-the-loop review system that captured Creative Director judgment, each round of feedback improving the model and cutting down how much review the next batch needed."
+]
+      },
+      {
+        type: "image-full",
+        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1773290008/layers-metadata_sfcohu.png",
+        layout: "side",
+        caption: {
+          short: "Every layer carries structured metadata. The device knows its product family. The background knows its environment type. The screen knows its campaign.",
+          verbose: ""
+        },
+        deepDive: "This diagram shows what changes between Image Builder v1 and the AI Lifestyle Compositor. In v1, layers were static files: a device PNG, a gradient, copy. In the compositor, every layer carries structured metadata. The device image knows its product family and brand-mandated camera angle. The background scene knows its environment type. The screen image knows which campaign it belongs to. That metadata is what allows the system to assemble contextually correct lifestyle images automatically, across thousands of SKUs, without a designer directing each one."
+      },
+
+      {
+        type: "list",
+        items: [
+          {
+            content: "",
+            visuals: [
+              {
+                kind: "image",
+                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772664107/techinical_doc_jrqkte.png",
+                layout: "side",
+                caption: { short: "Brand-mandated camera angles, shadow rules, and copy space documented per device family. Turned into training data.", verbose: "" },
+                deepDive: "Before anything could be generated, the model needed rules. How a TV sits in a living room is not the same as how a smart speaker sits on a kitchen counter. Also, camera angles are brand-mandated per device family , Blink vs Ring have their own set of rules, for example. Taking account of basic physics, shadows and reflections depend on surface material. Copy space has to be preserved. We worked with Brand Studio and engineering to write them down and turn them into training data."
+              },
+              {
+                kind: "image",
+                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772663942/Echo_show_-_nightstand_udihhr.png",
+                layout: "side",
+                caption: { short: "Echo Show in a defined scene with copy space. The model needed to know where text belonged before placing it.", verbose: "" }
+              }
+            ]
+          }
+        ]
+      },
+
+      { type: "heading", title: "Design and Build" },
+      {
+        type: "text",
+        content: [
+  "The ask was, in a way, kind of awkward. Asking Creative Directors to reject a batch, but still pick the best option among the rejects, was an odd interaction, but necessary for the model to learn from. I designed the review experience to feel natural for Creative Directors while still capturing feedback useful enough to actually move the model. Early explorations leaned on ambiguous color-coded status controls, we eventually shifted to explicit rejection reasons. Also worked out with Data Science and product management to simplify the feedback reason taxonomy, and display fewer, smarter radio button options."
+]
+      },
+      {
+        type: "list",
+        items: [
+          {
+            content: "",
+            visuals: [
+              {
+                kind: "image",
+                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772671746/565c0c1b-f554-49f5-a4ce-ef5739234bf8.png",
+                layout: "side-lightbox",
+                caption: { short: "Went wide and unconventional trying to design something useful for science and non-intrusive for design directors. Ended up ambiguous, not accessible, and violated Meridian compliance. Taught me what not to build.", verbose: "" },
+                deepDive: "A few explorations where I went wide and unconventional to design a flow that seemed useful for science and non-intrusive for design directors. The early color-coded status toggles made rejection states ambiguous. Reviewers couldn't tell at a glance whether something was approved, rejected, or pending. The colors also violated Meridian compliance requirements, which meant the component couldn't ship inside Amazon's design system."
+              },
+              {
+                kind: "image",
+                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772670918/confusing_kxavxq.png",
+                layout: "side-lightbox",
+                caption: { short: "Shifted to explicit labels and reason-based feedback. Every state readable at a glance, Meridian compliant, no decoding required.", verbose: "" },
+                deepDive: "I shifted to explicit labels and reason-based feedback. The revised design removed color dependency entirely , every state was communicated through text labels, making it accessible and Meridian-compliant. This also solved a deeper UX problem: Creative Directors could now see exactly why something was rejected without having to decode a color system."
+              }
+            ]
+          }
+        ]
+      },
+
+      { type: "heading", title: "Design to Code" },
+      {
+        type: "text",
+        content: [
+  "The batch review interface was also where I started rethinking how design and engineering actually work together, not handoffs, but building the same thing at the same time.",
+  "Started experimenting with Figma-to-code through MCP back in August 2025, feeding design files into an AI-assisted process that generated working React. This project is where that experiment turned into real product code. Built the batch review experience directly with Engineering using that workflow. Plenty of terminal crashes and angry GitHub comments along the way, but it worked.",
+  "It changed how I work with engineers from that point forward. Later shared the whole process with 14 designers in a hands-on workshop, so it wasn't just something I figured out for myself."
+]
+      },
+      {
+        type: "figma",
+        src: "https://www.figma.com/board/AyhfswFqoiE1YRpW18tPly/figma-to-AI?node-id=0-1&t=4gIRsk4ka32ItUTC-1",
+        caption: {
+          short: "Shared the MCP-powered Figma-to-code workflow with 14 designers in a hands-on workshop after shipping the review interface.",
+          verbose: ""
+        },
+        coverImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772669102/6474aa06-edba-41a6-9eee-195d7fe8930b.png",
+        aspectRatio: "16/9"
+      },
+
+      { type: "heading", title: "Result" },
+      {
+        type: "text",
+        content: [
+          "12,000 variations per batch. Creative Directors reviewed a 5 percent sample. As the model improved, review decreased. Batch one: 3,000 market-ready lifestyle assets, about 10 hours of human review.",
+          "Every image that shipped had been curated and approved by a Creative Director. High-converting lifestyle imagery, at scale, meeting or exceeding the existing design bar. You can tell, because a human with taste looked at every single one before it went out the door."
+        ]
+      },
+      {
+        type: "impact-box",
+        metrics: [
+          { value: "3,000", label: "Market-ready lifestyle assets generated by AI and curated by Creative Directors" },
+          { value: "~10 hours", label: "Human review for 12,000 generated variations" }
+        ],
+        description: []
+      },
+      {
+        type: "image-full",
+        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772662326/firetv-lifestyle_dlyenh.png",
+        caption: {
+          short: "End-to-end: four variations per prompt, 5 percent sample per batch, tagged rejection reasons fed back as training signal.",
+          verbose: ""
+        },
+        deepDive: "The system generated four variations per prompt. Creative Directors reviewed batches and either selected the best option or rejected the set with a tagged reason. A 5% random sample was enough to represent a full batch. Creative Directors were averaging 4 minutes per review session. Leadership flagged it, but what looked slow was the model learning , each calibrated batch reduced how much review the next one needed.\n\nBatch 1: 12,000 variations generated, 600 images reviewed (5% sample), 150 review sessions, ~10 hours\nBatch 2: 12,000 variations generated, 300 images reviewed, 75 review sessions, ~5 hours\nBatch 3: 12,000 variations generated, 150 images reviewed, 38 review sessions, ~2.5 hours\nBatch 4+: 12,000 variations generated, 75 images reviewed, 19 review sessions, ~1.25 hours"
+      }
+
+    ]
+  }
+},
 
     // PILLAR 2: ASSET MANAGER
     {
@@ -247,8 +431,6 @@ export const PORTFOLIO_DATA = {
         collaborators: "PM, 8 Engineers, Designer Ops, Brand leaders",
         type: "INTERNAL",
         blocks: [
-
-          
 
           // 2. THE PROBLEM
           { type: "heading", title: "The Problem" },
@@ -381,8 +563,7 @@ export const PORTFOLIO_DATA = {
         ]
       }
     },
-
-    // PILLAR 3: METADATA STUDIO
+// PILLAR 3: METADATA STUDIO
     {
       id: "amazon-metadata-studio",
       parentId: "amazon-asset-system",
@@ -403,23 +584,21 @@ export const PORTFOLIO_DATA = {
         type: "INTERNAL",
         blocks: [
 
-          // ── DESIGNER NOTE ───────────────────────────────────────────
           {
             type: "text",
             subtype: "designer-note",
             content: [
-              "We all knew that entering 30 to 90 metadata points for every image was tedious. But this was proprietary Amazon data, and we couldn't use external AI tools to do the work for us. The manual effort was the tradeoff we'd accepted to build a system around knowledge that only Amazon had.",
-              "I wanted to see where that tradeoff was actually necessary. I built a series of small experimental tools to test what AI could infer from images, what it couldn't, and where it was reliable enough to be useful. The results weren't always successful, but they gave me enough evidence to start separating the work AI could take on from the work that still needed a person."
+              "As we learned building Image Builder, every layer in a campaign image, the device, the background, the copy, needs metadata attached to it. Each image had 30 to 90 metadata inputs, many of them manually entered, which was the tradeoff we'd accepted to keep that knowledge in-house.",
+              "Going against that predicament, I always thought there's gotta be a better way, so rebelliously, I built a series of small experimental tools to test what AI could figure out on its own from an image, what it couldn't, and where it was reliable enough to actually trust. Ultimately got buy-in from stakeholders, and these AI-powered processes are now part of the workflow, without a design technologist manually entering data."
             ]
           },
 
-          // ── THE PROBLEM ──────────────────────────────────────────────
           { type: "heading", title: "The Problem", hasDivider: false },
           {
             type: "text",
             content: [
-              "Every component image uploaded to the system required between 30 and 90 metadata points. This metadata was necessary for global legal, cultural, and regional compliance. An EU asset legally needed to show the correct power plug. UAE marketing could not feature dogs. A US-licensed movie UI could not appear on a Brazilian Echo Show. Without the right metadata, a single wrong image in the wrong market created an immediate legal or brand incident.",
-              "The work was manual, the team was small, the data was proprietary, and external AI tools were not an option. The manual metadata requirement had become the single largest bottleneck in the asset pipeline."
+              "Getting the metadata wrong could mean automated errors with truly severe consequences, a US power plug in a German ad, effectively breaking the law, a dog in a UAE campaign (dogs aren't loved there), licensed movie content on a screen in a market where it wasn't cleared. This doesn't happen with the set of eyes that go through every image manually created for all these markets.",
+              "The work was manual, the team was small, and the data was proprietary, so we couldn't outsource it to an off-the-shelf AI tool. This manual entry had become the single biggest bottleneck in the whole asset pipeline."
             ]
           },
           {
@@ -427,21 +606,10 @@ export const PORTFOLIO_DATA = {
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772412234/Background_metadata_cphwlh.png",
             layout: "side",
             caption: {
-              short: "The manual upload UI for an AI-ready background image. A single asset could require up to 90 metadata inputs before it was ready for the system."
+              short: "The manual upload screen for a background image. Up to 90 metadata inputs, before a single asset was ready."
             }
           },
 
-          // ── THE BET ──────────────────────────────────────────────────
-          { type: "heading", title: "The Bet" },
-          {
-            type: "text",
-            content: [
-              "We all knew that entering 30 to 90 metadata points for every image was tedious. But this was proprietary Amazon data, and we couldn't use external AI tools to do the work for us. The manual effort was the tradeoff we'd accepted to build a system around knowledge that only Amazon had.",
-              "I wanted to see where that tradeoff was actually necessary. I built a series of small experimental tools to test what AI could infer from images, what it couldn't, and where it was reliable enough to be useful. The results weren't always successful, but they gave me enough evidence to start separating the work AI could take on from the work that still needed a person."
-            ]
-          },
-
-          // ── DESIGN AND BUILD ──────────────────────────────────────────
           { type: "heading", title: "Design and Build" },
           {
             type: "text",
@@ -460,7 +628,7 @@ export const PORTFOLIO_DATA = {
           {
             type: "text",
             content: [
-              "With the matrix identifying the highest-value opportunities, I tested specific possibilities through small, experiments and prototypes. Not everything worked. A mini-tool I built to blindly classify raw component images failed. But another prototype successfully matched component images to predefined visual variants, proving the concept was viable. These weren't abstract explorations , they were concrete, hands-on tools built to make the argument with evidence before asking Engineering to invest in production functionality. This was early 2025, when AI capabilities were significantly less mature than they are now."
+              "With the matrix identifying the highest-value opportunities, I tested specific possibilities through small experiments and prototypes. Not everything worked. A mini-tool I built to blindly classify raw component images failed. But another prototype successfully matched component images to predefined visual variants, proving the concept was viable. These weren't abstract explorations, they were concrete, hands-on tools built to make the argument with evidence before asking Engineering to invest in production functionality. This was early 2025, when AI capabilities were significantly less mature than they are now."
             ]
           },
           {
@@ -468,7 +636,7 @@ export const PORTFOLIO_DATA = {
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772411602/Screenshot_2026-03-01_at_4.32.55_PM_zlbqvz.png",
             layout: "side",
             caption: {
-              short: "A failed experiment: an AI tool I built to classify raw component images without relying on existing metadata."
+              short: "A failed experiment. Tried to get AI to classify raw component images with no existing metadata to lean on."
             }
           },
           {
@@ -476,7 +644,7 @@ export const PORTFOLIO_DATA = {
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772411765/fa9dccd2-7490-4215-b420-35251e6044b7.png",
             layout: "side",
             caption: {
-              short: "A small prototype that successfully matched component images to predefined visual variants."
+              short: "This one worked. AI matched component images to predefined visual variants."
             }
           },
           {
@@ -491,7 +659,7 @@ export const PORTFOLIO_DATA = {
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772411818/7e25e02b-1a0c-4458-81f8-e22044a1df9c.png",
             layout: "side",
             caption: {
-              short: "Users drew boundaries on devices. The system translated those into spatial coordinates the AI could use."
+              short: "Users drew the boundary on the device. System turned that into coordinates the AI could actually use."
             }
           },
           {
@@ -499,11 +667,10 @@ export const PORTFOLIO_DATA = {
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772412003/8fc680db-a6b5-4c46-ba00-f12af55faab4.png",
             layout: "side",
             caption: {
-              short: "A concept for the Admin Tool. The question: how much metadata could AI handle so users didn't have to?"
+              short: "Concept for the Admin Tool. The question was simple: how much metadata could AI handle so people didn't have to."
             }
           },
 
-          // ── RESULT ────────────────────────────────────────────────────
           { type: "heading", title: "Result" },
           {
             type: "text",
@@ -517,235 +684,12 @@ export const PORTFOLIO_DATA = {
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772411928/4553de5d-0c9d-41d0-b126-bf3db07e532d.png",
             layout: "side",
             caption: {
-              short: "Lord of the Rings placed inside an Echo Show via AI composition. Same process localizes screen content while preserving perspective, shadows, and glare."
+              short: "Lord of the Rings, placed inside an Echo Show. Same process localizes screen content, keeps perspective, shadows, and glare intact."
             }
           }
         ]
       }
     },
-    
-    
-   
-    // PILLAR 4: AI LIFESTYLE COMPOSITOR
-    {
-  id: "amazon-ai-compositor",
-  parentId: "amazon-asset-system",
-  company: "Amazon Devices",
-  title: CASE_STUDIES_TITLES["amazon-ai-compositor"],
-  impactSummary: "Designed the human-in-the-loop system where Creative Director judgment became training signal, closing the loop between model output, human review, and measurable model improvement over time.",
-  impactSummarySentence: "Designed the review system where Creative Director judgment became training signal , each batch of 12,000 variations improved the model, reducing human review from 600 images to 75 over four cycles.",
-  designerNote: "This project sits at the intersection of AI systems and design craft. Teaching a model what 'good' looks like required a feedback taxonomy, a sampling model, and a review interface that Creative Directors would actually use. It was also the first time I shipped production UI using an AI-assisted coding workflow, building directly with Engineering instead of handing off static files.",
-  thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1785079389/hero-image_h61hdi.png",
-  status: "LAUNCHED",
-  type: "INTERNAL",
-  blocks: [
-    
-  ],
-  details: {
-    hero: {
-      type: 'editorial',
-      heroLeftImage: 'https://res.cloudinary.com/diy08lj9x/image/upload/v1785086067/hero-left_zlmffw.png',
-      heroRightImage: 'https://res.cloudinary.com/diy08lj9x/image/upload/v1785086066/hero-right_lrgz9e.png',
-    },
-    heroImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1785079389/hero-image_h61hdi.png",
-    role: "Lead UX Designer",
-    timeline: "December 2024 to March 2025",
-    collaborators: "1 PM, 2 ML Engineers, 1 Creative Director, 2 Engineers",
-    type: "INTERNAL",
-    blocks: [
-
-      // ── DESIGNER'S NOTE ───────────────────────────────────────────
-      {
-        type: "text",
-        content: [
-          "3D lifestyle imagery is one of the most complex image types to produce. Once GenAI made it possible to generate them at scale, the challenge became teaching the model what 'good' looked like. I designed the human-in-the-loop system that turned Creative Director feedback into training signal, defining the feedback taxonomy, sampling model, and review interface. This was also my first time shipping code, using an MCP-powered Figma-to-code workflow to build directly with Engineering."
-        ],
-        subtype: "designer-note"
-      },
-      {
-        type: "figma",
-        src: "https://www.figma.com/proto/u5gNazpXiOCPbn8tiH5ACU/JASAI?page-id=1438%3A5102&node-id=40000015-16958&viewport=324%2C-1055%2C0.14&t=LvK2dm3PYrsudLBc-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=40000015%3A16958",
-        caption: {
-          short: "Review and approval experience.",
-          verbose: ""
-        },
-        coverImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772665456/a7ec2337-4f73-4b0c-932f-b66e6b73190d.png",
-        aspectRatio: "16/9"
-      },
-
-      // ── THE PROBLEM ──────────────────────────────────────────────
-      { type: "heading", title: "The Problem", hasDivider: false },
-      {
-        type: "text",
-        content: [
-  "Lifestyle imagery converted about 70% better than gradient backgrounds (source: internal). Image Builder produced gradients at scale. Lifestyle imagery required 3D artists, photographers, and editors. Across thousands of device families, markets, and languages, that was unsustainable.",
-  
-  "Amazon devices are confidential hardware, so external AI tools weren't an option. We first tested an internal image generation tool built by the Amazon Home team to place furniture in home environments. But the model had no knowledge of our devices, and the results were off: an Echo Pop placed in a room had the wrong perspective, scale, and shadows."
-]
-      },
-      {
-        type: "image-full",
-        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1785165421/comparisong-vertical_ww0kcw.png",
-        layout: "side",
-        caption: {
-          short: "Gradient backgrounds scaled easily. Lifestyle backgrounds converted about 40 percent better. The production cost was the barrier.",
-          verbose: ""
-        },
-        deepDive: "This Fire TV campaign built in Image Builder compares a standard gradient background against an AI-generated lifestyle scene. By placing the device in a realistic setting, the campaign aims for the 40% higher CTR typically seen with lifestyle imagery over basic product shots."
-      },
-      {
-        type: "image-full",
-                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772667460/1273f947-b73f-4af2-b036-dee49ef913f0.png",
-                layout: "side",
-                caption: {
-          short: "The furniture tool placed an Echo Pop in a room. Wrong perspective, flat device, mismatched shadows. The model simply did not understand our hardware.",
-          verbose: ""
-        },
-        deepDive: "We put an Echo Pop into a room scene, but the results were off: the perspective was wrong, the device looked flat, and the shadows didn't match. The model simply didn't understand Amazon devices. Our proprietary device data, including camera angles, surface materials, shadow behavior, and screen reflections for each device family, only exists inside Amazon. No external tool could be trained on that data at the scale we needed, so we had to build the model in-house from scratch."
-      },
-
-      // ── THE SYSTEM ────────────────────────────────────────────────
-      { type: "heading", title: "The System" },
-      {
-        type: "text",
-        content: [
-  "We built an in-house AI compositor trained on Amazon's proprietary device data: camera angles, materials, shadows, and screen reflections specific to each device family. Design technologists prepared background scenes with structured metadata, while Creative Directors reviewed generated variations and approved or rejected them with tagged reasons.",
-]
-      },
-      {
-        type: "image-full",
-        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1773290008/layers-metadata_sfcohu.png",
-        layout: "side",
-        caption: {
-          short: "Every layer carries structured metadata. The device knows its product family. The background knows its environment type. The screen knows its campaign.",
-          verbose: ""
-        },
-        deepDive: "This diagram shows what changes between Image Builder v1 and the AI Lifestyle Compositor. In v1, layers were static files: a device PNG, a gradient, copy. In the compositor, every layer carries structured metadata. The device image knows its product family and brand-mandated camera angle. The background scene knows its environment type. The screen image knows which campaign it belongs to. That metadata is what allows the system to assemble contextually correct lifestyle images automatically, across thousands of SKUs, without a designer directing each one."
-      },
-
-    
-      
-      {
-        type: "list",
-        items: [
-          {
-            content: "",
-            visuals: [
-              {
-                kind: "image",
-                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772664107/techinical_doc_jrqkte.png",
-                layout: "side",
-                caption: { short: "Brand-mandated camera angles, shadow rules, and copy space documented per device family. Turned into training data.", verbose: "" },
-                deepDive: "Before anything could be generated, the model needed rules. How a TV sits in a living room is not the same as how a smart speaker sits on a kitchen counter. Also, camera angles are brand-mandated per device family , Blink vs Ring have their own set of rules, for example. Taking account of basic physics, shadows and reflections depend on surface material. Copy space has to be preserved. We worked with Brand Studio and engineering to write them down and turn them into training data."
-              },
-              {
-                kind: "image",
-                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772663942/Echo_show_-_nightstand_udihhr.png",
-                layout: "side",
-                caption: { short: "Echo Show in a defined scene with copy space. The model needed to know where text belonged before placing it.", verbose: "" }
-              }
-            ]
-          }
-        ]
-      },
-      {
-        type: "text",
-        content: [
-  
-  "However, the model still needed a feedback loop to gauge what good looked like. I worked with Brand Studio, Engineering, and Data Science to translate device-specific knowledge into training data and define the feedback taxonomy. I then designed the human-in-the-loop review system that captured Creative Director judgment, with each round of feedback improving the model and reducing the human review needed for the next."
-]
-      },
-      {
-        type: "list",
-        items: [
-          {
-            content: "",
-            visuals: [
-              {
-                kind: "image",
-                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772670917/rejection_reasons_cyhn9l.png",
-                layout: "side-lightbox",
-                caption: { short: "Each rejection carried a tagged reason. Bad shadow, wrong perspective, device unrecognizable. Categories defined with Data Science before the form existed.", verbose: "" },
-                deepDive: "Working with Data Science, we had to define what a rejection meant before we could build the form to capture it. Bad shadow, incorrect perspective, wrong environment, device unrecognizable, lighting mismatch, etc. Those categories came out of sessions mapping what went wrong in early outputs. The copy was harder than the categories. We were asking Creative Directors to tag images they were already skipping. I went through several versions and landed in something similar to this image."
-              }
-            ]
-          }
-        ]
-      },
-
-      // ── DESIGN AND BUILD ──────────────────────────────────────────
-      { type: "heading", title: "Design and Build" },
-      {
-        type: "text",
-        content: [
-  "The review experience had to feel natural for Creative Directors while capturing feedback useful enough to improve the model. Early explorations relied on ambiguous color-coded status controls, eventually shifting to explicit rejection reasons defined with Data Science and Creative.",
-  "The same interface was also a chance to rethink how design and engineering could work together. The batch review experience was built directly with Engineering using an MCP-powered Figma-to-code workflow, and the process was later shared with 14 designers in a hands-on workshop."
-]
-      },
-      {
-        type: "list",
-        items: [
-          {
-            content: "",
-            visuals: [
-              {
-                kind: "image",
-                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772671746/565c0c1b-f554-49f5-a4ce-ef5739234bf8.png",
-                layout: "side-lightbox",
-                caption: { short: "Color-coded toggles. Ambiguous, not accessible, and violated Meridian compliance. The concept taught us what not to build.", verbose: "" },
-                deepDive: "A few explorations where I went wide and unconventional to design a flow that seemed useful for science and non-intrusive for design directors. The early color-coded status toggles made rejection states ambiguous. Reviewers couldn't tell at a glance whether something was approved, rejected, or pending. The colors also violated Meridian compliance requirements, which meant the component couldn't ship inside Amazon's design system."
-              },
-              {
-                kind: "image",
-                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772670918/confusing_kxavxq.png",
-                layout: "side-lightbox",
-                caption: { short: "Explicit labels replaced colors. Every state readable at a glance, Meridian compliant, no decoding required.", verbose: "" },
-                deepDive: "I shifted to explicit labels and reason-based feedback. The revised design removed color dependency entirely , every state was communicated through text labels, making it accessible and Meridian-compliant. This also solved a deeper UX problem: Creative Directors could now see exactly why something was rejected without having to decode a color system."
-              }
-            ]
-          }
-        ]
-      },
-      {
-        type: "figma",
-        src: "https://www.figma.com/board/AyhfswFqoiE1YRpW18tPly/figma-to-AI?node-id=0-1&t=4gIRsk4ka32ItUTC-1",
-        caption: {
-          short: "Shared the MCP-powered Figma-to-code workflow with 14 designers in a hands-on workshop after shipping the review interface.",
-          verbose: "In August 2025, I started experimenting with Figma-to-code through MCP, feeding design files into an AI-assisted process that generated working React. This project was where the experiment became real product code. The batch review interface was built directly with Engineering using that workflow, with plenty of terminal crashes and angry GitHub comments along the way. It fundamentally changed how I work with engineers from that point forward."
-        },
-        coverImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772669102/6474aa06-edba-41a6-9eee-195d7fe8930b.png",
-        aspectRatio: "16/9"
-      },
-
-      // ── RESULT ────────────────────────────────────────────────────
-      { type: "heading", title: "Result" },
-      {
-        type: "text",
-        content: [
-          "12,000 variations per batch. Creative Directors reviewed a 5 percent sample. As the model improved, review decreased. Batch one: 3,000 market-ready lifestyle assets, about 10 hours of human review."
-        ]
-      },
-      {
-        type: "impact-box",
-        metrics: [
-          { value: "3,000", label: "Market-ready lifestyle assets generated by AI and curated by Creative Directors" },
-          { value: "~10 hours", label: "Human review for 12,000 generated variations" }
-        ],
-        description: []
-      },
-      {
-        type: "image-full",
-        src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772662326/firetv-lifestyle_dlyenh.png",
-        caption: {
-          short: "End-to-end: four variations per prompt, 5 percent sample per batch, tagged rejection reasons fed back as training signal.",
-          verbose: ""
-        },
-        deepDive: "The system generated four variations per prompt. Creative Directors reviewed batches and either selected the best option or rejected the set with a tagged reason. A 5% random sample was enough to represent a full batch. Creative Directors were averaging 4 minutes per review session. Leadership flagged it, but what looked slow was the model learning , each calibrated batch reduced how much review the next one needed.\n\nBatch 1: 12,000 variations generated, 600 images reviewed (5% sample), 150 review sessions, ~10 hours\nBatch 2: 12,000 variations generated, 300 images reviewed, 75 review sessions, ~5 hours\nBatch 3: 12,000 variations generated, 150 images reviewed, 38 review sessions, ~2.5 hours\nBatch 4+: 12,000 variations generated, 75 images reviewed, 19 review sessions, ~1.25 hours"
-      }
-
-    ]
-  }
-},
 
     // INSPIRE TAB
     {
@@ -757,7 +701,7 @@ export const PORTFOLIO_DATA = {
   designerNote: "Recommendations in the Smart Home category have to be accurate. A badly informed purchase erodes trust in the entire discovery surface. I owned the interaction patterns, content strategy, and the ranking logic I built with data science. My background from Patreon and Prox made the creator side natural because I had a clear understanding on how creators think about monetization and audience.",
   thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772307603/main_feed_cx_vc0uaq.png",
   thumbnailPadding: "p-8",
-  status: "DEPRECATED",
+  status: "HIDDEN",
   type: "MOBILE",
   blocks: [
     {
@@ -928,7 +872,7 @@ export const PORTFOLIO_DATA = {
       impactSummarySentence: "Explored and designed new applications for Amazon's AI-generated review highlights to drive product discovery across the Smart Home category.",
       designerNote: "Amazon launched AI-generated review highlights as a company-wide capability. Leadership asked me to figure out what that could mean specifically for Smart Home customers. This kind of work sit in an interesting space because we wouldn't be building from scratch nor implementing someone else's spec with all the baggage that that implies. Thankfully, our org had always had certain room and influence to break away from company-level initiatives, so we were asked to ideate yet new ways to showcase this technology.  The artifacts shown below are the exact slides I used to pitch these concepts to leadership, reflecting how product strategy and design communication actually happen at Amazon. One concept shipped, and two moved to the roadmap upstream at the org and company level.",
       thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772333741/aihighlights-stockimage_tfee9p.jpg",
-      status: "LEGACY",
+      status: "HIDDEN",
       type: "MOBILE",
       blocks: [
         {
@@ -2645,12 +2589,10 @@ export const WORK_GROUPS = [
     logo: "Amazon",
     roleLine: "UX Designer - Devices · Sep 2022 to Jan 2026",
       projectIds: [
-        "amazon-ai-compositor",
-        "amazon-metadata-studio",
         "amazon-image-builder",
+        "amazon-ai-compositor",
         "amazon-asset-manager",
-        "amazon-inspire-tab",
-        "amazon-ai-review-highlights"
+        "amazon-metadata-studio"
       ]
   },
   {
