@@ -85,6 +85,12 @@ const CompanySection = ({ group, onProjectClick }) => {
         </h3>
       </header>
 
+      {group.intro && (
+        <p className="text-xl text-neutral-600 leading-normal mb-8 md:mb-10 max-w-2xl">
+          {group.intro}
+        </p>
+      )}
+
       {umbrellaProjects.map((umbrella) => {
         const pillars = getPillars(umbrella.id);
         return (

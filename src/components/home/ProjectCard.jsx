@@ -81,7 +81,7 @@ const ProjectCard = ({ project, onClick }) => {
 
         {/* LAYER 3: The Overlay (Pills) */}
         <div className="absolute top-4 left-4 flex flex-wrap gap-2 pointer-events-none">
-          <Pill label={statusConfig.label} theme={statusConfig.theme} icon={statusConfig.icon} size="sm" />
+          {status && <Pill label={statusConfig.label} theme={statusConfig.theme} icon={statusConfig.icon} size="sm" />}
           <span className="uppercase tracking-wider px-2.5 py-1 bg-white/90 text-[var(--deep-purple)] text-xs font-bold rounded-sm backdrop-blur-md shadow-sm border border-slate-100/50">
             {PRODUCT_TYPES[productType] || productType}
           </span>

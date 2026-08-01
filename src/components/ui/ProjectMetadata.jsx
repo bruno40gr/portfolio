@@ -21,16 +21,16 @@ const MetaField = ({ label, value, valueClassName = "" }) => {
 };
 
 export default function ProjectMetadata({ role, timeline, status, collaborators }) {
-  const safeStatus = PROJECT_STATUS[status] || PROJECT_STATUS.IN_BUILD;
-  const statusKey = Object.keys(PROJECT_STATUS).find((k) => k === status) || "IN_BUILD";
-  const statusColor = STATUS_TEXT_COLOR[statusKey] || "text-neutral-700";
+  const safeStatus = PROJECT_STATUS[status];
+  const statusKey = Object.keys(PROJECT_STATUS).find((k) => k === status);
+  const statusColor = (statusKey && STATUS_TEXT_COLOR[statusKey]) || "text-neutral-700";
 
   return (
     <div className="w-full mb-6 md:mb-8 py-3 md:py-4 border-t border-b border-neutral-100">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-y-6 gap-x-6 pt-4 pb-2">
         <MetaField
           label="Status"
-          value={safeStatus.label}
+          value={safeStatus?.label}
           valueClassName={statusColor}
         />
         <MetaField label="Role" value={role} />
