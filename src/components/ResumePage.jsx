@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Download } from "lucide-react";
+import SEOHead from "./ui/SEOHead";
 
 // ─── Resume data ──────────────────────────────────────────────────────────────
 const RESUME = {
@@ -304,6 +305,11 @@ const ResumePage = () => {
 
   return (
     <div className="pt-32 pb-24 px-6 md:px-12 lg:px-16 max-w-[800px] mx-auto min-h-screen bg-white text-left font-sans animate-fade-in relative z-10">
+      <SEOHead
+        title="Resume"
+        description="Resume of Bruno Wong Marchena, Staff Product Designer with 14 years of experience at Amazon, Patreon, Alto Pharmacy, and more. Downloadable PDF available."
+        path="/resume"
+      />
 
       <div className="mb-10 flex justify-end">
         <button

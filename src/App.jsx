@@ -17,6 +17,7 @@ import CaseStudyStyleGuide from "./components/caseStudy/CaseStudyStyleGuide";
 import ResumePage from "./components/ResumePage";
 import Presentation from "./components/presentation/Presentation";
 import ScrollIndicator from "./components/ui/ScrollIndicator";
+import SEOHead from "./components/ui/SEOHead";
 import { Analytics } from "@vercel/analytics/react";
 
 export default function App() {
@@ -112,16 +113,6 @@ export default function App() {
     if (!location.state?.anchor) {
       window.scrollTo({ top: 0, behavior: "instant" });
     }
-    let canonicalLink = document.querySelector("link[rel='canonical']");
-    if (!canonicalLink) {
-      canonicalLink = document.createElement("link");
-      canonicalLink.setAttribute("rel", "canonical");
-      document.head.appendChild(canonicalLink);
-    }
-    const cleanPath = location.pathname.endsWith('/') && location.pathname.length > 1
-      ? location.pathname.slice(0, -1)
-      : location.pathname;
-    canonicalLink.setAttribute("href", `https://www.brunowong.me${cleanPath}`);
   }, [location.pathname, location.state]);
 
   const navigateTo = (page, anchor) => {
@@ -452,6 +443,11 @@ export default function App() {
         <Routes>
           <Route path="/" element={
             <div className="bg-white animate-fade-in font-sans">
+              <SEOHead
+                title="Portfolio"
+                description="Bruno Wong is a Staff Product Designer specializing in complex systems, AI tools, and enterprise platforms. Previous experience at Amazon, Patreon, and Alto Pharmacy."
+                path="/"
+              />
 
               {/* ===== HERO ===== */}
               <section className="bg-[#2d255c] hero-wrap flex flex-col justify-center items-center text-center px-6 min-h-[calc(100vh-var(--header-h))] flex-grow relative overflow-hidden pb-28 md:pb-40">
@@ -563,6 +559,20 @@ export default function App() {
 
           <Route path="/about" element={
             <div className="pt-40 px-6 md:px-12 lg:px-16 max-w-none mx-auto min-h-screen bg-white animate-fade-in text-left font-sans">
+              <SEOHead
+                title="About"
+                description="14 years in product design. Bruno Wong is a Staff Product Designer who works best at the system level, on the behind-the-scenes stuff where workflows are messy and the UX debt is real."
+                path="/about"
+                jsonLd={{
+                  "@context": "https://schema.org",
+                  "@type": "Person",
+                  "name": "Bruno Wong Marchena",
+                  "jobTitle": "Staff Product Designer",
+                  "url": "https://www.brunowong.me",
+                  "sameAs": ["https://www.linkedin.com/in/brunowong"],
+                  "description": "Staff Product Designer specializing in complex systems, AI tools, and enterprise platforms. Previous experience at Amazon, Patreon, and Alto Pharmacy."
+                }}
+              />
               <div className="max-w-4xl mx-auto mb-20 text-left">
                 <div className="w-full max-w-md mx-auto mb-12">
                   <div className="relative flex justify-center items-start">
@@ -611,6 +621,11 @@ export default function App() {
 
           <Route path="*" element={
             <div className="pt-40 px-6 text-center min-h-screen font-sans">
+              <SEOHead
+                title="Page Not Found"
+                description="The page you are looking for doesn't exist or has been moved."
+                path={location.pathname}
+              />
               <h2 className="text-3xl font-bold mb-4">404 - Page Not Found</h2>
               <p className="text-neutral-500 mb-8">The page you are looking for doesn't exist or has been moved.</p>
               <button onClick={() => navigate("/")} className="px-8 py-3 bg-[#88FF00] text-black font-bold rounded-full hover:scale-105 transition-transform">

@@ -1,5 +1,6 @@
 import React from "react";
 import { CHANGELOG_DATA } from "../../data/changelogData";
+import SEOHead from "../ui/SEOHead";
 
 const renderFormattedText = (text) => {
   // Simple bold parsing for markdown-style **text**
@@ -16,7 +17,12 @@ const renderFormattedText = (text) => {
 export default function Changelog() {
   return (
     <div className="pt-32 pb-24 px-6 md:px-12 lg:px-16 max-w-[1000px] mx-auto min-h-screen bg-[#13102e] text-left font-mono animate-fade-in relative z-10">
-      
+      <SEOHead
+        title="Changelog"
+        description="Development log and iterative refinement history for Bruno Wong's portfolio site. Built with React, Tailwind, and deployed on Vercel."
+        path="/changelog"
+      />
+
       {/* Background effects */}
       <div className="fixed inset-0 pointer-events-none z-[-1]" style={{ background: 'radial-gradient(circle at 50% 0%, rgba(20, 15, 45, 1) 0%, rgba(10, 8, 20, 1) 80%)' }}/>
       <svg className="fixed -top-[5%] -left-[5%] w-[110%] h-[110%] pointer-events-none opacity-[0.25] z-[-1] animate-grain" xmlns="http://www.w3.org/2000/svg">

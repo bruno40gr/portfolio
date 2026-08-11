@@ -23,6 +23,7 @@ import CaseStudyAnchorNav from "./CaseStudyAnchorNav";
 import ProjectHeader from "./ProjectHeader";
 import SystemContextBanner from "./SystemContextBanner";
 import AnimatedHero from "./AnimatedHero";
+import SEOHead from "../ui/SEOHead";
 
 import "./GalleryStyles.css";
 
@@ -654,6 +655,23 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
 
   return (
     <article className={`min-h-screen w-full relative text-left font-sans ${isEditorial ? "bg-white" : "bg-white"}`}>
+      <SEOHead
+        title={project.title}
+        description={project.impactSummarySentence || project.impactSummary || `${project.title} — a case study by Bruno Wong`}
+        path={`/project/${project.id}`}
+        ogType="article"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          "name": project.title,
+          "description": project.impactSummarySentence || project.impactSummary || "",
+          "author": {
+            "@type": "Person",
+            "name": "Bruno Wong Marchena"
+          },
+          "url": `https://www.brunowong.me/project/${project.id}`
+        }}
+      />
       {heroType === "animated" ? (
         <AnimatedHero projectId={project.id} />
       ) : isEditorial ? (
