@@ -701,7 +701,7 @@ export const PORTFOLIO_DATA = {
   designerNote: "Recommendations in the Smart Home category have to be accurate. A badly informed purchase erodes trust in the entire discovery surface. I owned the interaction patterns, content strategy, and the ranking logic I built with data science. My background from Patreon and Prox made the creator side natural because I had a clear understanding on how creators think about monetization and audience.",
   thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772307603/main_feed_cx_vc0uaq.png",
   thumbnailPadding: "p-8",
-  status: "HIDDEN",
+  status: "DEPRECATED",
   type: "MOBILE",
   blocks: [
     {
@@ -872,7 +872,7 @@ export const PORTFOLIO_DATA = {
       impactSummarySentence: "Explored and designed new applications for Amazon's AI-generated review highlights to drive product discovery across the Smart Home category.",
       designerNote: "Amazon launched AI-generated review highlights as a company-wide capability. Leadership asked me to figure out what that could mean specifically for Smart Home customers. This kind of work sit in an interesting space because we wouldn't be building from scratch nor implementing someone else's spec with all the baggage that that implies. Thankfully, our org had always had certain room and influence to break away from company-level initiatives, so we were asked to ideate yet new ways to showcase this technology.  The artifacts shown below are the exact slides I used to pitch these concepts to leadership, reflecting how product strategy and design communication actually happen at Amazon. One concept shipped, and two moved to the roadmap upstream at the org and company level.",
       thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772333741/aihighlights-stockimage_tfee9p.jpg",
-      status: "HIDDEN",
+      status: "LAUNCHED",
       type: "MOBILE",
       blocks: [
         {
@@ -2583,12 +2583,14 @@ export const WORK_GROUPS = [
     company: "Amazon Devices",
     logo: "Amazon",
     roleLine: "UX Designer - Devices · Sep 2022 to Jan 2026",
-    intro: "The four projects below are part of the same AI creative platform, spanning production, governance, localization, and review of marketing assets across 23 global marketplaces.",
+    intro: "The four projects below are part of the same AI creative platform, spanning production, governance, localization, and review of marketing assets across 23 global marketplaces. Alongside them, I led the Smart Home vertical on Amazon's Inspire feed and explored new applications for AI-powered review highlights.",
       projectIds: [
         "amazon-image-builder",
         "amazon-ai-compositor",
         "amazon-asset-manager",
-        "amazon-metadata-studio"
+        "amazon-metadata-studio",
+        "amazon-inspire-tab",
+        "amazon-ai-review-highlights"
       ]
   },
   {
