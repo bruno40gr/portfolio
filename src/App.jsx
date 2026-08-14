@@ -25,6 +25,7 @@ export default function App() {
   const location = useLocation();
 
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    if (typeof window === "undefined") return true; // SSR: no gatekeeper
     return !PORTFOLIO_DATA.gatekeeperEnabled || sessionStorage.getItem("portfolio_auth") === "true";
   });
   const [password, setPassword] = useState("");
@@ -447,6 +448,36 @@ export default function App() {
                 title="Portfolio"
                 description="Bruno Wong is a Staff Product Designer specializing in complex systems, AI tools, and enterprise platforms. Previous experience at Amazon, Patreon, and Alto Pharmacy."
                 path="/"
+                jsonLd={{
+                  "@context": "https://schema.org",
+                  "@graph": [
+                    {
+                      "@type": "Person",
+                      "name": "Bruno Wong Marchena",
+                      "jobTitle": "Staff Product Designer",
+                      "url": "https://www.brunowong.me",
+                      "sameAs": ["https://www.linkedin.com/in/brunowong"],
+                      "description": "Staff Product Designer specializing in complex systems, AI tools, and enterprise platforms. Previous experience at Amazon, Patreon, and Alto Pharmacy.",
+                      "knowsAbout": ["Product Design", "AI Systems", "Design Systems", "UX Research", "Enterprise Platforms"]
+                    },
+                    {
+                      "@type": "ItemList",
+                      "name": "Selected Projects",
+                      "itemListElement": PORTFOLIO_DATA.projects
+                        .filter((p) => p.status !== "HIDDEN")
+                        .map((p, i) => ({
+                          "@type": "ListItem",
+                          "position": i + 1,
+                          "item": {
+                            "@type": "CreativeWork",
+                            "name": p.title,
+                            "description": p.impactSummarySentence || p.impactSummary || "",
+                            "url": `https://www.brunowong.me/project/${p.id}`
+                          }
+                        }))
+                    }
+                  ]
+                }}
               />
 
               {/* ===== HERO ===== */}
