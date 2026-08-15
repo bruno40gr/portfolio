@@ -20,6 +20,20 @@ import { PORTFOLIO_DATA } from "./src/data/portfolioData.js";
 
 const DIST_DIR = path.join(process.cwd(), "dist");
 
+// Discover the actual built asset filenames from dist/assets/
+// (Vite hashes these, e.g. index-BESEcVnC.js, index-Dma9ixg-.css)
+function getBuiltAssets() {
+  const assetsDir = path.join(DIST_DIR, "assets");
+  let jsFile = "";
+  let cssFile = "";
+  if (fs.existsSync(assetsDir)) {
+    const files = fs.readdirSync(assetsDir);
+    jsFile = files.find((f) => f.endsWith(".js")) || "";
+    cssFile = files.find((f) => f.endsWith(".css")) || "";
+  }
+  return { jsFile, cssFile };
+}
+
 // All static routes
 const STATIC_ROUTES = ["/", "/about", "/resume", "/changelog", "/styles"];
 
@@ -44,6 +58,9 @@ function renderRoute(route) {
 
   const { helmet } = helmetContext;
 
+  // Discover the real built asset filenames (hashed by Vite)
+  const { jsFile, cssFile } = getBuiltAssets();
+
   // Build the full HTML document
   const fullHtml = `<!doctype html>
 <html lang="en">
@@ -54,6 +71,7 @@ function renderRoute(route) {
     ${helmet.meta.toString()}
     ${helmet.link.toString()}
     ${helmet.script.toString()}
+    ${cssFile ? `<link rel="stylesheet" href="/assets/${cssFile}" />` : ""}
     <link rel="icon" href="https://res.cloudinary.com/diy08lj9x/image/upload/v1772603676/favicon-bruno_q7crdh.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -61,7 +79,7 @@ function renderRoute(route) {
   </head>
   <body>
     <div id="root">${html}</div>
-    <script type="module" src="/src/main.jsx"></script>
+    ${jsFile ? `<script type="module" src="/assets/${jsFile}"></script>` : ""}
   </body>
 </html>`;
 
