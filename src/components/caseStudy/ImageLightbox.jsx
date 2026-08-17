@@ -211,7 +211,7 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
                           src={activeItem.src}
                           alt={activeItem.captionShort || ""}
                           // Fade in only after the image has decoded and painted.
-                          className={`max-h-full max-w-full object-contain drop-shadow-[0_15px_45px_rgba(0,0,0,0.8)] transition-opacity duration-300 ${
+                          className={`max-h-full max-w-[680px] object-contain drop-shadow-[0_15px_45px_rgba(0,0,0,0.8)] transition-opacity duration-300 ${
                             imgLoaded ? "opacity-100 animate-in zoom-in-95" : "opacity-0"
                           }`}
                           onLoad={() => setImgLoaded(true)}
@@ -255,7 +255,7 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
           onClick={(e) => e.stopPropagation()}
         >
           <div className="p-5 md:p-8 pb-3 md:pb-6 shrink-0 space-y-2.5">
-            <h2 className="text-white text-lg md:text-2xl font-serif leading-tight flex items-start gap-3">
+            <h2 className="text-white text-lg md:text-2xl font-bold leading-tight flex items-start gap-3">
               {activeItem.type === "pdf" && (
                 <FileText size={18} className="mt-1 text-blue-400 shrink-0 md:w-5 md:h-5" />
               )}

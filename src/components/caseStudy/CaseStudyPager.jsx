@@ -36,7 +36,7 @@ const CaseStudyPager = ({ prevProject, nextProject, onNavigate }) => {
   return (
     <nav
       aria-label="Case study navigation"
-      className="flex flex-col md:flex-row gap-8 w-full mt-20 pt-10 border-t border-neutral-200"
+      className="flex flex-col md:flex-row gap-8 w-full mt-24"
     >
       <Card target={prevProject} eyebrow="Previous case study" />
       <Card target={nextProject} eyebrow="Next case study" isRight />

@@ -199,12 +199,12 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         const textClass =
           block.subtype === "designer-note"
             ? "designer-note"
-            : "text-lg md:text-xl text-warm-700 font-light leading-relaxed";
+            : "text-base md:text-[17px] text-neutral-700 font-normal leading-[1.6]";
 
         return (
-          <section key={index} className="mb-10 text-left">
+          <section key={index} className="mb-10 text-left case-text-block">
             {block.title && (
-              <h3 className="text-lg md:text-xl font-normal text-warm-900 mb-4 leading-snug">
+              <h3 className="text-[19px] font-semibold text-neutral-900 mb-4 leading-[1.25]">
                 {block.title}
               </h3>
             )}
@@ -213,7 +213,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
               block.content.map((p, i) => (
                 <p
                   key={i}
-                  className={`${textClass} mb-4 md:mb-6`}
+                  className={`${textClass} mb-4`}
                   dangerouslySetInnerHTML={{ __html: p }}
                 />
               ))
@@ -225,24 +225,23 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
       }
 
       case "callout-box":
-        return <CalloutBox key={index} content={block.content} size="large" className="mb-12 md:mb-16" />;
+        return <CalloutBox key={index} content={block.content} size="large" className="case-visual-block mb-12 md:mb-16" />;
 
       case "impact-box":
-        return <ImpactBox key={index} metrics={block.metrics} description={block.description} size="large" variant={isEditorial ? "editorial" : "default"} className="mb-12 md:mb-16" />;
+        return <ImpactBox key={index} metrics={block.metrics} description={block.description} size="large" variant={isEditorial ? "editorial" : "default"} className="case-visual-block mb-12 md:mb-16" />;
 
       case "heading": {
         if (block.title === "Overview") return null;
 
         const slug = block.title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-        const showBorder = block.hasDivider !== false;
 
         return (
           <section
             id={slug}
             key={index}
-            className={`mb-8 text-left case-anchor-target ${showBorder ? "mt-16 md:mt-20 pt-10" : ""}`}
+            className="mb-5 text-left case-anchor-target mt-20 case-text-block"
           >
-            <h2 className="text-3xl md:text-4xl font-sans font-semibold text-warm-900 tracking-normal leading-[1.1]">{block.title}</h2>
+            <h2 className="text-[30px] font-bold text-neutral-900 tracking-[-0.03em] leading-[1.1]">{block.title}</h2>
           </section>
         );
       }
@@ -284,7 +283,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         };
 
         const renderSideLayout = (clickable) => (
-          <div key={index} className="mb-10 px-6 md:px-0">
+          <div key={index} className="mb-10 px-6 md:px-0 case-visual-block">
             <div className="flex flex-col md:flex-row md:gap-14 md:items-center">
               <div className="md:w-[62%] md:shrink-0">
                 {renderSideImage(clickable, globalIndex)}
@@ -307,7 +306,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         // FULL LAYOUT — full width, no lightbox, no zoom
         if (isFull) {
           return (
-            <div key={index} className="mb-10 px-6 md:px-0">
+            <div key={index} className="mb-10 px-6 md:px-0 case-visual-block">
               <div className="relative w-full bg-white border border-neutral-200 rounded-sm p-2 shadow-sm">
                 <img
                   src={block.src}
@@ -322,7 +321,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
 
         // LIGHTBOX LAYOUT (default) — full width, clickable lightbox, zoom hover
         return (
-          <div key={index} className="mb-10 px-6 md:px-0">
+          <div key={index} className="mb-10 px-6 md:px-0 case-visual-block">
             <button
               type="button"
               onClick={() => {
@@ -354,7 +353,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
       case "image-grid": {
         const cols = block.columns || 2;
         return (
-          <div key={index} className={`mb-12 md:mb-16 grid grid-cols-1 sm:grid-cols-${cols} gap-6`}>
+          <div key={index} className={`mb-12 md:mb-16 case-visual-block grid grid-cols-1 sm:grid-cols-${cols} gap-6`}>
             {block.images.map((img, i) => {
               const globalIndex = allMediaItems.findIndex((item) => item.src === img.src);
               const captionShort = typeof img.caption === "object" ? img.caption.short : img.caption;
@@ -389,7 +388,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
           typeof block.caption === "object" && block.caption !== null ? block.caption.short : block.caption;
 
         return (
-          <div key={index} className="mb-12 md:mb-16">
+          <div key={index} className="mb-12 md:mb-16 case-visual-block">
             <VideoThumbnail
               src={block.src}
               caption={videoCaption}
@@ -412,7 +411,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         const embedSrc = toFigmaEmbedUrl(block.src);
 
         return (
-          <div key={index} className="mb-12 md:mb-16">
+          <div key={index} className="mb-12 md:mb-16 case-visual-block">
             <FigmaThumbnail
               src={block.src}
               caption={figmaCaption}
@@ -459,7 +458,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         if (!block.items || !Array.isArray(block.items)) return null;
 
         return (
-          <section key={index} className="mb-12 md:mb-20 text-left font-sans">
+          <section key={index} className="mb-12 md:mb-20 text-left font-sans case-text-block">
             <ul className="space-y-14 md:space-y-20 font-sans">
               {block.items.map((item, i) => {
                 const isObj = item && typeof item === "object" && !Array.isArray(item);
@@ -504,7 +503,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                 return (
                   <li
                     key={i}
-                    className="process-list-item flex gap-4 md:gap-6 items-start text-lg md:text-xl text-warm-700 font-light leading-relaxed"
+                    className="process-list-item flex gap-4 md:gap-6 items-start text-base md:text-[17px] text-neutral-700 font-normal leading-[1.6]"
                   >
                     {hasContent && (
                       <div className="mt-1 flex items-center justify-center w-6 h-6 rounded-sm bg-[var(--green-process)] shrink-0">
@@ -678,7 +677,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         <>
           {/* Header metadata (non-sticky, scrolls away immediately) */}
           <div className="w-full border-b border-neutral-200 relative shadow-sm bg-white">
-            <div className="px-6 md:px-12 lg:px-20 pt-28 md:pt-32 pb-12 md:pb-16 max-w-[1800px] mx-auto">
+            <div className="px-6 md:px-12 lg:px-20 pt-28 md:pt-32 pb-12 md:pb-16 max-w-[1200px] mx-auto">
               <div className="mb-4">
                 <ProjectHeader
                   company={project.company}
@@ -688,11 +687,11 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                 />
               </div>
               <div className="mb-6">
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif leading-[1.1] tracking-tight text-black max-w-4xl mb-6">
+                <h1 className="text-[clamp(3rem,5vw,4.5rem)] font-bold leading-[0.95] tracking-[-0.04em] text-black max-w-4xl mb-6">
                   {project.title}
                 </h1>
                 <div className="flex flex-col md:flex-row md:items-start md:gap-12">
-                  <p className="text-xl md:text-xl text-warm-400 font-light leading-relaxed max-w-2xl font-sans">
+                  <p className="text-[18px] font-normal leading-[1.45] text-neutral-600 case-text-block font-sans">
                     {project.impactSummarySentence || project.impactSummary}
                   </p>
                   {isEditorial && project.blocks && project.blocks.filter(b => b.type === "impact-box").length > 0 && (
@@ -700,8 +699,8 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                       {project.blocks.filter(b => b.type === "impact-box").slice(0, 1).map((ib, i) =>
                         ib.metrics.map((m, j) => (
                           <div key={`${i}-${j}`} className="flex items-baseline gap-2">
-                            <span className="text-3xl md:text-4xl font-serif text-black tabular-nums tracking-[-0.03em]">{m.value}</span>
-                            <span className="text-sm text-warm-500 leading-snug max-w-[140px] font-sans">{m.label}</span>
+                            <span className="text-3xl md:text-4xl font-bold text-black tabular-nums tracking-[-0.03em]">{m.value}</span>
+                            <span className="text-sm text-neutral-500 leading-snug max-w-[140px] font-sans">{m.label}</span>
                           </div>
                         ))
                       )}
@@ -746,7 +745,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                         className="absolute inset-0 transition-opacity duration-300 ease-out"
                         style={{ opacity, backgroundColor: slide.colors?.[0] || "#231f44", paddingTop: "clamp(5rem, 10vw, 8rem)", paddingBottom: "clamp(4rem, 8vw, 6rem)" }}
                       >
-                        <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 px-6 md:px-8 w-full h-full max-w-8xl mx-auto relative z-10">
+                        <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 px-6 md:px-8 w-full h-full max-w-[1200px] mx-auto relative z-10">
                           <div className="relative h-[48vh] md:h-[66vh] w-[260px] md:w-[420px] flex items-center justify-center flex-shrink-0">
                             <img
                               src={slide.src}
@@ -834,19 +833,19 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
 
           {/* Metadata (Role / Timeline / Team) — sits below the hero */}
           <div className="w-full border-b border-neutral-200 bg-white">
-            <div className="px-6 md:px-12 lg:px-20 py-8 md:py-12 max-w-[1800px] mx-auto">
-              <div className="flex flex-col md:flex-row md:flex-wrap gap-x-16 gap-y-6 font-sans">
+            <div className="px-6 md:px-12 lg:px-20 py-8 md:py-12 max-w-[1200px] mx-auto">
+              <div className="flex flex-col md:flex-row md:flex-wrap gap-x-16 gap-y-6 font-sans case-text-block">
                 <div>
-                  <h3 className="text-[11px] font-bold text-warm-400 tracking-[0.25em] uppercase mb-2">Role</h3>
-                  <p className="text-[15px] text-warm-700 leading-relaxed">{project.details?.role}</p>
+                  <h3 className="text-[15px] font-semibold text-neutral-900 mb-1">Role</h3>
+                  <p className="text-[15px] text-neutral-600 leading-relaxed">{project.details?.role}</p>
                 </div>
                 <div>
-                  <h3 className="text-[11px] font-bold text-warm-400 tracking-[0.25em] uppercase mb-2">Timeline</h3>
-                  <p className="text-[15px] text-warm-700 leading-relaxed">{project.details?.timeline}</p>
+                  <h3 className="text-[15px] font-semibold text-neutral-900 mb-1">Timeline</h3>
+                  <p className="text-[15px] text-neutral-600 leading-relaxed">{project.details?.timeline}</p>
                 </div>
                 <div>
-                  <h3 className="text-[11px] font-bold text-warm-400 tracking-[0.25em] uppercase mb-2">Team</h3>
-                  <p className="text-[15px] text-warm-700 leading-relaxed">{project.details?.collaborators}</p>
+                  <h3 className="text-[15px] font-semibold text-neutral-900 mb-1">Team</h3>
+                  <p className="text-[15px] text-neutral-600 leading-relaxed">{project.details?.collaborators}</p>
                 </div>
               </div>
             </div>
@@ -869,8 +868,8 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
       )}
 
       <div ref={contentRef} className={`w-full pt-16 md:pt-[calc(var(--header-h)+40px)] font-sans ${isEditorial ? "bg-white" : ""}`}>
-        <div className="lg:grid lg:grid-cols-[20rem_1fr] lg:gap-12 pb-10 case-study-layout">
-          <aside className="hidden lg:block pl-8 md:pl-14 case-study-anchor">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-12 lg:px-20 lg:grid lg:grid-cols-[20rem_1fr] lg:gap-12 pb-10 case-study-layout">
+          <aside className="hidden lg:block case-study-anchor">
             <div className="sticky top-[calc(var(--header-h)+24px)]">
               <div className="max-h-[calc(100vh-var(--header-h)-48px)] overflow-auto">
                 <CaseStudyAnchorNav
@@ -881,8 +880,8 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
             </div>
           </aside>
 
-          <div className="px-6 md:px-12 max-w-[1400px] mx-auto text-left case-study-content">
-            <div className={`flex-1 w-full lg:pb-12 text-left ${isEditorial ? 'max-w-6xl' : 'max-w-4xl'}`}>
+          <div className="text-left case-study-content">
+            <div className="flex-1 w-full lg:pb-12 text-left">
               {!isEditorial && (
                 <>
                   <div id="overview" className="case-anchor-target">
@@ -893,14 +892,14 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                     />
                   </div>
 
-                  <h1 className="font-serif text-[2.5rem] md:text-[3rem] text-warm-900 mb-5 md:mb-6 font-[500] tracking-tight leading-[3rem] md:!leading-[4.2rem] text-left">
+                  <h1 className="text-[clamp(2.5rem,4vw,3.5rem)] font-bold text-neutral-900 mb-5 md:mb-6 tracking-[-0.04em] leading-[1.05] text-left">
                     {project.impactSummarySentence || project.impactSummary}
                   </h1>
                 </>
               )}
 
               {project.designerNote && (
-                <div className={`designer-note max-w-full ${isEditorial ? 'mb-14 md:mb-20' : 'mb-8'}`}>
+                <div className={`designer-note case-text-block ${isEditorial ? 'mb-14 md:mb-20' : 'mb-8'}`}>
                   {project.designerNote.split("\n").map((line, i) => (
                     <p key={i} className="mb-4 last:mb-0">
                       {line}

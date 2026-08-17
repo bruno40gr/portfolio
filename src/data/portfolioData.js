@@ -43,6 +43,7 @@ export const PORTFOLIO_DATA = {
     // PILLAR 1: IMAGE BUILDER
     {
       id: "amazon-image-builder",
+      year: 2024,
       parentId: "amazon-asset-system",
       company: "Amazon Devices",
       title: CASE_STUDIES_TITLES["amazon-image-builder"],
@@ -210,6 +211,7 @@ export const PORTFOLIO_DATA = {
    // PILLAR 4: AI LIFESTYLE COMPOSITOR
     {
   id: "amazon-ai-compositor",
+  year: 2024,
   parentId: "amazon-asset-system",
   company: "Amazon Devices",
   title: CASE_STUDIES_TITLES["amazon-ai-compositor"],
@@ -404,6 +406,7 @@ export const PORTFOLIO_DATA = {
     // PILLAR 2: ASSET MANAGER
     {
       id: "amazon-asset-manager",
+      year: 2025,
       parentId: "amazon-asset-system",
       company: "Amazon Devices",
       title: CASE_STUDIES_TITLES["amazon-asset-manager"],
@@ -566,6 +569,7 @@ export const PORTFOLIO_DATA = {
 // PILLAR 3: METADATA STUDIO
     {
       id: "amazon-metadata-studio",
+      year: 2025,
       parentId: "amazon-asset-system",
       company: "Amazon Devices",
       title: CASE_STUDIES_TITLES["amazon-metadata-studio"],
@@ -694,7 +698,8 @@ export const PORTFOLIO_DATA = {
     // INSPIRE TAB
     {
   id: "amazon-inspire-tab",
-  company: "Amazon Devices",
+  year: 2022,
+  company: "Amazon Core Shopping",
   title: CASE_STUDIES_TITLES["amazon-inspire-tab"],
   impactSummary: "Designed the ranking logic and feed rules that let Smart Home recommendations act on device compatibility and customer context automatically, without a human curator filtering every surface.",
   impactSummarySentence: "Led the Smart Home vertical on Amazon Inspire, owning the ranking strategy, feed CX, and creator tooling that made device discovery trustworthy at scale.",
@@ -866,6 +871,7 @@ export const PORTFOLIO_DATA = {
     // AI-POWERED CUSTOMER REVIEW HIGHLIGHTS
     {
       id: "amazon-ai-review-highlights",
+      year: 2023,
       company: "Amazon Core Shopping",
       title: CASE_STUDIES_TITLES["amazon-ai-review-highlights"],
       impactSummary: "Explored and designed new applications for Amazon's AI-generated review highlights to drive product discovery across the Smart Home category.",
@@ -956,9 +962,204 @@ export const PORTFOLIO_DATA = {
       }
     },
 
+    // HEY COHEN (Layered Labs)
+    {
+      id: "hey-cohen",
+      year: 2026,
+      company: "Layered Labs",
+      title: "Hey Cohen",
+      impactSummary: "SMS and communications platform for relationship-driven businesses. Built Hey Cohen from zero to launch for Headliner, a 250-student Rocklin music academy, reading enrollment, billing, attendance, and session notes to surface who's worth reaching out to and why, then turning that into AI-drafted, staff-approved outreach. Own the product end to end: strategy, UX, the AI layer, engineering, support, and delivery.",
+      impactSummarySentence: "An SMS and communications platform for relationship-driven businesses, reading business context already sitting in spreadsheets and class software to surface who's worth reaching out to and why. Designed, built, and shipped solo, from paper sketch to a real school's re-enrollment numbers.",
+      designerNote: "Hey Cohen is the first product I've taken fully from zero to launch. After years working on complex product teams at Amazon, I took a step back and focused on building something of my own. I designed it, built the systems underneath it, worked through the business model, built the AI layer, and shipped it into a real business. I learned a lot along the way, and it made me a product builder.\n\nIt's also the clearest demonstration of how my design practice has evolved. I still care deeply about understanding the problem, shaping the product, and getting the details right. But I'm now designing and building in a much more integrated way, using AI throughout the process and creating intelligent features that feel natural to the people using them.",
+      thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772307603/main_feed_cx_vc0uaq.png",
+      status: "LAUNCHED",
+      type: "CONSUMER",
+      blocks: [
+        {
+          type: "impact-box",
+          metrics: [
+            { value: "68%", label: "Of lapsed summer students re-enrolled after instructor-led outreach through Hey Cohen" },
+            { value: "6 hrs → 10 min", label: "Time to send the first three campaigns" }
+          ]
+        }
+      ],
+      details: {
+        hero: {
+          type: "editorial",
+          heroLeftImage: "", // TODO: upload left-cropped hero image (Hey Cohen product screenshot)
+          heroRightImage: "", // TODO: upload right-cropped (taller) hero image (Hey Cohen product screenshot)
+        },
+        heroImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772307603/main_feed_cx_vc0uaq.png",
+        role: "Founder · Design + Code",
+        timeline: "2026",
+        collaborators: "Solo",
+        type: "CONSUMER",
+        blocks: [
+
+          { type: "heading", title: "Overview", hasDivider: false },
+          {
+            type: "text",
+            content: [
+              "Headliner is a local music academy in Rocklin with around 250 students. The business runs on constant communication with parents and students, from schedule changes and recital reminders to closures and program updates.",
+              "Cohen, Headliner's director, is the face of the school. Parents know him by name. They sit in the lobby while their kids take lessons and end up in thirty-minute conversations with him. That's the relationship the business runs on, personal, specific, and built over time.",
+              "Hey Cohen brings together the business context already sitting across the music management software and spreadsheets, including enrollment, billing cadence, attendance, and session notes. It uses AI to surface who's worth reaching out to and why, whether that's a growth opportunity, a promotion, or a retention concern."
+            ]
+          },
+
+          { type: "heading", title: "The Problem" },
+          {
+            type: "list",
+            items: [
+              {
+                content: `<span class="process-step-title"><b>The average class management software costs $400 a month</b></span><p class="mt-2">Headliner is paying for Opus1: $298 for the base subscription and CRM tier, $99 for SMS, and another $99 for a more capable email tool. The market standard for a school this size is a bolt-on SMS feature like Opus's $99 option, with no intelligent cohort targeting. Hey Cohen produced these results with a fraction of its intended reach turned on.</p>`,
+                visuals: []
+              },
+              {
+                content: `<span class="process-step-title"><b>The systems didn't connect</b></span><p class="mt-2">These software systems are self-contained and don't freely open APIs or offer free integrations, so getting usable data requires exporting spreadsheets and reshaping them by hand.</p>`,
+                visuals: []
+              },
+              {
+                content: `<span class="process-step-title"><b>Targeting took hours</b></span><p class="mt-2">A basic mass email took about an hour to put together and send. Messaging parents about a teacher being out sick, recruiting students for a band audition, or promoting events like a piano recital took four to five hours of manual curation.</p>`,
+                visuals: []
+              },
+              {
+                content: `<span class="process-step-title"><b>There was no texting</b></span><p class="mt-2">Communication happened in person, through individual emails, or by phone call that often went straight to voicemail.</p>`,
+                visuals: []
+              }
+            ]
+          },
+
+          { type: "heading", title: "Process" },
+          {
+            type: "text",
+            content: [
+              "The idea started on paper. Before any code, I sketched the core flows by hand, what a staff member sees each morning, what happens when they search for a group of people in plain language, what a conversation thread looks like. Working it out on paper first meant I wasn't fighting a framework and an unresolved idea at the same time.",
+              "From there I moved into VS Code and started prototyping the actual workflows, rough versions of onboarding, the dashboard, and messaging, enough to click through and feel whether the shape held up.",
+              "Once the structure felt right, I connected it to real data in Supabase. That's where the real work happened. The data model kept changing as I ran actual Headliner data through it and found the places where my assumptions about how families, students, and staff related to each other didn't match reality. Every schema adjustment meant re-checking every flow built on top of it.",
+              "Once the data model held, I moved into Figma to polish the interface properly and define a real design system, components, spacing, and states that stayed consistent across the product. From there it was continuous iteration, throwing edge cases at every flow until they held up, then shipping."
+            ]
+          },
+
+          { type: "heading", title: "Refining the UI" },
+          {
+            type: "text",
+            content: [
+              "Maybe it's a reminiscence of my Amazon years, but lately I prefer to document what I'm trying to build, the problem I'm solving for the user, the business needs, and the scope of work. It helps me write down the Jobs to Be Done and start quick wireframes for the information architecture.",
+              "By then, I know what each screen needs to do, and I instruct Claude Code to build the initial skeleton. As we all are well aware by now, the first working version, while looking decent, leans heavily on default AI-generated styling, predictable spacing, monospace typefaces, the use and abuse of eyebrows, beige backgrounds, pill buttons, and punchy headlines.",
+              "It worked well enough to get me to a working prototype and nail down onboarding, messaging, filtering, and all the crucial milestones."
+            ]
+          },
+          {
+            type: "image-full",
+            layout: "side",
+            src: "", // TODO: upload screenshot of the first Claude-generated version
+            caption: {
+              short: "Early version. The first Claude version. Functional, but it screams vibecoded.",
+              verbose: ""
+            }
+          },
+          {
+            type: "image-full",
+            layout: "side",
+            src: "", // TODO: upload screenshot of the refined visual system
+            caption: {
+              short: "Refined version. A visual system I designed for it and continue to refine.",
+              verbose: ""
+            }
+          },
+
+          { type: "heading", title: "Key Features" },
+          {
+            type: "list",
+            items: [
+              {
+                content: `<span class="process-step-title"><b>Daily insights</b></span><p class="mt-2">Hey Cohen surfaces risks, milestones, and opportunities worth a staff member's attention, grounded in real attendance, billing, and teacher notes.</p>`,
+                visuals: []
+              },
+              {
+                content: `<span class="process-step-title"><b>Natural language search</b></span><p class="mt-2">Describe who you want to reach in plain language, like "students who haven't attended in three weeks", "Families with overdue invoices", or "Everyone taking piano lessons", and Hey Cohen turns that into a recipient list.</p>`,
+                visuals: []
+              },
+              {
+                content: `<span class="process-step-title"><b>Human-in-the-loop</b></span><p class="mt-2">When composing messages, AI assists with the draft and provides contact and program context, as well as images pre-approved from the brand catalogue.</p>`,
+                visuals: []
+              },
+              {
+                content: `<span class="process-step-title"><b>Data reconciliation</b></span><p class="mt-2">Many class management software systems don't freely open an API. Bringing business data into Hey Cohen meant establishing a framework for spreadsheet import and value reconciliation, then turning that data into something the rest of the product could actually work with.</p>`,
+                visuals: []
+              },
+              {
+                content: `<span class="process-step-title"><b>Inbox & campaigns</b></span><p class="mt-2">Two-way conversations, opt-outs, and delivery tracking in one place, replacing scattered personal texts and missed voicemails.</p>`,
+                visuals: []
+              }
+            ]
+          },
+
+          { type: "heading", title: "Demo Walkthrough" },
+          {
+            type: "text",
+            content: [
+              "Hey Cohen was built around Headliner, but the product isn't tied to music schools.",
+              "To test that, I built demo environments for two fictional businesses, Sacramento Martial Arts and Kumon Learning Center, each with a different class structure and its own fictional Supabase database.",
+              "Click around, prompt, filter, build a recipient list, and send a message."
+            ]
+          },
+          {
+            type: "image-full",
+            src: "", // TODO: upload screenshot of a demo environment (Sacramento Martial Arts or Kumon Learning Center)
+            caption: {
+              short: "Demo environments built for two fictional businesses outside music education, to stress-test the product beyond Headliner.",
+              verbose: ""
+            }
+          },
+
+          { type: "heading", title: "What's Next" },
+          {
+            type: "list",
+            items: [
+              {
+                content: `<span class="process-step-title"><b>A full class management software</b></span><p class="mt-2">The mid-term roadmap is folding Hey Cohen into a broader business platform that will eventually overtake Opus1. I'm still working in modules to cover scheduling, billing, payments, tracking, and curriculum.</p>`,
+                visuals: []
+              },
+              {
+                content: `<span class="process-step-title"><b>Email and WhatsApp</b></span><p class="mt-2">I focused on SMS as the MVP because, opposed as you may think, staff and parents respond to texts and phone calls far more than email. "No one checks email" was probably the biggest insight that drove that decision. Email and WhatsApp are now clear next steps, especially given Headliner's sizable expat community, where WhatsApp is often the preferred way to communicate. SMS response rates run around 45 percent against roughly 6 percent for email, and texts tend to get read within minutes while email often sits for hours. Email is also the more straightforward build since the addresses and message logic already exist. It's mostly a matter of teaching the same system a second channel.</p>`,
+                visuals: []
+              },
+              {
+                content: `<span class="process-step-title"><b>Onboarding flow and embracing SMS</b></span><p class="mt-2">Getting a business phone number approved through 10DLC carrier registration so messages aren't flagged as spam is a real onboarding hurdle that I can't control through the product, other than offering a clean onboarding flow. The bigger challenge is getting small businesses comfortable with SMS as a business channel. That's something I need to solve through the product and its marketing, showing businesses how they can use a channel they already rely on personally but may never have considered for their customers.</p>`,
+                visuals: []
+              }
+            ]
+          },
+
+          {
+  type: "impact-box",
+  metrics: [
+    {
+      value: "68%",
+      label: "Re-enrollment rate after instructor-led outreach, nearly 6x Headliner's historical 12% summer baseline*"
+    },
+    {
+      value: "$8.3K–$10.4K",
+      label: "Monthly tuition retained by returning students*"
+    },
+    {
+      value: "6 hrs → 10 min",
+      label: "Time to send a campaign. Roughly $150 saved in staff labor per campaign*"
+    }
+  ],
+  description: [
+    "*Based on 278 students enrolled in May and 202 during the summer session (76 not re-enrolled); 52 of those 76 returned by August 15 after targeted campaigns sent by instructors through Hey Cohen. September re-enrollment is still open, so this number may continue to move. Tuition estimate based on a $40 30-minute lesson rate and 4–5 prepaid sessions/month. Labor savings based on a $26/hr admin rate — one campaign (band recruitment) took 4–5 hours of manual audience curation, reduced to about 10 minutes in Hey Cohen."
+  ]
+}
+        ]
+      }
+    },
+
     // ALTO INTERNAL TOOLS
     {
       id: "alto-internal-tools",
+      year: 2020,
       company: "Alto Pharmacy",
       title: CASE_STUDIES_TITLES["alto-internal-tools"],
       impactSummary: "Redesigned the operational tools behind Alto Pharmacy's fulfillment pipeline, reducing manual communication while scaling patient operations.",
@@ -1217,6 +1418,7 @@ export const PORTFOLIO_DATA = {
     // ALTO ASSISTANT APP
     {
       id: "alto-assistant",
+      year: 2021,
       company: "Alto Pharmacy",
       title: CASE_STUDIES_TITLES["alto-assistant"],
       impactSummary: "Redesigned how patients ask medical questions, cutting inbound message volume and lowering cost per shipment while keeping the experience simple for patients.",
@@ -1518,6 +1720,7 @@ export const PORTFOLIO_DATA = {
     // PATREON CREATOR TOOLS
     {
       id: "patreon-creator-tools",
+      year: 2020,
       company: "Patreon",
       title: CASE_STUDIES_TITLES["patreon-creator-tools"],
       impactSummary: "Redesigned how creators deliver member benefits, raising creator satisfaction from 49% to 73% and helping define Patreon 2.0.",
@@ -1816,6 +2019,7 @@ export const PORTFOLIO_DATA = {
     // PATREON PLEDGE STREAK PATENT
     {
       id: "patreon-pledge-streak",
+      year: 2020,
       company: "Patreon",
       title: "Pledge Streak Patent",
       impactSummary: "Invented a loyalty visualization system that was granted a USPTO patent and became part of Patreon's creator toolkit.",
@@ -1985,6 +2189,7 @@ export const PORTFOLIO_DATA = {
     // PATREON STUDIO 2.0 DESIGN SYSTEM
     {
       id: "patreon-studio-2",
+      year: 2020,
       company: "Patreon",
       title: CASE_STUDIES_TITLES["patreon-studio-2"],
       impactSummary: "Co-created Patreon's mobile-first design system, giving product teams a shared visual language and implementation roadmap.",
@@ -2190,6 +2395,7 @@ export const PORTFOLIO_DATA = {
     // PROX
     {
       id: "prox",
+      year: 2019,
       company: "Prox",
       title: CASE_STUDIES_TITLES["prox"],
       impactSummary: "Designed and co-founded a marketplace connecting people with experts over live video, taking the product from idea to funded startup before COVID shut the business down.",
@@ -2583,15 +2789,20 @@ export const WORK_GROUPS = [
     company: "Amazon Devices",
     logo: "Amazon",
     roleLine: "UX Designer - Devices · Sep 2022 to Jan 2026",
-    intro: "The four projects below are part of the same AI creative platform, spanning production, governance, localization, and review of marketing assets across 23 global marketplaces. Alongside them, I led the Smart Home vertical on Amazon's Inspire feed and explored new applications for AI-powered review highlights.",
-      projectIds: [
-        "amazon-image-builder",
-        "amazon-ai-compositor",
-        "amazon-asset-manager",
-        "amazon-metadata-studio",
-        "amazon-inspire-tab",
-        "amazon-ai-review-highlights"
-      ]
+    projectIds: [
+      "amazon-image-builder",
+      "amazon-ai-compositor",
+      "amazon-asset-manager",
+      "amazon-metadata-studio",
+      "amazon-inspire-tab",
+      "amazon-ai-review-highlights"
+    ]
+  },
+  {
+    company: "Layered Labs",
+    logo: "Layered Labs",
+    roleLine: "Founder / Product Builder · 2026",
+    projectIds: ["hey-cohen"]
   },
   {
     company: "Alto Pharmacy",
@@ -2609,6 +2820,39 @@ export const WORK_GROUPS = [
     company: "Prox",
     roleLine: "Founding Designer · 2019 to 2020",
     projectIds: ["prox"]
+  },
+];
+
+// Curated homepage work sections (AI vs Traditional) — separate from WORK_GROUPS (nav)
+export const PARTITIONED_GROUPS = [
+  {
+    id: "ai",
+    meta: "Building with AI",
+    title: "How I build and ship with AI",
+    intro: "The last year and a half, condensed into how I've transformed my design process. This is the work I'm most proud of right now and continue to iterate on. A product I'm building from zero to launch for a 250-family music academy, and deep GenAI work I led at Amazon.",
+    projectIds: [
+      "hey-cohen",
+      "amazon-image-builder",
+      "amazon-ai-compositor",
+      "amazon-asset-manager",
+      "amazon-metadata-studio"
+    ]
+  },
+  {
+    id: "traditional",
+    meta: "Traditional (we are calling it that) product design",
+    title: "The work that honed my process",
+    intro: "Years of product design across startups, healthcare, creator tools, and Amazon. This is the work where I learned how to work through complex problems and make things that actually get used.",
+    projectIds: [
+      "amazon-ai-review-highlights",
+      "amazon-inspire-tab",
+      "alto-internal-tools",
+      "alto-assistant",
+      "patreon-creator-tools",
+      "patreon-pledge-streak",
+      "patreon-studio-2",
+      "prox"
+    ]
   },
 ];
 

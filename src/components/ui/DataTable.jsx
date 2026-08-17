@@ -5,12 +5,12 @@ const DataTable = ({ columns = [], rows = [] }) => {
 
   return (
     <div className="w-full mb-12">
-      <div className="overflow-x-auto border border-neutral-200 rounded-sm bg-white shadow-sm">
+      <div className="overflow-x-auto border border-neutral-200 rounded-lg bg-white shadow-sm">
         <table className="w-full text-left border-collapse">
           <thead className="bg-neutral-50 border-b border-neutral-200">
             <tr>
               {columns.map((c, i) => (
-                <th key={i} className="px-4 py-3 text-[12px] font-semibold text-neutral-600">
+                <th key={i} className="px-4 py-3 text-[13px] font-semibold text-neutral-600">
                   {c}
                 </th>
               ))}

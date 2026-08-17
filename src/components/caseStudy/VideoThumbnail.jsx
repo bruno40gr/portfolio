@@ -49,7 +49,7 @@ const VideoThumbnail = ({ src, caption, onClick, coverImage }) => {
   return (
     <div className="text-left w-full">
       <button
-        className="w-full aspect-video bg-neutral-100 border border-neutral-200 rounded-xl overflow-hidden shadow-sm p-2 relative group focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--neon-green)]"
+        className="w-full aspect-video bg-neutral-100 border border-neutral-200 rounded-lg overflow-hidden shadow-sm p-2 relative group focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--neon-green)]"
         onClick={onClick}
       >
         {thumbnailUrl ? (

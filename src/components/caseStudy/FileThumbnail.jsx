@@ -9,7 +9,7 @@ const FileThumbnail = ({ title, fileSize, onClick }) => (
     aria-label={`Preview PDF: ${title}`}
   >
     {/* White Card Container */}
-    <div className="relative bg-white hover:bg-neutral-50 transition-colors duration-200 rounded-2xl p-4 flex items-center gap-4 w-full border border-neutral-200 shadow-sm hover:shadow-md group-hover:-translate-y-0.5 transform ease-out z-0">
+    <div className="relative bg-white hover:bg-neutral-50 transition-colors duration-200 rounded-lg p-4 flex items-center gap-4 w-full border border-neutral-200 shadow-sm hover:shadow-md group-hover:-translate-y-0.5 transform ease-out z-0">
       
       {/* Icon Placeholder - Adapts to Neon on Hover */}
       <div className="shrink-0 w-12 h-12 rounded-xl bg-neutral-100 border border-neutral-200 flex items-center justify-center text-neutral-500 transition-all duration-300 group-hover:bg-[var(--neon-green)] group-hover:border-[var(--neon-green)] group-hover:text-[var(--deep-purple)]">

@@ -14,7 +14,7 @@ const FigmaThumbnail = ({ src, caption, onClick, coverImage, aspectRatio, isFigJ
     <button
       onClick={handleClick}
       style={{ aspectRatio: aspectRatio || "16/9" }}
-      className="group relative block w-full text-left overflow-hidden rounded-lg bg-[#1a1a1a] cursor-pointer"
+      className="group relative block w-full text-left overflow-hidden rounded-xl bg-[#1a1a1a] cursor-pointer"
       aria-label={`Open Figma prototype: ${caption || "prototype"}`}
     >
       {coverImage && (
