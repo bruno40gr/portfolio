@@ -409,7 +409,7 @@ export const PORTFOLIO_DATA = {
       title: CASE_STUDIES_TITLES["amazon-asset-manager"],
       impactSummary: "Designed a central system for managing Amazon Devices' entire marketing image catalog, with search, QA, and metadata in one place, grounded in extensive research into how NA and Europe teams actually worked.",
       impactSummarySentence: "A centralized digital asset library that brought the entire Amazon Devices creative catalog under governance, making automated campaign publishing possible at global scale.",
-      designerNote: "The UI is not the interesting part of this project. The interesting part is the systems thinking underneath: understanding how two fragmented global workflows actually operated, building the metadata structure and governance model they needed, then designing a platform both regions would trust enough to migrate to. The surface is the simplest layer. The architecture, the research, and the stakeholder alignment are where the real design work happened.",
+      designerNote: "The real design work was understanding how fragmented global workflows operated, then building the structure needed to bring them together ultinately changing their processes. The heaviest lift was the user research I owned with end users across Amazon, which shaped the architecture and helped me uncover actual workflow bottlenecks. From there, the challenge was aligning teams across regions and designing a system both sides could trust enough to adopt. What looks simple on the surface is the result of research, architecture, and stakeholder alignment underneath.",
       thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1785167948/hero_asset_browser_ee1vwu.png",
       status: "IN_BUILD",
       type: "Internal Platform",
