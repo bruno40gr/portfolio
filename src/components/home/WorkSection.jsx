@@ -224,7 +224,7 @@ const WorkSection = ({ onProjectClick }) => {
                 View full case study
               </button>
               <a
-                href="https://pulse-zeta-ruddy.vercel.app/dashboard"
+                href="https://pulse-zeta-ruddy.vercel.app/demo"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-8 py-4 bg-white text-slate-700 font-medium border-2 border-gray-200 hover:border-gray-300 transition-colors flex items-center gap-2"

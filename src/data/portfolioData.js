@@ -68,7 +68,7 @@ export const PORTFOLIO_DATA = {
           heroRightImage: "", // TODO: upload right-cropped (taller) hero image (Hey Cohen product screenshot)
           cta: {
             text: "Play with Demo",
-            link: "https://pulse-zeta-ruddy.vercel.app/dashboard"
+            link: "https://pulse-zeta-ruddy.vercel.app/demo"
           }
         },
         heroImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787116212/3998a50a-9895-49a2-8eed-81cb05e374d1.png",
