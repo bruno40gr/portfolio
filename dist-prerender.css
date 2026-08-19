@@ -33,6 +33,7 @@
   --deep-purple: #231f44;
   --deep-emerald: #065f46;
   --light-purple: #576092;
+  --case-text-measure: 680px;
   --ink: #17143a;
   --slate: #5b5b6b;
   --muted: #8a8a98;
@@ -81,4 +82,13 @@ p {
   100% {
     transform: scale(1) translateX(0);
   }
+}
+.case-visual-block {
+  max-width: 880px;
+  margin-left: 0;
+  margin-right: auto;
+}
+.case-text-block {
+  max-width: var(--case-text-measure);
+  margin-left: 0;
 }

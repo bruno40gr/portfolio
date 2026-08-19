@@ -695,10 +695,10 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                     {project.impactSummarySentence || project.impactSummary}
                   </p>
                   {isEditorial && project.blocks && project.blocks.filter(b => b.type === "impact-box").length > 0 && (
-                    <div className="flex flex-wrap gap-x-8 gap-y-4 mt-4 md:mt-0 md:shrink-0">
+                    <div className="flex flex-col sm:flex-row flex-wrap gap-x-8 gap-y-6 mt-6 md:mt-0 md:shrink-0">
                       {project.blocks.filter(b => b.type === "impact-box").slice(0, 1).map((ib, i) =>
                         ib.metrics.map((m, j) => (
-                          <div key={`${i}-${j}`} className="flex items-baseline gap-2">
+                          <div key={`${i}-${j}`} className="flex items-baseline gap-3">
                             <span className="text-3xl md:text-4xl font-bold text-black tabular-nums tracking-[-0.03em]">{m.value}</span>
                             <span className="text-sm text-neutral-500 leading-snug max-w-[140px] font-sans">{m.label}</span>
                           </div>
@@ -822,12 +822,24 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
             </>
           ) : (
             /* Single-image hero (no split panels) */
-            <div className="w-full border-b border-neutral-200 bg-neutral-100">
+            <div className="w-full border-b border-neutral-200 bg-neutral-100 relative">
               <img
                 src={heroSrc}
                 alt={project.title}
                 className="w-full h-auto"
               />
+              {project.details?.hero?.cta && (
+                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 md:bottom-12 z-10">
+                  <a
+                    href={project.details.hero.cta.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center px-8 py-4 bg-[var(--neon-green)] text-[#11131E] font-semibold text-lg md:text-xl hover:brightness-105 transition-colors shadow-lg shadow-gray-200 whitespace-nowrap"
+                  >
+                    {project.details.hero.cta.text}
+                  </a>
+                </div>
+              )}
             </div>
           )}
 
@@ -931,7 +943,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
 
               {(prevProject || nextProject) && (
                 <CaseStudyPager
-                  prevProject={prevProject}
+                  prevProject={currentIdx === 0 ? null : prevProject}
                   nextProject={nextProject}
                   onNavigate={onNavigateToProject}
                 />
