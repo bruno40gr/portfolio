@@ -17,8 +17,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["\"DM Sans\"", "system-ui", "sans-serif"],
-        serif: ["\"Gelasio\"", "serif"],
+        sans: ["\"Source Sans 3\"", "system-ui", "sans-serif"],
+        serif: ["\"Source Sans 3\"", "system-ui", "sans-serif"],
         mono: ["\"Source Code Pro\"", "monospace"],
       },
     },

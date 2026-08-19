@@ -197,7 +197,7 @@ const HERO_DATA = {
     caption: "Data visualization pattern that turned months of billing history into a readable streak.",
     layout: {
       containerHeight: "h-[30vh] md:h-[50vh]",
-      containerWidth: "w-[90vw] md:w-[720px]",
+      containerWidth: "w-[90vw] md:w-[720px] max-w-[720px]",
       containerGap: "gap-4 md:gap-8",
     },
     slides: [
@@ -261,7 +261,7 @@ const HERO_DATA = {
     caption: "AI-powered metadata extraction for global compliance. Amazon Devices, 2025.",
     layout: {
       containerHeight: "h-[48vh] md:h-[66vh]",
-      containerWidth: "w-[70vw]",
+      containerWidth: "w-[70vw] max-w-[900px]",
       containerGap: "gap-6 md:gap-16",
     },
     slides: [
@@ -285,7 +285,7 @@ const HERO_DATA = {
     caption: "This Fire TV campaign built in Image Builder compares a standard gradient background against an AI-generated lifestyle scene. By placing the device in a realistic setting, the campaign aims for the 40% higher CTR typically seen with lifestyle imagery over basic product shots.",
     layout: {
       containerHeight: "h-[40vh] md:h-[70vh]",
-      containerWidth: "w-[90vw] md:w-[75vw]",
+      containerWidth: "w-[90vw] md:w-[75vw] max-w-[1200px]",
       containerGap: "gap-4 md:gap-8",
     },
     slides: [
@@ -405,7 +405,7 @@ const AnimatedHero = ({ projectId }) => {
       <GrainOverlay opacity={isDarkTheme ? 0.30 : 0.15} />
 
       <div
-        className={`flex flex-col md:flex-row items-center justify-center ${layout.containerGap || 'gap-6 md:gap-12'} px-6 md:px-8 w-full max-w-8xl relative z-10`}
+        className={`flex flex-col md:flex-row items-center justify-center ${layout.containerGap || 'gap-6 md:gap-12'} px-6 md:px-8 w-full max-w-[1200px] relative z-10`}
         style={{ opacity: scale > 1.2 ? 0 : 1, transition: "opacity 0.3s" }}
       >
         <div

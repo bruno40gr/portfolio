@@ -76,7 +76,7 @@ const CaseStudyAnchorNav = ({ sections }) => {
             href={"#" + section.id}
             title={section.title}
             className={
-              "case-anchor-link block meta-label leading-snug whitespace-normal break-words transition-colors " +
+              "case-anchor-link block leading-snug whitespace-normal break-words transition-colors " +
               (isActive
                 ? "is-active !text-neutral-900 !font-[600]"
                 : "!text-neutral-400 !font-[400] hover:!text-neutral-900")

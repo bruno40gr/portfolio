@@ -40,9 +40,252 @@ export const PORTFOLIO_DATA = {
   },
   projects: [
 
+    // HEY COHEN (Layered Labs)
+    {
+      id: "hey-cohen",
+      year: 2026,
+      company: "Layered Labs",
+      title: "Hey Cohen",
+      impactSummary: "SMS and communications platform for relationship-driven businesses. Built Hey Cohen from zero to launch for Headliner, a 250-student Rocklin music academy, reading enrollment, billing, attendance, and session notes to surface who's worth reaching out to and why, then turning that into AI-drafted, staff-approved outreach. Own the product end to end: strategy, UX, the AI layer, engineering, support, and delivery.",
+      impactSummarySentence: "An SMS and communications platform for relationship-driven businesses, reading business context already sitting in spreadsheets and class software to surface who's worth reaching out to and why. Designed, built, and shipped solo, from paper sketch to a real school's re-enrollment numbers.",
+      designerNote: "Hey Cohen is the first product I've taken fully from zero to launch. After years working on complex product teams at Amazon, I took a step back and focused on building something of my own. I designed it, built the systems underneath it, worked through the business model, built the AI layer, and shipped it into a real business. I learned a lot along the way, and it made me a product builder.\n\nIt's also the clearest demonstration of how my design practice has evolved. I still care deeply about understanding the problem, shaping the product, and getting the details right. But I'm now designing and building in a much more integrated way, using AI throughout the process and creating intelligent features that feel natural to the people using them.",
+      thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787116212/3998a50a-9895-49a2-8eed-81cb05e374d1.png",
+      status: "LAUNCHED",
+      type: "CONSUMER",
+      blocks: [
+        {
+          type: "impact-box",
+          metrics: [
+            { value: "68%", label: "Of lapsed summer students re-enrolled after instructor-led outreach through Hey Cohen" },
+            { value: "6 hrs → 10 min", label: "Time to send the first three campaigns" }
+          ]
+        }
+      ],
+      details: {
+        hero: {
+          type: "editorial",
+          heroLeftImage: "", // TODO: upload left-cropped hero image (Hey Cohen product screenshot)
+          heroRightImage: "", // TODO: upload right-cropped (taller) hero image (Hey Cohen product screenshot)
+          cta: {
+            text: "Play with Demo",
+            link: "https://pulse-zeta-ruddy.vercel.app/dashboard"
+          }
+        },
+        heroImage: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787116212/3998a50a-9895-49a2-8eed-81cb05e374d1.png",
+        role: "Founder · Design + Code",
+        timeline: "2026",
+        collaborators: "Solo",
+        type: "CONSUMER",
+        blocks: [
+
+          { type: "heading", title: "Overview", hasDivider: false },
+          {
+            type: "text",
+            content: [
+              "Headliner is a local music academy in Rocklin with around 250 students. The business runs on constant communication with parents and students, from schedule changes and recital reminders to closures and program updates.",
+              "Cohen, Headliner's director, is the face of the school. Parents know him by name. They sit in the lobby while their kids take lessons and end up in thirty-minute conversations with him. That's the relationship the business runs on, personal, specific, and built over time.",
+              "Hey Cohen brings together the business context already sitting across the music management software and spreadsheets, including enrollment, billing cadence, attendance, and session notes. It uses AI to surface who's worth reaching out to and why, whether that's a growth opportunity, a promotion, or a retention concern."
+            ]
+          },
+
+          { type: "heading", title: "The Problem" },
+          {
+            type: "list",
+            items: [
+              {
+                content: `<span class="process-step-title"><b>The average class management software costs $400 a month</b></span><p class="mt-2">Headliner pays $298 for Opus1's base subscription and CRM tier, $99 for SMS, and $99 for a more capable email tool.</p>`,
+                visuals: []
+              },
+              {
+                content: `<span class="process-step-title"><b>Systems don't connect</b></span><p class="mt-2">No APIs, no free integrations, so getting usable data meant exporting spreadsheets and reshaping them by hand.</p>`,
+                visuals: []
+              },
+              {
+                content: `<span class="process-step-title"><b>Messaging took hours.</b></span><p class="mt-2">A mass email took about an hour. Targeted outreach, like recruiting for a band or promoting a recital, took four to five hours of manual curation.</p>`,
+                visuals: []
+              },
+              {
+                content: `<span class="process-step-title"><b>There was no texting</b></span><p class="mt-2">Communication happened in person, by individual email, or by phone calls that often went to voicemail.</p>`,
+                visuals: []
+              }
+            ]
+          },
+
+          { type: "heading", title: "Process" },
+          {
+            type: "text",
+            content: [
+              "The idea started on paper, sketching the core flows by hand before any code. From there I moved into VS Code to prototype the workflows, connected them to real Headliner data in Supabase, and iterated on the data model until it held. Then I moved into Figma to polish the interface and define a real design system, followed by continuous iteration until every flow held up and shipped."
+            ]
+          },
+          {
+            type: "image-full",
+            layout: "full",
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787113304/814f84d8-3692-4cb9-9a91-4a5e8a1533e9.png",
+          },
+
+          { type: "heading", title: "Refining the UI" },
+          {
+            type: "text",
+            content: [
+              "Maybe it's a reminiscence of my Amazon years, but lately I prefer to document what I'm trying to build, the problem I'm solving for the user, the business needs, and the scope of work. It helps me write down the Jobs to Be Done and start quick wireframes for the information architecture.",
+              "By then, I know what each screen needs to do, and I instruct Claude Code to build the initial skeleton. As we all are well aware by now, the first working version, while looking decent, leans heavily on default AI-generated styling, predictable spacing, monospace typefaces, the use and abuse of eyebrows, beige backgrounds, pill buttons, and punchy headlines.",
+              "It worked well enough to get me to a working prototype and nail down onboarding, messaging, filtering, and all the crucial milestones."
+            ]
+          },
+          {
+            type: "image-full",
+            layout: "side",
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787111924/Screenshot_2026-08-11_at_8.53.36_AM_phvx3u.png",
+            caption: {
+              short: "Early version. The first Claude version. Functional, but it screams vibecoded.",
+              verbose: ""
+            }
+          },
+          
+          { type: "heading", title: "Key Features" },
+          {
+            type: "list",
+            items: [
+              {
+                content: `<span class="process-step-title"><b>Daily insights</b></span><p class="mt-2">Hey Cohen surfaces risks, milestones, and opportunities worth a staff member's attention, grounded in real attendance, billing, and teacher notes.</p>`,
+                visuals: [
+                  {
+                    kind: "image",
+                    layout: "side-lightbox",
+                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109030/Screenshot_2026-08-18_at_7.49.08_PM_nlupj0.png",
+                    caption: {
+                      short: "A priority feed that turns attendance, billing, and notes into visible follow-up moments.",
+                      verbose: ""
+                    }
+                  }
+                ]
+              },
+              {
+                content: `<span class="process-step-title"><b>Natural language search</b></span><p class="mt-2">Target the audience using any combination of filters that helps narrow them down. Or just describe them in plain language, and Hey Cohen turns that into a recipient list.</p>`,
+                visuals: [
+                  {
+                    kind: "image",
+                    layout: "side-lightbox",
+                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109031/Screenshot_2026-08-18_at_7.54.10_PM_kzendm.png",
+                    caption: {
+                      short: "Target the audience using any combination of filters that helps narrow them down. Or just describe them in plain language, and Hey Cohen turns that into a recipient list.",
+                      verbose: ""
+                    }
+                  }
+                ]
+              },
+              {
+                content: `<span class="process-step-title"><b>Human-in-the-loop</b></span><p class="mt-2">A human drafts the text message. Hey Cohen helps polish it, adds context, and suggests improvements, but it's still the sender's call.</p>`,
+                visuals: [
+                  {
+                    kind: "image",
+                    layout: "side-lightbox",
+                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109029/Screenshot_2026-08-18_at_7.54.49_PM_n4sgo1.png",
+                    caption: {
+                      short: "A human drafts the text message. Hey Cohen helps polish it, adds context, and suggests improvements, but it's still the sender's call.",
+                      verbose: ""
+                    }
+                  }
+                ]
+              },
+              {
+                content: `<span class="process-step-title"><b>Brand voice</b></span><p class="mt-2">Teach Hey Cohen how your business sounds. Set brand voice preferences, upload approved images, and let the AI polish language so outgoing content stays consistent with how you want to communicate.</p>`,
+                visuals: [
+                  {
+                    kind: "image",
+                    layout: "side-lightbox",
+                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109298/Screenshot_2026-08-18_at_8.14.41_PM_eqe8is.png",
+                    caption: {
+                      short: "Teach Hey Cohen how your business sounds. Set brand voice preferences, upload approved images, and let the AI polish language so outgoing content stays consistent with how you want to communicate.",
+                      verbose: ""
+                    }
+                  }
+                ]
+              },
+              {
+                content: `<span class="process-step-title"><b>Data reconciliation</b></span><p class="mt-2">Many class management software systems don't freely open an API. Bringing business data into Hey Cohen meant establishing a framework for spreadsheet import and value reconciliation, then turning that data into something the rest of the product could actually work with.</p>`,
+                visuals: []
+              },
+              {
+                content: `<span class="process-step-title"><b>Inbox & campaigns</b></span><p class="mt-2">Every message sent becomes a direct communication path: traceable, attributable, and built for action instead of getting lost in personal texts or missed calls.</p>`,
+                visuals: [
+                  {
+                    kind: "image",
+                    layout: "side-lightbox",
+                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109029/Screenshot_2026-08-18_at_7.55.46_PM_icqopm.png",
+                    caption: {
+                      short: "Every message sent becomes a direct communication path: traceable, attributable, and built for action instead of getting lost in personal texts or missed calls.",
+                      verbose: ""
+                    }
+                  },
+                  {
+                    kind: "image",
+                    layout: "side-lightbox",
+                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109029/Screenshot_2026-08-18_at_7.58.32_PM_ktqsku.png",
+                    caption: {
+                      short: "Every message sent becomes a direct communication path: traceable, attributable, and built for action instead of getting lost in personal texts or missed calls.",
+                      verbose: ""
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+
+          
+
+        { type: "heading", title: "What's Next" },
+{
+  type: "list",
+  items: [
+    {
+      content: `<span class="process-step-title"><b>Develop Odeon</b></span><p class="mt-2">Expand Hey Cohen into a broader class management platform covering scheduling, billing, payments, student tracking, and curriculum, with the long-term goal of replacing Opus1.</p>`,
+      visuals: []
+    },
+    {
+      content: `<span class="process-step-title"><b>Develop CharterPulse, part of Odeon</b></span><p class="mt-2">Build a module to manage charter schools, subsidized enrichment programs, and other third-party payers with complex payment workflows. CharterPulse will reduce administrative burden and help academies serve more families, including those seeking specialized education for children with special needs.</p>`,
+      visuals: []
+    },
+    {
+      content: `<span class="process-step-title"><b>Add Email and WhatsApp</b></span><p class="mt-2">Expand communication beyond SMS with email and WhatsApp, giving academies more flexibility to reach families through the channels they already use and prefer.</p>`,
+      visuals: []
+    },
+    {
+      content: `<span class="process-step-title"><b>Improve onboarding and SMS adoption</b></span><p class="mt-2">Simplify the 10DLC registration and phone-number setup experience while helping small businesses understand how to use SMS effectively as a professional customer communication channel.</p>`,
+      visuals: []
+    }
+  ]
+},
+
+          {
+  type: "impact-box",
+  metrics: [
+    {
+      value: "68%",
+      label: "Re-enrollment rate after instructor-led outreach, nearly 6x Headliner's historical 12% summer baseline*"
+    },
+    {
+      value: "$8.3K–$10.4K",
+      label: "Monthly tuition retained by returning students*"
+    },
+    {
+      value: "6 hrs → 10 min",
+      label: "Time to send a campaign. Roughly $150 saved in staff labor per campaign*"
+    }
+  ],
+  description: [
+    "*Based on 278 students enrolled in May and 202 during the summer session (76 not re-enrolled); 52 of those 76 returned by August 15 after targeted campaigns sent by instructors through Hey Cohen. September re-enrollment is still open, so this number may continue to move. Tuition estimate based on a $40 30-minute lesson rate and 4–5 prepaid sessions/month. Labor savings based on a $26/hr admin rate — one campaign (band recruitment) took 4–5 hours of manual audience curation, reduced to about 10 minutes in Hey Cohen."
+  ]
+}
+        ]
+      }
+    },
+
     // PILLAR 1: IMAGE BUILDER
     {
       id: "amazon-image-builder",
+      year: 2024,
       parentId: "amazon-asset-system",
       company: "Amazon Devices",
       title: CASE_STUDIES_TITLES["amazon-image-builder"],
@@ -210,6 +453,7 @@ export const PORTFOLIO_DATA = {
    // PILLAR 4: AI LIFESTYLE COMPOSITOR
     {
   id: "amazon-ai-compositor",
+  year: 2024,
   parentId: "amazon-asset-system",
   company: "Amazon Devices",
   title: CASE_STUDIES_TITLES["amazon-ai-compositor"],
@@ -404,6 +648,7 @@ export const PORTFOLIO_DATA = {
     // PILLAR 2: ASSET MANAGER
     {
       id: "amazon-asset-manager",
+      year: 2025,
       parentId: "amazon-asset-system",
       company: "Amazon Devices",
       title: CASE_STUDIES_TITLES["amazon-asset-manager"],
@@ -566,6 +811,7 @@ export const PORTFOLIO_DATA = {
 // PILLAR 3: METADATA STUDIO
     {
       id: "amazon-metadata-studio",
+      year: 2025,
       parentId: "amazon-asset-system",
       company: "Amazon Devices",
       title: CASE_STUDIES_TITLES["amazon-metadata-studio"],
@@ -694,7 +940,8 @@ export const PORTFOLIO_DATA = {
     // INSPIRE TAB
     {
   id: "amazon-inspire-tab",
-  company: "Amazon Devices",
+  year: 2022,
+  company: "Amazon Core Shopping",
   title: CASE_STUDIES_TITLES["amazon-inspire-tab"],
   impactSummary: "Designed the ranking logic and feed rules that let Smart Home recommendations act on device compatibility and customer context automatically, without a human curator filtering every surface.",
   impactSummarySentence: "Led the Smart Home vertical on Amazon Inspire, owning the ranking strategy, feed CX, and creator tooling that made device discovery trustworthy at scale.",
@@ -866,6 +1113,7 @@ export const PORTFOLIO_DATA = {
     // AI-POWERED CUSTOMER REVIEW HIGHLIGHTS
     {
       id: "amazon-ai-review-highlights",
+      year: 2023,
       company: "Amazon Core Shopping",
       title: CASE_STUDIES_TITLES["amazon-ai-review-highlights"],
       impactSummary: "Explored and designed new applications for Amazon's AI-generated review highlights to drive product discovery across the Smart Home category.",
@@ -959,6 +1207,7 @@ export const PORTFOLIO_DATA = {
     // ALTO INTERNAL TOOLS
     {
       id: "alto-internal-tools",
+      year: 2020,
       company: "Alto Pharmacy",
       title: CASE_STUDIES_TITLES["alto-internal-tools"],
       impactSummary: "Redesigned the operational tools behind Alto Pharmacy's fulfillment pipeline, reducing manual communication while scaling patient operations.",
@@ -1217,6 +1466,7 @@ export const PORTFOLIO_DATA = {
     // ALTO ASSISTANT APP
     {
       id: "alto-assistant",
+      year: 2021,
       company: "Alto Pharmacy",
       title: CASE_STUDIES_TITLES["alto-assistant"],
       impactSummary: "Redesigned how patients ask medical questions, cutting inbound message volume and lowering cost per shipment while keeping the experience simple for patients.",
@@ -1518,6 +1768,7 @@ export const PORTFOLIO_DATA = {
     // PATREON CREATOR TOOLS
     {
       id: "patreon-creator-tools",
+      year: 2020,
       company: "Patreon",
       title: CASE_STUDIES_TITLES["patreon-creator-tools"],
       impactSummary: "Redesigned how creators deliver member benefits, raising creator satisfaction from 49% to 73% and helping define Patreon 2.0.",
@@ -1816,6 +2067,7 @@ export const PORTFOLIO_DATA = {
     // PATREON PLEDGE STREAK PATENT
     {
       id: "patreon-pledge-streak",
+      year: 2020,
       company: "Patreon",
       title: "Pledge Streak Patent",
       impactSummary: "Invented a loyalty visualization system that was granted a USPTO patent and became part of Patreon's creator toolkit.",
@@ -1985,6 +2237,7 @@ export const PORTFOLIO_DATA = {
     // PATREON STUDIO 2.0 DESIGN SYSTEM
     {
       id: "patreon-studio-2",
+      year: 2020,
       company: "Patreon",
       title: CASE_STUDIES_TITLES["patreon-studio-2"],
       impactSummary: "Co-created Patreon's mobile-first design system, giving product teams a shared visual language and implementation roadmap.",
@@ -2190,6 +2443,7 @@ export const PORTFOLIO_DATA = {
     // PROX
     {
       id: "prox",
+      year: 2019,
       company: "Prox",
       title: CASE_STUDIES_TITLES["prox"],
       impactSummary: "Designed and co-founded a marketplace connecting people with experts over live video, taking the product from idea to funded startup before COVID shut the business down.",
@@ -2580,35 +2834,64 @@ export const PORTFOLIO_DATA = {
 
 export const WORK_GROUPS = [
   {
-    company: "Amazon Devices",
-    logo: "Amazon",
-    roleLine: "UX Designer - Devices · Sep 2022 to Jan 2026",
-    intro: "The four projects below are part of the same AI creative platform, spanning production, governance, localization, and review of marketing assets across 23 global marketplaces. Alongside them, I led the Smart Home vertical on Amazon's Inspire feed and explored new applications for AI-powered review highlights.",
-      projectIds: [
-        "amazon-image-builder",
-        "amazon-ai-compositor",
-        "amazon-asset-manager",
-        "amazon-metadata-studio",
-        "amazon-inspire-tab",
-        "amazon-ai-review-highlights"
-      ]
+    company: "AI Projects",
+    logo: "AI",
+    roleLine: "Building and Shipping with AI",
+    projectIds: [
+      "hey-cohen",
+      "amazon-image-builder",
+      "amazon-ai-compositor",
+      "amazon-asset-manager",
+      "amazon-metadata-studio"
+    ]
   },
   {
-    company: "Alto Pharmacy",
-    logo: "Alto Pharmacy",
-    roleLine: "Designer · 2021 to 2022",
-    projectIds: ["alto-internal-tools", "alto-assistant"]
+    company: "Traditional Projects",
+    logo: "Design",
+    roleLine: "Traditional Product Design",
+    projectIds: [
+      "amazon-ai-review-highlights",
+      "amazon-inspire-tab",
+      "alto-internal-tools",
+      "alto-assistant",
+      "patreon-creator-tools",
+      "patreon-pledge-streak",
+      "patreon-studio-2",
+      "prox"
+    ]
+  }
+];
+
+// Curated homepage work sections (AI vs Traditional) — separate from WORK_GROUPS (nav)
+export const PARTITIONED_GROUPS = [
+  {
+    id: "ai",
+    meta: "Building with AI",
+    title: "How I build and ship with AI",
+    intro: "The last year and a half, condensed into how I've transformed my design process. This is the work I'm most proud of right now and continue to iterate on. A product I'm building from zero to launch for a 250-family music academy, and deep GenAI work I led at Amazon.",
+    projectIds: [
+      "hey-cohen",
+      "amazon-image-builder",
+      "amazon-ai-compositor",
+      "amazon-asset-manager",
+      "amazon-metadata-studio"
+    ]
   },
   {
-    company: "Patreon",
-    logo: "Patreon",
-    roleLine: "Sr. Product Designer · Creator Tools · 2020 to 2021",
-    projectIds: ["patreon-creator-tools", "patreon-pledge-streak", "patreon-studio-2"]
-  },
-  {
-    company: "Prox",
-    roleLine: "Founding Designer · 2019 to 2020",
-    projectIds: ["prox"]
+    id: "traditional",
+    meta: "Traditional (we are calling it that) product design",
+    title: "The work that honed my process",
+    intro: "Years of product design across startups, healthcare, creator tools, and Amazon. This is the work where I learned how to work through complex problems and make things that actually get used.",
+    projectIds: [
+      "amazon-ai-review-highlights",
+      "amazon-inspire-tab",
+      "alto-internal-tools",
+      "alto-assistant",
+      "patreon-creator-tools",
+      "patreon-pledge-streak",
+      "patreon-studio-2",
+      "prox"
+    ]
   },
 ];
 

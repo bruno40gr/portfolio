@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bruno Wong — Work Preview (AI / Classic)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep-purple: #2d255c;
+    --neon-green: #88FF00;
+    --cyan: #00ffff;
+    --pink: #ff0055;
+    --ink: #17143a;
+    --slate: #5b5b6b;
+    --muted: #8a8a98;
+    --line: #ececf0;
+    --surface: #ffffff;
+    --radius: 18px;
+    --font-sans: 'Source Sans 3', sans-serif;
+    --font-serif: 'PT Serif', serif;
+    --font-mono: 'Source Code Pro', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--ink);
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- NAV ---------- */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 40px; background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(10px); border-bottom: 1px solid var(--line);
+  }
+  .nav__links { display: flex; gap: 34px; }
+  .nav__link { font-size: 14px; letter-spacing: 0.02em; color: var(--ink); text-decoration: none; opacity: 0.85; }
+  .nav__link:hover { opacity: 1; }
+  .nav__logo { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; }
+  .nav__logo span { color: var(--neon-green); }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    background: var(--deep-purple);
+    color: #fff; text-align: center;
+    padding: 170px 24px 120px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(136,255,0,0.18) 0%, transparent 65%);
+  }
+  .hero__inner { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; }
+  .hero__logo {
+    max-width: 220px; margin: 0 auto 34px; filter: brightness(0) invert(1);
+  }
+  .hero__title {
+    font-family: var(--font-serif); font-weight: 700;
+    font-size: clamp(1.7rem, 3.6vw, 2.6rem); line-height: 1.15; letter-spacing: -0.01em;
+    max-width: 820px; margin: 0 auto 22px;
+  }
+  .hero__title .ghost { color: rgba(255,255,255,0.35); }
+  .hero__sub {
+    max-width: 640px; margin: 0 auto; color: rgba(255,255,255,0.72);
+    font-size: clamp(1.05rem, 1.6vw, 1.25rem); font-weight: 300; line-height: 1.6;
+  }
+  .hero__divider { width: 60px; height: 3px; background: var(--neon-green); margin: 30px auto; border-radius: 2px; }
+
+  /* ---------- SECTIONS ---------- */
+  .section { padding: 90px 40px 40px; max-width: 1400px; margin: 0 auto; }
+  .section__label {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.22em;
+    text-transform: uppercase; font-weight: 600;
+  }
+  .section__intro { max-width: 760px; }
+  .section__intro h2 { font-size: clamp(1.6rem, 3vw, 2.3rem); font-weight: 700; margin: 14px 0 16px; line-height: 1.15; letter-spacing: -0.01em; }
+  .section__intro p { color: var(--slate); font-size: 1.12rem; font-weight: 300; line-height: 1.65; }
+  .section__lead {
+    font-family: var(--font-serif); font-weight: 700;
+    font-size: clamp(1.7rem, 3.6vw, 2.6rem); line-height: 1.15; letter-spacing: -0.01em;
+    max-width: 820px; margin: 0 0 40px;
+  }
+  .section--ai .section__lead { color: #fff; }
+
+  /* AI section distinct treatment */
+  .section--ai {
+    border-radius: 28px;
+    background: linear-gradient(180deg, #191636 0%, #2d255c 100%);
+    color: #fff; padding: 90px 70px 70px;
+    margin: 60px auto;
+  }
+  .section--ai .section__label { color: var(--neon-green); }
+  .section--ai .section__intro h2 { color: #fff; }
+  .section--ai .section__intro p { color: rgba(255,255,255,0.72); }
+
+  .section--classic .section__label { color: var(--pink); }
+  .section--classic .section__intro h2 { color: var(--ink); }
+
+  /* Standalone "two groups" lead strip (on white, between hero and purple card) */
+  .lead-strip {
+    max-width: 1400px; margin: 0 auto; padding: 80px 40px 0;
+  }
+  .lead-strip__text {
+    font-family: var(--font-serif); font-weight: 700;
+    font-size: clamp(1.7rem, 3.6vw, 2.6rem); line-height: 1.15; letter-spacing: -0.01em;
+    max-width: 820px; color: var(--ink);
+  }
+
+  /* ---------- CARDS ---------- */
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 34px; margin-top: 44px; }
+
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    overflow: hidden; display: flex; flex-direction: column;
+    transition: transform .25s ease, box-shadow .25s ease; cursor: pointer;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(23,20,58,0.10); }
+  .card--ai { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); }
+  .card--ai:hover { box-shadow: 0 18px 40px rgba(0,0,0,0.35); }
+
+  .card__media { aspect-ratio: 16/10; background: var(--line); position: relative; overflow: hidden; }
+  .card--ai .card__media { background: rgba(255,255,255,0.05); }
+  .card__media img { width: 100%; height: 100%; object-fit: cover; }
+
+  .card__body { padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .card__company {
+    display: flex; align-items: center; gap: 10px;
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em;
+    text-transform: uppercase; font-weight: 600; color: var(--muted);
+  }
+  .card--ai .card__company { color: rgba(255,255,255,0.55); }
+  .card__company .dot { width: 7px; height: 7px; border-radius: 50%; }
+  .card__company .dot--mine { background: var(--neon-green); }
+  .card__company .dot--job { background: var(--cyan); }
+  .card--ai .card__company .dot--mine { background: var(--neon-green); }
+  .card--ai .card__company .dot--job { background: var(--cyan); }
+  .card__title { font-size: 1.28rem; font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; }
+  .card--ai .card__title { color: #fff; }
+  .card__role { font-size: 0.86rem; color: var(--muted); font-weight: 400; }
+  .card--ai .card__role { color: rgba(255,255,255,0.55); }
+  .card__summary { font-size: 0.98rem; color: var(--slate); font-weight: 300; line-height: 1.55; margin-top: 6px; }
+  .card--ai .card__summary { color: rgba(255,255,255,0.7); }
+
+  .card__cta { margin-top: auto; padding-top: 18px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 18px; border-radius: 999px; font-weight: 600;
+    font-size: 0.9rem; text-decoration: none; border: none; cursor: pointer;
+    transition: transform .15s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn--primary { background: var(--neon-green); color: #000; }
+  .btn--ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
+  .card--ai .btn--ghost { color: #fff; border-color: rgba(255,255,255,0.3); }
+  .btn--ghost-light { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.35); }
+
+  /* ---------- FOOTER ---------- */
+  .footer { border-top: 1px solid var(--line); padding: 48px 40px; text-align: center; color: var(--muted); font-size: 0.9rem; }
+  .footer a { color: var(--ink); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 800px) {
+    .section, .section--ai { padding: 60px 20px 40px; margin: 30px auto; }
+    .section--ai { padding: 50px 20px 60px; }
+    .nav { padding: 14px 20px; }
+    .nav__links { gap: 18px; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__logo">Bruno<span>.</span></div>
+  <div class="nav__links">
+    <a class="nav__link" href="#ai">Building with AI</a>
+    <a class="nav__link" href="#classic">Traditional product design</a>
+    <a class="nav__link" href="#pulse">Hey Cohen</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero__inner">
+    <img class="hero__logo" src="https://res.cloudinary.com/diy08lj9x/image/upload/v1772648447/bruno-logo-whitewong_q7cxxn.png" alt="Bruno Wong Marchena" />
+    <h1 class="hero__title">
+      Usually the only designer in the room. Lead design on engineering-heavy SaaS and B2B products.
+    </h1>
+    <p class="hero__sub">
+      I've automated global team workflows at Amazon, made medicine delivery more affordable for patients in healthcare logistics, and helped creators monetize their expertise.
+    </p>
+  </div>
+</header>
+
+<!-- ============ BUILDING WITH AI ============ -->
+<section class="section section--ai" id="ai">
+  <div class="section__label">Building with AI</div>
+  <div class="section__intro">
+    <h2>Recent work</h2>
+    <p class="hero__sub">
+      The last year and a half, condensed into how I've transformed my design process. This is the work I'm most proud of right now and continue to iterate on. An end-to-end product I'm building for a 300-family music academy, and deep GenAI work I led at Amazon.
+    </p>
+  </div>
+
+  <div class="grid">
+    <!-- Pulse / Layered Labs -->
+    <article class="card card--ai">
+      <div class="card__media">
+        <img src="https://res.cloudinary.com/diy08lj9x/image/upload/v1772307603/main_feed_cx_vc0uaq.png" alt="Pulse dashboard" />
+      </div>
+      <div class="card__body">
+        <div class="card__company"><span class="dot dot--mine"></span> Layered Labs · Founder / Product Builder</div>
+        <h3 class="card__title">Hey Cohen</h3>
+        <div class="card__role">SMS & communications tool · first module of Odeon</div>
+        <p class="card__summary">
+          Building Hey Cohen from zero to launch, a communications platform for businesses that know their
+          customers by name. It turns notes, billing, and attendance into targeted SMS outreach. I own the
+          product end to end, from strategy and UX through AI workflows, engineering, support, and delivery.
+          Demo environment available.
+        </p>
+        <div class="card__cta">
+          <a class="btn btn--primary" href="#pulse">Try the demo</a>
+          <a class="btn btn--ghost-light" href="#pulse">Case study</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Amazon 4 pillars container -->
+    <article class="card card--ai">
+      <div class="card__media">
+        <img src="https://res.cloudinary.com/diy08lj9x/image/upload/v1785167948/hero_asset_browser_ee1vwu.png" alt="Amazon asset system" />
+      </div>
+      <div class="card__body">
+        <div class="card__company"><span class="dot dot--job"></span> Amazon · UX Designer, Devices</div>
+        <h3 class="card__title">The Devices Asset System</h3>
+        <div class="card__role">Four interconnected products · 23 global marketplaces</div>
+        <p class="card__summary">
+          I led design across a new asset platform that automated the creation, localization, governance,
+          and review of Amazon Devices marketing assets. The system launched across 23 marketplaces and
+          produced thousands of assets for Prime Day.
+        </p>
+        <div class="card__cta">
+          <a class="btn btn--ghost-light" href="#classic">View the four</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ TRADITIONAL PRODUCT DESIGN ============ -->
+<section class="section section--classic" id="classic">
+  <div class="section__label">Traditional product design</div>
+  <div class="section__intro">
+    <h2>Traditional product design</h2>
+    <p>
+      The product design work that honed who I am. I've always been proud of my process, the impact I've had on the businesses I've worked with, and the outcomes that came from it.
+    </p>
+  </div>
+
+  <div class="grid">
+    <!-- Alto -->
+    <article class="card">
+      <div class="card__media"><img src="https://res.cloudinary.com/diy08lj9x/image/upload/v1772157001/herocover_nsmuem.png" alt="Alto" /></div>
+      <div class="card__body">
+        <div class="card__company"><span class="dot dot--job"></span> Alto Pharmacy · Designer</div>
+        <h3 class="card__title">Alto</h3>
+        <div class="card__role">Internal tools & patient app</div>
+        <p class="card__summary">Operational tools and a patient messaging experience that cut inbound volume and cost per shipment.</p>
+      </div>
+    </article>
+
+    <!-- Patreon -->
+    <article class="card">
+      <div class="card__media"><img src="https://res.cloudinary.com/diy08lj9x/image/upload/v1772169709/benefits-config_wpuj3r.gif" alt="Patreon" /></div>
+      <div class="card__body">
+        <div class="card__company"><span class="dot dot--job"></span> Patreon · Senior Product Designer</div>
+        <h3 class="card__title">Patreon</h3>
+        <div class="card__role">Creator tools · USPTO patent</div>
+        <p class="card__summary">Benefit delivery tools that moved creator satisfaction from 49% to 73%, with a granted patent along the way.</p>
+      </div>
+    </article>
+
+    <!-- Inspire -->
+    <article class="card">
+      <div class="card__media"><img src="https://res.cloudinary.com/diy08lj9x/image/upload/v1772307603/main_feed_cx_vc0uaq.png" alt="Inspire" /></div>
+      <div class="card__body">
+        <div class="card__company"><span class="dot dot--job"></span> Amazon · UX Lead, Smart Home</div>
+        <h3 class="card__title">Inspire Tab</h3>
+        <div class="card__role">Smart Home shopping feed</div>
+        <p class="card__summary">Ranking strategy, feed CX, and creator tooling that made device discovery trustworthy at share.</p>
+      </div>
+    </article>
+
+    <!-- Prox -->
+    <article class="card">
+      <div class="card__media"><img src="https://res.cloudinary.com/diy08lj9x/image/upload/v1772257040/booking-workflow-hero_odxazy.gif" alt="Prox" /></div>
+      <div class="card__body">
+        <div class="card__company"><span class="dot dot--mine"></span> Prox · Founding Designer</div>
+        <h3 class="card__title">Prox</h3>
+        <div class="card__role">1:1 expert video platform</div>
+        <p class="card__summary">From blank canvas to funded startup — 51% rebooking rate and an $800k seed round before COVID.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<footer class="footer">
+  Designed and built by Bruno Wong. <a href="#">Back to top</a>
+</footer>
+
+</body>
+</html>

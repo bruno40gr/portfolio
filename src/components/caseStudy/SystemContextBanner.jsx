@@ -102,7 +102,7 @@ export const SystemContextModal = ({ open, onClose, pillars = [], currentId, onP
         <div className="px-7 md:px-9 pt-8 pb-10">
 
           {/* What is this */}
-<p className="meta-label mb-3">Amazon Devices AI Creative Platform</p>
+<p className="text-[15px] font-semibold text-neutral-900 mb-3">Amazon Devices AI Creative Platform</p>
 
 <h2 className="text-2xl md:text-3xl font-bold text-neutral-900 tracking-tight leading-snug mb-5">
   Devices Catalog-to-Campaign Automation Platform.
@@ -214,7 +214,7 @@ const SystemContextBanner = ({ pillars = [], currentId, onPillarClick }) => {
 
   {/* One line on desktop, wraps to two lines on mobile */}
   <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1 min-w-0 py-8">
-    <p className="meta-label m-0 min-w-0 text-neutral-700">
+    <p className="text-[15px] m-0 min-w-0 text-neutral-700">
       This project is{" "}
       <span className="font-normal text-neutral-700">
         {position}/{pillars.length}
@@ -225,7 +225,7 @@ const SystemContextBanner = ({ pillars = [], currentId, onPillarClick }) => {
 
     <button
       onClick={() => setModalOpen(true)}
-      className="meta-label text-[var(--deep-purple)] underline underline-offset-2 hover:opacity-70 transition-opacity font-sans whitespace-nowrap"
+      className="text-[15px] text-[var(--deep-purple)] underline underline-offset-2 hover:opacity-70 transition-opacity font-sans whitespace-nowrap"
     >
       Learn more
     </button>

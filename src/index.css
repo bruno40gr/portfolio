@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700&family=Gelasio:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -37,15 +37,6 @@
     @apply font-sans;
   }
 
-  /* Force PT Serif wherever .font-serif is used on headings, 
-     but without !important if possible. 
-     Using a more specific selector to beat the base h1/h2 tags. */
-  h1.font-serif, 
-  h2.font-serif, 
-  h3.font-serif {
-    font-family: "Gelasio", serif;
-  }
-
   .font-sans, 
   body, 
   p, 
@@ -53,7 +44,7 @@
   div, 
   button, 
   a {
-    font-family: "DM Sans", sans-serif;
+    font-family: "Source Sans 3", sans-serif;
   }
 
 }
@@ -86,7 +77,7 @@
 
 /* Updated signature — navigation only */
 .type-nav {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Source Sans 3", sans-serif;
   font-weight: 600;
   letter-spacing: 0.01em;
 }
@@ -106,10 +97,10 @@
 .case-anchor-target { scroll-margin-top: calc(var(--header-h) + 24px); }
 
 .designer-note {
-  /* Enforce DM Sans (if not already inherited) */
-  font-family: "DM Sans", sans-serif;
+  /* Source Sans 3 — confident, product-oriented */
+  font-family: "Source Sans 3", sans-serif;
   
-  /* Ultra-light weight */
+  /* Normal weight — no more faint editorial */
   font-weight: 300;
   
   /* Very loose line-height */
@@ -127,15 +118,32 @@
 
 
 
+.case-visual-block {
+  max-width: 880px;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Shared text measure — paragraphs, designer note, headings, lists, metadata */
+.case-text-block {
+  max-width: var(--case-text-measure);
+  margin-left: 0;
+}
+
+/* 
+   .case-study-content padding-left hack removed — the grid gap + 
+   the restructured JSX layout handle anchor spacing natively 
+*/
+
 .meta-label {
-  font-size: 1.125rem;
-  font-weight: 400;
-  color: #737373;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #52525b;
 }
 
 .case-anchor-link {
-  font-size: 1.125rem;
-  font-weight: 400;
+  font-size: 0.9375rem;
+  font-weight: 500;
   display: flex;
   align-items: flex-start;
   gap: 10px;
@@ -195,7 +203,7 @@
   }
 
   .case-study-content {
-    max-width: 1600px;
+    max-width: 1200px;
   }
 
   .case-anchor-link {

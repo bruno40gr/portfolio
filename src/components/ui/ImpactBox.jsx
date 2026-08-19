@@ -1,32 +1,34 @@
 import React from "react";
 
-export const ImpactBox = ({ metrics = [], description = [], size = "small", variant = "default" }) => {
+export const ImpactBox = ({ metrics = [], description = [], size = "small", variant = "default", className = "" }) => {
   const isSmall = size === "small";
   const isEditorial = variant === "editorial";
 
-  // EDITORIAL VARIANT — no boxes, serif values, minimal clean prestige
+  // EDITORIAL VARIANT — dark purple surface, neon green metrics, product-oriented
   if (isEditorial) {
     return (
-      <section className="mb-12 md:mb-16 w-full">
-        <div className="flex flex-wrap gap-x-12 gap-y-6">
-          {metrics.map((m, i) => (
-            <div key={i} className="flex flex-col">
-              <span className="font-serif text-4xl md:text-5xl tracking-tight text-warm-900">
-                {m.value}
-              </span>
-              <span className="font-sans text-xs md:text-sm tracking-[0.15em] uppercase text-warm-400 mt-1 max-w-[220px] leading-snug">
-                {m.label}
-              </span>
-            </div>
-          ))}
-        </div>
-        {description?.length > 0 && (
-          <div className="mt-6 pt-6 border-t border-neutral-200 flex flex-col gap-2">
-            {description.map((line, i) => (
-              <p key={i} className="text-base text-warm-500 leading-relaxed font-sans max-w-2xl" dangerouslySetInnerHTML={{ __html: line }} />
+      <section className={`mb-12 md:mb-16 w-full ${className}`}>
+        <div className="bg-[#231f44] rounded-xl p-8 md:p-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-12">
+            {metrics.map((m, i) => (
+              <div key={i} className="flex flex-col">
+                <span className="text-4xl md:text-5xl font-bold tracking-[-0.03em] text-[#88FF00] leading-none">
+                  {m.value}
+                </span>
+                <span className="font-sans text-[15px] md:text-base text-white/70 mt-2 max-w-[260px] leading-snug">
+                  {m.label}
+                </span>
+              </div>
             ))}
           </div>
-        )}
+          {description?.length > 0 && (
+            <div className="mt-8 pt-8 border-t border-white/10 flex flex-col gap-3">
+              {description.map((line, i) => (
+                <p key={i} className="text-base text-white/60 leading-relaxed font-sans max-w-2xl" dangerouslySetInnerHTML={{ __html: line }} />
+              ))}
+            </div>
+          )}
+        </div>
       </section>
     );
   }
@@ -62,7 +64,7 @@ export const ImpactBox = ({ metrics = [], description = [], size = "small", vari
 
   // DEFAULT LARGE STYLE (SaaS)
   return (
-    <section className="mb-12 w-full">
+    <section className={`mb-12 w-full ${className}`}>
       <div className={`grid gap-6 ${
         metrics.length > 2 ? "grid-cols-1 sm:grid-cols-3" : "grid-cols-1 sm:grid-cols-2"
       }`}>
@@ -81,7 +83,7 @@ export const ImpactBox = ({ metrics = [], description = [], size = "small", vari
         ))}
       </div>
       {description?.length > 0 && (
-        <div className="mt-4 flex flex-col gap-1.5">
+        <div className="mt-4 flex flex-col gap-1.5 max-w-[680px]">
           {description.map((line, i) => (
             <p key={i} className="text-sm text-slate-500 leading-relaxed" dangerouslySetInnerHTML={{ __html: line }} />
           ))}

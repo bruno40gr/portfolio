@@ -12,8 +12,8 @@ const MetaField = ({ label, value, valueClassName = "" }) => {
   if (!value) return null;
   return (
     <div className="min-w-0">
-      <div className="meta-label mb-1 text-neutral-900">{label}</div>
-      <div className={`text-base font-normal leading-snug ${valueClassName || "text-neutral-900"}`}>
+      <div className="text-[15px] font-semibold text-neutral-900 mb-1">{label}</div>
+      <div className={`text-[15px] font-normal leading-snug ${valueClassName || "text-neutral-600"}`}>
         {value}
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Layers } from 'lucide-react';
 
-export const CalloutBox = ({ content, size = "small" }) => {
+export const CalloutBox = ({ content, size = "small", className = "" }) => {
   const isSmall = size === "small";
 
   if (isSmall) {
@@ -21,16 +21,15 @@ export const CalloutBox = ({ content, size = "small" }) => {
 
   // Large version for case studies
   return (
-    <section className="mb-12 w-full">
-      <div className="bg-slate-100 p-4 md:p-6 rounded-sm border border-slate-200 shadow-sm flex flex-col md:flex-row gap-6">
-        {/* Large Icon - Styled to match the light, airy text weight */}
+    <section className={`mb-12 w-full ${className}`}>
+      <div className="bg-white p-4 md:p-6 rounded-lg border border-neutral-200 flex flex-col md:flex-row gap-6">
         <Layers 
-          size={32} 
-          className="text-slate-300 mt-1 md:mt-2 flex-shrink-0"
-          strokeWidth={1.2} 
+          size={24} 
+          className="text-neutral-400 mt-1 md:mt-2 flex-shrink-0"
+          strokeWidth={1.5} 
         />
         <p
-          className="font-sans text-xl text-slate-800 leading-normal font-normal"
+          className="font-sans text-base md:text-[17px] text-neutral-700 leading-[1.6] font-normal max-w-[680px]"
           dangerouslySetInnerHTML={{ __html: content }}
         />
       </div>

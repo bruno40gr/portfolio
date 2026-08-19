@@ -4,7 +4,7 @@ import LogoIcon from './logoIcon';
 
 // ─── WorkDropdown ─────────────────────────────────────────────────────────────
 const WorkDropdown = ({ onProjectClick, closeMenu, workGroups = [], portfolioData = { projects: [] } }) => {
-  const [activeCompany, setActiveCompany] = useState('Amazon');
+  const [activeCompany, setActiveCompany] = useState(workGroups[0]?.company || 'Building with AI');
   const [panelKey, setPanelKey] = useState(0);
 
   const handleProjectClick = (project) => {

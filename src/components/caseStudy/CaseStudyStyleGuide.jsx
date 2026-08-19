@@ -30,8 +30,8 @@ const CaseStudyStyleGuide = ({ onBack }) => (
     </div>
 
       <div className="w-full pt-12 md:pt-[calc(var(--header-h)+40px)] font-sans">
-      <div className="px-6 md:px-12 max-w-[1400px] mx-auto text-left">
-        <div className="flex-1 w-full lg:pb-12 max-w-4xl text-left">
+      <div className="px-6 md:px-10 max-w-[1800px] mx-auto text-left">
+        <div className="flex-1 w-full lg:pb-12 max-w-[1800px] text-left">
           <button
             type="button"
             onClick={onBack}
@@ -41,10 +41,10 @@ const CaseStudyStyleGuide = ({ onBack }) => (
           </button>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-[2.5rem] text-neutral-900 mb-5 md:mb-6 font-[600] tracking-tight !leading-snug md:!leading-[3.5rem] text-left">
+            <h1 className="text-[clamp(2.5rem,4vw,3.5rem)] font-bold text-neutral-900 mb-5 md:mb-6 tracking-[-0.04em] leading-[1.05] text-left">
               Case Study Style Guide
             </h1>
-            <h3 className="text-[1.05rem] md:text-[1.2rem] text-neutral-700 font-light leading-relaxed md:leading-[1.9] mb-6">
+            <h3 className="text-[17px] text-neutral-600 font-normal leading-[1.6] mb-6">
               This internal page previews all case-study typography and UI blocks.
             </h3>
           </div>
@@ -58,18 +58,18 @@ const CaseStudyStyleGuide = ({ onBack }) => (
 
           <section className="mb-10 text-left">
             <h2 className="text-lg md:text-xl text-neutral-900 mb-2 md:mb-3 font-bold leading-snug">Text block</h2>
-            <p className="text-base md:text-lg text-neutral-700 leading-relaxed mb-4 md:mb-6">
+            <p className="text-base md:text-[17px] text-neutral-700 leading-[1.6] mb-4">
               I led the 0-to-1 build of a four-phase AI platform designed to automate and scale global marketing
               image production. The rollout established core architecture and delivered measurable impact.
             </p>
-            <p className="text-base md:text-lg text-neutral-700 leading-relaxed">
+            <p className="text-base md:text-[17px] text-neutral-700 leading-[1.6]">
               This paragraph demonstrates the default case study body style across sections and lists.
             </p>
           </section>
 
           <section className="mb-6 text-left case-anchor-target mt-10 pt-10">
-            <h2 className="text-xl md:text-2xl text-neutral-900 font-bold tracking-tight leading-snug">
-              Heading section with divider
+            <h2 className="text-[30px] font-bold text-neutral-900 tracking-[-0.03em] leading-[1.1]">
+              Heading section
             </h2>
           </section>
 
