@@ -459,7 +459,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
 
         return (
           <section key={index} className="mb-12 md:mb-20 text-left font-sans case-text-block">
-            <ul className="space-y-14 md:space-y-20 font-sans">
+            <ul className="space-y-6 font-sans">
               {block.items.map((item, i) => {
                 const isObj = item && typeof item === "object" && !Array.isArray(item);
                 const itemContent = isObj ? item.content : item;

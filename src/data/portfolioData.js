@@ -1011,19 +1011,19 @@ export const PORTFOLIO_DATA = {
             type: "list",
             items: [
               {
-                content: `<span class="process-step-title"><b>The average class management software costs $400 a month</b></span><p class="mt-2">Headliner is paying for Opus1: $298 for the base subscription and CRM tier, $99 for SMS, and another $99 for a more capable email tool. The market standard for a school this size is a bolt-on SMS feature like Opus's $99 option, with no intelligent cohort targeting. Hey Cohen produced these results with a fraction of its intended reach turned on.</p>`,
+                content: `<span class="process-step-title"><b>The average class management software costs $400 a month</b></span><p class="mt-2">Headliner pays $298 for Opus1's base subscription and CRM tier, $99 for SMS, and $99 for a more capable email tool.</p>`,
                 visuals: []
               },
               {
-                content: `<span class="process-step-title"><b>The systems didn't connect</b></span><p class="mt-2">These software systems are self-contained and don't freely open APIs or offer free integrations, so getting usable data requires exporting spreadsheets and reshaping them by hand.</p>`,
+                content: `<span class="process-step-title"><b>Systems don't connect</b></span><p class="mt-2">No APIs, no free integrations, so getting usable data meant exporting spreadsheets and reshaping them by hand.</p>`,
                 visuals: []
               },
               {
-                content: `<span class="process-step-title"><b>Targeting took hours</b></span><p class="mt-2">A basic mass email took about an hour to put together and send. Messaging parents about a teacher being out sick, recruiting students for a band audition, or promoting events like a piano recital took four to five hours of manual curation.</p>`,
+                content: `<span class="process-step-title"><b>Messaging took hours.</b></span><p class="mt-2">A mass email took about an hour. Targeted outreach, like recruiting for a band or promoting a recital, took four to five hours of manual curation.</p>`,
                 visuals: []
               },
               {
-                content: `<span class="process-step-title"><b>There was no texting</b></span><p class="mt-2">Communication happened in person, through individual emails, or by phone call that often went straight to voicemail.</p>`,
+                content: `<span class="process-step-title"><b>There was no texting</b></span><p class="mt-2">Communication happened in person, by individual email, or by phone calls that often went to voicemail.</p>`,
                 visuals: []
               }
             ]
@@ -1033,11 +1033,17 @@ export const PORTFOLIO_DATA = {
           {
             type: "text",
             content: [
-              "The idea started on paper. Before any code, I sketched the core flows by hand, what a staff member sees each morning, what happens when they search for a group of people in plain language, what a conversation thread looks like. Working it out on paper first meant I wasn't fighting a framework and an unresolved idea at the same time.",
-              "From there I moved into VS Code and started prototyping the actual workflows, rough versions of onboarding, the dashboard, and messaging, enough to click through and feel whether the shape held up.",
-              "Once the structure felt right, I connected it to real data in Supabase. That's where the real work happened. The data model kept changing as I ran actual Headliner data through it and found the places where my assumptions about how families, students, and staff related to each other didn't match reality. Every schema adjustment meant re-checking every flow built on top of it.",
-              "Once the data model held, I moved into Figma to polish the interface properly and define a real design system, components, spacing, and states that stayed consistent across the product. From there it was continuous iteration, throwing edge cases at every flow until they held up, then shipping."
+              "The idea started on paper, sketching the core flows by hand before any code. From there I moved into VS Code to prototype the workflows, connected them to real Headliner data in Supabase, and iterated on the data model until it held. Then I moved into Figma to polish the interface and define a real design system, followed by continuous iteration until every flow held up and shipped."
             ]
+          },
+          {
+            type: "image-full",
+            layout: "side-lightbox",
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787113304/814f84d8-3692-4cb9-9a91-4a5e8a1533e9.png",
+            caption: {
+              short: "The process: from paper sketches to a working product.",
+              verbose: ""
+            }
           },
 
           { type: "heading", title: "Refining the UI" },
@@ -1052,45 +1058,99 @@ export const PORTFOLIO_DATA = {
           {
             type: "image-full",
             layout: "side",
-            src: "", // TODO: upload screenshot of the first Claude-generated version
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787111924/Screenshot_2026-08-11_at_8.53.36_AM_phvx3u.png",
             caption: {
               short: "Early version. The first Claude version. Functional, but it screams vibecoded.",
               verbose: ""
             }
           },
-          {
-            type: "image-full",
-            layout: "side",
-            src: "", // TODO: upload screenshot of the refined visual system
-            caption: {
-              short: "Refined version. A visual system I designed for it and continue to refine.",
-              verbose: ""
-            }
-          },
-
+          
           { type: "heading", title: "Key Features" },
           {
             type: "list",
             items: [
               {
                 content: `<span class="process-step-title"><b>Daily insights</b></span><p class="mt-2">Hey Cohen surfaces risks, milestones, and opportunities worth a staff member's attention, grounded in real attendance, billing, and teacher notes.</p>`,
-                visuals: []
+                visuals: [
+                  {
+                    kind: "image",
+                    layout: "side-lightbox",
+                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109030/Screenshot_2026-08-18_at_7.49.08_PM_nlupj0.png",
+                    caption: {
+                      short: "A priority feed that turns attendance, billing, and notes into visible follow-up moments.",
+                      verbose: ""
+                    }
+                  }
+                ]
               },
               {
-                content: `<span class="process-step-title"><b>Natural language search</b></span><p class="mt-2">Describe who you want to reach in plain language, like "students who haven't attended in three weeks", "Families with overdue invoices", or "Everyone taking piano lessons", and Hey Cohen turns that into a recipient list.</p>`,
-                visuals: []
+                content: `<span class="process-step-title"><b>Natural language search</b></span><p class="mt-2">Target the audience using any combination of filters that helps narrow them down. Or just describe them in plain language, and Hey Cohen turns that into a recipient list.</p>`,
+                visuals: [
+                  {
+                    kind: "image",
+                    layout: "side-lightbox",
+                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109031/Screenshot_2026-08-18_at_7.54.10_PM_kzendm.png",
+                    caption: {
+                      short: "Target the audience using any combination of filters that helps narrow them down. Or just describe them in plain language, and Hey Cohen turns that into a recipient list.",
+                      verbose: ""
+                    }
+                  }
+                ]
               },
               {
-                content: `<span class="process-step-title"><b>Human-in-the-loop</b></span><p class="mt-2">When composing messages, AI assists with the draft and provides contact and program context, as well as images pre-approved from the brand catalogue.</p>`,
-                visuals: []
+                content: `<span class="process-step-title"><b>Human-in-the-loop</b></span><p class="mt-2">A human drafts the text message. Hey Cohen helps polish it, adds context, and suggests improvements, but it's still the sender's call.</p>`,
+                visuals: [
+                  {
+                    kind: "image",
+                    layout: "side-lightbox",
+                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109029/Screenshot_2026-08-18_at_7.54.49_PM_n4sgo1.png",
+                    caption: {
+                      short: "A human drafts the text message. Hey Cohen helps polish it, adds context, and suggests improvements, but it's still the sender's call.",
+                      verbose: ""
+                    }
+                  }
+                ]
+              },
+              {
+                content: `<span class="process-step-title"><b>Brand voice</b></span><p class="mt-2">Teach Hey Cohen how your business sounds. Set brand voice preferences, upload approved images, and let the AI polish language so outgoing content stays consistent with how you want to communicate.</p>`,
+                visuals: [
+                  {
+                    kind: "image",
+                    layout: "side-lightbox",
+                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109298/Screenshot_2026-08-18_at_8.14.41_PM_eqe8is.png",
+                    caption: {
+                      short: "Teach Hey Cohen how your business sounds. Set brand voice preferences, upload approved images, and let the AI polish language so outgoing content stays consistent with how you want to communicate.",
+                      verbose: ""
+                    }
+                  }
+                ]
               },
               {
                 content: `<span class="process-step-title"><b>Data reconciliation</b></span><p class="mt-2">Many class management software systems don't freely open an API. Bringing business data into Hey Cohen meant establishing a framework for spreadsheet import and value reconciliation, then turning that data into something the rest of the product could actually work with.</p>`,
                 visuals: []
               },
               {
-                content: `<span class="process-step-title"><b>Inbox & campaigns</b></span><p class="mt-2">Two-way conversations, opt-outs, and delivery tracking in one place, replacing scattered personal texts and missed voicemails.</p>`,
-                visuals: []
+                content: `<span class="process-step-title"><b>Inbox & campaigns</b></span><p class="mt-2">Every message sent becomes a direct communication path: traceable, attributable, and built for action instead of getting lost in personal texts or missed calls.</p>`,
+                visuals: [
+                  {
+                    kind: "image",
+                    layout: "side-lightbox",
+                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109029/Screenshot_2026-08-18_at_7.55.46_PM_icqopm.png",
+                    caption: {
+                      short: "Every message sent becomes a direct communication path: traceable, attributable, and built for action instead of getting lost in personal texts or missed calls.",
+                      verbose: ""
+                    }
+                  },
+                  {
+                    kind: "image",
+                    layout: "side-lightbox",
+                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109029/Screenshot_2026-08-18_at_7.58.32_PM_ktqsku.png",
+                    caption: {
+                      short: "Every message sent becomes a direct communication path: traceable, attributable, and built for action instead of getting lost in personal texts or missed calls.",
+                      verbose: ""
+                    }
+                  }
+                ]
               }
             ]
           },
@@ -1113,24 +1173,28 @@ export const PORTFOLIO_DATA = {
             }
           },
 
-          { type: "heading", title: "What's Next" },
-          {
-            type: "list",
-            items: [
-              {
-                content: `<span class="process-step-title"><b>A full class management software</b></span><p class="mt-2">The mid-term roadmap is folding Hey Cohen into a broader business platform that will eventually overtake Opus1. I'm still working in modules to cover scheduling, billing, payments, tracking, and curriculum.</p>`,
-                visuals: []
-              },
-              {
-                content: `<span class="process-step-title"><b>Email and WhatsApp</b></span><p class="mt-2">I focused on SMS as the MVP because, opposed as you may think, staff and parents respond to texts and phone calls far more than email. "No one checks email" was probably the biggest insight that drove that decision. Email and WhatsApp are now clear next steps, especially given Headliner's sizable expat community, where WhatsApp is often the preferred way to communicate. SMS response rates run around 45 percent against roughly 6 percent for email, and texts tend to get read within minutes while email often sits for hours. Email is also the more straightforward build since the addresses and message logic already exist. It's mostly a matter of teaching the same system a second channel.</p>`,
-                visuals: []
-              },
-              {
-                content: `<span class="process-step-title"><b>Onboarding flow and embracing SMS</b></span><p class="mt-2">Getting a business phone number approved through 10DLC carrier registration so messages aren't flagged as spam is a real onboarding hurdle that I can't control through the product, other than offering a clean onboarding flow. The bigger challenge is getting small businesses comfortable with SMS as a business channel. That's something I need to solve through the product and its marketing, showing businesses how they can use a channel they already rely on personally but may never have considered for their customers.</p>`,
-                visuals: []
-              }
-            ]
-          },
+        { type: "heading", title: "What's Next" },
+{
+  type: "list",
+  items: [
+    {
+      content: `<span class="process-step-title"><b>Develop Odeon</b></span><p class="mt-2">Expand Hey Cohen into a broader class management platform covering scheduling, billing, payments, student tracking, and curriculum, with the long-term goal of replacing Opus1.</p>`,
+      visuals: []
+    },
+    {
+      content: `<span class="process-step-title"><b>Develop CharterPulse, part of Odeon</b></span><p class="mt-2">Build a module to manage charter schools, subsidized enrichment programs, and other third-party payers with complex payment workflows. CharterPulse will reduce administrative burden and help academies serve more families, including those seeking specialized education for children with special needs.</p>`,
+      visuals: []
+    },
+    {
+      content: `<span class="process-step-title"><b>Add Email and WhatsApp</b></span><p class="mt-2">Expand communication beyond SMS with email and WhatsApp, giving academies more flexibility to reach families through the channels they already use and prefer.</p>`,
+      visuals: []
+    },
+    {
+      content: `<span class="process-step-title"><b>Improve onboarding and SMS adoption</b></span><p class="mt-2">Simplify the 10DLC registration and phone-number setup experience while helping small businesses understand how to use SMS effectively as a professional customer communication channel.</p>`,
+      visuals: []
+    }
+  ]
+},
 
           {
   type: "impact-box",
