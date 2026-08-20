@@ -3,6 +3,7 @@ import { ArrowRight, HandMetal } from "lucide-react";
 import { PARTITIONED_GROUPS, PORTFOLIO_DATA } from "../../data/portfolioData";
 import { COMPANY_STRIPE_LOGOSSQUARED, ASSETS } from "../../data/assets";
 import Button from "../ui/button";
+import VoiceHeading from "../ui/VoiceHeading";
 
 // Map a company name to its logo (squared logos look good on any background)
 const getCompanyLogo = (company) => {
@@ -73,44 +74,38 @@ const WorkSection = ({ onProjectClick }) => {
     {
       id: "amazon-image-builder",
       status: "Launched",
-      title: "Image Builder",
-      thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772042482/mobile-echoshow-_0003_USEN_zpplaz.png",
-      description:
-        "Designed the production system that let non-designers create and localize Amazon Devices marketing assets across 23 global marketplaces, replacing a workflow that previously depended on designers, translators, and manual production.",
       metricValue: "~8,000",
       metricLabel: "Lifestyle images generated (Prime Day 2025)",
     },
     {
       id: "amazon-ai-compositor",
       status: "AI Systems",
-      title: "AI Lifestyle Compositor",
-      thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1785079389/hero-image_h61hdi.png",
-      description:
-        "Trained a generative AI model on Amazon Devices' own product photography, then built a human-in-the-loop review process to ensure every image met the bar. Lifestyle images convert 4x better than gradient backgrounds, and I designed the system that made them usable at scale.",
       metricValue: "4x Better",
       metricLabel: "Conversion rate vs. gradient backgrounds",
     },
     {
       id: "amazon-asset-manager",
       status: "In Build",
-      title: "Devices Component Asset Manager",
-      thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1785167948/hero_asset_browser_ee1vwu.png",
-      description:
-        "Designed a central system for Amazon Devices' entire marketing image catalog, bringing search, QA, and metadata into one place. The product was shaped by research into how teams across North America and Europe actually managed their assets.",
       metricValue: "Single source of truth",
       metricLabel: "Replaces external QA tooling for NA and Europe",
     },
     {
       id: "amazon-metadata-studio",
       status: "AI Systems",
-      title: "Devices Metadata Studio",
-      thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772414317/Background_metadata-thumbnail_pgfkp6.png",
-      description:
-        "Every image asset needed metadata to be usable by AI. The assumption was that entry had to stay manual, so I ran experiments on my own to prove it could be automated, shifting the roadmap toward AI-assisted workflows and reducing manual entry for design technologists.",
       metricValue: "Automated Workflows",
       metricLabel: "Proven reduction in manual entry overhead",
     },
-  ];
+  ].map((card) => {
+    const project = PORTFOLIO_DATA.projects.find((p) => p.id === card.id);
+
+    return {
+      ...card,
+      project,
+      title: project?.title || card.id,
+      thumbnail: project?.thumbnail || "",
+      description: project?.impactSummary || project?.impactSummarySentence || "",
+    };
+  });
 
   // Archives — group traditional projects by company (Option A: company header + one row per project)
   const archiveProjects = (traditionalGroup?.projectIds || [])
@@ -167,14 +162,11 @@ const WorkSection = ({ onProjectClick }) => {
       className="w-full max-w-[1800px] mx-auto px-6 md:px-12 lg:px-16 pb-24 md:pb-32 relative scroll-mt-24 bg-white text-left"
     >
       {/* ===== Building with AI section header ===== */}
-      <div className="mb-12 max-w-2xl">
-        <h3 className="text-[#059669] font-semibold text-sm tracking-wide mb-3">
-          {aiGroup?.meta || "Building with AI"}
-        </h3>
-        <h2 className="text-4xl font-black text-slate-900 tracking-tight">
-          {aiGroup?.title || "How I design with (and for) AI"}
-        </h2>
-      </div>
+      <VoiceHeading
+        eyebrow={aiGroup?.meta || "Recent work"}
+        title={aiGroup?.title || "Building with AI"}
+        className="mb-12 max-w-2xl"
+      />
 
       {/* ===== Hey Cohen (featured, white hero) ===== */}
       <section className="bg-white p-8 lg:p-16 shadow-sm border border-gray-200 transition-all hover:shadow-md relative overflow-hidden">
@@ -265,12 +257,7 @@ const WorkSection = ({ onProjectClick }) => {
         </div>
       </section>
 
-      {/* ===== "and" divider ===== */}
-      <div className="flex items-center justify-center py-8">
-        <div className="h-px w-16 bg-gray-300"></div>
-        <div className="mx-4 text-gray-400 font-serif italic">and</div>
-        <div className="h-px w-16 bg-gray-300"></div>
-      </div>
+      <div className="py-8 md:py-10" aria-hidden="true" />
 
       {/* ===== Amazon Collection (substantial, dark) ===== */}
       <section
@@ -334,7 +321,7 @@ const WorkSection = ({ onProjectClick }) => {
                 {/* Thumbnail — the only clickable part of the card */}
                 <button
                   type="button"
-                  onClick={() => onProjectClick(PORTFOLIO_DATA.projects.find((p) => p.id === card.id))}
+                  onClick={() => onProjectClick(card.project)}
                   className="group relative w-full aspect-[16/9] bg-gray-900 overflow-hidden text-left cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#39FF14]"
                   aria-label={`Open ${card.title} case study`}
                 >
@@ -374,12 +361,11 @@ const WorkSection = ({ onProjectClick }) => {
       <section className="max-w-4xl mx-auto pt-32 pb-8">
         <div className="flex items-end justify-between gap-8 mb-8 border-b border-gray-200 pb-4">
           <div>
-            <h3 className="text-[#059669] font-semibold text-sm tracking-wide mb-3">
-              {traditionalGroup?.meta || "Selected Work"}
-            </h3>
-            <h2 className="text-4xl font-black text-slate-900 tracking-tight mb-4">
-              {traditionalGroup?.title || "The work that honed my process"}
-            </h2>
+            <VoiceHeading
+              eyebrow={traditionalGroup?.meta || "Traditional work"}
+              title={traditionalGroup?.title || "The work that honed my process"}
+              className="mb-4"
+            />
             <p className="text-xl text-slate-600 leading-relaxed max-w-xl">
               {traditionalGroup?.intro}
             </p>

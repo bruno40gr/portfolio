@@ -18,6 +18,7 @@ import FileThumbnail from "./FileThumbnail";
 import VideoThumbnail from "./VideoThumbnail";
 import FigmaThumbnail from "./FigmaThumbnail";
 import Button from "../ui/button";
+import VoiceHeading from "../ui/VoiceHeading";
 
 import CaseStudyPager from "./CaseStudyPager";
 import CaseStudyAnchorNav from "./CaseStudyAnchorNav";
@@ -239,7 +240,14 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         return (
           <section key={index} className="mb-10 text-left case-text-block">
             {block.subtype === "designer-note" && (
-              <div className="designer-note-label">Designer note</div>
+              <VoiceHeading
+                eyebrow=""
+                title="Designer note"
+                showAvatar={true}
+                avatarType="photo"
+                className="mb-4"
+                titleClassName="designer-note-label !mb-0"
+              />
             )}
             {block.title && (
               <h3 className="text-[19px] font-semibold text-neutral-900 mb-4 leading-[1.25]">
@@ -890,12 +898,21 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
               )}
 
               {project.designerNote && (
-                <div className={`designer-note case-text-block ${isEditorial ? 'mb-14 md:mb-20' : 'mb-8'}`}>
-                  {project.designerNote.split("\n").map((line, i) => (
-                    <p key={i} className="mb-4 last:mb-0">
-                      {line}
-                    </p>
-                  ))}
+                <div className={`case-text-block ${isEditorial ? 'mb-14 md:mb-20' : 'mb-8'}`}>
+                  <VoiceHeading
+                    title="Designer note"
+                    showAvatar={true}
+                    avatarType="photo"
+                    className="mb-4"
+                    titleClassName="designer-note-label !mb-0"
+                  />
+                  <div className="designer-note">
+                    {project.designerNote.split("\n").map((line, i) => (
+                      <p key={i} className="mb-4 last:mb-0">
+                        {line}
+                      </p>
+                    ))}
+                  </div>
                 </div>
               )}
 
