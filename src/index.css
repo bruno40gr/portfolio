@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -157,6 +157,15 @@
   
   /* Radically larger responsive size */
   font-size: clamp(1.25rem, 1.4vw + 0.5rem, 1.5rem);
+}
+
+.designer-note-label {
+  font-family: "Permanent Marker", cursive;
+  font-size: clamp(1rem, 0.6vw + 0.85rem, 1.2rem);
+  line-height: 1;
+  color: var(--deep-purple);
+  display: inline-block;
+  margin-bottom: 0.875rem;
 }
 
 

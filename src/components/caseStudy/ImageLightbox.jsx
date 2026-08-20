@@ -287,7 +287,7 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
                     <ChevronRight size={14} className="transition-transform duration-300 group-hover:scale-110" />
                   )}
                 </span>
-                <span className="relative leading-none">{showDeepDive ? "Back to artifact" : "Explore the thinking"}</span>
+                <span className="relative leading-none">{showDeepDive ? "Explore the thinking" : "Explore the thinking"}</span>
               </button>
             )}
           </div>

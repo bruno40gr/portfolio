@@ -238,6 +238,9 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
 
         return (
           <section key={index} className="mb-10 text-left case-text-block">
+            {block.subtype === "designer-note" && (
+              <div className="designer-note-label">Designer note</div>
+            )}
             {block.title && (
               <h3 className="text-[19px] font-semibold text-neutral-900 mb-4 leading-[1.25]">
                 {block.title}

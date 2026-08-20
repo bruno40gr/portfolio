@@ -47,9 +47,6 @@ const useRevealOnScroll = () => {
 // the full case study content in portfolioData.js. Named here so they're
 // discoverable instead of buried as inline strings deep in the JSX.
 const heyCohenBadge = "Zero to One";
-const heyCohenTagline = "SMS & communications platform · Product Lead";
-
-
 // Amazon Collection section header — homepage-specific summary copy for the
 // 4-pillar system. Same reasoning as above: named constant instead of inline strings.
 const amazonCollectionHeader = {
@@ -170,14 +167,13 @@ const WorkSection = ({ onProjectClick }) => {
       className="w-full max-w-[1800px] mx-auto px-6 md:px-12 lg:px-16 pb-24 md:pb-32 relative scroll-mt-24 bg-white text-left"
     >
       {/* ===== Building with AI section header ===== */}
-      <div className="mb-16 max-w-3xl">
+      <div className="mb-12 max-w-2xl">
         <h3 className="text-[#059669] font-semibold text-sm tracking-wide mb-3">
           {aiGroup?.meta || "Building with AI"}
         </h3>
-        <h2 className="text-4xl font-bold text-slate-900 tracking-tight mb-6">
+        <h2 className="text-4xl font-black text-slate-900 tracking-tight">
           {aiGroup?.title || "How I design with (and for) AI"}
         </h2>
-        <p className="text-xl text-slate-600 leading-relaxed">{aiGroup?.intro}</p>
       </div>
 
       {/* ===== Hey Cohen (featured, white hero) ===== */}
@@ -194,9 +190,22 @@ const WorkSection = ({ onProjectClick }) => {
               <span className="text-sm font-medium text-slate-400">{heyCohen?.year || "2026"}</span>
             </div>
             <h3 className="text-4xl font-black text-slate-900 mb-4 tracking-tight">Hey Cohen</h3>
-            <p className="text-sm font-bold text-[#10B981] mb-6 tracking-wider">
-              {heyCohenTagline}
-            </p>
+
+            <div className="w-full overflow-hidden relative group mb-6 lg:hidden">
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#11131E]/10 to-transparent z-10 group-hover:opacity-0 transition-opacity duration-500 pointer-events-none"></div>
+              <button
+                type="button"
+                onClick={() => onProjectClick(heyCohen)}
+                className="block w-full text-left cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#39FF14]"
+                aria-label="Open Hey Cohen case study"
+              >
+                <img
+                  src={heyCohen?.thumbnail}
+                  alt="Hey Cohen Interface Mockups"
+                  className="w-full h-auto object-cover shadow-2xl"
+                />
+              </button>
+            </div>
 
             <p className="text-lg text-slate-600 leading-relaxed mb-8">
               A communications platform for small businesses that know their
@@ -238,7 +247,7 @@ const WorkSection = ({ onProjectClick }) => {
           </div>
 
           {/* Dashboard mockup */}
-          <div className="w-full lg:w-1/2 overflow-hidden relative group">
+          <div className="hidden lg:block w-full lg:w-1/2 overflow-hidden relative group">
             <div className="absolute inset-0 bg-gradient-to-tr from-[#11131E]/10 to-transparent z-10 group-hover:opacity-0 transition-opacity duration-500 pointer-events-none"></div>
             <button
               type="button"
@@ -368,7 +377,7 @@ const WorkSection = ({ onProjectClick }) => {
             <h3 className="text-[#059669] font-semibold text-sm tracking-wide mb-3">
               {traditionalGroup?.meta || "Selected Work"}
             </h3>
-            <h2 className="text-4xl font-bold text-slate-900 tracking-tight mb-4">
+            <h2 className="text-4xl font-black text-slate-900 tracking-tight mb-4">
               {traditionalGroup?.title || "The work that honed my process"}
             </h2>
             <p className="text-xl text-slate-600 leading-relaxed max-w-xl">

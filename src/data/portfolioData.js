@@ -2881,9 +2881,9 @@ export const WORK_GROUPS = [
 export const PARTITIONED_GROUPS = [
   {
     id: "ai",
-    meta: "Building with AI",
-    title: "How I build and ship with AI",
-    intro: "The last year and a half, condensed into how I've transformed my design process. This is the work I'm most proud of right now and continue to iterate on. A product I'm building from zero to launch for a 250-family music academy, and deep GenAI work I led at Amazon.",
+    meta: "Recent work",
+    title: "Building with AI",
+    intro: "",
     projectIds: [
       "hey-cohen",
       "amazon-image-builder",
@@ -2894,9 +2894,8 @@ export const PARTITIONED_GROUPS = [
   },
   {
     id: "traditional",
-    meta: "Traditional (we are calling it that) product design",
+    meta: "Traditional work",
     title: "The work that honed my process",
-    intro: "Years of product design across startups, healthcare, creator tools, and Amazon. This is the work where I learned how to work through complex problems and make things that actually get used.",
     projectIds: [
       "amazon-ai-review-highlights",
       "amazon-inspire-tab",
