@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight, X, Sun, Moon, Layers, ExternalLink, ArrowRig
 
 import ImpactBox from "../ui/ImpactBox";
 import LogoIcon from "../ui/logoIcon";
+import Button from "../ui/button";
 import { COMPANY_STRIPE_LOGOSSQUARED } from "../../data/assets";
 
 const getLogo = (name) => {
@@ -175,7 +176,7 @@ const SlideTemplates = {
                 className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-500"
               />
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-slate-900/30 backdrop-blur-[2px]">
-                <div className="bg-white/10 px-5 py-3 rounded-full backdrop-blur-md border border-white/20 text-white font-bold text-sm tracking-wide shadow-xl flex items-center gap-2">
+                <div className="bg-white/10 px-5 py-3 rounded-full backdrop-blur-sm border border-white/20 text-white font-bold text-sm tracking-wide shadow-card flex items-center gap-2">
                   <ExternalLink size={16} /> Open Prototype
                 </div>
               </div>
@@ -841,7 +842,7 @@ export default function Presentation() {
       {/* Presenter Menu */}
       {isMenuOpen && (
         <div className="absolute top-20 right-6 z-[60] animate-fade-in w-64 max-h-[80vh] overflow-y-auto custom-scrollbar">
-          <div className={`p-3 rounded-xl shadow-2xl backdrop-blur-xl border flex flex-col gap-4 ${
+          <div className={`p-3 rounded-xl shadow-card-strong backdrop-blur-md border flex flex-col gap-4 ${
             isDark ? "bg-slate-900/95 border-slate-700/50" : "bg-white/95 border-slate-200"
           }`}>
             <div>
@@ -916,28 +917,24 @@ export default function Presentation() {
         </div>
 
         <div className="flex items-center gap-4">
-          <button
+          <Button
             onClick={handlePrev}
             disabled={activeSlideIndex === 0}
-            className={`flex items-center gap-2 px-4 py-2 rounded-full font-medium text-sm transition-all ${
-              activeSlideIndex === 0
-                ? (isDark ? "text-slate-600 bg-transparent cursor-not-allowed" : "text-slate-400 bg-transparent cursor-not-allowed")
-                : (isDark ? "text-slate-200 bg-white/5 hover:bg-white/10" : "text-slate-700 bg-white border border-slate-300 hover:bg-slate-50 shadow-sm")
-            }`}
+            variant={isDark ? "ghost" : "outline"}
+            size="sm"
+            className={isDark ? "text-slate-200 border-white/10 bg-white/5 hover:bg-white/10" : ""}
           >
             <ChevronLeft size={16} /> Prev
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={handleNext}
             disabled={activeSlideIndex === slides.length - 1}
-            className={`flex items-center gap-2 px-5 py-2 rounded-full font-bold text-sm transition-all ${
-              activeSlideIndex === slides.length - 1
-                ? (isDark ? "text-slate-600 bg-transparent cursor-not-allowed" : "text-slate-400 bg-transparent cursor-not-allowed")
-                : (isDark ? "text-black bg-[#88FF00] hover:scale-105" : "text-white bg-slate-900 hover:scale-105 shadow-md")
-            }`}
+            variant="primary"
+            size="sm"
+            className={isDark ? "bg-[var(--brand-accent)] text-black border-[var(--brand-accent)] hover:bg-[#76E600] hover:border-[#76E600]" : ""}
           >
             Next <ChevronRight size={16} />
-          </button>
+          </Button>
         </div>
       </footer>
     </div>

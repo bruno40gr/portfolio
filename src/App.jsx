@@ -7,6 +7,7 @@ import { PORTFOLIO_DATA, WORK_GROUPS } from "./data/portfolioData";
 
 import WorkDropdown from "./components/ui/WorkDropdown";
 import LogoIcon from "./components/ui/logoIcon";
+import Button from "./components/ui/button";
 
 import CompanyStripe from "./components/home/CompanyStripe";
 import WorkSection from "./components/home/WorkSection";
@@ -245,12 +246,9 @@ export default function App() {
                   className={`w-full px-3 py-2 bg-white border border-transparent rounded-sm text-base focus:outline-none focus:ring-2 focus:ring-[#88FF00] transition-shadow text-slate-900 text-center font-bold tracking-widest placeholder:text-slate-400 placeholder:font-normal placeholder:tracking-normal ${authError ? 'ring-2 ring-red-500' : ''}`}
                 />
               </div>
-              <button
-                type="submit"
-                className="w-full max-w-[200px] px-10 py-3 bg-[#88FF00] text-black font-bold rounded-full hover:scale-105 transition-transform text-base"
-              >
+              <Button type="submit" variant="primary" size="md" className="w-full max-w-[200px] justify-center">
                 Enter
-              </button>
+              </Button>
               <div className="h-6 flex items-center justify-center mt-2">
                 {authError && <p className="text-red-500 text-sm font-bold tracking-wide">{authError}</p>}
                 {isSuccess && <p className="text-[#88FF00] text-sm font-bold tracking-wide">Access Granted...</p>}
@@ -432,7 +430,7 @@ export default function App() {
               </div>
               <div id="form-error" className="text-red-500 text-[11px] font-bold min-h-[14px]" />
               <div className="pt-1 flex flex-col items-center">
-                <button type="submit" className="w-full px-10 py-3 bg-[#88FF00] text-black font-bold rounded-full hover:scale-105 transition-transform text-base">Send message</button>
+                <Button type="submit" variant="primary" size="md" className="w-full justify-center">Send message</Button>
                 <p className="mt-2 text-[14px] text-neutral-400 text-center">I respond within one business day.</p>
               </div>
             </form>
@@ -659,9 +657,9 @@ export default function App() {
               />
               <h2 className="text-3xl font-bold mb-4">404 - Page Not Found</h2>
               <p className="text-neutral-500 mb-8">The page you are looking for doesn't exist or has been moved.</p>
-              <button onClick={() => navigate("/")} className="px-8 py-3 bg-[#88FF00] text-black font-bold rounded-full hover:scale-105 transition-transform">
+              <Button onClick={() => navigate("/")} variant="primary" size="md">
                 Return Home
-              </button>
+              </Button>
             </div>
           } />
         </Routes>

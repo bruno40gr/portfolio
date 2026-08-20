@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Download } from "lucide-react";
 import SEOHead from "./ui/SEOHead";
+import Button from "./ui/button";
 
 // ─── Resume data ──────────────────────────────────────────────────────────────
 const RESUME = {
@@ -310,16 +311,17 @@ const ResumePage = () => {
         description="Resume of Bruno Wong Marchena, Staff Product Designer with 14 years of experience at Amazon, Patreon, Alto Pharmacy, and more. Downloadable PDF available."
         path="/resume"
       />
-
-      <div className="mb-10 flex justify-end">
-        <button
+      <div className="mb-8 flex justify-end">
+        <Button
           onClick={handleDownload}
           disabled={generating}
-          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#88FF00] text-black text-sm font-bold rounded-full hover:scale-105 active:scale-95 transition-transform disabled:opacity-50 disabled:cursor-not-allowed"
+          variant="primary"
+          size="sm"
+          className="gap-2"
         >
-          <Download size={15} />
-          {generating ? "Generating..." : "Download PDF"}
-        </button>
+          <Download size={16} />
+          {generating ? "Generating PDF..." : "Download PDF"}
+        </Button>
       </div>
 
       <header className="mb-8">

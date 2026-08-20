@@ -579,14 +579,16 @@ export const PORTFOLIO_DATA = {
               {
                 kind: "image",
                 src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772671746/565c0c1b-f554-49f5-a4ce-ef5739234bf8.png",
-                layout: "side-lightbox",
+                layout: "full",
+                clickable: true,
                 caption: { short: "Went wide and unconventional trying to design something useful for science and non-intrusive for design directors. Ended up ambiguous, not accessible, and violated Meridian compliance. Taught me what not to build.", verbose: "" },
                 deepDive: "A few explorations where I went wide and unconventional to design a flow that seemed useful for science and non-intrusive for design directors. The early color-coded status toggles made rejection states ambiguous. Reviewers couldn't tell at a glance whether something was approved, rejected, or pending. The colors also violated Meridian compliance requirements, which meant the component couldn't ship inside Amazon's design system."
               },
               {
                 kind: "image",
                 src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772670918/confusing_kxavxq.png",
-                layout: "side-lightbox",
+                layout: "full",
+                clickable: true,
                 caption: { short: "Shifted to explicit labels and reason-based feedback. Every state readable at a glance, Meridian compliant, no decoding required.", verbose: "" },
                 deepDive: "I shifted to explicit labels and reason-based feedback. The revised design removed color dependency entirely , every state was communicated through text labels, making it accessible and Meridian-compliant. This also solved a deeper UX problem: Creative Directors could now see exactly why something was rejected without having to decode a color system."
               }
@@ -728,18 +730,24 @@ export const PORTFOLIO_DATA = {
           {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772585962/architecture_xw17mw.png",
+            layout: "side",
+            clickable: true,
             caption: { short: "The two-tab architecture. EMEA pushed for the split; mixing asset types forced users to track which rules applied when." },
             deepDive: "The core decision was how to handle two fundamentally different asset types: Asset system-generated images with rich metadata, and manually uploaded files with none. EMEA pushed for this separation. Their argument: the filter criteria differed enough between sources that mixing them forced users to track which rules applied when. The solution was two tabs with different interaction patterns."
           },
           {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772586379/Views_shuapy.png",
+            layout: "side",
+            clickable: true,
             caption: { short: "Tile for visual scanning. Table for metadata density. EMEA gravitated toward the spreadsheet; designers preferred the gallery." },
             deepDive: "Two ways to look at the same catalog, built for different needs. Tile view puts the images front and center, useful when scanning for a specific visual or QAing image quality at a glance. Table view trades that for data: locale, template, dimensions, and QA status all sortable in columns, closer to a spreadsheet than a gallery. EMEA gravitated toward the table for metadata density. North America responded well to it too. Designers, naturally preferred the Tile view."
           },
           {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772586894/Filters_tnevnj.png",
+            layout: "side",
+            clickable: true,
             caption: { short: "Once metadata was in place, filtering became the primary navigation. Finding an image went from asking someone to a few clicks." },
             deepDive: "Once assets had proper metadata, filtering became the main way people moved through the catalog. You could narrow by device type, campaign, locale, date, template type, and QA status simultaneously. For a global team managing thousands of images across 22 markets, that meant finding the right image for a specific campaign in seconds instead of scrolling through everything or asking someone who remembered where it lived."
           },
@@ -851,6 +859,7 @@ export const PORTFOLIO_DATA = {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772412234/Background_metadata_cphwlh.png",
             layout: "side",
+            clickable: true,
             caption: {
               short: "The manual upload screen for a background image. Up to 90 metadata inputs, before a single asset was ready."
             }
@@ -867,6 +876,7 @@ export const PORTFOLIO_DATA = {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772411473/metadata-chart_nrud3c.png",
             layout: "side",
+            clickable: true,
             caption: {
               short: "My framework for prioritizing where AI could replace manual metadata work, and where it couldn't."
             }
@@ -881,6 +891,7 @@ export const PORTFOLIO_DATA = {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772411602/Screenshot_2026-03-01_at_4.32.55_PM_zlbqvz.png",
             layout: "side",
+            clickable: true,
             caption: {
               short: "A failed experiment. Tried to get AI to classify raw component images with no existing metadata to lean on."
             }
@@ -889,6 +900,7 @@ export const PORTFOLIO_DATA = {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772411765/fa9dccd2-7490-4215-b420-35251e6044b7.png",
             layout: "side",
+            clickable: true,
             caption: {
               short: "This one worked. AI matched component images to predefined visual variants."
             }
@@ -904,6 +916,7 @@ export const PORTFOLIO_DATA = {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772411818/7e25e02b-1a0c-4458-81f8-e22044a1df9c.png",
             layout: "side",
+            clickable: true,
             caption: {
               short: "Users drew the boundary on the device. System turned that into coordinates the AI could actually use."
             }
@@ -912,6 +925,7 @@ export const PORTFOLIO_DATA = {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772412003/8fc680db-a6b5-4c46-ba00-f12af55faab4.png",
             layout: "side",
+            clickable: true,
             caption: {
               short: "Concept for the Admin Tool. The question was simple: how much metadata could AI handle so people didn't have to."
             }
@@ -929,6 +943,7 @@ export const PORTFOLIO_DATA = {
             type: "image-full",
             src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772411928/4553de5d-0c9d-41d0-b126-bf3db07e532d.png",
             layout: "side",
+            clickable: true,
             caption: {
               short: "Lord of the Rings, placed inside an Echo Show. Same process localizes screen content, keeps perspective, shadows, and glare intact."
             }

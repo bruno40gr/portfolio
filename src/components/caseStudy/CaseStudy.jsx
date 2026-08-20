@@ -17,6 +17,7 @@ import ImageThumbnail from "./ImageThumbnail";
 import FileThumbnail from "./FileThumbnail";
 import VideoThumbnail from "./VideoThumbnail";
 import FigmaThumbnail from "./FigmaThumbnail";
+import Button from "../ui/button";
 
 import CaseStudyPager from "./CaseStudyPager";
 import CaseStudyAnchorNav from "./CaseStudyAnchorNav";
@@ -193,6 +194,40 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
     return media;
   }, [project]);
 
+  const renderStaticImageShell = (src, alt) => (
+    <div className="bg-white border border-neutral-200 rounded-sm p-2 shadow-sm">
+      <img src={src} alt={alt} className="w-full h-auto" />
+    </div>
+  );
+
+  const renderSideImageLayout = ({ src, alt, caption, clickable = false, globalIndex = -1, keyValue }) => {
+    const imageEl = renderStaticImageShell(src, alt);
+
+    return (
+      <div key={keyValue} className="mb-10 px-6 md:px-0 case-visual-block">
+        <div className="flex flex-col md:flex-row md:gap-14 md:items-center">
+          <div className="md:w-[62%] md:shrink-0">
+            {clickable && globalIndex !== -1 ? (
+              <button
+                type="button"
+                onClick={() => setLightbox({ open: true, index: globalIndex })}
+                className="w-full text-left media-card-focus rounded-sm"
+                aria-label="Expand image"
+              >
+                {imageEl}
+              </button>
+            ) : imageEl}
+          </div>
+          {caption && (
+            <div className="mt-3 md:mt-0 md:w-[38%] md:pt-1">
+              <Caption>{caption}</Caption>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  };
+
   const renderBlock = (block, index) => {
     switch (block.type) {
       case "text": {
@@ -248,103 +283,72 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
 
       case "image-full": {
         const globalIndex = allMediaItems.findIndex((item) => item.src === block.src);
-        const imageCaption =
-          typeof block.caption === "object" && block.caption !== null ? block.caption.short : block.caption;
+        const captionObject = typeof block.caption === "object" && block.caption !== null ? block.caption : null;
+        const imageCaption = captionObject ? captionObject.short : block.caption;
+        const hasVerboseCaption = !!(captionObject?.verbose && captionObject.verbose.trim() !== "");
         const layout = block.layout || (block.noLightbox ? "full" : "lightbox");
         const isSide = layout === "side";
-        const isSideLightbox = layout === "side-lightbox";
         const isFull = layout === "full";
-        const isLightbox = layout === "lightbox";
-
-        // Shared side-layout image component
-        const renderSideImage = (clickable, globalIdx) => {
-          const imgEl = (
-            <div className="bg-white border border-neutral-200 rounded-sm p-2 shadow-sm">
-              <img
-                src={block.src}
-                alt={imageCaption}
-                className="w-full h-auto"
-              />
-            </div>
-          );
-          if (clickable && globalIdx !== -1) {
-            return (
-              <button
-                type="button"
-                onClick={() => setLightbox({ open: true, index: globalIdx })}
-                className="w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-green)] rounded-sm"
-                aria-label="Expand image"
-              >
-                {imgEl}
-              </button>
-            );
-          }
-          return imgEl;
-        };
-
-        const renderSideLayout = (clickable) => (
-          <div key={index} className="mb-10 px-6 md:px-0 case-visual-block">
-            <div className="flex flex-col md:flex-row md:gap-14 md:items-center">
-              <div className="md:w-[62%] md:shrink-0">
-                {renderSideImage(clickable, globalIndex)}
-              </div>
-              {imageCaption && (
-                <div className="mt-3 md:mt-0 md:w-[38%] md:pt-1">
-                  <Caption>{imageCaption}</Caption>
-                </div>
-              )}
-            </div>
-          </div>
-        );
+        const isDefaultLightbox = layout === "lightbox";
+        const isClickable = block.clickable ?? hasVerboseCaption;
 
         // SIDE LAYOUT — no lightbox
-        if (isSide) return renderSideLayout(false);
+        if (isSide) {
+          return renderSideImageLayout({
+            src: block.src,
+            alt: imageCaption,
+            caption: imageCaption,
+            clickable: isClickable,
+            globalIndex,
+            keyValue: index,
+          });
+        }
 
-        // SIDE + LIGHTBOX LAYOUT
-        if (isSideLightbox) return renderSideLayout(true);
-
-        // FULL LAYOUT — full width, no lightbox, no zoom
+        // FULL LAYOUT — full width, optional lightbox, no crop/distortion
         if (isFull) {
-          return (
-            <div key={index} className="mb-10 px-6 md:px-0 case-visual-block">
-              <div className="relative w-full bg-white border border-neutral-200 rounded-sm p-2 shadow-sm">
-                <img
+          if (isClickable) {
+            return (
+              <div key={index} className="mb-10 px-6 md:px-0 case-visual-block">
+                <ImageThumbnail
                   src={block.src}
                   alt={imageCaption}
-                  className="w-full h-auto"
+                  onClick={() => {
+                    if (globalIndex !== -1) setLightbox({ open: true, index: globalIndex });
+                  }}
                 />
+                {imageCaption && <Caption>{imageCaption}</Caption>}
               </div>
+            );
+          }
+
+          return (
+            <div key={index} className="mb-10 px-6 md:px-0 case-visual-block">
+              {renderStaticImageShell(block.src, imageCaption)}
               {imageCaption && <Caption>{imageCaption}</Caption>}
             </div>
           );
         }
 
         // LIGHTBOX LAYOUT (default) — full width, clickable lightbox, zoom hover
+        if (isDefaultLightbox || isClickable) {
+          return (
+            <div key={index} className="mb-10 px-6 md:px-0 case-visual-block">
+              <ImageThumbnail
+                src={block.src}
+                alt={imageCaption}
+                onClick={() => {
+                  if (globalIndex !== -1) setLightbox({ open: true, index: globalIndex });
+                }}
+              />
+              {imageCaption && <Caption>{imageCaption}</Caption>}
+            </div>
+          );
+        }
+
+        // Static fallback
         return (
           <div key={index} className="mb-10 px-6 md:px-0 case-visual-block">
-            <button
-              type="button"
-              onClick={() => {
-                if (globalIndex !== -1) setLightbox({ open: true, index: globalIndex });
-              }}
-              className="group relative w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-green)] rounded-xl"
-              aria-label="Expand image"
-            >
-              <div className="relative w-full bg-white border border-neutral-200 rounded-sm transition-all duration-300 ease-out p-2 shadow-sm group-hover:shadow-md group-hover:border-neutral-300">
-                <div className="relative rounded-sm overflow-hidden w-full">
-                  <img
-                    src={block.src}
-                    alt={imageCaption}
-                    className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-[1.01]"
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <div className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center text-[var(--deep-purple)] shadow-lg opacity-0 translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 group-hover:bg-[var(--neon-green)] group-hover:border-[var(--neon-green)] transition-all duration-300 transform scale-90 group-hover:scale-100">
-                      <Maximize2 size={20} aria-hidden="true" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </button>
+            {renderStaticImageShell(block.src, imageCaption)}
             {imageCaption && <Caption>{imageCaption}</Caption>}
           </div>
         );
@@ -359,21 +363,11 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
               const captionShort = typeof img.caption === "object" ? img.caption.short : img.caption;
               return (
                 <div key={i}>
-                  <button
-                    type="button"
+                  <ImageThumbnail
+                    src={img.src}
+                    alt={captionShort}
                     onClick={() => { if (globalIndex !== -1) setLightbox({ open: true, index: globalIndex }); }}
-                    className="group relative w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-green)] rounded-xl"
-                  >
-                    <div className="relative w-full bg-white border border-neutral-200 rounded-sm transition-all duration-300 ease-out p-2 shadow-sm group-hover:shadow-md group-hover:border-neutral-300">
-                      <div className="relative rounded-sm overflow-hidden w-full">
-                        <img
-                          src={img.src}
-                          alt={captionShort}
-                          className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-[1.01]"
-                        />
-                      </div>
-                    </div>
-                  </button>
+                  />
                   {captionShort && <Caption>{captionShort}</Caption>}
                 </div>
               );
@@ -521,36 +515,22 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                               const globalIndex = allMediaItems.findIndex(
                                 (it) => it.src === mediaItem.src
                               );
+                              const isExplicitlyClickable = mediaItem.clickable;
+                              const hasVerboseCaption = !!(mediaItem.captionVerbose && mediaItem.captionVerbose.trim() !== "");
+                              const isClickable = isExplicitlyClickable ?? hasVerboseCaption;
 
                               // Side layout for list visuals
-                              if (mediaItem.type === "image" && (mediaItem.layout === "side" || mediaItem.layout === "side-lightbox")) {
-                                const isClickable = mediaItem.layout === "side-lightbox" && globalIndex !== -1;
-                                const imgEl = (
-                                  <div className="bg-white border border-neutral-200 rounded-sm p-2 shadow-sm">
-                                    <img src={mediaItem.src} alt={mediaItem.title} className="w-full h-auto" />
-                                  </div>
-                                );
+                              if (mediaItem.type === "image" && mediaItem.layout === "side") {
                                 return (
                                   <div key={vi}>
-                                    <div className="flex flex-col md:flex-row md:gap-14 md:items-center">
-                                      <div className="md:w-[62%] md:shrink-0">
-                                        {isClickable ? (
-                                          <button
-                                            type="button"
-                                            onClick={() => setLightbox({ open: true, index: globalIndex })}
-                                            className="w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-green)] rounded-sm"
-                                            aria-label="Expand image"
-                                          >
-                                            {imgEl}
-                                          </button>
-                                        ) : imgEl}
-                                      </div>
-                                      {mediaItem.captionShort && (
-                                        <div className="mt-3 md:mt-0 md:w-[38%] md:pt-1">
-                                          <Caption>{mediaItem.captionShort}</Caption>
-                                        </div>
-                                      )}
-                                    </div>
+                                    {renderSideImageLayout({
+                                      src: mediaItem.src,
+                                      alt: mediaItem.title,
+                                      caption: mediaItem.captionShort,
+                                      clickable: isClickable,
+                                      globalIndex,
+                                      keyValue: `side-${vi}`,
+                                    })}
                                   </div>
                                 );
                               }
@@ -584,14 +564,10 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                                         })
                                       }
                                     />
+                                  ) : mediaItem.layout === "full" && !isClickable ? (
+                                    renderStaticImageShell(mediaItem.src, mediaItem.title)
                                   ) : mediaItem.noLightbox ? (
-                                    <div className="relative w-full bg-white border border-neutral-200 rounded-sm p-2 shadow-sm">
-                                      <img
-                                        src={mediaItem.src}
-                                        alt={mediaItem.title}
-                                        className="w-full h-auto"
-                                      />
-                                    </div>
+                                    renderStaticImageShell(mediaItem.src, mediaItem.title)
                                   ) : (
                                     <ImageThumbnail
                                       src={mediaItem.src}
@@ -830,14 +806,14 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
               />
               {project.details?.hero?.cta && (
                 <div className="absolute bottom-8 left-1/2 -translate-x-1/2 md:bottom-12 z-10">
-                  <a
+                  <Button
                     href={project.details.hero.cta.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center px-8 py-4 bg-[var(--neon-green)] text-[#11131E] font-semibold text-lg md:text-xl hover:brightness-105 transition-colors shadow-lg shadow-gray-200 whitespace-nowrap"
+                    variant="primary"
+                    size="lg"
+                    className="bg-[var(--brand-accent)] text-[#11131E] border-[var(--brand-accent)] hover:bg-[#76E600] hover:border-[#76E600] shadow-card whitespace-nowrap"
                   >
                     {project.details.hero.cta.text}
-                  </a>
+                  </Button>
                 </div>
               )}
             </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { ArrowRight, HandMetal } from "lucide-react";
 import { PARTITIONED_GROUPS, PORTFOLIO_DATA } from "../../data/portfolioData";
 import { COMPANY_STRIPE_LOGOSSQUARED, ASSETS } from "../../data/assets";
+import Button from "../ui/button";
 
 // Map a company name to its logo (squared logos look good on any background)
 const getCompanyLogo = (company) => {
@@ -216,18 +217,19 @@ const WorkSection = ({ onProjectClick }) => {
             </div>
 
             <div className="flex flex-wrap gap-4">
-              <button
+              <Button
                 type="button"
                 onClick={() => onProjectClick(heyCohen)}
-                className="px-8 py-4 bg-[#11131E] text-white font-semibold hover:bg-black transition-colors shadow-lg shadow-gray-200"
+                variant="primary"
+                size="md"
               >
                 View full case study
-              </button>
+              </Button>
               <a
                 href="https://pulse-zeta-ruddy.vercel.app/demo"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-4 bg-white text-slate-700 font-medium border-2 border-gray-200 hover:border-gray-300 transition-colors flex items-center gap-2"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-slate-700 font-semibold border border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-colors shadow-soft"
               >
                 <div className="w-2 h-2 bg-[#39FF14]"></div>
                 Live Demo
@@ -264,7 +266,7 @@ const WorkSection = ({ onProjectClick }) => {
       {/* ===== Amazon Collection (substantial, dark) ===== */}
       <section
         ref={reveal.ref}
-        className={`bg-[#11131E] p-8 lg:p-16 text-white relative overflow-hidden transition-all duration-700 ${
+        className={`bg-[var(--surface-dark)] p-8 lg:p-16 text-white relative overflow-hidden transition-all duration-700 ${
           reveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
         }`}
       >

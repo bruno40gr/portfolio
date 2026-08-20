@@ -5,12 +5,12 @@ const ImageThumbnail = ({ src, alt, onClick, isPresentation = false }) => (
   <button
     type="button"
     onClick={onClick}
-    className={`group relative w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-green)] rounded-xl ${
+    className={`group relative w-full text-left media-card-focus rounded-xl ${
       isPresentation ? "transition-transform duration-300 hover:-translate-y-1" : ""
     }`}
     aria-label="Expand image"
   >
-    <div className="relative w-full bg-white border border-neutral-200 rounded-lg transition-all duration-300 ease-out p-2 shadow-sm group-hover:shadow-md group-hover:border-neutral-300">
+    <div className="media-card-shell media-card-shell-hover">
       
       {/* Conditionally apply the aspect ratio and background */}
       <div className={`relative rounded-lg overflow-hidden flex items-center justify-center ${
@@ -31,7 +31,7 @@ const ImageThumbnail = ({ src, alt, onClick, isPresentation = false }) => (
         
         {/* CENTERED Expand Arrow */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-           <div className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center text-[var(--deep-purple)] shadow-lg opacity-0 translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 group-hover:bg-[var(--neon-green)] group-hover:border-[var(--neon-green)] transition-all duration-300 transform scale-90 group-hover:scale-100">
+           <div className="media-card-action">
              <Maximize2 size={20} aria-hidden="true" />
            </div>
         </div>

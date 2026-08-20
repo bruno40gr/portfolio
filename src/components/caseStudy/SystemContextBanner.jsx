@@ -85,10 +85,10 @@ export const SystemContextModal = ({ open, onClose, pillars = [], currentId, onP
       className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-8"
       onClick={onClose}
     >
-      <div className="absolute inset-0 bg-black/30 backdrop-blur-md" />
+      <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" />
 
       <div
-        className="relative bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto font-sans"
+        className="relative bg-white rounded-2xl shadow-card-strong w-full max-w-3xl max-h-[90vh] overflow-y-auto font-sans border border-slate-200/80"
         onClick={(e) => e.stopPropagation()}
       >
         <button

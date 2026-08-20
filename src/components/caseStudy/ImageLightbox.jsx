@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { FileText, ChevronLeft, ChevronRight, X, Loader2, Figma, ExternalLink, ArrowRightLeft } from "lucide-react";
+import { FileText, ChevronLeft, ChevronRight, ChevronDown, X, Loader2, Figma, ExternalLink } from "lucide-react";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 import { FigmaEmbed } from "../ui/FigmaEmbed";
@@ -90,7 +90,7 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex flex-col bg-[#050505]/98 backdrop-blur-2xl animate-in fade-in duration-300 font-sans text-white select-none overscroll-none"
+      className="fixed inset-0 z-[100] flex flex-col bg-[#050505]/98 backdrop-blur-md animate-in fade-in duration-300 font-sans text-white select-none overscroll-none"
       style={{ overscrollBehavior: "contain" }}
       onClick={onClose}
     >
@@ -143,7 +143,7 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
 
               {/* ── PDF ──────────────────────────────────────────────────────── */}
               {activeItem.type === "pdf" && (
-                <div className="w-full h-full max-w-5xl bg-[#1E1E1E] border border-white/10 rounded-lg shadow-2xl overflow-hidden p-1 animate-in zoom-in-95 duration-300">
+                <div className="w-full h-full max-w-5xl bg-[#1E1E1E] border border-white/10 rounded-lg shadow-card-strong overflow-hidden p-1 animate-in zoom-in-95 duration-300">
                   <iframe
                     src={activeItem.src}
                     className="w-full h-full bg-white rounded-sm"
@@ -154,7 +154,7 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
 
               {/* ── Video ────────────────────────────────────────────────────── */}
               {activeItem.type === "video" && (
-                <div className="w-full max-w-5xl aspect-video bg-black border border-white/10 rounded-lg shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
+                <div className="w-full max-w-5xl aspect-video bg-black border border-white/10 rounded-lg shadow-card-strong overflow-hidden animate-in zoom-in-95 duration-300">
                   <iframe
                     src={
                       activeItem.src.includes("loom.com/share/")
@@ -171,7 +171,7 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
 
               {/* ── Figma ────────────────────────────────────────────────────── */}
               {activeItem.type === "figma" && (
-                <div className="w-full max-w-4xl bg-white rounded-lg shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
+                <div className="w-full max-w-4xl bg-white rounded-lg shadow-card-strong overflow-hidden animate-in zoom-in-95 duration-300">
                   <FigmaEmbed src={activeItem.src} title={activeItem.title} scaling="contain" />
                 </div>
               )}
@@ -211,7 +211,7 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
                           src={activeItem.src}
                           alt={activeItem.captionShort || ""}
                           // Fade in only after the image has decoded and painted.
-                          className={`max-h-full max-w-[680px] object-contain drop-shadow-[0_15px_45px_rgba(0,0,0,0.8)] transition-opacity duration-300 ${
+                          className={`h-full w-full max-h-[78vh] md:max-h-[82vh] object-contain drop-shadow-[0_12px_32px_rgba(0,0,0,0.7)] transition-opacity duration-300 ${
                             imgLoaded ? "opacity-100 animate-in zoom-in-95" : "opacity-0"
                           }`}
                           onLoad={() => setImgLoaded(true)}
@@ -228,7 +228,7 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
                       href={activeItem.src}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-neutral-800 hover:bg-neutral-700 border border-white/10 rounded-full transition-all shadow-lg"
+                      className="flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-neutral-800 hover:bg-neutral-700 border border-white/10 rounded-full transition-all shadow-card"
                       onClick={(e) => e.stopPropagation()}
                       title="Open image in full size"
                     >
@@ -268,10 +268,26 @@ const ImageLightbox = ({ open, initialIndex, mediaItems, onClose }) => {
             {hasDeepDive && (
               <button
                 onClick={() => setShowDeepDive(!showDeepDive)}
-                className="flex items-center gap-2 text-[13px] md:text-[14px] font-medium text-neutral-400 hover:text-white transition-colors mt-2 group"
+                className={`group relative mt-3 inline-flex items-center gap-2.5 overflow-hidden rounded-full border px-3.5 py-2 text-[13px] md:text-[14px] font-medium transition-all duration-300 ${
+                  showDeepDive
+                    ? "border-white/15 bg-white/[0.08] text-white shadow-[0_8px_24px_rgba(255,255,255,0.08)]"
+                    : "border-cyan-400/25 bg-cyan-400/[0.07] text-cyan-100 shadow-[0_0_0_1px_rgba(34,211,238,0.08),0_0_24px_rgba(34,211,238,0.12)] hover:border-cyan-300/40 hover:bg-cyan-300/[0.10] hover:text-white hover:shadow-[0_0_0_1px_rgba(103,232,249,0.12),0_0_30px_rgba(34,211,238,0.18)]"
+                }`}
               >
-                <ArrowRightLeft size={14} className={showDeepDive ? "rotate-180 transition-transform" : "transition-transform"} />
-                <span>{showDeepDive ? "Back to artifact" : "Explore the thinking →"}</span>
+                {!showDeepDive && (
+                  <span className="pointer-events-none absolute inset-y-0 left-[-35%] w-[32%] rotate-[18deg] bg-gradient-to-r from-transparent via-white/25 to-transparent opacity-80 transition-transform duration-700 group-hover:translate-x-[240%]" />
+                )}
+                <span className={`absolute inset-0 rounded-full transition-opacity duration-300 ${showDeepDive ? "opacity-0" : "opacity-100"}`}>
+                  <span className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_left,rgba(34,211,238,0.18),transparent_45%)]" />
+                </span>
+                <span className={`relative flex h-6 w-6 items-center justify-center rounded-full transition-all duration-300 ${showDeepDive ? "bg-white/10 text-white" : "bg-cyan-300/15 text-cyan-200 group-hover:bg-cyan-300/20 group-hover:text-white"}`}>
+                  {showDeepDive ? (
+                    <ChevronDown size={14} className="transition-transform duration-300 group-hover:scale-110" />
+                  ) : (
+                    <ChevronRight size={14} className="transition-transform duration-300 group-hover:scale-110" />
+                  )}
+                </span>
+                <span className="relative leading-none">{showDeepDive ? "Back to artifact" : "Explore the thinking"}</span>
               </button>
             )}
           </div>
