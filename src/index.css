@@ -224,6 +224,26 @@
   display: inline-block;
 }
 
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 700ms ease-out, transform 700ms ease-out;
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 
 
 .case-visual-block {

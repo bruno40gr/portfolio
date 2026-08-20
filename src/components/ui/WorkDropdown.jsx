@@ -78,7 +78,7 @@ const WorkDropdown = ({ onProjectClick, closeMenu, workGroups = [], portfolioDat
           {project.title}
         </h4>
         <p className="text-[12px] leading-relaxed text-slate-500 mt-1.5">
-          {project.impactSummarySentence}
+            {project.impactSummary}
         </p>
       </button>
     );

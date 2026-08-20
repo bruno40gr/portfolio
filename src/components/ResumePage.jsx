@@ -310,6 +310,20 @@ const ResumePage = () => {
         title="Resume"
         description="Resume of Bruno Wong Marchena, Staff Product Designer with 14 years of experience at Amazon, Patreon, Alto Pharmacy, and more. Downloadable PDF available."
         path="/resume"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "ProfilePage",
+          "name": "Resume | Bruno Wong",
+          "url": "https://www.brunowong.me/resume",
+          "mainEntity": {
+            "@type": "Person",
+            "name": "Bruno Wong Marchena",
+            "jobTitle": "Senior Product Designer",
+            "url": "https://www.brunowong.me",
+            "sameAs": ["https://www.linkedin.com/in/brunowong"],
+            "knowsAbout": ["Product Design", "AI Systems", "Design Systems", "UX Research", "Enterprise Platforms"]
+          }
+        }}
       />
       <div className="mb-8 flex justify-end">
         <Button

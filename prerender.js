@@ -19,6 +19,8 @@ import App from "./src/App.jsx";
 import { PORTFOLIO_DATA } from "./src/data/portfolioData.js";
 
 const DIST_DIR = path.join(process.cwd(), "dist");
+const BASE_URL = "https://www.brunowong.me";
+const TODAY = new Date().toISOString().slice(0, 10);
 
 // Discover the actual built asset filenames from dist/assets/
 // (Vite hashes these, e.g. index-BESEcVnC.js, index-Dma9ixg-.css)
@@ -43,6 +45,34 @@ const PROJECT_ROUTES = PORTFOLIO_DATA.projects
   .map((p) => `/project/${p.id}`);
 
 const ALL_ROUTES = [...STATIC_ROUTES, ...PROJECT_ROUTES];
+
+const ROUTE_METADATA = {
+  "/": { changefreq: "weekly", priority: "1.0" },
+  "/about": { changefreq: "monthly", priority: "0.8" },
+  "/resume": { changefreq: "monthly", priority: "0.8" },
+  "/changelog": { changefreq: "weekly", priority: "0.6" },
+  "/styles": { changefreq: "monthly", priority: "0.4" },
+};
+
+function writeSitemap(routes) {
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${routes
+  .map((route) => {
+    const meta = ROUTE_METADATA[route] || { changefreq: "monthly", priority: "0.8" };
+    return `  <url>
+    <loc>${BASE_URL}${route}</loc>
+    <lastmod>${TODAY}</lastmod>
+    <changefreq>${meta.changefreq}</changefreq>
+    <priority>${meta.priority}</priority>
+  </url>`;
+  })
+  .join("\n")}
+</urlset>`;
+
+  fs.writeFileSync(path.join(DIST_DIR, "sitemap.xml"), xml, "utf8");
+  console.log("  ✓ sitemap.xml generated from live routes");
+}
 
 function renderRoute(route) {
   const context = {};
@@ -111,5 +141,7 @@ ALL_ROUTES.forEach((route) => {
     console.error(`  ✗ Failed to render ${route}:`, err.message);
   }
 });
+
+writeSitemap(ALL_ROUTES);
 
 console.log("\nPre-rendering complete.");

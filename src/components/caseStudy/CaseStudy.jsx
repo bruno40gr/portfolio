@@ -19,6 +19,7 @@ import VideoThumbnail from "./VideoThumbnail";
 import FigmaThumbnail from "./FigmaThumbnail";
 import Button from "../ui/button";
 import VoiceHeading from "../ui/VoiceHeading";
+import RevealOnScroll from "../ui/RevealOnScroll";
 
 import CaseStudyPager from "./CaseStudyPager";
 import CaseStudyAnchorNav from "./CaseStudyAnchorNav";
@@ -238,7 +239,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
             : "text-base md:text-[17px] text-neutral-700 font-normal leading-[1.6]";
 
         return (
-          <section key={index} className="mb-10 text-left case-text-block">
+          <RevealOnScroll as="section" key={index} className="mb-10 text-left case-text-block">
             {block.subtype === "designer-note" && (
               <VoiceHeading
                 eyebrow=""
@@ -266,15 +267,23 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
             ) : (
               <p className={textClass} dangerouslySetInnerHTML={{ __html: block.content }} />
             )}
-          </section>
+          </RevealOnScroll>
         );
       }
 
       case "callout-box":
-        return <CalloutBox key={index} content={block.content} size="large" className="case-visual-block mb-12 md:mb-16" />;
+        return (
+          <RevealOnScroll key={index}>
+            <CalloutBox content={block.content} size="large" className="case-visual-block mb-12 md:mb-16" />
+          </RevealOnScroll>
+        );
 
       case "impact-box":
-        return <ImpactBox key={index} metrics={block.metrics} description={block.description} size="large" variant={isEditorial ? "editorial" : "default"} className="case-visual-block mb-12 md:mb-16" />;
+        return (
+          <RevealOnScroll key={index}>
+            <ImpactBox metrics={block.metrics} description={block.description} size="large" variant={isEditorial ? "editorial" : "default"} className="case-visual-block mb-12 md:mb-16" />
+          </RevealOnScroll>
+        );
 
       case "heading": {
         if (block.title === "Overview") return null;
@@ -282,13 +291,14 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         const slug = block.title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
         return (
-          <section
+          <RevealOnScroll
+            as="section"
             id={slug}
             key={index}
             className="mb-5 text-left case-anchor-target mt-20 case-text-block"
           >
             <h2 className="text-[30px] font-bold text-neutral-900 tracking-[-0.03em] leading-[1.1]">{block.title}</h2>
-          </section>
+          </RevealOnScroll>
         );
       }
 
@@ -319,7 +329,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         if (isFull) {
           if (isClickable) {
             return (
-              <div key={index} className="mb-10 px-6 md:px-0 case-visual-block">
+              <RevealOnScroll key={index} className="mb-10 px-6 md:px-0 case-visual-block">
                 <ImageThumbnail
                   src={block.src}
                   alt={imageCaption}
@@ -328,22 +338,22 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                   }}
                 />
                 {imageCaption && <Caption>{imageCaption}</Caption>}
-              </div>
+              </RevealOnScroll>
             );
           }
 
           return (
-            <div key={index} className="mb-10 px-6 md:px-0 case-visual-block">
+            <RevealOnScroll key={index} className="mb-10 px-6 md:px-0 case-visual-block">
               {renderStaticImageShell(block.src, imageCaption)}
               {imageCaption && <Caption>{imageCaption}</Caption>}
-            </div>
+            </RevealOnScroll>
           );
         }
 
         // LIGHTBOX LAYOUT (default) — full width, clickable lightbox, zoom hover
         if (isDefaultLightbox || isClickable) {
           return (
-            <div key={index} className="mb-10 px-6 md:px-0 case-visual-block">
+            <RevealOnScroll key={index} className="mb-10 px-6 md:px-0 case-visual-block">
               <ImageThumbnail
                 src={block.src}
                 alt={imageCaption}
@@ -352,23 +362,23 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                 }}
               />
               {imageCaption && <Caption>{imageCaption}</Caption>}
-            </div>
+            </RevealOnScroll>
           );
         }
 
         // Static fallback
         return (
-          <div key={index} className="mb-10 px-6 md:px-0 case-visual-block">
+          <RevealOnScroll key={index} className="mb-10 px-6 md:px-0 case-visual-block">
             {renderStaticImageShell(block.src, imageCaption)}
             {imageCaption && <Caption>{imageCaption}</Caption>}
-          </div>
+          </RevealOnScroll>
         );
       }
 
       case "image-grid": {
         const cols = block.columns || 2;
         return (
-          <div key={index} className={`mb-12 md:mb-16 case-visual-block grid grid-cols-1 sm:grid-cols-${cols} gap-6`}>
+          <RevealOnScroll key={index} className={`mb-12 md:mb-16 case-visual-block grid grid-cols-1 sm:grid-cols-${cols} gap-6`}>
             {block.images.map((img, i) => {
               const globalIndex = allMediaItems.findIndex((item) => item.src === img.src);
               const captionShort = typeof img.caption === "object" ? img.caption.short : img.caption;
@@ -383,7 +393,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                 </div>
               );
             })}
-          </div>
+          </RevealOnScroll>
         );
       }
 
@@ -393,7 +403,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
           typeof block.caption === "object" && block.caption !== null ? block.caption.short : block.caption;
 
         return (
-          <div key={index} className="mb-12 md:mb-16 case-visual-block">
+          <RevealOnScroll key={index} className="mb-12 md:mb-16 case-visual-block">
             <VideoThumbnail
               src={block.src}
               caption={videoCaption}
@@ -401,7 +411,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
               onClick={() => { if (globalIndex !== -1) setLightbox({ open: true, index: globalIndex }); }}
             />
             {videoCaption && <Caption>{videoCaption}</Caption>}
-          </div>
+          </RevealOnScroll>
         );
       }
 
@@ -416,7 +426,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         const embedSrc = toFigmaEmbedUrl(block.src);
 
         return (
-          <div key={index} className="mb-12 md:mb-16 case-visual-block">
+          <RevealOnScroll key={index} className="mb-12 md:mb-16 case-visual-block">
             <FigmaThumbnail
               src={block.src}
               caption={figmaCaption}
@@ -426,24 +436,24 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
               onClick={() => setLightbox({ open: true, index: globalIndex, embedSrc })}
             />
             {figmaCaption && <Caption>{figmaCaption}</Caption>}
-          </div>
+          </RevealOnScroll>
         );
       }
 
       case "file-thumbnail": {
         return (
-          <div key={index} className="mb-10 max-w-sm">
+          <RevealOnScroll key={index} className="mb-10 max-w-sm">
             <FileThumbnail
               title={block.title || block.label}
               fileSize={block.fileSize || "External Link"}
               onClick={() => window.open(block.href, "_blank")}
             />
-          </div>
+          </RevealOnScroll>
         );
       }
       case "pillar-grid":
         return (
-          <div key={index} className="mt-8 mb-12">
+          <RevealOnScroll key={index} className="mt-8 mb-12">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-12 text-left">
               {subPillars.map((child) => (
                 <ProjectCard
@@ -456,14 +466,14 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                 />
               ))}
             </div>
-          </div>
+          </RevealOnScroll>
         );
 
       case "list": {
         if (!block.items || !Array.isArray(block.items)) return null;
 
         return (
-          <section key={index} className="mb-12 md:mb-20 text-left font-sans case-text-block">
+          <RevealOnScroll as="section" key={index} className="mb-12 md:mb-20 text-left font-sans case-text-block">
             <ul className="space-y-6 font-sans">
               {block.items.map((item, i) => {
                 const isObj = item && typeof item === "object" && !Array.isArray(item);
@@ -602,7 +612,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                 );
               })}
             </ul>
-          </section>
+          </RevealOnScroll>
         );
       }
 
@@ -650,7 +660,15 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
           "@context": "https://schema.org",
           "@type": "CreativeWork",
           "name": project.title,
+          "headline": project.title,
           "description": project.impactSummarySentence || project.impactSummary || "",
+          "image": project.details?.heroImage || project.thumbnail || undefined,
+          "mainEntityOfPage": `https://www.brunowong.me/project/${project.id}`,
+          "about": [project.company, project.type, project.details?.type].filter(Boolean),
+          "creator": {
+            "@type": "Person",
+            "name": "Bruno Wong Marchena"
+          },
           "author": {
             "@type": "Person",
             "name": "Bruno Wong Marchena"

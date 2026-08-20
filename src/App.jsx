@@ -450,6 +450,22 @@ export default function App() {
                   "@context": "https://schema.org",
                   "@graph": [
                     {
+                      "@type": "WebSite",
+                      "name": "Bruno Wong",
+                      "url": "https://www.brunowong.me",
+                      "description": "Portfolio of Bruno Wong, Staff Product Designer specializing in complex systems, AI tools, and enterprise platforms."
+                    },
+                    {
+                      "@type": "CollectionPage",
+                      "name": "Portfolio",
+                      "url": "https://www.brunowong.me/",
+                      "description": "Selected work by Bruno Wong across AI systems, enterprise tooling, healthcare, and creator platforms.",
+                      "about": {
+                        "@type": "Person",
+                        "name": "Bruno Wong Marchena"
+                      }
+                    },
+                    {
                       "@type": "Person",
                       "name": "Bruno Wong Marchena",
                       "jobTitle": "Staff Product Designer",
@@ -594,12 +610,26 @@ export default function App() {
                 path="/about"
                 jsonLd={{
                   "@context": "https://schema.org",
-                  "@type": "Person",
-                  "name": "Bruno Wong Marchena",
-                  "jobTitle": "Staff Product Designer",
-                  "url": "https://www.brunowong.me",
-                  "sameAs": ["https://www.linkedin.com/in/brunowong"],
-                  "description": "Staff Product Designer specializing in complex systems, AI tools, and enterprise platforms. Previous experience at Amazon, Patreon, and Alto Pharmacy."
+                  "@graph": [
+                    {
+                      "@type": "AboutPage",
+                      "name": "About | Bruno Wong",
+                      "url": "https://www.brunowong.me/about",
+                      "description": "About Bruno Wong, Staff Product Designer specializing in complex systems, AI tools, and enterprise platforms.",
+                      "mainEntity": {
+                        "@id": "https://www.brunowong.me/#person"
+                      }
+                    },
+                    {
+                      "@type": "Person",
+                      "@id": "https://www.brunowong.me/#person",
+                      "name": "Bruno Wong Marchena",
+                      "jobTitle": "Staff Product Designer",
+                      "url": "https://www.brunowong.me",
+                      "sameAs": ["https://www.linkedin.com/in/brunowong"],
+                      "description": "Staff Product Designer specializing in complex systems, AI tools, and enterprise platforms. Previous experience at Amazon, Patreon, and Alto Pharmacy."
+                    }
+                  ]
                 }}
               />
               <div className="max-w-4xl mx-auto mb-20 text-left">
@@ -654,6 +684,7 @@ export default function App() {
                 title="Page Not Found"
                 description="The page you are looking for doesn't exist or has been moved."
                 path={location.pathname}
+                robots="noindex,nofollow"
               />
               <h2 className="text-3xl font-bold mb-4">404 - Page Not Found</h2>
               <p className="text-neutral-500 mb-8">The page you are looking for doesn't exist or has been moved.</p>

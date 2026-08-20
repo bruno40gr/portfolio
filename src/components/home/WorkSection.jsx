@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { ArrowRight, HandMetal } from "lucide-react";
 import { PARTITIONED_GROUPS, PORTFOLIO_DATA } from "../../data/portfolioData";
 import { COMPANY_STRIPE_LOGOSSQUARED, ASSETS } from "../../data/assets";
 import Button from "../ui/button";
 import VoiceHeading from "../ui/VoiceHeading";
+import RevealOnScroll from "../ui/RevealOnScroll";
 
 // Map a company name to its logo (squared logos look good on any background)
 const getCompanyLogo = (company) => {
@@ -14,34 +15,6 @@ const getCompanyLogo = (company) => {
     return norm.includes(name) || name.includes(norm);
   });
   return match ? match.src : ASSETS.isoGreen;
-};
-
-// Reusable scroll-reveal hook (IntersectionObserver) for progressive disclosure
-const useRevealOnScroll = () => {
-  const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (typeof IntersectionObserver === "undefined") {
-      setVisible(true);
-      return;
-    }
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  return { ref, visible };
 };
 
 // Hey Cohen hero card copy — homepage-specific presentation labels, not part of
@@ -154,22 +127,22 @@ const WorkSection = ({ onProjectClick }) => {
     return { company, projects, meta, yearRange };
   });
 
-  const reveal = useRevealOnScroll();
-
   return (
     <div
       id="work"
       className="w-full max-w-[1800px] mx-auto px-6 md:px-12 lg:px-16 pb-24 md:pb-32 relative scroll-mt-24 bg-white text-left"
     >
       {/* ===== Building with AI section header ===== */}
-      <VoiceHeading
-        eyebrow={aiGroup?.meta || "Recent work"}
-        title={aiGroup?.title || "Building with AI"}
-        className="mb-12 max-w-2xl"
-      />
+      <RevealOnScroll>
+        <VoiceHeading
+          eyebrow={aiGroup?.meta || "Recent work"}
+          title={aiGroup?.title || "Building with AI"}
+          className="mb-12 max-w-2xl"
+        />
+      </RevealOnScroll>
 
       {/* ===== Hey Cohen (featured, white hero) ===== */}
-      <section className="bg-white p-8 lg:p-16 shadow-sm border border-gray-200 transition-all hover:shadow-md relative overflow-hidden">
+      <RevealOnScroll as="section" className="bg-white p-8 lg:p-16 shadow-sm border border-gray-200 transition-all hover:shadow-md relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-green-50 to-transparent opacity-50 pointer-events-none"></div>
 
         <div className="flex flex-col lg:flex-row gap-16 items-center relative z-10">
@@ -255,16 +228,14 @@ const WorkSection = ({ onProjectClick }) => {
             </button>
           </div>
         </div>
-      </section>
+      </RevealOnScroll>
 
       <div className="py-8 md:py-10" aria-hidden="true" />
 
       {/* ===== Amazon Collection (substantial, dark) ===== */}
-      <section
-        ref={reveal.ref}
-        className={`bg-[var(--surface-dark)] p-8 lg:p-16 text-white relative overflow-hidden transition-all duration-700 ${
-          reveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-        }`}
+      <RevealOnScroll
+        as="section"
+        className="bg-[var(--surface-dark)] p-8 lg:p-16 text-white relative overflow-hidden"
       >
         <div
           className="absolute inset-0 opacity-30 pointer-events-none"
@@ -355,10 +326,10 @@ const WorkSection = ({ onProjectClick }) => {
             ))}
           </div>
         </div>
-      </section>
+      </RevealOnScroll>
 
       {/* ===== Selected Work (archives) ===== */}
-      <section className="max-w-4xl mx-auto pt-32 pb-8">
+      <RevealOnScroll as="section" className="max-w-4xl mx-auto pt-32 pb-8">
         <div className="flex items-end justify-between gap-8 mb-8 border-b border-gray-200 pb-4">
           <div>
             <VoiceHeading
@@ -410,7 +381,7 @@ const WorkSection = ({ onProjectClick }) => {
             </div>
           ))}
         </div>
-      </section>
+      </RevealOnScroll>
     </div>
   );
 };

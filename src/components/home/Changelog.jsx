@@ -21,6 +21,17 @@ export default function Changelog() {
         title="Changelog"
         description="Development log and iterative refinement history for Bruno Wong's portfolio site. Built with React, Tailwind, and deployed on Vercel."
         path="/changelog"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Changelog | Bruno Wong",
+          "url": "https://www.brunowong.me/changelog",
+          "description": "Development log and iterative refinement history for Bruno Wong's portfolio site.",
+          "about": {
+            "@type": "Person",
+            "name": "Bruno Wong Marchena"
+          }
+        }}
       />
 
       {/* Background effects */}

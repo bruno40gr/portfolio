@@ -23,6 +23,7 @@ export default function SEOHead({
   ogImage,
   ogType = "website",
   jsonLd,
+  robots = "index,follow",
 }) {
   const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} | Portfolio`;
   const url = `${BASE_URL}${path}`;
@@ -32,6 +33,7 @@ export default function SEOHead({
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
+      <meta name="robots" content={robots} />
 
       {/* Open Graph */}
       <meta property="og:title" content={fullTitle} />
