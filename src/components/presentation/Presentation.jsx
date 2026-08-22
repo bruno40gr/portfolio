@@ -18,6 +18,229 @@ const getLogo = (name) => {
 
 const SlideTemplates = {
 
+  // Intro: minimal personal opener with compact anchor cards
+  Intro: ({ eyebrow, title, body, anchors = [], isDark }) => (
+    <div className="flex flex-col justify-center h-full max-w-4xl mx-auto px-6 w-full relative z-10">
+      {eyebrow && (
+        <div className="mb-5 inline-block">
+          <span className={`px-3 py-1 text-xs font-bold uppercase tracking-widest rounded-full border ${
+            isDark
+              ? "bg-[#88FF00]/10 text-[#88FF00] border-[#88FF00]/20"
+              : "bg-white border-slate-300 text-slate-700 shadow-sm"
+          }`}>{eyebrow}</span>
+        </div>
+      )}
+
+      <h1 className={`text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.02] mb-6 ${
+        isDark ? "text-white" : "text-slate-900"
+      }`}>
+        {title}
+      </h1>
+
+      {body && (
+        <p className={`text-xl md:text-2xl font-light leading-relaxed max-w-3xl mb-10 ${
+          isDark ? "text-slate-300" : "text-slate-600"
+        }`}>
+          {body}
+        </p>
+      )}
+
+      {anchors.length > 0 && (
+        <div className={`grid ${anchors.length >= 3 ? "md:grid-cols-3" : "md:grid-cols-2"} gap-4`}>
+          {anchors.map((item, i) => (
+            <div key={i} className={`rounded-xl p-5 border ${
+              isDark ? "bg-white/5 border-white/10" : "bg-white border-slate-200 shadow-sm"
+            }`}>
+              <div className={`text-[10px] font-bold uppercase tracking-widest mb-2 ${
+                isDark ? "text-[#88FF00]" : "text-slate-500"
+              }`}>{item.label}</div>
+              <p className={`text-sm font-light leading-snug ${
+                isDark ? "text-slate-300" : "text-slate-600"
+              }`}>{item.text}</p>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  ),
+
+  PortfolioHero: ({ label, body, metric, metricLabel, src, isDark }) => (
+    <div className="h-full w-full max-w-[1800px] mx-auto p-6 md:p-12 relative z-10 flex items-center justify-center">
+      <div className={`w-full h-full rounded-xl overflow-hidden shadow-2xl border relative ${
+        isDark ? "bg-slate-900/50 border-white/10" : "bg-white border-slate-200"
+      }`}>
+        <div className="grid lg:grid-cols-[1.3fr_0.9fr] h-full">
+          <div className={`p-8 md:p-10 lg:p-12 flex flex-col justify-center border-b lg:border-b-0 lg:border-r ${
+            isDark ? "bg-slate-950 border-white/10" : "bg-white border-slate-200"
+          }`}>
+            <div className={`text-[10px] font-bold uppercase tracking-widest mb-3 ${
+              isDark ? "text-[#88FF00]" : "text-slate-700"
+            }`}>{label}</div>
+            <p className={`text-2xl md:text-3xl xl:text-4xl font-light leading-tight mb-6 ${
+              isDark ? "text-white" : "text-slate-900"
+            }`}>
+              {body}
+            </p>
+            {(metric || metricLabel) && (
+              <div className={`inline-flex flex-col rounded-xl border px-5 py-4 self-start ${
+                isDark ? "border-white/10 bg-white/5" : "border-slate-200 bg-slate-50"
+              }`}>
+                {metric && <span className={`text-3xl md:text-4xl font-bold tracking-tight ${isDark ? "text-white" : "text-slate-900"}`}>{metric}</span>}
+                {metricLabel && <span className={`text-sm font-light leading-snug mt-1 ${isDark ? "text-slate-300" : "text-slate-600"}`}>{metricLabel}</span>}
+              </div>
+            )}
+          </div>
+
+          <div className="min-h-[280px] lg:min-h-0">
+            <img src={src} alt="Presentation media" className="w-full h-full object-cover" />
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
+
+  PortfolioSplit: ({ title, problem, body, mediaUrl, mediaLink, metrics = [], actions = [], isDark }) => (
+    <div className="flex flex-col lg:flex-row h-full w-full max-w-[1800px] mx-auto relative z-10">
+      <div className="w-full lg:w-[42%] flex flex-col justify-center px-8 lg:px-16 xl:px-20 py-8 lg:py-0 overflow-y-auto">
+        <div className="flex flex-col gap-5 w-full mx-auto lg:mx-0">
+          <h2 className={`text-3xl md:text-5xl xl:text-6xl font-bold tracking-tight ${
+            isDark ? "text-white" : "text-slate-900"
+          }`}>{title}</h2>
+
+          {problem && (
+            <p className={`text-lg md:text-xl leading-relaxed ${
+              isDark ? "text-[#88FF00]" : "text-slate-900"
+            }`}>
+              {problem}
+            </p>
+          )}
+
+          {body && (
+            <p className={`text-lg font-light leading-relaxed ${
+              isDark ? "text-slate-300" : "text-slate-600"
+            }`}>
+              {body}
+            </p>
+          )}
+
+          {actions.length > 0 && (
+            <div className="flex flex-wrap gap-3 pt-1">
+              {actions.map((action, index) => (
+                <a
+                  key={index}
+                  href={action.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                    action.variant === "primary"
+                      ? (isDark
+                        ? "bg-[var(--brand-accent)] text-black hover:bg-[#76E600]"
+                        : "bg-slate-900 text-white hover:bg-slate-700")
+                      : (isDark
+                        ? "border border-white/10 bg-white/5 text-slate-200 hover:bg-white/10"
+                        : "border border-slate-300 bg-white text-slate-700 hover:bg-slate-50")
+                  }`}
+                >
+                  {action.label}
+                </a>
+              ))}
+            </div>
+          )}
+
+          {metrics.length > 0 && (
+            <div className="grid grid-cols-3 gap-3 pt-1">
+              {metrics.map((metric, index) => (
+                <div
+                  key={index}
+                  className={`rounded-xl border px-4 py-3 min-w-[140px] ${
+                    isDark ? "bg-white/5 border-white/10" : "bg-white border-slate-200 shadow-sm"
+                  }`}
+                >
+                  <div className={`text-2xl font-bold tracking-tight ${isDark ? "text-white" : "text-slate-900"}`}>
+                    {metric.value}
+                  </div>
+                  <div className={`text-xs font-light leading-snug mt-1 ${isDark ? "text-slate-300" : "text-slate-600"}`}>
+                    {metric.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className="w-full lg:w-[58%] h-[48vh] lg:h-full p-4 lg:p-12 flex items-center justify-center">
+        <div className="w-full h-full bg-slate-900/40 rounded-xl overflow-hidden shadow-2xl relative border border-white/5 group">
+          {mediaLink ? (
+            <a href={mediaLink} target="_blank" rel="noopener noreferrer" className="block w-full h-full relative cursor-pointer overflow-hidden">
+              <img
+                src={mediaUrl}
+                alt={title}
+                className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-500"
+              />
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-slate-900/30 backdrop-blur-[2px]">
+                <div className="bg-white/10 px-5 py-3 rounded-full backdrop-blur-sm border border-white/20 text-white font-bold text-sm tracking-wide shadow-card flex items-center gap-2">
+                  <ExternalLink size={16} /> Open Prototype
+                </div>
+              </div>
+            </a>
+          ) : (
+            <img src={mediaUrl} alt={title} className="w-full h-full object-cover" />
+          )}
+        </div>
+      </div>
+    </div>
+  ),
+
+  PortfolioConnector: ({ title, problem, body, src, caption, isDark }) => (
+    <div className="flex flex-col lg:flex-row h-full w-full max-w-[1800px] mx-auto relative z-10">
+      <div className="w-full lg:w-[40%] flex flex-col justify-center px-8 lg:px-16 xl:px-20 py-8 lg:py-0 overflow-y-auto">
+        <div className="flex flex-col gap-5 w-full mx-auto lg:mx-0">
+          <h2 className={`text-3xl md:text-5xl xl:text-6xl font-bold tracking-tight ${
+            isDark ? "text-white" : "text-slate-900"
+          }`}>{title}</h2>
+
+          {problem && (
+            <p className={`text-lg md:text-xl leading-relaxed ${
+              isDark ? "text-[#88FF00]" : "text-slate-900"
+            }`}>
+              {problem}
+            </p>
+          )}
+
+          {body && (
+            <p className={`text-lg font-light leading-relaxed ${
+              isDark ? "text-slate-300" : "text-slate-600"
+            }`}>
+              {body}
+            </p>
+          )}
+        </div>
+      </div>
+
+      <div className="w-full lg:w-[60%] h-[48vh] lg:h-full p-4 lg:p-12 flex items-center justify-center">
+        <div className={`w-full h-full rounded-xl overflow-hidden shadow-2xl border flex flex-col ${
+          isDark ? "bg-slate-900/50 border-white/10" : "bg-white border-slate-200"
+        }`}>
+          <div className="flex-grow w-full overflow-hidden flex items-center justify-center p-4">
+            <img src={src} alt={title} className="w-full h-full object-contain" />
+          </div>
+          {caption && (
+            <div className={`w-full flex-shrink-0 border-t ${
+              isDark ? "bg-slate-900/90 border-white/10" : "bg-slate-50 border-slate-200"
+            }`}>
+              <div className="px-6 py-4">
+                <p className={`text-sm font-light leading-snug ${
+                  isDark ? "text-slate-300" : "text-slate-600"
+                }`}>{caption}</p>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  ),
+
   // Overview: title + vision/problem/role left, impact right
   Overview: ({ title, company, vision, problem, role, impactMetrics, impactDesc, isDark }) => {
     const logoSrc = getLogo(company);
@@ -85,7 +308,7 @@ const SlideTemplates = {
   },
 
   // SplitMedia: text left, image/video right
-  SplitMedia: ({ title, pill, role, problem, shipped, impactMetrics, impactDesc, callout, mediaUrl, mediaLink, isDark }) => (
+  SplitMedia: ({ title, pill, role, problem, shipped, shippedLabel = "Shipped Product", impactMetrics, impactDesc, callout, mediaUrl, mediaLink, isDark }) => (
     <div className="flex flex-col lg:flex-row h-full w-full max-w-[1800px] mx-auto relative z-10">
       <div className="w-full lg:w-[45%] flex flex-col justify-center px-8 lg:px-16 xl:px-20 py-10 lg:py-0 overflow-y-auto">
         <div className="flex flex-col gap-8 w-full mx-auto lg:mx-0">
@@ -130,7 +353,7 @@ const SlideTemplates = {
             <div>
               <h3 className={`text-sm font-bold uppercase tracking-widest mb-2 ${
                 isDark ? "text-[#88FF00]" : "text-slate-900"
-              }`}>Shipped Product</h3>
+              }`}>{shippedLabel}</h3>
               <p className={`text-lg font-light leading-relaxed ${
                 isDark ? "text-slate-300" : "text-slate-600"
               }`}>{shipped}</p>
@@ -609,6 +832,145 @@ const PRESENTATIONS = {
         }),
       },
 
+    ],
+  },
+
+  "portfolio-presentation": {
+    title: "Portfolio Presentation",
+    slides: [
+      {
+        id: "portfolio-intro",
+        name: "Bruno",
+        render: (isDark) => SlideTemplates.Intro({
+          isDark,
+          eyebrow: "Bruno Wong",
+          title: "I like complicated systems.",
+          body: "I’ve mostly worked on products with a lot of rules, edge cases, and manual work behind them. At Amazon that meant creative tools used across global marketing teams. More recently I’ve been working much closer to code and AI.",
+          anchors: [
+            { label: "Amazon", text: "I worked across creative production, asset management, metadata, and generative AI for Amazon Devices." },
+            { label: "How I work", text: "I usually end up going pretty deep into how the product actually works, including the data, rules, and decisions behind the interface." },
+            { label: "More recently", text: "I’ve been building functional products myself using React, Supabase, AI tools, and Figma where it is useful." },
+          ],
+        }),
+      },
+      // Speaker hook: The Amazon work is probably the easiest way to show how I think, so I’ll start with where we ended up.
+      {
+        id: "portfolio-end-result",
+        name: "The End Result",
+        render: (isDark) => SlideTemplates.PortfolioHero({
+          isDark,
+          label: "Amazon.com",
+          body: "This is a real campaign running on Amazon.com. The creative came through a set of tools my team had been building to handle a huge amount of campaign production.",
+          metric: "~8,000",
+          metricLabel: "Images generated for Prime Day 2025",
+          // TODO: Replace with the strongest real Amazon.com campaign screenshot when available.
+          src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772662326/firetv-lifestyle_dlyenh.png",
+        }),
+      },
+      // Speaker hook: There was a lot underneath this. The first problem was simple. We could not keep producing this amount of creative manually.
+      {
+        id: "portfolio-image-builder",
+        name: "Image Builder",
+        render: (isDark) => SlideTemplates.PortfolioSplit({
+          isDark,
+          title: "Image Builder",
+          problem: "A single campaign could require thousands of images across products, countries, languages, and placements. A lot of that work still moved through Photoshop, designers, copywriters, translators, and manual handoffs.",
+          body: "I designed the editor and the component logic behind it so marketers could create localized campaign assets themselves. Image Builder brought the main production steps into one tool. Marketers could choose products, build the layout, generate and translate copy, and create the regional variations they needed.",
+          metrics: [
+            { value: "~8,000", label: "Images generated" },
+            { value: "~48k", label: "Hours replaced" },
+          ],
+          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772062490/Screenshot_2026-02-25_at_3.34.36_PM_dwqrvv.png",
+          mediaLink: "https://www.figma.com/proto/Hm4V3LSFtdcJKC1e5UWYls/JAS-Image-Builder-Final-Build-Spec?page-id=0%3A1&node-id=163-36427&scaling=min-zoom&t=PcpidMXEz6GOqzKf-1&content-scaling=fixed&p=f",
+        }),
+      },
+      {
+        id: "portfolio-image-builder-connector",
+        name: "Structured Composition",
+        render: (isDark) => SlideTemplates.PortfolioConnector({
+          isDark,
+          title: "All of this depended on having the right product and asset information.",
+          body: "The builder needed to know which product was being used, which version was correct for each market, and how that asset should behave inside the composition.",
+          src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1773289976/layers-nometadata_nloelx.png",
+        }),
+      },
+      // Speaker hook: Once we could create thousands of images, we had thousands of images to keep track of. The way we were managing them was pretty messy.
+      {
+        id: "portfolio-asset-manager",
+        name: "Asset Manager",
+        render: (isDark) => SlideTemplates.PortfolioSplit({
+          isDark,
+          title: "Asset Manager",
+          problem: "Images were spread across different internal tools, and teams had built spreadsheets around them to fill in the gaps. Even basic questions could take work. Is this approved? Is it current? Which market is using it? Where did it come from?",
+          body: "I designed how teams could find assets, understand what they were looking at, review them, and track where they were being used. Asset Manager brought the catalog, metadata, permissions, review history, and usage information together so teams could manage the work from one place.",
+          actions: [
+            { label: "View Figma Project", href: "https://www.figma.com/design/RalVHLTD2GOTo3DY91Ow8k/JAS-ASSET-MANAGER?page-id=85%3A22371&node-id=85-22884", variant: "secondary" },
+            { label: "Play with Prototype", href: "https://www.figma.com/proto/RalVHLTD2GOTo3DY91Ow8k/JAS-ASSET-MANAGER?page-id=85%3A22371&node-id=85-22884&viewport=-1498%2C-1342%2C0.07&t=PgdR2ntUXOpXVKPs-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=85%3A22884&show-proto-sidebar=1", variant: "primary" },
+          ],
+          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1785167948/hero_asset_browser_ee1vwu.png",
+          mediaLink: "https://www.figma.com/proto/RalVHLTD2GOTo3DY91Ow8k/JAS-ASSET-MANAGER?page-id=85%3A22371&node-id=85-22884&viewport=-1498%2C-1342%2C0.07&t=PgdR2ntUXOpXVKPs-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=85%3A22884&show-proto-sidebar=1",
+        }),
+      },
+      // Speaker hook: Having the images in one place helped. Then we ran into another problem. Storing an image does not mean the software knows much about what is inside it.
+      {
+        id: "portfolio-metadata-studio",
+        name: "Metadata Studio",
+        render: (isDark) => SlideTemplates.PortfolioSplit({
+          isDark,
+          title: "Metadata Studio",
+          problem: "Some images needed dozens of pieces of information before our other tools could use them. People were entering a lot of that information by hand.",
+          body: "I worked on ways for the model to read more of that information from the images themselves. We could give it reference images, mark the parts that mattered, and have it fill in information people had previously entered manually.",
+          actions: [
+            { label: "View Figma File", href: "https://www.figma.com/design/u5gNazpXiOCPbn8tiH5ACU/JASAI?node-id=1536-16654&t=BC39GQWaw7Yk0f3h-1", variant: "secondary" },
+          ],
+          // TODO: Replace this fallback with Bruno's strongest screenshot showing the pink reference-image regions.
+          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772412003/8fc680db-a6b5-4c46-ba00-f12af55faab4.png",
+        }),
+      },
+      {
+        id: "portfolio-metadata-connector",
+        name: "Structured Inputs",
+        render: (isDark) => SlideTemplates.PortfolioConnector({
+          isDark,
+          title: "Once we started generating lifestyle images, we needed a way to judge the output consistently.",
+          body: "The model had better product information and better references. Creative Directors still needed to review what it made and explain why an image passed or failed.",
+          src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1773290008/layers-metadata_sfcohu.png",
+        }),
+      },
+      // Speaker hook: Better inputs helped. The next question was whether we could trust the generated work enough to use it in real campaigns.
+      {
+        id: "portfolio-ai-compositor",
+        name: "AI Lifestyle Compositor",
+        render: (isDark) => SlideTemplates.PortfolioSplit({
+          isDark,
+          title: "AI Lifestyle Compositor",
+          problem: "How do we trust AI to produce campaign-ready creative without requiring a Creative Director to inspect every single output?",
+          body: "I designed how Creative Directors reviewed the generated images and gave feedback. They could tell us why something passed or failed, and we captured that feedback so the model could improve over time.",
+          metrics: [
+            { value: "12,000", label: "Variations per batch" },
+            { value: "3,000", label: "Director-approved assets shipped" },
+            { value: "10 hrs → 1.25 hrs", label: "Creative Director review time" },
+          ],
+          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772665456/a7ec2337-4f73-4b0c-932f-b66e6b73190d.png",
+          mediaLink: "https://www.figma.com/proto/u5gNazpXiOCPbn8tiH5ACU/JASAI?page-id=1438%3A5102&node-id=40000015-16958&viewport=324%2C-1055%2C0.14&t=LvK2dm3PYrsudLBc-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=40000015%3A16958",
+        }),
+      },
+      {
+        id: "portfolio-complete-system",
+        name: "Where This Was Heading",
+        render: (isDark) => SlideTemplates.PortfolioSplit({
+          isDark,
+          title: "Where this was heading",
+          problem: "Product data, assets, metadata, generation, and Creative Director feedback coming together in one workflow.",
+          body: "This concept shows how the pieces could work together. The system could use the assets and metadata we already had, generate the creative, and use Creative Director feedback to improve future output.",
+          actions: [
+            { label: "View Figma File", href: "https://www.figma.com/design/WxJPjefTZtuwf8TF2yWDYM/MArketing-Automation-Plan?node-id=131-11829&t=e4cTm7U3TNsMrZRM-1", variant: "secondary" },
+          ],
+          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1773289976/layers-nometadata_nloelx.png",
+          mediaLink: "https://www.figma.com/design/WxJPjefTZtuwf8TF2yWDYM/MArketing-Automation-Plan?node-id=131-11829&t=e4cTm7U3TNsMrZRM-1",
+        }),
+      },
+      // Speaker close: By this point I had worked on the editor, the asset library, metadata, and the review process around generated imagery. The work kept pulling me deeper into how the product actually behaved behind the interface.
     ],
   },
 

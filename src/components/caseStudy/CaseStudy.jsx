@@ -207,8 +207,8 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
 
     return (
       <div key={keyValue} className="mb-10 px-6 md:px-0 case-visual-block">
-        <div className="flex flex-col md:flex-row md:gap-14 md:items-center">
-          <div className="md:w-[62%] md:shrink-0">
+        <div className="case-split-block">
+          <div className="case-split-media">
             {clickable && globalIndex !== -1 ? (
               <button
                 type="button"
@@ -221,7 +221,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
             ) : imageEl}
           </div>
           {caption && (
-            <div className="mt-3 md:mt-0 md:w-[38%] md:pt-1">
+            <div className="mt-3 md:mt-0 case-split-copy">
               <Caption>{caption}</Caption>
             </div>
           )}
@@ -333,6 +333,8 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                 <ImageThumbnail
                   src={block.src}
                   alt={imageCaption}
+                  preserveAspectRatio={block.preserveAspectRatio}
+                  hoverScaleClass={block.hoverScaleClass}
                   onClick={() => {
                     if (globalIndex !== -1) setLightbox({ open: true, index: globalIndex });
                   }}
@@ -357,6 +359,8 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
               <ImageThumbnail
                 src={block.src}
                 alt={imageCaption}
+                preserveAspectRatio={block.preserveAspectRatio}
+                hoverScaleClass={block.hoverScaleClass}
                 onClick={() => {
                   if (globalIndex !== -1) setLightbox({ open: true, index: globalIndex });
                 }}
@@ -682,7 +686,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
         <>
           {/* Header metadata (non-sticky, scrolls away immediately) */}
           <div className="w-full border-b border-neutral-200 relative shadow-sm bg-white">
-            <div className="px-6 md:px-12 lg:px-20 pt-28 md:pt-32 pb-12 md:pb-16 max-w-[1200px] mx-auto">
+            <div className="px-6 md:px-12 lg:px-20 pt-28 md:pt-32 pb-12 md:pb-16 max-w-[1440px] mx-auto">
               <div className="mb-4">
                 <ProjectHeader
                   company={project.company}
@@ -750,7 +754,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
                         className="absolute inset-0 transition-opacity duration-300 ease-out"
                         style={{ opacity, backgroundColor: slide.colors?.[0] || "#231f44", paddingTop: "clamp(5rem, 10vw, 8rem)", paddingBottom: "clamp(4rem, 8vw, 6rem)" }}
                       >
-                        <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 px-6 md:px-8 w-full h-full max-w-[1200px] mx-auto relative z-10">
+                        <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 px-6 md:px-8 w-full h-full max-w-[1440px] mx-auto relative z-10">
                           <div className="relative h-[48vh] md:h-[66vh] w-[260px] md:w-[420px] flex items-center justify-center flex-shrink-0">
                             <img
                               src={slide.src}
@@ -850,7 +854,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
 
           {/* Metadata (Role / Timeline / Team) — sits below the hero */}
           <div className="w-full border-b border-neutral-200 bg-white">
-            <div className="px-6 md:px-12 lg:px-20 py-8 md:py-12 max-w-[1200px] mx-auto">
+            <div className="px-6 md:px-12 lg:px-20 py-8 md:py-12 max-w-[1440px] mx-auto">
               <div className="flex flex-col md:flex-row md:flex-wrap gap-x-16 gap-y-6 font-sans case-text-block">
                 <div>
                   <h3 className="text-[15px] font-semibold text-neutral-900 mb-1">Role</h3>
@@ -885,7 +889,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
       )}
 
       <div ref={contentRef} className={`w-full pt-16 md:pt-[calc(var(--header-h)+40px)] font-sans ${isEditorial ? "bg-white" : ""}`}>
-        <div className="max-w-[1200px] mx-auto px-6 md:px-12 lg:px-20 lg:grid lg:grid-cols-[20rem_1fr] lg:gap-12 pb-10 case-study-layout">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20 lg:grid lg:grid-cols-[20rem_1fr] lg:gap-12 pb-10 case-study-layout">
           <aside className="hidden lg:block case-study-anchor">
             <div className="sticky top-[calc(var(--header-h)+24px)]">
               <div className="max-h-[calc(100vh-var(--header-h)-48px)] overflow-auto">

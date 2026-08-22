@@ -61,9 +61,12 @@ const WorkDropdown = ({ onProjectClick, closeMenu, workGroups = [], portfolioDat
           onClick={() => handleProjectClick(project)}
           className="w-full text-left flex flex-col px-3 py-2.5 rounded-sm bg-slate-100 mb-2 group active:bg-slate-200 transition-colors"
         >
-          <h4 className="text-[15px] font-semibold text-[#231f44] leading-tight group-hover:underline underline-offset-2">
-            {project.title}
-          </h4>
+          <div className="flex items-center gap-2">
+            <LogoIcon company={project.company} sizeClassName="w-6 h-6" imgClassName="grayscale mix-blend-multiply" />
+            <h4 className="text-[15px] font-semibold text-[#231f44] leading-tight group-hover:underline underline-offset-2">
+              {project.title}
+            </h4>
+          </div>
           <p className="text-[13px] text-slate-600 mt-1">{project.impactSummary}</p>
         </button>
       );
@@ -74,9 +77,12 @@ const WorkDropdown = ({ onProjectClick, closeMenu, workGroups = [], portfolioDat
         onClick={() => handleProjectClick(project)}
         className="w-full text-left rounded-sm hover:bg-slate-100 px-3 pt-3 pb-4 mb-2 transition-colors duration-200 group outline-none focus-visible:ring-2 focus-visible:ring-[#39FF14]"
       >
-        <h4 className="text-[14px] font-semibold text-[#231f44] leading-tight group-hover:underline underline-offset-2 decoration-[var(--neon-green)] decoration-2">
-          {project.title}
-        </h4>
+        <div className="flex items-center gap-2">
+          <LogoIcon company={project.company} sizeClassName="w-6 h-6" imgClassName="grayscale mix-blend-multiply" />
+          <h4 className="text-[14px] font-semibold text-[#231f44] leading-tight group-hover:underline underline-offset-2 decoration-[var(--neon-green)] decoration-2">
+            {project.title}
+          </h4>
+        </div>
         <p className="text-[12px] leading-relaxed text-slate-500 mt-1.5">
             {project.impactSummary}
         </p>

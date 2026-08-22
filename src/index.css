@@ -21,12 +21,6 @@
     font-size: 100%;
   }
 
-  @media (max-width: 768px) {
-    html {
-      font-size: 80%;
-    }
-  }
-
   p, h1, h2, h3, h4, h5, h6, figure { margin: 0; }
   
   body {
@@ -246,22 +240,6 @@
 
 
 
-.case-visual-block {
-  max-width: 880px;
-  margin-left: 0;
-  margin-right: auto;
-}
-
-/* Shared text measure — paragraphs, designer note, headings, lists, metadata */
-.case-text-block {
-  max-width: var(--case-text-measure);
-  margin-left: 0;
-}
-
-/* 
-   .case-study-content padding-left hack removed — the grid gap + 
-   the restructured JSX layout handle anchor spacing natively 
-*/
 
 .meta-label {
   font-size: 1rem;
@@ -321,19 +299,6 @@
 }
 
 @media (min-width: 1600px) {
-  .case-study-layout {
-    grid-template-columns: 26rem 1fr;
-    gap: 5rem;
-  }
-
-  .case-study-anchor {
-    padding-left: 4.5rem;
-  }
-
-  .case-study-content {
-    max-width: 1200px;
-  }
-
   .case-anchor-link {
     gap: 14px;
   }

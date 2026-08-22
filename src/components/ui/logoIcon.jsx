@@ -11,7 +11,7 @@ const findLogo = (company) => {
   });
 };
 
-const LogoIcon = ({ theme = "light", company = null }) => {
+const LogoIcon = ({ theme = "light", company = null, sizeClassName = "w-10 h-10 md:w-10 md:h-10", imgClassName = "" }) => {
   let src;
   const logo = company ? findLogo(company) : null;
 
@@ -22,8 +22,8 @@ const LogoIcon = ({ theme = "light", company = null }) => {
   }
 
   return (
-    <div className="w-10 h-10 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300">
-      <img src={src} alt="Logo" className="w-full h-full object-contain glitch-effect" />
+    <div className={`${sizeClassName} flex items-center justify-center transition-all duration-300`}>
+      <img src={src} alt="Logo" className={`w-full h-full object-contain glitch-effect ${imgClassName}`.trim()} />
     </div>
   );
 };

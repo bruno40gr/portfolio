@@ -1,5 +1,6 @@
 import React from "react";
 import { Play } from "lucide-react";
+import MediaPreviewFrame from "./MediaPreviewFrame";
 
 const VideoThumbnail = ({ src, caption, onClick, coverImage }) => {
   const getThumbnailUrl = () => {
@@ -48,40 +49,45 @@ const VideoThumbnail = ({ src, caption, onClick, coverImage }) => {
 
   return (
     <div className="text-left w-full">
-      <button
-        className="w-full aspect-video bg-neutral-100 border border-neutral-200 rounded-lg overflow-hidden shadow-sm p-2 relative group focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--neon-green)]"
+      <MediaPreviewFrame
         onClick={onClick}
+        aspectRatio="16/9"
+        bgClassName="bg-neutral-100"
+        ariaLabel={caption || "Open video"}
+        panelClassName="border border-neutral-200 shadow-sm p-2"
       >
-        {thumbnailUrl ? (
-          <>
-            {isLoom ? (
-              <div className="w-full h-full rounded-lg overflow-hidden">
+        {(defaultHoverScale) =>
+          thumbnailUrl ? (
+            <>
+              {isLoom ? (
+                <div className="w-full h-full rounded-lg overflow-hidden flex items-center justify-center">
+                  <img
+                    src={thumbnailUrl}
+                    alt={caption || "Video thumbnail"}
+                    className={`w-full h-full object-contain rounded-lg ${defaultHoverScale} transition-transform duration-700`}
+                    onError={(e) => { e.target.style.display = 'none'; }}
+                  />
+                </div>
+              ) : (
                 <img
                   src={thumbnailUrl}
                   alt={caption || "Video thumbnail"}
-                  className="w-full h-full object-cover rounded-lg"
-                  onError={(e) => { e.target.style.display = 'none'; }}
+                  className={`w-full h-full object-contain rounded-lg ${defaultHoverScale} transition-transform duration-700`}
                 />
+              )}
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors flex items-center justify-center">
+                <div className="bg-white/20 backdrop-blur-sm p-4 rounded-full">
+                  <Play size={32} className="text-white fill-white" />
+                </div>
               </div>
-            ) : (
-              <img
-                src={thumbnailUrl}
-                alt={caption || "Video thumbnail"}
-                className="w-full h-full object-cover rounded-lg"
-              />
-            )}
-            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors flex items-center justify-center">
-              <div className="bg-white/20 backdrop-blur-sm p-4 rounded-full">
-                <Play size={32} className="text-white fill-white" />
-              </div>
+            </>
+          ) : (
+            <div className="w-full h-full rounded-lg bg-white p-4 text-sm text-neutral-600 border border-neutral-200 flex items-center justify-center">
+              <p>Unsupported video URL. Please use a YouTube, Loom, or Cloudinary link.</p>
             </div>
-          </>
-        ) : (
-          <div className="w-full h-full rounded-lg bg-white p-4 text-sm text-neutral-600 border border-neutral-200 flex items-center justify-center">
-            <p>Unsupported video URL. Please use a YouTube, Loom, or Cloudinary link.</p>
-          </div>
-        )}
-      </button>
+          )
+        }
+      </MediaPreviewFrame>
     </div>
   );
 };

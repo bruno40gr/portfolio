@@ -457,9 +457,9 @@ export const PORTFOLIO_DATA = {
   parentId: "amazon-asset-system",
   company: "Amazon Devices",
   title: CASE_STUDIES_TITLES["amazon-ai-compositor"],
-  impactSummary: "Trained a GenAI model on Amazon Devices product photography and built a human-in-the-loop review system to produce brand ready lifestyle imagery at scale.",
-  impactSummarySentence: "Built the AI compositor and review workflow that let teams generate high-converting lifestyle imagery at scale, curated and approved by Creative Directors before anything shipped.",
-  designerNote: "Real photographs and 3D lifestyle imagery are the most expensive image types to produce. Once GenAI made it possible to generate at scale, the real challenge became teaching the model what \"good\" actually looked like. I helped shape the GenAI model itself, on Amazon Bedrock, defining the training data and device-specific rules it learned from, and designed the human-in-the-loop system that turned Creative Director feedback into training signal: the feedback taxonomy, the sampling model, and the review interface. Also my first time shipping actual code, using an MCP-powered Figma-to-code workflow to build directly with Engineering instead of throwing static files over the wall.",
+  impactSummary: "Built a human-in-the-loop system that used Creative Director feedback to train our GenAI engine and produce brand-ready lifestyle imagery at scale.",
+  impactSummarySentence: "Built the AI compositor and human-in-the-loop review system that helped us generate campaign-ready lifestyle imagery at scale, using Creative Director judgment to train the engine and build trust in what it produced.",
+  designerNote: "We built and trained our own GenAI engine for lifestyle imagery, and I was responsible for designing the human-in-the-loop system that brought Creative Director judgment into the process. I worked with Brand Studio, Engineering, and Data Science on the feedback taxonomy, sampling model, and review experience, turning expert brand feedback into training signal for the engine.\n\nThis was early 2025. If I were approaching it today, I'd use agents to manage sampling, bring review directly to Creative Directors, interpret their feedback, and feed it back into the training loop. I'd probably only build dedicated UI for the moments where visual comparison actually needed it.",
   thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1785079389/hero-image_h61hdi.png",
   status: "LAUNCHED",
   type: "AI Systems",
@@ -494,9 +494,11 @@ export const PORTFOLIO_DATA = {
       {
         type: "text",
         content: [
-  "Lifestyle imagery converted about 70% better than gradient backgrounds (internal data). The Image Builder tool could pump out gradient backgrounds at scale, but lifestyle imagery needed 3D artists, photographers, editors, not so much.",
-  
-  "Amazon devices are confidential hardware, so external AI tools were off the table. We first tried an internal image generation tool the Amazon Home team had built for placing furniture in home environments. But the model, having zero knowledge of our devices, placed them in odd spots, rooms with the wrong perspective, wrong scale, shadows that didn't match anything. The challenge, then, was to build and train this GenAI tool ourselves."
+  "Lifestyle imagery converted about 70% better than gradient backgrounds in our internal data, but it was also one of the most expensive image types to produce. It depended on 3D artists, photographers, editors, and Creative Directors.",
+  "GenAI gave us a way to produce that imagery at much greater scale.",
+  "Amazon devices are confidential hardware, so external AI tools were off the table. We first experimented with an internal image-generation tool the Amazon Home team had built for placing furniture in home environments.",
+  "The results made the gap pretty obvious. Devices showed up at the wrong scale, with strange perspective, mismatched shadows, incorrect materials, or sitting in places where the product simply didn't belong.",
+  "We needed an engine that understood our devices and a way to teach it what campaign-ready creative looked like."
 ]
       },
       {
@@ -504,7 +506,7 @@ export const PORTFOLIO_DATA = {
         src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1785165421/comparisong-vertical_ww0kcw.png",
         layout: "side",
         caption: {
-          short: "Gradient backgrounds scaled easily. Lifestyle backgrounds converted about 40 percent better. The production cost was the barrier.",
+          short: "Lifestyle imagery converted about 70% better than gradient backgrounds in our internal data, but it was much more expensive to produce.",
           verbose: ""
         },
         deepDive: "This Fire TV campaign built in Image Builder compares a standard gradient background against an AI-generated lifestyle scene. By placing the device in a realistic setting, the campaign aims for the 40% higher CTR typically seen with lifestyle imagery over basic product shots."
@@ -520,12 +522,17 @@ export const PORTFOLIO_DATA = {
         deepDive: "We put an Echo Pop into a room scene, but the results were off: the perspective was wrong, the device looked flat, and the shadows didn't match. The model simply didn't understand Amazon devices. Our proprietary device data, including camera angles, surface materials, shadow behavior, and screen reflections for each device family, only exists inside Amazon. No external tool could be trained on that data at the scale we needed, so we had to build the model in-house from scratch."
       },
 
-      { type: "heading", title: "System Thinking" },
+      { type: "heading", title: "Building the System" },
       {
         type: "text",
         content: [
-  "We built our own compositor on Bedrock, trained on Amazon's own proprietary device data. I focused on making sure the model understood what actually mattered for a believable device placement: camera angles, materials, shadows, screen reflections, all specific to each device family.",
-  "I designed a review workflow to gather two kinds of input: design technologists prepping and uploading background scenes with structured metadata (see Metadata Studio), and Creative Directors reviewing the generated variations, approving or rejecting with a tagged reason. We'll focus on the latter. I worked with Brand Studio, Engineering, and Data Science to turn device-specific knowledge into training data and define a feedback loop to actually learn what good looked like. Then I designed the human-in-the-loop review system that captured Creative Director judgment, each round of feedback improving the model and cutting down how much review the next batch needed."
+  "We built the compositor on Amazon Bedrock using Amazon's proprietary device data.",
+  "I worked with Brand Studio, Engineering, and Data Science to define the product knowledge the engine needed: device families, camera angles, materials, proportions, shadows, screen reflections, and other rules specific to each device.",
+  "The system relied on two kinds of human input.",
+  "Design Technologists prepared background scenes and added structured information through Metadata Studio.",
+  "Creative Directors reviewed generated images and gave us the brand judgment the engine needed to learn from.",
+  "I focused on designing that second loop.",
+  "The engine could generate thousands of variations at once, so we needed a way to sample the output, capture Creative Director decisions consistently, and feed those decisions back into the model."
 ]
       },
       {
@@ -563,11 +570,16 @@ export const PORTFOLIO_DATA = {
         ]
       },
 
-      { type: "heading", title: "Design and Build" },
+      { type: "heading", title: "Human in the Loop" },
       {
         type: "text",
         content: [
-  "The ask was, in a way, kind of awkward. Asking Creative Directors to reject a batch, but still pick the best option among the rejects, was an odd interaction, but necessary for the model to learn from. I designed the review experience to feel natural for Creative Directors while still capturing feedback useful enough to actually move the model. Early explorations leaned on ambiguous color-coded status controls, we eventually shifted to explicit rejection reasons. Also worked out with Data Science and product management to simplify the feedback reason taxonomy, and display fewer, smarter radio button options."
+  "I designed the review workflow, sampling model, and feedback taxonomy with Creative Directors and Data Science.",
+  "Some of the interactions were unusual.",
+  "A Creative Director could reject an entire batch and still need to identify the strongest image within that batch. That preference was useful training data, even though it wasn't a particularly natural thing to ask someone during review.",
+  "Early explorations used color-coded states, which became ambiguous quickly. We moved toward explicit rejection reasons and simplified the taxonomy into fewer, more useful options.",
+  "The review experience had to stay fast for Creative Directors while still capturing feedback detailed enough to improve the engine.",
+  "Each round of review gave the model another set of expert judgments to learn from, and the amount requiring human review decreased over time."
 ]
       },
       {
@@ -601,9 +613,11 @@ export const PORTFOLIO_DATA = {
       {
         type: "text",
         content: [
-  "The batch review interface was also where I started rethinking how design and engineering actually work together, not handoffs, but building the same thing at the same time.",
-  "Started experimenting with Figma-to-code through MCP back in August 2025, feeding design files into an AI-assisted process that generated working React. This project is where that experiment turned into real product code. Built the batch review experience directly with Engineering using that workflow. Plenty of terminal crashes and angry GitHub comments along the way, but it worked.",
-  "It changed how I work with engineers from that point forward. Later shared the whole process with 14 designers in a hands-on workshop, so it wasn't just something I figured out for myself."
+  "This was also the first project where I shipped product code directly with Engineering.",
+  "I had started experimenting with Figma-to-code through MCP in August 2025, feeding design files into an AI-assisted workflow that generated working React. On Lifestyle Compositor, that experiment became part of the actual product-development process.",
+  "I built the batch review experience alongside Engineering instead of stopping at static design files.",
+  "There were terminal crashes and some angry GitHub comments along the way, but it worked.",
+  "It changed how I worked with engineers from that point forward. I later turned the process into a hands-on workshop for 14 designers."
 ]
       },
       {
@@ -621,26 +635,27 @@ export const PORTFOLIO_DATA = {
       {
         type: "text",
         content: [
-          "12,000 variations per batch. Creative Directors reviewed a 5 percent sample. As the model improved, review decreased. Batch one: 3,000 market-ready lifestyle assets, about 10 hours of human review.",
-          "Every image that shipped had been curated and approved by a Creative Director. High-converting lifestyle imagery, at scale, meeting or exceeding the existing design bar. You can tell, because a human with taste looked at every single one before it went out the door."
+          "The model kept getting sharper at understanding what a Creative Director would approve, so the amount requiring human review dropped with each round of feedback.",
         ]
       },
       {
         type: "impact-box",
         metrics: [
-          { value: "3,000", label: "Market-ready lifestyle assets generated by AI and curated by Creative Directors" },
-          { value: "~10 hours", label: "Human review for 12,000 generated variations" }
+          { value: "3,000", label: "Director-approved lifestyle assets shipped into Amazon Devices' image catalog*" },
+          { value: "10 hrs → 1.25 hrs", label: "Creative Director review time for batches of 12,000 AI-generated lifestyle images*" }
         ],
-        description: []
+        description: [
+          "*Each review session presented four AI-generated variations of a prompt. The first pass sampled 5% of a 12,000-image batch, which meant 150 review sessions and about 10 hours of Creative Director time. As the model learned from tagged approvals and rejections, the required sample decreased. By the fourth pass, Creative Directors reviewed 19 sessions in about 1.25 hours, an 87% reduction in review time for the same output volume."
+        ]
       },
       {
         type: "image-full",
         src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772662326/firetv-lifestyle_dlyenh.png",
+        clickable: true,
         caption: {
-          short: "End-to-end: four variations per prompt, 5 percent sample per batch, tagged rejection reasons fed back as training signal.",
+          short: "Sample of a real AI lifestly genearted image launched for a Fire Tv prmo in Sep 2025.",
           verbose: ""
-        },
-        deepDive: "The system generated four variations per prompt. Creative Directors reviewed batches and either selected the best option or rejected the set with a tagged reason. A 5% random sample was enough to represent a full batch. Creative Directors were averaging 4 minutes per review session. Leadership flagged it, but what looked slow was the model learning , each calibrated batch reduced how much review the next one needed.\n\nBatch 1: 12,000 variations generated, 600 images reviewed (5% sample), 150 review sessions, ~10 hours\nBatch 2: 12,000 variations generated, 300 images reviewed, 75 review sessions, ~5 hours\nBatch 3: 12,000 variations generated, 150 images reviewed, 38 review sessions, ~2.5 hours\nBatch 4+: 12,000 variations generated, 75 images reviewed, 19 review sessions, ~1.25 hours"
+        }
       }
 
     ]
