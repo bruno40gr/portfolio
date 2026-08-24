@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ChevronLeft, ChevronRight, X, Sun, Moon, Layers, ExternalLink, ArrowRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, X, Sun, Moon, Layers, ExternalLink, ArrowRight, House } from "lucide-react";
 
 import ImpactBox from "../ui/ImpactBox";
 import LogoIcon from "../ui/logoIcon";
@@ -374,11 +374,11 @@ const SlideTemplates = {
           )}
 
           {metrics.length > 0 && (
-            <div className={`pt-1 ${mediaLayout === "content-only-centered" ? "grid grid-cols-2 lg:grid-cols-4 gap-4 w-full" : "grid grid-cols-3 gap-3"}`}>
+            <div className={`pt-1 ${mediaLayout === "content-only-centered" ? "grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 w-full" : "grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3"}`}>
               {metrics.map((metric, index) => (
                 <div
                   key={index}
-                  className={`rounded-xl border px-4 py-3 min-w-[140px] ${
+                  className={`rounded-xl border px-4 py-3 min-w-0 ${
                     isDark ? "bg-white/5 border-white/10" : "bg-white border-slate-200 shadow-sm"
                   }`}
                 >
@@ -929,18 +929,19 @@ const PRESENTATIONS = {
           isDark,
           signifier: "Project I",
           title: "Image Builder",
-          problem: "A single campaign could require thousands of images across products, countries, languages, and placements. A lot of that work still moved through Photoshop, designers, copywriters, translators, and manual handoffs.",
-          body: "I designed the editor and the component logic behind it so marketers could create localized campaign assets themselves. Image Builder brought the main production steps into one tool. Marketers could choose products, build the layout, generate and translate copy, and create the regional variations they needed.",
-          actions: [
-            { label: "View Figma File", href: "https://www.figma.com/design/Hm4V3LSFtdcJKC1e5UWYls/JAS-Image-Builder-Final-Build-Spec?page-id=0%3A1&node-id=163-36427", variant: "secondary" },
-            { label: "Play with Prototype", href: "https://www.figma.com/proto/Hm4V3LSFtdcJKC1e5UWYls/JAS-Image-Builder-Final-Build-Spec?page-id=0%3A1&node-id=163-36427&scaling=min-zoom&t=PcpidMXEz6GOqzKf-1&content-scaling=fixed&p=f", variant: "primary" },
-          ],
+          problem: "A promotional image required  thousands of images across products, countries, languages, and placements. That work moved through Photoshop, designers, copywriters, translators, and manual handoffs.",
+          body: "I designed Image Builder around reusable components and rules so marketers could generate those variations themselves. ",
+          
           metrics: [
             { value: "~8,000", label: "Images generated" },
             { value: "~48k", label: "Hours replaced" },
           ],
           mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772062490/Screenshot_2026-02-25_at_3.34.36_PM_dwqrvv.png",
           mediaLink: "https://www.figma.com/proto/Hm4V3LSFtdcJKC1e5UWYls/JAS-Image-Builder-Final-Build-Spec?page-id=0%3A1&node-id=163-36427&scaling=min-zoom&t=PcpidMXEz6GOqzKf-1&content-scaling=fixed&p=f",
+          actions: [
+            { label: "View Figma File", href: "https://www.figma.com/design/Hm4V3LSFtdcJKC1e5UWYls/JAS-Image-Builder-Final-Build-Spec?page-id=0%3A1&node-id=163-36427", variant: "secondary" },
+            { label: "Play with Prototype", href: "https://www.figma.com/proto/Hm4V3LSFtdcJKC1e5UWYls/JAS-Image-Builder-Final-Build-Spec?page-id=0%3A1&node-id=163-36427&scaling=min-zoom&t=PcpidMXEz6GOqzKf-1&content-scaling=fixed&p=f", variant: "primary" },
+          ],
         }),
       },
       {
@@ -962,8 +963,8 @@ const PRESENTATIONS = {
           isDark,
           signifier: "Project II",
           title: "Asset Manager",
-          problem: "Images were spread across different internal tools, and teams had built spreadsheets around them to fill in the gaps. Even basic questions could take work. Is this approved? Is it current? Which market is using it? Where did it come from?",
-          body: "I designed how teams could find assets, understand what they were looking at, review them, and track where they were being used. Asset Manager brought the catalog, metadata, permissions, review history, and usage information together so teams could manage the work from one place.",
+          problem: "Images were spread across different internal tools, and teams had built spreadsheets around them to fill in the gaps.",
+          body: "I designed a centralized experience and solved how teams could find assets, understand what they were looking at, review them, and track where they were being used.",
           actions: [
             { label: "View Figma Project", href: "https://www.figma.com/design/RalVHLTD2GOTo3DY91Ow8k/JAS-ASSET-MANAGER?page-id=85%3A22371&node-id=85-22884", variant: "secondary" },
             { label: "Play with Prototype", href: "https://www.figma.com/proto/RalVHLTD2GOTo3DY91Ow8k/JAS-ASSET-MANAGER?page-id=85%3A22371&node-id=85-22884&viewport=-1498%2C-1342%2C0.07&t=PgdR2ntUXOpXVKPs-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=85%3A22884&show-proto-sidebar=1", variant: "primary" },
@@ -980,8 +981,8 @@ const PRESENTATIONS = {
           isDark,
           signifier: "Project III",
           title: "Metadata Studio",
-          problem: "Some images needed dozens of pieces of information before our other tools could use them. People were entering a lot of that information by hand.",
-          body: "I worked on ways for the model to read more of that information from the images themselves. We could give it reference images, mark the parts that mattered, and have it fill in information people had previously entered manually.",
+          problem: "Images of devices, backgrounds, logos, needed dozens of pieces of information to be automated. Design technologists were entering a lot of that information by hand.",
+          body: "I worked on (AI) ways for the model to read more of that information from the images themselves, effectively removing the human from the mechanical process.",
           actions: [
             { label: "View Figma File", href: "https://www.figma.com/design/u5gNazpXiOCPbn8tiH5ACU/JASAI?node-id=1536-16654&t=BC39GQWaw7Yk0f3h-1", variant: "secondary" },
           ],
@@ -1009,7 +1010,7 @@ const PRESENTATIONS = {
           signifier: "Project IV",
           title: "AI Lifestyle Compositor",
           problem: "How do we trust AI to produce campaign-ready creative without requiring a Creative Director to inspect every single output?",
-          body: "I designed how Creative Directors reviewed generated images and gave feedback. They had to explain why something failed, and I designed a survey to capture those decisions so the model could improve over time.",
+          body: "I designed a review flow that captured why Creative Directors approved or rejected generated images, turning their judgment into structured feedback the model improved from.",
           actions: [
             { label: "View Figma File", href: "https://www.figma.com/design/u5gNazpXiOCPbn8tiH5ACU/JASAI?page-id=1438%3A5102&node-id=40000015-16958", variant: "secondary" },
             { label: "Play with Prototype", href: "https://www.figma.com/proto/u5gNazpXiOCPbn8tiH5ACU/JASAI?page-id=1438%3A5102&node-id=40000015-16958&viewport=324%2C-1055%2C0.14&t=LvK2dm3PYrsudLBc-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=40000015%3A16958", variant: "primary" },
@@ -1119,13 +1120,26 @@ const PRESENTATIONS = {
         }),
       },
       {
+        id: "hey-cohen-sms-first",
+        name: "SMS first",
+        render: (isDark, _goToAmazon, _goToHeyCohen, onImageClick) => SlideTemplates.PortfolioSplit({
+          isDark,
+          titleVariant: "supporting",
+          title: "I built Hey Cohen around SMS first",
+          body: "Texting was faster and more immediate. Email was easy to miss, calls often went to voicemail, and a lot of outreach still happened one family at a time.",
+          
+          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109029/Screenshot_2026-08-18_at_7.54.49_PM_n4sgo1.png",
+          onImageClick,
+        }),
+      },
+      {
         id: "hey-cohen-from-prototype",
         name: "From prototype to product",
         render: (isDark, _goToAmazon, _goToHeyCohen, onImageClick) => SlideTemplates.PortfolioSplit({
           isDark,
           titleVariant: "supporting",
           title: "From prototype to product",
-          body: "I started with sketches on paper and moved into React and Supabase pretty quickly.",
+          
           
           mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787113304/814f84d8-3692-4cb9-9a91-4a5e8a1533e9.png",
           onImageClick,
@@ -1211,7 +1225,11 @@ export default function Presentation() {
 
   const handleNext = () => { if (activeSlideIndex < slides.length - 1) setCurrentSlide(activeSlideIndex + 1); };
   const handlePrev = () => { if (activeSlideIndex > 0) setCurrentSlide(activeSlideIndex - 1); };
-  const handleClose = () => navigate("/");
+  const handleHome = () => {
+    setCurrentSlide(0);
+    setIsMenuOpen(false);
+    if (lightbox.open) closeLightbox();
+  };
   const toggleTheme = () => setTheme((prev) => (prev === "dark" ? "light" : "dark"));
   const openLightbox = (src, alt = "Presentation image") => setLightbox({ open: true, src, alt });
   const closeLightbox = () => setLightbox({ open: false, src: "", alt: "" });
@@ -1225,7 +1243,7 @@ export default function Presentation() {
         e.preventDefault();
         if (lightbox.open) closeLightbox();
         else if (isMenuOpen) setIsMenuOpen(false);
-        else handleClose();
+        else handleHome();
       }
     };
     window.addEventListener("keydown", handleKeyDown);
@@ -1280,16 +1298,16 @@ export default function Presentation() {
             <Layers size={14} />
           </button>
           <button
-            onClick={handleClose}
+            onClick={handleHome}
             className={`flex items-center gap-3 transition-colors group ${
               isDark ? "text-slate-300 hover:text-white" : "text-slate-600 hover:text-slate-900"
             }`}
           >
-            <span className="font-medium text-sm tracking-wide hidden sm:inline">Close</span>
+            <span className="font-medium text-sm tracking-wide hidden sm:inline">Home</span>
             <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
               isDark ? "bg-white/10 group-hover:bg-white/20" : "bg-white border border-slate-300 shadow-sm"
             }`}>
-              <X size={16} />
+              <House size={16} />
             </div>
           </button>
         </div>
@@ -1386,8 +1404,8 @@ export default function Presentation() {
       </main>
 
       {/* Footer / Controls */}
-      <footer className="absolute bottom-0 left-0 w-full p-6 flex justify-between items-center z-50 pointer-events-auto">
-        <div className="flex items-center gap-2">
+      <footer className="absolute bottom-0 left-0 w-full p-4 sm:p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4 z-50 pointer-events-auto">
+        <div className="flex items-center gap-2 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0">
           {slides.map((_, idx) => (
             <div
               key={idx}
@@ -1401,7 +1419,7 @@ export default function Presentation() {
           ))}
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 sm:gap-4 w-full sm:w-auto justify-between sm:justify-end">
           <Button
             onClick={handlePrev}
             disabled={activeSlideIndex === 0}
