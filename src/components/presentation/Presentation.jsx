@@ -93,7 +93,7 @@ const SlideTemplates = {
     </div>
   ),
 
-  PortfolioHeroIntro: ({ onAmazonClick, isDark }) => (
+  PortfolioHeroIntro: ({ onAmazonClick, onHeyCohenClick, isDark }) => (
     <div className="flex flex-col justify-center items-center h-full w-full text-center px-6 relative z-10">
       <div className="max-w-4xl w-full hero-stack relative z-10">
         <img
@@ -133,7 +133,7 @@ const SlideTemplates = {
           <Button onClick={onAmazonClick} variant="primary" size="md" className="rounded-full">
             View Amazon Devices project
           </Button>
-          <Button disabled variant="outline" size="md" className="rounded-full opacity-60">
+          <Button onClick={onHeyCohenClick} variant="outline" size="md" className="rounded-full">
             View Hey, Cohen project
           </Button>
         </div>
