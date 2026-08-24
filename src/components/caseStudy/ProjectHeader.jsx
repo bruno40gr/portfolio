@@ -39,7 +39,7 @@ const ProjectHeader = ({ company, title, type, compact }) => {
           <span className="text-sm text-neutral-500 font-sans tracking-normal">{company}</span>
         ) : (
           <>
-            <h2 className="text-xl md:text-2xl text-neutral-900 font-semibold tracking-tight leading-snug">{title || company}</h2>
+            <h2 className="project-title text-neutral-900">{title || company}</h2>
             {typeLabel && <div className="text-[15px] text-neutral-500 mt-1">{typeLabel}</div>}
           </>
         )}

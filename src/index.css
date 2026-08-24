@@ -5,6 +5,18 @@
 @tailwind utilities;
 
 @layer components {
+  .project-title {
+    @apply text-xl md:text-2xl font-semibold tracking-tight leading-snug font-sans;
+  }
+
+  .project-title--supporting {
+    @apply text-3xl md:text-[3rem] xl:text-[3.5rem] font-bold tracking-tight leading-[1.04] font-sans;
+  }
+
+  .project-title--feature {
+    @apply text-4xl md:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.02] font-sans;
+  }
+
   .subheadings {
     @apply text-3xl text-neutral-900 font-semibold leading-snug font-sans;
   }

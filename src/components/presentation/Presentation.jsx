@@ -14,6 +14,30 @@ const getLogo = (name) => {
   return match ? match.src : null;
 };
 
+const PRESENTATION_BODY_TEXT_CLASS = "text-lg md:text-2xl font-light leading-relaxed";
+const PRESENTATION_PROBLEM_TEXT_CLASS = "text-lg md:text-2xl leading-relaxed";
+
+const SectionHeading = ({ title, signifier, variant = "pillar", isDark }) => (
+  <div className="flex flex-col gap-3">
+    {signifier && (
+      <div className="flex items-center gap-3">
+        <span className={`text-xs font-semibold tracking-[0.28em] uppercase ${
+          isDark ? "text-[#88FF00]" : "text-slate-500"
+        }`}>
+          {signifier}
+        </span>
+        <div className={`h-px flex-1 ${isDark ? "bg-white/10" : "bg-slate-300"}`} />
+      </div>
+    )}
+
+    <h2 className={`${variant === "supporting" ? "project-title--supporting" : "project-title--feature"} ${
+      isDark ? "text-white" : "text-slate-900"
+    }`}>
+      {title}
+    </h2>
+  </div>
+);
+
 // ─── Slide Templates ──────────────────────────────────────────────────────────
 
 const SlideTemplates = {
@@ -141,14 +165,130 @@ const SlideTemplates = {
     </div>
   ),
 
-  PortfolioHero: ({ label, body, metric, metricLabel, src, isDark }) => (
+  ProjectHero: ({ title, meta, body, metric, metricLabel, metrics = [], src, isDark, onImageClick, actions = [], detailList = [] }) => (
+    <div className="h-full w-full max-w-[1800px] mx-auto px-6 md:px-10 lg:px-16 py-10 relative z-10 flex items-center">
+      <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-10 lg:gap-14 items-center w-full">
+        <div className="flex flex-col justify-center">
+          {meta && (
+            <p className={`text-sm md:text-base font-light leading-relaxed mb-4 ${
+              isDark ? "text-slate-400" : "text-slate-600"
+            }`}>
+              {meta}
+            </p>
+          )}
+
+          <h1 className={`text-4xl md:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.02] mb-6 ${
+            isDark ? "text-white" : "text-slate-900"
+          }`}>
+            {title}
+          </h1>
+
+          {body && (
+            <p className={`text-lg md:text-2xl font-light leading-relaxed max-w-2xl ${
+              isDark ? "text-slate-300" : "text-slate-600"
+            }`}>
+              {body}
+            </p>
+          )}
+
+          {detailList.length > 0 && (
+            <div className="mt-6 space-y-4 max-w-2xl">
+              {detailList.map((item, index) => (
+                <div
+                  key={index}
+                  className={`rounded-xl border px-5 py-4 ${
+                    isDark ? "bg-white/5 border-white/10" : "bg-white border-slate-200 shadow-sm"
+                  }`}
+                >
+                  <h3 className={`text-base md:text-lg font-semibold mb-1 ${
+                    isDark ? "text-white" : "text-slate-900"
+                  }`}>
+                    {item.title}
+                  </h3>
+                  <p className={`text-sm md:text-base font-light leading-relaxed ${
+                    isDark ? "text-slate-300" : "text-slate-600"
+                  }`}>
+                    {item.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {metrics.length > 0 && (
+            <div className="mt-8 flex flex-col gap-3 max-w-xl">
+              {metrics.map((item, index) => (
+                <div
+                  key={index}
+                  className={`rounded-xl border px-5 py-4 ${
+                    isDark ? "bg-white/5 border-white/10" : "bg-white border-slate-200 shadow-sm"
+                  }`}
+                >
+                  <div className={`text-3xl md:text-4xl font-bold tracking-tight ${isDark ? "text-white" : "text-slate-900"}`}>
+                    {item.value}
+                  </div>
+                  <div className={`text-sm md:text-base font-light leading-snug mt-2 ${isDark ? "text-slate-300" : "text-slate-600"}`}>
+                    {item.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {metrics.length === 0 && (metric || metricLabel) && (
+            <div className="mt-8">
+              {metric && (
+                <div className={`text-3xl md:text-5xl font-bold tracking-tight ${isDark ? "text-white" : "text-slate-900"}`}>
+                  {metric}
+                </div>
+              )}
+              {metricLabel && (
+                <div className={`text-sm md:text-base font-light leading-snug mt-2 max-w-sm ${isDark ? "text-slate-300" : "text-slate-600"}`}>
+                  {metricLabel}
+                </div>
+              )}
+            </div>
+          )}
+
+          {actions.length > 0 && (
+            <div className="mt-8 flex flex-wrap gap-3">
+              {actions.map((action, index) => (
+                <Button
+                  key={index}
+                  onClick={action.onClick}
+                  href={action.href}
+                  variant={action.variant || "outline"}
+                  size="md"
+                  className="rounded-full"
+                >
+                  {action.label}
+                </Button>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="min-h-[320px] lg:min-h-[60vh] flex items-center justify-center">
+          <button
+            type="button"
+            onClick={() => onImageClick?.(src, title)}
+            className="block w-full h-full bg-transparent border-0 p-0 cursor-zoom-in"
+          >
+            <img src={src} alt={title} className="w-full h-full object-contain" />
+          </button>
+        </div>
+      </div>
+    </div>
+  ),
+
+  PortfolioHero: ({ label, body, metric, metricLabel, src, isDark, onImageClick }) => (
     <div className="h-full w-full max-w-[1800px] mx-auto p-6 md:p-12 relative z-10 flex items-center justify-center">
-      <div className={`w-full h-full rounded-xl overflow-hidden shadow-2xl border relative ${
-        isDark ? "bg-slate-900/50 border-white/10" : "bg-white border-slate-200"
+      <div className={`w-full h-full rounded-xl overflow-hidden shadow-2xl relative ${
+        isDark ? "bg-transparent" : "bg-transparent"
       }`}>
         <div className="grid lg:grid-cols-[1.3fr_0.9fr] h-full">
-          <div className={`p-8 md:p-10 lg:p-12 flex flex-col justify-center border-b lg:border-b-0 lg:border-r ${
-            isDark ? "bg-slate-950 border-white/10" : "bg-white border-slate-200"
+          <div className={`p-8 md:p-10 lg:p-12 flex flex-col justify-center ${
+            isDark ? "bg-slate-950" : "bg-white"
           }`}>
             <div className={`text-[10px] font-bold uppercase tracking-widest mb-3 ${
               isDark ? "text-[#88FF00]" : "text-slate-700"
@@ -169,23 +309,32 @@ const SlideTemplates = {
           </div>
 
           <div className="min-h-[280px] lg:min-h-0">
-            <img src={src} alt="Presentation media" className="w-full h-full object-cover" />
+            <button
+              type="button"
+              onClick={() => onImageClick?.(src, label || "Presentation media")}
+              className="block w-full h-full bg-transparent border-0 p-0 cursor-zoom-in"
+            >
+              <img src={src} alt="Presentation media" className="w-full h-full object-contain" />
+            </button>
           </div>
         </div>
       </div>
     </div>
   ),
 
-  PortfolioSplit: ({ title, problem, body, mediaUrl, mediaLink, metrics = [], actions = [], isDark }) => (
-    <div className="flex flex-col lg:flex-row h-full w-full max-w-[1800px] mx-auto relative z-10">
-      <div className="w-full lg:w-[42%] flex flex-col justify-center px-8 lg:px-16 xl:px-20 py-8 lg:py-0 overflow-y-auto">
-        <div className="flex flex-col gap-5 w-full mx-auto lg:mx-0">
-          <h2 className={`text-3xl md:text-5xl xl:text-6xl font-bold tracking-tight ${
-            isDark ? "text-white" : "text-slate-900"
-          }`}>{title}</h2>
+  PortfolioSplit: ({ title, problem, body, mediaUrl, mediaLink, metrics = [], actions = [], isDark, onImageClick, signifier, titleVariant = "pillar", mediaLayout = "showcase" }) => (
+    <div className={`flex h-full w-full max-w-[1800px] mx-auto relative z-10 ${mediaLayout === "content-only-centered" ? "items-center justify-center" : "flex-col lg:flex-row"}`}>
+      <div className={`${mediaLayout === "content-only-centered" ? "w-full max-w-5xl px-8 lg:px-16 xl:px-20 py-8" : "w-full lg:w-[42%] flex flex-col justify-center px-8 lg:px-16 xl:px-20 py-8 lg:py-0 overflow-y-auto"} ${mediaLayout === "content-only-centered" ? "flex flex-col justify-center" : ""}`}>
+        <div className={`flex flex-col gap-5 w-full ${mediaLayout === "content-only-centered" ? "mx-auto items-center text-center" : "mx-auto lg:mx-0"}`}>
+          <SectionHeading
+            title={title}
+            signifier={signifier}
+            variant={titleVariant}
+            isDark={isDark}
+          />
 
           {problem && (
-            <p className={`text-lg md:text-xl leading-relaxed ${
+            <p className={`${PRESENTATION_PROBLEM_TEXT_CLASS} ${
               isDark ? "text-[#88FF00]" : "text-slate-900"
             }`}>
               {problem}
@@ -193,7 +342,7 @@ const SlideTemplates = {
           )}
 
           {body && (
-            <p className={`text-lg font-light leading-relaxed ${
+            <p className={`${PRESENTATION_BODY_TEXT_CLASS} ${
               isDark ? "text-slate-300" : "text-slate-600"
             }`}>
               {body}
@@ -225,7 +374,7 @@ const SlideTemplates = {
           )}
 
           {metrics.length > 0 && (
-            <div className="grid grid-cols-3 gap-3 pt-1">
+            <div className={`pt-1 ${mediaLayout === "content-only-centered" ? "grid grid-cols-2 lg:grid-cols-4 gap-4 w-full" : "grid grid-cols-3 gap-3"}`}>
               {metrics.map((metric, index) => (
                 <div
                   key={index}
@@ -246,39 +395,62 @@ const SlideTemplates = {
         </div>
       </div>
 
+      {mediaLayout !== "content-only-centered" && (
       <div className="w-full lg:w-[58%] h-[48vh] lg:h-full p-4 lg:p-12 flex items-center justify-center">
-        <div className="w-full h-full bg-slate-900/40 rounded-xl overflow-hidden shadow-2xl relative border border-white/5 group">
+        <div className="w-full h-full relative group">
           {mediaLink ? (
-            <a href={mediaLink} target="_blank" rel="noopener noreferrer" className="block w-full h-full relative cursor-pointer overflow-hidden">
+            <div className="block w-full h-full relative overflow-hidden">
               <img
                 src={mediaUrl}
                 alt={title}
-                className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-500"
+                className="w-full h-full object-contain opacity-90 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-500"
               />
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-slate-900/30 backdrop-blur-[2px]">
-                <div className="bg-white/10 px-5 py-3 rounded-full backdrop-blur-sm border border-white/20 text-white font-bold text-sm tracking-wide shadow-card flex items-center gap-2">
+              <div className="absolute inset-0 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-slate-900/30 backdrop-blur-[2px]">
+                <button
+                  type="button"
+                  onClick={() => onImageClick?.(mediaUrl, title)}
+                  className="bg-white/10 px-5 py-3 rounded-full backdrop-blur-sm border border-white/20 text-white font-bold text-sm tracking-wide shadow-card"
+                >
+                  View Full Image
+                </button>
+                <a
+                  href={mediaLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white/10 px-5 py-3 rounded-full backdrop-blur-sm border border-white/20 text-white font-bold text-sm tracking-wide shadow-card flex items-center gap-2"
+                >
                   <ExternalLink size={16} /> Open Prototype
-                </div>
+                </a>
               </div>
-            </a>
+            </div>
           ) : (
-            <img src={mediaUrl} alt={title} className="w-full h-full object-cover" />
+            <button
+              type="button"
+              onClick={() => onImageClick?.(mediaUrl, title)}
+              className="block w-full h-full bg-transparent border-0 p-0 cursor-zoom-in"
+            >
+              <img src={mediaUrl} alt={title} className="w-full h-full object-contain" />
+            </button>
           )}
         </div>
       </div>
+      )}
     </div>
   ),
 
-  PortfolioConnector: ({ title, problem, body, src, caption, isDark }) => (
+  PortfolioConnector: ({ title, problem, body, src, caption, isDark, onImageClick, signifier, titleVariant = "supporting" }) => (
     <div className="flex flex-col lg:flex-row h-full w-full max-w-[1800px] mx-auto relative z-10">
       <div className="w-full lg:w-[40%] flex flex-col justify-center px-8 lg:px-16 xl:px-20 py-8 lg:py-0 overflow-y-auto">
         <div className="flex flex-col gap-5 w-full mx-auto lg:mx-0">
-          <h2 className={`text-3xl md:text-5xl xl:text-6xl font-bold tracking-tight ${
-            isDark ? "text-white" : "text-slate-900"
-          }`}>{title}</h2>
+          <SectionHeading
+            title={title}
+            signifier={signifier}
+            variant={titleVariant}
+            isDark={isDark}
+          />
 
           {problem && (
-            <p className={`text-lg md:text-xl leading-relaxed ${
+            <p className={`${PRESENTATION_PROBLEM_TEXT_CLASS} ${
               isDark ? "text-[#88FF00]" : "text-slate-900"
             }`}>
               {problem}
@@ -286,7 +458,7 @@ const SlideTemplates = {
           )}
 
           {body && (
-            <p className={`text-lg font-light leading-relaxed ${
+            <p className={`${PRESENTATION_BODY_TEXT_CLASS} ${
               isDark ? "text-slate-300" : "text-slate-600"
             }`}>
               {body}
@@ -296,16 +468,18 @@ const SlideTemplates = {
       </div>
 
       <div className="w-full lg:w-[60%] h-[48vh] lg:h-full p-4 lg:p-12 flex items-center justify-center">
-        <div className={`w-full h-full rounded-xl overflow-hidden shadow-2xl border flex flex-col ${
-          isDark ? "bg-slate-900/50 border-white/10" : "bg-white border-slate-200"
-        }`}>
-          <div className="flex-grow w-full overflow-hidden flex items-center justify-center p-4">
-            <img src={src} alt={title} className="w-full h-full object-contain" />
+        <div className="w-full h-full flex flex-col">
+          <div className="flex-grow w-full flex items-center justify-center">
+            <button
+              type="button"
+              onClick={() => onImageClick?.(src, title)}
+              className="block w-full h-full bg-transparent border-0 p-0 cursor-zoom-in"
+            >
+              <img src={src} alt={title} className="w-full h-full object-contain" />
+            </button>
           </div>
           {caption && (
-            <div className={`w-full flex-shrink-0 border-t ${
-              isDark ? "bg-slate-900/90 border-white/10" : "bg-slate-50 border-slate-200"
-            }`}>
+            <div className="w-full flex-shrink-0">
               <div className="px-6 py-4">
                 <p className={`text-sm font-light leading-snug ${
                   isDark ? "text-slate-300" : "text-slate-600"
@@ -318,32 +492,55 @@ const SlideTemplates = {
     </div>
   ),
 
-  PortfolioComparison: ({ title, items, isDark }) => (
+  PortfolioComparison: ({ title, items, isDark, onImageClick, signifier, titleVariant = "supporting" }) => (
     <div className="flex flex-col justify-center h-full w-full max-w-[1800px] mx-auto px-6 md:px-10 lg:px-12 relative z-10">
-      <h2 className={`text-3xl md:text-5xl xl:text-6xl font-bold tracking-tight mb-8 md:mb-10 ${
-        isDark ? "text-white" : "text-slate-900"
-      }`}>{title}</h2>
+      <div className="mb-8 md:mb-10">
+        <SectionHeading
+          title={title}
+          signifier={signifier}
+          variant={titleVariant}
+          isDark={isDark}
+        />
+      </div>
 
       <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
         {items.map((item, index) => (
           <div
             key={index}
-            className={`rounded-xl overflow-hidden border ${
-              isDark ? "bg-slate-900/50 border-white/10" : "bg-white border-slate-200"
+            className={`rounded-xl overflow-hidden ${
+              isDark ? "bg-transparent" : "bg-transparent"
             }`}
           >
-            <div className="aspect-[16/10] bg-slate-900/40 overflow-hidden">
-              <img src={item.src} alt={item.label} className="w-full h-full object-cover" />
+            <div className="aspect-[16/10] bg-transparent overflow-hidden">
+              <button
+                type="button"
+                onClick={() => onImageClick?.(item.src, item.label)}
+                className="block w-full h-full bg-transparent border-0 p-0 cursor-zoom-in"
+              >
+                <img src={item.src} alt={item.label} className="w-full h-full object-contain" />
+              </button>
             </div>
             <div className="p-5 md:p-6">
-              <div className={`text-[10px] font-bold uppercase tracking-widest mb-2 ${
-                isDark ? "text-[#88FF00]" : "text-slate-500"
-              }`}>{item.label}</div>
+              <h3 className={`text-xl md:text-2xl font-semibold leading-tight mb-3 ${
+                isDark ? "text-white" : "text-slate-900"
+              }`}>{item.title || item.label}</h3>
               <p className={`text-lg font-light leading-relaxed ${
                 isDark ? "text-slate-300" : "text-slate-600"
               }`}>
                 {item.text}
               </p>
+              {item.impact && (
+                <div className={`mt-4 inline-flex flex-col rounded-xl border px-4 py-3 ${
+                  isDark ? "border-white/10 bg-white/5" : "border-slate-200 bg-slate-50"
+                }`}>
+                  <span className={`text-2xl font-bold tracking-tight ${isDark ? "text-white" : "text-slate-900"}`}>
+                    {item.impact.value}
+                  </span>
+                  <span className={`text-sm font-light leading-snug mt-1 ${isDark ? "text-slate-300" : "text-slate-600"}`}>
+                    {item.impact.label}
+                  </span>
+                </div>
+              )}
             </div>
           </div>
         ))}
@@ -500,7 +697,7 @@ const SlideTemplates = {
       </div>
 
       <div className="w-full lg:w-[55%] h-[50vh] lg:h-full p-4 lg:p-12 flex items-center justify-center">
-        <div className="w-full h-full bg-slate-900/40 rounded-xl overflow-hidden shadow-2xl relative border border-white/5 group">
+        <div className="w-full h-full relative group">
           {mediaLink ? (
             <a href={mediaLink} target="_blank" rel="noopener noreferrer" className="block w-full h-full relative cursor-pointer overflow-hidden">
               <img
@@ -524,15 +721,19 @@ const SlideTemplates = {
 
   // FullMedia: full-bleed image or video with caption bar
   // caption: { text, link, linkLabel } — all optional
-  FullMedia: ({ src, type = "image", isDark, caption }) => (
+  FullMedia: ({ src, type = "image", isDark, caption, onImageClick }) => (
     <div className="h-full w-full max-w-[1800px] mx-auto p-6 md:p-12 relative z-10 flex items-center justify-center">
-      <div className={`w-full h-full rounded-xl overflow-hidden shadow-2xl border flex flex-col relative ${
-        isDark ? "bg-slate-900/50 border-white/10" : "bg-white border-slate-200"
-      }`}>
+      <div className="w-full h-full flex flex-col relative">
         {/* Media area */}
-        <div className="flex-grow w-full overflow-hidden flex items-center justify-center p-4">
+        <div className="flex-grow w-full flex items-center justify-center p-4">
           {type === "image" && (
-            <img src={src} alt="Presentation media" className="w-full h-full object-contain" />
+            <button
+              type="button"
+              onClick={() => onImageClick?.(src, caption?.label || "Presentation media")}
+              className="block w-full h-full bg-transparent border-0 p-0 cursor-zoom-in"
+            >
+              <img src={src} alt="Presentation media" className="w-full h-full object-contain" />
+            </button>
           )}
           {type === "video" && (
             <video src={src} autoPlay loop muted playsInline className="w-full h-full object-contain" />
@@ -541,8 +742,8 @@ const SlideTemplates = {
 
         {/* Caption bar — always rendered if caption prop exists */}
         {caption && (
-          <div className={`w-full flex-shrink-0 border-t ${
-            isDark ? "bg-slate-900/90 border-white/10 backdrop-blur-md" : "bg-slate-50 border-slate-200"
+          <div className={`w-full flex-shrink-0 ${
+            isDark ? "bg-slate-900/90 backdrop-blur-md" : "bg-slate-50"
           }`}>
             <div className="px-6 py-4 flex items-start justify-between gap-8">
               {/* Left: label + description */}
@@ -703,272 +904,21 @@ const SlideTemplates = {
 
 const PRESENTATIONS = {
   amazon: {
-    title: "Amazon Case Study",
-    slides: [
-
-      // ── 1. Project Overview ──────────────────────────────────────────────
-      {
-        id: "amazon-overview",
-        name: "Project Overview",
-        render: (isDark) => SlideTemplates.Overview({
-          isDark,
-          company: "Amazon",
-          title: "Amazon Devices AI Creative Platform",
-          vision: "A unified, AI-powered platform to generate, manage, and publish marketing assets across 22 global marketplaces — with no manual handoffs.",
-          problem: "AI can generate images at scale. The hard part is making them trustworthy. We had to solve metadata, reference constraints, quality gates, and feedback loops before scale was even possible.",
-          role: "Led end-to-end system architecture and hands-on UX/UI across four interconnected pillars, from data ingestion through AI generation and human review.",
-          impactMetrics: [
-            { value: "~100k", label: "Hours saved in 2025" },
-            { value: "22", label: "Global marketplaces" },
-          ],
-          impactDesc: ["The system eliminated over ~100,000 hours of manual work in 2025 alone, removing critical bottlenecks across the entire asset pipeline."],
-        }),
-      },
-
-      // ── 2. Pillar 1: Image Builder ───────────────────────────────────────
-      {
-        id: "amazon-pillar-1",
-        name: "Pillar 1: Image Builder",
-        render: (isDark) => SlideTemplates.SplitMedia({
-          isDark,
-          title: "Image Builder",
-          pill: "Pillar 1 · Launched",
-          role: "Designed the visual editor and underlying component structure so non-designers could generate strict, brand-compliant assets globally without needing a creative team in the loop.",
-          problem: "Merchandisers needed to build localized assets across 23 market/language combinations without violating brand or legal compliance. There was no shared tooling — just Photoshop templates and email threads.",
-          shipped: "Image Builder — a production system with a visual editor that handles layout, copy generation, and auto-translation end to end.",
-          impactMetrics: [
-            { value: "~8,000", label: "Images generated" },
-            { value: "~48k", label: "Hours replaced" },
-          ],
-          impactDesc: ["Achieved during Prime Day 2025 alone — a single campaign cycle."],
-          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772062490/Screenshot_2026-02-25_at_3.34.36_PM_dwqrvv.png",
-          mediaLink: "https://www.figma.com/proto/Hm4V3LSFtdcJKC1e5UWYls/JAS-Image-Builder-Final-Build-Spec?page-id=0%3A1&node-id=163-36427&scaling=min-zoom&t=PcpidMXEz6GOqzKf-1&content-scaling=fixed&p=f",
-        }),
-      },
-
-      // ── 3. Pillar 1 Full Diagram ─────────────────────────────────────────
-      {
-        id: "amazon-pillar-1-img",
-        name: "Pillar 1 (System Diagram)",
-        render: (isDark) => SlideTemplates.FullMedia({
-          isDark,
-          type: "image",
-          // EMBED: Full-width system architecture diagram showing Image Builder's
-          // layer structure — inputs (product data, locale rules, brand tokens) →
-          // editor canvas → compliance checks → output pipeline.
-          // Ideal: the "layers-nometadata" Cloudinary image you already have,
-          // or a Figma export of your component/layer breakdown.
-          src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1773289976/layers-nometadata_nloelx.png",
-          caption: {
-            label: "System Architecture",
-            text: "Image Builder processes product metadata, locale rules, and brand tokens through a layered composition engine — outputting compliant, translated assets without human intervention per locale.",
-            link: "https://www.figma.com/proto/Hm4V3LSFtdcJKC1e5UWYls/JAS-Image-Builder-Final-Build-Spec?page-id=0%3A1&node-id=163-36427&scaling=min-zoom&t=PcpidMXEz6GOqzKf-1&content-scaling=fixed&p=f",
-            linkLabel: "Open in Figma",
-          },
-        }),
-      },
-
-      // ── 4. Pillar 2: Asset Manager ───────────────────────────────────────
-      {
-        id: "amazon-pillar-2",
-        name: "Pillar 2: Asset Manager",
-        render: (isDark) => SlideTemplates.SplitMedia({
-          isDark,
-          title: "Asset Manager",
-          pill: "Pillar 2 · In Build",
-          role: "Designed the catalog logic and UX to replace fragmented internal systems and the Smartsheet workarounds teams had built around them.",
-          problem: "Marketing images were scattered across internal systems with no consistent naming or governance, forcing teams to track creative work in external spreadsheets. The AI pipeline had no reliable source of truth to pull from.",
-          shipped: "Asset Manager — a centralized internal library that brings the entire creative catalog under governance and provides the structured metadata foundation the AI compositor depends on.",
-          callout: "Slated to ship Q2 2026. Once live, this will eliminate the dependency on external tooling, giving NA and Europe total control of the Devices catalog. This will provide the metadata foundation for complete AI content generation.",
-          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772592239/5958a787-a37d-410e-8821-1f8584a6a20c.png",
-          mediaLink: "https://www.figma.com/proto/RalVHLTD2GOTo3DY91Ow8k/JAS-ASSET-MANAGER?page-id=85%3A22371&node-id=85-22884&viewport=-1498%2C-1342%2C0.07&t=PgdR2ntUXOpXVKPs-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=85%3A22884&show-proto-sidebar=1",
-        }),
-      },
-
-      // ── 5. Pillar 3: Metadata Studio ─────────────────────────────────────
-      {
-        id: "amazon-pillar-3",
-        name: "Pillar 3: Metadata Studio",
-        render: (isDark) => SlideTemplates.SplitMedia({
-          isDark,
-          title: "Metadata Studio",
-          pill: "Pillar 3 · In Build",
-          role: "Prototyped and proved AI viability for complex visual classification, shifting the org from a feasibility debate to a committed roadmap.",
-          problem: "Manual metadata entry — up to 90 data points per image for regional and legal compliance — was the single largest bottleneck in the pipeline. Nothing downstream could move without it.",
-          shipped: "Metadata Studio — an AI-first tool that automatically extracts image attributes (color variant, camera angle, scene type) to enforce global compliance without manual tagging.",
-          callout: "Leadership, Product, and Brand teams unified around a strategic roadmap to launch a sophisticated AI tool designed to aggregate metadata from diverse Amazon-owned sources.",
-          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772412003/8fc680db-a6b5-4c46-ba00-f12af55faab4.png",
-        }),
-      },
-
-      // ── 5a. Metadata Studio: Manual Upload UI ─────────────────────────────
-      {
-        id: "amazon-pillar-3-img1",
-        name: "Pillar 3 (Manual Upload)",
-        render: (isDark) => SlideTemplates.FullMedia({
-          isDark,
-          type: "image",
-          src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772412234/Background_metadata_cphwlh.png",
-          caption: {
-            label: "The Problem",
-            text: "The manual upload UI for an AI-ready background image. This illustrates the massive volume of metadata that users had to enter manually to prepare a single asset for the system.",
-          },
-        }),
-      },
-
-      // ── 5b. Metadata Studio: Screen Mapper ────────────────────────────────
-      {
-        id: "amazon-pillar-3-img2",
-        name: "Pillar 3 (Screen Mapper)",
-        render: (isDark) => SlideTemplates.FullMedia({
-          isDark,
-          type: "image",
-          src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772411818/7e25e02b-1a0c-4458-81f8-e22044a1df9c.png",
-          caption: {
-            label: "Screen Mapper",
-            text: "The screen mapper tool interface, allowing users to define the digital boundary on a physical device. Translating a physical boundary into coordinate data the AI can use for dynamic composition.",
-          },
-        }),
-      },
-
-      // ── 5c. Metadata Studio: Automated Composition ────────────────────────
-      {
-        id: "amazon-pillar-3-img3",
-        name: "Pillar 3 (Automated Composition)",
-        render: (isDark) => SlideTemplates.FullMedia({
-          isDark,
-          type: "image",
-          src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772411928/4553de5d-0c9d-41d0-b126-bf3db07e532d.png",
-          caption: {
-            label: "Final Outcome",
-            text: "Successfully placing a The Lord of the Rings screen inside an Echo Show automatically. The platform can now instantly generate accurate, localized, and compliant marketing assets on the fly without a designer opening Photoshop.",
-          },
-        }),
-      },
-
-      // ── 6. Pillar 4: AI Compositor (Overview) ────────────────────────────
-      // ── 6. Pillar 4: AI Compositor (Overview) ────────────────────────────
-      {
-        id: "amazon-pillar-4",
-        name: "Pillar 4: AI Compositor",
-        render: (isDark) => SlideTemplates.SplitMedia({
-          isDark,
-          title: "AI Lifestyle Compositor",
-          pill: "Pillar 4 · Launched",
-          role: "Designed the human-in-the-loop review system — defining how structured feedback was captured, how reference images and device positioning constraints were encoded, and how the model improved over time.",
-          problem: "Lifestyle images convert 70% better than product-on-white. But producing them manually at a global scale across thousands of SKUs was impossible. The bottleneck wasn't generation — it was getting the AI to produce outputs that met Amazon's bar consistently.",
-          shipped: "AI Lifestyle Compositor — a tool trained on proprietary Amazon device data that generates photorealistic 3D lifestyle imagery and routes outputs through a structured review and retraining loop.",
-          impactMetrics: [
-            { value: "3,000", label: "Market-ready lifestyle assets generated by AI and curated by Creative Directors" },
-            { value: "~Only 10hrs", label: "Total human review time spent for 12,000 market ready images" },
-          ],
-          impactDesc: [],
-          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772665456/a7ec2337-4f73-4b0c-932f-b66e6b73190d.png",
-          mediaLink: "https://www.figma.com/proto/u5gNazpXiOCPbn8tiH5ACU/JASAI?page-id=1438%3A5102&node-id=40000015-16958&viewport=324%2C-1055%2C0.14&t=LvK2dm3PYrsudLBc-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=40000015%3A16958",
-        }),
-      },
-
-      // ── 7. Compositor: Full System Diagram ───────────────────────────────
-      {
-        id: "amazon-pillar-4-img",
-        name: "Pillar 4 (System Diagram)",
-        render: (isDark) => SlideTemplates.FullMedia({
-          isDark,
-          type: "image",
-          // EMBED: Your "layers-metadata" Cloudinary image — the full pipeline
-          // diagram showing how metadata feeds into the compositor.
-          // Ideal: a Figma export showing all four pillars as an interconnected
-          // system, with the compositor at the end of the chain.
-          src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1773290008/layers-metadata_sfcohu.png",
-          caption: {
-            label: "Full Pipeline",
-            text: "Asset Manager provides the catalog layer. Metadata Studio tags and classifies. The Compositor ingests structured product data and reference constraints to generate compliant lifestyle imagery at scale.",
-          },
-        }),
-      },
-
-      // ── 7a. Compositor: Gradient Output ────────────────────────────────────
-      {
-        id: "amazon-compositor-gradient",
-        name: "Pillar 4 (Gradient Output)",
-        render: (isDark) => SlideTemplates.FullMedia({
-          isDark,
-          type: "image",
-          src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772662326/firetv-gradient_dfwvl0.png",
-          caption: {
-            label: "Standard Pipeline",
-            text: "Device on a gradient. The previous scalable solution, but missing the 40% higher CTR typically seen with lifestyle imagery.",
-          },
-        }),
-      },
-
-      // ── 7b. Compositor: AI Lifestyle Output ────────────────────────────────
-      {
-        id: "amazon-compositor-lifestyle",
-        name: "Pillar 4 (AI Lifestyle Output)",
-        render: (isDark) => SlideTemplates.FullMedia({
-          isDark,
-          type: "image",
-          src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772662326/firetv-lifestyle_dlyenh.png",
-          caption: {
-            label: "AI Compositor Pipeline",
-            text: "Device placed inside a realistic scene. A more sophisticated AI-generated image brings the impact of a lifestyle shot automatically at scale.",
-          },
-        }),
-      },
-
-      // ── 8. Compositor: How It Actually Works ─────────────────────────────
-      {
-        id: "amazon-compositor-pipeline",
-        name: "Pillar 4 (System Deep-Dive)",
-        render: (isDark) => SlideTemplates.Closing({
-          isDark,
-          headline: "Making sure we met the Design Bar.",
-          body: "Image generation, while challenging, was not the hardest part. We had to earn trust and ensure quality standards were met. The Bar Raising tool was the best way to secure Creative Director and brand approval across all product lines. It ensured we always met design standards and could effectively replace the manual labor of photography and 3D artists. The mechanism that makes outputs trustworthy at scale.",
-          connectionItems: [
-            {
-              title: "Defining Constraints",
-              desc: "Ingesting product metadata and defining physics rules, photography angles, surface constraints, and realism.",
-            },
-            {
-              title: "Controlled Generation",
-              desc: "Setting up the guardrails. The model produces lifestyle variants using structured inputs, provided by a human in the loop.",
-            },
-            {
-              title: "Structured Review",
-              desc: "Human reviewers evaluate if the produced images meet the design bar, and if not, provide feedback to train the AI. Highly manual effort at first, but with a cadence that reduced human input as the AI became more intelligent.",
-            },
-          ],
-        }),
-      },
-
-    ],
-  },
-
-  "portfolio-presentation": {
-    title: "Portfolio Presentation",
+    title: "Amazon Devices Asset Manager",
     slides: [
       {
-        id: "portfolio-intro",
-        name: "Bruno",
-        render: (isDark, goToAmazon = () => {}, goToHeyCohen = () => {}) => SlideTemplates.PortfolioHeroIntro({
+        id: "amazon-intro",
+        name: "Amazon Devices Asset System",
+        render: (isDark, _goToAmazon, goToHeyCohen, onImageClick) => SlideTemplates.ProjectHero({
           isDark,
-          onAmazonClick: goToAmazon,
-          onHeyCohenClick: goToHeyCohen,
-        }),
-      },
-      // Speaker hook: The Amazon work is probably the easiest way to show how I think, so I’ll start with where we ended up.
-      {
-        id: "portfolio-end-result",
-        name: "The End Result",
-        render: (isDark) => SlideTemplates.PortfolioHero({
-          isDark,
-          label: "AMAZON DEVICES ASSET SYSTEM · Lead Designer · 16+ Engineers, 2 Product Managers",
+          title: "Amazon Devices Asset System",
+          meta: "Lead Designer · 16+ Engineers, 2 Product Managers",
           body: "The device is placed inside a realistic scene generated by the model, bringing the impact of lifestyle imagery to a much larger volume of creative. This is a real campaign running on Amazon.com. The creative came through a set of tools my team had been building to handle a huge amount of campaign production.",
           metric: "~8,000",
           metricLabel: "Images generated for Prime Day 2025",
-          // TODO: Replace with the strongest real Amazon.com campaign screenshot when available.
           src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772662326/firetv-lifestyle_dlyenh.png",
+          onImageClick,
+          
         }),
       },
       // Speaker hook: There was a lot underneath this. The first problem was simple. We could not keep producing this amount of creative manually.
@@ -977,9 +927,14 @@ const PRESENTATIONS = {
         name: "Image Builder",
         render: (isDark) => SlideTemplates.PortfolioSplit({
           isDark,
+          signifier: "Project I",
           title: "Image Builder",
           problem: "A single campaign could require thousands of images across products, countries, languages, and placements. A lot of that work still moved through Photoshop, designers, copywriters, translators, and manual handoffs.",
           body: "I designed the editor and the component logic behind it so marketers could create localized campaign assets themselves. Image Builder brought the main production steps into one tool. Marketers could choose products, build the layout, generate and translate copy, and create the regional variations they needed.",
+          actions: [
+            { label: "View Figma File", href: "https://www.figma.com/design/Hm4V3LSFtdcJKC1e5UWYls/JAS-Image-Builder-Final-Build-Spec?page-id=0%3A1&node-id=163-36427", variant: "secondary" },
+            { label: "Play with Prototype", href: "https://www.figma.com/proto/Hm4V3LSFtdcJKC1e5UWYls/JAS-Image-Builder-Final-Build-Spec?page-id=0%3A1&node-id=163-36427&scaling=min-zoom&t=PcpidMXEz6GOqzKf-1&content-scaling=fixed&p=f", variant: "primary" },
+          ],
           metrics: [
             { value: "~8,000", label: "Images generated" },
             { value: "~48k", label: "Hours replaced" },
@@ -993,6 +948,7 @@ const PRESENTATIONS = {
         name: "Structured Composition",
         render: (isDark) => SlideTemplates.PortfolioConnector({
           isDark,
+          titleVariant: "supporting",
           title: "All of this depended on having the right product and asset information.",
           body: "The builder needed to know which product was being used, which version was correct for each market, and how that asset should behave inside the composition.",
           src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1773289976/layers-nometadata_nloelx.png",
@@ -1004,6 +960,7 @@ const PRESENTATIONS = {
         name: "Asset Manager",
         render: (isDark) => SlideTemplates.PortfolioSplit({
           isDark,
+          signifier: "Project II",
           title: "Asset Manager",
           problem: "Images were spread across different internal tools, and teams had built spreadsheets around them to fill in the gaps. Even basic questions could take work. Is this approved? Is it current? Which market is using it? Where did it come from?",
           body: "I designed how teams could find assets, understand what they were looking at, review them, and track where they were being used. Asset Manager brought the catalog, metadata, permissions, review history, and usage information together so teams could manage the work from one place.",
@@ -1021,6 +978,7 @@ const PRESENTATIONS = {
         name: "Metadata Studio",
         render: (isDark) => SlideTemplates.PortfolioSplit({
           isDark,
+          signifier: "Project III",
           title: "Metadata Studio",
           problem: "Some images needed dozens of pieces of information before our other tools could use them. People were entering a lot of that information by hand.",
           body: "I worked on ways for the model to read more of that information from the images themselves. We could give it reference images, mark the parts that mattered, and have it fill in information people had previously entered manually.",
@@ -1036,8 +994,9 @@ const PRESENTATIONS = {
         name: "Structured Inputs",
         render: (isDark) => SlideTemplates.PortfolioConnector({
           isDark,
-          title: "Once we started generating lifestyle images, we needed a way to judge the output consistently.",
-          body: "The model had better product information and better references. Creative Directors still needed to review what it made and explain why an image passed or failed.",
+          titleVariant: "supporting",
+          title: "We could now assemble lifestyle images",
+          body: "Metadata Studio gave the system a structured understanding of every part of the composition, including product, screen, logo, copy, layout rules, and background.",
           src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1773290008/layers-metadata_sfcohu.png",
         }),
       },
@@ -1047,9 +1006,14 @@ const PRESENTATIONS = {
         name: "AI Lifestyle Compositor",
         render: (isDark) => SlideTemplates.PortfolioSplit({
           isDark,
+          signifier: "Project IV",
           title: "AI Lifestyle Compositor",
           problem: "How do we trust AI to produce campaign-ready creative without requiring a Creative Director to inspect every single output?",
           body: "I designed how Creative Directors reviewed generated images and gave feedback. They had to explain why something failed, and I designed a survey to capture those decisions so the model could improve over time.",
+          actions: [
+            { label: "View Figma File", href: "https://www.figma.com/design/u5gNazpXiOCPbn8tiH5ACU/JASAI?page-id=1438%3A5102&node-id=40000015-16958", variant: "secondary" },
+            { label: "Play with Prototype", href: "https://www.figma.com/proto/u5gNazpXiOCPbn8tiH5ACU/JASAI?page-id=1438%3A5102&node-id=40000015-16958&viewport=324%2C-1055%2C0.14&t=LvK2dm3PYrsudLBc-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=40000015%3A16958", variant: "primary" },
+          ],
           metrics: [
             { value: "12,000", label: "Variations per batch" },
             { value: "3,000", label: "Director-approved assets shipped" },
@@ -1064,17 +1028,22 @@ const PRESENTATIONS = {
         name: "Before and After",
         render: (isDark) => SlideTemplates.PortfolioComparison({
           isDark,
-          title: "Before and after",
+          titleVariant: "supporting",
+          title: "Simple asset to lifestyle asset",
           items: [
             {
-              label: "Standard Pipeline",
+              title: "Simple Image Builder-produced asset",
               src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772662326/firetv-gradient_dfwvl0.png",
-              text: "Device on a gradient. The previous scalable solution, but missing the 40% higher CTR typically seen with lifestyle imagery.",
+              text: "This was the scalable baseline: a clean device asset generated quickly, but without the contextual storytelling that usually drives stronger engagement.",
             },
             {
-              label: "AI Compositor Pipeline",
+              title: "Lifestyle asset",
               src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772662326/firetv-lifestyle_dlyenh.png",
-              text: "Device placed inside a realistic scene. A more sophisticated AI-generated image brings the impact of a lifestyle shot automatically at scale.",
+              text: "The device is placed inside a realistic scene generated by the model, bringing the performance advantage of lifestyle imagery into a scalable production system.",
+              impact: {
+                value: "+40% CTR",
+                label: "Lifestyle imagery typically outperformed the simpler asset treatment",
+              },
             },
           ],
         }),
@@ -1084,6 +1053,7 @@ const PRESENTATIONS = {
         name: "Where This Was Heading",
         render: (isDark) => SlideTemplates.PortfolioSplit({
           isDark,
+          titleVariant: "supporting",
           title: "Northstar Vision",
           problem: "The complete Asset System automated content generation and facilitated campaign placement.",
           body: "This concept brought those pieces together into one workflow. Teams could define the project, business goals, and deadlines, then use prompting to generate campaign assets, target the right audiences, and place the creative into live campaigns.",
@@ -1098,247 +1068,126 @@ const PRESENTATIONS = {
     ],
   },
 
-  "hey-cohen-presentation": {
-    title: "Hey Cohen Presentation",
+  heycohen: {
+    title: "Hey, Cohen",
     slides: [
       {
         id: "hey-cohen-overview",
         name: "Hey Cohen",
-        render: (isDark) => SlideTemplates.PortfolioHero({
+        render: (isDark, goToAmazon, _goToHeyCohen, onImageClick) => SlideTemplates.ProjectHero({
           isDark,
-          label: "Hey Cohen",
-          body: "I built Hey Cohen to help a local music academy figure out who to reach out to, why, and what to say. It pulls together enrollment, attendance, billing, and instructor notes, then uses AI to surface retention risks, growth opportunities, and useful follow-ups.",
-          metric: "68%",
-          metricLabel: "Summer re-enrollment after instructor-led outreach",
+          title: "Hey Cohen",
+          meta: "Built for Headliner · ~250 students",
+          body: "I built Hey Cohen for Headliner, a music academy with around 250 students. It brings together the information already sitting in our class software and spreadsheets, then helps staff figure out who they should reach out to and why.",
+          
+          
           src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787116212/3998a50a-9895-49a2-8eed-81cb05e374d1.png",
-        }),
-      },
-      {
-        id: "hey-cohen-problem",
-        name: "The problem",
-        render: (isDark) => SlideTemplates.PortfolioSplit({
-          isDark,
-          title: "The problem",
-          problem: "The academy already had the data it needed, but it lived across class software, spreadsheets, email, and phone calls.",
-          body: "Targeted outreach meant manually finding the right students, building lists, and contacting families one by one.",
+          onImageClick,
+          
           metrics: [
-            { value: "6 hrs → 10 min", label: "Time to build and send campaigns" },
+            { value: "6 hrs → 10 min", label: "Time to message students" },
+            { value: "68%", label: "Summer re-enrollment improvement" },
           ],
-          actions: [
-            { label: "Play with Demo", href: "https://pulse-zeta-ruddy.vercel.app/demo", variant: "primary" },
-          ],
-          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109031/Screenshot_2026-08-18_at_7.54.10_PM_kzendm.png",
+          
+          
+  
         }),
       },
       {
-        id: "hey-cohen-data",
-        name: "I started with the data",
-        render: (isDark) => SlideTemplates.PortfolioSplit({
+        id: "hey-cohen-lobby",
+        name: "The lobby",
+        render: (isDark, _goToAmazon, _goToHeyCohen, onImageClick) => SlideTemplates.PortfolioSplit({
           isDark,
-          title: "I started with the data",
-          problem: "Most class management tools don't expose useful APIs.",
-          body: "I built spreadsheet import and reconciliation flows so Hey Cohen could work with real enrollment, attendance, billing, and instructor data.",
-          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787111924/Screenshot_2026-08-11_at_8.53.36_AM_phvx3u.png",
-        }),
-      },
-      {
-        id: "hey-cohen-daily-insights",
-        name: "Daily insights",
-        render: (isDark) => SlideTemplates.PortfolioSplit({
-          isDark,
-          title: "Daily insights",
-          problem: "Hey Cohen surfaces people worth paying attention to, like missed lessons, milestones, lapsed students, and potential program fits.",
-          body: "Instead of searching through the data, staff get a short list of useful follow-ups.",
+          titleVariant: "supporting",
+          title: "A lot of the business happens in this lobby",
+          problem: "Parents wait while their kids take lessons. They talk to Cohen about schedules, missed classes, new programs, or whatever else is going on. He knows most of these families pretty well.",
           mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109030/Screenshot_2026-08-18_at_7.49.08_PM_nlupj0.png",
+          onImageClick,
         }),
       },
       {
-        id: "hey-cohen-targeting",
-        name: "Natural language targeting",
-        render: (isDark) => SlideTemplates.PortfolioSplit({
+        id: "hey-cohen-manual-work",
+        name: "Manual work",
+        render: (isDark, _goToAmazon, _goToHeyCohen, onImageClick) => SlideTemplates.PortfolioSplit({
           isDark,
-          title: "Natural language targeting",
-          problem: "Staff can build audiences with filters or plain language.",
-          body: '"Students 10 to 14 who play guitar and aren\'t already in a band." Hey Cohen turns that into a recipient list.',
-          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109031/Screenshot_2026-08-18_at_7.54.10_PM_kzendm.png",
-        }),
-      },
-      {
-        id: "hey-cohen-hitl",
-        name: "Human-in-the-loop messaging",
-        render: (isDark) => SlideTemplates.PortfolioSplit({
-          isDark,
-          title: "Human-in-the-loop messaging",
-          problem: "The person still writes and sends the message.",
-          body: "AI helps with context, tone, and wording, but the relationship stays with the staff member who knows the family.",
-          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109029/Screenshot_2026-08-18_at_7.54.49_PM_n4sgo1.png",
+          titleVariant: "supporting",
+          title: "Communication was a lot of manual work",
+          problem: "Student information was spread across our class software, spreadsheets, notes, email, and conversations.",
+          
+          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787111924/Screenshot_2026-08-11_at_8.53.36_AM_phvx3u.png",
+          onImageClick,
         }),
       },
       {
         id: "hey-cohen-from-prototype",
         name: "From prototype to product",
-        render: (isDark) => SlideTemplates.PortfolioSplit({
+        render: (isDark, _goToAmazon, _goToHeyCohen, onImageClick) => SlideTemplates.PortfolioSplit({
           isDark,
+          titleVariant: "supporting",
           title: "From prototype to product",
-          problem: "I started on paper, moved into React and Supabase, and used real academy data to work through the product and data model.",
-          body: "Once the core workflows held up, I moved back into Figma to refine the interface and design system.",
+          body: "I started with sketches on paper and moved into React and Supabase pretty quickly.",
+          
           mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787113304/814f84d8-3692-4cb9-9a91-4a5e8a1533e9.png",
+          onImageClick,
+        }),
+      },
+      {
+        id: "hey-cohen-demo",
+        name: "Demo",
+        render: (isDark, _goToAmazon, _goToHeyCohen, onImageClick) => SlideTemplates.ProjectHero({
+          isDark,
+          title: "View demo",
+          meta: "This is where I'd stop talking through slides and show the actual product.",
+          body: "Hey Cohen helps staff move from disconnected records to targeted outreach in one flow.",
+          detailList: [
+            { title: "Import the data", text: "Enrollment, attendance, billing, and notes." },
+            { title: "See what needs attention", text: "Hey Cohen surfaces students and opportunities worth looking at." },
+            { title: "Find the right people", text: "Use filters or just describe who you're looking for." },
+            { title: "Write the message", text: "AI can help with wording, context, and brand voice. The person still decides what gets sent." },
+            { title: "Keep the conversation going", text: "Replies come back into the inbox." },
+          ],
+          actions: [
+            { label: "Play with demo", href: "https://pulse-zeta-ruddy.vercel.app/demo", variant: "primary" },
+          ],
+          src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109029/Screenshot_2026-08-18_at_7.54.49_PM_n4sgo1.png",
+          onImageClick,
         }),
       },
       {
         id: "hey-cohen-outcome",
-        name: "What happened",
-        render: (isDark) => SlideTemplates.PortfolioSplit({
+        name: "Impact",
+        render: (isDark, _goToAmazon, _goToHeyCohen, onImageClick) => SlideTemplates.PortfolioSplit({
           isDark,
-          title: "What happened",
-          problem: "The first major use case was summer re-enrollment.",
-          body: "52 of 76 lapsed students returned after targeted instructor outreach. Re-enrollment reached 68 percent, compared with a historical 12 percent summer baseline.",
+          titleVariant: "supporting",
+          mediaLayout: "content-only-centered",
+          title: "Impact",
+          problem: "We first used Hey Cohen for summer re-enrollment.",
+          body: "52 of 76 students came back. Re-enrollment reached 68%, compared with a historical 12% baseline, while campaign preparation dropped from hours to minutes.",
           metrics: [
-            { value: "52 of 76", label: "Lapsed students returned" },
-            { value: "68%", label: "Re-enrollment" },
+            { value: "52 of 76", label: "Students came back" },
+            { value: "68%", label: "Re-enrollment vs. a historical 12%" },
+            { value: "6 hrs → 10 min", label: "Campaign preparation" },
             { value: "$8.3K–$10.4K", label: "Estimated monthly tuition retained" },
           ],
-          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109029/Screenshot_2026-08-18_at_7.58.32_PM_ktqsku.png",
+          onImageClick,
         }),
       },
       {
         id: "hey-cohen-next",
-        name: "Where this is heading",
-        render: (isDark) => SlideTemplates.PortfolioSplit({
+        title: "What's next",
+        render: (isDark, _goToAmazon, _goToHeyCohen, onImageClick) => SlideTemplates.PortfolioSplit({
           isDark,
-          title: "Where this is heading",
-          problem: "Hey Cohen is becoming the communication layer inside Odeon, a broader class management platform.",
-          body: "Next: email, WhatsApp, better onboarding, and deeper automation around scheduling, billing, and third-party payments.",
+          titleVariant: "supporting",
+          title: "What's next",
+          body: "Hey Cohen is becoming part of Odeon, a broader class management platform. This slide will become the Hey Cohen + Odeon infographic.",
           mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109298/Screenshot_2026-08-18_at_8.14.41_PM_eqe8is.png",
+          onImageClick,
         }),
       },
     ],
   },
 
-  patreon: {
-    title: "Patreon Case Study",
-    slides: [
 
-      // ── 1. Project Overview ──────────────────────────────────────────────
-      {
-        id: "patreon-overview",
-        name: "Project Overview",
-        render: (isDark) => SlideTemplates.Overview({
-          isDark,
-          company: "Patreon",
-          title: "Patreon Studio 2.0",
-          vision: "Establish a unified visual language and component library across the entire platform in an 8-week cross-functional sprint.",
-          problem: "Patreon's UI was disjointed across surfaces. No common design language meant every team was solving the same problems differently, creating compounding inconsistency.",
-          role: "Co-created Studio 2.0 — shaping the visual foundation, token structure, and component architecture that became Patreon's single source of truth.",
-          impactMetrics: [
-            { value: "8 weeks", label: "Delivery time" },
-            { value: "4 Tiers", label: "Component Library" },
-          ],
-          impactDesc: ["Studio 2.0 became the single source of truth for all design elements across Patreon, enabling teams to build efficiently and consistently from day one."],
-        }),
-      },
-
-      // ── 2. Exploration: Premium & Editorial ─────────────────────────────
-      {
-        id: "patreon-premium",
-        name: "Exploration: Premium & Editorial",
-        render: (isDark) => SlideTemplates.FullMedia({
-          isDark,
-          type: "image",
-          // EMBED: Your "Editorial" Cloudinary image — the premium/editorial
-          // direction exploration showing rich typography, large imagery,
-          // and high-contrast layouts.
-          src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772239871/Editorial_d4sflt.png",
-          caption: {
-            label: "Direction Exploration",
-            text: "Editorial direction — tested a premium, publication-inspired voice with large type, high-contrast surfaces, and creator-first imagery. Pushed the brand toward cultural legitimacy.",
-            link: "https://www.figma.com/design/cIMs03Alo3SmHsg0jwFVg9/Sprints-1-3?node-id=1-5&t=XJrvmUQ3jbX1TffN-1",
-            linkLabel: "See in Figma",
-          },
-        }),
-      },
-
-      // ── 3. Exploration: Streamlining & Shapes ───────────────────────────
-      {
-        id: "patreon-shapes",
-        name: "Exploration: Streamlining & Shapes",
-        render: (isDark) => SlideTemplates.FullMedia({
-          isDark,
-          type: "image",
-          // EMBED: Your "streamlining_and_shapes" Cloudinary image — geometric
-          // and structural direction exploration, testing shape systems and
-          // simplified UI components.
-          src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772239961/streamlining_and_shapes_f9hr3z.png",
-          caption: {
-            label: "Direction Exploration",
-            text: "Streamlining direction — tested a more structural, geometry-driven language. Simplified components, purposeful shape usage, and tighter information density.",
-            link: "https://www.figma.com/design/WUqILSYhwsT0UPHUcAfsY0/Patreon-%E2%80%A2-Sprint-1-2?node-id=61-1786&t=kJ3hKXclKPpShKbd-1",
-            linkLabel: "See in Figma",
-          },
-        }),
-      },
-
-      // ── 4. Exploration: Art Mosaics ──────────────────────────────────────
-      {
-        id: "patreon-mosaics",
-        name: "Exploration: Art Mosaics",
-        render: (isDark) => SlideTemplates.FullMedia({
-          isDark,
-          type: "image",
-          // EMBED: Your "Mosaics" Cloudinary image — the art mosaic direction
-          // showing creator artwork arranged in collage-style compositions
-          // as a design language element.
-          src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772240138/Mosaics_evaesa.png",
-          caption: {
-            label: "Direction Exploration",
-            text: "Mosaic direction — used creator artwork itself as the design material. Collage compositions that put community at the center of the visual language, not product chrome.",
-            link: "https://www.figma.com/design/tuMGvaJv3os80Ei5qVMxNw/Patreon-%E2%80%A2-Sprint-3?node-id=7-23&t=2wKH63v5kryNA8vo-1",
-            linkLabel: "See in Figma",
-          },
-        }),
-      },
-
-      // ── 5. Exploration: Simpler UIs ──────────────────────────────────────
-      {
-        id: "patreon-simpler",
-        name: "Exploration: Simpler UIs",
-        render: (isDark) => SlideTemplates.FullMedia({
-          isDark,
-          type: "image",
-          // EMBED: Your "Simpler" Cloudinary image — the minimal, reduced
-          // UI direction showing stripped-back interfaces that prioritize
-          // content over decoration.
-          src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772240136/Simpler_lchukg.png",
-          caption: {
-            label: "Direction Exploration",
-            text: "Simplified UI direction — stripped decoration to test the core information architecture. Revealed which components actually needed visual weight and which were just habit.",
-            link: "https://www.figma.com/design/9nkZ73oKDOMMoO3LWRx6SO/Patreon-MetaCollective?node-id=7-2&t=1EEgEaPGF1ipj2MD-1",
-            linkLabel: "See in Figma",
-          },
-        }),
-      },
-
-      // ── 6. Studio 2.0 Component Library ─────────────────────────────────
-      {
-        id: "patreon-studio",
-        name: "Studio 2.0 Component Library",
-        render: (isDark) => SlideTemplates.FullMedia({
-          isDark,
-          type: "image",
-          // EMBED: Your Studio 2.0 component library Cloudinary image — a
-          // wide Figma export showing the full component library: tokens,
-          // atoms, molecules, organisms across the 4-tier structure.
-          src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772245483/3491f0c6-f019-41e1-9205-e383213af11b.png",
-          caption: {
-            label: "Shipped System",
-            text: "Studio 2.0 component library — 4-tier structure covering tokens, atoms, molecules, and organisms. Built in 8 weeks, adopted across product, engineering, and marketing from launch.",
-            link: "https://www.figma.com/design/kyNnCjYk2XaG21kp5ITQhI/Component-Library-Sample?node-id=0-1&p=f&t=QaHINMfNHeVKXvi9-0",
-            linkLabel: "See in Figma",
-          },
-        }),
-      },
-    ],
-  },
 };
 
 // ─── Main Component ───────────────────────────────────────────────────────────
@@ -1350,8 +1199,9 @@ export default function Presentation() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [theme, setTheme] = useState("dark");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [lightbox, setLightbox] = useState({ open: false, src: "", alt: "" });
 
-  const presentationKey = id && PRESENTATIONS[id] ? id : "portfolio-presentation";
+  const presentationKey = id && PRESENTATIONS[id] ? id : "amazon";
   const presentationData = PRESENTATIONS[presentationKey];
   const slides = presentationData.slides;
   const isDark = theme === "dark";
@@ -1363,6 +1213,8 @@ export default function Presentation() {
   const handlePrev = () => { if (activeSlideIndex > 0) setCurrentSlide(activeSlideIndex - 1); };
   const handleClose = () => navigate("/");
   const toggleTheme = () => setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+  const openLightbox = (src, alt = "Presentation image") => setLightbox({ open: true, src, alt });
+  const closeLightbox = () => setLightbox({ open: false, src: "", alt: "" });
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -1371,16 +1223,17 @@ export default function Presentation() {
       else if (e.key === "ArrowLeft") { e.preventDefault(); handlePrev(); }
       else if (e.key === "Escape") {
         e.preventDefault();
-        if (isMenuOpen) setIsMenuOpen(false);
+        if (lightbox.open) closeLightbox();
+        else if (isMenuOpen) setIsMenuOpen(false);
         else handleClose();
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [currentSlide, isMenuOpen, slides.length]);
+  }, [currentSlide, isMenuOpen, slides.length, lightbox.open]);
 
   return (
-    <div className={`h-screen w-screen flex flex-col text-left relative overflow-hidden font-sans transition-colors duration-500 ${
+    <div className={`h-screen w-screen flex flex-col text-left relative overflow-x-hidden overflow-y-auto lg:overflow-hidden font-sans transition-colors duration-500 ${
       isDark ? "bg-[#2d255c] selection:bg-[#88FF00] selection:text-black" : "bg-[#E6E7E8] selection:bg-blue-200 selection:text-black"
     }`}>
 
@@ -1496,13 +1349,38 @@ export default function Presentation() {
         </div>
       )}
 
+      {lightbox.open && (
+        <div
+          className="absolute inset-0 z-[80] bg-black/90 backdrop-blur-sm flex items-center justify-center p-6 md:p-10"
+          onClick={closeLightbox}
+        >
+          <button
+            type="button"
+            onClick={closeLightbox}
+            className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 border border-white/20 text-white flex items-center justify-center"
+            aria-label="Close image preview"
+          >
+            <X size={18} />
+          </button>
+
+          <div className="w-full h-full max-w-[95vw] max-h-[90vh] flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={lightbox.src}
+              alt={lightbox.alt}
+              className="max-w-full max-h-full w-auto h-auto object-contain"
+            />
+          </div>
+        </div>
+      )}
+
       {/* Slide Content */}
-      <main className="flex-grow w-full h-full relative overflow-hidden flex items-center z-10">
-        <div key={`${presentationKey}-${activeSlideIndex}`} className="w-full h-full animate-fade-in flex items-center pt-20 pb-24 lg:py-16">
+      <main className="flex-grow w-full h-full relative overflow-visible lg:overflow-hidden flex items-start lg:items-center z-10 pt-20 pb-28 lg:py-0">
+        <div key={`${presentationKey}-${activeSlideIndex}`} className="w-full min-h-full animate-fade-in flex items-start lg:items-center lg:h-full lg:pt-20 lg:pb-24 lg:py-16">
           {slides[activeSlideIndex].render(
             isDark,
             () => setCurrentSlide(1),
-            () => navigate("/presentation/hey-cohen-presentation")
+            () => navigate("/presentation/heycohen"),
+            openLightbox
           )}
         </div>
       </main>
