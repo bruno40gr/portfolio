@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight, X, Sun, Moon, Layers, ExternalLink, ArrowRig
 import ImpactBox from "../ui/ImpactBox";
 import LogoIcon from "../ui/logoIcon";
 import Button from "../ui/button";
-import { COMPANY_STRIPE_LOGOSSQUARED } from "../../data/assets";
+import { COMPANY_STRIPE_LOGOS, COMPANY_STRIPE_LOGOSSQUARED } from "../../data/assets";
 
 const getLogo = (name) => {
   const match = COMPANY_STRIPE_LOGOSSQUARED.find(
@@ -19,7 +19,7 @@ const getLogo = (name) => {
 const SlideTemplates = {
 
   // Intro: minimal personal opener with compact anchor cards
-  Intro: ({ eyebrow, title, body, anchors = [], isDark }) => (
+  Intro: ({ eyebrow, title, body, anchors = [], actions = [], isDark }) => (
     <div className="flex flex-col justify-center h-full max-w-4xl mx-auto px-6 w-full relative z-10">
       {eyebrow && (
         <div className="mb-5 inline-block">
@@ -61,6 +61,83 @@ const SlideTemplates = {
           ))}
         </div>
       )}
+
+      {actions.length > 0 && (
+        <div className="mt-8 flex flex-wrap gap-3">
+          {actions.map((action, i) => (
+            action.href ? (
+              <Button
+                key={i}
+                href={action.href}
+                variant={action.variant || "outline"}
+                size="sm"
+                className={action.className || "rounded-full"}
+              >
+                {action.label}
+              </Button>
+            ) : (
+              <Button
+                key={i}
+                onClick={action.onClick}
+                variant={action.variant || "outline"}
+                size="sm"
+                className={action.className || "rounded-full"}
+                disabled={action.disabled}
+              >
+                {action.label}
+              </Button>
+            )
+          ))}
+        </div>
+      )}
+    </div>
+  ),
+
+  PortfolioHeroIntro: ({ onAmazonClick, isDark }) => (
+    <div className="flex flex-col justify-center items-center h-full w-full text-center px-6 relative z-10">
+      <div className="max-w-4xl w-full hero-stack relative z-10">
+        <img
+          src="https://res.cloudinary.com/diy08lj9x/image/upload/v1772648447/bruno-logo-whitewong_q7cxxn.png"
+          alt="Bruno Wong Marchena"
+          className="hero-logo glitch-effect mx-auto w-full max-w-[240px] md:w-[25vw] md:max-w-[430px]"
+        />
+
+        <div className="max-w-3xl mx-auto mt-6 md:mt-[clamp(1.5rem,2.5vh,2.5rem)]">
+          <h1 className={`font-light leading-snug text-[1.6rem] md:text-[clamp(1.15rem,2vw,1.75rem)] mb-4 md:mb-[clamp(0.75rem,1.5vh,1.5rem)] ${
+            isDark ? "text-slate-300" : "text-slate-800"
+          }`}>
+            Usually the only designer in the room. Lead design on engineering-heavy SaaS and B2B products.
+          </h1>
+          <p className={`font-light leading-relaxed max-w-xl mx-auto text-[1.4rem] md:text-[clamp(0.9rem,1.3vw,1.2rem)] ${
+            isDark ? "text-slate-400" : "text-slate-600"
+          }`}>
+            I&apos;ve automated global team workflows at Amazon, made medicine delivery more affordable for patients in healthcare logistics, and helped creators monetize their expertise.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 md:flex md:flex-wrap place-items-center md:justify-center md:items-center gap-x-8 gap-y-10 md:gap-[clamp(1.5rem,3vw,4rem)] mt-5 md:mt-[clamp(1.5rem,3vh,3rem)] mb-12 md:mb-[clamp(1.2rem,3vh,2.5rem)] z-10 relative w-fit md:w-full max-w-4xl mx-auto px-4 md:px-0">
+          {COMPANY_STRIPE_LOGOS.map((logo, index) => (
+            <div key={index} className="flex items-center justify-center opacity-80 cursor-default">
+              <img
+                src={logo.src}
+                alt={logo.name}
+                className={`object-contain h-10 sm:h-12 md:h-[clamp(2rem,2.8vw,3.85rem)] ${
+                  isDark ? "brightness-0 invert" : ""
+                }`}
+              />
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-2 flex flex-wrap items-center justify-center gap-3 md:gap-4">
+          <Button onClick={onAmazonClick} variant="primary" size="md" className="rounded-full">
+            View Amazon Devices project
+          </Button>
+          <Button disabled variant="outline" size="md" className="rounded-full opacity-60">
+            View Hey, Cohen project
+          </Button>
+        </div>
+      </div>
     </div>
   ),
 
@@ -237,6 +314,39 @@ const SlideTemplates = {
             </div>
           )}
         </div>
+      </div>
+    </div>
+  ),
+
+  PortfolioComparison: ({ title, items, isDark }) => (
+    <div className="flex flex-col justify-center h-full w-full max-w-[1800px] mx-auto px-6 md:px-10 lg:px-12 relative z-10">
+      <h2 className={`text-3xl md:text-5xl xl:text-6xl font-bold tracking-tight mb-8 md:mb-10 ${
+        isDark ? "text-white" : "text-slate-900"
+      }`}>{title}</h2>
+
+      <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
+        {items.map((item, index) => (
+          <div
+            key={index}
+            className={`rounded-xl overflow-hidden border ${
+              isDark ? "bg-slate-900/50 border-white/10" : "bg-white border-slate-200"
+            }`}
+          >
+            <div className="aspect-[16/10] bg-slate-900/40 overflow-hidden">
+              <img src={item.src} alt={item.label} className="w-full h-full object-cover" />
+            </div>
+            <div className="p-5 md:p-6">
+              <div className={`text-[10px] font-bold uppercase tracking-widest mb-2 ${
+                isDark ? "text-[#88FF00]" : "text-slate-500"
+              }`}>{item.label}</div>
+              <p className={`text-lg font-light leading-relaxed ${
+                isDark ? "text-slate-300" : "text-slate-600"
+              }`}>
+                {item.text}
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   ),
@@ -841,16 +951,10 @@ const PRESENTATIONS = {
       {
         id: "portfolio-intro",
         name: "Bruno",
-        render: (isDark) => SlideTemplates.Intro({
+        render: (isDark, goToAmazon = () => {}, goToHeyCohen = () => {}) => SlideTemplates.PortfolioHeroIntro({
           isDark,
-          eyebrow: "Bruno Wong",
-          title: "I like complicated systems.",
-          body: "I’ve mostly worked on products with a lot of rules, edge cases, and manual work behind them. At Amazon that meant creative tools used across global marketing teams. More recently I’ve been working much closer to code and AI.",
-          anchors: [
-            { label: "Amazon", text: "I worked across creative production, asset management, metadata, and generative AI for Amazon Devices." },
-            { label: "How I work", text: "I usually end up going pretty deep into how the product actually works, including the data, rules, and decisions behind the interface." },
-            { label: "More recently", text: "I’ve been building functional products myself using React, Supabase, AI tools, and Figma where it is useful." },
-          ],
+          onAmazonClick: goToAmazon,
+          onHeyCohenClick: goToHeyCohen,
         }),
       },
       // Speaker hook: The Amazon work is probably the easiest way to show how I think, so I’ll start with where we ended up.
@@ -859,8 +963,8 @@ const PRESENTATIONS = {
         name: "The End Result",
         render: (isDark) => SlideTemplates.PortfolioHero({
           isDark,
-          label: "Amazon.com",
-          body: "This is a real campaign running on Amazon.com. The creative came through a set of tools my team had been building to handle a huge amount of campaign production.",
+          label: "AMAZON DEVICES ASSET SYSTEM · Lead Designer · 16+ Engineers, 2 Product Managers",
+          body: "The device is placed inside a realistic scene generated by the model, bringing the impact of lifestyle imagery to a much larger volume of creative. This is a real campaign running on Amazon.com. The creative came through a set of tools my team had been building to handle a huge amount of campaign production.",
           metric: "~8,000",
           metricLabel: "Images generated for Prime Day 2025",
           // TODO: Replace with the strongest real Amazon.com campaign screenshot when available.
@@ -945,14 +1049,34 @@ const PRESENTATIONS = {
           isDark,
           title: "AI Lifestyle Compositor",
           problem: "How do we trust AI to produce campaign-ready creative without requiring a Creative Director to inspect every single output?",
-          body: "I designed how Creative Directors reviewed the generated images and gave feedback. They could tell us why something passed or failed, and we captured that feedback so the model could improve over time.",
+          body: "I designed how Creative Directors reviewed generated images and gave feedback. They had to explain why something failed, and I designed a survey to capture those decisions so the model could improve over time.",
           metrics: [
             { value: "12,000", label: "Variations per batch" },
             { value: "3,000", label: "Director-approved assets shipped" },
-            { value: "10 hrs → 1.25 hrs", label: "Creative Director review time" },
+            { value: "30 days → 10 hrs → 1.25 hrs", label: "Creative Director review time" },
           ],
           mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772665456/a7ec2337-4f73-4b0c-932f-b66e6b73190d.png",
           mediaLink: "https://www.figma.com/proto/u5gNazpXiOCPbn8tiH5ACU/JASAI?page-id=1438%3A5102&node-id=40000015-16958&viewport=324%2C-1055%2C0.14&t=LvK2dm3PYrsudLBc-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=40000015%3A16958",
+        }),
+      },
+      {
+        id: "portfolio-ai-compositor-comparison",
+        name: "Before and After",
+        render: (isDark) => SlideTemplates.PortfolioComparison({
+          isDark,
+          title: "Before and after",
+          items: [
+            {
+              label: "Standard Pipeline",
+              src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772662326/firetv-gradient_dfwvl0.png",
+              text: "Device on a gradient. The previous scalable solution, but missing the 40% higher CTR typically seen with lifestyle imagery.",
+            },
+            {
+              label: "AI Compositor Pipeline",
+              src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1772662326/firetv-lifestyle_dlyenh.png",
+              text: "Device placed inside a realistic scene. A more sophisticated AI-generated image brings the impact of a lifestyle shot automatically at scale.",
+            },
+          ],
         }),
       },
       {
@@ -960,9 +1084,9 @@ const PRESENTATIONS = {
         name: "Where This Was Heading",
         render: (isDark) => SlideTemplates.PortfolioSplit({
           isDark,
-          title: "Where this was heading",
-          problem: "Product data, assets, metadata, generation, and Creative Director feedback coming together in one workflow.",
-          body: "This concept shows how the pieces could work together. The system could use the assets and metadata we already had, generate the creative, and use Creative Director feedback to improve future output.",
+          title: "Northstar Vision",
+          problem: "The complete Asset System automated content generation and facilitated campaign placement.",
+          body: "This concept brought those pieces together into one workflow. Teams could define the project, business goals, and deadlines, then use prompting to generate campaign assets, target the right audiences, and place the creative into live campaigns.",
           actions: [
             { label: "View Figma File", href: "https://www.figma.com/design/WxJPjefTZtuwf8TF2yWDYM/MArketing-Automation-Plan?node-id=131-11829&t=e4cTm7U3TNsMrZRM-1", variant: "secondary" },
           ],
@@ -971,6 +1095,123 @@ const PRESENTATIONS = {
         }),
       },
       // Speaker close: By this point I had worked on the editor, the asset library, metadata, and the review process around generated imagery. The work kept pulling me deeper into how the product actually behaved behind the interface.
+    ],
+  },
+
+  "hey-cohen-presentation": {
+    title: "Hey Cohen Presentation",
+    slides: [
+      {
+        id: "hey-cohen-overview",
+        name: "Hey Cohen",
+        render: (isDark) => SlideTemplates.PortfolioHero({
+          isDark,
+          label: "Hey Cohen",
+          body: "I built Hey Cohen to help a local music academy figure out who to reach out to, why, and what to say. It pulls together enrollment, attendance, billing, and instructor notes, then uses AI to surface retention risks, growth opportunities, and useful follow-ups.",
+          metric: "68%",
+          metricLabel: "Summer re-enrollment after instructor-led outreach",
+          src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787116212/3998a50a-9895-49a2-8eed-81cb05e374d1.png",
+        }),
+      },
+      {
+        id: "hey-cohen-problem",
+        name: "The problem",
+        render: (isDark) => SlideTemplates.PortfolioSplit({
+          isDark,
+          title: "The problem",
+          problem: "The academy already had the data it needed, but it lived across class software, spreadsheets, email, and phone calls.",
+          body: "Targeted outreach meant manually finding the right students, building lists, and contacting families one by one.",
+          metrics: [
+            { value: "6 hrs → 10 min", label: "Time to build and send campaigns" },
+          ],
+          actions: [
+            { label: "Play with Demo", href: "https://pulse-zeta-ruddy.vercel.app/demo", variant: "primary" },
+          ],
+          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109031/Screenshot_2026-08-18_at_7.54.10_PM_kzendm.png",
+        }),
+      },
+      {
+        id: "hey-cohen-data",
+        name: "I started with the data",
+        render: (isDark) => SlideTemplates.PortfolioSplit({
+          isDark,
+          title: "I started with the data",
+          problem: "Most class management tools don't expose useful APIs.",
+          body: "I built spreadsheet import and reconciliation flows so Hey Cohen could work with real enrollment, attendance, billing, and instructor data.",
+          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787111924/Screenshot_2026-08-11_at_8.53.36_AM_phvx3u.png",
+        }),
+      },
+      {
+        id: "hey-cohen-daily-insights",
+        name: "Daily insights",
+        render: (isDark) => SlideTemplates.PortfolioSplit({
+          isDark,
+          title: "Daily insights",
+          problem: "Hey Cohen surfaces people worth paying attention to, like missed lessons, milestones, lapsed students, and potential program fits.",
+          body: "Instead of searching through the data, staff get a short list of useful follow-ups.",
+          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109030/Screenshot_2026-08-18_at_7.49.08_PM_nlupj0.png",
+        }),
+      },
+      {
+        id: "hey-cohen-targeting",
+        name: "Natural language targeting",
+        render: (isDark) => SlideTemplates.PortfolioSplit({
+          isDark,
+          title: "Natural language targeting",
+          problem: "Staff can build audiences with filters or plain language.",
+          body: '"Students 10 to 14 who play guitar and aren\'t already in a band." Hey Cohen turns that into a recipient list.',
+          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109031/Screenshot_2026-08-18_at_7.54.10_PM_kzendm.png",
+        }),
+      },
+      {
+        id: "hey-cohen-hitl",
+        name: "Human-in-the-loop messaging",
+        render: (isDark) => SlideTemplates.PortfolioSplit({
+          isDark,
+          title: "Human-in-the-loop messaging",
+          problem: "The person still writes and sends the message.",
+          body: "AI helps with context, tone, and wording, but the relationship stays with the staff member who knows the family.",
+          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109029/Screenshot_2026-08-18_at_7.54.49_PM_n4sgo1.png",
+        }),
+      },
+      {
+        id: "hey-cohen-from-prototype",
+        name: "From prototype to product",
+        render: (isDark) => SlideTemplates.PortfolioSplit({
+          isDark,
+          title: "From prototype to product",
+          problem: "I started on paper, moved into React and Supabase, and used real academy data to work through the product and data model.",
+          body: "Once the core workflows held up, I moved back into Figma to refine the interface and design system.",
+          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787113304/814f84d8-3692-4cb9-9a91-4a5e8a1533e9.png",
+        }),
+      },
+      {
+        id: "hey-cohen-outcome",
+        name: "What happened",
+        render: (isDark) => SlideTemplates.PortfolioSplit({
+          isDark,
+          title: "What happened",
+          problem: "The first major use case was summer re-enrollment.",
+          body: "52 of 76 lapsed students returned after targeted instructor outreach. Re-enrollment reached 68 percent, compared with a historical 12 percent summer baseline.",
+          metrics: [
+            { value: "52 of 76", label: "Lapsed students returned" },
+            { value: "68%", label: "Re-enrollment" },
+            { value: "$8.3K–$10.4K", label: "Estimated monthly tuition retained" },
+          ],
+          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109029/Screenshot_2026-08-18_at_7.58.32_PM_ktqsku.png",
+        }),
+      },
+      {
+        id: "hey-cohen-next",
+        name: "Where this is heading",
+        render: (isDark) => SlideTemplates.PortfolioSplit({
+          isDark,
+          title: "Where this is heading",
+          problem: "Hey Cohen is becoming the communication layer inside Odeon, a broader class management platform.",
+          body: "Next: email, WhatsApp, better onboarding, and deeper automation around scheduling, billing, and third-party payments.",
+          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109298/Screenshot_2026-08-18_at_8.14.41_PM_eqe8is.png",
+        }),
+      },
     ],
   },
 
@@ -1110,7 +1351,7 @@ export default function Presentation() {
   const [theme, setTheme] = useState("dark");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const presentationKey = id && PRESENTATIONS[id] ? id : "amazon";
+  const presentationKey = id && PRESENTATIONS[id] ? id : "portfolio-presentation";
   const presentationData = PRESENTATIONS[presentationKey];
   const slides = presentationData.slides;
   const isDark = theme === "dark";
@@ -1258,7 +1499,11 @@ export default function Presentation() {
       {/* Slide Content */}
       <main className="flex-grow w-full h-full relative overflow-hidden flex items-center z-10">
         <div key={`${presentationKey}-${activeSlideIndex}`} className="w-full h-full animate-fade-in flex items-center pt-20 pb-24 lg:py-16">
-          {slides[activeSlideIndex].render(isDark)}
+          {slides[activeSlideIndex].render(
+            isDark,
+            () => setCurrentSlide(1),
+            () => navigate("/presentation/hey-cohen-presentation")
+          )}
         </div>
       </main>
 
