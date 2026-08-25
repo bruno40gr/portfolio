@@ -110,6 +110,12 @@ export const PORTFOLIO_DATA = {
               }
             ]
           },
+          {
+            type: "text",
+            content: [
+              "I treated SMS as the MVP wedge. I started with the channel most likely to change behavior quickly: text messaging. That gave Hey Cohen immediate feedback loops. Parents and students would reply with things like, \"Hey, yeah, great timing sending this.\" With email, that learning loop would have been slower, bumpier, and easier to miss."
+            ]
+          },
 
           { type: "heading", title: "Process" },
           {
@@ -241,7 +247,17 @@ export const PORTFOLIO_DATA = {
   items: [
     {
       content: `<span class="process-step-title"><b>Develop Odeon</b></span><p class="mt-2">Expand Hey Cohen into a broader class management platform covering scheduling, billing, payments, student tracking, and curriculum, with the long-term goal of replacing Opus1.</p>`,
-      visuals: []
+      visuals: [
+        {
+          kind: "image",
+          layout: "side-lightbox",
+          src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787698223/cf0d0ab4-a60d-4ab6-975a-1d5a18742ce9.png",
+          caption: {
+            short: "Hey Cohen is evolving into Odeon, a broader class management platform that expands beyond communication into the operational core of the business.",
+            verbose: ""
+          }
+        }
+      ]
     },
     {
       content: `<span class="process-step-title"><b>Develop CharterPulse, part of Odeon</b></span><p class="mt-2">Build a module to manage charter schools, subsidized enrichment programs, and other third-party payers with complex payment workflows. CharterPulse will reduce administrative burden and help academies serve more families, including those seeking specialized education for children with special needs.</p>`,

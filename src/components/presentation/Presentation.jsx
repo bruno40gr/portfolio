@@ -1061,8 +1061,8 @@ const PRESENTATIONS = {
           actions: [
             { label: "View Figma File", href: "https://www.figma.com/design/WxJPjefTZtuwf8TF2yWDYM/MArketing-Automation-Plan?node-id=131-11829&t=e4cTm7U3TNsMrZRM-1", variant: "secondary" },
           ],
-          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1773289976/layers-nometadata_nloelx.png",
-          mediaLink: "https://www.figma.com/design/WxJPjefTZtuwf8TF2yWDYM/MArketing-Automation-Plan?node-id=131-11829&t=e4cTm7U3TNsMrZRM-1",
+          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787609704/Screenshot_2026-08-24_at_3.13.11_PM_m21oii.png",
+          mediaLink: "https://www.figma.com/design/WxJPjefTZtuwf8TF2yWDYM/MArketing-Automation-Plan?node-id=131-11392&t=e4cTm7U3TNsMrZRM-1",
         }),
       },
       // Speaker close: By this point I had worked on the editor, the asset library, metadata, and the review process around generated imagery. The work kept pulling me deeper into how the product actually behaved behind the interface.
@@ -1125,9 +1125,9 @@ const PRESENTATIONS = {
         render: (isDark, _goToAmazon, _goToHeyCohen, onImageClick) => SlideTemplates.PortfolioSplit({
           isDark,
           titleVariant: "supporting",
-          title: "I built Hey Cohen around SMS first",
-          body: "Texting was faster and more immediate. Email was easy to miss, calls often went to voicemail, and a lot of outreach still happened one family at a time.",
-          
+          title: "SMS was the obvious place to start",
+          problem: "Email was easy to miss, calls often went to voicemail, and a lot of outreach still happened one family at a time.",
+          body: "Texting was faster and more immediate. So I built Hey Cohen around SMS first, with the data we already had helping staff figure out who to reach and what was worth saying.",
           mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109029/Screenshot_2026-08-18_at_7.54.49_PM_n4sgo1.png",
           onImageClick,
         }),
@@ -1194,7 +1194,7 @@ const PRESENTATIONS = {
           titleVariant: "supporting",
           title: "What's next",
           body: "Hey Cohen is becoming part of Odeon, a broader class management platform. This slide will become the Hey Cohen + Odeon infographic.",
-          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109298/Screenshot_2026-08-18_at_8.14.41_PM_eqe8is.png",
+          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787698223/cf0d0ab4-a60d-4ab6-975a-1d5a18742ce9.png",
           onImageClick,
         }),
       },
@@ -1215,20 +1215,27 @@ export default function Presentation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [lightbox, setLightbox] = useState({ open: false, src: "", alt: "" });
 
-  const presentationKey = id && PRESENTATIONS[id] ? id : "amazon";
-  const presentationData = PRESENTATIONS[presentationKey];
-  const slides = presentationData.slides;
+  const hasPresentationId = Boolean(id && PRESENTATIONS[id]);
+  const presentationKey = hasPresentationId ? id : null;
+  const presentationData = presentationKey ? PRESENTATIONS[presentationKey] : null;
+  const slides = presentationData?.slides || [];
+  const isChooserView = !presentationKey;
   const isDark = theme === "dark";
   const activeSlideIndex = currentSlide >= slides.length ? 0 : currentSlide;
 
   useEffect(() => { setCurrentSlide(0); }, [presentationKey]);
 
-  const handleNext = () => { if (activeSlideIndex < slides.length - 1) setCurrentSlide(activeSlideIndex + 1); };
-  const handlePrev = () => { if (activeSlideIndex > 0) setCurrentSlide(activeSlideIndex - 1); };
+  const handleNext = () => { if (!isChooserView && activeSlideIndex < slides.length - 1) setCurrentSlide(activeSlideIndex + 1); };
+  const handlePrev = () => { if (!isChooserView && activeSlideIndex > 0) setCurrentSlide(activeSlideIndex - 1); };
   const handleHome = () => {
-    setCurrentSlide(0);
     setIsMenuOpen(false);
     if (lightbox.open) closeLightbox();
+    if (isChooserView) {
+      setCurrentSlide(0);
+      return;
+    }
+    setCurrentSlide(0);
+    navigate("/presentation");
   };
   const toggleTheme = () => setTheme((prev) => (prev === "dark" ? "light" : "dark"));
   const openLightbox = (src, alt = "Presentation image") => setLightbox({ open: true, src, alt });
@@ -1237,8 +1244,8 @@ export default function Presentation() {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key.toLowerCase() === "m") { setIsMenuOpen((prev) => !prev); return; }
-      if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); handleNext(); }
-      else if (e.key === "ArrowLeft") { e.preventDefault(); handlePrev(); }
+      if (!isChooserView && (e.key === "ArrowRight" || e.key === " ")) { e.preventDefault(); handleNext(); }
+      else if (!isChooserView && e.key === "ArrowLeft") { e.preventDefault(); handlePrev(); }
       else if (e.key === "Escape") {
         e.preventDefault();
         if (lightbox.open) closeLightbox();
@@ -1248,7 +1255,7 @@ export default function Presentation() {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [currentSlide, isMenuOpen, slides.length, lightbox.open]);
+  }, [currentSlide, isMenuOpen, slides.length, lightbox.open, isChooserView]);
 
   return (
     <div className={`h-screen w-screen flex flex-col text-left relative overflow-x-hidden overflow-y-auto lg:overflow-hidden font-sans transition-colors duration-500 ${
@@ -1314,7 +1321,7 @@ export default function Presentation() {
       </header>
 
       {/* Presenter Menu */}
-      {isMenuOpen && (
+      {isMenuOpen && !isChooserView && (
         <div className="absolute top-20 right-6 z-[60] animate-fade-in w-64 max-h-[80vh] overflow-y-auto custom-scrollbar">
           <div className={`p-3 rounded-xl shadow-card-strong backdrop-blur-md border flex flex-col gap-4 ${
             isDark ? "bg-slate-900/95 border-slate-700/50" : "bg-white/95 border-slate-200"
@@ -1393,17 +1400,24 @@ export default function Presentation() {
 
       {/* Slide Content */}
       <main className="flex-grow w-full h-full relative overflow-visible lg:overflow-hidden flex items-start lg:items-center z-10 pt-20 pb-28 lg:py-0">
-        <div key={`${presentationKey}-${activeSlideIndex}`} className="w-full min-h-full animate-fade-in flex items-start lg:items-center lg:h-full lg:pt-20 lg:pb-24 lg:py-16">
-          {slides[activeSlideIndex].render(
-            isDark,
-            () => setCurrentSlide(1),
-            () => navigate("/presentation/heycohen"),
-            openLightbox
-          )}
+        <div key={isChooserView ? "presentation-chooser" : `${presentationKey}-${activeSlideIndex}`} className="w-full min-h-full animate-fade-in flex items-start lg:items-center lg:h-full lg:pt-20 lg:pb-24 lg:py-16">
+          {isChooserView
+            ? SlideTemplates.PortfolioHeroIntro({
+                isDark,
+                onAmazonClick: () => navigate("/presentation/amazon"),
+                onHeyCohenClick: () => navigate("/presentation/heycohen"),
+              })
+            : slides[activeSlideIndex].render(
+                isDark,
+                () => setCurrentSlide(1),
+                () => navigate("/presentation/heycohen"),
+                openLightbox
+              )}
         </div>
       </main>
 
       {/* Footer / Controls */}
+      {!isChooserView && (
       <footer className="absolute bottom-0 left-0 w-full p-4 sm:p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4 z-50 pointer-events-auto">
         <div className="flex items-center gap-2 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0">
           {slides.map((_, idx) => (
@@ -1440,6 +1454,7 @@ export default function Presentation() {
           </Button>
         </div>
       </footer>
+      )}
     </div>
   );
 }
