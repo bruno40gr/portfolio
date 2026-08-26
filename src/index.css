@@ -20,12 +20,18 @@
   .subheadings {
     @apply text-3xl text-neutral-900 font-semibold leading-snug font-sans;
   }
-  .process-list-item b {
-    @apply text-2xl font-semibold;
+  .process-list-item p b,
+  .process-list-item p strong {
+    @apply font-semibold;
   }
   .process-step-title {
   @apply text-lg font-semibold text-neutral-900 block text-neutral-900; margin-bottom: 0.05rem;
 }
+  .process-step-title b,
+  .process-step-title strong {
+    @apply text-inherit;
+    font-weight: inherit;
+  }
 }
 
 @layer base {

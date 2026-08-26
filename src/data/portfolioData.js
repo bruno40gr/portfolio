@@ -40,15 +40,15 @@ export const PORTFOLIO_DATA = {
   },
   projects: [
 
-    // HEY COHEN (Layered Labs)
+    // HEY, COHEN (Layered Labs)
     {
       id: "hey-cohen",
       year: 2026,
       company: "Layered Labs",
-      title: "Hey Cohen",
-      impactSummary: "SMS and communications platform for relationship-driven businesses. Built Hey Cohen from zero to launch for Headliner, a 250-student Rocklin music academy, reading enrollment, billing, attendance, and session notes to surface who's worth reaching out to and why, then turning that into AI-drafted, staff-approved outreach. Own the product end to end: strategy, UX, the AI layer, engineering, support, and delivery.",
+      title: "Hey, Cohen",
+      impactSummary: "SMS and communications platform for relationship-driven businesses. Built Hey, Cohen from zero to launch for Headliner, a 250-student Rocklin music academy, reading enrollment, billing, attendance, and session notes to surface who's worth reaching out to and why, then turning that into AI-drafted, staff-approved outreach. Own the product end to end: strategy, UX, the AI layer, engineering, support, and delivery.",
       impactSummarySentence: "An SMS and communications platform for relationship-driven businesses, reading business context already sitting in spreadsheets and class software to surface who's worth reaching out to and why. Designed, built, and shipped solo, from paper sketch to a real school's re-enrollment numbers.",
-      designerNote: "Hey Cohen is the first product I've taken fully from zero to launch. After years working on complex product teams at Amazon, I took a step back and focused on building something of my own. I designed it, built the systems underneath it, worked through the business model, built the AI layer, and shipped it into a real business. I learned a lot along the way, and it made me a product builder.\n\nIt's also the clearest demonstration of how my design practice has evolved. I still care deeply about understanding the problem, shaping the product, and getting the details right. But I'm now designing and building in a much more integrated way, using AI throughout the process and creating intelligent features that feel natural to the people using them.",
+      designerNote: "Hey, Cohen is the first product I've taken fully from zero to launch. After years working on complex product teams at Amazon, I took a step back and focused on building something of my own. I designed it, built the systems underneath it, worked through the business model, built the AI layer, and shipped it into a real business. I learned a lot along the way, and it made me a product builder.\n\nIt's also the clearest demonstration of how my design practice has evolved. I still care deeply about understanding the problem, shaping the product, and getting the details right. But I'm now designing and building in a much more integrated way, using AI throughout the process and creating intelligent features that feel natural to the people using them.",
       thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787116212/3998a50a-9895-49a2-8eed-81cb05e374d1.png",
       status: "LAUNCHED",
       type: "CONSUMER",
@@ -56,7 +56,7 @@ export const PORTFOLIO_DATA = {
         {
           type: "impact-box",
           metrics: [
-            { value: "68%", label: "Of lapsed summer students re-enrolled after instructor-led outreach through Hey Cohen" },
+            { value: "68%", label: "Of lapsed summer students re-enrolled after instructor-led outreach through Hey, Cohen" },
             { value: "6 hrs → 10 min", label: "Time to send the first three campaigns" }
           ]
         }
@@ -82,18 +82,28 @@ export const PORTFOLIO_DATA = {
           {
             type: "text",
             content: [
-              "Headliner is a local music academy in Rocklin with around 250 students. The business runs on constant communication with parents and students, from schedule changes and recital reminders to closures and program updates.",
-              "Cohen, Headliner's director, is the face of the school. Parents know him by name. They sit in the lobby while their kids take lessons and end up in thirty-minute conversations with him. That's the relationship the business runs on, personal, specific, and built over time.",
-              "Hey Cohen brings together the business context already sitting across the music management software and spreadsheets, including enrollment, billing cadence, attendance, and session notes. It uses AI to surface who's worth reaching out to and why, whether that's a growth opportunity, a promotion, or a retention concern."
+              `<a href="https://headlinermusicacademy.com" target="_blank" rel="noopener noreferrer">Headliner</a> is a local music academy in Rocklin with around 250 students. As a local music academy and your average suburban enrich,ent school, it runs on constant communication with parents and students. `,
+              `Product name is inspired by Cohen, Headliner's Director and the most familiar face of the school. <b>Hey, Cohen</b> brings together the business context already sitting across the music management software and spreadsheets, including enrollment, billing cadence, attendance, and session notes. It uses AI to surface who's worth reaching out to and why, whether that's a growth opportunity, a promotion, or a retention concern.`,
+              ``
             ]
           },
+        
+          {
+            type: "image-full",
+            layout: "full",
+            src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787757615/5fd64a97-b859-41fa-87c3-0b7aa541182c.png",
+            caption: {
+              short: "The lobby is where a lot of the real relationship-building happens. Parents wait during lessons, talk to Cohen, and surface the context that keeps the business running.",
+              verbose: ""
+            }
+          },
 
-          { type: "heading", title: "The Problem" },
+          { type: "heading", title: "Lay of the land" },
           {
             type: "list",
             items: [
               {
-                content: `<span class="process-step-title"><b>The average class management software costs $400 a month</b></span><p class="mt-2">Headliner pays $298 for Opus1's base subscription and CRM tier, $99 for SMS, and $99 for a more capable email tool.</p>`,
+                content: `<span class="process-step-title"><b>The average class management software costs $400 a month</b></span><p class="mt-2"><a href="https://headlinermusicacademy.com" target="_blank" rel="noopener noreferrer">Headliner</a> pays $298 for Opus1's base subscription and CRM tier, $99 for SMS, and $99 for a more capable email tool.</p>`,
                 visuals: []
               },
               {
@@ -105,15 +115,9 @@ export const PORTFOLIO_DATA = {
                 visuals: []
               },
               {
-                content: `<span class="process-step-title"><b>There was no texting</b></span><p class="mt-2">Communication happened in person, by individual email, or by phone calls that often went to voicemail.</p>`,
+                content: `<span class="process-step-title"><b>There was no texting</b></span><p class="mt-2">Communication happened in person, by individual email, or by phone calls that often went to voicemail. I treated SMS as the MVP wedge. I started with the channel most likely to change behavior quickly: text messaging. That gave <b>Hey, Cohen</b> immediate feedback loops. Parents and students would reply with things like, “Hey, yeah, great timing sending this.” With email, that learning loop would have been slower, bumpier, and easier to miss.</p>`,
                 visuals: []
               }
-            ]
-          },
-          {
-            type: "text",
-            content: [
-              "I treated SMS as the MVP wedge. I started with the channel most likely to change behavior quickly: text messaging. That gave Hey Cohen immediate feedback loops. Parents and students would reply with things like, \"Hey, yeah, great timing sending this.\" With email, that learning loop would have been slower, bumpier, and easier to miss."
             ]
           },
 
@@ -121,7 +125,7 @@ export const PORTFOLIO_DATA = {
           {
             type: "text",
             content: [
-              "The idea started on paper, sketching the core flows by hand before any code. From there I moved into VS Code to prototype the workflows, connected them to real Headliner data in Supabase, and iterated on the data model until it held. Then I moved into Figma to polish the interface and define a real design system, followed by continuous iteration until every flow held up and shipped."
+              `The idea started on paper, sketching the core flows by hand before any code. From there I moved into VS Code to prototype the workflows, connected them to real <a href="https://headlinermusicacademy.com" target="_blank" rel="noopener noreferrer">Headliner</a> data in Supabase, and iterated on the data model until it held. Then I moved into Figma to polish the interface and define a real design system, followed by continuous iteration until every flow held up and shipped.`
             ]
           },
           {
@@ -168,49 +172,49 @@ export const PORTFOLIO_DATA = {
                 ]
               },
               {
-                content: `<span class="process-step-title"><b>Natural language search</b></span><p class="mt-2">Target the audience using any combination of filters that helps narrow them down. Or just describe them in plain language, and Hey Cohen turns that into a recipient list.</p>`,
+                content: `<span class="process-step-title"><b>Natural language search</b></span><p class="mt-2">Target the audience using any combination of filters that helps narrow them down. Or just describe them in plain language, and <b>Hey, Cohen</b> turns that into a recipient list.</p>`,
                 visuals: [
                   {
                     kind: "image",
                     layout: "side-lightbox",
                     src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109031/Screenshot_2026-08-18_at_7.54.10_PM_kzendm.png",
                     caption: {
-                      short: "Target the audience using any combination of filters that helps narrow them down. Or just describe them in plain language, and Hey Cohen turns that into a recipient list.",
+                        short: "Target the audience using any combination of filters that helps narrow them down. Or just describe them in plain language, and Hey, Cohen turns that into a recipient list.",
                       verbose: ""
                     }
                   }
                 ]
               },
               {
-                content: `<span class="process-step-title"><b>Human-in-the-loop</b></span><p class="mt-2">A human drafts the text message. Hey Cohen helps polish it, adds context, and suggests improvements, but it's still the sender's call.</p>`,
+                content: `<span class="process-step-title"><b>Human-in-the-loop</b></span><p class="mt-2">A human drafts the text message. <b>Hey, Cohen</b> helps polish it, adds context, and suggests improvements, but it's still the sender's call.</p>`,
                 visuals: [
                   {
                     kind: "image",
                     layout: "side-lightbox",
                     src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109029/Screenshot_2026-08-18_at_7.54.49_PM_n4sgo1.png",
                     caption: {
-                      short: "A human drafts the text message. Hey Cohen helps polish it, adds context, and suggests improvements, but it's still the sender's call.",
+                        short: "A human drafts the text message. Hey, Cohen helps polish it, adds context, and suggests improvements, but it's still the sender's call.",
                       verbose: ""
                     }
                   }
                 ]
               },
               {
-                content: `<span class="process-step-title"><b>Brand voice</b></span><p class="mt-2">Teach Hey Cohen how your business sounds. Set brand voice preferences, upload approved images, and let the AI polish language so outgoing content stays consistent with how you want to communicate.</p>`,
+                content: `<span class="process-step-title"><b>Brand voice</b></span><p class="mt-2">Teach <b>Hey, Cohen</b> how your business sounds. Set brand voice preferences, upload approved images, and let the AI polish language so outgoing content stays consistent with how you want to communicate.</p>`,
                 visuals: [
                   {
                     kind: "image",
                     layout: "side-lightbox",
                     src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109298/Screenshot_2026-08-18_at_8.14.41_PM_eqe8is.png",
                     caption: {
-                      short: "Teach Hey Cohen how your business sounds. Set brand voice preferences, upload approved images, and let the AI polish language so outgoing content stays consistent with how you want to communicate.",
+                        short: "Teach Hey, Cohen how your business sounds. Set brand voice preferences, upload approved images, and let the AI polish language so outgoing content stays consistent with how you want to communicate.",
                       verbose: ""
                     }
                   }
                 ]
               },
               {
-                content: `<span class="process-step-title"><b>Data reconciliation</b></span><p class="mt-2">Many class management software systems don't freely open an API. Bringing business data into Hey Cohen meant establishing a framework for spreadsheet import and value reconciliation, then turning that data into something the rest of the product could actually work with.</p>`,
+                content: `<span class="process-step-title"><b>Data reconciliation</b></span><p class="mt-2">Many class management software systems don't freely open an API. Bringing business data into <b>Hey, Cohen</b> meant establishing a framework for spreadsheet import and value reconciliation, then turning that data into something the rest of the product could actually work with.</p>`,
                 visuals: []
               },
               {
@@ -246,14 +250,14 @@ export const PORTFOLIO_DATA = {
   type: "list",
   items: [
     {
-      content: `<span class="process-step-title"><b>Develop Odeon</b></span><p class="mt-2">Expand Hey Cohen into a broader class management platform covering scheduling, billing, payments, student tracking, and curriculum, with the long-term goal of replacing Opus1.</p>`,
+      content: `<span class="process-step-title"><b>Develop Odeon</b></span><p class="mt-2">Expand <b>Hey, Cohen</b> into a broader class management platform covering scheduling, billing, payments, student tracking, and curriculum, with the long-term goal of replacing Opus1.</p>`,
       visuals: [
         {
           kind: "image",
           layout: "side-lightbox",
           src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787698223/cf0d0ab4-a60d-4ab6-975a-1d5a18742ce9.png",
           caption: {
-            short: "Hey Cohen is evolving into Odeon, a broader class management platform that expands beyond communication into the operational core of the business.",
+            short: "Hey, Cohen is evolving into Odeon, a broader class management platform that expands beyond communication into the operational core of the business.",
             verbose: ""
           }
         }
@@ -291,7 +295,7 @@ export const PORTFOLIO_DATA = {
     }
   ],
   description: [
-    "*Based on 278 students enrolled in May and 202 during the summer session (76 not re-enrolled); 52 of those 76 returned by August 15 after targeted campaigns sent by instructors through Hey Cohen. September re-enrollment is still open, so this number may continue to move. Tuition estimate based on a $40 30-minute lesson rate and 4–5 prepaid sessions/month. Labor savings based on a $26/hr admin rate — one campaign (band recruitment) took 4–5 hours of manual audience curation, reduced to about 10 minutes in Hey Cohen."
+    "*Based on 278 students enrolled in May and 202 during the summer session (76 not re-enrolled); 52 of those 76 returned by August 15 after targeted campaigns sent by instructors through Hey, Cohen. September re-enrollment is still open, so this number may continue to move. Tuition estimate based on a $40 30-minute lesson rate and 4–5 prepaid sessions/month. Labor savings based on a $26/hr admin rate — one campaign (band recruitment) took 4–5 hours of manual audience curation, reduced to about 10 minutes in Hey, Cohen."
   ]
 }
         ]

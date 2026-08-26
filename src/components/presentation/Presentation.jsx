@@ -1074,12 +1074,12 @@ const PRESENTATIONS = {
     slides: [
       {
         id: "hey-cohen-overview",
-        name: "Hey Cohen",
+        name: "Hey, Cohen",
         render: (isDark, goToAmazon, _goToHeyCohen, onImageClick) => SlideTemplates.ProjectHero({
           isDark,
-          title: "Hey Cohen",
-          meta: "Built for Headliner · ~250 students",
-          body: "I built Hey Cohen for Headliner, a music academy with around 250 students. It brings together the information already sitting in our class software and spreadsheets, then helps staff figure out who they should reach out to and why.",
+          title: <><b>Hey, Cohen</b></>,
+          meta: <>Built for <a href="https://headlinermusicacademy.com" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">Headliner</a> · ~250 students</>,
+          body: <>I built <b>Hey, Cohen</b> for <a href="https://headlinermusicacademy.com" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">Headliner</a>, a music academy with around 250 students. It brings together the information already sitting in our class software and spreadsheets, then helps staff figure out who they should reach out to and why.</>,
           
           
           src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787116212/3998a50a-9895-49a2-8eed-81cb05e374d1.png",
@@ -1095,27 +1095,41 @@ const PRESENTATIONS = {
         }),
       },
       {
+        id: "hey-cohen-cohen",
+        name: "Cohen",
+        render: (isDark, _goToAmazon, _goToHeyCohen, onImageClick) => SlideTemplates.PortfolioSplit({
+          isDark,
+          titleVariant: "supporting",
+          title: "Cohen is the face of the school",
+          problem: <>Parents know him and most of the staff by name.</>,
+          body: <>I wanted to retain that level of comfort. The product needed to help staff act on context and follow through at the right moment, without flattening the warmth that already made the music school 'vibe' work.</>,
+          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787758377/e1553540-685b-41fe-943b-c22c213e95d5.png",
+          onImageClick,
+        }),
+      },
+      {
         id: "hey-cohen-lobby",
         name: "The lobby",
         render: (isDark, _goToAmazon, _goToHeyCohen, onImageClick) => SlideTemplates.PortfolioSplit({
           isDark,
           titleVariant: "supporting",
           title: "A lot of the business happens in this lobby",
-          problem: "Parents wait while their kids take lessons. They talk to Cohen about schedules, missed classes, new programs, or whatever else is going on. He knows most of these families pretty well.",
-          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109030/Screenshot_2026-08-18_at_7.49.08_PM_nlupj0.png",
+          problem: <>Parents wait while their kids take lessons at Headliner. They talk to Cohen about schedules, missed classes, new programs, or whatever else is going on.</>,
+          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787757615/5fd64a97-b859-41fa-87c3-0b7aa541182c.png",
           onImageClick,
         }),
       },
+      
       {
         id: "hey-cohen-manual-work",
-        name: "Manual work",
+        name: "Insights",
         render: (isDark, _goToAmazon, _goToHeyCohen, onImageClick) => SlideTemplates.PortfolioSplit({
           isDark,
           titleVariant: "supporting",
-          title: "Communication was a lot of manual work",
-          problem: "Student information was spread across our class software, spreadsheets, notes, email, and conversations.",
-          
-          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787111924/Screenshot_2026-08-11_at_8.53.36_AM_phvx3u.png",
+          title: "What I noticed",
+          problem: <>A lot of that communication work happened in small follow-up moments that never neatly lived inside software.</>,
+          body: <>While the business already ran on warm, highly contextual relationships, the information needed to support those relationships was scattered across class software, spreadsheets, notes, email, and conversations.</>,
+          mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787761744/8c22d07a-77b1-452f-bbe9-b632093ba6ef.png",
           onImageClick,
         }),
       },
@@ -1125,9 +1139,9 @@ const PRESENTATIONS = {
         render: (isDark, _goToAmazon, _goToHeyCohen, onImageClick) => SlideTemplates.PortfolioSplit({
           isDark,
           titleVariant: "supporting",
-          title: "SMS was the obvious place to start",
-          problem: "Email was easy to miss, calls often went to voicemail, and a lot of outreach still happened one family at a time.",
-          body: "Texting was faster and more immediate. So I built Hey Cohen around SMS first, with the data we already had helping staff figure out who to reach and what was worth saying.",
+          title: "SMS as the starting point",
+          problem: <>I treated SMS as the MVP wedge.</>,
+          body: <>Surprisingly, the channel most likely to reach parents, and the one they were the most open to, was text messaging. Parents and students would reply with things like, &ldquo;Hey, yeah, great timing sending this.&rdquo; With email, that learning loop would have been slower, bumpier, and easier to miss.</>,
           mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109029/Screenshot_2026-08-18_at_7.54.49_PM_n4sgo1.png",
           onImageClick,
         }),
@@ -1152,7 +1166,7 @@ const PRESENTATIONS = {
           isDark,
           title: "View demo",
           meta: "This is where I'd stop talking through slides and show the actual product.",
-          body: "Hey Cohen helps staff move from disconnected records to targeted outreach in one flow.",
+          
           detailList: [
             { title: "Import the data", text: "Enrollment, attendance, billing, and notes." },
             { title: "See what needs attention", text: "Hey Cohen surfaces students and opportunities worth looking at." },
@@ -1175,7 +1189,7 @@ const PRESENTATIONS = {
           titleVariant: "supporting",
           mediaLayout: "content-only-centered",
           title: "Impact",
-          problem: "We first used Hey Cohen for summer re-enrollment.",
+          problem: <>We first used <b>Hey, Cohen</b> for summer re-enrollment.</>,
           body: "52 of 76 students came back. Re-enrollment reached 68%, compared with a historical 12% baseline, while campaign preparation dropped from hours to minutes.",
           metrics: [
             { value: "52 of 76", label: "Students came back" },
@@ -1193,7 +1207,7 @@ const PRESENTATIONS = {
           isDark,
           titleVariant: "supporting",
           title: "What's next",
-          body: "Hey Cohen is becoming part of Odeon, a broader class management platform. This slide will become the Hey Cohen + Odeon infographic.",
+          body: <><b>Hey, Cohen</b> is becoming part of Odeon, a broader class management platform. This slide will become the <b>Hey, Cohen</b> + Odeon infographic.</>,
           mediaUrl: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787698223/cf0d0ab4-a60d-4ab6-975a-1d5a18742ce9.png",
           onImageClick,
         }),
