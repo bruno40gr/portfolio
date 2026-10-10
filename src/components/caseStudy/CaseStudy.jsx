@@ -535,7 +535,7 @@ const CaseStudy = ({ project, onNavigateToProject, onExit }) => {
 
                       {mediaItems.length > 0 && (
                         <div className="mt-8 md:mt-12 w-full">
-                          <div className="flex flex-col gap-8 w-full">
+                          <div className={item.visualLayout === "paired" ? "grid grid-cols-1 md:grid-cols-2 gap-6 w-full" : "flex flex-col gap-8 w-full"}>
                             {mediaItems.map((mediaItem, vi) => {
                               const globalIndex = allMediaItems.findIndex(
                                 (it) => it.src === mediaItem.src

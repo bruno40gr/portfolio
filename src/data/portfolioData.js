@@ -46,12 +46,12 @@ export const PORTFOLIO_DATA = {
       year: 2026,
       company: "Layered Labs",
       title: "Hey, Cohen",
-      impactSummary: "SMS and communications platform for relationship-driven businesses. Built Hey, Cohen from zero to launch for Headliner, a 250-student Rocklin music academy, reading enrollment, billing, attendance, and session notes to surface who's worth reaching out to and why, then turning that into AI-drafted, staff-approved outreach. Own the product end to end: strategy, UX, the AI layer, engineering, support, and delivery.",
-      impactSummarySentence: "An SMS and communications platform for relationship-driven businesses, reading business context already sitting in spreadsheets and class software to surface who's worth reaching out to and why. Designed, built, and shipped solo, from paper sketch to a real school's re-enrollment numbers.",
+      impactSummary: "Built Hey, Cohen from zero to launch for Headliner, a 250-student Rocklin music academy. AI-assisted outreach turns enrollment, billing, attendance, and session notes into staff-approved messages. Now expanding into Odeon with lead management and internal notes. I own strategy, UX, the AI layer, engineering, support, and delivery end to end.",
+      impactSummarySentence: "Started as an AI-assisted messaging tool for Headliner Music Academy, then expanded into Odeon with lead management and internal notes. Designed, built, and shipped solo, from paper sketch to a real school's re-enrollment numbers.",
       designerNote: "Hey, Cohen is the first product I've taken fully from zero to launch. After years working on complex product teams at Amazon, I took a step back and focused on building something of my own. I designed it, built the systems underneath it, worked through the business model, built the AI layer, and shipped it into a real business. I learned a lot along the way, and it made me a product builder.\n\nIt's also the clearest demonstration of how my design practice has evolved. I still care deeply about understanding the problem, shaping the product, and getting the details right. But I'm now designing and building in a much more integrated way, using AI throughout the process and creating intelligent features that feel natural to the people using them.",
       thumbnail: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787116212/3998a50a-9895-49a2-8eed-81cb05e374d1.png",
       status: "LAUNCHED",
-      type: "CONSUMER",
+      type: "ENTERPRISE",
       blocks: [
         {
           type: "impact-box",
@@ -75,14 +75,14 @@ export const PORTFOLIO_DATA = {
         role: "Founder · Design + Code",
         timeline: "2026",
         collaborators: "Solo",
-        type: "CONSUMER",
+        type: "ENTERPRISE",
         blocks: [
 
           { type: "heading", title: "Overview", hasDivider: false },
           {
             type: "text",
             content: [
-              `<a href="https://headlinermusicacademy.com" target="_blank" rel="noopener noreferrer">Headliner</a> is a local music academy in Rocklin with around 250 students. As a local music academy and your average suburban enrich,ent school, it runs on constant communication with parents and students. `,
+              `<a href="https://headlinermusicacademy.com" target="_blank" rel="noopener noreferrer">Headliner</a> is a music academy in Rocklin with around 250 students. Like many enrichment schools, it runs on constant communication with parents and students.`,
               `Product name is inspired by Cohen, Headliner's Director and the most familiar face of the school. <b>Hey, Cohen</b> brings together the business context already sitting across the music management software and spreadsheets, including enrollment, billing cadence, attendance, and session notes. It uses AI to surface who's worth reaching out to and why, whether that's a growth opportunity, a promotion, or a retention concern.`,
               ``
             ]
@@ -138,9 +138,7 @@ export const PORTFOLIO_DATA = {
           {
             type: "text",
             content: [
-              "Maybe it's a reminiscence of my Amazon years, but lately I prefer to document what I'm trying to build, the problem I'm solving for the user, the business needs, and the scope of work. It helps me write down the Jobs to Be Done and start quick wireframes for the information architecture.",
-              "By then, I know what each screen needs to do, and I instruct Claude Code to build the initial skeleton. As we all are well aware by now, the first working version, while looking decent, leans heavily on default AI-generated styling, predictable spacing, monospace typefaces, the use and abuse of eyebrows, beige backgrounds, pill buttons, and punchy headlines.",
-              "It worked well enough to get me to a working prototype and nail down onboarding, messaging, filtering, and all the crucial milestones."
+              "I document the user problem, business needs, and scope before sketching the information architecture. Claude Code helps build the initial skeleton so I can test onboarding, messaging, and filtering early. Then I refine the interface beyond default AI-generated styling into a consistent design system."
             ]
           },
           {
@@ -186,7 +184,7 @@ export const PORTFOLIO_DATA = {
                 ]
               },
               {
-                content: `<span class="process-step-title"><b>Human-in-the-loop</b></span><p class="mt-2">A human drafts the text message. <b>Hey, Cohen</b> helps polish it, adds context, and suggests improvements, but it's still the sender's call.</p>`,
+                content: `<span class="process-step-title"><b>Human-in-the-loop</b></span><p class="mt-2">A human drafts the text message. <b>Hey, Cohen</b> helps polish it using business context and brand voice preferences, but staff retain control over what gets sent.</p>`,
                 visuals: [
                   {
                     kind: "image",
@@ -194,20 +192,6 @@ export const PORTFOLIO_DATA = {
                     src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109029/Screenshot_2026-08-18_at_7.54.49_PM_n4sgo1.png",
                     caption: {
                         short: "A human drafts the text message. Hey, Cohen helps polish it, adds context, and suggests improvements, but it's still the sender's call.",
-                      verbose: ""
-                    }
-                  }
-                ]
-              },
-              {
-                content: `<span class="process-step-title"><b>Brand voice</b></span><p class="mt-2">Teach <b>Hey, Cohen</b> how your business sounds. Set brand voice preferences, upload approved images, and let the AI polish language so outgoing content stays consistent with how you want to communicate.</p>`,
-                visuals: [
-                  {
-                    kind: "image",
-                    layout: "side-lightbox",
-                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109298/Screenshot_2026-08-18_at_8.14.41_PM_eqe8is.png",
-                    caption: {
-                        short: "Teach Hey, Cohen how your business sounds. Set brand voice preferences, upload approved images, and let the AI polish language so outgoing content stays consistent with how you want to communicate.",
                       verbose: ""
                     }
                   }
@@ -228,55 +212,50 @@ export const PORTFOLIO_DATA = {
                       short: "Every message sent becomes a direct communication path: traceable, attributable, and built for action instead of getting lost in personal texts or missed calls.",
                       verbose: ""
                     }
-                  },
-                  {
-                    kind: "image",
-                    layout: "side-lightbox",
-                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787109029/Screenshot_2026-08-18_at_7.58.32_PM_ktqsku.png",
-                    caption: {
-                      short: "Every message sent becomes a direct communication path: traceable, attributable, and built for action instead of getting lost in personal texts or missed calls.",
-                      verbose: ""
-                    }
                   }
                 ]
               }
             ]
           },
 
-          
-
-        { type: "heading", title: "What's Next" },
-{
-  type: "list",
-  items: [
-    {
-      content: `<span class="process-step-title"><b>Develop Odeon</b></span><p class="mt-2">Expand <b>Hey, Cohen</b> into a broader class management platform covering scheduling, billing, payments, student tracking, and curriculum, with the long-term goal of replacing Opus1.</p>`,
-      visuals: [
-        {
-          kind: "image",
-          layout: "side-lightbox",
-          src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1787698223/cf0d0ab4-a60d-4ab6-975a-1d5a18742ce9.png",
-          caption: {
-            short: "Hey, Cohen is evolving into Odeon, a broader class management platform that expands beyond communication into the operational core of the business.",
-            verbose: ""
-          }
-        }
-      ]
-    },
-    {
-      content: `<span class="process-step-title"><b>Develop CharterPulse, part of Odeon</b></span><p class="mt-2">Build a module to manage charter schools, subsidized enrichment programs, and other third-party payers with complex payment workflows. CharterPulse will reduce administrative burden and help academies serve more families, including those seeking specialized education for children with special needs.</p>`,
-      visuals: []
-    },
-    {
-      content: `<span class="process-step-title"><b>Add Email and WhatsApp</b></span><p class="mt-2">Expand communication beyond SMS with email and WhatsApp, giving academies more flexibility to reach families through the channels they already use and prefer.</p>`,
-      visuals: []
-    },
-    {
-      content: `<span class="process-step-title"><b>Improve onboarding and SMS adoption</b></span><p class="mt-2">Simplify the 10DLC registration and phone-number setup experience while helping small businesses understand how to use SMS effectively as a professional customer communication channel.</p>`,
-      visuals: []
-    }
-  ]
-},
+          { type: "heading", title: "Beyond messaging" },
+          {
+            type: "list",
+            items: [
+              {
+                content: `<span class="process-step-title"><b>CRM: Prioritize and act on the next opportunity</b></span><p class="mt-2">I built a CRM with emoji-based lead temperature, sorting, and calculated opportunity values to help staff prioritize inquiries. Staff can make Twilio-powered calls or send SMS messages from each lead. These tools helped staff close <b>just under $2K in inbound leads as of the week of October 9, 2026</b>, roughly twice what we estimate would have closed without them.</p>`,
+                visualLayout: "paired",
+                visuals: [
+                  {
+                    kind: "image",
+                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1791589726/417b4983-56a0-49a1-9912-71c87c870283.png",
+                    caption: { short: "Lead prioritization", verbose: "" }
+                  },
+                  {
+                    kind: "image",
+                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1791589769/74ef59a5-dd30-427c-b5bc-54a9a356a240.png",
+                    caption: { short: "Lead details and communication", verbose: "" }
+                  }
+                ]
+              },
+              {
+                content: `<span class="process-step-title"><b>Notes: From handwritten reminders to shared follow-through</b></span><p class="mt-2">Notes started as a way to reduce clutter and reliance on handwritten reminders. It's evolving into a shared repository of to-dos, with replies and conversations. Stickies change color by day, can be marked complete or kept private, and help keep staff in the loop as operational needs change.</p>`,
+                visualLayout: "paired",
+                visuals: [
+                  {
+                    kind: "image",
+                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1791585924/11a63688-cde7-456b-9eae-22ac49c5f2ba.png",
+                    caption: { short: "Shared notes workspace", verbose: "" }
+                  },
+                  {
+                    kind: "image",
+                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1791589870/49305414-eb2d-4e73-8025-5418a77a0f65.png",
+                    caption: { short: "Replies and conversations", verbose: "" }
+                  }
+                ]
+              }
+            ]
+          },
 
           {
   type: "impact-box",

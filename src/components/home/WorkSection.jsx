@@ -173,9 +173,10 @@ const WorkSection = ({ onProjectClick }) => {
             </div>
 
             <p className="text-lg text-slate-600 leading-relaxed mb-8">
-              A communications platform for small businesses that know their
-              customers by name. It tells you who's worth a message before you'd think to check, like a family that's gone quiet or a milestone worth celebrating. I own the product strategy, design, engineering, support, and delivery end to end. Demo
-              environment available.
+              An AI-assisted communications tool for Headliner Music Academy,
+              now expanding into Odeon with lead management and internal notes.
+              It helps staff identify who needs attention and act on that context.
+              I own strategy, design, engineering, support, and delivery end to end.
             </p>
 
             <div className="pt-6 pb-8 border-t border-gray-200 grid grid-cols-1 sm:grid-cols-2 gap-6">
