@@ -218,41 +218,42 @@ export const PORTFOLIO_DATA = {
             ]
           },
 
-          { type: "heading", title: "Beyond messaging" },
+          { type: "heading", title: "Custom-made CRM" },
           {
-            type: "list",
-            items: [
+            type: "text",
+            content: `This wasn’t part of the original plan, but our business needed a better way to track leads and connect them to the display campaigns that brought them in. I built a CRM that gives admins and teachers one place to book tours, manage follow-ups, send quotes, and handle upgrades. Instead of piecing together the next step from messages and memory, staff can see where each lead stands and act on it.`,
+          },
+          {
+            type: "image-grid",
+            columns: 2,
+            images: [
               {
-                content: `<span class="process-step-title"><b>CRM: Prioritize and act on the next opportunity</b></span><p class="mt-2">I built a CRM with emoji-based lead temperature, sorting, and calculated opportunity values to help staff prioritize inquiries. Staff can make Twilio-powered calls or send SMS messages from each lead. These tools helped staff close <b>just under $2K in inbound leads as of the week of October 9, 2026</b>, roughly twice what we estimate would have closed without them.</p>`,
-                visualLayout: "paired",
-                visuals: [
-                  {
-                    kind: "image",
-                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1791589726/417b4983-56a0-49a1-9912-71c87c870283.png",
-                    caption: { short: "Lead prioritization", verbose: "" }
-                  },
-                  {
-                    kind: "image",
-                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1791589769/74ef59a5-dd30-427c-b5bc-54a9a356a240.png",
-                    caption: { short: "Lead details and communication", verbose: "" }
-                  }
-                ]
+                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1791589726/417b4983-56a0-49a1-9912-71c87c870283.png",
+                caption: { short: "Lead prioritization", verbose: "" }
               },
               {
-                content: `<span class="process-step-title"><b>Notes: From handwritten reminders to shared follow-through</b></span><p class="mt-2">Notes started as a way to reduce clutter and reliance on handwritten reminders. It's evolving into a shared repository of to-dos, with replies and conversations. Stickies change color by day, can be marked complete or kept private, and help keep staff in the loop as operational needs change.</p>`,
-                visualLayout: "paired",
-                visuals: [
-                  {
-                    kind: "image",
-                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1791585924/11a63688-cde7-456b-9eae-22ac49c5f2ba.png",
-                    caption: { short: "Shared notes workspace", verbose: "" }
-                  },
-                  {
-                    kind: "image",
-                    src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1791589870/49305414-eb2d-4e73-8025-5418a77a0f65.png",
-                    caption: { short: "Replies and conversations", verbose: "" }
-                  }
-                ]
+                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1791589769/74ef59a5-dd30-427c-b5bc-54a9a356a240.png",
+                caption: { short: "Lead details and communication", verbose: "" }
+              }
+            ]
+          },
+
+          { type: "heading", title: "Shared sticky notes" },
+          {
+            type: "text",
+            content: `Our goal by October 1 was to stop relying on handwritten notes and analog workarounds. I built shared sticky notes as the first step. Anyone can drop a note, mention a colleague, reply, and choose who can see it. It keeps the simplicity of a reminder on the desk, but adds the conversation and visibility we need to follow through as a team.`,
+          },
+          {
+            type: "image-grid",
+            columns: 2,
+            images: [
+              {
+                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1791585924/11a63688-cde7-456b-9eae-22ac49c5f2ba.png",
+                caption: { short: "Shared notes workspace", verbose: "" }
+              },
+              {
+                src: "https://res.cloudinary.com/diy08lj9x/image/upload/v1791589870/49305414-eb2d-4e73-8025-5418a77a0f65.png",
+                caption: { short: "Replies and conversations", verbose: "" }
               }
             ]
           },
