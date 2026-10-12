@@ -2,6 +2,7 @@ import React, { forwardRef, useEffect, useRef, useState } from "react";
 
 const RevealOnScroll = forwardRef(({
   as: Tag = "div",
+  id,
   children,
   className = "",
   delay = 0,
@@ -52,6 +53,7 @@ const RevealOnScroll = forwardRef(({
 
   return (
     <Tag
+      id={id}
       ref={setRefs}
       className={`scroll-reveal ${visible ? "is-visible" : ""} ${className}`.trim()}
       style={{ transitionDelay: `${delay}ms` }}
